@@ -9,3 +9,6 @@ target/
 *.tfstate.*
 .terraform/
 *.tfvars
+
+# retry-apply.sh output
+*.log
