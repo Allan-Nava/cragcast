@@ -25,6 +25,18 @@ jobs:
       # skips run here against a real PostgreSQL.
       - run: ./mvnw -B verify
 
+  terraform:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra/oci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform fmt -check -recursive
+      - run: terraform init -backend=false -input=false
+      - run: terraform validate
+
   backlog:
     runs-on: ubuntu-latest
     steps:

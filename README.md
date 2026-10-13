@@ -20,6 +20,7 @@ the crag list and the web page are on the [roadmap](ROADMAP.md).
 | `backend/.../conditions/ConditionsScorer.java` | the verdict: weather + aspect → go / maybe / no go, with reasons |
 | `docker-compose.yml` | PostgreSQL (and the backend) for local development |
 | `deploy/k8s/` | Kubernetes manifests for k3s on an Oracle Cloud Always Free Ampere VM |
+| `infra/oci/` | Terraform for that VM and its network, with a retry loop for "Out of host capacity" |
 | `.github/workflows/` | CI: build and tests (Testcontainers on a real PostgreSQL), backlog check; the linux/arm64 image to GHCR on every push to main |
 
 Weather comes from [Open-Meteo](https://open-meteo.com/) (free, no key). Every crag in the

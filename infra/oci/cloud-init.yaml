@@ -1,0 +1,10 @@
+#cloud-config
+# Oracle's Ubuntu images ship iptables rules that reject everything but SSH, on top of the
+# VCN security list. Open 80 and 443 in the VM too, and keep the rules across reboots.
+package_update: true
+packages:
+  - iptables-persistent
+runcmd:
+  - iptables -I INPUT -p tcp --dport 80 -m conntrack --ctstate NEW -j ACCEPT
+  - iptables -I INPUT -p tcp --dport 443 -m conntrack --ctstate NEW -j ACCEPT
+  - netfilter-persistent save
