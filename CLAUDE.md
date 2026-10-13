@@ -13,7 +13,7 @@
   validates. Never edit a migration that has run — add the next one.
 - **Tests that need PostgreSQL** use Testcontainers and `@EnabledIf(DockerAvailable.CHECK)`:
   skipped without Docker, always run in CI. Logic tests need no database.
-- **arm64 first.** The VM is Ampere: images must be multi-arch; CI builds `linux/arm64`.
+- **arm64 first.** The VM is Ampere: images must be multi-arch; `image.yml` builds `linux/arm64` on a native ARM runner (`ubuntu-24.04-arm`) and pushes `ghcr.io/allan-nava/cragcast-backend:main` and `:<sha>`.
 - **Free tier only.** Nothing in `deploy/` or `infra/` may exceed Oracle Always Free (A1.Flex
   2 OCPU / 12 GB in total, 200 GB of block storage). Secrets and Terraform state never get
   committed.

@@ -36,8 +36,10 @@ main.
   deploy/k8s`. <!-- cg: prio=high size=M labels=infra -->
 - [ ] **CG-8 — Domain and HTTPS**: a domain or subdomain, cert-manager with Let's Encrypt,
   the host in the ingress. <!-- cg: prio=med size=S labels=infra -->
-- [ ] **CG-9 — Continuous delivery**: CI builds the backend image for linux/arm64, pushes it
-  to GHCR and rolls the deployment. <!-- cg: prio=med size=M labels=infra -->
+- [x] **CG-9 — The arm64 image**: `image.yml` builds the backend for linux/arm64 on a native
+  ARM runner and pushes it to GHCR on every push to main. <!-- cg: prio=med size=S labels=infra ver=main -->
+- [ ] **CG-13 — Continuous delivery**: after the image, roll the k3s deployment on the VM
+  (a deploy key or a pull-based tool), once CG-7 has put the cluster up. <!-- cg: prio=med size=M labels=infra -->
 
 ## v0.3.0 — The page climbers use <!-- ms: phase=later -->
 
