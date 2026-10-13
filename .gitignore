@@ -1,0 +1,11 @@
+target/
+.idea/
+*.iml
+.vscode/
+.DS_Store
+.env
+# Terraform state and variables hold OCIDs and key paths: never committed.
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfvars

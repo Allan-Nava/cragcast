@@ -1,0 +1,12 @@
+{
+  "prefix": "CG",
+  "meta": "cg",
+  "name": "cragcast",
+  "labels": {
+    "backend": ["5319e7", "Spring Boot service, scoring, database"],
+    "data": ["0e8a16", "Crags, sources, weather data"],
+    "infra": ["fbca04", "Oracle Cloud, k3s, Terraform, CI/CD"],
+    "frontend": ["1d76db", "The web page"],
+    "docs": ["0075ca", "README, CLAUDE.md, posts"]
+  }
+}

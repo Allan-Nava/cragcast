@@ -1,0 +1,12 @@
+# Deployed on k3s on the Oracle Always Free VM (CG-7): kubectl apply -k deploy/k8s
+# The database secret is created by hand once, never committed:
+#   kubectl -n cragcast create secret generic cragcast-db \
+#     --from-literal=password="$(openssl rand -base64 24)"
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: cragcast
+resources:
+  - namespace.yaml
+  - postgres.yaml
+  - backend.yaml
+  - ingress.yaml
