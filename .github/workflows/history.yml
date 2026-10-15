@@ -43,7 +43,8 @@ jobs:
           else
             git worktree add --detach "$RUNNER_TEMP/history"
             git -C "$RUNNER_TEMP/history" checkout --orphan history
-            git -C "$RUNNER_TEMP/history" rm -rq .
+            # After --orphan every file of main is staged: -f to drop them all.
+            git -C "$RUNNER_TEMP/history" rm -rqf .
             printf '%s\n' "# cragcast history" "" \
               "One CSV per month (\`<YYYY>/<MM>.csv\`): every crag's verdict for each day and the weather it" \
               "came from, saved each evening by \`.github/workflows/history.yml\` on main. Columns:" \
