@@ -11,10 +11,11 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
 
 - **No invented places.** A crag enters the database only with coordinates and aspect taken
   from a public source, whose URL goes in `source_url`. Test data is made up and says so.
-- **Two ways to run, one scorer.** The serverless version (`ConditionsExport` + `site/`,
+- **Two ways to run, one scorer.** The serverless version (`ConditionsExport` + the page in `web/`,
   published hourly by `pages.yml` on GitHub Pages) and the Spring service (`deploy/k8s/`, on
   the Oracle VM) share `ConditionsScorer`, `WeatherReducer` and `OpenMeteoClient`. A change to
-  the verdict lands in both. `site/data/` is generated, never committed.
+  the verdict lands in both. All of `site/` is generated (`tools/build_site.sh`: Vite from `web/`,
+  then the data), never committed.
 - **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:
   credit OSM on every surface that shows them). The aspect is `climbing:orientation` or null —
   never filled in by guess; the fix for a missing aspect is an edit on OSM. The same holds for
@@ -60,13 +61,17 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   (circle S, diamond F, square N) and its text label; colours keep ≥4.5:1 contrast with the black
   letter. A new verdict surface follows the same rule — the cluster mark (CG-23) is neutral grey
   and writes the split out.
-- **Charts on the page** (`site/detail.js`): one measure per chart, never two y-axes; rain
+- **Charts on the page** (`web/src/components/HourChart.tsx`): one measure per chart, never two y-axes; rain
   `#3987e5`, temperature `#d95926`, validated on the panel `#111418` with the dataviz validator;
   never a verdict colour for a series; every chart has a table of the same numbers.
-- **The service worker** (`site/sw.js`, CG-35): network first for the page and the data, cache
-  only as the offline fallback; Leaflet from cdnjs cache first; **map tiles never cached** (OSM's
+- **The service worker** (`web/public/sw.js`, CG-35): network first for the page, its bundled
+  assets and the data, cache only as the offline fallback; **map tiles never cached** (OSM's
   tile policy). Adding a file to `SHELL` or changing the strategy means bumping `CACHE`
-  (`cragcast-v1` → `v2`), or old phones keep the old copy.
+  (now `cragcast-v2`, bumped for CG-10), or old phones keep the old copy.
+- **The page is React** (CG-10, `web/`): Leaflet is driven imperatively inside `CragMap`, and
+  names and texts from OSM reach the DOM as text, never as markup (React's JSX, `textContent` in
+  popups). The pure parts (`web/src/lib/`) carry the unit tests; a behaviour change comes with a
+  test in `web/src/**/*.test.ts(x)`.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
   never in the URL, never in a request, never in storage.
 - **History lives on the `history` branch, never on main** (CG-34). `history.yml` appends the

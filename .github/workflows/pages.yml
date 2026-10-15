@@ -8,7 +8,7 @@ on:
     - cron: "17 * * * *"      # hourly, off the top of the hour when GitHub's queue is busiest
   push:
     branches: [main]
-    paths: [site/**, data/**, assets/logo.svg, backend/src/main/**, tools/build_site.sh, .github/workflows/pages.yml]
+    paths: [web/**, data/**, assets/logo.svg, backend/src/main/**, tools/build_site.sh, .github/workflows/pages.yml]
   workflow_dispatch:
 
 permissions:
@@ -30,6 +30,11 @@ jobs:
           distribution: temurin
           java-version: "21"
           cache: maven
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
       - name: Score every crag for today, tomorrow and the day after, and build site/
         run: tools/build_site.sh
       - uses: actions/configure-pages@v5

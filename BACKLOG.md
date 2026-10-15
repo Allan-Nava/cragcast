@@ -117,8 +117,9 @@ memory or copied from guidebook sites.
 
 ## v0.3.0 — The page climbers use <!-- ms: phase=later -->
 
-- [ ] **CG-10 — Web page in React**: rewrite the static page (CG-15) in React with a build
-  step — filters by area and verdict, a page per crag. <!-- cg: prio=med size=L labels=frontend -->
+- [x] **CG-10 — Web page in React**: rewrite the static page (CG-15) in React with a build
+  step — filters by area and verdict, a page per crag. Done: React 19, TypeScript and Vite in
+  `web/`, same features; the page per crag is the panel of CG-24. <!-- cg: prio=med size=L labels=frontend ver=main -->
 - [ ] **CG-11 — Avalanche bulletin**: for winter routes, the AINEVA / regional bulletin next
   to the weather. <!-- cg: prio=low size=M labels=data,backend -->
 - [ ] **CG-12 — Write-up**: a post on allan-nava.github.io and on LinkedIn on how the verdict

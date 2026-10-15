@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
-# Build site/ as GitHub Pages serves it: compile the scorer, score every crag, write
-# site/data/conditions.json and the static API in site/api/v1/, copy the logo.
-# Used by pages.yml (publish) and lighthouse.yml (measure); runnable locally with Java 21.
+# Build site/ as GitHub Pages serves it: build the React page (web/, Vite empties site/ first),
+# compile the scorer, score every crag, write site/data/conditions.json and the static API in
+# site/api/v1/, copy the logo.
+# Used by pages.yml (publish) and lighthouse.yml (measure); runnable locally with Java 21 and Node 22+.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+(
+  cd web
+  npm ci --no-audit --no-fund
+  npm run build
+)
 (
   cd backend
   ./mvnw -q -B -DskipTests package
