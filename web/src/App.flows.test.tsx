@@ -199,3 +199,16 @@ group("map or list (CG-54)", () => {
     expect(new URLSearchParams(location.search).get("show")).toBeNull();
   });
 });
+
+group("panel beside (CG-56)", () => {
+  it("marks the grid while a panel is open, so the list steps aside", async () => {
+    serve(data());
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    const main = document.querySelector("main")!;
+    expect(main.classList.contains("panel-open")).toBe(false);
+    await act(async () => { fireEvent.click(screen.getAllByText("Dettagli")[0]); });
+    expect(main.classList.contains("panel-open")).toBe(true);
+    expect(main.querySelector("dialog#detail")).not.toBeNull();            // the panel lives in the grid
+  });
+});

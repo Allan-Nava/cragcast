@@ -1,7 +1,7 @@
 // CG-24: the crag's panel — verdict, reasons, details, the day's hours as two charts and a
 // table, directions and OSM links.
-// CG-40: a side panel from 900 px, beside the map and the list, which stay usable (a non-modal
-// dialog); a bottom sheet on phones (modal). The day switches inside it, by buttons or a
+// CG-40: from 900 px a non-modal panel beside the map, which stays usable — since CG-56 in the
+// list's column of the grid, below the controls; a bottom sheet on phones (modal). The day switches inside it, by buttons or a
 // sideways swipe; a downward swipe closes the sheet. Motion only without
 // prefers-reduced-motion.
 import { useCallback, useEffect, useRef, useState } from "react";

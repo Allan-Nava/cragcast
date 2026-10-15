@@ -64,3 +64,20 @@ test("CG-54: on a desktop the map and the list show together, without the switch
   await expect(page.locator("#map")).toBeVisible();
   await expect(page.locator("#list")).toBeVisible();
 });
+
+test("CG-56: the panel takes the list's column, below the controls; the list comes back on close", async ({ page }) => {
+  await page.goto("./");
+  const controls = (await page.locator(".controls").boundingBox())!;
+  const map = (await page.locator("#map").boundingBox())!;
+  await page.locator("#crag-osm-node-2 .more").click();
+  const panel = page.locator("dialog#detail");
+  await expect(panel).toBeVisible();
+  const box = (await panel.boundingBox())!;
+  expect(box.y).toBeGreaterThanOrEqual(controls.y + controls.height);     // the filters stay in sight
+  expect(box.x).toBeGreaterThanOrEqual(map.x + map.width);                // beside the map, not over it
+  await expect(page.getByLabel("Provincia")).toBeVisible();
+  await expect(page.locator("#list")).toBeHidden();
+  expect((await page.locator("#map").boundingBox())!.width).toBe(map.width);   // the map keeps its place
+  await panel.getByLabel("Chiudi").click();
+  await expect(page.locator("#list")).toBeVisible();
+});

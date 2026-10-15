@@ -263,8 +263,10 @@ the filters and the list. Each fix comes with an end-to-end test (CG-51) at the 
   first, the choice kept in the URL; choosing a crag in the list shows it on the map. Done below
   600 px: the first crag now on the first screen; the map is measured again whenever it comes
   back, so its tiles fill it. <!-- cg: prio=high size=M labels=frontend ver=main -->
-- [ ] **CG-56 — The panel beside, not over**: on a desktop the crag's panel takes the list's
-  column instead of covering the filters and the list; the map keeps its place. <!-- cg: prio=med size=M labels=frontend -->
+- [x] **CG-56 — The panel beside, not over**: on a desktop the crag's panel takes the list's
+  column instead of covering the filters and the list; the map keeps its place. Done: the
+  dialog lives in the page's grid; the list steps aside while it is open; a short fade
+  replaces the slide from the screen's edge. <!-- cg: prio=med size=M labels=frontend ver=main -->
 - [ ] **CG-55 — Readable cluster marks**: the count and the split legible at 100% zoom (text
   of 11 px or more), still written out, never told by colour alone. <!-- cg: prio=med size=S labels=frontend -->
 - [ ] **CG-57 — A long list**: with 220 crags, a "Torna su" button once the list is scrolled,
