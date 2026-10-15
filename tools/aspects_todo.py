@@ -49,8 +49,9 @@ def main():
         "The aspect reaches cragcast with the monthly refresh of the crag list (`crags-refresh.yml`,",
         "on the 1st), or at once if the workflow is run by hand.",
         "",
-        "A crag mapped on OSM without `climbing=crag` (only `sport=climbing` or `natural=cliff`) is",
-        "not in cragcast at all: adding `climbing=crag` to it brings it in at the next refresh.",
+        "A crag mapped on OSM needs a name and either `climbing=crag` or `sport=climbing` on a cliff,",
+        "a rock or a climbing site to be in cragcast; a sector mapped on its own (\"Settore Alto\")",
+        "is folded into the crag around it. Tagging the crag itself `climbing=crag` is the clearest.",
         "",
     ]
     for province in sorted(by_province, key=lambda p: p.lower()):

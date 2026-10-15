@@ -1,9 +1,22 @@
 {
   "region": "Lombardia",
-  "source": "OpenStreetMap, climbing=crag",
+  "source": "OpenStreetMap: climbing=crag, and named outdoor sport=climbing places (CG-42)",
   "licence": "© OpenStreetMap contributors, ODbL 1.0 — https://www.openstreetmap.org/copyright",
   "elevationSource": "Copernicus DEM GLO-90 (2021 release, 90 m), https://doi.org/10.5270/ESA-c5d3d65, through the Open-Meteo elevation API",
   "crags": [
+    {
+      "id": "osm-way-238134303",
+      "name": "Anfiteatro naturale del Bogn",
+      "latitude": 45.78034,
+      "longitude": 10.049928,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/238134303",
+      "details": {},
+      "elevation": 185,
+      "municipality": "Riva di Solto",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
     {
       "id": "osm-node-6822611838",
       "name": "Bagni Vecchi Bassa",
@@ -15,9 +28,45 @@
         "website": "https://www.paolo-sonja.net/retiche/bagni.html"
       },
       "elevation": 1482,
+      "municipality": "Bormio",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Bormio"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-way-948457898",
+      "name": "Brutal Block",
+      "latitude": 45.838373,
+      "longitude": 10.090261,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/948457898",
+      "details": {},
+      "elevation": 709,
+      "municipality": "Costa Volpino",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-1428080037",
+      "name": "Buco del piombo",
+      "latitude": 45.824619,
+      "longitude": 9.198854,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1428080037",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/1428080038",
+        "https://www.openstreetmap.org/way/1428080039"
+      ],
+      "elevation": 768,
+      "municipality": "Erba",
+      "province": "Como",
+      "provinceCode": "CO"
     },
     {
       "id": "osm-node-11872141961",
@@ -28,9 +77,65 @@
       "sourceUrl": "https://www.openstreetmap.org/node/11872141961",
       "details": {},
       "elevation": 2251,
+      "municipality": "Valfurva",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Valfurva"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-way-495911204",
+      "name": "Camerate",
+      "latitude": 45.671931,
+      "longitude": 10.614392,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/495911204",
+      "details": {
+        "gradeMin": "4a",
+        "gradeMax": "7c",
+        "styles": [
+          "sport"
+        ],
+        "website": "http://www.gardaclimbing.it/falesia/gaino-camerate/"
+      },
+      "elevation": 290,
+      "municipality": "Toscolano Maderno",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-1387869754",
+      "name": "Campiano",
+      "latitude": 45.910922,
+      "longitude": 9.412648,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1387869754",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/1740501850",
+        "https://www.openstreetmap.org/node/1704845845"
+      ],
+      "elevation": 1355,
+      "municipality": "Ballabio",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-node-2709076678",
+      "name": "Capo di Ponte",
+      "latitude": 46.036846,
+      "longitude": 10.355492,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/2709076678",
+      "details": {},
+      "elevation": 441,
+      "municipality": "Capo di Ponte",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-way-188805657",
@@ -48,9 +153,79 @@
         ]
       },
       "elevation": 1185,
+      "municipality": "Cornalba",
       "province": "Bergamo",
-      "provinceCode": "BG",
-      "municipality": "Cornalba"
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-226999713",
+      "name": "Corna delle Capre",
+      "latitude": 45.74925,
+      "longitude": 10.141643,
+      "aspect": "S",
+      "sourceUrl": "https://www.openstreetmap.org/way/226999713",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport",
+          "multipitch"
+        ]
+      },
+      "elevation": 1149,
+      "municipality": "Zone",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-949382719",
+      "name": "Corna di Fenere",
+      "latitude": 45.784292,
+      "longitude": 10.522341,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/949382719",
+      "details": {},
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/776120027"
+      ],
+      "elevation": 435,
+      "municipality": "Idro",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-857264782",
+      "name": "Corna dòl Tàs",
+      "latitude": 45.788633,
+      "longitude": 9.504461,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/857264782",
+      "details": {
+        "website": "http://www.prolocovalcava.org/territorio/luoghi-da-raccontare/corna-dol-tas/"
+      },
+      "elevation": 1304,
+      "municipality": "Torre de' Busi",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-163401086",
+      "name": "Corna Rossa",
+      "latitude": 45.521538,
+      "longitude": 10.334212,
+      "aspect": "E",
+      "sourceUrl": "https://www.openstreetmap.org/way/163401086",
+      "details": {
+        "gradeMin": "5c",
+        "gradeMax": "7b+",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 217,
+      "municipality": "Rezzato",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-2917721733",
@@ -71,9 +246,28 @@
         ]
       },
       "elevation": 1164,
+      "municipality": "Castione della Presolana",
       "province": "Bergamo",
-      "provinceCode": "BG",
-      "municipality": "Castione della Presolana"
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-449601797",
+      "name": "Corna Ventitre",
+      "latitude": 45.723576,
+      "longitude": 10.392753,
+      "aspect": "S",
+      "sourceUrl": "https://www.openstreetmap.org/way/449601797",
+      "details": {
+        "gradeMin": "4c",
+        "gradeMax": "8a",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "bolted": true
+      },
+      "elevation": 467,
+      "municipality": "Vestone",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-12068677095",
@@ -84,9 +278,22 @@
       "sourceUrl": "https://www.openstreetmap.org/node/12068677095",
       "details": {},
       "elevation": 1526,
+      "municipality": "Valdisotto",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Valdisotto"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-node-7775951092",
+      "name": "denti della vecchia",
+      "latitude": 46.028977,
+      "longitude": 9.565852,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/7775951092",
+      "details": {},
+      "elevation": 1980,
+      "municipality": "Gerola Alta",
+      "province": "Sondrio",
+      "provinceCode": "SO"
     },
     {
       "id": "osm-node-2888957867",
@@ -100,12 +307,34 @@
         "rockIt": "calcare",
         "styles": [
           "sport"
-        ]
+        ],
+        "gradeMin": "5a",
+        "gradeMax": "8a+",
+        "routes": 34,
+        "bolted": true,
+        "website": "http://larioclimb.paolo-sonja.net/falesie_lecco/discoteca/index.html"
       },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/837566148",
+        "https://www.openstreetmap.org/node/1739484467"
+      ],
       "elevation": 263,
+      "municipality": "Lecco",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Lecco"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-948457903",
+      "name": "Esotica",
+      "latitude": 45.843585,
+      "longitude": 10.096063,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/948457903",
+      "details": {},
+      "elevation": 784,
+      "municipality": "Costa Volpino",
+      "province": "Bergamo",
+      "provinceCode": "BG"
     },
     {
       "id": "osm-node-12036611131",
@@ -116,9 +345,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/12036611131",
       "details": {},
       "elevation": 1677,
+      "municipality": "Sondalo",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Sondalo"
+      "provinceCode": "SO"
     },
     {
       "id": "osm-node-3757612224",
@@ -129,9 +358,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/3757612224",
       "details": {},
       "elevation": 1175,
+      "municipality": "Roncobello",
       "province": "Bergamo",
-      "provinceCode": "BG",
-      "municipality": "Roncobello"
+      "provinceCode": "BG"
     },
     {
       "id": "osm-node-3757609511",
@@ -142,9 +371,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/3757609511",
       "details": {},
       "elevation": 1222,
+      "municipality": "Roncobello",
       "province": "Bergamo",
-      "provinceCode": "BG",
-      "municipality": "Roncobello"
+      "provinceCode": "BG"
     },
     {
       "id": "osm-node-3757612208",
@@ -155,9 +384,97 @@
       "sourceUrl": "https://www.openstreetmap.org/node/3757612208",
       "details": {},
       "elevation": 1222,
+      "municipality": "Roncobello",
       "province": "Bergamo",
-      "provinceCode": "BG",
-      "municipality": "Roncobello"
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-537995582",
+      "name": "Falesia Alessandro Visentini",
+      "latitude": 45.931505,
+      "longitude": 9.26017,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/537995582",
+      "details": {},
+      "elevation": 854,
+      "municipality": "Bellagio",
+      "province": "Como",
+      "provinceCode": "CO"
+    },
+    {
+      "id": "osm-way-331595789",
+      "name": "Falesia Aperitivo",
+      "latitude": 45.740532,
+      "longitude": 10.122714,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/331595789",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "bolted": true
+      },
+      "elevation": 717,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-1456514469",
+      "name": "Falesia Arcadia",
+      "latitude": 45.551187,
+      "longitude": 10.289592,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1456514469",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 772,
+      "municipality": "Botticino",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-node-5126773805",
+      "name": "Falesia Bracca",
+      "latitude": 45.82962,
+      "longitude": 9.714823,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/5126773805",
+      "details": {},
+      "elevation": 653,
+      "municipality": "Algua",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-1389326679",
+      "name": "Falesia Bus del Tuel",
+      "latitude": 45.767331,
+      "longitude": 10.247672,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1389326679",
+      "details": {},
+      "elevation": 588,
+      "municipality": "Pezzaze",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-node-11147710677",
+      "name": "Falesia Carbonera",
+      "latitude": 45.972696,
+      "longitude": 10.069673,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/11147710677",
+      "details": {},
+      "elevation": 1134,
+      "municipality": "Colere",
+      "province": "Bergamo",
+      "provinceCode": "BG"
     },
     {
       "id": "osm-node-13196357817",
@@ -168,9 +485,76 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13196357817",
       "details": {},
       "elevation": 256,
+      "municipality": "Abbadia Lariana",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Abbadia Lariana"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-366017015",
+      "name": "Falesia Castello di Gaino",
+      "latitude": 45.664986,
+      "longitude": 10.615512,
+      "aspect": "S",
+      "sourceUrl": "https://www.openstreetmap.org/way/366017015",
+      "details": {
+        "gradeMin": "5c",
+        "gradeMax": "7c",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 451,
+      "municipality": "Toscolano Maderno",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-235311109",
+      "name": "Falesia Cividate 1",
+      "latitude": 45.940768,
+      "longitude": 10.252637,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/235311109",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "elevation": 299,
+      "municipality": "Piancogno",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-node-2433713312",
+      "name": "Falesia Colere (Roby Piantoni)",
+      "latitude": 45.966156,
+      "longitude": 10.080292,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/2433713312",
+      "details": {},
+      "elevation": 1209,
+      "municipality": "Colere",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-1056254032",
+      "name": "Falesia Corna Coegia",
+      "latitude": 45.847812,
+      "longitude": 9.517991,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1056254032",
+      "details": {},
+      "elevation": 775,
+      "municipality": "Locatello",
+      "province": "Bergamo",
+      "provinceCode": "BG"
     },
     {
       "id": "osm-node-1796890725",
@@ -190,9 +574,80 @@
         "https://www.openstreetmap.org/relation/15056469"
       ],
       "elevation": 557,
+      "municipality": "Parre",
       "province": "Bergamo",
-      "provinceCode": "BG",
-      "municipality": "Parre"
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-758381785",
+      "name": "Falesia Corna di Marte",
+      "latitude": 45.764364,
+      "longitude": 9.66972,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/758381785",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/12169715549"
+      ],
+      "elevation": 863,
+      "municipality": "Sorisole",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-829103791",
+      "name": "Falesia Corna Rossa di Valmadrera",
+      "latitude": 45.849275,
+      "longitude": 9.348752,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/829103791",
+      "details": {
+        "gradeMin": "5c",
+        "gradeMax": "7b",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "bolted": true
+      },
+      "elevation": 396,
+      "municipality": "Valmadrera",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-node-12104258610",
+      "name": "Falesia Cornagera - Chiappe della Carolina",
+      "latitude": 45.796772,
+      "longitude": 9.779533,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/12104258610",
+      "details": {},
+      "elevation": 1243,
+      "municipality": "Aviatico",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-235314407",
+      "name": "Falesia Corne Rosse",
+      "latitude": 45.875507,
+      "longitude": 10.161911,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/235314407",
+      "details": {},
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/235314408",
+        "https://www.openstreetmap.org/way/235314410"
+      ],
+      "elevation": 292,
+      "municipality": "Darfo Boario Terme",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-13184333761",
@@ -203,9 +658,39 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13184333761",
       "details": {},
       "elevation": 1651,
+      "municipality": "Bormio",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Bormio"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-way-332572974",
+      "name": "Falesia dei Laghetti",
+      "latitude": 45.830351,
+      "longitude": 9.322773,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/332572974",
+      "details": {},
+      "elevation": 600,
+      "municipality": "Civate",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-node-8913985417",
+      "name": "Falesia del Balabiott",
+      "latitude": 45.901946,
+      "longitude": 9.428926,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/8913985417",
+      "details": {
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 733,
+      "municipality": "Ballabio",
+      "province": "Lecco",
+      "provinceCode": "LC"
     },
     {
       "id": "osm-node-14030990596",
@@ -215,10 +700,47 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/14030990596",
       "details": {},
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/14047508747"
+      ],
       "elevation": 771,
+      "municipality": "Ballabio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Ballabio"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-222743760",
+      "name": "Falesia del Budellone",
+      "latitude": 45.560346,
+      "longitude": 10.415359,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/222743760",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true,
+        "website": "https://www.valsabbiaclimbing.it/it/falesie-valsabbia/valsabbia/prevalle/budellone/"
+      },
+      "elevation": 325,
+      "municipality": "Prevalle",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-1085403223",
+      "name": "Falesia del Corniolo",
+      "latitude": 45.821788,
+      "longitude": 10.19693,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1085403223",
+      "details": {},
+      "elevation": 1413,
+      "municipality": "Artogne",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-way-1307589396",
@@ -236,9 +758,148 @@
         "bolted": true
       },
       "elevation": 1754,
+      "municipality": "Val Masino",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Val Masino"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-way-231704472",
+      "name": "Falesia del Gaver",
+      "latitude": 45.933163,
+      "longitude": 10.461113,
+      "aspect": "SW",
+      "sourceUrl": "https://www.openstreetmap.org/way/231704472",
+      "details": {
+        "rock": "granite",
+        "rockIt": "granito",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/231620488"
+      ],
+      "elevation": 1510,
+      "municipality": "Breno",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-507488307",
+      "name": "Falesia del Lago Moro",
+      "latitude": 45.883902,
+      "longitude": 10.166422,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/507488307",
+      "details": {},
+      "elevation": 481,
+      "municipality": "Darfo Boario Terme",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-1293565162",
+      "name": "Falesia del Leves",
+      "latitude": 45.913967,
+      "longitude": 9.281735,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1293565162",
+      "details": {},
+      "elevation": 799,
+      "municipality": "Oliveto Lario",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-1387598843",
+      "name": "Falesia del Monte San Primo",
+      "latitude": 45.936052,
+      "longitude": 9.219865,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1387598843",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 870,
+      "municipality": "Lezzeno",
+      "province": "Como",
+      "provinceCode": "CO"
+    },
+    {
+      "id": "osm-node-9777827971",
+      "name": "Falesia del Mùrlansì",
+      "latitude": 45.747679,
+      "longitude": 9.922203,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/9777827971",
+      "details": {},
+      "elevation": 619,
+      "municipality": "Casazza",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-node-2895215952",
+      "name": "Falesia del Nibbio",
+      "latitude": 45.905073,
+      "longitude": 9.402243,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/2895215952",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 1296,
+      "municipality": "Ballabio",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-1107716788",
+      "name": "Falesia del Passo della Presolana",
+      "latitude": 45.933893,
+      "longitude": 10.096296,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1107716788",
+      "details": {},
+      "elevation": 1428,
+      "municipality": "Colere",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-node-6656895797",
+      "name": "Falesia del Passo dello Spino",
+      "latitude": 45.67631,
+      "longitude": 10.562551,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/6656895797",
+      "details": {},
+      "elevation": 1185,
+      "municipality": "Toscolano Maderno",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-relation-11740994",
+      "name": "Falesia del Picuz",
+      "latitude": 45.879162,
+      "longitude": 8.637272,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/relation/11740994",
+      "details": {},
+      "elevation": 457,
+      "municipality": "Sangiano",
+      "province": "Varese",
+      "provinceCode": "VA"
     },
     {
       "id": "osm-relation-14910904",
@@ -255,9 +916,56 @@
         ]
       },
       "elevation": 1539,
+      "municipality": "Oneta",
       "province": "Bergamo",
-      "provinceCode": "BG",
-      "municipality": "Oneta"
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-1023331384",
+      "name": "Falesia del Renico",
+      "latitude": 45.619693,
+      "longitude": 10.464775,
+      "aspect": "SE",
+      "sourceUrl": "https://www.openstreetmap.org/way/1023331384",
+      "details": {
+        "gradeMin": "5b",
+        "gradeMax": "7c",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/1221616849"
+      ],
+      "elevation": 792,
+      "municipality": "Villanuova sul Clisi",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-node-5239327287",
+      "name": "Falesia del Sasso Pelo",
+      "latitude": 46.1588,
+      "longitude": 9.300214,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/5239327287",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/8238656319"
+      ],
+      "elevation": 748,
+      "municipality": "Peglio",
+      "province": "Como",
+      "provinceCode": "CO"
     },
     {
       "id": "osm-way-201832117",
@@ -268,9 +976,85 @@
       "sourceUrl": "https://www.openstreetmap.org/way/201832117",
       "details": {},
       "elevation": 785,
+      "municipality": "Erba",
       "province": "Como",
-      "provinceCode": "CO",
-      "municipality": "Erba"
+      "provinceCode": "CO"
+    },
+    {
+      "id": "osm-node-12063546686",
+      "name": "Falesia Del Vallone",
+      "latitude": 45.95291,
+      "longitude": 10.099256,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/12063546686",
+      "details": {},
+      "elevation": 946,
+      "municipality": "Colere",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-node-5087441239",
+      "name": "Falesia dell'Era Glaciale",
+      "latitude": 45.960695,
+      "longitude": 9.506961,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/5087441239",
+      "details": {
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 1808,
+      "municipality": "Barzio",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-975403744",
+      "name": "Falesia della Rocca di Manerba",
+      "latitude": 45.553812,
+      "longitude": 10.57777,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/975403744",
+      "details": {
+        "gradeMin": "5+",
+        "gradeMax": "7a",
+        "rock": "sandstone",
+        "rockIt": "arenaria",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 131,
+      "municipality": "Manerba del Garda",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-1308976112",
+      "name": "Falesia della Sorgente",
+      "latitude": 45.94921,
+      "longitude": 9.646519,
+      "aspect": "SE",
+      "sourceUrl": "https://www.openstreetmap.org/way/1308976112",
+      "details": {
+        "gradeMin": "4c",
+        "gradeMax": "7b+",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport",
+          "multipitch"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/1308976114"
+      ],
+      "elevation": 1208,
+      "municipality": "Piazza Brembana",
+      "province": "Bergamo",
+      "provinceCode": "BG"
     },
     {
       "id": "osm-relation-19468980",
@@ -281,9 +1065,25 @@
       "sourceUrl": "https://www.openstreetmap.org/relation/19468980",
       "details": {},
       "elevation": 831,
+      "municipality": "Erba",
       "province": "Como",
-      "provinceCode": "CO",
-      "municipality": "Erba"
+      "provinceCode": "CO"
+    },
+    {
+      "id": "osm-node-11734615275",
+      "name": "Falesia di Almenno",
+      "latitude": 45.741495,
+      "longitude": 9.602492,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/11734615275",
+      "details": {},
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/1262988768"
+      ],
+      "elevation": 267,
+      "municipality": "Almenno San Salvatore",
+      "province": "Bergamo",
+      "provinceCode": "BG"
     },
     {
       "id": "osm-way-1262988766",
@@ -299,9 +1099,86 @@
         "website": "https://luigimoro1976.wordpress.com/2019/07/13/falesia-di-alme/"
       },
       "elevation": 234,
+      "municipality": "Almè",
       "province": "Bergamo",
-      "provinceCode": "BG",
-      "municipality": "Almè"
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-464613071",
+      "name": "Falesia di Barghe Il Ronchino",
+      "latitude": 45.685095,
+      "longitude": 10.412795,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/464613071",
+      "details": {
+        "gradeMin": "6a",
+        "gradeMax": "7c",
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/464613072"
+      ],
+      "elevation": 645,
+      "municipality": "Barghe",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-836392757",
+      "name": "Falesia di Bione",
+      "latitude": 45.668348,
+      "longitude": 10.33132,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/836392757",
+      "details": {},
+      "elevation": 769,
+      "municipality": "Bione",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-node-3311820205",
+      "name": "Falesia di Brembilla",
+      "latitude": 45.840119,
+      "longitude": 9.611418,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/3311820205",
+      "details": {},
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/3311820198",
+        "https://www.openstreetmap.org/node/3496660985",
+        "https://www.openstreetmap.org/node/4432155793"
+      ],
+      "elevation": 1076,
+      "municipality": "Val Brembilla",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-160423372",
+      "name": "Falesia di Caionvico",
+      "latitude": 45.5293,
+      "longitude": 10.28644,
+      "aspect": "E",
+      "sourceUrl": "https://www.openstreetmap.org/way/160423372",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "gradeMin": "5b",
+        "gradeMax": "7b",
+        "website": "https://www.gulliver.it/itinerari/caionvico-falesia-di-settore-cayonvic/"
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/181082831",
+        "https://www.openstreetmap.org/node/12863259193"
+      ],
+      "elevation": 356,
+      "municipality": "Brescia",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-7599712466",
@@ -312,9 +1189,106 @@
       "sourceUrl": "https://www.openstreetmap.org/node/7599712466",
       "details": {},
       "elevation": 262,
+      "municipality": "Calusco d'Adda",
       "province": "Bergamo",
-      "provinceCode": "BG",
-      "municipality": "Calusco d'Adda"
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-175334975",
+      "name": "Falesia di Castro",
+      "latitude": 45.804835,
+      "longitude": 10.062769,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/175334975",
+      "details": {
+        "styles": [
+          "sport"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/175334976"
+      ],
+      "elevation": 290,
+      "municipality": "Castro",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-158753503",
+      "name": "Falesia di Cerezzata",
+      "latitude": 45.623258,
+      "longitude": 10.110876,
+      "aspect": "S",
+      "sourceUrl": "https://www.openstreetmap.org/way/158753503",
+      "details": {
+        "gradeMin": "4c",
+        "gradeMax": "7b",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 266,
+      "municipality": "Ome",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-421673913",
+      "name": "Falesia di Cima Caldoline",
+      "latitude": 45.800647,
+      "longitude": 10.404281,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/421673913",
+      "details": {
+        "gradeMin": "6a",
+        "gradeMax": "6b",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/421673914",
+        "https://www.openstreetmap.org/way/421673915"
+      ],
+      "elevation": 1712,
+      "municipality": "Lavenone",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-423004800",
+      "name": "Falesia di Cimbergo",
+      "latitude": 46.026092,
+      "longitude": 10.355911,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/423004800",
+      "details": {
+        "gradeMin": "5a",
+        "gradeMax": "8c+",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true,
+        "rock": "granite",
+        "rockIt": "granito"
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/423004802",
+        "https://www.openstreetmap.org/way/423220237",
+        "https://www.openstreetmap.org/way/423220238",
+        "https://www.openstreetmap.org/way/423220239",
+        "https://www.openstreetmap.org/way/423220240",
+        "https://www.openstreetmap.org/way/423220241"
+      ],
+      "elevation": 693,
+      "municipality": "Cimbergo",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-14122790227",
@@ -326,10 +1300,81 @@
       "details": {
         "website": "https://larioclimb.paolo-sonja.net/falesie_lecco/civate/index.html"
       },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/675774889",
+        "https://www.openstreetmap.org/way/675774890"
+      ],
       "elevation": 460,
+      "municipality": "Civate",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Civate"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-365050395",
+      "name": "Falesia di Costorio",
+      "latitude": 45.615505,
+      "longitude": 10.205187,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/365050395",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "elevation": 270,
+      "municipality": "Concesio",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-982400720",
+      "name": "falesia di Esino - Petua",
+      "latitude": 45.981347,
+      "longitude": 9.338843,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/982400720",
+      "details": {
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 1267,
+      "municipality": "Esino Lario",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-729512879",
+      "name": "Falesia di Gajum - Cliff Climbing Wall",
+      "latitude": 45.850831,
+      "longitude": 9.301954,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/729512879",
+      "details": {
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 682,
+      "municipality": "Canzo",
+      "province": "Como",
+      "provinceCode": "CO"
+    },
+    {
+      "id": "osm-node-13888746134",
+      "name": "Falesia di Giambi Settore paretino",
+      "latitude": 45.918812,
+      "longitude": 10.033076,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13888746134",
+      "details": {},
+      "elevation": 1034,
+      "municipality": "Castione della Presolana",
+      "province": "Bergamo",
+      "provinceCode": "BG"
     },
     {
       "id": "osm-relation-14906312",
@@ -348,9 +1393,201 @@
         ]
       },
       "elevation": 453,
+      "municipality": "Grone",
       "province": "Bergamo",
-      "provinceCode": "BG",
-      "municipality": "Grone"
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-1330428267",
+      "name": "Falesia di Mazzano",
+      "latitude": 45.523538,
+      "longitude": 10.355445,
+      "aspect": "SE",
+      "sourceUrl": "https://www.openstreetmap.org/way/1330428267",
+      "details": {
+        "gradeMin": "5c",
+        "gradeMax": "7b",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/1330428268",
+        "https://www.openstreetmap.org/way/164362259"
+      ],
+      "elevation": 326,
+      "municipality": "Mazzano",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-1023067086",
+      "name": "Falesia di Nasolino",
+      "latitude": 45.924307,
+      "longitude": 9.94663,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1023067086",
+      "details": {
+        "gradeMin": "6a",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "bolted": true
+      },
+      "elevation": 1185,
+      "municipality": "Oltressenda Alta",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-178561713",
+      "name": "Falesia di Nave",
+      "latitude": 45.600314,
+      "longitude": 10.284549,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/178561713",
+      "details": {},
+      "elevation": 415,
+      "municipality": "Nave",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-974794830",
+      "name": "Falesia di Paline",
+      "latitude": 45.945559,
+      "longitude": 10.118497,
+      "aspect": "SE",
+      "sourceUrl": "https://www.openstreetmap.org/way/974794830",
+      "details": {
+        "gradeMin": "6a+",
+        "gradeMax": "9a",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 1065,
+      "municipality": "Borno",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-1304488659",
+      "name": "Falesia di Predarossa",
+      "latitude": 46.233508,
+      "longitude": 9.711596,
+      "aspect": "NW",
+      "sourceUrl": "https://www.openstreetmap.org/way/1304488659",
+      "details": {
+        "rock": "serpentinite",
+        "rockIt": "serpentino",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 2064,
+      "municipality": "Buglio in Monte",
+      "province": "Sondrio",
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-relation-15077421",
+      "name": "Falesia di Predore",
+      "latitude": 45.684178,
+      "longitude": 10.039299,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/relation/15077421",
+      "details": {
+        "styles": [
+          "sport"
+        ],
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/1278483380",
+        "https://www.openstreetmap.org/way/214848110",
+        "https://www.openstreetmap.org/way/214848111",
+        "https://www.openstreetmap.org/way/327325142",
+        "https://www.openstreetmap.org/way/327325146",
+        "https://www.openstreetmap.org/way/327325149"
+      ],
+      "elevation": 376,
+      "municipality": "Predore",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-node-3292246899",
+      "name": "Falesia di San Pellegrino Terme",
+      "latitude": 45.845178,
+      "longitude": 9.669121,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/3292246899",
+      "details": {},
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/11758619714"
+      ],
+      "elevation": 355,
+      "municipality": "San Pellegrino Terme",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-941481222",
+      "name": "Falesia di Sovere",
+      "latitude": 45.825175,
+      "longitude": 10.013197,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/941481222",
+      "details": {},
+      "elevation": 591,
+      "municipality": "Sovere",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-971413461",
+      "name": "Falesia di Strozza",
+      "latitude": 45.780367,
+      "longitude": 9.580842,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/971413461",
+      "details": {},
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/11186195797"
+      ],
+      "elevation": 403,
+      "municipality": "Strozza",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-222704971",
+      "name": "Falesia Di Villanuova Sul Clisi - Settore Alto",
+      "latitude": 45.601326,
+      "longitude": 10.464226,
+      "aspect": "W",
+      "sourceUrl": "https://www.openstreetmap.org/way/222704971",
+      "details": {
+        "gradeMin": "5a",
+        "gradeMax": "8a",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "elevation": 344,
+      "municipality": "Villanuova sul Clisi",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-2433844045",
@@ -361,9 +1598,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/2433844045",
       "details": {},
       "elevation": 274,
+      "municipality": "Villanuova sul Clisi",
       "province": "Brescia",
-      "provinceCode": "BS",
-      "municipality": "Villanuova sul Clisi"
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-13196357821",
@@ -374,9 +1611,40 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13196357821",
       "details": {},
       "elevation": 295,
+      "municipality": "Abbadia Lariana",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Abbadia Lariana"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-node-10127566462",
+      "name": "Falesia Foglia",
+      "latitude": 45.891979,
+      "longitude": 8.840513,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/10127566462",
+      "details": {},
+      "elevation": 830,
+      "municipality": "Cuasso al Monte",
+      "province": "Varese",
+      "provinceCode": "VA"
+    },
+    {
+      "id": "osm-way-184641293",
+      "name": "Falesia Fontanei",
+      "latitude": 45.821876,
+      "longitude": 9.938338,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/184641293",
+      "details": {
+        "website": "https://www.valseriana.eu/sport-e-divertimento/falesia-in-localita-fontanei/"
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/184675507"
+      ],
+      "elevation": 1026,
+      "municipality": "Gandino",
+      "province": "Bergamo",
+      "provinceCode": "BG"
     },
     {
       "id": "osm-node-12151154725",
@@ -387,9 +1655,72 @@
       "sourceUrl": "https://www.openstreetmap.org/node/12151154725",
       "details": {},
       "elevation": 2193,
+      "municipality": "Valfurva",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Valfurva"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-way-1497168006",
+      "name": "Falesia Francesco Cancarini",
+      "latitude": 45.726851,
+      "longitude": 10.269642,
+      "aspect": "S",
+      "sourceUrl": "https://www.openstreetmap.org/way/1497168006",
+      "details": {
+        "gradeMin": "5a",
+        "gradeMax": "7b",
+        "length": 27,
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "elevation": 1004,
+      "municipality": "Lodrino",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-438145101",
+      "name": "Falesia Ginetto",
+      "latitude": 45.737772,
+      "longitude": 10.134081,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/438145101",
+      "details": {
+        "gradeMin": "6a+",
+        "gradeMax": "7b+",
+        "length": 40,
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "elevation": 975,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-727393768",
+      "name": "Falesia Guido Omodei",
+      "latitude": 45.739181,
+      "longitude": 10.127554,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/727393768",
+      "details": {
+        "length": 30,
+        "rock": "limestone",
+        "rockIt": "calcare"
+      },
+      "elevation": 852,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-13184333763",
@@ -400,9 +1731,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13184333763",
       "details": {},
       "elevation": 1520,
+      "municipality": "Valdidentro",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Valdidentro"
+      "provinceCode": "SO"
     },
     {
       "id": "osm-node-13184333762",
@@ -413,9 +1744,22 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13184333762",
       "details": {},
       "elevation": 1460,
+      "municipality": "Valdidentro",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Valdidentro"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-node-3622933477",
+      "name": "Falesia Lago Nero",
+      "latitude": 45.997458,
+      "longitude": 9.878151,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/3622933477",
+      "details": {},
+      "elevation": 1993,
+      "municipality": "Valgoglio",
+      "province": "Bergamo",
+      "provinceCode": "BG"
     },
     {
       "id": "osm-node-13196357819",
@@ -426,9 +1770,137 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13196357819",
       "details": {},
       "elevation": 338,
+      "municipality": "Abbadia Lariana",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Abbadia Lariana"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-413118218",
+      "name": "Falesia Le Scale",
+      "latitude": 45.665726,
+      "longitude": 10.259804,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/413118218",
+      "details": {},
+      "elevation": 992,
+      "municipality": "Lumezzane",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-1049720124",
+      "name": "Falesia Maddalena",
+      "latitude": 45.548664,
+      "longitude": 10.288424,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1049720124",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "bolted": true,
+        "styles": [
+          "sport"
+        ],
+        "gradeMin": "5a",
+        "gradeMax": "7c+"
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/165644841",
+        "https://www.openstreetmap.org/way/200445051",
+        "https://www.openstreetmap.org/way/365084224",
+        "https://www.openstreetmap.org/way/365087259",
+        "https://www.openstreetmap.org/way/365087260",
+        "https://www.openstreetmap.org/way/420046016",
+        "https://www.openstreetmap.org/way/365088791",
+        "https://www.openstreetmap.org/way/832535003"
+      ],
+      "elevation": 710,
+      "municipality": "Botticino",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-191006767",
+      "name": "Falesia Madonna della Rota",
+      "latitude": 45.740456,
+      "longitude": 10.115144,
+      "aspect": "SW",
+      "sourceUrl": "https://www.openstreetmap.org/way/191006767",
+      "details": {
+        "gradeMin": "5c",
+        "gradeMax": "8b",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 628,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-191006769",
+      "name": "Falesia Marone",
+      "latitude": 45.73876,
+      "longitude": 10.106175,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/191006769",
+      "details": {
+        "gradeMin": "6b",
+        "gradeMax": "8a",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "elevation": 494,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-727393767",
+      "name": "Falesia Meta",
+      "latitude": 45.73945,
+      "longitude": 10.128396,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/727393767",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "bolted": true
+      },
+      "elevation": 879,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-1456514467",
+      "name": "Falesia Meteore",
+      "latitude": 45.551129,
+      "longitude": 10.288497,
+      "aspect": "S",
+      "sourceUrl": "https://www.openstreetmap.org/way/1456514467",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/365083538"
+      ],
+      "elevation": 810,
+      "municipality": "Botticino",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-13184333733",
@@ -439,9 +1911,75 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13184333733",
       "details": {},
       "elevation": 1057,
+      "municipality": "Sondalo",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Sondalo"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-way-957454448",
+      "name": "Falesia Minions 1",
+      "latitude": 45.735849,
+      "longitude": 10.13885,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/957454448",
+      "details": {},
+      "elevation": 1027,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-989387640",
+      "name": "Falesia Minions 2",
+      "latitude": 45.736266,
+      "longitude": 10.137607,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/989387640",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare"
+      },
+      "elevation": 993,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-485227807",
+      "name": "Falesia Opera",
+      "latitude": 45.737495,
+      "longitude": 10.130811,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/485227807",
+      "details": {
+        "gradeMax": "8a",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/727526854"
+      ],
+      "elevation": 804,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-957454446",
+      "name": "Falesia Pacifico",
+      "latitude": 45.737875,
+      "longitude": 10.136432,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/957454446",
+      "details": {},
+      "elevation": 1125,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-13196357820",
@@ -452,9 +1990,38 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13196357820",
       "details": {},
       "elevation": 400,
+      "municipality": "Abbadia Lariana",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Abbadia Lariana"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-node-12863165485",
+      "name": "Falesia Pettirosso",
+      "latitude": 45.750715,
+      "longitude": 10.251029,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/12863165485",
+      "details": {
+        "rock": "dolomite",
+        "rockIt": "dolomia"
+      },
+      "elevation": 685,
+      "municipality": "Marmentino",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-945812457",
+      "name": "Falesia Piazza-Maelì",
+      "latitude": 45.841295,
+      "longitude": 10.020475,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/945812457",
+      "details": {},
+      "elevation": 658,
+      "municipality": "Sovere",
+      "province": "Bergamo",
+      "provinceCode": "BG"
     },
     {
       "id": "osm-relation-16068105",
@@ -465,9 +2032,29 @@
       "sourceUrl": "https://www.openstreetmap.org/relation/16068105",
       "details": {},
       "elevation": 432,
+      "municipality": "Como",
       "province": "Como",
-      "provinceCode": "CO",
-      "municipality": "Como"
+      "provinceCode": "CO"
+    },
+    {
+      "id": "osm-way-216075910",
+      "name": "Falesia Placche di Bette (Mese)",
+      "latitude": 46.308041,
+      "longitude": 9.37889,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/216075910",
+      "details": {
+        "rock": "granite",
+        "rockIt": "granito",
+        "styles": [
+          "sport",
+          "multipitch"
+        ]
+      },
+      "elevation": 411,
+      "municipality": "Mese",
+      "province": "Sondrio",
+      "provinceCode": "SO"
     },
     {
       "id": "osm-node-13196357818",
@@ -478,9 +2065,31 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13196357818",
       "details": {},
       "elevation": 338,
+      "municipality": "Abbadia Lariana",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Abbadia Lariana"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-179011129",
+      "name": "Falesia Rendena",
+      "latitude": 45.713853,
+      "longitude": 10.181608,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/179011129",
+      "details": {
+        "gradeMin": "4c",
+        "gradeMax": "7c",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "elevation": 481,
+      "municipality": "Gardone Val Trompia",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-13196338094",
@@ -489,11 +2098,108 @@
       "longitude": 9.458073,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196338094",
-      "details": {},
+      "details": {
+        "styles": [
+          "sport",
+          "multipitch"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/867692570"
+      ],
       "elevation": 853,
+      "municipality": "Barzio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Barzio"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-983536145",
+      "name": "Falesia Roncola",
+      "latitude": 45.768501,
+      "longitude": 9.542749,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/983536145",
+      "details": {},
+      "elevation": 1116,
+      "municipality": "Almenno San Bartolomeo",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-1020892684",
+      "name": "Falesia Salmonella B",
+      "latitude": 45.737467,
+      "longitude": 10.132628,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1020892684",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/1020892687"
+      ],
+      "elevation": 871,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-365092288",
+      "name": "Falesia San Gallo Nuova",
+      "latitude": 45.550326,
+      "longitude": 10.290826,
+      "aspect": "S",
+      "sourceUrl": "https://www.openstreetmap.org/way/365092288",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/365092503",
+        "https://www.openstreetmap.org/way/365092779"
+      ],
+      "elevation": 647,
+      "municipality": "Botticino",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-node-2433779305",
+      "name": "Falesia San Pellerino (La Torre)",
+      "latitude": 45.84971,
+      "longitude": 9.6634,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/2433779305",
+      "details": {},
+      "elevation": 463,
+      "municipality": "San Pellegrino Terme",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-935439944",
+      "name": "Falesia San Tomas",
+      "latitude": 45.852186,
+      "longitude": 9.340963,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/935439944",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 658,
+      "municipality": "Valmadrera",
+      "province": "Lecco",
+      "provinceCode": "LC"
     },
     {
       "id": "osm-node-8086095920",
@@ -504,9 +2210,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/8086095920",
       "details": {},
       "elevation": 255,
+      "municipality": "Leggiuno",
       "province": "Varese",
-      "provinceCode": "VA",
-      "municipality": "Leggiuno"
+      "provinceCode": "VA"
     },
     {
       "id": "osm-node-13245785600",
@@ -517,9 +2223,43 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13245785600",
       "details": {},
       "elevation": 261,
+      "municipality": "Leggiuno",
       "province": "Varese",
-      "provinceCode": "VA",
-      "municipality": "Leggiuno"
+      "provinceCode": "VA"
+    },
+    {
+      "id": "osm-way-982399708",
+      "name": "falesia Sasso Carlano",
+      "latitude": 45.983868,
+      "longitude": 9.357319,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/982399708",
+      "details": {
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 1345,
+      "municipality": "Esino Lario",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-985128253",
+      "name": "Falesia Sebino",
+      "latitude": 45.740074,
+      "longitude": 10.123346,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/985128253",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "bolted": true
+      },
+      "elevation": 759,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-13196399311",
@@ -530,9 +2270,78 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13196399311",
       "details": {},
       "elevation": 895,
+      "municipality": "Barzio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Barzio"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-288953365",
+      "name": "Falesia Valgua (Lentasia)",
+      "latitude": 45.780342,
+      "longitude": 9.777947,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/288953365",
+      "details": {},
+      "elevation": 675,
+      "municipality": "Aviatico",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-node-2935803563",
+      "name": "Falesia Valle Dei Mulini",
+      "latitude": 45.922422,
+      "longitude": 10.0354,
+      "aspect": "SE",
+      "sourceUrl": "https://www.openstreetmap.org/node/2935803563",
+      "details": {
+        "gradeMin": "5c",
+        "gradeMax": "8b",
+        "lengthMin": 10,
+        "lengthMax": 20,
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport",
+          "multipitch"
+        ],
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/2918232733",
+        "https://www.openstreetmap.org/node/6918499609",
+        "https://www.openstreetmap.org/node/2433809123"
+      ],
+      "elevation": 1098,
+      "municipality": "Castione della Presolana",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-node-2433793428",
+      "name": "Falesia Valle dell' Oro",
+      "latitude": 45.833814,
+      "longitude": 9.343576,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/2433793428",
+      "details": {},
+      "elevation": 266,
+      "municipality": "Civate",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-1350335984",
+      "name": "Falesia Valsecca",
+      "latitude": 45.831812,
+      "longitude": 9.486714,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1350335984",
+      "details": {},
+      "elevation": 800,
+      "municipality": "Sant'Omobono Terme",
+      "province": "Bergamo",
+      "provinceCode": "BG"
     },
     {
       "id": "osm-node-13184333734",
@@ -543,9 +2352,99 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13184333734",
       "details": {},
       "elevation": 1013,
+      "municipality": "Sondalo",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Sondalo"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-node-4992406813",
+      "name": "Falesia Villa d' Almé (Traliccio)",
+      "latitude": 45.752977,
+      "longitude": 9.608707,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/4992406813",
+      "details": {},
+      "elevation": 245,
+      "municipality": "Villa d'Almè",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-node-2433793424",
+      "name": "Falesia Zogno",
+      "latitude": 45.794962,
+      "longitude": 9.646222,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/2433793424",
+      "details": {
+        "gradeMin": "5a",
+        "gradeMax": "6c"
+      },
+      "elevation": 397,
+      "municipality": "Zogno",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-node-2620248440",
+      "name": "Falesie dei Campelli",
+      "latitude": 45.898342,
+      "longitude": 9.360277,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/2620248440",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare"
+      },
+      "elevation": 725,
+      "municipality": "Abbadia Lariana",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-relation-1863381",
+      "name": "Falesie di Galbiate",
+      "latitude": 45.830004,
+      "longitude": 9.362502,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/relation/1863381",
+      "details": {},
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/162145063",
+        "https://www.openstreetmap.org/node/1517545745",
+        "https://www.openstreetmap.org/node/1517545743",
+        "https://www.openstreetmap.org/node/5865805696",
+        "https://www.openstreetmap.org/node/1517545749",
+        "https://www.openstreetmap.org/node/6445036109",
+        "https://www.openstreetmap.org/node/1517545744",
+        "https://www.openstreetmap.org/node/1517545742",
+        "https://www.openstreetmap.org/node/1517545750",
+        "https://www.openstreetmap.org/node/1510227633",
+        "https://www.openstreetmap.org/node/1517545748",
+        "https://www.openstreetmap.org/node/1517545751",
+        "https://www.openstreetmap.org/node/6445041511"
+      ],
+      "elevation": 482,
+      "municipality": "Galbiate",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-464552480",
+      "name": "Giardino Segreto",
+      "latitude": 45.545094,
+      "longitude": 10.31363,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/464552480",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "bolted": true
+      },
+      "elevation": 224,
+      "municipality": "Botticino",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-1741194816",
@@ -556,9 +2455,22 @@
       "sourceUrl": "https://www.openstreetmap.org/node/1741194816",
       "details": {},
       "elevation": 595,
+      "municipality": "Introbio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Introbio"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-761344649",
+      "name": "Grotta del Mandulì",
+      "latitude": 45.927678,
+      "longitude": 10.223092,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/761344649",
+      "details": {},
+      "elevation": 870,
+      "municipality": "Piancogno",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-14041775583",
@@ -567,11 +2479,128 @@
       "longitude": 8.77973,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/14041775583",
-      "details": {},
+      "details": {
+        "styles": [
+          "sport",
+          "trad"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/14041775582"
+      ],
       "elevation": 1033,
+      "municipality": "Varese",
       "province": "Varese",
-      "provinceCode": "VA",
-      "municipality": "Varese"
+      "provinceCode": "VA"
+    },
+    {
+      "id": "osm-way-165967300",
+      "name": "I Cavalieri",
+      "latitude": 45.529148,
+      "longitude": 10.28573,
+      "aspect": "E",
+      "sourceUrl": "https://www.openstreetmap.org/way/165967300",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/389896938"
+      ],
+      "elevation": 380,
+      "municipality": "Brescia",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-1199525837",
+      "name": "Il Resort dell'Aquila",
+      "latitude": 46.049692,
+      "longitude": 9.689504,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1199525837",
+      "details": {},
+      "elevation": 2005,
+      "municipality": "Valleve",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-node-2372935820",
+      "name": "La Biblioteca",
+      "latitude": 45.552202,
+      "longitude": 10.311672,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/2372935820",
+      "details": {
+        "gradeMin": "5b",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/225791485"
+      ],
+      "elevation": 311,
+      "municipality": "Botticino",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-718831135",
+      "name": "La Caduta dei Giganti",
+      "latitude": 46.258577,
+      "longitude": 9.326063,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/718831135",
+      "details": {},
+      "elevation": 1119,
+      "municipality": "Gordona",
+      "province": "Sondrio",
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-way-365079021",
+      "name": "La Cava",
+      "latitude": 45.516259,
+      "longitude": 10.330742,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/365079021",
+      "details": {
+        "gradeMin": "6a",
+        "gradeMax": "8a",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/365079831"
+      ],
+      "elevation": 200,
+      "municipality": "Rezzato",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-948457899",
+      "name": "La Mia Regina",
+      "latitude": 45.838718,
+      "longitude": 10.09087,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/948457899",
+      "details": {},
+      "elevation": 667,
+      "municipality": "Costa Volpino",
+      "province": "Bergamo",
+      "provinceCode": "BG"
     },
     {
       "id": "osm-way-1385623007",
@@ -586,9 +2615,29 @@
         ]
       },
       "elevation": 259,
+      "municipality": "Varenna",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Varenna"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-513842818",
+      "name": "Lirone",
+      "latitude": 46.367619,
+      "longitude": 9.365082,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/513842818",
+      "details": {
+        "rock": "granite",
+        "rockIt": "granito",
+        "styles": [
+          "sport",
+          "multipitch"
+        ]
+      },
+      "elevation": 957,
+      "municipality": "San Giacomo Filippo",
+      "province": "Sondrio",
+      "provinceCode": "SO"
     },
     {
       "id": "osm-node-11171764068",
@@ -605,9 +2654,9 @@
         ]
       },
       "elevation": 1124,
+      "municipality": "Val Masino",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Val Masino"
+      "provinceCode": "SO"
     },
     {
       "id": "osm-way-1502439088",
@@ -624,9 +2673,42 @@
         ]
       },
       "elevation": 664,
+      "municipality": "Valbrona",
       "province": "Como",
-      "provinceCode": "CO",
-      "municipality": "Valbrona"
+      "provinceCode": "CO"
+    },
+    {
+      "id": "osm-way-948457901",
+      "name": "Miralago",
+      "latitude": 45.839524,
+      "longitude": 10.092038,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/948457901",
+      "details": {},
+      "elevation": 742,
+      "municipality": "Costa Volpino",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-1536755379",
+      "name": "Muretto del Gio'",
+      "latitude": 45.908268,
+      "longitude": 9.432936,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1536755379",
+      "details": {
+        "styles": [
+          "sport"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/1536755380"
+      ],
+      "elevation": 707,
+      "municipality": "Ballabio",
+      "province": "Lecco",
+      "provinceCode": "LC"
     },
     {
       "id": "osm-way-837046156",
@@ -641,9 +2723,9 @@
         ]
       },
       "elevation": 747,
+      "municipality": "Ballabio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Ballabio"
+      "provinceCode": "LC"
     },
     {
       "id": "osm-node-13196399312",
@@ -654,9 +2736,32 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13196399312",
       "details": {},
       "elevation": 841,
+      "municipality": "Introbio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Introbio"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-485227805",
+      "name": "Muro dell'Ilex",
+      "latitude": 45.737999,
+      "longitude": 10.13038,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/485227805",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/4853720809"
+      ],
+      "elevation": 804,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-11859077873",
@@ -667,9 +2772,34 @@
       "sourceUrl": "https://www.openstreetmap.org/node/11859077873",
       "details": {},
       "elevation": 646,
+      "municipality": "Introbio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Introbio"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-282816934",
+      "name": "Nuovo Cinema Maddalena",
+      "latitude": 45.556809,
+      "longitude": 10.293456,
+      "aspect": "S",
+      "sourceUrl": "https://www.openstreetmap.org/way/282816934",
+      "details": {
+        "gradeMin": "6b",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/282816946",
+        "https://www.openstreetmap.org/way/332467010"
+      ],
+      "elevation": 858,
+      "municipality": "Botticino",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-1741194869",
@@ -680,9 +2810,82 @@
       "sourceUrl": "https://www.openstreetmap.org/node/1741194869",
       "details": {},
       "elevation": 581,
+      "municipality": "Introbio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Introbio"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-relation-18915445",
+      "name": "Palestra di roccia del gruppo speleologico prealpino",
+      "latitude": 45.867764,
+      "longitude": 8.877267,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/relation/18915445",
+      "details": {
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 369,
+      "municipality": "Arcisate",
+      "province": "Varese",
+      "provinceCode": "VA"
+    },
+    {
+      "id": "osm-node-9904213314",
+      "name": "Palestra di roccia Il Crènch",
+      "latitude": 45.746199,
+      "longitude": 10.488556,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/9904213314",
+      "details": {},
+      "elevation": 494,
+      "municipality": "Idro",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-node-3658805427",
+      "name": "Palestra di roccia rifugio Sandro Occhi",
+      "latitude": 46.192939,
+      "longitude": 10.419767,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/3658805427",
+      "details": {},
+      "elevation": 2006,
+      "municipality": "Edolo",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-166615030",
+      "name": "Palestra di roccia Ugolino Ugolini",
+      "latitude": 45.520945,
+      "longitude": 10.333874,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/166615030",
+      "details": {},
+      "elevation": 276,
+      "municipality": "Rezzato",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-relation-18757044",
+      "name": "Palestra Ronchetti",
+      "latitude": 46.03837,
+      "longitude": 8.765128,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/relation/18757044",
+      "details": {
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 700,
+      "municipality": "Agra",
+      "province": "Varese",
+      "provinceCode": "VA"
     },
     {
       "id": "osm-node-9429027374",
@@ -693,9 +2896,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/9429027374",
       "details": {},
       "elevation": 387,
+      "municipality": "Piuro",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Piuro"
+      "provinceCode": "SO"
     },
     {
       "id": "osm-node-9176169531",
@@ -706,9 +2909,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/9176169531",
       "details": {},
       "elevation": 646,
+      "municipality": "Introbio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Introbio"
+      "provinceCode": "LC"
     },
     {
       "id": "osm-node-4641789089",
@@ -719,9 +2922,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/4641789089",
       "details": {},
       "elevation": 595,
+      "municipality": "Introbio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Introbio"
+      "provinceCode": "LC"
     },
     {
       "id": "osm-node-3452238619",
@@ -739,9 +2942,9 @@
         "bolted": true
       },
       "elevation": 936,
+      "municipality": "Barzio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Barzio"
+      "provinceCode": "LC"
     },
     {
       "id": "osm-node-7273907091",
@@ -752,9 +2955,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/7273907091",
       "details": {},
       "elevation": 841,
+      "municipality": "Introbio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Introbio"
+      "provinceCode": "LC"
     },
     {
       "id": "osm-node-11662207868",
@@ -765,9 +2968,46 @@
       "sourceUrl": "https://www.openstreetmap.org/node/11662207868",
       "details": {},
       "elevation": 439,
+      "municipality": "Chiavenna",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Chiavenna"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-node-4918601924",
+      "name": "placca morose",
+      "latitude": 45.696747,
+      "longitude": 10.656675,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/4918601924",
+      "details": {
+        "website": "http://www.gardaclimbing.it/settore/638/"
+      },
+      "elevation": 552,
+      "municipality": "Gargnano",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-365090771",
+      "name": "Placca Poli",
+      "latitude": 45.545444,
+      "longitude": 10.288567,
+      "aspect": "S",
+      "sourceUrl": "https://www.openstreetmap.org/way/365090771",
+      "details": {
+        "gradeMin": "5c",
+        "gradeMax": "7c",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "elevation": 590,
+      "municipality": "Botticino",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-4409711985",
@@ -778,9 +3018,51 @@
       "sourceUrl": "https://www.openstreetmap.org/node/4409711985",
       "details": {},
       "elevation": 836,
+      "municipality": "Introbio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Introbio"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-860340484",
+      "name": "Placchette del San Martino",
+      "latitude": 45.871593,
+      "longitude": 9.391383,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/860340484",
+      "details": {},
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/860340485"
+      ],
+      "elevation": 648,
+      "municipality": "Lecco",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-948457900",
+      "name": "Politeama",
+      "latitude": 45.839087,
+      "longitude": 10.091474,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/948457900",
+      "details": {},
+      "elevation": 667,
+      "municipality": "Costa Volpino",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-1003256148",
+      "name": "Polèer dól Gipi",
+      "latitude": 46.051386,
+      "longitude": 9.433185,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1003256148",
+      "details": {},
+      "elevation": 972,
+      "municipality": "Premana",
+      "province": "Lecco",
+      "provinceCode": "LC"
     },
     {
       "id": "osm-node-12255821505",
@@ -799,12 +3081,16 @@
         "styles": [
           "sport"
         ],
-        "website": "https://www.campioneunivela.it/de/trips/climbing/"
+        "website": "https://www.campioneunivela.it/de/trips/climbing/",
+        "bolted": true
       },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/453833408"
+      ],
       "elevation": 345,
+      "municipality": "Tremosine sul Garda",
       "province": "Brescia",
-      "provinceCode": "BS",
-      "municipality": "Tremosine sul Garda"
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-1739484761",
@@ -820,10 +3106,26 @@
           "sport"
         ]
       },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/8664259654"
+      ],
       "elevation": 401,
+      "municipality": "Abbadia Lariana",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Abbadia Lariana"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-761344647",
+      "name": "Predulì",
+      "latitude": 45.924973,
+      "longitude": 10.212664,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/761344647",
+      "details": {},
+      "elevation": 807,
+      "municipality": "Piancogno",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-1741194868",
@@ -834,9 +3136,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/1741194868",
       "details": {},
       "elevation": 697,
+      "municipality": "Pasturo",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Pasturo"
+      "provinceCode": "LC"
     },
     {
       "id": "osm-node-9536753691",
@@ -849,9 +3151,30 @@
         "website": "https://www.campingacquafraggia.com/Marmittegiganti.htm"
       },
       "elevation": 388,
+      "municipality": "Chiavenna",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Chiavenna"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-relation-18047636",
+      "name": "Ronda Nera",
+      "latitude": 45.631003,
+      "longitude": 9.495032,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/relation/18047636",
+      "details": {
+        "styles": [
+          "sport"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/1136025008",
+        "https://www.openstreetmap.org/way/1136025009"
+      ],
+      "elevation": 145,
+      "municipality": "Trezzo sull'Adda",
+      "province": "Milano",
+      "provinceCode": "MI"
     },
     {
       "id": "osm-node-11872141963",
@@ -862,9 +3185,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/11872141963",
       "details": {},
       "elevation": 2160,
+      "municipality": "Valfurva",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Valfurva"
+      "provinceCode": "SO"
     },
     {
       "id": "osm-node-12151154724",
@@ -875,9 +3198,66 @@
       "sourceUrl": "https://www.openstreetmap.org/node/12151154724",
       "details": {},
       "elevation": 2140,
+      "municipality": "Valfurva",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Valfurva"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-way-1213400747",
+      "name": "San Vigilio",
+      "latitude": 45.860406,
+      "longitude": 10.112139,
+      "aspect": "S",
+      "sourceUrl": "https://www.openstreetmap.org/way/1213400747",
+      "details": {
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "gradeMin": "5c"
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/1213400748",
+        "https://www.openstreetmap.org/way/1213400749"
+      ],
+      "elevation": 1057,
+      "municipality": "Rogno",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-183348081",
+      "name": "Sass Negher",
+      "latitude": 46.12051,
+      "longitude": 9.327775,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/183348081",
+      "details": {},
+      "elevation": 338,
+      "municipality": "Colico",
+      "province": "Lecco",
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-231956641",
+      "name": "Sasso bianco",
+      "latitude": 46.30733,
+      "longitude": 9.405068,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/231956641",
+      "details": {
+        "rock": "granite",
+        "rockIt": "granito",
+        "styles": [
+          "sport",
+          "multipitch"
+        ]
+      },
+      "elevation": 580,
+      "municipality": "Prata Camportaccio",
+      "province": "Sondrio",
+      "provinceCode": "SO"
     },
     {
       "id": "osm-way-201200731",
@@ -888,9 +3268,9 @@
       "sourceUrl": "https://www.openstreetmap.org/way/201200731",
       "details": {},
       "elevation": 749,
+      "municipality": "Erba",
       "province": "Como",
-      "provinceCode": "CO",
-      "municipality": "Erba"
+      "provinceCode": "CO"
     },
     {
       "id": "osm-way-751262115",
@@ -901,9 +3281,29 @@
       "sourceUrl": "https://www.openstreetmap.org/way/751262115",
       "details": {},
       "elevation": 730,
+      "municipality": "Erba",
       "province": "Como",
-      "provinceCode": "CO",
-      "municipality": "Erba"
+      "provinceCode": "CO"
+    },
+    {
+      "id": "osm-node-1803201264",
+      "name": "Sasso dell'Elefante",
+      "latitude": 45.530649,
+      "longitude": 10.286995,
+      "aspect": "E",
+      "sourceUrl": "https://www.openstreetmap.org/node/1803201264",
+      "details": {
+        "styles": [
+          "sport"
+        ]
+      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/way/191110836"
+      ],
+      "elevation": 325,
+      "municipality": "Brescia",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-4641745891",
@@ -914,9 +3314,35 @@
       "sourceUrl": "https://www.openstreetmap.org/node/4641745891",
       "details": {},
       "elevation": 581,
+      "municipality": "Introbio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Introbio"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-1183974242",
+      "name": "Sasso Galletto",
+      "latitude": 45.930372,
+      "longitude": 8.636092,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1183974242",
+      "details": {},
+      "elevation": 193,
+      "municipality": "Castelveccana",
+      "province": "Varese",
+      "provinceCode": "VA"
+    },
+    {
+      "id": "osm-node-9986935533",
+      "name": "Sasso Garibaldi",
+      "latitude": 46.486918,
+      "longitude": 10.363868,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/9986935533",
+      "details": {},
+      "elevation": 1388,
+      "municipality": "Valdidentro",
+      "province": "Sondrio",
+      "provinceCode": "SO"
     },
     {
       "id": "osm-way-201200730",
@@ -927,9 +3353,9 @@
       "sourceUrl": "https://www.openstreetmap.org/way/201200730",
       "details": {},
       "elevation": 700,
+      "municipality": "Ponte Lambro",
       "province": "Como",
-      "provinceCode": "CO",
-      "municipality": "Ponte Lambro"
+      "provinceCode": "CO"
     },
     {
       "id": "osm-way-297774960",
@@ -940,9 +3366,9 @@
       "sourceUrl": "https://www.openstreetmap.org/way/297774960",
       "details": {},
       "elevation": 682,
+      "municipality": "Erba",
       "province": "Como",
-      "provinceCode": "CO",
-      "municipality": "Erba"
+      "provinceCode": "CO"
     },
     {
       "id": "osm-node-1886634638",
@@ -958,9 +3384,9 @@
         ]
       },
       "elevation": 911,
+      "municipality": "Val Masino",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Val Masino"
+      "provinceCode": "SO"
     },
     {
       "id": "osm-node-13196338093",
@@ -970,10 +3396,13 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196338093",
       "details": {},
+      "alsoMapped": [
+        "https://www.openstreetmap.org/node/712287576"
+      ],
       "elevation": 977,
+      "municipality": "Barzio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Barzio"
+      "provinceCode": "LC"
     },
     {
       "id": "osm-node-12304593894",
@@ -984,9 +3413,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/12304593894",
       "details": {},
       "elevation": 389,
+      "municipality": "Canzo",
       "province": "Como",
-      "provinceCode": "CO",
-      "municipality": "Canzo"
+      "provinceCode": "CO"
     },
     {
       "id": "osm-node-12304593897",
@@ -997,9 +3426,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/12304593897",
       "details": {},
       "elevation": 429,
+      "municipality": "Asso",
       "province": "Como",
-      "provinceCode": "CO",
-      "municipality": "Asso"
+      "provinceCode": "CO"
     },
     {
       "id": "osm-node-13196381745",
@@ -1010,9 +3439,53 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13196381745",
       "details": {},
       "elevation": 977,
+      "municipality": "Barzio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Barzio"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-761344648",
+      "name": "Spigolo",
+      "latitude": 45.928183,
+      "longitude": 10.224508,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/761344648",
+      "details": {},
+      "elevation": 794,
+      "municipality": "Piancogno",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-948338662",
+      "name": "Teatro degli Orrori",
+      "latitude": 45.842594,
+      "longitude": 10.095167,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/948338662",
+      "details": {},
+      "elevation": 768,
+      "municipality": "Costa Volpino",
+      "province": "Bergamo",
+      "provinceCode": "BG"
+    },
+    {
+      "id": "osm-way-331595790",
+      "name": "Terra di Mezzo",
+      "latitude": 45.74126,
+      "longitude": 10.122734,
+      "aspect": "S",
+      "sourceUrl": "https://www.openstreetmap.org/way/331595790",
+      "details": {
+        "gradeMin": "6a",
+        "gradeMax": "8a+",
+        "rock": "limestone",
+        "rockIt": "calcare"
+      },
+      "elevation": 816,
+      "municipality": "Marone",
+      "province": "Brescia",
+      "provinceCode": "BS"
     },
     {
       "id": "osm-node-4541277052",
@@ -1023,9 +3496,29 @@
       "sourceUrl": "https://www.openstreetmap.org/node/4541277052",
       "details": {},
       "elevation": 915,
+      "municipality": "Barzio",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Barzio"
+      "provinceCode": "LC"
+    },
+    {
+      "id": "osm-way-1090727155",
+      "name": "The Pai Bridge",
+      "latitude": 46.078987,
+      "longitude": 9.547046,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1090727155",
+      "details": {
+        "gradeMin": "4a",
+        "gradeMax": "5b",
+        "styles": [
+          "sport"
+        ],
+        "website": "https://www.planetmountain.com/rock/falesie/falesia.html?idfalesia=355"
+      },
+      "elevation": 997,
+      "municipality": "Pedesina",
+      "province": "Sondrio",
+      "provinceCode": "SO"
     },
     {
       "id": "osm-node-14219981089",
@@ -1036,9 +3529,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/14219981089",
       "details": {},
       "elevation": 1509,
+      "municipality": "Mandello del Lario",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Mandello del Lario"
+      "provinceCode": "LC"
     },
     {
       "id": "osm-node-14041775584",
@@ -1049,9 +3542,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/14041775584",
       "details": {},
       "elevation": 1036,
+      "municipality": "Varese",
       "province": "Varese",
-      "provinceCode": "VA",
-      "municipality": "Varese"
+      "provinceCode": "VA"
     },
     {
       "id": "osm-node-2888957866",
@@ -1067,9 +3560,9 @@
         ]
       },
       "elevation": 337,
+      "municipality": "Abbadia Lariana",
       "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Abbadia Lariana"
+      "provinceCode": "LC"
     },
     {
       "id": "osm-node-6758871493",
@@ -1080,9 +3573,9 @@
       "sourceUrl": "https://www.openstreetmap.org/node/6758871493",
       "details": {},
       "elevation": 1267,
+      "municipality": "Aviatico",
       "province": "Bergamo",
-      "provinceCode": "BG",
-      "municipality": "Aviatico"
+      "provinceCode": "BG"
     },
     {
       "id": "osm-node-13184333732",
@@ -1093,9 +3586,114 @@
       "sourceUrl": "https://www.openstreetmap.org/node/13184333732",
       "details": {},
       "elevation": 817,
+      "municipality": "Grosio",
       "province": "Sondrio",
-      "provinceCode": "SO",
-      "municipality": "Grosio"
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-way-513713057",
+      "name": "Vho",
+      "latitude": 46.381375,
+      "longitude": 9.355435,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/513713057",
+      "details": {
+        "rock": "granite",
+        "rockIt": "granito",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 1004,
+      "municipality": "San Giacomo Filippo",
+      "province": "Sondrio",
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-node-4918589878",
+      "name": "Vie di roccia del Forametto",
+      "latitude": 45.678121,
+      "longitude": 10.538904,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/4918589878",
+      "details": {},
+      "elevation": 1217,
+      "municipality": "Toscolano Maderno",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-node-4918589843",
+      "name": "Vie di roccia delle placche delle Marmere",
+      "latitude": 45.679483,
+      "longitude": 10.542363,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/4918589843",
+      "details": {},
+      "elevation": 1278,
+      "municipality": "Toscolano Maderno",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-way-365080249",
+      "name": "Virle - settore est",
+      "latitude": 45.516047,
+      "longitude": 10.328304,
+      "aspect": "E",
+      "sourceUrl": "https://www.openstreetmap.org/way/365080249",
+      "details": {
+        "gradeMin": "5b",
+        "gradeMax": "6c",
+        "rock": "limestone",
+        "rockIt": "calcare",
+        "styles": [
+          "sport"
+        ],
+        "bolted": true
+      },
+      "elevation": 184,
+      "municipality": "Rezzato",
+      "province": "Brescia",
+      "provinceCode": "BS"
+    },
+    {
+      "id": "osm-node-3097814772",
+      "name": "Zoia Alta",
+      "latitude": 46.302334,
+      "longitude": 9.936761,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/3097814772",
+      "details": {
+        "rock": "granite",
+        "rockIt": "granito",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 2115,
+      "municipality": "Lanzada",
+      "province": "Sondrio",
+      "provinceCode": "SO"
+    },
+    {
+      "id": "osm-node-14064515297",
+      "name": "Zoia Bassa",
+      "latitude": 46.303329,
+      "longitude": 9.935387,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/14064515297",
+      "details": {
+        "rock": "granite",
+        "rockIt": "granito",
+        "styles": [
+          "sport"
+        ]
+      },
+      "elevation": 2028,
+      "municipality": "Lanzada",
+      "province": "Sondrio",
+      "provinceCode": "SO"
     }
   ]
 }
