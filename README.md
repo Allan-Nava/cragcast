@@ -28,6 +28,9 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   after** — never by
   colour alone: go is a green circle S, maybe a yellow diamond F, no a red square N — and the
   reasons under each crag (rain, recent rain, wind, cold or heat, an unmapped aspect);
+- on a phone the controls take two rows — the days, then the search and a **"Filtri"** button
+  that holds the verdict, province, near-me and favourite filters and counts those on
+  ("Filtri (2)"); the day's summary and the number of crags shown share one line;
 - **search** by name or municipality, ignoring case and accents, **toggles** for go / maybe /
   no go, and a **province** filter; each crag shows where it is ("Canzo (CO)");
 - crowded areas (Lecco, Val Masino) gather into one mark with the count and the split by

@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { AFTER, CRAGS, TOMORROW, expect, listNames, test } from "./fixtures";
+import { AFTER, CRAGS, TOMORROW, expect, listNames, openFilters, test } from "./fixtures";
 
 test.describe("the page", () => {
   test("loads tomorrow's verdicts, ordered by verdict then name", async ({ page }) => {
@@ -18,6 +18,7 @@ test.describe("the page", () => {
     expect(await listNames(page)).toEqual(["Còrna Test — Si va"]);
     await expect(page).toHaveURL(/q=corna/);
     await page.getByPlaceholder("Cerca una falesia…").fill("");
+    await openFilters(page);
     await page.getByLabel("Provincia").selectOption("SO");
     expect(await listNames(page)).toEqual(["Torre Inventata — Forse", "Muro Esempio — No"]);
     await page.getByRole("button", { name: /^N?\s*No$/ }).click();
@@ -53,6 +54,7 @@ test.describe("the page", () => {
     await page.goto("./");
     await page.getByRole("button", { name: "Aggiungi Sasso Finto alle preferite" }).click();
     await page.reload();
+    await openFilters(page);
     await page.getByRole("button", { name: "Preferite (1)" }).click();
     expect(await listNames(page)).toEqual(["Sasso Finto — Si va"]);
     await expect(page).not.toHaveURL(/osm-node-4/);                      // favourites never in the URL
@@ -62,6 +64,7 @@ test.describe("the page", () => {
     await context.grantPermissions(["geolocation"]);
     await context.setGeolocation({ latitude: 46.2, longitude: 9.9 });
     await page.goto("./");
+    await openFilters(page);
     await page.getByRole("button", { name: "Vicino a me" }).click();
     expect((await listNames(page))[0]).toBe("Muro Esempio — No");
     await expect(page.locator(".me")).toBeVisible();

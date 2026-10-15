@@ -51,3 +51,9 @@ export { expect };
 /** The list's crag names, in order. */
 export const listNames = (page: Page) =>
   page.locator("#list li h2").evaluateAll(hs => hs.map(h => (h.textContent ?? "").replace(/^[SFN]\s*/, "").replace(/\d+ km$/, "").trim()));
+
+/** CG-53: on a phone the filters fold behind "Filtri"; open them when they are folded. */
+export async function openFilters(page: Page) {
+  const toggle = page.getByRole("button", { name: /^Filtri/ });
+  if (await toggle.isVisible() && (await toggle.getAttribute("aria-expanded")) === "false") await toggle.click();
+}

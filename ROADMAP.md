@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**57 items · 45 shipped · 12 open · 12 milestones.**
+**57 items · 46 shipped · 11 open · 12 milestones.**
 
 ## At a glance
 
@@ -19,7 +19,7 @@
 | **v0.5.0 — A livelier page** | next | `##########` 100% | 0 | 4 |
 | **v0.6.0 — More crags, one link each** | next | `##########` 100% | 0 | 4 |
 | **v0.8.0 — Tested end to end** | now | `##########` 100% | 0 | 6 |
-| **v0.9.0 — UI fixes** | next | `..........` 0% | 5 | 0 |
+| **v0.9.0 — UI fixes** | next | `##........` 20% | 4 | 1 |
 | **v0.7.0 — Beyond Lombardy** | later | `..........` 0% | 1 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
@@ -99,7 +99,7 @@
 
 ## v0.9.0 — UI fixes
 
-- [ ] **CG-53** — Compact controls on a phone · high · M · frontend
+- [x] **CG-53** — Compact controls on a phone · high · M · frontend · `main`
 - [ ] **CG-54** — Map or list on a phone · high · M · frontend
 - [ ] **CG-56** — The panel beside, not over · med · M · frontend
 - [ ] **CG-55** — Readable cluster marks · med · S · frontend

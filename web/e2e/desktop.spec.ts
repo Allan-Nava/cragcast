@@ -50,3 +50,10 @@ test("choosing a crag in the list flies the map to it and opens its popup", asyn
   await expect(page.locator("#crag-osm-node-5")).toHaveClass(/chosen/);
   expect((await listNames(page)).length).toBe(6);
 });
+
+test("CG-53: on a desktop the filters stay in the row, without the 'Filtri' button", async ({ page }) => {
+  await page.goto("./");
+  await expect(page.getByRole("button", { name: /^Filtri/ })).toBeHidden();
+  await expect(page.getByLabel("Provincia")).toBeVisible();
+  await expect(page.locator(".summary .date")).toBeVisible();
+});
