@@ -63,6 +63,10 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
 - **Charts on the page** (`site/detail.js`): one measure per chart, never two y-axes; rain
   `#3987e5`, temperature `#d95926`, validated on the panel `#111418` with the dataviz validator;
   never a verdict colour for a series; every chart has a table of the same numbers.
+- **The service worker** (`site/sw.js`, CG-35): network first for the page and the data, cache
+  only as the offline fallback; Leaflet from cdnjs cache first; **map tiles never cached** (OSM's
+  tile policy). Adding a file to `SHELL` or changing the strategy means bumping `CACHE`
+  (`cragcast-v1` → `v2`), or old phones keep the old copy.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
   never in the URL, never in a request, never in storage.
 - **History lives on the `history` branch, never on main** (CG-34). `history.yml` appends the

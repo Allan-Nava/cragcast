@@ -37,6 +37,8 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 - a **panel per crag** ("Dettagli"): the day's hours from 06:00 to 21:00 as two small charts —
   temperature and rain, never one chart with two axes — a readout that follows the pointer or
   the arrow keys, the same hours as a table, and directions (Google Maps, OSM);
+- **installable** on a phone's home screen (a web app manifest and a service worker): it shows
+  the last data offline and says how old it is when it is more than 3 hours old;
 - updated every hour by `.github/workflows/pages.yml`, at about :17.
 
 ## History

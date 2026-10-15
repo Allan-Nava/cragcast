@@ -298,7 +298,17 @@ fetch("data/conditions.json", { cache: "no-cache" })
 
     syncControls(data);
     const t = new Date(data.generatedAt);
+    const hoursOld = (Date.now() - t.getTime()) / 3.6e6;
+    // The data is rebuilt every hour; older than 3 h means offline (the service worker served
+    // the cached copy) or a failed run. Say so rather than show stale verdicts as current.
     document.getElementById("updated").textContent =
-      "Aggiornato " + t.toLocaleString("it-IT", { dateStyle: "medium", timeStyle: "short" });
+      "Aggiornato " + t.toLocaleString("it-IT", { dateStyle: "medium", timeStyle: "short" }) +
+      (hoursOld > 3 ? ` — dati di ${Math.round(hoursOld)} ore fa: sei offline o l'aggiornamento non è riuscito.` : "");
+    if (hoursOld > 3) document.getElementById("updated").classList.add("stale");
   })
   .catch(e => { document.getElementById("updated").textContent = "Dati non disponibili (" + e.message + ")."; });
+
+// CG-35: installable and readable offline (see sw.js).
+if ("serviceWorker" in navigator) {
+  addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
