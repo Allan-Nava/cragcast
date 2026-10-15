@@ -11,8 +11,9 @@ how much it rained and how much sun the wall gets. A south-facing slab after 8 m
 usually fine the next day; a north-facing one often is not. cragcast puts that judgement in
 code, with the thresholds in one place so they can be argued with.
 
-**Status:** early. The backend serves crags and scores a day's weather; the weather client,
-the crag list and the web page are on the [roadmap](ROADMAP.md).
+**Status:** early. The backend serves crags, fetches the hourly forecast from Open-Meteo and
+scores a day's weather; the crag list, the conditions endpoint and the web page are on the
+[roadmap](ROADMAP.md).
 
 ## How it is built
 
@@ -20,6 +21,7 @@ the crag list and the web page are on the [roadmap](ROADMAP.md).
 |---|---|
 | `backend/` | Java 21, Spring Boot 4, PostgreSQL, Flyway. `GET /api/crags`, `GET /api/crags/{slug}` |
 | `backend/.../conditions/ConditionsScorer.java` | the verdict: weather + aspect → go / maybe / no go, with reasons |
+| `backend/.../weather/` | Open-Meteo client and the reduction of an hourly forecast to one day: rain in the previous 48 h, and rain, max temperature and max wind from 08:00 to 18:00 |
 | `docker-compose.yml` | PostgreSQL (and the backend) for local development |
 | `deploy/k8s/` | Kubernetes manifests for k3s on an Oracle Cloud Always Free Ampere VM |
 | `infra/oci/` | Terraform for that VM and its network, with a retry loop for "Out of host capacity" |
