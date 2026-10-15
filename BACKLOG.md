@@ -76,8 +76,10 @@ What the live page needs so a climber finds a crag and trusts the answer in seco
   that show or hide those crags on the map and in the list. <!-- cg: prio=high size=S labels=frontend ver=main -->
 - [x] **CG-20 — Shareable state**: search, verdict filter and day live in the URL, so a link
   opens the same view and the browser's back button works. <!-- cg: prio=med size=S labels=frontend ver=main -->
-- [ ] **CG-21 — Not by colour alone**: the verdict also as a letter or shape on the marker,
-  for colour-blind readers and for print; contrast checked on the dark theme. <!-- cg: prio=med size=S labels=frontend -->
+- [x] **CG-21 — Not by colour alone**: the verdict also as a letter or shape on the marker,
+  for colour-blind readers and for print; contrast checked on the dark theme. Done: circle S,
+  diamond F, square N on the map, in the list and in the legend; black letters at 9.8, 11.2 and
+  5.2:1. <!-- cg: prio=med size=S labels=frontend ver=main -->
 - [ ] **CG-22 — Near me**: sort by distance from the browser's location, computed in the page
   and never sent anywhere; the list says how far each crag is. <!-- cg: prio=med size=M labels=frontend -->
 - [ ] **CG-23 — Crowded areas**: cluster the markers where crags sit close together (Lecco,

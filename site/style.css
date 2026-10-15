@@ -48,3 +48,15 @@ footer { color: var(--muted); font-size: .85rem; padding: 16px; }
 .help summary { cursor: pointer; font-weight: 600; }
 .help li { margin: 4px 0; }
 .help code { color: var(--go); }
+
+/* CG-21: verdict marks — shape and letter as well as colour. Black letters on all three fills:
+   9.8:1 on green, 11.2:1 on yellow, 5.2:1 on red (WCAG AA is 4.5:1). */
+.mark { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px;
+        border: 2px solid #050505; box-sizing: border-box; color: #050505; font: 800 12px/1 system-ui, sans-serif; }
+.mark b { display: block; }
+.mark.go { background: var(--go); border-radius: 50%; }
+.mark.maybe { background: var(--maybe); border-radius: 3px; transform: rotate(45deg); }
+.mark.maybe b { transform: rotate(-45deg); }
+.mark.no_go { background: var(--no_go); border-radius: 2px; }
+.mark.small { width: 16px; height: 16px; font-size: 9px; border-width: 1.5px; margin-right: 6px; vertical-align: -3px; }
+#list li h2 .mark.small { flex: none; margin-right: 8px; }

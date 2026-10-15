@@ -20,7 +20,8 @@ Milan. What comes next is in the [roadmap](ROADMAP.md).
 
 ## The page
 
-- a map and a list of the crags, coloured by the verdict for **today** or **tomorrow**, the
+- a map and a list of the crags with the verdict for **today** or **tomorrow** — never by
+  colour alone: go is a green circle S, maybe a yellow diamond F, no a red square N — and the
   reasons under each crag (rain, recent rain, wind, cold or heat, an unmapped aspect);
 - **search** by name, ignoring case and accents, and **toggles** for go / maybe / no go;
 - the view in the URL (`?q=&v=&day=`): a link opens the same view, and back works;

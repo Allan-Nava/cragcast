@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**31 items · 16 shipped · 15 open · 5 milestones.**
+**31 items · 17 shipped · 14 open · 5 milestones.**
 
 ## At a glance
 
@@ -12,7 +12,7 @@
 |---|---|---|---|---|
 | **v0.1.0 — A verdict for one crag** | now | `#########.` 86% | 1 | 6 |
 | **v0.2.0 — On the internet, for free** | next | `####......` 38% | 5 | 3 |
-| **v0.2.1 — UX and UI** | now | `###.......` 33% | 6 | 3 |
+| **v0.2.1 — UX and UI** | now | `####......` 44% | 5 | 4 |
 | **v0.2.2 — Crag details** | now | `##########` 100% | 0 | 4 |
 | **v0.3.0 — The page climbers use** | later | `..........` 0% | 3 | 0 |
 
@@ -42,7 +42,7 @@
 - [x] **CG-18** — Search by name · high · S · frontend · `main`
 - [x] **CG-19** — Filter by verdict · high · S · frontend · `main`
 - [x] **CG-20** — Shareable state · med · S · frontend · `main`
-- [ ] **CG-21** — Not by colour alone · med · S · frontend
+- [x] **CG-21** — Not by colour alone · med · S · frontend · `main`
 - [ ] **CG-22** — Near me · med · M · frontend
 - [ ] **CG-23** — Crowded areas · low · S · frontend
 - [ ] **CG-24** — Crag detail · med · M · frontend
