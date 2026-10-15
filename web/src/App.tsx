@@ -204,7 +204,7 @@ export function App() {
           </button>
         ))}
       </div>
-      <main className={"show-" + (view?.show ?? "list")}>
+      <main className={"show-" + (view?.show ?? "list") + (detail ? " panel-open" : "")}>
         <CragMap crags={shown} day={view?.day ?? ""} here={here} onDetail={openDetail} apiRef={mapApi}
                  hot={hot} area={view?.area ?? null} onArea={onArea} onChosen={onChosen} />
         {data && view
@@ -221,11 +221,12 @@ export function App() {
           : <ul id="list" className={error ? undefined : "loading"} aria-busy={!error}>
               {!error && [0, 1, 2, 3, 4].map(i => <li key={i} className="ghost" aria-hidden="true" />)}
             </ul>}
+        {/* CG-56: inside the grid, so on a desktop the panel takes the list's column. */}
+  <DetailDialog crag={detail} day={view?.day ?? ""} days={data?.days ?? []}
+                      favourite={detail ? favourites.has(detail.id) : false} onFavourite={toggleFavourite}
+                      onDay={day => view && go({ ...view, day }, true)}
+                      onClose={() => { if (viewRef.current?.crag) go({ ...viewRef.current, crag: null }, true); }} />
       </main>
-      <DetailDialog crag={detail} day={view?.day ?? ""} days={data?.days ?? []}
-                    favourite={detail ? favourites.has(detail.id) : false} onFavourite={toggleFavourite}
-                    onDay={day => view && go({ ...view, day }, true)}
-                    onClose={() => { if (viewRef.current?.crag) go({ ...viewRef.current, crag: null }, true); }} />
       <Help />
       <Footer generatedAt={data?.generatedAt ?? null} error={error} />
     </>

@@ -60,7 +60,8 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   ottobre: si va"), and a browser goes straight on to the panel;
 - per crag, where OpenStreetMap has them: grades, route length, rock, style, website; the
   **elevation** of every crag; a link to the crag on OSM and to its OSM edit view;
-- a **panel per crag** ("Dettagli") — beside the map from 900 px, which stays usable, and a
+- a **panel per crag** ("Dettagli") — from 900 px in the list's column, below the controls, with
+  the map still usable and the list back when it closes, and a
   sheet from the bottom on phones; the day switches inside it with buttons or a sideways swipe,
   and a downward swipe closes the sheet: the day's hours from 06:00 to 21:00 as two small charts —
   temperature and rain, never one chart with two axes — a readout that follows the pointer or
