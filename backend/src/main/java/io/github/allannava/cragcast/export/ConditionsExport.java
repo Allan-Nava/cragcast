@@ -78,7 +78,8 @@ public final class ConditionsExport {
             }
             out.add(new CragOut(c.id(), c.name(), c.latitude(), c.longitude(), c.aspect(), c.sourceUrl(),
                     c.details() == null ? Map.of() : c.details(), c.elevation(),
-                    c.alsoMapped() == null ? List.of() : c.alsoMapped(), byDay));
+                    c.alsoMapped() == null ? List.of() : c.alsoMapped(),
+                    c.municipality(), c.province(), c.provinceCode(), byDay));
         }
         return new Output(now.toString(), ZONE.getId(), days.stream().map(LocalDate::toString).toList(),
                 crags.licence(), "Weather: Open-Meteo.com (CC BY 4.0)", crags.elevationSource(), out);
@@ -108,14 +109,16 @@ public final class ConditionsExport {
     /** {@code details}: the climbing tags OSM has for the crag (grades, length, rock…), passed through. */
     /** {@code alsoMapped}: OSM links of duplicates folded into this crag by tools/osm_crags.py. */
     record Crag(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
-                Map<String, Object> details, Integer elevation, List<String> alsoMapped) {
+                Map<String, Object> details, Integer elevation, List<String> alsoMapped,
+                String municipality, String province, String provinceCode) {
     }
 
     record DayOut(Verdict verdict, List<String> reasons, Weather weather, List<HourOut> hours) {
     }
 
     record CragOut(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
-                   Map<String, Object> details, Integer elevation, List<String> alsoMapped, Map<String, DayOut> days) {
+                   Map<String, Object> details, Integer elevation, List<String> alsoMapped,
+                   String municipality, String province, String provinceCode, Map<String, DayOut> days) {
     }
 
     record Output(String generatedAt, String timezone, List<String> days, String cragData, String weatherData,

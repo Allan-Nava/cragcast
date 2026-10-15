@@ -98,3 +98,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
 .hours th, .hours td { text-align: right; padding: 2px 6px; border-bottom: 1px solid var(--line); }
 .hours th:first-child, .hours td:first-child { text-align: left; }
 .links a { margin-right: 10px; }
+
+/* CG-25: province filter. */
+.area select { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
+               padding: 5px 12px; font: inherit; font-size: .9rem; }

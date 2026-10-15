@@ -104,7 +104,10 @@ let hereMarker = null;
 
 // --- State, read from and written to the URL ------------------------------------------------
 
-const state = { day: null, q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]) };
+const state = { day: null, q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "" };
+
+/** "Canzo (CO)": where the crag is, from OSM's administrative boundaries (CG-25). */
+const place = c => c.municipality ? c.municipality + (c.provinceCode ? ` (${c.provinceCode})` : "") : "";
 
 function readUrl(days) {
   const p = new URLSearchParams(location.search);
@@ -112,12 +115,14 @@ function readUrl(days) {
   state.q = p.get("q") || "";
   const v = (p.get("v") || "").split(",").filter(x => x in ORDER);
   state.verdicts = new Set(v.length ? v : Object.keys(ORDER));
+  state.province = p.get("p") || "";
 }
 
 function writeUrl(push) {
   const p = new URLSearchParams();
   if (state.q) p.set("q", state.q);
   if (state.verdicts.size < 3) p.set("v", [...state.verdicts].join(","));
+  if (state.province) p.set("p", state.province);
   p.set("day", state.day);
   const url = location.pathname + "?" + p.toString();
   push ? history.pushState(null, "", url) : history.replaceState(null, "", url);
@@ -135,7 +140,8 @@ function render(data) {
   const dist = c => here ? km(here.lat, here.lon, c.latitude, c.longitude) : null;
   const shown = data.crags
     .filter(c => state.verdicts.has(c.days[day].verdict))
-    .filter(c => !q || fold(c.name).includes(q))
+    .filter(c => !q || fold(c.name).includes(q) || fold(place(c)).includes(q))
+    .filter(c => !state.province || c.provinceCode === state.province)
     .sort(here
       ? (a, b) => dist(a) - dist(b)
       : (a, b) => ORDER[a.days[day].verdict] - ORDER[b.days[day].verdict] || a.name.localeCompare(b.name, "it"));
@@ -148,7 +154,8 @@ function render(data) {
     // https://www.openstreetmap.org/node/123 -> https://www.openstreetmap.org/edit?node=123
     const m = crag.sourceUrl.match(/openstreetmap\.org\/(node|way|relation)\/(\d+)/);
     const edit = m ? `https://www.openstreetmap.org/edit?${m[1]}=${m[2]}` : null;
-    const popup = `<strong>${escapeHtml(crag.name)}</strong><br>${LABEL[info.verdict]} — ${escapeHtml(info.aspect)}<br>` +
+    const popup = `<strong>${escapeHtml(crag.name)}</strong>` + (place(crag) ? ` · ${escapeHtml(place(crag))}` : "") +
+                  `<br>${LABEL[info.verdict]} — ${escapeHtml(info.aspect)}<br>` +
                   (info.reasons.length ? escapeHtml(info.reasons.join("; ")) + "<br>" : "") +
                   (details.length ? escapeHtml(details.join(" · ")) + "<br>" : "") +
                   `<small>${escapeHtml(info.facts)}</small><br><a href="${crag.sourceUrl}">fonte OpenStreetMap</a>` +
@@ -182,7 +189,7 @@ function render(data) {
       h.append(k);
     }
     const p = document.createElement("p");
-    p.textContent = [info.aspect, ...info.reasons].join(" · ");
+    p.textContent = [place(crag), info.aspect, ...info.reasons].filter(Boolean).join(" · ");
     li.append(h, p);
     const more = document.createElement("button");
     more.type = "button"; more.className = "more"; more.textContent = "Dettagli";
@@ -216,6 +223,7 @@ function syncControls(data) {
   document.querySelectorAll(".days button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.day === state.day)));
   document.querySelectorAll(".legend button").forEach(b =>
     b.setAttribute("aria-pressed", String(state.verdicts.has(b.dataset.verdict))));
+  document.getElementById("province").value = state.province;
   render(data);
 }
 
@@ -241,6 +249,15 @@ fetch("data/conditions.json", { cache: "no-cache" })
       writeUrl(true);
       syncControls(data);
     }));
+
+    const sel = document.getElementById("province");
+    const provinces = new Map();
+    data.crags.forEach(c => { if (c.provinceCode) provinces.set(c.provinceCode, c.province); });
+    [...provinces].sort((a, b) => a[1].localeCompare(b[1], "it")).forEach(([code, name]) => {
+      const n = data.crags.filter(c => c.provinceCode === code).length;
+      sel.append(Object.assign(document.createElement("option"), { value: code, textContent: `${name} (${n})` }));
+    });
+    sel.addEventListener("change", () => { state.province = sel.value; writeUrl(true); syncControls(data); });
 
     const input = document.getElementById("q");
     input.addEventListener("input", () => { state.q = input.value; writeUrl(false); render(data); });

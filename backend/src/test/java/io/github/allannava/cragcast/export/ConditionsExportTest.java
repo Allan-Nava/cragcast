@@ -30,8 +30,8 @@ class ConditionsExportTest {
         return new ConditionsExport.CragsFile("Test", "test", "test licence", "test elevation", List.of(
                 new ConditionsExport.Crag("t-1", "Sunny Test Wall", 45.0, 9.0, Aspect.S, "https://example.org/1",
                         java.util.Map.of("gradeMin", "5a", "gradeMax", "7b"), 820,
-                        List.of("https://example.org/1-twin")),
-                new ConditionsExport.Crag("t-2", "Unmapped Test Wall", 45.1, 9.1, null, "https://example.org/2", null, null, null)));
+                        List.of("https://example.org/1-twin"), "Testville", "Testshire", "TT"),
+                new ConditionsExport.Crag("t-2", "Unmapped Test Wall", 45.1, 9.1, null, "https://example.org/2", null, null, null, null, null, null)));
     }
 
     @Test
@@ -54,6 +54,8 @@ class ConditionsExportTest {
         assertThat(out.crags().get(0).elevation()).isEqualTo(820);
         assertThat(out.crags().get(0).alsoMapped()).containsExactly("https://example.org/1-twin");
         assertThat(out.crags().get(1).alsoMapped()).isEmpty();
+        assertThat(out.crags().get(0).provinceCode()).isEqualTo("TT");
+        assertThat(out.crags().get(0).municipality()).isEqualTo("Testville");
         assertThat(out.elevationData()).isEqualTo("test elevation");
     }
 

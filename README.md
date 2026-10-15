@@ -24,12 +24,13 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 - a map and a list of the crags with the verdict for **today** or **tomorrow** — never by
   colour alone: go is a green circle S, maybe a yellow diamond F, no a red square N — and the
   reasons under each crag (rain, recent rain, wind, cold or heat, an unmapped aspect);
-- **search** by name, ignoring case and accents, and **toggles** for go / maybe / no go;
+- **search** by name or municipality, ignoring case and accents, **toggles** for go / maybe /
+  no go, and a **province** filter; each crag shows where it is ("Canzo (CO)");
 - crowded areas (Lecco, Val Masino) gather into one mark with the count and the split by
   verdict written out (e.g. `20 · 7S·8F·5N`); zooming in or picking a crag in the list opens it;
 - **near me**: the list sorted by distance from the reader, with the km, the map centred on
   them — the position is used in the browser only, never sent and never put in the URL;
-- the view in the URL (`?q=&v=&day=`): a link opens the same view, and back works;
+- the view in the URL (`?q=&v=&p=&day=`): a link opens the same view, and back works;
 - per crag, where OpenStreetMap has them: grades, route length, rock, style, website; the
   **elevation** of every crag; a link to the crag on OSM and to its OSM edit view;
 - a **panel per crag** ("Dettagli"): the day's hours from 06:00 to 21:00 as two small charts —
@@ -47,7 +48,7 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 | `docker-compose.yml` | PostgreSQL (and the backend) for local development |
 | `deploy/k8s/` | Kubernetes manifests for k3s on an Oracle Cloud Always Free Ampere VM; parked with `infra/oci/` |
 | `infra/oci/` | Terraform for that VM and its network, with `retry-apply.sh` for "Out of host capacity"; parked — nothing is applied (the VM never got capacity, the network was destroyed) |
-| `data/crags.json`, `tools/osm_crags.py` | the crags, from OpenStreetMap (`climbing=crag`), each with its OSM link, its aspect where mapped, its validated climbing details and its elevation (Copernicus DEM); a crag mapped twice under one name less than 50 m apart is folded into one, keeping both OSM links; ODbL. Rebuilt monthly by `crags-refresh.yml` through a reviewed PR, or by hand: `python3 tools/osm_crags.py` |
+| `data/crags.json`, `tools/osm_crags.py` | the crags, from OpenStreetMap (`climbing=crag`), each with its OSM link, its aspect where mapped, its validated climbing details, its elevation (Copernicus DEM), its municipality and province (OSM administrative boundaries); a crag mapped twice under one name less than 50 m apart is folded into one, keeping both OSM links; ODbL. Rebuilt monthly by `crags-refresh.yml` through a reviewed PR, or by hand: `python3 tools/osm_crags.py` |
 | `backend/.../calibration/`, `data/observations.csv` | the replay of observed days against the verdict (CG-27) |
 | `backend/.../export/ConditionsExport.java`, `site/` | the serverless version: hourly scores to `site/data/conditions.json`, a static page with a map, on GitHub Pages |
 | `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), Terraform fmt and validate, backlog check |

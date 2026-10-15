@@ -34,7 +34,13 @@ ELEVATION_SOURCE = ("Copernicus DEM GLO-90 (2021 release, 90 m), https://doi.org
 
 
 def fetch():
-    body = urllib.parse.urlencode({"data": QUERY}).encode()
+    return overpass(QUERY)
+
+
+def overpass(query):
+    """POST a query to the public Overpass servers, retrying while they are busy; never accept
+    an empty answer as data."""
+    body = urllib.parse.urlencode({"data": query}).encode()
     last = None
     for attempt in range(3):
         for url in OVERPASS:
@@ -128,6 +134,32 @@ def merge_duplicates(crags):
     return sorted(out, key=lambda c: c["name"].lower())
 
 
+def areas(crags, batch=40):
+    """Municipality and province of every crag, from OSM's administrative boundaries (levels 8
+    and 6): one Overpass query per batch, each crag announced by a `make crag` marker so the
+    answer can be matched back even when a point falls outside every boundary."""
+    found = {}
+    for i in range(0, len(crags), batch):
+        q = "[out:json][timeout:120];\n"
+        for c in crags[i:i + batch]:
+            q += (f'make crag ref="{c["id"]}";out;\n'
+                  f'is_in({c["latitude"]},{c["longitude"]})->.a;\n'
+                  'area.a["boundary"="administrative"]["admin_level"~"^(6|8)$"];out tags;\n')
+        current = None
+        for e in overpass(q):
+            tags = e.get("tags", {})
+            if e["type"] == "crag":
+                current = found.setdefault(tags["ref"], {})
+            elif current is not None and tags.get("admin_level") == "8":
+                current["municipality"] = tags.get("name:it") or tags.get("name")
+            elif current is not None and tags.get("admin_level") == "6":
+                current["province"] = tags.get("name:it") or tags.get("name")
+                code = tags.get("ref") or tags.get("short_name")
+                if code and re.fullmatch(r"[A-Z]{2}", code):
+                    current["provinceCode"] = code
+    return found
+
+
 def elevations(crags):
     """Ground elevation in metres for every crag, 100 coordinates per request (the API's limit).
     A 90 m model: the altitude of the area, not of a given route."""
@@ -178,6 +210,9 @@ def main():
         raise SystemExit("no crags in the answer: data/crags.json left as it was")
     for c, ele in zip(crags, elevations(crags)):
         c["elevation"] = ele
+    where = areas(crags)
+    for c in crags:
+        c.update(where.get(c["id"], {}))
     OUT.write_text(json.dumps({
         "region": "Lombardia",
         "source": "OpenStreetMap, climbing=crag",
@@ -187,8 +222,9 @@ def main():
     }, ensure_ascii=False, indent=2) + "\n")
     with_aspect = sum(1 for c in crags if c["aspect"])
     with_grades = sum(1 for c in crags if "gradeMin" in c["details"] or "gradeMax" in c["details"])
+    with_area = sum(1 for c in crags if c.get("municipality"))
     print(f"{len(crags)} crags written to {OUT.relative_to(OUT.parent.parent)}: "
-          f"{with_aspect} with an aspect, {with_grades} with grades")
+          f"{with_aspect} with an aspect, {with_grades} with grades, {with_area} with a municipality")
 
 
 if __name__ == "__main__":

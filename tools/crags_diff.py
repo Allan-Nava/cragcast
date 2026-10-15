@@ -35,6 +35,9 @@ def main(old_path, new_path):
             what.append(f"aspect {o.get('aspect') or '—'} → {n.get('aspect') or '—'}")
         if o.get("name") != n.get("name"):
             what.append(f"name was {o['name']}")
+        for k in ("municipality", "province"):
+            if o.get(k) != n.get(k):
+                what.append(f"{k} {o.get(k) or '—'} → {n.get(k) or '—'}")
         if (o["latitude"], o["longitude"]) != (n["latitude"], n["longitude"]):
             what.append("moved")
         od, nd = o.get("details", {}), n.get("details", {})
