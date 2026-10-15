@@ -38,6 +38,29 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   the arrow keys, the same hours as a table, and directions (Google Maps, OSM);
 - updated every hour by `.github/workflows/pages.yml`, at about :17.
 
+## API
+
+The same data as the page, as static JSON on GitHub Pages — rebuilt every hour, free to call,
+no key, no server. Version 1: fields are only ever **added**; a field is never renamed or
+removed (a breaking change would go to `/api/v2/`).
+
+```bash
+curl https://allan-nava.github.io/cragcast/api/v1/crags.json
+curl https://allan-nava.github.io/cragcast/api/v1/crags/osm-node-1739484761.json
+```
+
+- **`crags.json`** — `meta` (version, `generatedAt`, timezone, the `days` covered, the
+  credits for crags, weather and elevation) and `crags`: for each one `id`, `name`,
+  `municipality`, `provinceCode`, `latitude`, `longitude`, `aspect` (null when not mapped),
+  `elevation`, `verdicts` by day (`GO`, `MAYBE`, `NO_GO`) and `url`, the path of its own file.
+- **`crags/<id>.json`** — `meta` and the whole `crag`: the fields above plus `sourceUrl`,
+  `alsoMapped`, `details` (grades, route length, rock, style, website — where OSM has them),
+  `province` and `days`: per day the `verdict`, the `reasons`, the `weather` it was computed
+  from (rain in the previous 48 h, rain, max temperature and max wind from 08:00 to 18:00) and
+  the `hours` from 06:00 to 21:00.
+
+Credit OpenStreetMap (ODbL), Open-Meteo (CC BY 4.0) and Copernicus when you show the data.
+
 ## How it is built
 
 | Part | What |
@@ -50,7 +73,7 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 | `infra/oci/` | Terraform for that VM and its network, with `retry-apply.sh` for "Out of host capacity"; parked — nothing is applied (the VM never got capacity, the network was destroyed) |
 | `data/crags.json`, `tools/osm_crags.py` | the crags, from OpenStreetMap (`climbing=crag`), each with its OSM link, its aspect where mapped, its validated climbing details, its elevation (Copernicus DEM), its municipality and province (OSM administrative boundaries); a crag mapped twice under one name less than 50 m apart is folded into one, keeping both OSM links; ODbL. Rebuilt monthly by `crags-refresh.yml` through a reviewed PR, or by hand: `python3 tools/osm_crags.py` |
 | `backend/.../calibration/`, `data/observations.csv` | the replay of observed days against the verdict (CG-27) |
-| `backend/.../export/ConditionsExport.java`, `site/` | the serverless version: hourly scores to `site/data/conditions.json`, a static page with a map, on GitHub Pages |
+| `backend/.../export/ConditionsExport.java`, `site/` | the serverless version: hourly scores to `site/data/conditions.json` and the static API in `site/api/v1/`, a static page with a map, on GitHub Pages |
 | `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), Terraform fmt and validate, backlog check |
 | `.github/workflows/pages.yml` | hourly and on push: scores every crag and publishes `site/` on GitHub Pages |
 | `.github/workflows/image.yml` | on push to main: the linux/arm64 backend image to GHCR, on a native ARM runner |

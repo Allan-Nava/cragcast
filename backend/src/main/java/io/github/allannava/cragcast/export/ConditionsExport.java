@@ -35,8 +35,8 @@ public final class ConditionsExport {
     }
 
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
-            System.err.println("usage: ConditionsExport <crags.json> <conditions.json>");
+        if (args.length != 2 && args.length != 3) {
+            System.err.println("usage: ConditionsExport <crags.json> <conditions.json> [<api dir>]");
             System.exit(2);
         }
         JsonMapper json = JsonMapper.builder().build();
@@ -56,6 +56,15 @@ public final class ConditionsExport {
         Path target = Path.of(args[1]);
         Files.createDirectories(target.toAbsolutePath().getParent());
         Files.writeString(target, json.writeValueAsString(out));
+        if (args.length == 3) {
+            // CG-32: the static API, one index and one file per crag, next to the page.
+            Path api = Path.of(args[2]);
+            for (Map.Entry<String, Object> f : api(out).entrySet()) {
+                Path file = api.resolve(f.getKey());
+                Files.createDirectories(file.getParent());
+                Files.writeString(file, json.writeValueAsString(f.getValue()));
+            }
+        }
         long go = out.crags().stream().filter(c -> c.days().get(today.plusDays(1).toString()).verdict() == Verdict.GO).count();
         System.out.printf("%d crags scored for %s and %s; %d go tomorrow%n",
                 out.crags().size(), today, today.plusDays(1), go);
@@ -83,6 +92,42 @@ public final class ConditionsExport {
         }
         return new Output(now.toString(), ZONE.getId(), days.stream().map(LocalDate::toString).toList(),
                 crags.licence(), "Weather: Open-Meteo.com (CC BY 4.0)", crags.elevationSource(), out);
+    }
+
+    /**
+     * CG-32: the static API, as relative path → document. {@code crags.json} lists every crag with
+     * its verdict per day and the path of its own file; {@code crags/<id>.json} holds one crag
+     * whole (details, weather, hours). Version 1: fields are only ever added, never renamed or
+     * removed — a breaking change goes to /api/v2.
+     */
+    static Map<String, Object> api(Output out) {
+        Map<String, Object> files = new LinkedHashMap<>();
+        Meta meta = new Meta(1, out.generatedAt(), out.timezone(), out.days(), out.cragData(), out.weatherData(),
+                out.elevationData(), "https://github.com/Allan-Nava/cragcast#api");
+        List<IndexEntry> index = new ArrayList<>();
+        for (CragOut c : out.crags()) {
+            Map<String, Verdict> verdicts = new LinkedHashMap<>();
+            c.days().forEach((day, d) -> verdicts.put(day, d.verdict()));
+            index.add(new IndexEntry(c.id(), c.name(), c.municipality(), c.provinceCode(), c.latitude(), c.longitude(),
+                    c.aspect(), c.elevation(), verdicts, "crags/" + c.id() + ".json"));
+            files.put("crags/" + c.id() + ".json", new CragDocument(meta, c));
+        }
+        files.put("crags.json", new Index(meta, index));
+        return files;
+    }
+
+    record Meta(int version, String generatedAt, String timezone, List<String> days, String cragData,
+                String weatherData, String elevationData, String docs) {
+    }
+
+    record IndexEntry(String id, String name, String municipality, String provinceCode, double latitude,
+                      double longitude, Aspect aspect, Integer elevation, Map<String, Verdict> verdicts, String url) {
+    }
+
+    record Index(Meta meta, List<IndexEntry> crags) {
+    }
+
+    record CragDocument(Meta meta, CragOut crag) {
     }
 
     /** CG-24: the day's hours from 06:00 to 21:00, for the chart in the crag's panel. */

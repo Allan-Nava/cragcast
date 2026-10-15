@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**37 items · 22 shipped · 15 open · 7 milestones.**
+**37 items · 23 shipped · 14 open · 7 milestones.**
 
 ## At a glance
 
@@ -15,7 +15,7 @@
 | **v0.2.1 — UX and UI** | now | `##########` 100% | 0 | 9 |
 | **v0.2.2 — Crag details** | now | `##########` 100% | 0 | 4 |
 | **v0.3.0 — The page climbers use** | later | `..........` 0% | 3 | 0 |
-| **v0.4.0 — Free stack** | next | `..........` 0% | 6 | 0 |
+| **v0.4.0 — Free stack** | next | `##........` 17% | 5 | 1 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
 ## v0.1.0 — A verdict for one crag
@@ -62,7 +62,7 @@
 
 ## v0.4.0 — Free stack
 
-- [ ] **CG-32** — Static API on GitHub Pages · high · M · backend, infra
+- [x] **CG-32** — Static API on GitHub Pages · high · M · backend, infra · `main`
 - [ ] **CG-33** — Three days · med · S · backend, frontend
 - [ ] **CG-34** — Verdict history · med · M · data, infra
 - [ ] **CG-35** — Installable page (PWA) · med · M · frontend

@@ -37,7 +37,7 @@ jobs:
           ./mvnw -q -B dependency:build-classpath -Dmdep.outputFile=target/cp.txt -Dmdep.includeScope=runtime
       - name: Score every crag for today and tomorrow
         working-directory: backend
-        run: java -cp "target/classes:$(cat target/cp.txt)" io.github.allannava.cragcast.export.ConditionsExport ../data/crags.json ../site/data/conditions.json
+        run: java -cp "target/classes:$(cat target/cp.txt)" io.github.allannava.cragcast.export.ConditionsExport ../data/crags.json ../site/data/conditions.json ../site/api/v1
       - run: cp assets/logo.svg site/logo.svg
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
