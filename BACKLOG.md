@@ -98,10 +98,11 @@ memory or copied from guidebook sites.
   French grades (min, max, mean), route length, rock, style (sport, trad, multipitch, bolted),
   number of routes, website — in `tools/osm_crags.py` into `data/crags.json`, and show them on
   the page next to each crag. Done: validated (a grade must read like 6b+, a length be a
-  number), 21 of 76 crags have at least one detail, 6 have grades. The Spring service ignores
-  them for now (CG-31). <!-- cg: prio=high size=M labels=data,frontend ver=main -->
-- [ ] **CG-31 — Crag details in the API**: store the details from data/crags.json in the
-  database (a V3 migration) and return them from `GET /api/crags/{slug}`. <!-- cg: prio=low size=S labels=backend -->
+  number), 21 of 76 crags have at least one detail, 6 have grades. The Spring service serves
+  them since CG-31. <!-- cg: prio=high size=M labels=data,frontend ver=main -->
+- [x] **CG-31 — Crag details in the API**: store the details from data/crags.json in the
+  database (a V3 migration) and return them from `GET /api/crags/{slug}`. Done, with the
+  elevation; details stored as JSON text. <!-- cg: prio=low size=S labels=backend ver=main -->
 - [x] **CG-29 — Elevation of every crag**: the altitude of each crag from a digital elevation
   model through Open-Meteo's elevation API, stored in `data/crags.json` with its source, and
   shown on the page. Done: Copernicus DEM GLO-90 (90 m) via Open-Meteo, computed once in

@@ -38,6 +38,17 @@ public class Crag {
     @Column(name = "source_url", nullable = false)
     private String sourceUrl;
 
+    /** Metres, from the Copernicus DEM: the ground of the area. Null until imported. */
+    private Integer elevation;
+
+    /**
+     * The OSM climbing details as JSON text ({@code {"gradeMin":"5a",...}}), stored and returned
+     * whole. Text rather than a mapped JSON type: Hibernate's JSON mapping and the Jackson 3 of
+     * Spring Boot 4 are not a pairing to rely on, and nothing queries inside it.
+     */
+    @Column(name = "details", nullable = false)
+    private String detailsJson = "{}";
+
     protected Crag() {
         // for JPA
     }
@@ -63,6 +74,14 @@ public class Crag {
         this.aspect = aspect;
         this.sourceUrl = sourceUrl;
     }
+
+    public void setExtras(Integer elevation, String detailsJson) {
+        this.elevation = elevation;
+        this.detailsJson = detailsJson == null || detailsJson.isBlank() ? "{}" : detailsJson;
+    }
+
+    public Integer getElevation() { return elevation; }
+    public String getDetailsJson() { return detailsJson; }
 
     public Long getId() { return id; }
     public String getSlug() { return slug; }

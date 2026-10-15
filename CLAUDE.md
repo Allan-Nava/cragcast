@@ -21,6 +21,10 @@
   sites under copyright — OSM refuses it, and so does cragcast.
 - **Thresholds live in `ConditionsScorer` as named constants**, each with a one-line reason. A
   change to one is a reviewed change, with a test for the day it fixes.
+- **Crag details are JSON text in the database** (`crag.details`, V3): written and read whole
+  with Spring's `JsonMapper`, not mapped by Hibernate — Hibernate's JSON support and Jackson 3
+  are not a pairing to rely on. Nothing may query inside it; a field worth filtering on gets
+  its own column.
 - **The schema belongs to Flyway** (`backend/src/main/resources/db/migration`); Hibernate only
   validates. Never edit a migration that has run — add the next one.
 - **Tests that need PostgreSQL** use Testcontainers and `@EnabledIf(DockerAvailable.CHECK)`:
