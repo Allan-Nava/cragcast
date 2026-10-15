@@ -177,3 +177,13 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
 .share { margin: 10px 0 4px; }
 .share .more { margin-top: 0; }
 .share [role="status"] { color: var(--muted); font-size: .9rem; overflow-wrap: anywhere; }
+
+/* CG-46: favourites. The star says its state by shape (outline / filled) and by its label. */
+.star { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; padding: 4px;
+        background: transparent; border: 0; color: var(--muted); cursor: pointer; border-radius: 6px; flex: none; }
+.star[aria-pressed="true"] { color: var(--maybe); }
+.star:focus-visible { outline: 2px solid var(--go); }
+dialog#detail h2 .star { margin-right: 0; }
+#favs { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
+        padding: 5px 12px; font: inherit; font-size: .9rem; cursor: pointer; }
+#favs[aria-pressed="true"] { border-color: var(--go); color: var(--go); }

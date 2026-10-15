@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Star } from "./Star";
 import type { Crag } from "../types";
 import { LABEL, LETTER, allDetails, describe, place } from "../lib/text";
 
@@ -14,9 +15,15 @@ interface Props {
   /** CG-38: the crag under the pointer or focus, so the map can light its mark. */
   onHot?(id: string | null): void;
   chosen?: string | null;
+  /** CG-46 */
+  favourites?: Set<string>;
+  onFavourite?(id: string): void;
+  /** What to say when nothing is shown, instead of the search message. */
+  empty?: string;
 }
 
-export function CragList({ crags, day, days = [], onDay, distance, onOpen, onDetail, onHot, chosen }: Props) {
+export function CragList({ crags, day, days = [], onDay, distance, onOpen, onDetail, onHot, chosen, favourites, onFavourite,
+                          empty }: Props) {
   // A crag chosen on the map comes into view in the list — where the list scrolls by itself
   // (side by side from 900 px); on a phone that would yank the page away from the map.
   useEffect(() => {
@@ -39,6 +46,7 @@ export function CragList({ crags, day, days = [], onDay, distance, onOpen, onDet
               <span className={"mark small " + info.verdict.toLowerCase()} aria-hidden="true"><b>{LETTER[info.verdict]}</b></span>
               {`${crag.name} — ${LABEL[info.verdict]}`}
               {distance && <span className="km">{`${Math.round(distance(crag))} km`}</span>}
+              {onFavourite && <Star name={crag.name} on={!!favourites?.has(crag.id)} onToggle={() => onFavourite(crag.id)} />}
             </h2>
             <p>{[place(crag), info.aspect, ...info.reasons].filter(Boolean).join(" · ")}</p>
             {details.length > 0 && <p className="details">{details.join(" · ")}</p>}
@@ -47,7 +55,7 @@ export function CragList({ crags, day, days = [], onDay, distance, onOpen, onDet
           </li>
         );
       })}
-      {crags.length === 0 && <li className="empty">Nessuna falesia corrisponde alla ricerca.</li>}
+      {crags.length === 0 && <li className="empty">{empty ?? "Nessuna falesia corrisponde alla ricerca."}</li>}
     </ul>
   );
 }

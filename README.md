@@ -32,6 +32,9 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   no go, and a **province** filter; each crag shows where it is ("Canzo (CO)");
 - crowded areas (Lecco, Val Masino) gather into one mark with the count and the split by
   verdict written out (e.g. `20 · 7S·8F·5N`); zooming in or picking a crag in the list opens it;
+- **favourites**: a star on each crag, in the list and the panel, and a "Preferite" filter;
+  kept in this browser only — never in the URL, never sent — and the page works when the
+  browser refuses to store them (they then last for the visit);
 - **near me**: the list sorted by distance from the reader, with the km, the map centred on
   them — the position is used in the browser only, never sent and never put in the URL;
 - **three days at a glance**: each crag in the list shows today, tomorrow and the day after

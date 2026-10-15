@@ -13,9 +13,14 @@ interface Props {
   onToggle(v: Verdict): void;
   onProvince(code: string): void;
   onNear(): void;
+  /** CG-46: how many favourites, and the filter on them. */
+  favourites?: number;
+  onlyFavourites?: boolean;
+  onOnlyFavourites?(): void;
 }
 
-export function Controls({ days, provinces, state, near, count, onDay, onQuery, onToggle, onProvince, onNear }: Props) {
+export function Controls({ days, provinces, state, near, count, onDay, onQuery, onToggle, onProvince, onNear,
+                          favourites = 0, onlyFavourites = false, onOnlyFavourites }: Props) {
   return (
     <>
       <nav className="days" aria-label="Giorno">
@@ -49,6 +54,10 @@ export function Controls({ days, provinces, state, near, count, onDay, onQuery, 
         <button type="button" id="near" aria-pressed={near === "on"} onClick={onNear}
                 title="Ordina per distanza da te. La posizione resta nel browser: non viene inviata né salvata.">
           {near === "asking" ? "Cerco la posizione…" : "Vicino a me"}
+        </button>
+        <button type="button" id="favs" aria-pressed={onlyFavourites} onClick={onOnlyFavourites}
+                title="Le preferite restano in questo browser: non vengono inviate.">
+          {`Preferite (${favourites})`}
         </button>
         <p id="count" aria-live="polite">{count}</p>
       </div>

@@ -61,3 +61,32 @@ group("a link to a crag (CG-44)", () => {
     expect((document.getElementById("detail") as HTMLDialogElement).hasAttribute("open")).toBe(false);
   });
 });
+
+group("favourites (CG-46)", () => {
+  it("stars a crag, filters on favourites, and remembers both", async () => {
+    localStorage.clear();
+    const two: Conditions = { ...conditions("2026-10-16T08:20:00Z", "GO"),
+      crags: [crag({ id: "a", name: "Parete Alfa" }), crag({ id: "b", name: "Parete Beta" })] };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve({ ok: true, json: () => Promise.resolve(two) })));
+    history.replaceState(null, "", `/?day=${DAY}`);
+    const { unmount } = render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+
+    await act(async () => { screen.getByRole("button", { name: "Preferite (0)" }).click(); });
+    expect(screen.getByText("Nessuna preferita: tocca la stella di una falesia per aggiungerla.")).toBeTruthy();
+    await act(async () => { screen.getByRole("button", { name: "Preferite (0)" }).click(); });
+
+    await act(async () => { screen.getByRole("button", { name: "Aggiungi Parete Beta alle preferite" }).click(); });
+    await act(async () => { screen.getByRole("button", { name: "Preferite (1)" }).click(); });
+    expect(screen.queryByText("Parete Alfa — Si va")).toBeNull();
+    expect(screen.getByText("Parete Beta — Si va")).toBeTruthy();
+    expect(location.search).toBe(`?day=${DAY}`);                    // never in the URL
+
+    unmount();
+    render(<App />);                                                 // a later visit
+    await screen.findByText("Parete Beta — Si va");
+    expect(screen.queryByText("Parete Alfa — Si va")).toBeNull();
+    expect(screen.getByRole("button", { name: "Togli Parete Beta dalle preferite" }).getAttribute("aria-pressed")).toBe("true");
+    localStorage.clear();
+  });
+});
