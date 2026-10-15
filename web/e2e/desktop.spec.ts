@@ -81,3 +81,17 @@ test("CG-56: the panel takes the list's column, below the controls; the list com
   await panel.getByLabel("Chiudi").click();
   await expect(page.locator("#list")).toBeVisible();
 });
+
+test("CG-55: the cluster marks' split is readable at 100% zoom", async ({ page }) => {
+  await page.goto("./");
+  const small = page.locator(".cluster small").first();
+  await expect(small).toBeVisible();
+  const size = await small.evaluate(el => parseFloat(getComputedStyle(el).fontSize));
+  expect(size).toBeGreaterThanOrEqual(11);
+  await expect(page.locator(".cluster").first()).toHaveAttribute("aria-label", /\d+ falesie: \d+ si va, \d+ forse, \d+ no/);
+  // The split fits inside its mark.
+  const fits = await page.locator(".cluster").evaluateAll(cs => cs.every(c => {
+    const s = c.querySelector("small")!; return s.scrollWidth <= c.clientWidth;
+  }));
+  expect(fits).toBe(true);
+});

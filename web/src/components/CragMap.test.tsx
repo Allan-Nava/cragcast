@@ -65,7 +65,7 @@ group("map marks and popups (CG-50)", () => {
     render(<CragMap crags={many()} day={DAY} here={null} onDetail={() => {}} apiRef={api} />);
     const cluster = document.querySelector(".cluster")!;
     expect(cluster.getAttribute("aria-label")).toBe("4 falesie: 3 si va, 0 forse, 1 no");
-    expect(cluster.textContent).toBe("43S·0F·1N");
+    expect(cluster.textContent).toBe("43S·1N");                       // CG-55: no "0F" in the mark
   });
 
   it("opens a popup with everything known about the crag, and Dettagli opens the panel", async () => {
