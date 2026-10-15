@@ -31,6 +31,7 @@ jobs:
         run: |
           cp data/crags.json "$RUNNER_TEMP/crags-before.json"
           python3 tools/osm_crags.py
+          python3 tools/aspects_todo.py      # CG-16: the list of walls still to map follows the crags
       - name: Open a pull request if OSM changed
         env:
           GH_TOKEN: ${{ github.token }}
@@ -47,7 +48,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"
-          git add data/crags.json
+          git add data/crags.json docs/aspects-todo.md
           git commit -m "Crags refresh from OpenStreetMap ($(date -u +%Y-%m-%d))"
           git push origin "$branch"
           {

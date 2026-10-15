@@ -48,7 +48,8 @@ main.
 - [ ] **CG-16 — Wall aspects on OpenStreetMap**: 74 of 76 crags have no
   `climbing:orientation`; add it on OSM from first-hand knowledge — OSM does not accept data
   copied from guidebooks under copyright — crag by crag, then rerun `tools/osm_crags.py`.
-  Every aspect added makes its verdict sharper. <!-- cg: prio=med size=M labels=data -->
+  Every aspect added makes its verdict sharper. The checklist with an edit link per crag is
+  `docs/aspects-todo.md`. <!-- cg: prio=med size=M labels=data -->
 - [x] **CG-17 — Refresh the crag list**: a monthly Action reruns `tools/osm_crags.py` and
   opens a PR when OSM has changed. Done: `crags-refresh.yml` on the 1st at 05:23 UTC, a summary
   of added, removed and changed crags from `tools/crags_diff.py`, one open refresh PR at a time. <!-- cg: prio=low size=S labels=data,infra ver=main -->
