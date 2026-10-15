@@ -134,8 +134,8 @@ API, GitHub Actions for everything that runs, git for history. No VM, no card.
   documented in the README — a backend anyone can call, with no server. Done: `/api/v1/crags.json`
   (index with verdicts by day) and `/api/v1/crags/<id>.json` (75 files), about 320 KB, rebuilt by
   `pages.yml`; fields only ever added. <!-- cg: prio=high size=M labels=backend,infra ver=main -->
-- [ ] **CG-33 — Three days**: today, tomorrow and the day after; the forecast already covers
-  them. <!-- cg: prio=med size=S labels=backend,frontend -->
+- [x] **CG-33 — Three days**: today, tomorrow and the day after; the forecast already covers
+  them. Done: the export, the page ("Dopodomani") and the API's `days` carry three days. <!-- cg: prio=med size=S labels=backend,frontend ver=main -->
 - [ ] **CG-34 — Verdict history**: every evening, each crag's verdict and weather for the day
   saved as CSV on a `history` branch, never on main — for "how was last week" and as data for
   CG-27. <!-- cg: prio=med size=M labels=data,infra -->

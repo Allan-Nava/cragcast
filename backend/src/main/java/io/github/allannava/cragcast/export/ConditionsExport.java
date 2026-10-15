@@ -20,7 +20,7 @@ import tools.jackson.databind.json.JsonMapper;
 
 /**
  * The serverless version: reads data/crags.json, fetches the forecast for every crag, scores
- * today and tomorrow, and writes the JSON the static page on GitHub Pages reads. Run hourly by
+ * today, tomorrow and the day after, and writes the JSON the static page on GitHub Pages reads. Run hourly by
  * .github/workflows/pages.yml; no database, no Spring context.
  *
  * <pre>java -cp ... io.github.allannava.cragcast.export.ConditionsExport data/crags.json site/data/conditions.json</pre>
@@ -51,8 +51,9 @@ public final class ConditionsExport {
             forecasts.addAll(weather.hourly(places));
         }
 
+        // CG-33: today, tomorrow and the day after — all three inside the 3 forecast days fetched.
         LocalDate today = LocalDate.now(ZONE);
-        Output out = build(crags, forecasts, List.of(today, today.plusDays(1)), Instant.now());
+        Output out = build(crags, forecasts, List.of(today, today.plusDays(1), today.plusDays(2)), Instant.now());
         Path target = Path.of(args[1]);
         Files.createDirectories(target.toAbsolutePath().getParent());
         Files.writeString(target, json.writeValueAsString(out));
@@ -66,8 +67,8 @@ public final class ConditionsExport {
             }
         }
         long go = out.crags().stream().filter(c -> c.days().get(today.plusDays(1).toString()).verdict() == Verdict.GO).count();
-        System.out.printf("%d crags scored for %s and %s; %d go tomorrow%n",
-                out.crags().size(), today, today.plusDays(1), go);
+        System.out.printf("%d crags scored for %s to %s; %d go tomorrow%n",
+                out.crags().size(), today, today.plusDays(2), go);
     }
 
     /** The pure part: crags and their forecasts in, the page's JSON out. */
