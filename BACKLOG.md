@@ -232,8 +232,10 @@ Asked for on 2026-10-15: unit and integration tests for everything. Baseline tha
   API, share pages); Calibrate and CragImporter covered the same way. Done: ConditionsExportIT
   and CalibrateIT under failsafe, the importer against a mocked repository; backend 78% → 93.6%
   of lines in CI, floor 0.93. <!-- cg: prio=high size=M labels=backend ver=main -->
-- [ ] **CG-50 — The page's gaps**: tests for near me (granted, denied, unavailable), a failed
-  data load, the controls, and the charts' pointer. <!-- cg: prio=med size=S labels=frontend -->
+- [x] **CG-50 — The page's gaps**: tests for near me (granted, denied, unavailable), a failed
+  data load, the controls, and the charts' pointer. Done: 74 tests, the page from 88% to 99% of
+  lines (statements 96, functions 95, branches 89); dragging the map is left to the browser
+  tests (CG-51), since jsdom cannot drive Leaflet's drag. <!-- cg: prio=med size=S labels=frontend ver=main -->
 - [ ] **CG-51 — End to end in a browser**: Playwright in CI on the built site with fixture
   data — search, filters, days, the panel and the sheet, a crag link and its share page,
   favourites, the area search after a real drag, a phone viewport, and an accessibility

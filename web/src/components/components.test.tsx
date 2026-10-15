@@ -178,3 +178,43 @@ group("three days at a glance (CG-39)", () => {
     expect(visible(all, s, null)).toHaveLength(1);
   });
 });
+
+group("chart pointer (CG-50)", () => {
+  it("reads the hour under the pointer, and steps back with the left arrow", () => {
+    const onCursor = vi.fn();
+    render(<HourChart hours={hours} kind="temperature" cursor={9} onCursor={onCursor} />);
+    const svg = screen.getByRole("img");
+    svg.getBoundingClientRect = () => ({ left: 0, top: 0, width: 320, height: 116, right: 320, bottom: 116, x: 0, y: 0, toJSON() {} });
+    fireEvent.pointerMove(svg, { clientX: 31 });                        // first band
+    expect(onCursor).toHaveBeenLastCalledWith(0);
+    fireEvent.pointerMove(svg, { clientX: 400 });                       // past the end: the last hour
+    expect(onCursor).toHaveBeenLastCalledWith(15);
+    fireEvent.keyDown(svg, { key: "ArrowLeft" });
+    expect(onCursor).toHaveBeenLastCalledWith(8);
+    fireEvent.focus(svg);
+    expect(onCursor).toHaveBeenLastCalledWith(9);                       // focus keeps the hour shown
+  });
+});
+
+group("list details (CG-50)", () => {
+  it("scrolls the chosen crag into view side by side, not on a phone", () => {
+    const scroll = vi.fn();
+    Element.prototype.scrollIntoView = scroll;
+    vi.stubGlobal("matchMedia", (q: string) => ({ matches: q.includes("900px") }));
+    render(<CragList crags={[crag()]} day={DAY} distance={null} chosen="node/1" onOpen={() => {}} onDetail={() => {}} />);
+    expect(scroll).toHaveBeenCalledWith({ block: "nearest" });
+    cleanup();
+    scroll.mockClear();
+    vi.stubGlobal("matchMedia", () => ({ matches: false }));
+    render(<CragList crags={[crag()]} day={DAY} distance={null} chosen="node/1" onOpen={() => {}} onDetail={() => {}} />);
+    expect(scroll).not.toHaveBeenCalled();
+    vi.unstubAllGlobals();
+  });
+
+  it("focus on a button inside a row does not light the map", () => {
+    const onHot = vi.fn();
+    render(<CragList crags={[crag()]} day={DAY} distance={null} onOpen={() => {}} onDetail={() => {}} onHot={onHot} />);
+    fireEvent.focus(screen.getByText("Dettagli"));
+    expect(onHot).not.toHaveBeenCalledWith("node/1");
+  });
+});
