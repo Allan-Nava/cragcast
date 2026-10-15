@@ -19,6 +19,9 @@
 - **Contributions go to OpenStreetMap, first-hand only.** The page, the README and the issue form
   ask climbers to map what they know themselves; never suggest copying from guidebooks or
   sites under copyright — OSM refuses it, and so does cragcast.
+- **Observations are first-hand or nothing.** `data/observations.csv` holds only days someone saw
+  the rock, with who saw it; never a guessed or reconstructed row. Smoke tests of `Calibrate`
+  use a file outside the repo.
 - **Thresholds live in `ConditionsScorer` as named constants**, each with a one-line reason. A
   change to one is a reviewed change, with a test for the day it fixes.
 - **Crag details are JSON text in the database** (`crag.details`, V3): written and read whole

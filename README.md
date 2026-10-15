@@ -39,6 +39,7 @@ Milan. What comes next is in the [roadmap](ROADMAP.md).
 | `deploy/k8s/` | Kubernetes manifests for k3s on an Oracle Cloud Always Free Ampere VM |
 | `infra/oci/` | Terraform for that VM and its network, with `retry-apply.sh` for "Out of host capacity"; the network exists, the VM not yet |
 | `data/crags.json`, `tools/osm_crags.py` | the crags, from OpenStreetMap (`climbing=crag`), each with its OSM link, its aspect where mapped, its validated climbing details and its elevation (Copernicus DEM); ODbL. Rebuilt by hand: `python3 tools/osm_crags.py` |
+| `backend/.../calibration/`, `data/observations.csv` | the replay of observed days against the verdict (CG-27) |
 | `backend/.../export/ConditionsExport.java`, `site/` | the serverless version: hourly scores to `site/data/conditions.json`, a static page with a map, on GitHub Pages |
 | `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), Terraform fmt and validate, backlog check |
 | `.github/workflows/pages.yml` | hourly and on push: scores every crag and publishes `site/` on GitHub Pages |
@@ -53,6 +54,23 @@ taken from. Elevation: Copernicus DEM GLO-90 (2021,
 [doi:10.5270/ESA-c5d3d65](https://doi.org/10.5270/ESA-c5d3d65)) through Open-Meteo's elevation API —
 the ground of the area at 90 m resolution, not of a given route. A crag without `climbing:orientation` on OSM is judged as a shaded wall, the
 cautious reading; adding the tag on OpenStreetMap sharpens its verdict at the next refresh.
+
+## Calibrating the verdict
+
+The thresholds in `ConditionsScorer` are a first heuristic. They are checked against days
+someone actually saw the rock, in `data/observations.csv` (`date,crag,rock,observer,note`, rock
+`dry`, `damp` or `wet`). The replay fetches each day's weather from Open-Meteo's Historical
+Forecast API — the same kind of data the live verdict reads — scores it and prints a Markdown
+table:
+
+```bash
+cd backend && ./mvnw -q -DskipTests package dependency:build-classpath -Dmdep.outputFile=target/cp.txt -Dmdep.includeScope=runtime
+java -cp "target/classes:$(cat target/cp.txt)" io.github.allannava.cragcast.calibration.Calibrate ../data/observations.csv ../data/crags.json
+```
+
+Each day is `AGREES`, `TOO_CAUTIOUS` (dry rock, cragcast said maybe or no), `MISSED_WET_ROCK`
+(damp or wet rock, cragcast said go — the error that matters) or `TOO_HARSH` (damp rock, no go).
+A threshold changes only when the table shows why, with a test for the day that moved it.
 
 ## Help map your crag
 
