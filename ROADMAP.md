@@ -4,20 +4,20 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**14 items · 4 shipped · 10 open · 3 milestones.**
+**17 items · 6 shipped · 11 open · 3 milestones.**
 
 ## At a glance
 
 | Milestone | Phase | Progress | Open | Shipped |
 |---|---|---|---|---|
-| **v0.1.0 — A verdict for one crag** | now | `#####.....` 50% | 3 | 3 |
-| **v0.2.0 — On the internet, for free** | next | `##........` 20% | 4 | 1 |
+| **v0.1.0 — A verdict for one crag** | now | `#######...` 67% | 2 | 4 |
+| **v0.2.0 — On the internet, for free** | next | `###.......` 25% | 6 | 2 |
 | **v0.3.0 — The page climbers use** | later | `..........` 0% | 3 | 0 |
 
 ## v0.1.0 — A verdict for one crag
 
 - [x] **CG-1** — Backend skeleton · high · M · backend, infra · `main`
-- [ ] **CG-2** — The crag list · high · M · data
+- [x] **CG-2** — The crag list · high · M · data · `main`
 - [x] **CG-3** — Open-Meteo client · high · M · backend · `main`
 - [ ] **CG-4** — Conditions endpoint · high · M · backend
 - [x] **CG-14** — Logo · low · S · docs · `main`
@@ -25,6 +25,9 @@
 
 ## v0.2.0 — On the internet, for free
 
+- [x] **CG-15** — Serverless version on GitHub Pages · high · M · frontend, infra · `main`
+- [ ] **CG-16** — Wall aspects on OpenStreetMap · med · M · data
+- [ ] **CG-17** — Refresh the crag list · low · S · data, infra
 - [ ] **CG-6** — The VM as code · high · M · infra
 - [ ] **CG-7** — k3s and the first deploy · high · M · infra
 - [ ] **CG-8** — Domain and HTTPS · med · S · infra
@@ -33,6 +36,6 @@
 
 ## v0.3.0 — The page climbers use
 
-- [ ] **CG-10** — Web page · med · L · frontend
+- [ ] **CG-10** — Web page in React · med · L · frontend
 - [ ] **CG-11** — Avalanche bulletin · low · M · data, backend
 - [ ] **CG-12** — Write-up · low · S · docs

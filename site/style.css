@@ -1,0 +1,33 @@
+/* Palette of allan-nava.github.io: green #10cf53 on near-black #050505. */
+:root {
+  --bg: #050505; --panel: #111418; --text: #f2f4f5; --muted: #9aa3ad;
+  --go: #10cf53; --maybe: #f2b705; --no_go: #e5484d; --line: #23282e;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+       font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--go); }
+header { display: flex; gap: 14px; align-items: center; padding: 16px; }
+header h1 { margin: 0; font-size: 1.4rem; }
+header p { margin: 2px 0 0; color: var(--muted); }
+.days { display: flex; gap: 8px; padding: 0 16px; }
+.days button { background: var(--panel); color: var(--text); border: 1px solid var(--line);
+               border-radius: 999px; padding: 6px 14px; font: inherit; cursor: pointer; }
+.days button[aria-pressed="true"] { border-color: var(--go); color: var(--go); }
+.legend { display: flex; gap: 16px; padding: 10px 16px; color: var(--muted); font-size: .9rem; }
+.dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.dot.go { background: var(--go); } .dot.maybe { background: var(--maybe); } .dot.no_go { background: var(--no_go); }
+main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 0 16px; }
+#map { height: 55vh; min-height: 320px; border-radius: 12px; border: 1px solid var(--line); }
+#list { list-style: none; margin: 0; padding: 0; }
+#list li { background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+           padding: 10px 12px; margin-bottom: 8px; cursor: pointer; }
+#list li h2 { margin: 0; font-size: 1rem; display: flex; align-items: center; }
+#list li p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+footer { color: var(--muted); font-size: .85rem; padding: 16px; }
+@media (min-width: 900px) {
+  main { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+  #map { height: 70vh; }
+  #list { max-height: 70vh; overflow-y: auto; }
+}
+.leaflet-popup-content { font: 14px/1.4 system-ui, sans-serif; }

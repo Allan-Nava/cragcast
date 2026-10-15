@@ -11,6 +11,9 @@ how much it rained and how much sun the wall gets. A south-facing slab after 8 m
 usually fine the next day; a north-facing one often is not. cragcast puts that judgement in
 code, with the thresholds in one place so they can be argued with.
 
+**Live:** [allan-nava.github.io/cragcast](https://allan-nava.github.io/cragcast/) — 76 crags,
+updated every hour by a GitHub Action, no server.
+
 **Status:** early. The backend serves crags, fetches the hourly forecast from Open-Meteo and
 scores a day's weather; the crag list, the conditions endpoint and the web page are on the
 [roadmap](ROADMAP.md).
@@ -25,10 +28,14 @@ scores a day's weather; the crag list, the conditions endpoint and the web page 
 | `docker-compose.yml` | PostgreSQL (and the backend) for local development |
 | `deploy/k8s/` | Kubernetes manifests for k3s on an Oracle Cloud Always Free Ampere VM |
 | `infra/oci/` | Terraform for that VM and its network, with a retry loop for "Out of host capacity" |
+| `data/crags.json`, `tools/osm_crags.py` | the crags, from OpenStreetMap (`climbing=crag`), each with its OSM link; ODbL |
+| `backend/.../export/ConditionsExport.java`, `site/` | the serverless version: hourly scores to `site/data/conditions.json`, a static page with a map, on GitHub Pages |
 | `.github/workflows/` | CI: build and tests (Testcontainers on a real PostgreSQL), backlog check; the linux/arm64 image to GHCR on every push to main |
 
-Weather comes from [Open-Meteo](https://open-meteo.com/) (free, no key). Every crag in the
-database carries the public source its position was taken from.
+Weather comes from [Open-Meteo](https://open-meteo.com/) (free, no key, CC BY 4.0). Crags come
+from OpenStreetMap — © OpenStreetMap contributors, ODbL — and each carries the link it was
+taken from. A crag without `climbing:orientation` on OSM is judged as a shaded wall, the
+cautious reading; adding the tag on OpenStreetMap sharpens its verdict at the next refresh.
 
 ## Run it locally
 

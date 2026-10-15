@@ -1,0 +1,615 @@
+{
+  "region": "Lombardia",
+  "source": "OpenStreetMap, climbing=crag",
+  "licence": "© OpenStreetMap contributors, ODbL 1.0 — https://www.openstreetmap.org/copyright",
+  "crags": [
+    {
+      "id": "osm-node-6822611838",
+      "name": "Bagni Vecchi Bassa",
+      "latitude": 46.491167,
+      "longitude": 10.363738,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/6822611838"
+    },
+    {
+      "id": "osm-node-11872141961",
+      "name": "Calar",
+      "latitude": 46.455542,
+      "longitude": 10.459846,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/11872141961"
+    },
+    {
+      "id": "osm-way-188805657",
+      "name": "Corna Bianca",
+      "latitude": 45.854429,
+      "longitude": 9.745783,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/188805657"
+    },
+    {
+      "id": "osm-node-2917721733",
+      "name": "Corna Rossa di Lantana",
+      "latitude": 45.915097,
+      "longitude": 10.079633,
+      "aspect": "SW",
+      "sourceUrl": "https://www.openstreetmap.org/node/2917721733"
+    },
+    {
+      "id": "osm-node-12068677095",
+      "name": "Crap de la Tureglia",
+      "latitude": 46.429202,
+      "longitude": 10.367238,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/12068677095"
+    },
+    {
+      "id": "osm-node-2888957867",
+      "name": "Discoteca",
+      "latitude": 45.877651,
+      "longitude": 9.374869,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/2888957867"
+    },
+    {
+      "id": "osm-node-12036611131",
+      "name": "Falesia",
+      "latitude": 46.33908,
+      "longitude": 10.2887,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/12036611131"
+    },
+    {
+      "id": "osm-node-3757612224",
+      "name": "Falesia \"Omonimi\"",
+      "latitude": 45.964609,
+      "longitude": 9.745775,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/3757612224"
+    },
+    {
+      "id": "osm-node-3757609511",
+      "name": "Falesia \"Pagliaccetti\"",
+      "latitude": 45.96427,
+      "longitude": 9.74665,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/3757609511"
+    },
+    {
+      "id": "osm-node-3757612208",
+      "name": "Falesia \"Totem\"",
+      "latitude": 45.964429,
+      "longitude": 9.746196,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/3757612208"
+    },
+    {
+      "id": "osm-node-13196357817",
+      "name": "Falesia Cascata",
+      "latitude": 45.87909,
+      "longitude": 9.373783,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13196357817"
+    },
+    {
+      "id": "osm-node-1796890725",
+      "name": "Falesia Corna De Par",
+      "latitude": 45.870541,
+      "longitude": 9.887464,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/1796890725"
+    },
+    {
+      "id": "osm-relation-15056469",
+      "name": "Falesia Corna De Par",
+      "latitude": 45.870541,
+      "longitude": 9.887464,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/relation/15056469"
+    },
+    {
+      "id": "osm-node-13184333761",
+      "name": "Falesia Corno del Caprone",
+      "latitude": 46.499388,
+      "longitude": 10.358762,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13184333761"
+    },
+    {
+      "id": "osm-node-14030990596",
+      "name": "Falesia del brigante",
+      "latitude": 45.917839,
+      "longitude": 9.43467,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/14030990596"
+    },
+    {
+      "id": "osm-way-1307589396",
+      "name": "Falesia del Ferro",
+      "latitude": 46.260801,
+      "longitude": 9.63177,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1307589396"
+    },
+    {
+      "id": "osm-relation-14910904",
+      "name": "Falesia del Piero",
+      "latitude": 45.876163,
+      "longitude": 9.786425,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/relation/14910904"
+    },
+    {
+      "id": "osm-way-201832117",
+      "name": "Falesia del Tramonto",
+      "latitude": 45.828395,
+      "longitude": 9.204405,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/201832117"
+    },
+    {
+      "id": "osm-relation-19468980",
+      "name": "Falesia delle Onde",
+      "latitude": 45.828192,
+      "longitude": 9.210237,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/relation/19468980"
+    },
+    {
+      "id": "osm-way-1262988766",
+      "name": "Falesia di Almè",
+      "latitude": 45.741297,
+      "longitude": 9.60587,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1262988766"
+    },
+    {
+      "id": "osm-node-7599712466",
+      "name": "Falesia di Calusco",
+      "latitude": 45.682839,
+      "longitude": 9.455392,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/7599712466"
+    },
+    {
+      "id": "osm-node-14122790227",
+      "name": "Falesia di Civate",
+      "latitude": 45.827891,
+      "longitude": 9.32684,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/14122790227"
+    },
+    {
+      "id": "osm-relation-14906312",
+      "name": "Falesia di Grone (Casazza)",
+      "latitude": 45.736638,
+      "longitude": 9.915382,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/relation/14906312"
+    },
+    {
+      "id": "osm-node-2433844045",
+      "name": "Falesia Di Villanuova Sul Clisi - Settore Basso",
+      "latitude": 45.6015,
+      "longitude": 10.463865,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/2433844045"
+    },
+    {
+      "id": "osm-node-13196357821",
+      "name": "Falesia Duracell",
+      "latitude": 45.881373,
+      "longitude": 9.37126,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13196357821"
+    },
+    {
+      "id": "osm-node-12151154725",
+      "name": "Falesia Forni",
+      "latitude": 46.420042,
+      "longitude": 10.556513,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/12151154725"
+    },
+    {
+      "id": "osm-node-13184333763",
+      "name": "Falesia Isolaccia - Jardin d'escalade",
+      "latitude": 46.492416,
+      "longitude": 10.297407,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13184333763"
+    },
+    {
+      "id": "osm-node-13184333762",
+      "name": "Falesia Isolaccia - Tavolino",
+      "latitude": 46.49145,
+      "longitude": 10.301554,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13184333762"
+    },
+    {
+      "id": "osm-node-13196357819",
+      "name": "Falesia Le Promesse nel Sole",
+      "latitude": 45.880791,
+      "longitude": 9.37323,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13196357819"
+    },
+    {
+      "id": "osm-node-13184333733",
+      "name": "Falesia Migiondo",
+      "latitude": 46.325214,
+      "longitude": 10.304699,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13184333733"
+    },
+    {
+      "id": "osm-node-13196357820",
+      "name": "Falesia Passi di Danza",
+      "latitude": 45.880671,
+      "longitude": 9.373651,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13196357820"
+    },
+    {
+      "id": "osm-relation-16068105",
+      "name": "Falesia Placche di Albate",
+      "latitude": 45.786107,
+      "longitude": 9.09846,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/relation/16068105"
+    },
+    {
+      "id": "osm-node-13196357818",
+      "name": "Falesia Pungitopo",
+      "latitude": 45.880312,
+      "longitude": 9.372834,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13196357818"
+    },
+    {
+      "id": "osm-node-13196338094",
+      "name": "Falesia Rocce Basse",
+      "latitude": 45.958052,
+      "longitude": 9.458073,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13196338094"
+    },
+    {
+      "id": "osm-node-8086095920",
+      "name": "Falesia Sasso Ballaro",
+      "latitude": 45.87476,
+      "longitude": 8.60007,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/8086095920"
+    },
+    {
+      "id": "osm-node-13245785600",
+      "name": "Falesia Sasso Ballaro -  Settore Saigon",
+      "latitude": 45.876103,
+      "longitude": 8.598683,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13245785600"
+    },
+    {
+      "id": "osm-node-13196399311",
+      "name": "Falesia Trittico",
+      "latitude": 45.958591,
+      "longitude": 9.456859,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13196399311"
+    },
+    {
+      "id": "osm-node-13184333734",
+      "name": "Falesia Vernuga",
+      "latitude": 46.363564,
+      "longitude": 10.353447,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13184333734"
+    },
+    {
+      "id": "osm-node-1741194816",
+      "name": "Gran Placca",
+      "latitude": 45.958538,
+      "longitude": 9.451837,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/1741194816"
+    },
+    {
+      "id": "osm-node-14041775583",
+      "name": "Grotta Rudera",
+      "latitude": 45.869309,
+      "longitude": 8.77973,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/14041775583"
+    },
+    {
+      "id": "osm-way-1385623007",
+      "name": "Lagoland",
+      "latitude": 45.985786,
+      "longitude": 9.29446,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1385623007"
+    },
+    {
+      "id": "osm-node-11171764068",
+      "name": "Liss dei Pesgunfi",
+      "latitude": 46.226958,
+      "longitude": 9.62852,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/11171764068"
+    },
+    {
+      "id": "osm-way-1502439088",
+      "name": "Lo Sprofondo",
+      "latitude": 45.870885,
+      "longitude": 9.304549,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/1502439088"
+    },
+    {
+      "id": "osm-way-837046156",
+      "name": "Muro del Butch",
+      "latitude": 45.908051,
+      "longitude": 9.433726,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/837046156"
+    },
+    {
+      "id": "osm-node-13196399312",
+      "name": "Muro del Pianto",
+      "latitude": 45.958852,
+      "longitude": 9.456651,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13196399312"
+    },
+    {
+      "id": "osm-node-11859077873",
+      "name": "Muro di Introbio",
+      "latitude": 45.960156,
+      "longitude": 9.451996,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/11859077873"
+    },
+    {
+      "id": "osm-node-1741194869",
+      "name": "Pala Condor",
+      "latitude": 45.960125,
+      "longitude": 9.451567,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/1741194869"
+    },
+    {
+      "id": "osm-node-9429027374",
+      "name": "Paretina dell'amico Fritz",
+      "latitude": 46.324759,
+      "longitude": 9.425662,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/9429027374"
+    },
+    {
+      "id": "osm-node-9176169531",
+      "name": "Pilastrini",
+      "latitude": 45.960178,
+      "longitude": 9.452417,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/9176169531"
+    },
+    {
+      "id": "osm-node-4641789089",
+      "name": "Placca Condor",
+      "latitude": 45.958429,
+      "longitude": 9.452076,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/4641789089"
+    },
+    {
+      "id": "osm-node-3452238619",
+      "name": "Placca del Bhikku",
+      "latitude": 45.956997,
+      "longitude": 9.462358,
+      "aspect": "S",
+      "sourceUrl": "https://www.openstreetmap.org/node/3452238619"
+    },
+    {
+      "id": "osm-node-7273907091",
+      "name": "Placca del Pistolino",
+      "latitude": 45.959029,
+      "longitude": 9.456307,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/7273907091"
+    },
+    {
+      "id": "osm-node-11662207868",
+      "name": "Placca del Prato Grande",
+      "latitude": 46.32447,
+      "longitude": 9.415798,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/11662207868"
+    },
+    {
+      "id": "osm-node-4409711985",
+      "name": "Placche di Sherwood",
+      "latitude": 45.959245,
+      "longitude": 9.455389,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/4409711985"
+    },
+    {
+      "id": "osm-node-12255821505",
+      "name": "Porto di Tremosine",
+      "latitude": 45.76588,
+      "longitude": 10.758686,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/12255821505"
+    },
+    {
+      "id": "osm-node-1739484761",
+      "name": "Pradello",
+      "latitude": 45.881852,
+      "longitude": 9.371678,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/1739484761"
+    },
+    {
+      "id": "osm-node-1741194868",
+      "name": "Rocca di Baiedo",
+      "latitude": 45.960255,
+      "longitude": 9.448643,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/1741194868"
+    },
+    {
+      "id": "osm-node-9536753691",
+      "name": "Rock Stadium",
+      "latitude": 46.32198,
+      "longitude": 9.411558,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/9536753691"
+    },
+    {
+      "id": "osm-node-11872141963",
+      "name": "Saletina",
+      "latitude": 46.417964,
+      "longitude": 10.55478,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/11872141963"
+    },
+    {
+      "id": "osm-node-12151154724",
+      "name": "Saletina Bassa",
+      "latitude": 46.418576,
+      "longitude": 10.556052,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/12151154724"
+    },
+    {
+      "id": "osm-way-201200731",
+      "name": "Sasso d'Erba",
+      "latitude": 45.825938,
+      "longitude": 9.207805,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/201200731"
+    },
+    {
+      "id": "osm-way-751262115",
+      "name": "Sasso dell'Edera",
+      "latitude": 45.825284,
+      "longitude": 9.208969,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/751262115"
+    },
+    {
+      "id": "osm-node-4641745891",
+      "name": "Sasso di Introbio",
+      "latitude": 45.960111,
+      "longitude": 9.450896,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/4641745891"
+    },
+    {
+      "id": "osm-way-201200730",
+      "name": "Sasso Giallo",
+      "latitude": 45.825625,
+      "longitude": 9.210888,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/201200730"
+    },
+    {
+      "id": "osm-way-297774960",
+      "name": "Sasso Muschiato",
+      "latitude": 45.82578,
+      "longitude": 9.207156,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/way/297774960"
+    },
+    {
+      "id": "osm-node-1886634638",
+      "name": "Sasso Remenno",
+      "latitude": 46.226391,
+      "longitude": 9.635715,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/1886634638"
+    },
+    {
+      "id": "osm-node-13196338093",
+      "name": "Settore Anfiteatro",
+      "latitude": 45.958553,
+      "longitude": 9.45886,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13196338093"
+    },
+    {
+      "id": "osm-node-12304593894",
+      "name": "Settore Destro",
+      "latitude": 45.849139,
+      "longitude": 9.257852,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/12304593894"
+    },
+    {
+      "id": "osm-node-12304593897",
+      "name": "Settore Destro",
+      "latitude": 45.849063,
+      "longitude": 9.256129,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/12304593897"
+    },
+    {
+      "id": "osm-node-13196381745",
+      "name": "Sperone dell'Astinenza",
+      "latitude": 45.958449,
+      "longitude": 9.458417,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13196381745"
+    },
+    {
+      "id": "osm-node-4541277052",
+      "name": "Terzo sperone",
+      "latitude": 45.957892,
+      "longitude": 9.459913,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/4541277052"
+    },
+    {
+      "id": "osm-node-14219981089",
+      "name": "Torrione del Pertusio",
+      "latitude": 45.918525,
+      "longitude": 9.370696,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/14219981089"
+    },
+    {
+      "id": "osm-node-14041775584",
+      "name": "Torrione Farfalla",
+      "latitude": 45.869771,
+      "longitude": 8.77886,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/14041775584"
+    },
+    {
+      "id": "osm-node-2888957866",
+      "name": "Torrione Realba",
+      "latitude": 45.891192,
+      "longitude": 9.358443,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/2888957866"
+    },
+    {
+      "id": "osm-node-6758871493",
+      "name": "Torrioni Cornagera",
+      "latitude": 45.793593,
+      "longitude": 9.779458,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/6758871493"
+    },
+    {
+      "id": "osm-node-13184333732",
+      "name": "Vermuga",
+      "latitude": 46.309489,
+      "longitude": 10.286669,
+      "aspect": null,
+      "sourceUrl": "https://www.openstreetmap.org/node/13184333732"
+    }
+  ]
+}

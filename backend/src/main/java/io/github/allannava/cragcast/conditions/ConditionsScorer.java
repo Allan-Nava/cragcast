@@ -21,9 +21,16 @@ public class ConditionsScorer {
     static final double TOO_COLD_C = 5.0;
     static final double TOO_HOT_C = 32.0;
 
+    /**
+     * @param aspect the wall's aspect, or {@code null} when nobody has mapped it: the wall is
+     *               then judged as shaded, the cautious reading, and the reasons say so
+     */
     public Result score(Aspect aspect, Weather weather) {
         List<String> reasons = new ArrayList<>();
         Verdict verdict = Verdict.GO;
+        if (aspect == null) {
+            reasons.add("wall aspect not mapped: judged as a shaded wall");
+        }
 
         if (weather.rainDuringDayMm() > RAIN_DURING_DAY_NO_GO_MM) {
             reasons.add("rain forecast during the day");

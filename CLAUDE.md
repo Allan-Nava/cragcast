@@ -7,6 +7,13 @@
 
 - **No invented places.** A crag enters the database only with coordinates and aspect taken
   from a public source, whose URL goes in `source_url`. Test data is made up and says so.
+- **Two ways to run, one scorer.** The serverless version (`ConditionsExport` + `site/`,
+  published hourly by `pages.yml` on GitHub Pages) and the Spring service (`deploy/k8s/`, on
+  the Oracle VM) share `ConditionsScorer`, `WeatherReducer` and `OpenMeteoClient`. A change to
+  the verdict lands in both. `site/data/` is generated, never committed.
+- **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:
+  credit OSM on every surface that shows them). The aspect is `climbing:orientation` or null —
+  never filled in by guess; the fix for a missing aspect is an edit on OSM.
 - **Thresholds live in `ConditionsScorer` as named constants**, each with a one-line reason. A
   change to one is a reviewed change, with a test for the day it fixes.
 - **The schema belongs to Flyway** (`backend/src/main/resources/db/migration`); Hibernate only
