@@ -1,4 +1,4 @@
-import { CRAGS, expect, test } from "./fixtures";
+import { CRAGS, expect, listNames, openFilters, test } from "./fixtures";
 
 test.skip(({ isMobile }) => !isMobile, "phone layout");
 
@@ -27,4 +27,27 @@ test("the controls fit the screen without sideways scrolling", async ({ page }) 
   await expect(page.locator("#list li h2").first()).toBeVisible();
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(0);
+});
+
+test("CG-53: the controls take two rows and the filters fold behind 'Filtri'", async ({ page }) => {
+  await page.goto("./");
+  await expect(page.locator("#list li h2").first()).toBeAttached();
+  const toggle = page.getByRole("button", { name: "Filtri" });
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(page.getByLabel("Provincia")).toBeHidden();
+  // Header, days, search row and summary end well before the old ~600 px.
+  const map = (await page.locator("#map").boundingBox())!;
+  expect(map.y).toBeLessThan(300);
+  await expect(page.locator(".summary")).toContainText("6 falesie");
+  await expect(page.locator(".summary .date")).toBeHidden();
+
+  await toggle.click();
+  await page.getByLabel("Provincia").selectOption("LC");
+  await page.getByRole("button", { name: /^N?\s*No$/ }).click();
+  await expect(page.getByRole("button", { name: "Filtri (2)" })).toBeVisible();
+  expect(await listNames(page)).toEqual(["Còrna Test — Si va", "Placca Prova — Forse"]);
+  await page.getByRole("button", { name: "Filtri (2)" }).click();
+  await expect(page.getByLabel("Provincia")).toBeHidden();
+  await openFilters(page);
+  await expect(page.getByLabel("Provincia")).toHaveValue("LC");          // folding keeps the filters on
 });

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { Verdict } from "../types";
 import { LABEL, LETTER, VERDICTS, dayLabel } from "../lib/text";
 import type { ViewState } from "../lib/state";
@@ -7,7 +8,8 @@ interface Props {
   provinces: { code: string; name: string; count: number }[];
   state: ViewState;
   near: "off" | "asking" | "on";
-  count: string;
+  /** CG-53: how many filters are on, for the "Filtri" button that holds them on a phone. */
+  active?: number;
   onDay(day: string): void;
   onQuery(q: string): void;
   onToggle(v: Verdict): void;
@@ -19,8 +21,11 @@ interface Props {
   onOnlyFavourites?(): void;
 }
 
-export function Controls({ days, provinces, state, near, count, onDay, onQuery, onToggle, onProvince, onNear,
+export function Controls({ days, provinces, state, near, active = 0, onDay, onQuery, onToggle, onProvince, onNear,
                           favourites = 0, onlyFavourites = false, onOnlyFavourites }: Props) {
+  // CG-53: on a phone the filters fold behind one button; from 600 px they stay in the row and
+  // the button is hidden (style.css).
+  const [open, setOpen] = useState(false);
   return (
     <>
       <nav className="days" aria-label="Giorno">
@@ -37,6 +42,11 @@ export function Controls({ days, provinces, state, near, count, onDay, onQuery, 
           <input id="q" type="search" placeholder="Cerca una falesia…" autoComplete="off" spellCheck={false}
                  value={state.q} onChange={e => onQuery(e.target.value)} />
         </label>
+        <button type="button" className="filters-toggle" aria-expanded={open} aria-controls="filters"
+                onClick={() => setOpen(o => !o)}>
+          {active ? `Filtri (${active})` : "Filtri"}
+        </button>
+        <div id="filters" className="filters" data-open={open}>
         <div className="legend" role="group" aria-label="Mostra per verdetto">
           {VERDICTS.map(v => (
             <button key={v} type="button" aria-pressed={state.verdicts.has(v)} onClick={() => onToggle(v)}>
@@ -59,7 +69,7 @@ export function Controls({ days, provinces, state, near, count, onDay, onQuery, 
                 title="Le preferite restano in questo browser: non vengono inviate.">
           {`Preferite (${favourites})`}
         </button>
-        <p id="count" aria-live="polite">{count}</p>
+        </div>
       </div>
     </>
   );

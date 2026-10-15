@@ -164,6 +164,7 @@ export function App() {
   };
 
   const total = data?.crags.length ?? 0;
+  const active = view ? [view.verdicts.size < 3, !!view.province, !!view.area, !!here, onlyFavourites].filter(Boolean).length : 0;
   const count = notice ?? (!data ? (error ? "" : "Carico le falesie…") : shown.length === total ? `${shown.length} falesie` : `${shown.length} di ${total} falesie`);
 
   return (
@@ -177,7 +178,7 @@ export function App() {
       </header>
       <Controls days={data?.days ?? []} provinces={provinces}
                 state={view ?? { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null }}
-                near={asking ? "asking" : here ? "on" : "off"} count={count}
+                near={asking ? "asking" : here ? "on" : "off"} active={active}
                 onDay={day => view && go({ ...view, day }, true)}
                 onQuery={q => view && go({ ...view, q }, false)}
                 onToggle={toggle}
@@ -186,8 +187,8 @@ export function App() {
                 favourites={favourites.size} onlyFavourites={onlyFavourites}
                 onOnlyFavourites={() => setOnlyFavourites(on => { saveOnly(!on); return !on; })} />
       {data && view
-        ? <Summary crags={matching(data.crags, view, scope)} day={view.day} index={data.days.indexOf(view.day)} />
-        : !error && <p className="summary ghost" aria-hidden="true" />}
+        ? <Summary crags={matching(data.crags, view, scope)} day={view.day} index={data.days.indexOf(view.day)} count={count} />
+        : <p className={error ? "summary" : "summary ghost"}><span id="count" aria-live="polite">{count}</span></p>}
       <main>
         <CragMap crags={shown} day={view?.day ?? ""} here={here} onDetail={openDetail} apiRef={mapApi}
                  hot={hot} area={view?.area ?? null} onArea={onArea} onChosen={onChosen} />

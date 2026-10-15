@@ -254,10 +254,11 @@ three rows and about 600 px come before the first crag; the map fills the screen
 starts below it; the cluster marks' split is set at 8 px; on a desktop the side panel covers
 the filters and the list. Each fix comes with an end-to-end test (CG-51) at the width it fixes.
 
-- [ ] **CG-53 — Compact controls on a phone**: the day, the search and a "Filtri" button on one
+- [x] **CG-53 — Compact controls on a phone**: the day, the search and a "Filtri" button on one
   row, the verdict, province, near-me and favourite filters in a panel it opens, with a count
   of the filters on; one line for the count and the day's summary instead of two; a shorter
-  header. Desktop keeps its row. <!-- cg: prio=high size=M labels=frontend -->
+  header. Desktop keeps its row. Done below 600 px: the map now starts at about 280 px instead
+  of about 600; e2e tests at Pixel 7 and desktop widths. <!-- cg: prio=high size=M labels=frontend ver=main -->
 - [ ] **CG-54 — Map or list on a phone**: a "Mappa | Lista" switch under the controls, the list
   first, the choice kept in the URL; choosing a crag in the list shows it on the map. <!-- cg: prio=high size=M labels=frontend -->
 - [ ] **CG-56 — The panel beside, not over**: on a desktop the crag's panel takes the list's
