@@ -30,7 +30,7 @@ group("list", () => {
 
 group("filter", () => {
   const all = [crag({ id: "a", name: "Zucco", verdict: "NO_GO" }), crag({ id: "b", name: "Bàrro", verdict: "GO" }),
-               crag({ id: "c", name: "Arco", verdict: "GO", provinceCode: "BG", municipality: "Bergamo" })];
+               crag({ id: "c", name: "Arco", verdict: "GO", provinceCode: "BG", municipality: "Bergamo", latitude: 45.7, longitude: 9.67 })];
   const s = (q: string) => readState(q + `&day=${DAY}`, [DAY]);
   it("orders by verdict, then name", () => expect(visible(all, s("?"), null).map(c => c.id)).toEqual(["c", "b", "a"]));
   it("searches without accents and by place", () => {
@@ -40,6 +40,10 @@ group("filter", () => {
   it("filters by verdict and province", () => {
     expect(visible(all, s("?v=NO_GO"), null).map(c => c.id)).toEqual(["a"]);
     expect(visible(all, s("?p=BG"), null).map(c => c.id)).toEqual(["c"]);
+  });
+  it("keeps only the crags inside the chosen area", () => {
+    expect(visible(all, s("?a=45.5,9.39,46,9.41"), null).map(c => c.id).sort()).toEqual(["a", "b"]);
+    expect(visible(all, s("?a=40,1,41,2"), null)).toEqual([]);
   });
   it("orders by distance when given one", () => {
     const d = { a: 1, b: 3, c: 2 } as Record<string, number>;
@@ -107,5 +111,21 @@ group("avalanche in the panel", () => {
     unmount();
     const { container: none } = render(<DetailDialog crag={crag()} day={DAY} onClose={() => {}} />);
     expect(none.querySelector(".avalanche")).toBeNull();
+  });
+});
+
+group("list and map (CG-38)", () => {
+  it("reports the crag under the pointer and keyboard focus, and marks the chosen one", () => {
+    const onHot = vi.fn();
+    render(<CragList crags={[crag()]} day={DAY} distance={null} chosen="node/1"
+                     onOpen={() => {}} onDetail={() => {}} onHot={onHot} />);
+    const li = screen.getByRole("listitem");
+    expect(li.getAttribute("aria-current")).toBe("true");
+    fireEvent.mouseEnter(li);
+    expect(onHot).toHaveBeenLastCalledWith("node/1");
+    fireEvent.mouseLeave(li);
+    expect(onHot).toHaveBeenLastCalledWith(null);
+    fireEvent.focus(li);
+    expect(onHot).toHaveBeenLastCalledWith("node/1");
   });
 });

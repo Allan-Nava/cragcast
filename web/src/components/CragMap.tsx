@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import L from "../lib/leaflet";
 import "leaflet.markercluster";
 import type { Crag, Verdict } from "../types";
+import type { Area } from "../lib/state";
 import { LABEL, LETTER, allDetails, dangerLabel, describe, osmEditUrl, place, zoneName } from "../lib/text";
 
 export interface MapApi {
@@ -15,7 +16,14 @@ interface Props {
   here: { lat: number; lon: number } | null;
   onDetail(crag: Crag): void;
   apiRef: React.RefObject<MapApi | null>;
+  /** CG-38: the crag to light up (hovered or focused in the list). */
+  hot?: string | null;
+  area?: Area | null;
+  onArea?(area: Area | null): void;
+  onChosen?(id: string): void;
 }
+
+const reducedMotion = () => typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function verdictIcon(verdict: Verdict, name: string): L.DivIcon {
   const span = document.createElement("span");
@@ -54,12 +62,18 @@ function popupFor(crag: Crag, day: string, onDetail: (c: Crag) => void): HTMLEle
   return box;
 }
 
-export function CragMap({ crags, day, here, onDetail, apiRef }: Props) {
+export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area = null, onArea, onChosen }: Props) {
   const div = useRef<HTMLDivElement>(null);
   const map = useRef<L.Map | null>(null);
   const layer = useRef<L.MarkerClusterGroup | null>(null);
   const markers = useRef(new Map<string, L.Marker>());
   const me = useRef<L.Marker | null>(null);
+  // Moves the page makes (fly to a crag, centre on the reader) are not the reader exploring.
+  const ours = useRef(false);
+  const programmatic = useRef<(move: () => void) => void>(move => move());
+  const [moved, setMoved] = useState(false);
+  const chosenRef = useRef(onChosen);
+  chosenRef.current = onChosen;
 
   useEffect(() => {                                   // the map, once
     if (!div.current || map.current) return;
@@ -89,10 +103,24 @@ export function CragMap({ crags, day, here, onDetail, apiRef }: Props) {
       },
     }).addTo(m);
     map.current = m;
+    // The reader explored when they dragged or zoomed; a pan to fit a popup is neither.
+    m.on("dragend", () => setMoved(true));
+    m.on("zoomend", () => { if (!ours.current) setMoved(true); });
+    programmatic.current = (move: () => void) => {
+      ours.current = true;
+      m.once("moveend", () => setTimeout(() => { ours.current = false; }, 0));
+      move();
+    };
     apiRef.current = {
+      // CG-38: fly to the crag, out of its cluster (clusters break up from zoom 12), then open it.
       open(id) {
         const mk = markers.current.get(id);
-        if (mk && layer.current) layer.current.zoomToShowLayer(mk, () => mk.openPopup());
+        if (!mk) return;
+        const to = mk.getLatLng(), zoom = Math.max(m.getZoom(), 13);
+        // After the flight the mark may still sit in a cluster being rebuilt: zoomToShowLayer
+        // waits for it (or opens the cluster) before the popup.
+        m.once("moveend", () => layer.current?.zoomToShowLayer(mk, () => mk.openPopup()));
+        programmatic.current(() => { if (reducedMotion()) m.setView(to, zoom); else m.flyTo(to, zoom, { duration: 0.8 }); });
       },
     };
     return () => { m.remove(); map.current = null; };
@@ -112,6 +140,7 @@ export function CragMap({ crags, day, here, onDetail, apiRef }: Props) {
       });
       (mk.options as { verdict?: Verdict }).verdict = verdict;     // read by the cluster mark
       mk.bindPopup(() => popupFor(crag, day, onDetail));
+      mk.on("popupopen", () => chosenRef.current?.(crag.id));
       markers.current.set(crag.id, mk);
       group.addLayer(mk);
     }
@@ -127,8 +156,36 @@ export function CragMap({ crags, day, here, onDetail, apiRef }: Props) {
     me.current = L.marker([here.lat, here.lon], {
       icon: L.divIcon({ className: "", html: dot, iconSize: [14, 14] }), title: "La tua posizione", keyboard: false,
     }).addTo(map.current);
-    map.current.setView([here.lat, here.lon], 9);
+    const m = map.current, at = here;
+    programmatic.current(() => m.setView([at.lat, at.lon], 9));
   }, [here]);
 
-  return <div id="map" ref={div} role="region" aria-label="Mappa delle falesie" />;
+  useEffect(() => {                                   // CG-38: light the hovered crag's mark
+    const group = layer.current, mk = hot ? markers.current.get(hot) : undefined;
+    if (!group || !mk) return;
+    const shown = group.getVisibleParent(mk) as L.Marker | null;   // the mark itself, or its cluster
+    const el = shown?.getElement();
+    if (!shown || !el) return;
+    el.classList.add("hot");
+    shown.setZIndexOffset(1000);
+    return () => { el.classList.remove("hot"); shown.setZIndexOffset(0); };
+  }, [hot, crags, day]);
+
+  const searchHere = () => {
+    const b = map.current?.getBounds();
+    if (!b) return;
+    setMoved(false);
+    onArea?.([b.getSouth(), b.getWest(), b.getNorth(), b.getEast()]);
+  };
+
+  return (
+    <div className="mapwrap">
+      <div id="map" ref={div} role="region" aria-label="Mappa delle falesie" />
+      <div className="mapbar">
+        {moved && <button type="button" onClick={searchHere}>Cerca in quest'area</button>}
+        {area && <button type="button" className="clear" onClick={() => { setMoved(false); onArea?.(null); }}
+                         aria-label="Togli il filtro dell'area">Solo quest'area ×</button>}
+      </div>
+    </div>
+  );
 }

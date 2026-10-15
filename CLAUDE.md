@@ -81,6 +81,12 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   official bulletin. A bulletin that is missing (out of season, before the morning issue) or
   fails leaves the line out; it never fails the hourly build. The micro-regions in
   `data/avalanche-regions.geojson` change only through `tools/avalanche_regions.py` and a PR.
+- **Map moves: the reader's or the page's** (CG-38). Only a drag or a zoom by the reader offers
+  "Cerca in quest'area"; moves the page makes (flying to a crag, centring on the reader) go
+  through `programmatic` in `CragMap`, so a new programmatic move must too. Animations
+  respect `prefers-reduced-motion`. Headless Chrome screenshots do not run Leaflet's
+  animations (requestAnimationFrame stalls), so map interactions are tested in
+  `CragMap.test.tsx` with the real Leaflet in jsdom, not by screenshot.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
   never in the URL, never in a request, never in storage.
 - **History lives on the `history` branch, never on main** (CG-34). `history.yml` appends the
