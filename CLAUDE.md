@@ -78,6 +78,9 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
 - **Lighthouse budgets are a floor, not a target** (CG-36): `lighthouserc.json` fails a PR below
   performance 0.85 or accessibility / best practices / SEO 0.95 (median of 3, desktop). Lower a
   budget only with the reason in the commit; the measured baseline is in the README.
+- **Uptime is checked from outside** (CG-37): `uptime.yml` runs checkfleet (pinned version, checksum
+  verified) against `monitoring/checkfleet.yml` and checks the API's `generatedAt` age. A new
+  public file (an API path, a page) gets a target there in the same PR.
 - **Docs move with the code.** Every PR updates what it changes in README.md (the page's
   features, the "How it is built" table, how to run it), this file and BACKLOG.md. A PR whose
   docs still describe the old behaviour is not done.
