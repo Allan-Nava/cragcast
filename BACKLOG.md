@@ -227,9 +227,11 @@ Asked for on 2026-10-15: unit and integration tests for everything. Baseline tha
   answers, elevation batches) against a local fake server. Done: 35 tests, tools at 97% of
   lines (floor raised from 45); they found a good url tag hidden by a bad website tag, and
   error answers and files left open. <!-- cg: prio=high size=M labels=data ver=main -->
-- [ ] **CG-49 — The pipeline as one**: an integration test that runs ConditionsExport's main
+- [x] **CG-49 — The pipeline as one**: an integration test that runs ConditionsExport's main
   against fake Open-Meteo and avalanche servers and checks every file it writes (conditions,
-  API, share pages); Calibrate and CragImporter covered the same way. <!-- cg: prio=high size=M labels=backend -->
+  API, share pages); Calibrate and CragImporter covered the same way. Done: ConditionsExportIT
+  and CalibrateIT under failsafe, the importer against a mocked repository; backend 78% → 93.6%
+  of lines in CI, floor 0.93. <!-- cg: prio=high size=M labels=backend ver=main -->
 - [ ] **CG-50 — The page's gaps**: tests for near me (granted, denied, unavailable), a failed
   data load, the controls, and the charts' pointer. <!-- cg: prio=med size=S labels=frontend -->
 - [ ] **CG-51 — End to end in a browser**: Playwright in CI on the built site with fixture

@@ -37,9 +37,15 @@ public final class Calibrate {
             System.err.println("usage: Calibrate <observations.csv> <crags.json>");
             System.exit(2);
         }
-        List<Observation> observations = parse(Files.readAllLines(Path.of(args[0])));
-        Crags crags = JsonMapper.builder().build().readValue(Files.readString(Path.of(args[1])), Crags.class);
-        OpenMeteoClient weather = OpenMeteoClient.create(HISTORICAL);
+        System.out.print(run(Path.of(args[0]), Path.of(args[1]),
+                System.getenv().getOrDefault("OPEN_METEO_HISTORICAL_URL", HISTORICAL)));
+    }
+
+    /** The replay as a report, from the files and the Historical Forecast API at {@code historicalUrl}. */
+    static String run(Path observationsCsv, Path cragsJson, String historicalUrl) throws IOException {
+        List<Observation> observations = parse(Files.readAllLines(observationsCsv));
+        Crags crags = JsonMapper.builder().build().readValue(Files.readString(cragsJson), Crags.class);
+        OpenMeteoClient weather = OpenMeteoClient.create(historicalUrl);
         ConditionsScorer scorer = new ConditionsScorer();
 
         List<Row> rows = new ArrayList<>();
@@ -50,7 +56,7 @@ public final class Calibrate {
             var result = scorer.score(c.aspect(), w);
             rows.add(new Row(o, c, w, result, Agreement.of(o.rock(), result.verdict())));
         }
-        System.out.print(report(rows));
+        return report(rows);
     }
 
     /** CSV with a header: date,crag,rock,observer,note — rock is dry, damp or wet. */

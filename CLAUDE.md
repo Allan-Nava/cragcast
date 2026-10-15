@@ -63,6 +63,10 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
 - **Free tier only.** Nothing in `deploy/` or `infra/` may exceed Oracle Always Free (A1.Flex
   2 OCPU / 12 GB in total, 200 GB of block storage). Secrets and Terraform state never get
   committed.
+- **Integration tests are `*IT` and run under failsafe** (CG-49): a class named `*IT` that
+  surefire would never run. Entry points that read the environment take it as an argument
+  (`ConditionsExport.run(args, env)`, `Calibrate.run(…, url)`) so the tests point them at
+  `FakeHttp`; keep `main` a thin wrapper.
 - **Coverage floors only go up** (CG-47): the backend's in `backend/pom.xml`
   (`coverage.floor`), the page's in `web/vite.config.ts` (`thresholds`), the tools' in
   `ci.yml` (`--fail-under`). Each is CI's figure rounded down when set; a PR that adds tests
