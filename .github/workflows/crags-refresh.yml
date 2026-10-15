@@ -1,0 +1,62 @@
+# CG-17: once a month, rebuild data/crags.json from OpenStreetMap (and the Copernicus elevation)
+# and, if anything changed, open a pull request with a readable summary. Nothing reaches main
+# without a review: a climber's edit on OSM shows up here first.
+#
+# GitHub does not run other workflows on a PR opened with GITHUB_TOKEN, so CI does not start by
+# itself on these PRs: close and reopen the PR, or push an empty commit to its branch, to run it.
+name: Crags refresh
+
+on:
+  schedule:
+    - cron: "23 5 1 * *"     # the 1st of every month, 05:23 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: crags-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rebuild data/crags.json from OpenStreetMap
+        run: |
+          cp data/crags.json "$RUNNER_TEMP/crags-before.json"
+          python3 tools/osm_crags.py
+      - name: Open a pull request if OSM changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- data/crags.json; then
+            echo "OpenStreetMap unchanged: nothing to do."
+            exit 0
+          fi
+          if gh pr list --state open --json headRefName -q '.[].headRefName' | grep -q '^crags/'; then
+            echo "A crags refresh PR is already open: review that one first."
+            exit 0
+          fi
+          branch="crags/$(date -u +%Y-%m-%d)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add data/crags.json
+          git commit -m "Crags refresh from OpenStreetMap ($(date -u +%Y-%m-%d))"
+          git push origin "$branch"
+          {
+            echo "Monthly rebuild of \`data/crags.json\` from OpenStreetMap (\`tools/osm_crags.py\`)."
+            echo
+            python3 tools/crags_diff.py "$RUNNER_TEMP/crags-before.json" data/crags.json
+            echo
+            echo "Check the new and changed crags on OSM before merging. CI does not start by itself on"
+            echo "a PR opened by a workflow: close and reopen this PR to run it."
+          } > "$RUNNER_TEMP/body.md"
+          gh pr create --base main --head "$branch" --title "Crags refresh from OpenStreetMap ($(date -u +%Y-%m-%d))" \
+            --body-file "$RUNNER_TEMP/body.md" --label data
