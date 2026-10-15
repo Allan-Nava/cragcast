@@ -15,7 +15,8 @@ import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 
-@SpringBootTest
+// No hourly refresh in tests: it would call the real Open-Meteo.
+@SpringBootTest(properties = "cragcast.refresh.enabled=false")
 @AutoConfigureMockMvc
 @Import(TestcontainersConfigurationAccess.Config.class)
 @EnabledIf(DockerAvailable.CHECK)

@@ -103,6 +103,20 @@
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<!-- data/crags.json (from OpenStreetMap) ships in the jar as classpath:data/crags.json:
+			     one list of crags for the static page and the Spring service. -->
+			<resource>
+				<directory>../data</directory>
+				<targetPath>data</targetPath>
+				<includes>
+					<include>crags.json</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

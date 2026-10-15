@@ -22,7 +22,7 @@ scores a day's weather; the crag list, the conditions endpoint and the web page 
 
 | Part | What |
 |---|---|
-| `backend/` | Java 21, Spring Boot 4, PostgreSQL, Flyway. `GET /api/crags`, `GET /api/crags/{slug}` |
+| `backend/` | Java 21, Spring Boot 4, PostgreSQL, Flyway. `GET /api/crags`, `GET /api/crags/{slug}`, `GET /api/crags/{slug}/conditions?date=`; imports the crags from `data/crags.json` at startup and refreshes the weather every hour |
 | `backend/.../conditions/ConditionsScorer.java` | the verdict: weather + aspect → go / maybe / no go, with reasons |
 | `backend/.../weather/` | Open-Meteo client and the reduction of an hourly forecast to one day: rain in the previous 48 h, and rain, max temperature and max wind from 08:00 to 18:00 |
 | `docker-compose.yml` | PostgreSQL (and the backend) for local development |
@@ -45,6 +45,7 @@ Java 21 and Docker.
 docker compose up -d db          # PostgreSQL on localhost:5432
 cd backend && ./mvnw spring-boot:run
 curl localhost:8080/api/crags
+curl localhost:8080/api/crags/osm-node-1739484761/conditions   # tomorrow's verdict
 ```
 
 Tests: `./mvnw verify`. The tests that need PostgreSQL start it with Testcontainers; on a
