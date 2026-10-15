@@ -1,4 +1,4 @@
-# The serverless cragcast: every hour, score today and tomorrow for every crag in
+# The serverless cragcast: every hour, score today, tomorrow and the day after for every crag in
 # data/crags.json with the Java scorer, write site/data/conditions.json and publish site/ on
 # GitHub Pages. Free for a public repository; no VM, no database.
 name: Pages
@@ -35,7 +35,7 @@ jobs:
         run: |
           ./mvnw -q -B -DskipTests package
           ./mvnw -q -B dependency:build-classpath -Dmdep.outputFile=target/cp.txt -Dmdep.includeScope=runtime
-      - name: Score every crag for today and tomorrow
+      - name: Score every crag for today, tomorrow and the day after
         working-directory: backend
         run: java -cp "target/classes:$(cat target/cp.txt)" io.github.allannava.cragcast.export.ConditionsExport ../data/crags.json ../site/data/conditions.json ../site/api/v1
       - run: cp assets/logo.svg site/logo.svg

@@ -237,7 +237,7 @@ fetch("data/conditions.json", { cache: "no-cache" })
       const b = document.createElement("button");
       b.type = "button";
       b.dataset.day = day;
-      b.textContent = i === 0 ? "Oggi" : i === 1 ? "Domani" : day;
+      b.textContent = ["Oggi", "Domani", "Dopodomani"][i] || day;
       b.title = new Date(day + "T12:00:00").toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
       b.addEventListener("click", () => { state.day = day; writeUrl(true); syncControls(data); });
       nav.append(b);

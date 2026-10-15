@@ -21,7 +21,8 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 
 ## The page
 
-- a map and a list of the crags with the verdict for **today** or **tomorrow** — never by
+- a map and a list of the crags with the verdict for **today**, **tomorrow** or **the day
+  after** — never by
   colour alone: go is a green circle S, maybe a yellow diamond F, no a red square N — and the
   reasons under each crag (rain, recent rain, wind, cold or heat, an unmapped aspect);
 - **search** by name or municipality, ignoring case and accents, **toggles** for go / maybe /
