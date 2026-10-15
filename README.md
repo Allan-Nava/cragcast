@@ -58,6 +58,10 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   does not change: it is about the rock, the bulletin about the approach and winter routes;
 - **installable** on a phone's home screen (a web app manifest and a service worker): it shows
   the last data offline and says how old it is when it is more than 3 hours old;
+- **live**: the footer says how long ago the data was made ("aggiornato 12 min fa") and keeps
+  it current; an open page fetches new data every 10 minutes and when the reader returns to
+  it, without a reload — the view, the open panel and the position stay; a skeleton holds the
+  list's place while the first data loads;
 - updated every hour by `.github/workflows/pages.yml`, at about :17;
 - built with React, TypeScript and Vite from `web/`, Leaflet and its cluster plugin bundled
   from npm — no third-party script at runtime.

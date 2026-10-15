@@ -160,3 +160,15 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
 .strip .day[aria-pressed="true"] { color: var(--text); border-color: var(--muted); }
 .strip .day .t { color: var(--text); }
 .strip .rain { display: inline-flex; align-items: center; gap: 2px; color: var(--text); }
+
+/* CG-41: a live page. The ghosts hold the place of the list while the data loads; crags that
+   come into the list rise in. Motion only without prefers-reduced-motion. */
+#list li.ghost { height: 108px; cursor: default; background: linear-gradient(90deg, var(--panel) 0%, #181c21 50%, var(--panel) 100%);
+                 background-size: 200% 100%; }
+.summary.ghost { height: 1.4em; width: min(420px, 70%); border-radius: 6px; background: var(--panel); }
+@media (prefers-reduced-motion: no-preference) {
+  #list li.ghost { animation: shimmer 1.4s linear infinite; }
+  @keyframes shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+  #list li:not(.ghost):not(.empty) { animation: rise .2s ease-out; }
+  @keyframes rise { from { opacity: 0; transform: translateY(4px); } }
+}

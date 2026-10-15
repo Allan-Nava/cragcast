@@ -3,7 +3,7 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { CragList } from "./CragList";
 import { DetailDialog } from "./DetailDialog";
 import { HourChart, hourReadout } from "./HourChart";
-import { updatedText } from "./Footer";
+import { ago, updatedText } from "./Footer";
 import { matching, visible } from "../App";
 import { Summary } from "./Summary";
 import { crag, hours } from "../test/fixtures";
@@ -85,7 +85,13 @@ group("footer", () => {
     expect(updatedText(t, Date.parse(t) + 2 * 3.6e6).stale).toBe(false);
     const old = updatedText(t, Date.parse(t) + 5 * 3.6e6);
     expect(old.stale).toBe(true);
-    expect(old.text).toContain("dati di 5 ore fa");
+    expect(old.text).toMatch(/^Aggiornato 5 ore fa \(.*\) — sei offline o l'aggiornamento non è riuscito\.$/);
+  });
+  it("says how long ago, in words", () => {
+    expect(ago(20_000)).toBe("adesso");
+    expect(ago(12 * 60_000)).toBe("12 min fa");
+    expect(ago(61 * 60_000)).toBe("1 ora fa");
+    expect(ago(5 * 3.6e6)).toBe("5 ore fa");
   });
 });
 

@@ -179,9 +179,11 @@ panel is a modal, and nothing moves on its own. Asked for on 2026-10-15.
   transitions that respect `prefers-reduced-motion`. Done: non-modal beside the map from
   900 px, modal sheet below with a downward swipe to close; the day buttons carry the
   verdicts and switch the page's day. <!-- cg: prio=med size=L labels=frontend ver=main -->
-- [ ] **CG-41 — A live page**: a skeleton while the data loads, "aggiornato 12 min fa" that
+- [x] **CG-41 — A live page**: a skeleton while the data loads, "aggiornato 12 min fa" that
   keeps itself current, the data reloaded every hour without a page reload, and short
-  transitions when filters change — all off under `prefers-reduced-motion`. <!-- cg: prio=med size=M labels=frontend -->
+  transitions when filters change — all off under `prefers-reduced-motion`. Done: the page
+  looks for new data every 10 minutes and on return to the tab, swapping it only when
+  `generatedAt` changed; crags entering the list rise in. <!-- cg: prio=med size=M labels=frontend ver=main -->
 
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 

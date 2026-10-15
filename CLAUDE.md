@@ -91,6 +91,10 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   (Esc handled by the component), modal `showModal()` as a bottom sheet below. Swipes never
   start on a chart (`.hchart` reads the pointer itself). Closing goes through `close()` in
   `DetailDialog` for the slide-out, and `shut()` covers browsers without `dialog.close`.
+- **An open page refreshes itself** (CG-41): `App` fetches `data/conditions.json` every
+  `REFRESH_MS` (10 min) and on `visibilitychange`, and swaps the data only when `generatedAt`
+  changed. A refresh must never reset the view, the open panel or the position, and a failed
+  one keeps the data shown — the footer's age and the 3 h notice tell the reader.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
   never in the URL, never in a request, never in storage.
 - **History lives on the `history` branch, never on main** (CG-34). `history.yml` appends the

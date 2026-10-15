@@ -32,6 +32,9 @@ export function visible(crags: Crag[], s: ViewState, distance: ((c: Crag) => num
       : (a, b) => ORDER[a.days[s.day].verdict] - ORDER[b.days[s.day].verdict] || a.name.localeCompare(b.name, "it"));
 }
 
+/** How often the page looks for new data; the data itself changes hourly, at about :20. */
+export const REFRESH_MS = 10 * 60 * 1000;
+
 export function App() {
   const [data, setData] = useState<Conditions | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -52,6 +55,33 @@ export function App() {
       .then(d => { setData(d); setView(readState(location.search, d.days)); })
       .catch((e: Error) => setError(e.message));
   }, []);
+
+  // CG-41: new data without a reload — every REFRESH_MS while the page is visible, and when the
+  // reader comes back to it. The view, the open panel and the position stay; a failed fetch
+  // keeps the data shown (the footer then says how old it is).
+  useEffect(() => {
+    if (!data) return;
+    const shown = data.generatedAt;
+    let busy = false;
+    const refresh = () => {
+      if (busy || document.visibilityState === "hidden") return;
+      busy = true;
+      fetch("data/conditions.json", { cache: "no-cache" })
+        .then(r => (r.ok ? (r.json() as Promise<Conditions>) : null))
+        .then(d => {
+          if (!d || d.generatedAt === shown) return;
+          setData(d);
+          // Past midnight a day drops out of the data: fall back as a fresh visit would.
+          setView(v => (v && !d.days.includes(v.day) ? { ...v, day: readState("", d.days).day } : v));
+          setDetail(c => (c ? d.crags.find(x => x.id === c.id) ?? null : c));
+        })
+        .catch(() => {})
+        .finally(() => { busy = false; });
+    };
+    const timer = setInterval(refresh, REFRESH_MS);
+    document.addEventListener("visibilitychange", refresh);
+    return () => { clearInterval(timer); document.removeEventListener("visibilitychange", refresh); };
+  }, [data]);
 
   useEffect(() => {
     if (!data) return;
@@ -106,7 +136,7 @@ export function App() {
   };
 
   const total = data?.crags.length ?? 0;
-  const count = notice ?? (!data ? "" : shown.length === total ? `${shown.length} falesie` : `${shown.length} di ${total} falesie`);
+  const count = notice ?? (!data ? (error ? "" : "Carico le falesie…") : shown.length === total ? `${shown.length} falesie` : `${shown.length} di ${total} falesie`);
 
   return (
     <>
@@ -125,7 +155,9 @@ export function App() {
                 onToggle={toggle}
                 onProvince={province => view && go({ ...view, province }, true)}
                 onNear={near} />
-      {data && view && <Summary crags={matching(data.crags, view)} day={view.day} index={data.days.indexOf(view.day)} />}
+      {data && view
+        ? <Summary crags={matching(data.crags, view)} day={view.day} index={data.days.indexOf(view.day)} />
+        : !error && <p className="summary ghost" aria-hidden="true" />}
       <main>
         <CragMap crags={shown} day={view?.day ?? ""} here={here} onDetail={openDetail} apiRef={mapApi}
                  hot={hot} area={view?.area ?? null} onArea={onArea} onChosen={onChosen} />
@@ -133,7 +165,9 @@ export function App() {
           ? <CragList crags={shown} day={view.day} days={data.days} onDay={day => go({ ...view, day }, true)}
                       distance={distance} chosen={chosen}
                       onOpen={c => { setChosen(c.id); mapApi.current?.open(c.id); }} onDetail={openDetail} onHot={setHot} />
-          : <ul id="list" />}
+          : <ul id="list" className={error ? undefined : "loading"} aria-busy={!error}>
+              {!error && [0, 1, 2, 3, 4].map(i => <li key={i} className="ghost" aria-hidden="true" />)}
+            </ul>}
       </main>
       <DetailDialog crag={detail} day={view?.day ?? ""} days={data?.days ?? []}
                     onDay={day => view && go({ ...view, day }, true)} onClose={() => setDetail(null)} />
