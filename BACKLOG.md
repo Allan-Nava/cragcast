@@ -164,9 +164,11 @@ API, GitHub Actions for everything that runs, git for history. No VM, no card.
 The page works but feels static: map and list live apart, comparing days takes clicks, the
 panel is a modal, and nothing moves on its own. Asked for on 2026-10-15.
 
-- [ ] **CG-38 — Map and list together**: hovering or focusing a crag in the list highlights
+- [x] **CG-38 — Map and list together**: hovering or focusing a crag in the list highlights
   its mark on the map; choosing one flies the map to it; a "Cerca in quest'area" button limits
-  the list to what the map shows. <!-- cg: prio=high size=M labels=frontend -->
+  the list to what the map shows. Done: the mark or its cluster is ringed (pulsing unless
+  reduced motion), the map flies to zoom 13 and opens the popup, the crag opened is outlined in
+  the list, and the area lives in the URL as `a=s,w,n,e`. <!-- cg: prio=high size=M labels=frontend ver=main -->
 - [ ] **CG-39 — Three days at a glance**: each crag in the list shows the three verdicts
   (today, tomorrow, the day after) with a weather symbol, and a summary above the list counts
   the day's verdicts ("Domani: 60 si va, 10 forse, 5 no"). Never by colour alone. <!-- cg: prio=high size=M labels=frontend -->

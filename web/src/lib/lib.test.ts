@@ -3,7 +3,7 @@ import { allDetails, dangerLabel, describe, detailParts, fold, osmEditUrl, place
 import type { Avalanche } from "../types";
 import { km } from "./geo";
 import { ticks } from "./ticks";
-import { readState, stateQuery } from "./state";
+import { inArea, readState, stateQuery } from "./state";
 import { crag } from "../test/fixtures";
 
 const DAYS = ["2026-10-15", "2026-10-16", "2026-10-17"];
@@ -88,4 +88,21 @@ group("avalanche", () => {
     expect(problemParts(a)).toEqual(["neve ventata", "strati deboli persistenti", "something new"]);
   });
   it("writes the zone in sentence case", () => expect(zoneName(a)).toBe("Retiche orientali"));
+});
+
+group("area (CG-38)", () => {
+  it("round-trips through the URL, rounded to about 100 m", () => {
+    const s = readState("?a=45.81234,9.21,46.1,9.6&day=2026-10-16", DAYS);
+    expect(s.area).toEqual([45.81234, 9.21, 46.1, 9.6]);
+    expect(stateQuery(s)).toBe("?a=45.812%2C9.210%2C46.100%2C9.600&day=2026-10-16");
+  });
+  it("ignores a malformed or inverted area", () => {
+    expect(readState("?a=1,2,3", DAYS).area).toBeNull();
+    expect(readState("?a=46,9,45,10", DAYS).area).toBeNull();
+    expect(readState("?a=x,9,46,10", DAYS).area).toBeNull();
+  });
+  it("tells whether a point is inside", () => {
+    expect(inArea([45, 9, 46, 10], 45.5, 9.5)).toBe(true);
+    expect(inArea([45, 9, 46, 10], 46.5, 9.5)).toBe(false);
+  });
 });

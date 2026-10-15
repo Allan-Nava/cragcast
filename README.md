@@ -34,7 +34,11 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   verdict written out (e.g. `20 · 7S·8F·5N`); zooming in or picking a crag in the list opens it;
 - **near me**: the list sorted by distance from the reader, with the km, the map centred on
   them — the position is used in the browser only, never sent and never put in the URL;
-- the view in the URL (`?q=&v=&p=&day=`): a link opens the same view, and back works;
+- **map and list together**: pointing at a crag in the list (mouse or keyboard) lights its
+  mark, or the group it is in; choosing one flies the map to it and opens it; a crag opened on
+  the map is outlined in the list; after moving the map, **"Cerca in quest'area"** limits the
+  list to what the map shows, until it is cleared;
+- the view in the URL (`?q=&v=&p=&a=&day=`): a link opens the same view, and back works;
 - per crag, where OpenStreetMap has them: grades, route length, rock, style, website; the
   **elevation** of every crag; a link to the crag on OSM and to its OSM edit view;
 - a **panel per crag** ("Dettagli"): the day's hours from 06:00 to 21:00 as two small charts —

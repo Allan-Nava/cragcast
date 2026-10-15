@@ -106,3 +106,20 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
 
 /* CG-11: the avalanche bulletin. Text only: the level is written out, never a colour. */
 .avalanche { border-left: 3px solid var(--line); padding-left: 8px; }
+
+/* CG-38: map and list together. */
+.mapwrap { position: relative; min-width: 0; }
+.mapbar { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1000;
+          display: flex; gap: 8px; pointer-events: none; }
+.mapbar button { pointer-events: auto; background: var(--panel); color: var(--text); border: 1px solid var(--go);
+                 border-radius: 999px; padding: 6px 14px; font: inherit; font-size: .9rem; cursor: pointer;
+                 box-shadow: 0 2px 8px rgba(0, 0, 0, .5); white-space: nowrap; }
+.mapbar button.clear { border-color: var(--line); }
+.hot > .mark, .hot > .cluster { box-shadow: 0 0 0 3px #f2f4f5, 0 0 0 6px var(--go); }
+@media (prefers-reduced-motion: no-preference) {
+  .hot > .mark, .hot > .cluster { animation: hot 1.2s ease-in-out infinite; }
+  @keyframes hot { 50% { box-shadow: 0 0 0 3px #f2f4f5, 0 0 0 9px rgba(16, 207, 83, .35); } }
+}
+#list li:hover, #list li:focus-visible { border-color: #3a424b; }
+#list li:focus-visible { outline: 2px solid var(--go); outline-offset: 1px; }
+#list li.chosen { border-color: var(--go); }
