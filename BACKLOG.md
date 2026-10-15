@@ -217,9 +217,11 @@ Asked for on 2026-10-15: unit and integration tests for everything. Baseline tha
 64% of lines without Docker (the Testcontainers tests run in CI only), page 88%, osm_crags.py
 67%, the other four tools 0%; no test of the whole pipeline, none in a real browser.
 
-- [ ] **CG-47 — Coverage in CI**: JaCoCo for the backend (with the Testcontainers tests),
+- [x] **CG-47 — Coverage in CI**: JaCoCo for the backend (with the Testcontainers tests),
   Vitest's v8 coverage for the page, coverage.py for the tools; each job writes its numbers
-  to the run summary and fails below a floor that only goes up. <!-- cg: prio=high size=S labels=infra -->
+  to the run summary and fails below a floor that only goes up. Done: floors set from CI's
+  figures on 2026-10-15 — backend 78% of lines, page 88% (statements 82, functions 81,
+  branches 80), tools 45%. <!-- cg: prio=high size=S labels=infra ver=main -->
 - [ ] **CG-48 — Every tool tested**: unit tests for crags_diff, history_append, aspects_todo
   and avalanche_regions, and for osm_crags' network paths (retries, empty and truncated
   answers, elevation batches) against a local fake server. <!-- cg: prio=high size=M labels=data -->

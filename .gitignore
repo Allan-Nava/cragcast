@@ -18,3 +18,8 @@ site/
 web/node_modules/
 lhci/
 .lighthouseci/
+
+# Coverage reports (CG-47): made by the test runs, never committed.
+web/coverage/
+.coverage
+htmlcov/
