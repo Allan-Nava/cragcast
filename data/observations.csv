@@ -1,0 +1,4 @@
+date,crag,rock,observer,note
+# One row per crag and day someone saw the rock first-hand. rock: dry, damp or wet.
+# crag: the id from data/crags.json (osm-node-…) or its exact name. Never a guessed row.
+# Replay: see "Calibrating the verdict" in README.md (CG-27).

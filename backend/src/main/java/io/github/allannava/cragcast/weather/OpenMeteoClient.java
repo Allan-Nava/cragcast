@@ -77,6 +77,29 @@ public class OpenMeteoClient {
         return Arrays.stream(responses).map(Response::hourly).toList();
     }
 
+    /**
+     * A past date range, for calibration against observed days: the same request against
+     * Open-Meteo's Historical Forecast API (historical-forecast-api.open-meteo.com), which stitches
+     * the first hours of past forecast runs — the same kind of data the daily verdict reads.
+     */
+    public HourlyForecast hourlyBetween(double latitude, double longitude, LocalDate start, LocalDate end) {
+        Response response = rest.get()
+                .uri(uri -> uri.path("/v1/forecast")
+                        .queryParam("latitude", latitude)
+                        .queryParam("longitude", longitude)
+                        .queryParam("hourly", "precipitation,temperature_2m,wind_speed_10m")
+                        .queryParam("start_date", start)
+                        .queryParam("end_date", end)
+                        .queryParam("timezone", TIMEZONE)
+                        .build())
+                .retrieve()
+                .body(Response.class);
+        if (response == null || response.hourly() == null) {
+            throw new IllegalStateException("Open-Meteo returned no hourly data for " + start + ".." + end);
+        }
+        return response.hourly();
+    }
+
     /** For callers outside Spring, such as the hourly export. */
     public static OpenMeteoClient create(String baseUrl) {
         return new OpenMeteoClient(RestClient.builder().baseUrl(baseUrl));

@@ -36,7 +36,8 @@ main.
 - [ ] **CG-27 — Calibrate the thresholds on real days**: a handful of days with what the rock
   was actually like at a known crag (wet, damp, dry) — observed, not guessed — checked against
   the verdict; adjust the constants in `ConditionsScorer` with a test per corrected day. Needs
-  the observations first. <!-- cg: prio=med size=M labels=backend,data -->
+  the observations first. The replay tool is done (`Calibrate`, `data/observations.csv`, the
+  Historical Forecast API); what remains is the observed days, then the adjustment. <!-- cg: prio=med size=M labels=backend,data -->
 
 ## v0.2.0 — On the internet, for free <!-- ms: phase=next -->
 

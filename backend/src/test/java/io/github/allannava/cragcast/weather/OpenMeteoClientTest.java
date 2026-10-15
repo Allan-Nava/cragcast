@@ -78,6 +78,19 @@ class OpenMeteoClientTest {
     }
 
     @Test
+    void asksForAPastDateRange() throws IOException {
+        String body = new ClassPathResource("open-meteo/milan-hourly.json").getContentAsString(StandardCharsets.UTF_8);
+        server.expect(requestTo(startsWith("https://api.open-meteo.com/v1/forecast")))
+                .andExpect(queryParam("start_date", "2026-10-13"))
+                .andExpect(queryParam("end_date", "2026-10-16"))
+                .andExpect(queryParam("timezone", "Europe/Rome"))
+                .andRespond(withSuccess(body, MediaType.APPLICATION_JSON));
+        var f = client.hourlyBetween(45.46, 9.19, LocalDate.of(2026, 10, 13), LocalDate.of(2026, 10, 16));
+        assertThat(f.time()).hasSize(96);
+        server.verify();
+    }
+
+    @Test
     void reducesTheRecordedDayToTheScorersWeather() throws IOException {
         respondWithFixture();
         var w = client.weatherFor(45.46, 9.19, LocalDate.of(2026, 10, 15));
