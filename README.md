@@ -36,7 +36,7 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 - **search** by name or municipality, ignoring case and accents, **toggles** for go / maybe /
   no go, and a **province** filter; each crag shows where it is ("Canzo (CO)");
 - crowded areas (Lecco, Val Masino) gather into one mark with the count and the split by
-  verdict written out (e.g. `20 · 7S·8F·5N`); zooming in or picking a crag in the list opens it;
+  verdict written out at a readable size, the parts at zero left out (e.g. `20 · 7S·8F·5N`, `9 · 9S`); zooming in or picking a crag in the list opens it;
 - **favourites**: a star on each crag, in the list and the panel, and a "Preferite" filter;
   kept in this browser only — never in the URL, never sent — and the page works when the
   browser refuses to store them (they then last for the visit);

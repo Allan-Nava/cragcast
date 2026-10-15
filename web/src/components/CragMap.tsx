@@ -86,7 +86,7 @@ export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area =
     }).addTo(m);
     // CG-23: crags close together gather into one mark with the count and the split written out.
     layer.current = L.markerClusterGroup({
-      maxClusterRadius: 40,
+      maxClusterRadius: 50,                       // CG-55: wider marks, so gather a little wider
       disableClusteringAtZoom: 12,
       showCoverageOnHover: false,
       iconCreateFunction(cluster) {
@@ -99,9 +99,12 @@ export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area =
         span.setAttribute("role", "img");
         span.setAttribute("aria-label", label);
         span.title = label;
+        // CG-55: the split at a readable size; parts at zero are left out of the mark ("9S", not
+        // "9S·0F·0N") and kept in the label read aloud.
+        const split = (["GO", "MAYBE", "NO_GO"] as Verdict[]).filter(v => n[v]).map(v => `${n[v]}${LETTER[v]}`).join("·");
         span.append(Object.assign(document.createElement("b"), { textContent: String(total) }),
-          Object.assign(document.createElement("small"), { textContent: `${n.GO}S·${n.MAYBE}F·${n.NO_GO}N` }));
-        return L.divIcon({ className: "", html: span, iconSize: [46, 46] });
+          Object.assign(document.createElement("small"), { textContent: split }));
+        return L.divIcon({ className: "", html: span, iconSize: [64, 50], iconAnchor: [32, 25] });
       },
     }).addTo(m);
     map.current = m;
