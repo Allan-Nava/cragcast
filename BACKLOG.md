@@ -211,6 +211,30 @@ Asked for on 2026-10-15.
   "Preferite" filter. Done: in the list and the panel; the filter is remembered too; storage
   failures leave favourites for the visit. <!-- cg: prio=med size=S labels=frontend ver=main -->
 
+## v0.8.0 — Tested end to end <!-- ms: phase=now -->
+
+Asked for on 2026-10-15: unit and integration tests for everything. Baseline that day: backend
+64% of lines without Docker (the Testcontainers tests run in CI only), page 88%, osm_crags.py
+67%, the other four tools 0%; no test of the whole pipeline, none in a real browser.
+
+- [ ] **CG-47 — Coverage in CI**: JaCoCo for the backend (with the Testcontainers tests),
+  Vitest's v8 coverage for the page, coverage.py for the tools; each job writes its numbers
+  to the run summary and fails below a floor that only goes up. <!-- cg: prio=high size=S labels=infra -->
+- [ ] **CG-48 — Every tool tested**: unit tests for crags_diff, history_append, aspects_todo
+  and avalanche_regions, and for osm_crags' network paths (retries, empty and truncated
+  answers, elevation batches) against a local fake server. <!-- cg: prio=high size=M labels=data -->
+- [ ] **CG-49 — The pipeline as one**: an integration test that runs ConditionsExport's main
+  against fake Open-Meteo and avalanche servers and checks every file it writes (conditions,
+  API, share pages); Calibrate and CragImporter covered the same way. <!-- cg: prio=high size=M labels=backend -->
+- [ ] **CG-50 — The page's gaps**: tests for near me (granted, denied, unavailable), a failed
+  data load, the controls, and the charts' pointer. <!-- cg: prio=med size=S labels=frontend -->
+- [ ] **CG-51 — End to end in a browser**: Playwright in CI on the built site with fixture
+  data — search, filters, days, the panel and the sheet, a crag link and its share page,
+  favourites, the area search after a real drag, a phone viewport, and an accessibility
+  scan. <!-- cg: prio=high size=L labels=frontend,infra -->
+- [ ] **CG-52 — Lint the plumbing**: actionlint on the workflows and shellcheck on the
+  scripts, in CI. <!-- cg: prio=low size=S labels=infra -->
+
 ## v0.7.0 — Beyond Lombardy <!-- ms: phase=later -->
 
 Moved out of v0.6.0 on 2026-10-15, when that milestone closed: a larger job, since the
