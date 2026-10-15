@@ -1,3 +1,7 @@
+> **Parked (2026-10-15).** The VM could not be created: Oracle answered "Out of host capacity"
+> for A1.Flex in eu-milan-1 on all 39 tries over two days, on a free-tier account. The network
+> was destroyed with `terraform destroy`; nothing is applied. Kept for a later attempt.
+
 # infra/oci — the Always Free VM
 
 Terraform for one Oracle Cloud **Always Free** Ampere VM in **eu-milan-1**, with its own
