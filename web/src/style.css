@@ -123,3 +123,15 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
 #list li:hover, #list li:focus-visible { border-color: #3a424b; }
 #list li:focus-visible { outline: 2px solid var(--go); outline-offset: 1px; }
 #list li.chosen { border-color: var(--go); }
+
+/* CG-39: three days at a glance. */
+.summary { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin: 0 16px 10px; font-size: .95rem; }
+.summary .count { display: inline-flex; align-items: center; }
+.strip { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.strip .day { display: inline-flex; align-items: center; gap: 5px; background: transparent; color: var(--muted);
+              border: 1px solid var(--line); border-radius: 8px; padding: 3px 8px; font: inherit; font-size: .82rem;
+              cursor: pointer; font-variant-numeric: tabular-nums; }
+.strip .day .mark.small { margin-right: 0; }
+.strip .day[aria-pressed="true"] { color: var(--text); border-color: var(--muted); }
+.strip .day .t { color: var(--text); }
+.strip .rain { display: inline-flex; align-items: center; gap: 2px; color: var(--text); }

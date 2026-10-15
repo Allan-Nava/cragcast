@@ -4,7 +4,8 @@ import { CragList } from "./CragList";
 import { DetailDialog } from "./DetailDialog";
 import { HourChart, hourReadout } from "./HourChart";
 import { updatedText } from "./Footer";
-import { visible } from "../App";
+import { matching, visible } from "../App";
+import { Summary } from "./Summary";
 import { crag, hours } from "../test/fixtures";
 import { readState } from "../lib/state";
 
@@ -127,5 +128,47 @@ group("list and map (CG-38)", () => {
     expect(onHot).toHaveBeenLastCalledWith(null);
     fireEvent.focus(li);
     expect(onHot).toHaveBeenLastCalledWith("node/1");
+  });
+});
+
+group("three days at a glance (CG-39)", () => {
+  const D = ["2026-10-15", "2026-10-16", "2026-10-17"];
+  function threeDays() {
+    const c = crag();
+    const base = c.days[DAY];
+    c.days = {
+      [D[0]]: { ...base, verdict: "NO_GO", weather: { ...base.weather, rainDuringDayMm: 6.2, maxTemperatureC: 14 } },
+      [D[1]]: { ...base, verdict: "MAYBE", weather: { ...base.weather, rainDuringDayMm: 0.2, maxTemperatureC: 16.6 } },
+      [D[2]]: { ...base, verdict: "GO", weather: { ...base.weather, rainDuringDayMm: 0, maxTemperatureC: 19 } },
+    };
+    return c;
+  }
+
+  it("shows each day's verdict, max and rain, and switches day without opening the crag", () => {
+    const onDay = vi.fn(), onOpen = vi.fn();
+    render(<CragList crags={[threeDays()]} day={D[1]} days={D} onDay={onDay} distance={null} onOpen={onOpen} onDetail={() => {}} />);
+    const buttons = screen.getAllByRole("button").filter(b => b.classList.contains("day"));
+    expect(buttons).toHaveLength(3);
+    expect(buttons[0].getAttribute("aria-label")).toMatch(/: no, massima 14 °C, pioggia 6,2 mm$/);
+    expect(buttons[1].getAttribute("aria-label")).toMatch(/: forse, massima 17 °C$/);      // 0.2 mm is not shown
+    expect(buttons[1].getAttribute("aria-pressed")).toBe("true");
+    expect(buttons[0].querySelector(".rain")!.textContent).toBe("6");
+    expect(buttons[1].querySelector(".rain")).toBeNull();
+    fireEvent.click(buttons[2]);
+    expect(onDay).toHaveBeenCalledWith(D[2]);
+    expect(onOpen).not.toHaveBeenCalled();
+  });
+
+  it("counts the day's verdicts in words", () => {
+    const c = [threeDays(), threeDays(), crag({ id: "x" })];
+    render(<Summary crags={c} day={D[1]} index={1} />);
+    expect(document.querySelector(".summary")!.textContent).toMatch(/^Domani, venerdì 16 ottobre:.*1 si va.*2 forse.*0 no$/);
+  });
+
+  it("matching keeps every verdict, so the summary ignores the verdict toggles", () => {
+    const s = readState(`?v=GO&day=${DAY}`, [DAY]);
+    const all = [crag({ id: "a", verdict: "NO_GO" }), crag({ id: "b" })];
+    expect(matching(all, s)).toHaveLength(2);
+    expect(visible(all, s, null)).toHaveLength(1);
   });
 });
