@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**27 items · 11 shipped · 16 open · 4 milestones.**
+**30 items · 11 shipped · 19 open · 5 milestones.**
 
 ## At a glance
 
@@ -13,6 +13,7 @@
 | **v0.1.0 — A verdict for one crag** | now | `#########.` 86% | 1 | 6 |
 | **v0.2.0 — On the internet, for free** | next | `###.......` 25% | 6 | 2 |
 | **v0.2.1 — UX and UI** | now | `###.......` 33% | 6 | 3 |
+| **v0.2.2 — Crag details** | now | `..........` 0% | 3 | 0 |
 | **v0.3.0 — The page climbers use** | later | `..........` 0% | 3 | 0 |
 
 ## v0.1.0 — A verdict for one crag
@@ -47,6 +48,12 @@
 - [ ] **CG-24** — Crag detail · med · M · frontend
 - [ ] **CG-26** — Duplicate crags · med · S · data
 - [ ] **CG-25** — Area of each crag · low · M · data, frontend
+
+## v0.2.2 — Crag details
+
+- [ ] **CG-28** — Crag details from OpenStreetMap · high · M · data, frontend
+- [ ] **CG-29** — Elevation of every crag · high · S · data, frontend
+- [ ] **CG-30** — Help map your crag · med · S · docs, frontend
 
 ## v0.3.0 — The page climbers use
 

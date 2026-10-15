@@ -87,6 +87,23 @@ What the live page needs so a climber finds a crag and trusts the answer in seco
 - [ ] **CG-25 — Area of each crag**: the province or valley next to the name and as a filter,
   from OpenStreetMap's administrative boundaries in `tools/osm_crags.py`. <!-- cg: prio=low size=M labels=data,frontend -->
 
+## v0.2.2 — Crag details <!-- ms: phase=now -->
+
+What a climber reads before choosing a crag — grades, height, rock, style — from open data
+only, shown where it exists and marked "not mapped" where it does not. Nothing typed from
+memory or copied from guidebook sites.
+
+- [ ] **CG-28 — Crag details from OpenStreetMap**: read the climbing tags OSM already has —
+  French grades (min, max, mean), route length, rock, style (sport, trad, multipitch, bolted),
+  number of routes, website — in `tools/osm_crags.py` into `data/crags.json`, and show them on
+  the page next to each crag. <!-- cg: prio=high size=M labels=data,frontend -->
+- [ ] **CG-29 — Elevation of every crag**: the altitude of each crag from a digital elevation
+  model through Open-Meteo's elevation API, stored in `data/crags.json` with its source, and
+  shown on the page. <!-- cg: prio=high size=S labels=data,frontend -->
+- [ ] **CG-30 — Help map your crag**: a short guide on the page and in the README, an "edit
+  on OpenStreetMap" link per crag and a GitHub issue form, so climbers add aspect, grades and
+  route length on OSM, where cragcast picks them up. <!-- cg: prio=med size=S labels=docs,frontend -->
+
 ## v0.3.0 — The page climbers use <!-- ms: phase=later -->
 
 - [ ] **CG-10 — Web page in React**: rewrite the static page (CG-15) in React with a build
