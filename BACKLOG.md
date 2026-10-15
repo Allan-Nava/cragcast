@@ -23,9 +23,9 @@ main.
   hours, max temperature, max wind); tests against a recorded response. <!-- cg: prio=high size=M labels=backend -->
 - [ ] **CG-4 — Conditions endpoint**: `GET /api/crags/{slug}/conditions?date=` returns the
   verdict and its reasons; calibrate the scorer's thresholds on a handful of real days. <!-- cg: prio=high size=M labels=backend -->
-- [ ] **CG-14 — Logo**: an SVG mark in the palette of allan-nava.github.io (green #10cf53 on
+- [x] **CG-14 — Logo**: an SVG mark in the palette of allan-nava.github.io (green #10cf53 on
   #050505) — a crag with the sun behind it — at the top of the README, plus a 1280×640 social
-  preview image for the repository. <!-- cg: prio=low size=S labels=docs -->
+  preview image for the repository. <!-- cg: prio=low size=S labels=docs ver=main -->
 - [ ] **CG-5 — Hourly refresh**: a scheduled job fetches the forecast for every crag once an
   hour and stores it, so the API never waits on Open-Meteo. <!-- cg: prio=med size=M labels=backend -->
 

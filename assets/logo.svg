@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="cragcast">
+  <title>cragcast</title>
+  <!-- Palette of allan-nava.github.io: green #10cf53 on near-black #050505. -->
+  <rect width="256" height="256" rx="56" fill="#050505"/>
+  <!-- The sun behind the crag: dry rock, a climbing day. -->
+  <circle cx="168" cy="98" r="42" fill="#10cf53"/>
+  <!-- The crag: a slab on the left rising to a steep face, a ledge, and a gentler right side. -->
+  <path d="M36 212 L36 172 L70 142 L88 150 L112 82 L140 64 L150 112 L172 124 L186 150 L220 172 L220 212 Z"
+        fill="#f2f4f5"/>
+  <!-- Strata on the face, so it reads as rock and not as a hill. -->
+  <path d="M112 82 L126 132 M140 64 L146 110 M88 150 L100 176" stroke="#050505" stroke-width="5"
+        stroke-linecap="round" fill="none" opacity="0.35"/>
+  <!-- Ground line in the brand green. -->
+  <rect x="36" y="206" width="184" height="10" rx="5" fill="#10cf53"/>
+</svg>

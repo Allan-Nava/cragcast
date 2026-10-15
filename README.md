@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/logo.svg" width="96" height="96" alt="cragcast logo"></p>
+
 # cragcast
 
 **Can I climb there tomorrow?** cragcast answers it for crags in Lombardy: for each crag,
