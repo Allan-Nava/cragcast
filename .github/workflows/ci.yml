@@ -73,7 +73,7 @@ jobs:
       # CG-47: coverage.py over the tools (the tests themselves left out); fails below the floor.
       - run: pip install coverage==7.6.1
       - run: coverage run --source=tools --omit='tools/test_*' -m unittest discover -s tools -p 'test_*.py' -v
-      - run: coverage report --show-missing --fail-under=45   # CG-47 floor, raised as tests are added
+      - run: coverage report --show-missing --fail-under=97   # CG-47 floor, raised as tests are added (CG-48: 97%)
       - name: Coverage to the run summary
         if: always()
         run: |
