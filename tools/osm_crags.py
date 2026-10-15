@@ -60,6 +60,8 @@ def overpass(query):
                 # never let that overwrite the data.
                 print(f"  {url}: empty answer; trying the next server")
             except (urllib.error.URLError, TimeoutError) as e:
+                if isinstance(e, urllib.error.HTTPError):
+                    e.close()                         # an error answer holds its connection open
                 last = e
                 print(f"  {url}: {e}; retrying")
         time.sleep(20 * (attempt + 1))
@@ -103,8 +105,10 @@ def details(tags):
         d["styles"] = styles
     if tags.get("climbing:bolted") == "yes":
         d["bolted"] = True
-    site = tags.get("website") or tags.get("url") or tags.get("contact:website")
-    if site and site.startswith(("http://", "https://")):
+    # The first web address that is one: a malformed website tag does not hide a good url tag.
+    site = next((v for v in (tags.get(k, "").strip() for k in ("website", "url", "contact:website"))
+                 if v.startswith(("http://", "https://"))), None)
+    if site:
         d["website"] = site
     return d
 

@@ -4,11 +4,12 @@
     python3 tools/crags_diff.py old.json new.json
 """
 import json
+import pathlib
 import sys
 
 
 def load(path):
-    return {c["id"]: c for c in json.load(open(path))["crags"]}
+    return {c["id"]: c for c in json.loads(pathlib.Path(path).read_text())["crags"]}
 
 
 def main(old_path, new_path):
