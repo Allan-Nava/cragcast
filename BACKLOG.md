@@ -276,6 +276,32 @@ the filters and the list. Each fix comes with an end-to-end test (CG-51) at the 
   600 px of the page or of the list's own column, smooth unless motion is reduced. It can sit
   over the last visible card's star for a moment. <!-- cg: prio=low size=S labels=frontend ver=main -->
 
+## v0.10.0 — A better frontend <!-- ms: phase=next -->
+
+Asked for on 2026-10-16, after v0.9.0. From its screenshots: a crag's card is about 180 px
+tall on a phone, and 193 of 220 cards repeat the same unmapped-aspect sentence; a popup can
+list fourteen "OSM n" links; the page is dark only; there is no order but verdict or distance
+and no grade filter; and no test notices when a change moves the layout.
+
+- [ ] **CG-58 — Compact crag cards**: the unmapped-aspect sentence becomes a short "esposizione
+  ?" tag (its meaning said once, in the help and the tag's label), "Dettagli" joins the card's
+  first row, so a phone shows about twice as many crags per screen. <!-- cg: prio=high size=M labels=frontend -->
+- [ ] **CG-63 — Visual snapshots**: Playwright screenshot comparisons of the main views (list,
+  map, panel, sheet; desktop and phone) on fixture data, so a layout change is seen in review
+  before it ships. <!-- cg: prio=high size=S labels=frontend,infra -->
+- [ ] **CG-59 — Tidy popup and panel**: the OSM links of a crag mapped many times folded into one
+  line ("mappata 14 volte su OpenStreetMap"), the weather facts set as a small table, one
+  button style across popup, panel and list. <!-- cg: prio=med size=S labels=frontend -->
+- [ ] **CG-61 — Order and grades**: order by verdict, name, distance or elevation, and a grade
+  filter (e.g. "fino al 6a", "dal 7a") over the crags whose grades OSM has, saying how many
+  have none. <!-- cg: prio=med size=M labels=frontend -->
+- [ ] **CG-60 — A light theme**: the site's light palette when the system asks for it, both
+  themes checked by the axe scan, the verdict colours re-validated on the light surface. <!-- cg: prio=med size=M labels=frontend -->
+- [ ] **CG-62 — Design tokens**: spacing, type sizes, radii and focus rings as CSS variables, used
+  everywhere, so the next change touches one place. <!-- cg: prio=low size=M labels=frontend -->
+- [ ] **CG-64 — Faster first paint**: the crag panel and its charts loaded on demand, Leaflet in
+  its own chunk; the Lighthouse performance budget raised to what that reaches. <!-- cg: prio=low size=S labels=frontend -->
+
 ## v0.7.0 — Beyond Lombardy <!-- ms: phase=later -->
 
 Moved out of v0.6.0 on 2026-10-15, when that milestone closed: a larger job, since the
