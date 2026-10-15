@@ -96,3 +96,38 @@ group("share (CG-44)", () => {
     expect(share).toHaveBeenCalledWith({ title: "Corna di Medale — cragcast", url: expect.stringContaining("c/node%2F1.html") });
   });
 });
+
+group("panel edges (CG-50)", () => {
+  it("shows the link when copying fails", async () => {
+    vi.stubGlobal("navigator", { ...navigator, share: undefined, clipboard: { writeText: () => Promise.reject(new Error("denied")) } });
+    setup(true);
+    fireEvent.click(screen.getByRole("button", { name: "Copia link" }));
+    expect((await screen.findByRole("link", { name: /c\/node%2F1\.html$/ })).getAttribute("href")).toContain("c/node%2F1.html");
+  });
+
+  it("Esc on the sheet closes it through the slide-out", () => {
+    const { dialog, onClose } = setup(false);
+    fireEvent(dialog, new Event("cancel", { cancelable: true }));
+    expect(dialog.open).toBe(false);
+    expect(onClose).toHaveBeenCalled();
+  });
+
+  it("uses the browser's own dialog methods where they exist", () => {
+    const show = vi.fn(function (this: HTMLDialogElement) { this.setAttribute("open", ""); });
+    const showModal = vi.fn(function (this: HTMLDialogElement) { this.setAttribute("open", ""); });
+    const close = vi.fn(function (this: HTMLDialogElement) { this.removeAttribute("open"); this.dispatchEvent(new Event("close")); });
+    Object.assign(HTMLDialogElement.prototype, { show, showModal, close });
+    try {
+      setup(true);
+      expect(show).toHaveBeenCalled();
+      cleanup();
+      const { dialog } = setup(false);
+      expect(showModal).toHaveBeenCalled();
+      fireEvent.click(screen.getByLabelText("Chiudi"));
+      expect(close).toHaveBeenCalled();
+      expect(dialog.open).toBe(false);
+    } finally {
+      for (const k of ["show", "showModal", "close"]) delete (HTMLDialogElement.prototype as unknown as Record<string, unknown>)[k];
+    }
+  });
+});

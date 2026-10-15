@@ -50,3 +50,57 @@ group("map (CG-38)", () => {
     expect(onArea).toHaveBeenCalledWith(null);
   });
 });
+
+group("map marks and popups (CG-50)", () => {
+  const many = () => Array.from({ length: 4 }, (_, i) => crag({
+    id: `n${i}`, name: `Parete ${i}`, verdict: i === 3 ? "NO_GO" : "GO", latitude: 45.9 + i * 0.001, longitude: 9.4 }));
+
+  it("gathers close crags into one mark that writes the split out", () => {
+    const api = createRef<MapApi | null>() as React.RefObject<MapApi | null>;
+    render(<CragMap crags={many()} day={DAY} here={null} onDetail={() => {}} apiRef={api} />);
+    const cluster = document.querySelector(".cluster")!;
+    expect(cluster.getAttribute("aria-label")).toBe("4 falesie: 3 si va, 0 forse, 1 no");
+    expect(cluster.textContent).toBe("43S·0F·1N");
+  });
+
+  it("opens a popup with everything known about the crag, and Dettagli opens the panel", async () => {
+    const onDetail = vi.fn();
+    const c = crag({ id: "p", elevation: 700, details: { gradeMax: "7a", website: "https://example.org/site" },
+                     alsoMapped: ["https://www.openstreetmap.org/way/9"], verdict: "MAYBE" });
+    c.days[DAY].avalanche = { region: "R", name: "ZONA TEST", level: 2, ratings: [], problems: [], bulletin: "https://example.org/b" };
+    const api = createRef<MapApi | null>() as React.RefObject<MapApi | null>;
+    render(<CragMap crags={[c]} day={DAY} here={null} onDetail={onDetail} apiRef={api} />);
+    await act(async () => { api.current!.open("p"); await new Promise(r => setTimeout(r, 50)); });
+    const popup = document.querySelector(".leaflet-popup-content")!;
+    expect(popup.textContent).toContain("Corna di Medale · Lecco (LC)");
+    expect(popup.textContent).toContain("Forse — parete esposta a S");
+    expect(popup.textContent).toContain("pioggia prevista durante il giorno");
+    expect(popup.textContent).toContain("quota circa 700 m · gradi fino a 7a");
+    expect(popup.textContent).toContain("Valanghe: pericolo 2 (moderato) — zona Zona test");
+    const links = [...popup.querySelectorAll("a")].map(a => [a.textContent, a.getAttribute("href")]);
+    expect(links).toEqual([["fonte OpenStreetMap", "https://www.openstreetmap.org/node/1"], ["sito", "https://example.org/site"],
+      ["OSM 2", "https://www.openstreetmap.org/way/9"], ["modifica su OpenStreetMap", "https://www.openstreetmap.org/edit?node=1"]]);
+    fireEvent.click(popup.querySelector("button.more")!);
+    expect(onDetail).toHaveBeenCalledWith(c);
+  });
+
+  it("rings the mark of the crag pointed at in the list", () => {
+    const api = createRef<MapApi | null>() as React.RefObject<MapApi | null>;
+    const one = [crag({ id: "solo", latitude: 46.5, longitude: 10.5 })];
+    const { rerender } = render(<CragMap crags={one} day={DAY} here={null} onDetail={() => {}} apiRef={api} hot={null} />);
+    rerender(<CragMap crags={one} day={DAY} here={null} onDetail={() => {}} apiRef={api} hot="solo" />);
+    expect(document.querySelector(".hot .mark")).not.toBeNull();
+    rerender(<CragMap crags={one} day={DAY} here={null} onDetail={() => {}} apiRef={api} hot={null} />);
+    expect(document.querySelector(".hot")).toBeNull();
+  });
+
+  it("shows the reader's position without offering the area search", () => {
+    const api = createRef<MapApi | null>() as React.RefObject<MapApi | null>;
+    render(<CragMap crags={[crag()]} day={DAY} here={{ lat: 45.5, lon: 9.2 }} onDetail={() => {}} apiRef={api} onArea={() => {}} />);
+    expect(document.querySelector(".me")?.getAttribute("aria-label")).toBe("La tua posizione");
+    expect(screen.queryByText("Cerca in quest'area")).toBeNull();
+  });
+
+  // A real drag needs a browser: jsdom lacks the SVG and layout Leaflet's dragging reads.
+  // The end-to-end tests (CG-51) drag the map in Chromium.
+});
