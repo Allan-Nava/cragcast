@@ -8,6 +8,8 @@ import { LABEL, LETTER, allDetails, dangerLabel, describe, osmEditUrl, place, zo
 export interface MapApi {
   /** Zoom into the cluster a crag sits in and open its popup. */
   open(id: string): void;
+  /** CG-54: the map was hidden and is shown again: measure it afresh. */
+  refresh(): void;
 }
 
 interface Props {
@@ -112,10 +114,12 @@ export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area =
       move();
     };
     apiRef.current = {
+      refresh() { m.invalidateSize(); },
       // CG-38: fly to the crag, out of its cluster (clusters break up from zoom 12), then open it.
       open(id) {
         const mk = markers.current.get(id);
         if (!mk) return;
+        m.invalidateSize();                       // the map may have just been shown (CG-54)
         const to = mk.getLatLng(), zoom = Math.max(m.getZoom(), 13);
         // After the flight the mark may still sit in a cluster being rebuilt: zoomToShowLayer
         // waits for it (or opens the cluster) before the popup.

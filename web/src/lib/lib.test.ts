@@ -118,3 +118,14 @@ group("crag link (CG-44)", () => {
     expect(cragLink("https://x.test/cragcast/", "osm-node-12")).toBe("https://x.test/cragcast/c/osm-node-12.html");
   });
 });
+
+group("map or list (CG-54)", () => {
+  it("the list by default, the map only when asked, kept in the URL", () => {
+    expect(readState("", DAYS).show).toBe("list");
+    const s = readState("?show=map&day=2026-10-16", DAYS);
+    expect(s.show).toBe("map");
+    expect(stateQuery(s)).toBe("?show=map&day=2026-10-16");
+    expect(readState("?show=nonsense", DAYS).show).toBe("list");
+    expect(stateQuery(readState("?day=2026-10-16", DAYS))).toBe("?day=2026-10-16");
+  });
+});

@@ -67,7 +67,7 @@ test.describe("the page", () => {
     await openFilters(page);
     await page.getByRole("button", { name: "Vicino a me" }).click();
     expect((await listNames(page))[0]).toBe("Muro Esempio — No");
-    await expect(page.locator(".me")).toBeVisible();
+    await expect(page.locator(".me")).toBeAttached();               // on a phone the map is behind "Mappa"
   });
 
   test("no serious or critical accessibility violations", async ({ page }) => {

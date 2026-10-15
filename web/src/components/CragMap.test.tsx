@@ -44,6 +44,11 @@ group("map (CG-38)", () => {
     expect(onChosen).toHaveBeenCalledWith("node/1");
   });
 
+  it("measures itself again when asked (a map shown after being hidden)", () => {
+    const { api } = setup();
+    expect(() => api.current!.refresh()).not.toThrow();
+  });
+
   it("shows the active area and clears it", () => {
     const { onArea } = setup([45, 9, 46, 10]);
     fireEvent.click(screen.getByLabelText("Togli il filtro dell'area"));

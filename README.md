@@ -31,6 +31,8 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 - on a phone the controls take two rows — the days, then the search and a **"Filtri"** button
   that holds the verdict, province, near-me and favourite filters and counts those on
   ("Filtri (2)"); the day's summary and the number of crags shown share one line;
+- on a phone, **"Lista | Mappa"** shows one at a time, the list first, the choice kept in the
+  URL (`show=map`); a crag chosen in the list opens on the map;
 - **search** by name or municipality, ignoring case and accents, **toggles** for go / maybe /
   no go, and a **province** filter; each crag shows where it is ("Canzo (CO)");
 - crowded areas (Lecco, Val Masino) gather into one mark with the count and the split by
@@ -49,7 +51,7 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   mark, or the group it is in; choosing one flies the map to it and opens it; a crag opened on
   the map is outlined in the list; after moving the map, **"Cerca in quest'area"** limits the
   list to what the map shows, until it is cleared;
-- the view in the URL (`?q=&v=&p=&a=&crag=&day=`): a link opens the same view, and back works;
+- the view in the URL (`?q=&v=&p=&a=&crag=&show=&day=`): a link opens the same view, and back works;
 - **a link per crag**: `?crag=<id>` opens the page on that crag's panel with the map on it;
   opening a panel puts it in the URL and back closes it; "Condividi" in the panel uses the
   phone's share sheet, or copies the link where there is none; the link shared is the crag's

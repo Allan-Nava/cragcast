@@ -36,8 +36,8 @@ test("CG-53: the controls take two rows and the filters fold behind 'Filtri'", a
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
   await expect(page.getByLabel("Provincia")).toBeHidden();
   // Header, days, search row and summary end well before the old ~600 px.
-  const map = (await page.locator("#map").boundingBox())!;
-  expect(map.y).toBeLessThan(300);
+  const view = (await page.getByRole("group", { name: "Vista" }).boundingBox())!;
+  expect(view.y).toBeLessThan(300);
   await expect(page.locator(".summary")).toContainText("6 falesie");
   await expect(page.locator(".summary .date")).toBeHidden();
 
@@ -50,4 +50,27 @@ test("CG-53: the controls take two rows and the filters fold behind 'Filtri'", a
   await expect(page.getByLabel("Provincia")).toBeHidden();
   await openFilters(page);
   await expect(page.getByLabel("Provincia")).toHaveValue("LC");          // folding keeps the filters on
+});
+
+test("CG-54: the list first; 'Mappa' shows the map; a crag chosen in the list opens on the map", async ({ page }) => {
+  await page.goto("./");
+  const group = page.getByRole("group", { name: "Vista" });
+  await expect(group.getByRole("button", { name: "Lista" })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("#map")).toBeHidden();
+  const first = (await page.locator("#list li").first().boundingBox())!;
+  expect(first.y).toBeLessThan(400);                                     // the first crag is on the first screen
+
+  await group.getByRole("button", { name: "Mappa" }).click();
+  await expect(page.locator("#map")).toBeVisible();
+  await expect(page.locator("#list")).toBeHidden();
+  await expect(page).toHaveURL(/show=map/);
+  const map = (await page.locator("#map").boundingBox())!;
+  expect(map.height).toBeGreaterThan(400);
+  await expect(page.locator(".leaflet-tile-loaded").first()).toBeVisible();   // measured, so tiles fill it
+
+  await page.goBack();
+  await expect(page.locator("#list")).toBeVisible();
+  await page.locator("#crag-osm-node-3 h2").click();
+  await expect(page.locator("#map")).toBeVisible();
+  await expect(page.locator(".leaflet-popup-content")).toContainText("Muro Esempio");
 });
