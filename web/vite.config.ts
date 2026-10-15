@@ -7,5 +7,16 @@ export default defineConfig({
   base: "./",
   plugins: [react()],
   build: { outDir: "../site", emptyOutDir: true },
-  test: { environment: "jsdom" },
+  test: {
+    environment: "jsdom",
+    // CG-47: the floors are the coverage measured when they were set, rounded down; raise them
+    // as tests are added, never lower them.
+    coverage: {
+      provider: "v8",
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: ["src/**/*.test.{ts,tsx}", "src/test/**", "src/main.tsx", "src/types.ts"],
+      reporter: ["text-summary", "json-summary"],
+      thresholds: { lines: 88, statements: 82, functions: 81, branches: 80 },
+    },
+  },
 });

@@ -27,6 +27,8 @@
 		<url/>
 	</scm>
 	<properties>
+		<!-- CG-47: the backend's line-coverage floor, raised as tests are added; never lowered. -->
+		<coverage.floor>0.60</coverage.floor>
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
@@ -121,6 +123,44 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!-- CG-47: line coverage measured on every `mvn verify`; the build fails below the floor,
+			     which is only ever raised (CI runs the Testcontainers tests, a laptop without Docker
+			     skips them and reads lower: verify there with -Djacoco.skip=true if needed). -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.13</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals><goal>prepare-agent</goal></goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>verify</phase>
+						<goals><goal>report</goal></goals>
+					</execution>
+					<execution>
+						<id>check</id>
+						<phase>verify</phase>
+						<goals><goal>check</goal></goals>
+						<configuration>
+							<rules>
+								<rule>
+									<element>BUNDLE</element>
+									<limits>
+										<limit>
+											<counter>LINE</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>${coverage.floor}</minimum>
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
