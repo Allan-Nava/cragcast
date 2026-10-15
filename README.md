@@ -128,7 +128,7 @@ and ARPA Lombardia for the avalanche levels.
 | `backend/.../export/ConditionsExport.java` | the serverless version: hourly scores to `site/data/conditions.json` and the static API in `site/api/v1/`, on GitHub Pages |
 | `web/` | the page: React 19, TypeScript, Vite, Leaflet; `npm test` runs the Vitest unit and component tests; `npm run build` writes `site/` (generated, never committed) |
 | `backend/.../export/SharePages.java` | CG-45: one static page per crag in `site/c/`, rebuilt with the data, whose Open Graph tags carry the name, the next day's verdict and weather; it forwards a browser to `?crag=<id>`. The preview image is `assets/social-preview.png`, published as `og.png` |
-| `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), the page's types, tests and build, the tools' tests (every script, network paths against a fake local server) — each with its coverage in the run summary and a floor (backend 78%, page 88% of lines, tools 97%) that fails the job below it, Terraform fmt and validate, backlog check |
+| `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), the page's types, tests and build, the tools' tests (every script, network paths against a fake local server) — each with its coverage in the run summary and a floor (backend 93%, page 88% of lines, tools 97%) that fails the job below it, Terraform fmt and validate, backlog check |
 | `.github/workflows/pages.yml` | hourly and on push: scores every crag and publishes `site/` on GitHub Pages |
 | `.github/workflows/image.yml` | on push to main: the linux/arm64 backend image to GHCR, on a native ARM runner |
 | `.github/workflows/lighthouse.yml`, `lighthouserc.json` | on PRs touching the page or the data (a bigger crag list weighs on it): builds it with real data and fails when Lighthouse (desktop, median of 3) drops below performance 0.85 or accessibility, best practices, SEO 0.95 — measured on 2026-10-15 at 0.95 / 1 / 1 / 1 |
@@ -199,7 +199,9 @@ curl localhost:8080/api/crags/osm-node-1739484761/conditions   # tomorrow's verd
 ```
 
 Tests: `./mvnw verify`. The tests that need PostgreSQL start it with Testcontainers; on a
-machine without Docker they are skipped, not failed, and CI always runs them. Coverage is
+machine without Docker they are skipped, not failed, and CI always runs them. The `*IT`
+classes run the export and the calibration whole, against fake Open-Meteo and avalanche
+servers on localhost (`FakeHttp`), in verify's integration-test phase (failsafe). Coverage is
 measured on every run (CG-47) and fails below a floor set from CI's figures — without Docker
 the backend reads lower, so there run `./mvnw verify -Djacoco.haltOnFailure=false`. The page:
 `cd web && npm run coverage`. The tools: `python3 -m unittest discover -s tools -p 'test_*.py'`.

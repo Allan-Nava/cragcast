@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**52 items · 41 shipped · 11 open · 11 milestones.**
+**52 items · 42 shipped · 10 open · 11 milestones.**
 
 ## At a glance
 
@@ -18,7 +18,7 @@
 | **v0.4.0 — Free stack** | next | `##########` 100% | 0 | 6 |
 | **v0.5.0 — A livelier page** | next | `##########` 100% | 0 | 4 |
 | **v0.6.0 — More crags, one link each** | next | `##########` 100% | 0 | 4 |
-| **v0.8.0 — Tested end to end** | now | `###.......` 33% | 4 | 2 |
+| **v0.8.0 — Tested end to end** | now | `#####.....` 50% | 3 | 3 |
 | **v0.7.0 — Beyond Lombardy** | later | `..........` 0% | 1 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
@@ -91,7 +91,7 @@
 
 - [x] **CG-47** — Coverage in CI · high · S · infra · `main`
 - [x] **CG-48** — Every tool tested · high · M · data · `main`
-- [ ] **CG-49** — The pipeline as one · high · M · backend
+- [x] **CG-49** — The pipeline as one · high · M · backend · `main`
 - [ ] **CG-50** — The page's gaps · med · S · frontend
 - [ ] **CG-51** — End to end in a browser · high · L · frontend, infra
 - [ ] **CG-52** — Lint the plumbing · low · S · infra
