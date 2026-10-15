@@ -73,8 +73,9 @@ What the live page needs so a climber finds a crag and trusts the answer in seco
 - [x] **CG-22 — Near me**: sort by distance from the browser's location, computed in the page
   and never sent anywhere; the list says how far each crag is. Done: a "Vicino a me" toggle,
   haversine km, the map centred on the reader; a second click goes back to the verdict order. <!-- cg: prio=med size=M labels=frontend ver=main -->
-- [ ] **CG-23 — Crowded areas**: cluster the markers where crags sit close together (Lecco,
-  Val Masino) and spread them as you zoom in. <!-- cg: prio=low size=S labels=frontend -->
+- [x] **CG-23 — Crowded areas**: cluster the markers where crags sit close together (Lecco,
+  Val Masino) and spread them as you zoom in. Done with Leaflet.markercluster 1.5.3 (cdnjs, SRI):
+  a neutral mark with the count and the split written out; no clustering from zoom 12. <!-- cg: prio=low size=S labels=frontend ver=main -->
 - [ ] **CG-24 — Crag detail**: a panel per crag with the day's hours of rain and temperature,
   the OSM link and a directions link. <!-- cg: prio=med size=M labels=frontend -->
 - [ ] **CG-26 — Duplicate crags**: OSM has some crags twice under one name (two "Falesia Corna
