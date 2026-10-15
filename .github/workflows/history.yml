@@ -1,0 +1,59 @@
+# CG-34: every evening, after the climbing hours, save each crag's verdict and the weather it
+# came from for today, as one CSV per month on the `history` branch (never on main). Running it
+# twice on a day replaces that day's rows. The first run creates the branch.
+name: History
+
+on:
+  schedule:
+    - cron: "30 20 * * *"     # 20:30 UTC: 22:30 in Italy in summer, 21:30 in winter
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: history
+  cancel-in-progress: false
+
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: Score today
+        working-directory: backend
+        run: |
+          ./mvnw -q -B -DskipTests package
+          ./mvnw -q -B dependency:build-classpath -Dmdep.outputFile=target/cp.txt -Dmdep.includeScope=runtime
+          java -cp "target/classes:$(cat target/cp.txt)" io.github.allannava.cragcast.export.ConditionsExport \
+            ../data/crags.json "$RUNNER_TEMP/conditions.json"
+      - name: Append to the history branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin history >/dev/null; then
+            git worktree add -B history "$RUNNER_TEMP/history" origin/history
+          else
+            git worktree add --detach "$RUNNER_TEMP/history"
+            git -C "$RUNNER_TEMP/history" checkout --orphan history
+            git -C "$RUNNER_TEMP/history" rm -rq .
+            printf '%s\n' "# cragcast history" "" \
+              "One CSV per month (\`<YYYY>/<MM>.csv\`): every crag's verdict for each day and the weather it" \
+              "came from, saved each evening by \`.github/workflows/history.yml\` on main. Columns:" \
+              "date, crag_id, crag_name, province, verdict, rain_last48h_mm, rain_day_mm, max_temp_c," \
+              "max_wind_kmh, reasons, generated_at. Data: OpenStreetMap (ODbL), Open-Meteo (CC BY 4.0)." \
+              > "$RUNNER_TEMP/history/README.md"
+          fi
+          python3 tools/history_append.py "$RUNNER_TEMP/conditions.json" "$RUNNER_TEMP/history"
+          cd "$RUNNER_TEMP/history"
+          git add -A
+          if git diff --cached --quiet; then echo "Nothing new."; exit 0; fi
+          git commit -q -m "History: $(date -u +%Y-%m-%d)"
+          git push origin history

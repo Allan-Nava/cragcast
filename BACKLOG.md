@@ -136,9 +136,10 @@ API, GitHub Actions for everything that runs, git for history. No VM, no card.
   `pages.yml`; fields only ever added. <!-- cg: prio=high size=M labels=backend,infra ver=main -->
 - [x] **CG-33 — Three days**: today, tomorrow and the day after; the forecast already covers
   them. Done: the export, the page ("Dopodomani") and the API's `days` carry three days. <!-- cg: prio=med size=S labels=backend,frontend ver=main -->
-- [ ] **CG-34 — Verdict history**: every evening, each crag's verdict and weather for the day
+- [x] **CG-34 — Verdict history**: every evening, each crag's verdict and weather for the day
   saved as CSV on a `history` branch, never on main — for "how was last week" and as data for
-  CG-27. <!-- cg: prio=med size=M labels=data,infra -->
+  CG-27. Done: `history.yml` at 20:30 UTC, `tools/history_append.py`, one CSV per month,
+  idempotent per day. <!-- cg: prio=med size=M labels=data,infra ver=main -->
 - [ ] **CG-35 — Installable page (PWA)**: a manifest and a service worker, so the page can be
   added to a phone's home screen and shows the last data offline. <!-- cg: prio=med size=M labels=frontend -->
 - [ ] **CG-36 — Lighthouse CI on pull requests**: performance and accessibility budgets that

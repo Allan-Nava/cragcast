@@ -65,6 +65,9 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   never a verdict colour for a series; every chart has a table of the same numbers.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
   never in the URL, never in a request, never in storage.
+- **History lives on the `history` branch, never on main** (CG-34). `history.yml` appends the
+  day's rows each evening through a worktree; a rerun replaces the day's rows. Its CSV columns
+  are a contract like the API: add columns at the end, never rename or drop one.
 - **`/api/v1/` is a contract** (CG-32): `ConditionsExport.api()` may add fields, never rename or
   remove one; a breaking change is a new `/api/v2/` next to v1. The README's API section lists
   every field — a new field goes there in the same PR.
