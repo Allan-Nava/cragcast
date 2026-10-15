@@ -73,6 +73,9 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   `e2e/` test; serious or critical axe findings fail CI. Locally on WSL without sudo, the
   headless shell's libraries (libnspr4, libnss3, libasound2) come from `apt-get download`
   into a folder on `LD_LIBRARY_PATH`.
+- **Workflows and scripts are linted** (CG-52): actionlint (which shellchecks every `run:`
+  block) and shellcheck on `tools/*.sh` and `infra/oci/*.sh`, in CI. A finding is fixed, or
+  silenced on its line with the reason next to it — never turned off for a whole file.
 - **Coverage floors only go up** (CG-47): the backend's in `backend/pom.xml`
   (`coverage.floor`), the page's in `web/vite.config.ts` (`thresholds`), the tools' in
   `ci.yml` (`--fail-under`). Each is CI's figure rounded down when set; a PR that adds tests
