@@ -79,7 +79,7 @@ function openDetail(crag, day, info, details) {
   const h = el("h2", { id: "d-title" });
   h.append(Object.assign(el("span", { class: "mark " + d.verdict.toLowerCase(), "aria-hidden": "true" }), { innerHTML: `<b>${LETTER[d.verdict]}</b>` }),
            ` ${crag.name} — ${LABEL[d.verdict]}`);
-  body.append(h, el("p", { class: "muted" }, [info.aspect, ...info.reasons].join(" · ")));
+  body.append(h, el("p", { class: "muted" }, [place(crag), info.aspect, ...info.reasons].filter(Boolean).join(" · ")));
   if (details.length) body.append(el("p", {}, details.join(" · ")));
 
   const hours = d.hours || [];

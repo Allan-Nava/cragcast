@@ -14,7 +14,10 @@
       "details": {
         "website": "https://www.paolo-sonja.net/retiche/bagni.html"
       },
-      "elevation": 1482
+      "elevation": 1482,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Bormio"
     },
     {
       "id": "osm-node-11872141961",
@@ -24,7 +27,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/11872141961",
       "details": {},
-      "elevation": 2251
+      "elevation": 2251,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Valfurva"
     },
     {
       "id": "osm-way-188805657",
@@ -41,7 +47,10 @@
           "multipitch"
         ]
       },
-      "elevation": 1185
+      "elevation": 1185,
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "municipality": "Cornalba"
     },
     {
       "id": "osm-node-2917721733",
@@ -61,7 +70,10 @@
           "sport"
         ]
       },
-      "elevation": 1164
+      "elevation": 1164,
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "municipality": "Castione della Presolana"
     },
     {
       "id": "osm-node-12068677095",
@@ -71,7 +83,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12068677095",
       "details": {},
-      "elevation": 1526
+      "elevation": 1526,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Valdisotto"
     },
     {
       "id": "osm-node-2888957867",
@@ -87,7 +102,10 @@
           "sport"
         ]
       },
-      "elevation": 263
+      "elevation": 263,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Lecco"
     },
     {
       "id": "osm-node-12036611131",
@@ -97,7 +115,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12036611131",
       "details": {},
-      "elevation": 1677
+      "elevation": 1677,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Sondalo"
     },
     {
       "id": "osm-node-3757612224",
@@ -107,7 +128,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/3757612224",
       "details": {},
-      "elevation": 1175
+      "elevation": 1175,
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "municipality": "Roncobello"
     },
     {
       "id": "osm-node-3757609511",
@@ -117,7 +141,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/3757609511",
       "details": {},
-      "elevation": 1222
+      "elevation": 1222,
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "municipality": "Roncobello"
     },
     {
       "id": "osm-node-3757612208",
@@ -127,7 +154,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/3757612208",
       "details": {},
-      "elevation": 1222
+      "elevation": 1222,
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "municipality": "Roncobello"
     },
     {
       "id": "osm-node-13196357817",
@@ -137,7 +167,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196357817",
       "details": {},
-      "elevation": 256
+      "elevation": 256,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Abbadia Lariana"
     },
     {
       "id": "osm-node-1796890725",
@@ -156,7 +189,10 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/relation/15056469"
       ],
-      "elevation": 557
+      "elevation": 557,
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "municipality": "Parre"
     },
     {
       "id": "osm-node-13184333761",
@@ -166,7 +202,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13184333761",
       "details": {},
-      "elevation": 1651
+      "elevation": 1651,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Bormio"
     },
     {
       "id": "osm-node-14030990596",
@@ -176,7 +215,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/14030990596",
       "details": {},
-      "elevation": 771
+      "elevation": 771,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Ballabio"
     },
     {
       "id": "osm-way-1307589396",
@@ -193,7 +235,10 @@
         ],
         "bolted": true
       },
-      "elevation": 1754
+      "elevation": 1754,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Val Masino"
     },
     {
       "id": "osm-relation-14910904",
@@ -209,7 +254,10 @@
           "sport"
         ]
       },
-      "elevation": 1539
+      "elevation": 1539,
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "municipality": "Oneta"
     },
     {
       "id": "osm-way-201832117",
@@ -219,7 +267,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/201832117",
       "details": {},
-      "elevation": 785
+      "elevation": 785,
+      "province": "Como",
+      "provinceCode": "CO",
+      "municipality": "Erba"
     },
     {
       "id": "osm-relation-19468980",
@@ -229,7 +280,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/relation/19468980",
       "details": {},
-      "elevation": 831
+      "elevation": 831,
+      "province": "Como",
+      "provinceCode": "CO",
+      "municipality": "Erba"
     },
     {
       "id": "osm-way-1262988766",
@@ -244,7 +298,10 @@
         ],
         "website": "https://luigimoro1976.wordpress.com/2019/07/13/falesia-di-alme/"
       },
-      "elevation": 234
+      "elevation": 234,
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "municipality": "Almè"
     },
     {
       "id": "osm-node-7599712466",
@@ -254,7 +311,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/7599712466",
       "details": {},
-      "elevation": 262
+      "elevation": 262,
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "municipality": "Calusco d'Adda"
     },
     {
       "id": "osm-node-14122790227",
@@ -266,7 +326,10 @@
       "details": {
         "website": "https://larioclimb.paolo-sonja.net/falesie_lecco/civate/index.html"
       },
-      "elevation": 460
+      "elevation": 460,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Civate"
     },
     {
       "id": "osm-relation-14906312",
@@ -284,7 +347,10 @@
           "multipitch"
         ]
       },
-      "elevation": 453
+      "elevation": 453,
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "municipality": "Grone"
     },
     {
       "id": "osm-node-2433844045",
@@ -294,7 +360,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/2433844045",
       "details": {},
-      "elevation": 274
+      "elevation": 274,
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "municipality": "Villanuova sul Clisi"
     },
     {
       "id": "osm-node-13196357821",
@@ -304,7 +373,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196357821",
       "details": {},
-      "elevation": 295
+      "elevation": 295,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Abbadia Lariana"
     },
     {
       "id": "osm-node-12151154725",
@@ -314,7 +386,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12151154725",
       "details": {},
-      "elevation": 2193
+      "elevation": 2193,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Valfurva"
     },
     {
       "id": "osm-node-13184333763",
@@ -324,7 +399,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13184333763",
       "details": {},
-      "elevation": 1520
+      "elevation": 1520,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Valdidentro"
     },
     {
       "id": "osm-node-13184333762",
@@ -334,7 +412,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13184333762",
       "details": {},
-      "elevation": 1460
+      "elevation": 1460,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Valdidentro"
     },
     {
       "id": "osm-node-13196357819",
@@ -344,7 +425,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196357819",
       "details": {},
-      "elevation": 338
+      "elevation": 338,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Abbadia Lariana"
     },
     {
       "id": "osm-node-13184333733",
@@ -354,7 +438,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13184333733",
       "details": {},
-      "elevation": 1057
+      "elevation": 1057,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Sondalo"
     },
     {
       "id": "osm-node-13196357820",
@@ -364,7 +451,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196357820",
       "details": {},
-      "elevation": 400
+      "elevation": 400,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Abbadia Lariana"
     },
     {
       "id": "osm-relation-16068105",
@@ -374,7 +464,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/relation/16068105",
       "details": {},
-      "elevation": 432
+      "elevation": 432,
+      "province": "Como",
+      "provinceCode": "CO",
+      "municipality": "Como"
     },
     {
       "id": "osm-node-13196357818",
@@ -384,7 +477,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196357818",
       "details": {},
-      "elevation": 338
+      "elevation": 338,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Abbadia Lariana"
     },
     {
       "id": "osm-node-13196338094",
@@ -394,7 +490,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196338094",
       "details": {},
-      "elevation": 853
+      "elevation": 853,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Barzio"
     },
     {
       "id": "osm-node-8086095920",
@@ -404,7 +503,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/8086095920",
       "details": {},
-      "elevation": 255
+      "elevation": 255,
+      "province": "Varese",
+      "provinceCode": "VA",
+      "municipality": "Leggiuno"
     },
     {
       "id": "osm-node-13245785600",
@@ -414,7 +516,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13245785600",
       "details": {},
-      "elevation": 261
+      "elevation": 261,
+      "province": "Varese",
+      "provinceCode": "VA",
+      "municipality": "Leggiuno"
     },
     {
       "id": "osm-node-13196399311",
@@ -424,7 +529,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196399311",
       "details": {},
-      "elevation": 895
+      "elevation": 895,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Barzio"
     },
     {
       "id": "osm-node-13184333734",
@@ -434,7 +542,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13184333734",
       "details": {},
-      "elevation": 1013
+      "elevation": 1013,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Sondalo"
     },
     {
       "id": "osm-node-1741194816",
@@ -444,7 +555,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/1741194816",
       "details": {},
-      "elevation": 595
+      "elevation": 595,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Introbio"
     },
     {
       "id": "osm-node-14041775583",
@@ -454,7 +568,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/14041775583",
       "details": {},
-      "elevation": 1033
+      "elevation": 1033,
+      "province": "Varese",
+      "provinceCode": "VA",
+      "municipality": "Varese"
     },
     {
       "id": "osm-way-1385623007",
@@ -468,7 +585,10 @@
           "sport"
         ]
       },
-      "elevation": 259
+      "elevation": 259,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Varenna"
     },
     {
       "id": "osm-node-11171764068",
@@ -484,7 +604,10 @@
           "multipitch"
         ]
       },
-      "elevation": 1124
+      "elevation": 1124,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Val Masino"
     },
     {
       "id": "osm-way-1502439088",
@@ -500,7 +623,10 @@
           "sport"
         ]
       },
-      "elevation": 664
+      "elevation": 664,
+      "province": "Como",
+      "provinceCode": "CO",
+      "municipality": "Valbrona"
     },
     {
       "id": "osm-way-837046156",
@@ -514,7 +640,10 @@
           "sport"
         ]
       },
-      "elevation": 747
+      "elevation": 747,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Ballabio"
     },
     {
       "id": "osm-node-13196399312",
@@ -524,7 +653,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196399312",
       "details": {},
-      "elevation": 841
+      "elevation": 841,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Introbio"
     },
     {
       "id": "osm-node-11859077873",
@@ -534,7 +666,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/11859077873",
       "details": {},
-      "elevation": 646
+      "elevation": 646,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Introbio"
     },
     {
       "id": "osm-node-1741194869",
@@ -544,7 +679,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/1741194869",
       "details": {},
-      "elevation": 581
+      "elevation": 581,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Introbio"
     },
     {
       "id": "osm-node-9429027374",
@@ -554,7 +692,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/9429027374",
       "details": {},
-      "elevation": 387
+      "elevation": 387,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Piuro"
     },
     {
       "id": "osm-node-9176169531",
@@ -564,7 +705,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/9176169531",
       "details": {},
-      "elevation": 646
+      "elevation": 646,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Introbio"
     },
     {
       "id": "osm-node-4641789089",
@@ -574,7 +718,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/4641789089",
       "details": {},
-      "elevation": 595
+      "elevation": 595,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Introbio"
     },
     {
       "id": "osm-node-3452238619",
@@ -591,7 +738,10 @@
         ],
         "bolted": true
       },
-      "elevation": 936
+      "elevation": 936,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Barzio"
     },
     {
       "id": "osm-node-7273907091",
@@ -601,7 +751,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/7273907091",
       "details": {},
-      "elevation": 841
+      "elevation": 841,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Introbio"
     },
     {
       "id": "osm-node-11662207868",
@@ -611,7 +764,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/11662207868",
       "details": {},
-      "elevation": 439
+      "elevation": 439,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Chiavenna"
     },
     {
       "id": "osm-node-4409711985",
@@ -621,7 +777,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/4409711985",
       "details": {},
-      "elevation": 836
+      "elevation": 836,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Introbio"
     },
     {
       "id": "osm-node-12255821505",
@@ -642,7 +801,10 @@
         ],
         "website": "https://www.campioneunivela.it/de/trips/climbing/"
       },
-      "elevation": 345
+      "elevation": 345,
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "municipality": "Tremosine sul Garda"
     },
     {
       "id": "osm-node-1739484761",
@@ -658,7 +820,10 @@
           "sport"
         ]
       },
-      "elevation": 401
+      "elevation": 401,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Abbadia Lariana"
     },
     {
       "id": "osm-node-1741194868",
@@ -668,7 +833,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/1741194868",
       "details": {},
-      "elevation": 697
+      "elevation": 697,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Pasturo"
     },
     {
       "id": "osm-node-9536753691",
@@ -680,7 +848,10 @@
       "details": {
         "website": "https://www.campingacquafraggia.com/Marmittegiganti.htm"
       },
-      "elevation": 388
+      "elevation": 388,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Chiavenna"
     },
     {
       "id": "osm-node-11872141963",
@@ -690,7 +861,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/11872141963",
       "details": {},
-      "elevation": 2160
+      "elevation": 2160,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Valfurva"
     },
     {
       "id": "osm-node-12151154724",
@@ -700,7 +874,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12151154724",
       "details": {},
-      "elevation": 2140
+      "elevation": 2140,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Valfurva"
     },
     {
       "id": "osm-way-201200731",
@@ -710,7 +887,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/201200731",
       "details": {},
-      "elevation": 749
+      "elevation": 749,
+      "province": "Como",
+      "provinceCode": "CO",
+      "municipality": "Erba"
     },
     {
       "id": "osm-way-751262115",
@@ -720,7 +900,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/751262115",
       "details": {},
-      "elevation": 730
+      "elevation": 730,
+      "province": "Como",
+      "provinceCode": "CO",
+      "municipality": "Erba"
     },
     {
       "id": "osm-node-4641745891",
@@ -730,7 +913,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/4641745891",
       "details": {},
-      "elevation": 581
+      "elevation": 581,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Introbio"
     },
     {
       "id": "osm-way-201200730",
@@ -740,7 +926,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/201200730",
       "details": {},
-      "elevation": 700
+      "elevation": 700,
+      "province": "Como",
+      "provinceCode": "CO",
+      "municipality": "Ponte Lambro"
     },
     {
       "id": "osm-way-297774960",
@@ -750,7 +939,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/297774960",
       "details": {},
-      "elevation": 682
+      "elevation": 682,
+      "province": "Como",
+      "provinceCode": "CO",
+      "municipality": "Erba"
     },
     {
       "id": "osm-node-1886634638",
@@ -765,7 +957,10 @@
           "trad"
         ]
       },
-      "elevation": 911
+      "elevation": 911,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Val Masino"
     },
     {
       "id": "osm-node-13196338093",
@@ -775,7 +970,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196338093",
       "details": {},
-      "elevation": 977
+      "elevation": 977,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Barzio"
     },
     {
       "id": "osm-node-12304593894",
@@ -785,7 +983,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12304593894",
       "details": {},
-      "elevation": 389
+      "elevation": 389,
+      "province": "Como",
+      "provinceCode": "CO",
+      "municipality": "Canzo"
     },
     {
       "id": "osm-node-12304593897",
@@ -795,7 +996,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12304593897",
       "details": {},
-      "elevation": 429
+      "elevation": 429,
+      "province": "Como",
+      "provinceCode": "CO",
+      "municipality": "Asso"
     },
     {
       "id": "osm-node-13196381745",
@@ -805,7 +1009,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196381745",
       "details": {},
-      "elevation": 977
+      "elevation": 977,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Barzio"
     },
     {
       "id": "osm-node-4541277052",
@@ -815,7 +1022,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/4541277052",
       "details": {},
-      "elevation": 915
+      "elevation": 915,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Barzio"
     },
     {
       "id": "osm-node-14219981089",
@@ -825,7 +1035,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/14219981089",
       "details": {},
-      "elevation": 1509
+      "elevation": 1509,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Mandello del Lario"
     },
     {
       "id": "osm-node-14041775584",
@@ -835,7 +1048,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/14041775584",
       "details": {},
-      "elevation": 1036
+      "elevation": 1036,
+      "province": "Varese",
+      "provinceCode": "VA",
+      "municipality": "Varese"
     },
     {
       "id": "osm-node-2888957866",
@@ -850,7 +1066,10 @@
           "multipitch"
         ]
       },
-      "elevation": 337
+      "elevation": 337,
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "municipality": "Abbadia Lariana"
     },
     {
       "id": "osm-node-6758871493",
@@ -860,7 +1079,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/6758871493",
       "details": {},
-      "elevation": 1267
+      "elevation": 1267,
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "municipality": "Aviatico"
     },
     {
       "id": "osm-node-13184333732",
@@ -870,7 +1092,10 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13184333732",
       "details": {},
-      "elevation": 817
+      "elevation": 817,
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "municipality": "Grosio"
     }
   ]
 }

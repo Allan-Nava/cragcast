@@ -84,9 +84,11 @@ What the live page needs so a climber finds a crag and trusts the answer in seco
   De Par"): merge entries with the same name in `tools/osm_crags.py`, keeping every OSM link.
   Done at under 50 m, not ~500: the only other same-name pair is two "Settore Destro" 134 m
   apart, a generic name that may be two crags — left apart (see CG-25). 76 → 75 crags. <!-- cg: prio=med size=S labels=data ver=main -->
-- [ ] **CG-25 — Area of each crag**: the province or valley next to the name and as a filter,
+- [x] **CG-25 — Area of each crag**: the province or valley next to the name and as a filter,
   from OpenStreetMap's administrative boundaries in `tools/osm_crags.py`. Also tells apart sectors
-  with a generic name (two "Settore Destro"). <!-- cg: prio=low size=M labels=data,frontend -->
+  with a generic name (two "Settore Destro"). Done: municipality and province for all 75 crags
+  (6 provinces), shown as "Canzo (CO)", searchable, and a province filter in the URL (`p=`).
+  Valleys are not reliably mapped on OSM, so the area is administrative. <!-- cg: prio=low size=M labels=data,frontend ver=main -->
 
 ## v0.2.2 — Crag details <!-- ms: phase=now -->
 

@@ -23,6 +23,10 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   Duplicates (CG-26): same name and under 50 m apart is one crag mapped twice — folded, the node
   kept (stable id), the others' links in `alsoMapped`. Same name farther apart stays separate:
   generic sector names ("Settore Destro") may belong to different crags.
+- **Overpass is often busy** (502/500, or a mirror answering empty). `osm_crags.py` retries
+  each query on two servers and refuses an empty answer, so a failed run leaves
+  `data/crags.json` as it was; the monthly refresh then simply fails — run it again by hand
+  (`workflow_dispatch`). Never hand-edit the file to work around it.
 - **The crag list changes only through a reviewed PR.** `crags-refresh.yml` rebuilds
   `data/crags.json` on the 1st of each month and opens a PR (branch `crags/<date>`, summary from
   `tools/crags_diff.py`); it never pushes to main, and skips while such a PR is open. GitHub runs

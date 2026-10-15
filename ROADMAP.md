@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**37 items · 21 shipped · 16 open · 7 milestones.**
+**37 items · 22 shipped · 15 open · 7 milestones.**
 
 ## At a glance
 
@@ -12,7 +12,7 @@
 |---|---|---|---|---|
 | **v0.1.0 — A verdict for one crag** | now | `#########.` 86% | 1 | 6 |
 | **v0.2.0 — On the internet, for free** | next | `########..` 75% | 1 | 3 |
-| **v0.2.1 — UX and UI** | now | `#########.` 89% | 1 | 8 |
+| **v0.2.1 — UX and UI** | now | `##########` 100% | 0 | 9 |
 | **v0.2.2 — Crag details** | now | `##########` 100% | 0 | 4 |
 | **v0.3.0 — The page climbers use** | later | `..........` 0% | 3 | 0 |
 | **v0.4.0 — Free stack** | next | `..........` 0% | 6 | 0 |
@@ -45,7 +45,7 @@
 - [x] **CG-23** — Crowded areas · low · S · frontend · `main`
 - [x] **CG-24** — Crag detail · med · M · frontend · `main`
 - [x] **CG-26** — Duplicate crags · med · S · data · `main`
-- [ ] **CG-25** — Area of each crag · low · M · data, frontend
+- [x] **CG-25** — Area of each crag · low · M · data, frontend · `main`
 
 ## v0.2.2 — Crag details
 
