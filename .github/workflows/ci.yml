@@ -57,6 +57,7 @@ jobs:
       - name: Coverage to the run summary
         if: always()
         run: |
+          # shellcheck disable=SC2016  # ${k} is a JavaScript template literal, not shell
           node -e 'const t=require("./coverage/coverage-summary.json").total;
             console.log("### Page coverage\n\n| | % |\n|---|---|\n" +
             ["lines","statements","functions","branches"].map(k=>`| ${k} | ${t[k].pct} |`).join("\n"))' | tee -a "$GITHUB_STEP_SUMMARY"
@@ -104,6 +105,24 @@ jobs:
         if: always()
         run: |
           echo "### Tools coverage: **$(coverage report --format=total)%**" | tee -a "$GITHUB_STEP_SUMMARY"
+
+  # CG-52: the plumbing — actionlint on the workflows (it runs shellcheck on every run: block)
+  # and shellcheck on the scripts.
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: actionlint 1.7.12
+        run: |
+          v=1.7.12; f="actionlint_${v}_linux_amd64.tar.gz"
+          cd "$RUNNER_TEMP"
+          curl -sSfLO "https://github.com/rhysd/actionlint/releases/download/v${v}/${f}"
+          curl -sSfLO "https://github.com/rhysd/actionlint/releases/download/v${v}/actionlint_${v}_checksums.txt"
+          grep " ${f}\$" "actionlint_${v}_checksums.txt" | sha256sum -c -
+          tar xzf "$f" actionlint
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
+      - run: actionlint -oneline
+      - run: shellcheck tools/*.sh infra/oci/*.sh
 
   terraform:
     runs-on: ubuntu-latest

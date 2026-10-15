@@ -242,8 +242,10 @@ Asked for on 2026-10-15: unit and integration tests for everything. Baseline tha
   scan. Done: Playwright 1.63 with 22 tests on desktop and a Pixel 7; the axe scan found the
   day buttons' accessible name did not start with their visible text (WCAG 2.5.3), now fixed;
   the share page's redirect stays covered by the Java tests of its content. <!-- cg: prio=high size=L labels=frontend,infra ver=main -->
-- [ ] **CG-52 — Lint the plumbing**: actionlint on the workflows and shellcheck on the
-  scripts, in CI. <!-- cg: prio=low size=S labels=infra -->
+- [x] **CG-52 — Lint the plumbing**: actionlint on the workflows and shellcheck on the
+  scripts, in CI. Done: actionlint 1.7.12 (checksum-verified) and shellcheck; they found a `cd`
+  in retry-apply.sh that could fail silently, an unused variable in uptime.yml, and a
+  JavaScript template in single quotes, silenced on its line. <!-- cg: prio=low size=S labels=infra ver=main -->
 
 ## v0.7.0 — Beyond Lombardy <!-- ms: phase=later -->
 

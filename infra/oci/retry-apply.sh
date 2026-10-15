@@ -5,7 +5,7 @@
 #   ./retry-apply.sh            # every 120 s, at most 360 attempts (12 hours)
 #   INTERVAL=300 ./retry-apply.sh
 set -uo pipefail
-cd "$(dirname "$0")"
+cd "$(dirname "$0")" || exit 1
 INTERVAL="${INTERVAL:-120}"
 MAX="${MAX:-360}"
 log=$(mktemp)

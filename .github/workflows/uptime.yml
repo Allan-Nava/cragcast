@@ -31,7 +31,8 @@ jobs:
           echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
       - name: Page, data, API and TLS answer
         run: |
-          checkfleet check all --config monitoring/checkfleet.yml --output markdown > report.md || status=$?
+          # This run only writes the report; the run below, with --exit-on bad, decides the job.
+          checkfleet check all --config monitoring/checkfleet.yml --output markdown > report.md || true
           cat report.md >> "$GITHUB_STEP_SUMMARY"
           checkfleet check all --config monitoring/checkfleet.yml --exit-on bad
       - name: The data is fresh
