@@ -39,6 +39,14 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   the arrow keys, the same hours as a table, and directions (Google Maps, OSM);
 - updated every hour by `.github/workflows/pages.yml`, at about :17.
 
+## History
+
+Every evening the verdict of the day and the weather behind it are saved for every crag, one
+CSV per month, on the [`history`](https://github.com/Allan-Nava/cragcast/tree/history) branch:
+`date, crag_id, crag_name, province, verdict, rain_last48h_mm, rain_day_mm, max_temp_c,
+max_wind_kmh, reasons, generated_at`. It answers "how was last week at this crag" and is the
+data the calibration (CG-27) needs next to the observations.
+
 ## API
 
 The same data as the page, as static JSON on GitHub Pages — rebuilt every hour, free to call,
@@ -78,6 +86,7 @@ Credit OpenStreetMap (ODbL), Open-Meteo (CC BY 4.0) and Copernicus when you show
 | `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), Terraform fmt and validate, backlog check |
 | `.github/workflows/pages.yml` | hourly and on push: scores every crag and publishes `site/` on GitHub Pages |
 | `.github/workflows/image.yml` | on push to main: the linux/arm64 backend image to GHCR, on a native ARM runner |
+| `.github/workflows/history.yml`, `tools/history_append.py` | every evening: today's verdict and weather for every crag, one CSV per month on the [`history`](https://github.com/Allan-Nava/cragcast/tree/history) branch, never on main |
 | `.github/workflows/crags-refresh.yml` | on the 1st of every month: rebuilds `data/crags.json` from OSM and opens a PR with the changes (`tools/crags_diff.py`) when there are any |
 | `.github/workflows/backlog-issues.yml` | on push to main touching `BACKLOG.md`: issues and milestones follow the backlog |
 | `.github/ISSUE_TEMPLATE/crag-data.yml` | the form to report a crag's aspect, grades or length for someone to map on OSM |
