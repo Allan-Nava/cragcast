@@ -124,8 +124,11 @@ memory or copied from guidebook sites.
   to the weather. Done: ARPA Lombardia's bulletin through the EAWS (CAAML v6 JSON), placed by
   the EAWS micro-regions; level, bands and problems in the popup and the panel, 44 of 75 crags
   covered; the verdict is unchanged. <!-- cg: prio=low size=M labels=data,backend ver=main -->
-- [ ] **CG-12 — Write-up**: a post on allan-nava.github.io and on LinkedIn on how the verdict
-  is computed and how it runs on Oracle's free tier. <!-- cg: prio=low size=S labels=docs -->
+- [x] **CG-12 — Write-up**: a post on allan-nava.github.io and on LinkedIn on how the verdict
+  is computed and how it runs on Oracle's free tier. Done: the post (Italian) at
+  allan-nava.github.io/blog/2026/10/15/allan-nava-cragcast.html — the verdict's thresholds, the
+  Oracle VM that never got capacity, and how it runs hourly on GitHub Pages instead; the
+  LinkedIn text lives in the cv repo (`linkedin/post-cragcast.txt`). <!-- cg: prio=low size=S labels=docs ver=main -->
 
 ## v0.4.0 — Free stack <!-- ms: phase=next -->
 

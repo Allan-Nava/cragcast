@@ -14,6 +14,9 @@ code, with the thresholds in one place so they can be argued with.
 **Live:** [allan-nava.github.io/cragcast](https://allan-nava.github.io/cragcast/) — 75 crags,
 updated every hour by a GitHub Action, no server.
 
+**How it works, in Italian:** [cragcast: si arrampica domani?](https://allan-nava.github.io/blog/2026/10/15/allan-nava-cragcast.html)
+— the verdict's rules, the Oracle VM that never came, and the free stack it runs on instead.
+
 **Status:** the page is live on GitHub Pages and is the way cragcast runs. The Spring service is
 complete for one verdict per crag and day but not hosted: the Oracle Always Free VM could not be
 created (no A1 capacity in Milan), so that path is parked. What comes next is in the
