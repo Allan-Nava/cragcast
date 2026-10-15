@@ -159,6 +159,24 @@ API, GitHub Actions for everything that runs, git for history. No VM, no card.
   (http, certs) on the page, data, API and TLS, plus a freshness step on `generatedAt` (150
   min); checkfleet has no JSON-field age check, so the step lives in the workflow. <!-- cg: prio=low size=S labels=infra ver=main -->
 
+## v0.5.0 — A livelier page <!-- ms: phase=next -->
+
+The page works but feels static: map and list live apart, comparing days takes clicks, the
+panel is a modal, and nothing moves on its own. Asked for on 2026-10-15.
+
+- [ ] **CG-38 — Map and list together**: hovering or focusing a crag in the list highlights
+  its mark on the map; choosing one flies the map to it; a "Cerca in quest'area" button limits
+  the list to what the map shows. <!-- cg: prio=high size=M labels=frontend -->
+- [ ] **CG-39 — Three days at a glance**: each crag in the list shows the three verdicts
+  (today, tomorrow, the day after) with a weather symbol, and a summary above the list counts
+  the day's verdicts ("Domani: 60 si va, 10 forse, 5 no"). Never by colour alone. <!-- cg: prio=high size=M labels=frontend -->
+- [ ] **CG-40 — Panel as a sheet**: the crag's panel becomes a side panel on desktop and a
+  bottom sheet on phones, with the day switchable inside it (buttons and swipe) and gentle
+  transitions that respect `prefers-reduced-motion`. <!-- cg: prio=med size=L labels=frontend -->
+- [ ] **CG-41 — A live page**: a skeleton while the data loads, "aggiornato 12 min fa" that
+  keeps itself current, the data reloaded every hour without a page reload, and short
+  transitions when filters change — all off under `prefers-reduced-motion`. <!-- cg: prio=med size=M labels=frontend -->
+
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 
 Parked on 2026-10-15: Oracle Cloud's Always Free A1 VM could not be created in Milan (39 tries

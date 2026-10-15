@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**37 items · 31 shipped · 6 open · 7 milestones.**
+**41 items · 31 shipped · 10 open · 8 milestones.**
 
 ## At a glance
 
@@ -16,6 +16,7 @@
 | **v0.2.2 — Crag details** | now | `##########` 100% | 0 | 4 |
 | **v0.3.0 — The page climbers use** | later | `##########` 100% | 0 | 3 |
 | **v0.4.0 — Free stack** | next | `##########` 100% | 0 | 6 |
+| **v0.5.0 — A livelier page** | next | `..........` 0% | 4 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
 ## v0.1.0 — A verdict for one crag
@@ -68,6 +69,13 @@
 - [x] **CG-35** — Installable page (PWA) · med · M · frontend · `main`
 - [x] **CG-36** — Lighthouse CI on pull requests · low · S · infra, frontend · `main`
 - [x] **CG-37** — Uptime with checkfleet · low · S · infra · `main`
+
+## v0.5.0 — A livelier page
+
+- [ ] **CG-38** — Map and list together · high · M · frontend
+- [ ] **CG-39** — Three days at a glance · high · M · frontend
+- [ ] **CG-40** — Panel as a sheet · med · L · frontend
+- [ ] **CG-41** — A live page · med · M · frontend
 
 ## v1.0.0 — Self-hosted on a VM (parked)
 
