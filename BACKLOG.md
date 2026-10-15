@@ -116,6 +116,26 @@ memory or copied from guidebook sites.
 - [ ] **CG-12 — Write-up**: a post on allan-nava.github.io and on LinkedIn on how the verdict
   is computed and how it runs on Oracle's free tier. <!-- cg: prio=low size=S labels=docs -->
 
+## v0.4.0 — Free stack <!-- ms: phase=next -->
+
+cragcast as a complete product on free services only: GitHub Pages for the page and a static
+API, GitHub Actions for everything that runs, git for history. No VM, no card.
+
+- [ ] **CG-32 — Static API on GitHub Pages**: `/api/v1/crags.json` and one file per crag, with
+  the verdicts, the weather behind them and the crag's details, rebuilt every hour and
+  documented in the README — a backend anyone can call, with no server. <!-- cg: prio=high size=M labels=backend,infra -->
+- [ ] **CG-33 — Three days**: today, tomorrow and the day after; the forecast already covers
+  them. <!-- cg: prio=med size=S labels=backend,frontend -->
+- [ ] **CG-34 — Verdict history**: every evening, each crag's verdict and weather for the day
+  saved as CSV on a `history` branch, never on main — for "how was last week" and as data for
+  CG-27. <!-- cg: prio=med size=M labels=data,infra -->
+- [ ] **CG-35 — Installable page (PWA)**: a manifest and a service worker, so the page can be
+  added to a phone's home screen and shows the last data offline. <!-- cg: prio=med size=M labels=frontend -->
+- [ ] **CG-36 — Lighthouse CI on pull requests**: performance and accessibility budgets that
+  fail the PR when they drop. <!-- cg: prio=low size=S labels=infra,frontend -->
+- [ ] **CG-37 — Uptime with checkfleet**: an hourly check of the page and of the data's age,
+  with Allan's own checkfleet, that fails loudly when the JSON is stale. <!-- cg: prio=low size=S labels=infra -->
+
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 
 Parked on 2026-10-15: Oracle Cloud's Always Free A1 VM could not be created in Milan (39 tries

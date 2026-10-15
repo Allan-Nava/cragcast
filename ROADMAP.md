@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**31 items · 17 shipped · 14 open · 6 milestones.**
+**37 items · 17 shipped · 20 open · 7 milestones.**
 
 ## At a glance
 
@@ -15,6 +15,7 @@
 | **v0.2.1 — UX and UI** | now | `####......` 44% | 5 | 4 |
 | **v0.2.2 — Crag details** | now | `##########` 100% | 0 | 4 |
 | **v0.3.0 — The page climbers use** | later | `..........` 0% | 3 | 0 |
+| **v0.4.0 — Free stack** | next | `..........` 0% | 6 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
 ## v0.1.0 — A verdict for one crag
@@ -58,6 +59,15 @@
 - [ ] **CG-10** — Web page in React · med · L · frontend
 - [ ] **CG-11** — Avalanche bulletin · low · M · data, backend
 - [ ] **CG-12** — Write-up · low · S · docs
+
+## v0.4.0 — Free stack
+
+- [ ] **CG-32** — Static API on GitHub Pages · high · M · backend, infra
+- [ ] **CG-33** — Three days · med · S · backend, frontend
+- [ ] **CG-34** — Verdict history · med · M · data, infra
+- [ ] **CG-35** — Installable page (PWA) · med · M · frontend
+- [ ] **CG-36** — Lighthouse CI on pull requests · low · S · infra, frontend
+- [ ] **CG-37** — Uptime with checkfleet · low · S · infra
 
 ## v1.0.0 — Self-hosted on a VM (parked)
 
