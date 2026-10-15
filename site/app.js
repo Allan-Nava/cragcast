@@ -2,6 +2,20 @@
 // and draws one dot per crag, coloured by the verdict for the chosen day. Search, verdict
 // filter and day live in the URL (?q=&v=&day=), so a link opens the same view.
 const LABEL = { GO: "Si va", MAYBE: "Forse", NO_GO: "No" };
+// CG-21: the verdict is never told by colour alone — each has a shape and a letter too
+// (circle S, diamond F, square N), on the map and in the legend.
+const LETTER = { GO: "S", MAYBE: "F", NO_GO: "N" };
+
+function verdictIcon(verdict, name) {
+  const cls = verdict.toLowerCase();
+  return L.divIcon({
+    className: "",
+    html: `<span class="mark ${cls}" role="img" aria-label="${escapeHtml(name)}: ${LABEL[verdict]}"><b>${LETTER[verdict]}</b></span>`,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [0, -12],
+  });
+}
 const ORDER = { GO: 0, MAYBE: 1, NO_GO: 2 };
 const REASON_IT = {
   "rain forecast during the day": "pioggia prevista durante il giorno",
@@ -108,16 +122,19 @@ function render(data) {
                   `<small>${escapeHtml(info.facts)}</small><br><a href="${crag.sourceUrl}">fonte OpenStreetMap</a>` +
                   (site ? ` · <a href="${encodeURI(site)}" rel="noopener">sito</a>` : "") +
                   (edit ? `<br><a href="${edit}" rel="noopener">modifica su OpenStreetMap</a>` : "");
-    const marker = L.circleMarker([crag.latitude, crag.longitude], {
-      radius: 8, weight: 2, color: "#050505",
-      fillColor: getComputedStyle(document.documentElement).getPropertyValue("--" + cls).trim(), fillOpacity: 0.95,
+    const marker = L.marker([crag.latitude, crag.longitude], {
+      icon: verdictIcon(info.verdict, crag.name),
+      title: `${crag.name} — ${LABEL[info.verdict]}`,
+      keyboard: true,
     }).bindPopup(popup).addTo(layer);
 
     const li = document.createElement("li");
     li.tabIndex = 0;
     const h = document.createElement("h2");
-    const dot = document.createElement("i");
-    dot.className = "dot " + cls;
+    const dot = document.createElement("span");
+    dot.className = "mark small " + cls;
+    dot.setAttribute("aria-hidden", "true");   // the verdict is in the text next to it
+    dot.innerHTML = `<b>${LETTER[info.verdict]}</b>`;
     h.append(dot, `${crag.name} — ${LABEL[info.verdict]}`);
     const p = document.createElement("p");
     p.textContent = [info.aspect, ...info.reasons].join(" · ");

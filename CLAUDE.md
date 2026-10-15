@@ -45,6 +45,9 @@
   `npx backlogsync roadmap`, and the issues follow on push to main.
 - Commits without a Claude co-author line.
 
+- **The verdict is never told by colour alone** (CG-21): every mark has a shape and a letter
+  (circle S, diamond F, square N) and its text label; colours keep ≥4.5:1 contrast with the black
+  letter. A new verdict surface follows the same rule.
 - **Docs move with the code.** Every PR updates what it changes in README.md (the page's
   features, the "How it is built" table, how to run it), this file and BACKLOG.md. A PR whose
   docs still describe the old behaviour is not done.
