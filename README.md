@@ -33,6 +33,8 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   ("Filtri (2)"); the day's summary and the number of crags shown share one line;
 - on a phone, **"Lista | Mappa"** shows one at a time, the list first, the choice kept in the
   URL (`show=map`); a crag chosen in the list opens on the map;
+- the day's summary stays at the top while the crags scroll, and **"Torna su"** shows once
+  they have been scrolled (the page on a phone, the list's column on a desktop);
 - **search** by name or municipality, ignoring case and accents, **toggles** for go / maybe /
   no go, and a **province** filter; each crag shows where it is ("Canzo (CO)");
 - crowded areas (Lecco, Val Masino) gather into one mark with the count and the split by

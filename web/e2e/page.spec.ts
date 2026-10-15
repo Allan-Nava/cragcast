@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { AFTER, CRAGS, TOMORROW, expect, listNames, openFilters, test } from "./fixtures";
+import { AFTER, CRAGS, MANY, TOMORROW, conditions, expect, listNames, openFilters, test } from "./fixtures";
 
 test.describe("the page", () => {
   test("loads tomorrow's verdicts, ordered by verdict then name", async ({ page }) => {
@@ -85,4 +85,21 @@ test.describe("the page", () => {
     await tomorrow.click();
     await expect(page).toHaveURL(new RegExp(`day=${TOMORROW}`));
   });
+});
+
+test("CG-57: a long list keeps the summary in sight and offers 'Torna su'", async ({ page, isMobile }) => {
+  await page.route("**/data/conditions.json*", r => r.fulfill({ json: conditions(MANY) }));
+  await page.goto("./");
+  await expect(page.locator("#count")).toHaveText("46 falesie");
+  await expect(page.getByRole("button", { name: "Torna su" })).toHaveCount(0);
+  // A phone scrolls the page; a desktop scrolls the list's own column.
+  if (isMobile) await page.mouse.wheel(0, 3000);
+  else await page.locator("#list").evaluate(l => { l.scrollTop = 2000; l.dispatchEvent(new Event("scroll")); });
+  await expect(page.getByRole("button", { name: "Torna su" })).toBeVisible();
+  const summary = (await page.locator(".summary").boundingBox())!;
+  expect(summary.y).toBeGreaterThanOrEqual(-1);
+  expect(summary.y).toBeLessThan(isMobile ? 10 : 260);                     // stuck at the top while scrolling
+  await page.getByRole("button", { name: "Torna su" }).click();
+  if (isMobile) await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+  else await expect.poll(() => page.locator("#list").evaluate(l => l.scrollTop)).toBe(0);
 });
