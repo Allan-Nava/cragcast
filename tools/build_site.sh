@@ -15,6 +15,7 @@ cd "$(dirname "$0")/.."
   ./mvnw -q -B -DskipTests package
   ./mvnw -q -B dependency:build-classpath -Dmdep.outputFile=target/cp.txt -Dmdep.includeScope=runtime
   java -cp "target/classes:$(cat target/cp.txt)" io.github.allannava.cragcast.export.ConditionsExport \
-    ../data/crags.json ../site/data/conditions.json ../site/api/v1
+    ../data/crags.json ../site/data/conditions.json ../site/api/v1 ../site
 )
 cp assets/logo.svg site/logo.svg
+cp assets/social-preview.png site/og.png      # CG-45: the image of every link preview

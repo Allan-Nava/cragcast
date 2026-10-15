@@ -102,6 +102,11 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   `REFRESH_MS` (10 min) and on `visibilitychange`, and swaps the data only when `generatedAt`
   changed. A refresh must never reset the view, the open panel or the position, and a failed
   one keeps the data shown — the footer's age and the 3 h notice tell the reader.
+- **Link previews are static HTML** (CG-45): `SharePages` writes `site/c/<id>.html` every hour —
+  link previews never run JavaScript. The day is written as a date, never "domani" (a preview
+  is read later than it is made). Its reason words copy `REASON_IT` in `web/src/lib/text.ts`:
+  change one, change both. Absolute URLs come from `SITE_URL` (default the Pages URL), and
+  `web/index.html` carries the same URL in its own Open Graph tags.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
   never in the URL, never in a request, never in storage.
 - **History lives on the `history` branch, never on main** (CG-34). `history.yml` appends the

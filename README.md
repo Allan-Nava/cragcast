@@ -46,7 +46,10 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 - the view in the URL (`?q=&v=&p=&a=&crag=&day=`): a link opens the same view, and back works;
 - **a link per crag**: `?crag=<id>` opens the page on that crag's panel with the map on it;
   opening a panel puts it in the URL and back closes it; "Condividi" in the panel uses the
-  phone's share sheet, or copies the link where there is none;
+  phone's share sheet, or copies the link where there is none; the link shared is the crag's
+  own page (`c/<id>.html`, rebuilt hourly), so WhatsApp or Telegram show its name and the
+  verdict and weather for the next day, with the date ("Falesie di Galbiate — venerdì 16
+  ottobre: si va"), and a browser goes straight on to the panel;
 - per crag, where OpenStreetMap has them: grades, route length, rock, style, website; the
   **elevation** of every crag; a link to the crag on OSM and to its OSM edit view;
 - a **panel per crag** ("Dettagli") — beside the map from 900 px, which stays usable, and a
@@ -121,6 +124,7 @@ and ARPA Lombardia for the avalanche levels.
 | `backend/.../calibration/`, `data/observations.csv` | the replay of observed days against the verdict (CG-27) |
 | `backend/.../export/ConditionsExport.java` | the serverless version: hourly scores to `site/data/conditions.json` and the static API in `site/api/v1/`, on GitHub Pages |
 | `web/` | the page: React 19, TypeScript, Vite, Leaflet; `npm test` runs the Vitest unit and component tests; `npm run build` writes `site/` (generated, never committed) |
+| `backend/.../export/SharePages.java` | CG-45: one static page per crag in `site/c/`, rebuilt with the data, whose Open Graph tags carry the name, the next day's verdict and weather; it forwards a browser to `?crag=<id>`. The preview image is `assets/social-preview.png`, published as `og.png` |
 | `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), the page's types, tests and build, the OSM import's tests, Terraform fmt and validate, backlog check |
 | `.github/workflows/pages.yml` | hourly and on push: scores every crag and publishes `site/` on GitHub Pages |
 | `.github/workflows/image.yml` | on push to main: the linux/arm64 backend image to GHCR, on a native ARM runner |

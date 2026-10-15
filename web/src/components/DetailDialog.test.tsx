@@ -85,7 +85,7 @@ group("share (CG-44)", () => {
     setup(true);
     fireEvent.click(screen.getByRole("button", { name: "Copia link" }));
     expect(await screen.findByText("Link copiato.", { exact: false })).toBeTruthy();
-    expect(writeText).toHaveBeenCalledWith(`${location.origin}${location.pathname}?crag=node%2F1`);
+    expect(writeText).toHaveBeenCalledWith(`${location.origin}${location.pathname}c/node%2F1.html`);
   });
   it("uses the share sheet where there is one", async () => {
     const share = vi.fn(() => Promise.resolve());
@@ -93,6 +93,6 @@ group("share (CG-44)", () => {
     setup(false);
     fireEvent.click(screen.getByRole("button", { name: "Condividi" }));
     await act(async () => {});
-    expect(share).toHaveBeenCalledWith({ title: "Corna di Medale — cragcast", url: expect.stringContaining("?crag=node%2F1") });
+    expect(share).toHaveBeenCalledWith({ title: "Corna di Medale — cragcast", url: expect.stringContaining("c/node%2F1.html") });
   });
 });
