@@ -18,9 +18,9 @@ main.
 - [ ] **CG-2 — The crag list**: 20–30 crags in Lombardy, each with name, region, coordinates,
   wall aspect and the public source they come from, loaded by a Flyway migration. No
   coordinates typed from memory. <!-- cg: prio=high size=M labels=data -->
-- [ ] **CG-3 — Open-Meteo client**: hourly precipitation, temperature and wind for a crag's
+- [x] **CG-3 — Open-Meteo client**: hourly precipitation, temperature and wind for a crag's
   coordinates, reduced to the `Weather` record (rain in the previous 48 h, rain in climbing
-  hours, max temperature, max wind); tests against a recorded response. <!-- cg: prio=high size=M labels=backend -->
+  hours, max temperature, max wind); tests against a recorded response. <!-- cg: prio=high size=M labels=backend ver=main -->
 - [ ] **CG-4 — Conditions endpoint**: `GET /api/crags/{slug}/conditions?date=` returns the
   verdict and its reasons; calibrate the scorer's thresholds on a handful of real days. <!-- cg: prio=high size=M labels=backend -->
 - [x] **CG-14 — Logo**: an SVG mark in the palette of allan-nava.github.io (green #10cf53 on

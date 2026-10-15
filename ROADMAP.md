@@ -4,13 +4,13 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**14 items · 3 shipped · 11 open · 3 milestones.**
+**14 items · 4 shipped · 10 open · 3 milestones.**
 
 ## At a glance
 
 | Milestone | Phase | Progress | Open | Shipped |
 |---|---|---|---|---|
-| **v0.1.0 — A verdict for one crag** | now | `###.......` 33% | 4 | 2 |
+| **v0.1.0 — A verdict for one crag** | now | `#####.....` 50% | 3 | 3 |
 | **v0.2.0 — On the internet, for free** | next | `##........` 20% | 4 | 1 |
 | **v0.3.0 — The page climbers use** | later | `..........` 0% | 3 | 0 |
 
@@ -18,7 +18,7 @@
 
 - [x] **CG-1** — Backend skeleton · high · M · backend, infra · `main`
 - [ ] **CG-2** — The crag list · high · M · data
-- [ ] **CG-3** — Open-Meteo client · high · M · backend
+- [x] **CG-3** — Open-Meteo client · high · M · backend · `main`
 - [ ] **CG-4** — Conditions endpoint · high · M · backend
 - [x] **CG-14** — Logo · low · S · docs · `main`
 - [ ] **CG-5** — Hourly refresh · med · M · backend
