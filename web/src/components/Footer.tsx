@@ -1,10 +1,21 @@
+import { useEffect, useState } from "react";
+
 interface Props {
   generatedAt: string | null;
   error: string | null;
   now?: number;
 }
 
-/** "Aggiornato …", with a warning when the data is older than 3 h (CG-35). */
+/** CG-41: "adesso", "12 min fa", "2 ore fa". */
+export function ago(ms: number): string {
+  const min = Math.max(0, Math.floor(ms / 60000));
+  if (min < 1) return "adesso";
+  if (min < 60) return `${min} min fa`;
+  const h = Math.floor(min / 60);
+  return h === 1 ? "1 ora fa" : `${h} ore fa`;
+}
+
+/** "Aggiornato 12 min fa (…)", with a warning when the data is older than 3 h (CG-35). */
 export function updatedText(generatedAt: string, now: number): { text: string; stale: boolean } {
   const t = new Date(generatedAt);
   const hoursOld = (now - t.getTime()) / 3.6e6;
@@ -12,14 +23,21 @@ export function updatedText(generatedAt: string, now: number): { text: string; s
   // the cached copy) or a failed run. Say so rather than show stale verdicts as current.
   const stale = hoursOld > 3;
   return {
-    text: "Aggiornato " + t.toLocaleString("it-IT", { dateStyle: "medium", timeStyle: "short" }) +
-      (stale ? ` — dati di ${Math.round(hoursOld)} ore fa: sei offline o l'aggiornamento non è riuscito.` : ""),
+    text: `Aggiornato ${ago(now - t.getTime())} (${t.toLocaleString("it-IT", { dateStyle: "medium", timeStyle: "short" })})` +
+      (stale ? " — sei offline o l'aggiornamento non è riuscito." : ""),
     stale,
   };
 }
 
-export function Footer({ generatedAt, error, now = Date.now() }: Props) {
-  const u = generatedAt ? updatedText(generatedAt, now) : null;
+export function Footer({ generatedAt, error, now }: Props) {
+  // CG-41: the age keeps itself current — every 30 s is enough for minutes.
+  const [tick, setTick] = useState(() => Date.now());
+  useEffect(() => {
+    if (now != null) return;
+    const t = setInterval(() => setTick(Date.now()), 30000);
+    return () => clearInterval(t);
+  }, [now]);
+  const u = generatedAt ? updatedText(generatedAt, now ?? tick) : null;
   return (
     <footer>
       <p id="updated" className={u?.stale ? "stale" : undefined}>
