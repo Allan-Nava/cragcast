@@ -1,6 +1,7 @@
 import { afterEach, describe as group, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { CragList } from "./CragList";
+import { Controls } from "./Controls";
 import { DetailDialog } from "./DetailDialog";
 import { HourChart, hourReadout } from "./HourChart";
 import { ago, updatedText } from "./Footer";
@@ -217,5 +218,30 @@ group("list details (CG-50)", () => {
     render(<CragList crags={[crag()]} day={DAY} distance={null} onOpen={() => {}} onDetail={() => {}} onHot={onHot} />);
     fireEvent.focus(screen.getByText("Dettagli"));
     expect(onHot).not.toHaveBeenCalledWith("node/1");
+  });
+});
+
+group("compact controls (CG-53)", () => {
+  const state = readState(`?day=${DAY}`, [DAY]);
+  const noop = () => {};
+  it("'Filtri' opens and folds the filters, and counts those on", () => {
+    const { rerender } = render(<Controls days={[DAY]} provinces={[]} state={state} near="off" onDay={noop} onQuery={noop}
+                                          onToggle={noop} onProvince={noop} onNear={noop} />);
+    const toggle = screen.getByRole("button", { name: "Filtri" });
+    const panel = document.getElementById("filters")!;
+    expect(toggle.getAttribute("aria-controls")).toBe("filters");
+    expect(panel.dataset.open).toBe("false");
+    fireEvent.click(toggle);
+    expect(toggle.getAttribute("aria-expanded")).toBe("true");
+    expect(panel.dataset.open).toBe("true");
+    rerender(<Controls days={[DAY]} provinces={[]} state={state} near="off" active={2} onDay={noop} onQuery={noop}
+                       onToggle={noop} onProvince={noop} onNear={noop} />);
+    expect(screen.getByRole("button", { name: "Filtri (2)" })).toBeTruthy();
+  });
+
+  it("the summary ends with the number of crags shown", () => {
+    render(<Summary crags={[crag()]} day={DAY} index={1} count="1 di 220 falesie" />);
+    expect(document.getElementById("count")!.textContent).toBe("1 di 220 falesie");
+    expect(document.querySelector(".summary .date")!.textContent).toBe(", venerdì 16 ottobre");
   });
 });
