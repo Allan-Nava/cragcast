@@ -156,13 +156,16 @@ function render(data) {
                   ((crag.alsoMapped || []).length
                     ? " · anche " + crag.alsoMapped.map((u, i) => `<a href="${encodeURI(u)}">OSM ${i + 2}</a>`).join(", ")
                     : "") +
-                  (edit ? `<br><a href="${edit}" rel="noopener">modifica su OpenStreetMap</a>` : "");
+                  (edit ? `<br><a href="${edit}" rel="noopener">modifica su OpenStreetMap</a>` : "") +
+                  `<br><button type="button" class="more">Dettagli</button>`;
     const marker = L.marker([crag.latitude, crag.longitude], {
       verdict: info.verdict,             // read by the cluster mark
       icon: verdictIcon(info.verdict, crag.name),
       title: `${crag.name} — ${LABEL[info.verdict]}`,
       keyboard: true,
     }).bindPopup(popup).addTo(layer);
+    marker.on("popupopen", e => e.popup.getElement().querySelector(".more")
+      .addEventListener("click", () => openDetail(crag, day, info, details)));
 
     const li = document.createElement("li");
     li.tabIndex = 0;
@@ -181,6 +184,9 @@ function render(data) {
     const p = document.createElement("p");
     p.textContent = [info.aspect, ...info.reasons].join(" · ");
     li.append(h, p);
+    const more = document.createElement("button");
+    more.type = "button"; more.className = "more"; more.textContent = "Dettagli";
+    more.addEventListener("click", e => { e.stopPropagation(); openDetail(crag, day, info, details); });
     if (details.length) {
       const extra = document.createElement("p");
       extra.className = "details";
@@ -189,6 +195,7 @@ function render(data) {
     }
     // zoomToShowLayer opens the cluster the crag sits in before showing its popup.
     const open = () => layer.zoomToShowLayer(marker, () => marker.openPopup());
+    li.append(more);
     li.addEventListener("click", open);
     li.addEventListener("keydown", e => { if (e.key === "Enter") open(); });
     list.append(li);

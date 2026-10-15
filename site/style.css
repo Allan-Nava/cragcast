@@ -74,3 +74,27 @@ footer { color: var(--muted); font-size: .85rem; padding: 16px; }
            border-radius: 50%; background: #f2f4f5; color: #050505; border: 2px solid #050505;
            box-shadow: 0 0 0 3px rgba(16, 207, 83, .55); font: 800 15px/1 system-ui, sans-serif; }
 .cluster small { font: 700 8px/1.1 system-ui, sans-serif; margin-top: 2px; }
+
+/* CG-24: the crag's panel. */
+.more { margin-top: 8px; background: transparent; color: var(--go); border: 1px solid var(--line); border-radius: 999px;
+        padding: 3px 10px; font: inherit; font-size: .85rem; cursor: pointer; }
+dialog#detail { width: min(560px, calc(100% - 32px)); max-height: calc(100% - 32px); background: var(--panel); color: var(--text);
+                border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+dialog#detail::backdrop { background: rgba(0, 0, 0, .7); }
+dialog#detail h2 { margin: 0 32px 6px 0; font-size: 1.15rem; display: flex; align-items: center; gap: 8px; }
+dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
+.close { position: absolute; top: 8px; right: 10px; background: transparent; border: 0; color: var(--text); font-size: 1.6rem; cursor: pointer; }
+.readout { min-height: 1.4em; font-variant-numeric: tabular-nums; margin: 10px 0 4px; }
+.hchart { margin: 6px 0; }
+.hchart figcaption { color: var(--muted); font-size: .85rem; }
+.hchart svg { width: 100%; height: auto; display: block; touch-action: pan-y; }
+.hchart svg:focus { outline: 2px solid var(--go); outline-offset: 2px; }
+.hchart .grid { stroke: #23282e; stroke-width: 1; }
+.hchart .tick { fill: var(--muted); font: 10px system-ui, sans-serif; }
+.hchart .label { fill: var(--text); font: 600 10px system-ui, sans-serif; }
+.hchart .note { fill: var(--muted); font: 11px system-ui, sans-serif; }
+.hchart .cross { stroke: var(--muted); stroke-width: 1; }
+.hours table { border-collapse: collapse; width: 100%; font-size: .85rem; font-variant-numeric: tabular-nums; }
+.hours th, .hours td { text-align: right; padding: 2px 6px; border-bottom: 1px solid var(--line); }
+.hours th:first-child, .hours td:first-child { text-align: left; }
+.links a { margin-right: 10px; }
