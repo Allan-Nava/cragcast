@@ -120,8 +120,10 @@ memory or copied from guidebook sites.
 - [x] **CG-10 — Web page in React**: rewrite the static page (CG-15) in React with a build
   step — filters by area and verdict, a page per crag. Done: React 19, TypeScript and Vite in
   `web/`, same features; the page per crag is the panel of CG-24. <!-- cg: prio=med size=L labels=frontend ver=main -->
-- [ ] **CG-11 — Avalanche bulletin**: for winter routes, the AINEVA / regional bulletin next
-  to the weather. <!-- cg: prio=low size=M labels=data,backend -->
+- [x] **CG-11 — Avalanche bulletin**: for winter routes, the AINEVA / regional bulletin next
+  to the weather. Done: ARPA Lombardia's bulletin through the EAWS (CAAML v6 JSON), placed by
+  the EAWS micro-regions; level, bands and problems in the popup and the panel, 44 of 75 crags
+  covered; the verdict is unchanged. <!-- cg: prio=low size=M labels=data,backend ver=main -->
 - [ ] **CG-12 — Write-up**: a post on allan-nava.github.io and on LinkedIn on how the verdict
   is computed and how it runs on Oracle's free tier. <!-- cg: prio=low size=S labels=docs -->
 

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import L from "../lib/leaflet";
 import "leaflet.markercluster";
 import type { Crag, Verdict } from "../types";
-import { LABEL, LETTER, allDetails, describe, osmEditUrl, place } from "../lib/text";
+import { LABEL, LETTER, allDetails, dangerLabel, describe, osmEditUrl, place, zoneName } from "../lib/text";
 
 export interface MapApi {
   /** Zoom into the cluster a crag sits in and open its popup. */
@@ -38,6 +38,9 @@ function popupFor(crag: Crag, day: string, onDetail: (c: Crag) => void): HTMLEle
   if (info.reasons.length) line(info.reasons.join("; "));
   if (details.length) line(details.join(" · "));
   line(Object.assign(document.createElement("small"), { textContent: info.facts }));
+  const av = crag.days[day].avalanche;                // CG-11
+  if (av) line(Object.assign(document.createElement("strong"), { textContent: `Valanghe: ${dangerLabel(av.level)}` }),
+    ` — zona ${zoneName(av)}`);
   const a = (href: string, text: string) => Object.assign(document.createElement("a"), { href, textContent: text, rel: "noopener" });
   const links: (Node | string)[] = [a(crag.sourceUrl, "fonte OpenStreetMap")];
   if (crag.details?.website) links.push(" · ", a(crag.details.website, "sito"));

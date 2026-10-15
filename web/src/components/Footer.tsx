@@ -27,7 +27,9 @@ export function Footer({ generatedAt, error, now = Date.now() }: Props) {
       </p>
       <p>Falesie: © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, ODbL.
          Meteo: <a href="https://open-meteo.com/">Open-Meteo.com</a>, CC BY 4.0.
-         Quota: Copernicus DEM GLO-90 (<a href="https://doi.org/10.5270/ESA-c5d3d65">ESA</a>), tramite Open-Meteo.</p>
+         Quota: Copernicus DEM GLO-90 (<a href="https://doi.org/10.5270/ESA-c5d3d65">ESA</a>), tramite Open-Meteo.
+         Valanghe, in stagione: <a href="https://www.arpalombardia.it/temi-ambientali/neve-e-ghiacciai/bollettino-neve-e-valanghe/">bollettino
+         di ARPA Lombardia</a>, tramite EAWS.</p>
       <p><a href="api/v1/crags.json">API (JSON)</a> ·{" "}
          <a href="https://github.com/Allan-Nava/cragcast">Codice su GitHub</a> · MIT · un progetto di{" "}
          <a href="https://allan-nava.github.io">Allan Nava</a></p>

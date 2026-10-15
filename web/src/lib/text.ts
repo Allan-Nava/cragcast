@@ -1,5 +1,5 @@
 // Words of the page: verdict labels and letters, the reasons and details in Italian.
-import type { Aspect, Crag, Details, Verdict } from "../types";
+import type { Aspect, Avalanche, Crag, Details, Verdict } from "../types";
 
 export const LABEL: Record<Verdict, string> = { GO: "Si va", MAYBE: "Forse", NO_GO: "No" };
 // CG-21: the verdict is never told by colour alone — circle S, diamond F, square N.
@@ -74,3 +74,31 @@ export function osmEditUrl(sourceUrl: string): string | null {
 }
 
 export const dayLabel = (i: number, day: string): string => ["Oggi", "Domani", "Dopodomani"][i] ?? day;
+
+// CG-11: the avalanche bulletin in words. The European scale's own Italian names.
+const DANGER_IT = ["", "debole", "moderato", "marcato", "forte", "molto forte"];
+const PROBLEM_IT: Record<string, string> = {
+  new_snow: "neve fresca", wind_slab: "neve ventata", persistent_weak_layers: "strati deboli persistenti",
+  wet_snow: "neve bagnata", gliding_snow: "valanghe di slittamento", cornices: "cornici",
+  favourable_situation: "situazione favorevole", no_distinct_avalanche_problem: "nessun problema evidente",
+};
+const bound = (b: string): string => (b === "treeline" ? "il limite del bosco" : `${b} m`);
+
+/** "pericolo 3 (marcato)": the day's highest level. */
+export const dangerLabel = (level: number): string => `pericolo ${level} (${DANGER_IT[level] ?? "?"})`;
+
+/** One phrase per published rating: "3 marcato sopra 2000 m, pomeriggio". */
+export function ratingParts(a: Avalanche): string[] {
+  return a.ratings.map(r => {
+    const where = r.above && r.below ? ` tra ${bound(r.above)} e ${bound(r.below)}`
+      : r.above ? ` sopra ${bound(r.above)}` : r.below ? ` sotto ${bound(r.below)}` : "";
+    const when = r.period === "earlier" ? ", mattino" : r.period === "later" ? ", pomeriggio" : "";
+    return `${r.level} ${DANGER_IT[r.level] ?? ""}${where}${when}`;
+  });
+}
+
+export const problemParts = (a: Avalanche): string[] => a.problems.map(p => PROBLEM_IT[p] ?? p.replace(/_/g, " "));
+
+/** "Retiche orientali": the bulletin's zone name, which comes in capitals. */
+export const zoneName = (a: Avalanche): string =>
+  a.name ? a.name.charAt(0) + a.name.slice(1).toLowerCase() : a.region;

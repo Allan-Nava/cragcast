@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Crag } from "../types";
 import { LABEL, LETTER, allDetails, describe, osmEditUrl, place } from "../lib/text";
 import { HourChart, HourTable, hourReadout } from "./HourChart";
+import { AvalancheLine } from "./AvalancheLine";
 
 interface Props {
   crag: Crag | null;
@@ -38,6 +39,7 @@ export function DetailDialog({ crag, day, onClose }: Props) {
           </h2>
           <p className="muted">{[place(crag), info.aspect, ...info.reasons].filter(Boolean).join(" · ")}</p>
           {allDetails(crag).length > 0 && <p>{allDetails(crag).join(" · ")}</p>}
+          {crag.days[day].avalanche && <AvalancheLine a={crag.days[day].avalanche} full />}
           {hours.length > 0 && (
             <>
               <p className="readout" aria-live="polite">
