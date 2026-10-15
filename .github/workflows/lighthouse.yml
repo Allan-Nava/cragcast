@@ -5,7 +5,7 @@ name: Lighthouse
 
 on:
   pull_request:
-    paths: [web/**, backend/src/main/**, tools/build_site.sh, lighthouserc.json, .github/workflows/lighthouse.yml]
+    paths: [web/**, data/**, backend/src/main/**, tools/build_site.sh, lighthouserc.json, .github/workflows/lighthouse.yml]
   workflow_dispatch:
 
 permissions:
