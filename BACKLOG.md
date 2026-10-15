@@ -129,9 +129,11 @@ memory or copied from guidebook sites.
 cragcast as a complete product on free services only: GitHub Pages for the page and a static
 API, GitHub Actions for everything that runs, git for history. No VM, no card.
 
-- [ ] **CG-32 — Static API on GitHub Pages**: `/api/v1/crags.json` and one file per crag, with
+- [x] **CG-32 — Static API on GitHub Pages**: `/api/v1/crags.json` and one file per crag, with
   the verdicts, the weather behind them and the crag's details, rebuilt every hour and
-  documented in the README — a backend anyone can call, with no server. <!-- cg: prio=high size=M labels=backend,infra -->
+  documented in the README — a backend anyone can call, with no server. Done: `/api/v1/crags.json`
+  (index with verdicts by day) and `/api/v1/crags/<id>.json` (75 files), about 320 KB, rebuilt by
+  `pages.yml`; fields only ever added. <!-- cg: prio=high size=M labels=backend,infra ver=main -->
 - [ ] **CG-33 — Three days**: today, tomorrow and the day after; the forecast already covers
   them. <!-- cg: prio=med size=S labels=backend,frontend -->
 - [ ] **CG-34 — Verdict history**: every evening, each crag's verdict and weather for the day

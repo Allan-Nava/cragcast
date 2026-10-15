@@ -60,6 +60,23 @@ class ConditionsExportTest {
     }
 
     @Test
+    void theStaticApiHasAnIndexAndOneFilePerCrag() {
+        var days = List.of(LocalDate.of(2026, 6, 3), LocalDate.of(2026, 6, 4));
+        var out = ConditionsExport.build(twoCrags(), List.of(dryDays(), dryDays()), days, Instant.EPOCH);
+        var files = ConditionsExport.api(out);
+
+        assertThat(files).containsOnlyKeys("crags.json", "crags/t-1.json", "crags/t-2.json");
+        var index = (ConditionsExport.Index) files.get("crags.json");
+        assertThat(index.meta().version()).isEqualTo(1);
+        assertThat(index.meta().generatedAt()).isEqualTo("1970-01-01T00:00:00Z");
+        assertThat(index.crags()).extracting(ConditionsExport.IndexEntry::url)
+                .containsExactly("crags/t-1.json", "crags/t-2.json");
+        assertThat(index.crags().getFirst().verdicts()).containsEntry("2026-06-04", Verdict.GO);
+        var one = (ConditionsExport.CragDocument) files.get("crags/t-1.json");
+        assertThat(one.crag().days().get("2026-06-03").hours()).hasSize(16);
+    }
+
+    @Test
     void anUnmappedAspectSaysSo() {
         var out = ConditionsExport.build(twoCrags(), List.of(dryDays(), dryDays()),
                 List.of(LocalDate.of(2026, 6, 3)), Instant.EPOCH);
