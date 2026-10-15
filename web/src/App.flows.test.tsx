@@ -169,3 +169,33 @@ group("controls and history (CG-20)", () => {
     expect(screen.getByRole("button", { name: "Preferite (0)" })).toBeTruthy();
   });
 });
+
+group("map or list (CG-54)", () => {
+  it("the switch puts the view in the URL; on a phone a crag chosen in the list shows the map", async () => {
+    serve(data());
+    vi.stubGlobal("matchMedia", (q: string) => ({ matches: q.includes("max-width: 599px"), addEventListener() {}, removeEventListener() {} }));
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    const view = screen.getByRole("group", { name: "Vista" });
+    expect(document.querySelector("main")!.className).toBe("show-list");
+    await act(async () => { fireEvent.click(view.querySelectorAll("button")[1]); });
+    expect(new URLSearchParams(location.search).get("show")).toBe("map");
+    expect(document.querySelector("main")!.className).toBe("show-map");
+    await act(async () => { fireEvent.click(view.querySelectorAll("button")[1]); });   // already on: nothing pushed
+    await act(async () => { fireEvent.click(view.querySelectorAll("button")[0]); });
+    expect(new URLSearchParams(location.search).get("show")).toBeNull();
+
+    await act(async () => { fireEvent.click(document.querySelector("#crag-b h2")!); await new Promise(r => setTimeout(r, 20)); });
+    expect(new URLSearchParams(location.search).get("show")).toBe("map");
+    expect(document.getElementById("crag-b")!.classList.contains("chosen")).toBe(true);
+  });
+
+  it("on a desktop choosing a crag leaves the view alone", async () => {
+    serve(data());
+    vi.stubGlobal("matchMedia", () => ({ matches: false, addEventListener() {}, removeEventListener() {} }));
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    await act(async () => { fireEvent.click(document.querySelector("#crag-a h2")!); await new Promise(r => setTimeout(r, 20)); });
+    expect(new URLSearchParams(location.search).get("show")).toBeNull();
+  });
+});
