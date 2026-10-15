@@ -3,6 +3,10 @@
 "Can I climb there tomorrow?" for crags in Lombardy. Java 21 + Spring Boot 4 + PostgreSQL in
 `backend/`; k3s manifests in `deploy/k8s/` for an Oracle Cloud Always Free Ampere VM (arm64).
 
+**Where it runs:** GitHub Pages, built hourly by `pages.yml` — the only live surface. The
+self-hosted path (`infra/oci/`, `deploy/k8s/`) is parked since 2026-10-15: Oracle's free A1 VM
+never got capacity in Milan and its network was destroyed. Do not apply it without asking.
+
 ## Rules
 
 - **No invented places.** A crag enters the database only with coordinates and aspect taken

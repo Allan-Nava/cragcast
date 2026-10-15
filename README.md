@@ -14,9 +14,10 @@ code, with the thresholds in one place so they can be argued with.
 **Live:** [allan-nava.github.io/cragcast](https://allan-nava.github.io/cragcast/) — 76 crags,
 updated every hour by a GitHub Action, no server.
 
-**Status:** the page is live and the Spring service is complete for one verdict per crag and
-day. The Spring service is not deployed yet: the Oracle Always Free VM waits for capacity in
-Milan. What comes next is in the [roadmap](ROADMAP.md).
+**Status:** the page is live on GitHub Pages and is the way cragcast runs. The Spring service is
+complete for one verdict per crag and day but not hosted: the Oracle Always Free VM could not be
+created (no A1 capacity in Milan), so that path is parked. What comes next is in the
+[roadmap](ROADMAP.md).
 
 ## The page
 
@@ -37,8 +38,8 @@ Milan. What comes next is in the [roadmap](ROADMAP.md).
 | `backend/.../conditions/ConditionsScorer.java` | the verdict: weather + aspect → go / maybe / no go, with reasons |
 | `backend/.../weather/` | Open-Meteo client and the reduction of an hourly forecast to one day: rain in the previous 48 h, and rain, max temperature and max wind from 08:00 to 18:00 |
 | `docker-compose.yml` | PostgreSQL (and the backend) for local development |
-| `deploy/k8s/` | Kubernetes manifests for k3s on an Oracle Cloud Always Free Ampere VM |
-| `infra/oci/` | Terraform for that VM and its network, with `retry-apply.sh` for "Out of host capacity"; the network exists, the VM not yet |
+| `deploy/k8s/` | Kubernetes manifests for k3s on an Oracle Cloud Always Free Ampere VM; parked with `infra/oci/` |
+| `infra/oci/` | Terraform for that VM and its network, with `retry-apply.sh` for "Out of host capacity"; parked — nothing is applied (the VM never got capacity, the network was destroyed) |
 | `data/crags.json`, `tools/osm_crags.py` | the crags, from OpenStreetMap (`climbing=crag`), each with its OSM link, its aspect where mapped, its validated climbing details and its elevation (Copernicus DEM); ODbL. Rebuilt monthly by `crags-refresh.yml` through a reviewed PR, or by hand: `python3 tools/osm_crags.py` |
 | `backend/.../calibration/`, `data/observations.csv` | the replay of observed days against the verdict (CG-27) |
 | `backend/.../export/ConditionsExport.java`, `site/` | the serverless version: hourly scores to `site/data/conditions.json`, a static page with a map, on GitHub Pages |

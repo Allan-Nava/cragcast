@@ -53,18 +53,8 @@ main.
   opens a PR when OSM has changed. Done: `crags-refresh.yml` on the 1st at 05:23 UTC, a summary
   of added, removed and changed crags from `tools/crags_diff.py`, one open refresh PR at a time. <!-- cg: prio=low size=S labels=data,infra ver=main -->
 
-- [ ] **CG-6 — The VM as code**: Terraform for the Oracle Cloud Always Free A1.Flex VM in
-  eu-milan-1 with its VCN, public subnet, internet gateway, route and security rules; a
-  retry loop for "Out of host capacity". <!-- cg: prio=high size=M labels=infra -->
-- [ ] **CG-7 — k3s and the first deploy**: install k3s on the VM, open 80/443 in the OCI
-  security list and in the VM's iptables, create the database secret, `kubectl apply -k
-  deploy/k8s`. <!-- cg: prio=high size=M labels=infra -->
-- [ ] **CG-8 — Domain and HTTPS**: a domain or subdomain, cert-manager with Let's Encrypt,
-  the host in the ingress. <!-- cg: prio=med size=S labels=infra -->
 - [x] **CG-9 — The arm64 image**: `image.yml` builds the backend for linux/arm64 on a native
   ARM runner and pushes it to GHCR on every push to main. <!-- cg: prio=med size=S labels=infra ver=main -->
-- [ ] **CG-13 — Continuous delivery**: after the image, roll the k3s deployment on the VM
-  (a deploy key or a pull-based tool), once CG-7 has put the cluster up. <!-- cg: prio=med size=M labels=infra -->
 
 ## v0.2.1 — UX and UI <!-- ms: phase=now -->
 
@@ -125,3 +115,21 @@ memory or copied from guidebook sites.
   to the weather. <!-- cg: prio=low size=M labels=data,backend -->
 - [ ] **CG-12 — Write-up**: a post on allan-nava.github.io and on LinkedIn on how the verdict
   is computed and how it runs on Oracle's free tier. <!-- cg: prio=low size=S labels=docs -->
+
+## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
+
+Parked on 2026-10-15: Oracle Cloud's Always Free A1 VM could not be created in Milan (39 tries
+over two days, "Out of host capacity"), and the account stays on the free tier. The Terraform
+network was destroyed; `infra/oci/` and `deploy/k8s/` stay in the repository, ready to apply if
+capacity appears or the project moves to another host. Meanwhile cragcast runs on GitHub Pages.
+
+- [ ] **CG-6 — The VM as code**: Terraform for the Oracle Cloud Always Free A1.Flex VM in
+  eu-milan-1 with its VCN, public subnet, internet gateway, route and security rules; a
+  retry loop for "Out of host capacity". <!-- cg: prio=high size=M labels=infra -->
+- [ ] **CG-7 — k3s and the first deploy**: install k3s on the VM, open 80/443 in the OCI
+  security list and in the VM's iptables, create the database secret, `kubectl apply -k
+  deploy/k8s`. <!-- cg: prio=high size=M labels=infra -->
+- [ ] **CG-8 — Domain and HTTPS**: a domain or subdomain, cert-manager with Let's Encrypt,
+  the host in the ingress. <!-- cg: prio=med size=S labels=infra -->
+- [ ] **CG-13 — Continuous delivery**: after the image, roll the k3s deployment on the VM
+  (a deploy key or a pull-based tool), once CG-7 has put the cluster up. <!-- cg: prio=med size=M labels=infra -->
