@@ -42,15 +42,26 @@ public final class ConditionsExport {
     }
 
     public static void main(String[] args) throws Exception {
+        int code = run(args, System.getenv());
+        if (code != 0) {
+            System.exit(code);
+        }
+    }
+
+    /**
+     * The whole export, with the environment passed in (OPEN_METEO_URL, AVALANCHE_URL, SITE_URL)
+     * so the integration test can point it at fake servers. Returns the exit code.
+     */
+    static int run(String[] args, Map<String, String> env) throws Exception {
         if (args.length < 2 || args.length > 4) {
             System.err.println("usage: ConditionsExport <crags.json> <conditions.json> [<api dir> [<site dir>]]");
-            System.exit(2);
+            return 2;
         }
         JsonMapper json = JsonMapper.builder().build();
         CragsFile crags = json.readValue(Files.readString(Path.of(args[0])), CragsFile.class);
 
         OpenMeteoClient weather = OpenMeteoClient.create(
-                System.getenv().getOrDefault("OPEN_METEO_URL", "https://api.open-meteo.com"));
+                env.getOrDefault("OPEN_METEO_URL", "https://api.open-meteo.com"));
         List<HourlyForecast> forecasts = new ArrayList<>();
         for (int i = 0; i < crags.crags().size(); i += BATCH) {
             List<double[]> places = crags.crags().subList(i, Math.min(i + BATCH, crags.crags().size()))
@@ -70,7 +81,7 @@ public final class ConditionsExport {
         Map<LocalDate, Map<String, Avalanche>> bulletins = new LinkedHashMap<>();
         if (regions.size() > 0) {
             HttpClient http = HttpClient.newBuilder().followRedirects(HttpClient.Redirect.NORMAL).build();
-            String base = System.getenv().getOrDefault("AVALANCHE_URL", AvalancheBulletins.BASE_URL);
+            String base = env.getOrDefault("AVALANCHE_URL", AvalancheBulletins.BASE_URL);
             for (LocalDate day : days) {
                 bulletins.put(day, AvalancheBulletins.fetch(http, base, day, json));
             }
@@ -91,7 +102,7 @@ public final class ConditionsExport {
         }
         if (args.length == 4) {
             // CG-45: a page per crag with the link preview, next to the page.
-            String site = System.getenv().getOrDefault("SITE_URL", "https://allan-nava.github.io/cragcast/");
+            String site = env.getOrDefault("SITE_URL", "https://allan-nava.github.io/cragcast/");
             for (Map.Entry<String, String> f : SharePages.pages(out, site.endsWith("/") ? site : site + "/").entrySet()) {
                 Path file = Path.of(args[3]).resolve(f.getKey());
                 Files.createDirectories(file.getParent());
@@ -102,6 +113,7 @@ public final class ConditionsExport {
         long avalanche = out.crags().stream().filter(c -> c.days().values().stream().anyMatch(d -> d.avalanche() != null)).count();
         System.out.printf("%d crags scored for %s to %s; %d go tomorrow; %d with an avalanche bulletin%n",
                 out.crags().size(), today, today.plusDays(2), go, avalanche);
+        return 0;
     }
 
     static Output build(CragsFile crags, List<HourlyForecast> forecasts, List<LocalDate> days, Instant now) {

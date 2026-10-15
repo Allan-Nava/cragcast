@@ -124,6 +124,20 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- CG-49: the *IT classes (the export and the calibration run end to end against fake
+			     servers) run in verify's integration-test phase; surefire alone never picks them up. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<!-- CG-47: line coverage measured on every `mvn verify`; the build fails below the floor,
 			     which is only ever raised (CI runs the Testcontainers tests, a laptop without Docker
 			     skips them and reads lower: there, ./mvnw verify -Djacoco.haltOnFailure=false). -->
