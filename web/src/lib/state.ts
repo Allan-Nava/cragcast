@@ -52,6 +52,7 @@ export function stateQuery(s: ViewState): string {
   return "?" + p.toString();
 }
 
-/** CG-44: the link to share for one crag — the page and the crag only, so it opens on the
- * day that is "tomorrow" for whoever follows it. */
-export const cragLink = (base: string, id: string): string => `${base}?crag=${encodeURIComponent(id)}`;
+/** CG-44/45: the link to share for one crag — its small static page (c/<id>.html, rebuilt
+ * hourly by ConditionsExport), whose Open Graph tags give the link preview and which sends a
+ * browser on to ?crag=<id>. No day in it: it opens on the reader's tomorrow. */
+export const cragLink = (base: string, id: string): string => `${base}c/${encodeURIComponent(id)}.html`;

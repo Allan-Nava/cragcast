@@ -42,8 +42,8 @@ public final class ConditionsExport {
     }
 
     public static void main(String[] args) throws Exception {
-        if (args.length != 2 && args.length != 3) {
-            System.err.println("usage: ConditionsExport <crags.json> <conditions.json> [<api dir>]");
+        if (args.length < 2 || args.length > 4) {
+            System.err.println("usage: ConditionsExport <crags.json> <conditions.json> [<api dir> [<site dir>]]");
             System.exit(2);
         }
         JsonMapper json = JsonMapper.builder().build();
@@ -80,13 +80,22 @@ public final class ConditionsExport {
         Path target = Path.of(args[1]);
         Files.createDirectories(target.toAbsolutePath().getParent());
         Files.writeString(target, json.writeValueAsString(out));
-        if (args.length == 3) {
+        if (args.length >= 3) {
             // CG-32: the static API, one index and one file per crag, next to the page.
             Path api = Path.of(args[2]);
             for (Map.Entry<String, Object> f : api(out).entrySet()) {
                 Path file = api.resolve(f.getKey());
                 Files.createDirectories(file.getParent());
                 Files.writeString(file, json.writeValueAsString(f.getValue()));
+            }
+        }
+        if (args.length == 4) {
+            // CG-45: a page per crag with the link preview, next to the page.
+            String site = System.getenv().getOrDefault("SITE_URL", "https://allan-nava.github.io/cragcast/");
+            for (Map.Entry<String, String> f : SharePages.pages(out, site.endsWith("/") ? site : site + "/").entrySet()) {
+                Path file = Path.of(args[3]).resolve(f.getKey());
+                Files.createDirectories(file.getParent());
+                Files.writeString(file, f.getValue());
             }
         }
         long go = out.crags().stream().filter(c -> c.days().get(today.plusDays(1).toString()).verdict() == Verdict.GO).count();

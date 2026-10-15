@@ -202,9 +202,11 @@ Asked for on 2026-10-15.
   link" in the panel, and the browser's share sheet where there is one. Done: the open panel
   is part of the URL state, so back closes it; the shared link carries no day, so it opens on
   the reader's tomorrow. <!-- cg: prio=high size=S labels=frontend ver=main -->
-- [ ] **CG-45 — A preview when shared**: a static page per crag, rebuilt hourly, whose Open
+- [x] **CG-45 — A preview when shared**: a static page per crag, rebuilt hourly, whose Open
   Graph tags carry the name, tomorrow's verdict and weather, so WhatsApp and Telegram show
-  them; it sends a browser on to the crag's panel. <!-- cg: prio=med size=M labels=frontend,backend -->
+  them; it sends a browser on to the crag's panel. Done: `site/c/<id>.html` from
+  `SharePages`, the day as a date, the project's social image; "Condividi" shares it; the
+  main page gained its own Open Graph tags. <!-- cg: prio=med size=M labels=frontend,backend ver=main -->
 - [ ] **CG-46 — Favourite crags**: a star on each crag, kept in the browser only, and a
   "Preferite" filter. <!-- cg: prio=med size=S labels=frontend -->
 - [ ] **CG-43 — Neighbouring regions**: crags beyond Lombardy (Piedmont, Trentino, the Ticino)

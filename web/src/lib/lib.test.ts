@@ -115,6 +115,6 @@ group("crag link (CG-44)", () => {
     expect(readState("?crag=", DAYS).crag).toBeNull();
   });
   it("shares the page and the crag only, so the day is the reader's tomorrow", () => {
-    expect(cragLink("https://x.test/cragcast/", "osm-node-12")).toBe("https://x.test/cragcast/?crag=osm-node-12");
+    expect(cragLink("https://x.test/cragcast/", "osm-node-12")).toBe("https://x.test/cragcast/c/osm-node-12.html");
   });
 });
