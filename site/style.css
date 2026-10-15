@@ -102,3 +102,6 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
 /* CG-25: province filter. */
 .area select { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
                padding: 5px 12px; font: inherit; font-size: .9rem; }
+
+/* CG-35: data older than 3 h. */
+#updated.stale { color: var(--maybe); }
