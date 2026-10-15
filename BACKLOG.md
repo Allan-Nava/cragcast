@@ -222,9 +222,11 @@ Asked for on 2026-10-15: unit and integration tests for everything. Baseline tha
   to the run summary and fails below a floor that only goes up. Done: floors set from CI's
   figures on 2026-10-15 — backend 78% of lines, page 88% (statements 82, functions 81,
   branches 80), tools 45%. <!-- cg: prio=high size=S labels=infra ver=main -->
-- [ ] **CG-48 — Every tool tested**: unit tests for crags_diff, history_append, aspects_todo
+- [x] **CG-48 — Every tool tested**: unit tests for crags_diff, history_append, aspects_todo
   and avalanche_regions, and for osm_crags' network paths (retries, empty and truncated
-  answers, elevation batches) against a local fake server. <!-- cg: prio=high size=M labels=data -->
+  answers, elevation batches) against a local fake server. Done: 35 tests, tools at 97% of
+  lines (floor raised from 45); they found a good url tag hidden by a bad website tag, and
+  error answers and files left open. <!-- cg: prio=high size=M labels=data ver=main -->
 - [ ] **CG-49 — The pipeline as one**: an integration test that runs ConditionsExport's main
   against fake Open-Meteo and avalanche servers and checks every file it writes (conditions,
   API, share pages); Calibrate and CragImporter covered the same way. <!-- cg: prio=high size=M labels=backend -->
