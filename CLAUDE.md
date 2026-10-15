@@ -20,6 +20,9 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   never filled in by guess; the fix for a missing aspect is an edit on OSM. The same holds for
   the `details` (grades, route length, rock, style, website): read from OSM's climbing tags,
   validated in `osm_crags.py`, dropped when malformed, shown only where present.
+  Duplicates (CG-26): same name and under 50 m apart is one crag mapped twice — folded, the node
+  kept (stable id), the others' links in `alsoMapped`. Same name farther apart stays separate:
+  generic sector names ("Settore Destro") may belong to different crags.
 - **The crag list changes only through a reviewed PR.** `crags-refresh.yml` rebuilds
   `data/crags.json` on the 1st of each month and opens a PR (branch `crags/<date>`, summary from
   `tools/crags_diff.py`); it never pushes to main, and skips while such a PR is open. GitHub runs

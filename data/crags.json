@@ -153,22 +153,9 @@
           "sport"
         ]
       },
-      "elevation": 557
-    },
-    {
-      "id": "osm-relation-15056469",
-      "name": "Falesia Corna De Par",
-      "latitude": 45.870541,
-      "longitude": 9.887464,
-      "aspect": null,
-      "sourceUrl": "https://www.openstreetmap.org/relation/15056469",
-      "details": {
-        "gradeMin": "4a",
-        "gradeMax": "7b",
-        "styles": [
-          "sport"
-        ]
-      },
+      "alsoMapped": [
+        "https://www.openstreetmap.org/relation/15056469"
+      ],
       "elevation": 557
     },
     {

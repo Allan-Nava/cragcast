@@ -11,7 +11,7 @@ how much it rained and how much sun the wall gets. A south-facing slab after 8 m
 usually fine the next day; a north-facing one often is not. cragcast puts that judgement in
 code, with the thresholds in one place so they can be argued with.
 
-**Live:** [allan-nava.github.io/cragcast](https://allan-nava.github.io/cragcast/) — 76 crags,
+**Live:** [allan-nava.github.io/cragcast](https://allan-nava.github.io/cragcast/) — 75 crags,
 updated every hour by a GitHub Action, no server.
 
 **Status:** the page is live on GitHub Pages and is the way cragcast runs. The Spring service is
@@ -44,7 +44,7 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 | `docker-compose.yml` | PostgreSQL (and the backend) for local development |
 | `deploy/k8s/` | Kubernetes manifests for k3s on an Oracle Cloud Always Free Ampere VM; parked with `infra/oci/` |
 | `infra/oci/` | Terraform for that VM and its network, with `retry-apply.sh` for "Out of host capacity"; parked — nothing is applied (the VM never got capacity, the network was destroyed) |
-| `data/crags.json`, `tools/osm_crags.py` | the crags, from OpenStreetMap (`climbing=crag`), each with its OSM link, its aspect where mapped, its validated climbing details and its elevation (Copernicus DEM); ODbL. Rebuilt monthly by `crags-refresh.yml` through a reviewed PR, or by hand: `python3 tools/osm_crags.py` |
+| `data/crags.json`, `tools/osm_crags.py` | the crags, from OpenStreetMap (`climbing=crag`), each with its OSM link, its aspect where mapped, its validated climbing details and its elevation (Copernicus DEM); a crag mapped twice under one name less than 50 m apart is folded into one, keeping both OSM links; ODbL. Rebuilt monthly by `crags-refresh.yml` through a reviewed PR, or by hand: `python3 tools/osm_crags.py` |
 | `backend/.../calibration/`, `data/observations.csv` | the replay of observed days against the verdict (CG-27) |
 | `backend/.../export/ConditionsExport.java`, `site/` | the serverless version: hourly scores to `site/data/conditions.json`, a static page with a map, on GitHub Pages |
 | `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), Terraform fmt and validate, backlog check |
