@@ -37,6 +37,11 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 - a **panel per crag** ("Dettagli"): the day's hours from 06:00 to 21:00 as two small charts —
   temperature and rain, never one chart with two axes — a readout that follows the pointer or
   the arrow keys, the same hours as a table, and directions (Google Maps, OSM);
+- in the avalanche season, the **avalanche bulletin** of ARPA Lombardia for the crag's zone,
+  in the popup and the panel: the danger level (1–5) by elevation band and part of the day,
+  the avalanche problems, and a link to the official bulletin. Only the crags inside one of
+  the bulletin's micro-regions get it — 44 of 75; the low crags lie outside them. The verdict
+  does not change: it is about the rock, the bulletin about the approach and winter routes;
 - **installable** on a phone's home screen (a web app manifest and a service worker): it shows
   the last data offline and says how old it is when it is more than 3 hours old;
 - updated every hour by `.github/workflows/pages.yml`, at about :17;
@@ -63,16 +68,21 @@ curl https://allan-nava.github.io/cragcast/api/v1/crags/osm-node-1739484761.json
 ```
 
 - **`crags.json`** — `meta` (version, `generatedAt`, timezone, the `days` covered, the
-  credits for crags, weather and elevation) and `crags`: for each one `id`, `name`,
+  credits for crags, weather, elevation and avalanche data) and `crags`: for each one `id`, `name`,
   `municipality`, `provinceCode`, `latitude`, `longitude`, `aspect` (null when not mapped),
   `elevation`, `verdicts` by day (`GO`, `MAYBE`, `NO_GO`) and `url`, the path of its own file.
 - **`crags/<id>.json`** — `meta` and the whole `crag`: the fields above plus `sourceUrl`,
   `alsoMapped`, `details` (grades, route length, rock, style, website — where OSM has them),
   `province` and `days`: per day the `verdict`, the `reasons`, the `weather` it was computed
   from (rain in the previous 48 h, rain, max temperature and max wind from 08:00 to 18:00) and
-  the `hours` from 06:00 to 21:00.
+  the `hours` from 06:00 to 21:00, and `avalanche` only when a bulletin covers the crag that
+  day: `region` and `name` of the EAWS micro-region, `level` (the day's highest, 1–5),
+  `ratings` (`level`, `above`, `below` — metres or `treeline` — and `period`, `earlier`,
+  `later` or null for all day), `problems` (CAAML v6 types such as `wind_slab`) and `bulletin`,
+  the official page.
 
-Credit OpenStreetMap (ODbL), Open-Meteo (CC BY 4.0) and Copernicus when you show the data.
+Credit OpenStreetMap (ODbL), Open-Meteo (CC BY 4.0) and Copernicus when you show the data,
+and ARPA Lombardia for the avalanche levels.
 
 ## How it is built
 
@@ -85,6 +95,7 @@ Credit OpenStreetMap (ODbL), Open-Meteo (CC BY 4.0) and Copernicus when you show
 | `deploy/k8s/` | Kubernetes manifests for k3s on an Oracle Cloud Always Free Ampere VM; parked with `infra/oci/` |
 | `infra/oci/` | Terraform for that VM and its network, with `retry-apply.sh` for "Out of host capacity"; parked — nothing is applied (the VM never got capacity, the network was destroyed) |
 | `data/crags.json`, `tools/osm_crags.py` | the crags, from OpenStreetMap (`climbing=crag`), each with its OSM link, its aspect where mapped, its validated climbing details, its elevation (Copernicus DEM), its municipality and province (OSM administrative boundaries); a crag mapped twice under one name less than 50 m apart is folded into one, keeping both OSM links; ODbL. Rebuilt monthly by `crags-refresh.yml` through a reviewed PR, or by hand: `python3 tools/osm_crags.py` |
+| `backend/.../avalanche/`, `data/avalanche-regions.geojson`, `tools/avalanche_regions.py` | CG-11: Lombardy's avalanche bulletin (ARPA Lombardia, CAAML v6 JSON published by the EAWS on static.avalanche.report, issued each morning in season) and its micro-regions (EAWS, CC0), which place each crag in a zone; a missing or failed bulletin leaves the line out and never stops the hourly build |
 | `backend/.../calibration/`, `data/observations.csv` | the replay of observed days against the verdict (CG-27) |
 | `backend/.../export/ConditionsExport.java` | the serverless version: hourly scores to `site/data/conditions.json` and the static API in `site/api/v1/`, on GitHub Pages |
 | `web/` | the page: React 19, TypeScript, Vite, Leaflet; `npm test` runs the Vitest unit and component tests; `npm run build` writes `site/` (generated, never committed) |
@@ -106,6 +117,10 @@ taken from. Elevation: Copernicus DEM GLO-90 (2021,
 [doi:10.5270/ESA-c5d3d65](https://doi.org/10.5270/ESA-c5d3d65)) through Open-Meteo's elevation API —
 the ground of the area at 90 m resolution, not of a given route. A crag without `climbing:orientation` on OSM is judged as a shaded wall, the
 cautious reading; adding the tag on OpenStreetMap sharpens its verdict at the next refresh.
+Avalanche danger: the bulletin of [ARPA Lombardia](https://www.arpalombardia.it/temi-ambientali/neve-e-ghiacciai/bollettino-neve-e-valanghe/),
+through the EAWS; it states no licence, so cragcast shows only its facts — levels, bands,
+problem types — never its text, and always links to it. Micro-regions:
+[EAWS regions](https://gitlab.com/eaws/eaws-regions), CC0.
 
 ## Calibrating the verdict
 

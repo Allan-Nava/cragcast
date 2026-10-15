@@ -72,6 +72,12 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   names and texts from OSM reach the DOM as text, never as markup (React's JSX, `textContent` in
   popups). The pure parts (`web/src/lib/`) carry the unit tests; a behaviour change comes with a
   test in `web/src/**/*.test.ts(x)`.
+- **The avalanche bulletin informs, it never scores** (CG-11): the verdict is about the rock,
+  so `ConditionsScorer` ignores the bulletin. Only its facts are shown (levels, bands, problem
+  types), never its text — ARPA Lombardia states no licence — always with the link to the
+  official bulletin. A bulletin that is missing (out of season, before the morning issue) or
+  fails leaves the line out; it never fails the hourly build. The micro-regions in
+  `data/avalanche-regions.geojson` change only through `tools/avalanche_regions.py` and a PR.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
   never in the URL, never in a request, never in storage.
 - **History lives on the `history` branch, never on main** (CG-34). `history.yml` appends the

@@ -16,11 +16,22 @@ export interface Hour {
   windKmh: number;
 }
 
+/** CG-11: the avalanche bulletin for the crag's micro-region, only when one covers it. */
+export interface Avalanche {
+  region: string;
+  name: string | null;
+  level: number;
+  ratings: { level: number; above: string | null; below: string | null; period: "earlier" | "later" | null }[];
+  problems: string[];
+  bulletin: string;
+}
+
 export interface Day {
   verdict: Verdict;
   reasons: string[];
   weather: Weather;
   hours: Hour[];
+  avalanche?: Avalanche;
 }
 
 export interface Details {
@@ -61,5 +72,6 @@ export interface Conditions {
   cragData: string;
   weatherData: string;
   elevationData: string;
+  avalancheData?: string;
   crags: Crag[];
 }

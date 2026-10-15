@@ -1,0 +1,188 @@
+{
+ "bulletins": [
+  {
+   "bulletinID": "c57f6133-572e-42c0-86ed-da890d138f8c",
+   "publicationTime": "2026-03-01T07:00:00+00:00",
+   "validTime": {
+    "startTime": "2026-02-28T23:00:00+00:00",
+    "endTime": "2026-03-01T23:00:00+00:00"
+   },
+   "regions": [
+    {
+     "regionID": "IT-25-SO-03",
+     "name": "RETICHE ORIENTALI"
+    },
+    {
+     "regionID": "IT-25-SO-01",
+     "name": "RETICHE OCCIDENTALI"
+    },
+    {
+     "regionID": "IT-25-SO-02",
+     "name": "RETICHE CENTRALI"
+    },
+    {
+     "regionID": "IT-25-BS-01",
+     "name": "ADAMELLO"
+    }
+   ],
+   "dangerRatings": [
+    {
+     "mainValue": "low",
+     "elevation": {
+      "upperBound": "treeline"
+     },
+     "validTimePeriod": "earlier"
+    },
+    {
+     "mainValue": "considerable",
+     "elevation": {
+      "lowerBound": "treeline"
+     },
+     "validTimePeriod": "earlier"
+    },
+    {
+     "mainValue": "moderate",
+     "elevation": {
+      "upperBound": "2000"
+     },
+     "validTimePeriod": "later"
+    },
+    {
+     "mainValue": "considerable",
+     "elevation": {
+      "lowerBound": "2000"
+     },
+     "validTimePeriod": "later"
+    }
+   ],
+   "avalancheProblems": [
+    {
+     "problemType": "wind_slab",
+     "validTimePeriod": "earlier"
+    },
+    {
+     "problemType": "persistent_weak_layers",
+     "validTimePeriod": "earlier"
+    },
+    {
+     "problemType": "wet_snow",
+     "validTimePeriod": "earlier"
+    },
+    {
+     "problemType": "wet_snow",
+     "validTimePeriod": "later"
+    },
+    {
+     "problemType": "wind_slab",
+     "validTimePeriod": "later"
+    },
+    {
+     "problemType": "persistent_weak_layers",
+     "validTimePeriod": "later"
+    }
+   ]
+  },
+  {
+   "bulletinID": "1b68112a-d78f-4f3d-9103-479b59963209",
+   "publicationTime": "2026-03-01T07:00:00+00:00",
+   "validTime": {
+    "startTime": "2026-02-28T23:00:00+00:00",
+    "endTime": "2026-03-01T23:00:00+00:00"
+   },
+   "regions": [
+    {
+     "regionID": "IT-25-SO-04",
+     "name": "IT-25-SO-04"
+    },
+    {
+     "regionID": "IT-25-BG-01",
+     "name": "OROBIE CENTRALI"
+    },
+    {
+     "regionID": "IT-25-BS-02",
+     "name": "PREALPI BRESCIANE"
+    },
+    {
+     "regionID": "IT-25-LC-01",
+     "name": "OROBIE OCCIDENTALI"
+    },
+    {
+     "regionID": "IT-25-BG-02",
+     "name": "PREALPI BERGAMASCHE"
+    }
+   ],
+   "dangerRatings": [
+    {
+     "mainValue": "low",
+     "elevation": {
+      "upperBound": "1500"
+     },
+     "validTimePeriod": "earlier"
+    },
+    {
+     "mainValue": "moderate",
+     "elevation": {
+      "lowerBound": "1500"
+     },
+     "validTimePeriod": "earlier"
+    },
+    {
+     "mainValue": "moderate",
+     "validTimePeriod": "later"
+    }
+   ],
+   "avalancheProblems": [
+    {
+     "problemType": "wind_slab",
+     "validTimePeriod": "earlier"
+    },
+    {
+     "problemType": "wet_snow",
+     "validTimePeriod": "earlier"
+    },
+    {
+     "problemType": "wind_slab",
+     "validTimePeriod": "later"
+    },
+    {
+     "problemType": "wet_snow",
+     "validTimePeriod": "later"
+    }
+   ]
+  },
+  {
+   "bulletinID": "6e84845a-67af-48ce-a0c1-aad5e77997d6",
+   "publicationTime": "2026-03-01T07:00:00+00:00",
+   "validTime": {
+    "startTime": "2026-02-28T23:00:00+00:00",
+    "endTime": "2026-03-01T23:00:00+00:00"
+   },
+   "regions": [
+    {
+     "regionID": "IT-25-CO-01",
+     "name": "IT-25-CO-01"
+    },
+    {
+     "regionID": "IT-25-PV-01",
+     "name": "IT-25-PV-01"
+    },
+    {
+     "regionID": "IT-25-VA-01",
+     "name": "PREALPI OCCIDENTALI"
+    }
+   ],
+   "dangerRatings": [
+    {
+     "mainValue": "low",
+     "validTimePeriod": "all_day"
+    }
+   ],
+   "avalancheProblems": [
+    {
+     "problemType": "wet_snow",
+     "validTimePeriod": "all_day"
+    }
+   ]
+  }
+ ]
+}

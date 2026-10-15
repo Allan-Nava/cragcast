@@ -90,4 +90,26 @@ class ConditionsExportTest {
                 List.of(LocalDate.of(2026, 6, 3)), Instant.EPOCH))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void addsTheBulletinOnlyWhereItCoversTheCrag() throws Exception {
+        var json = tools.jackson.databind.json.JsonMapper.builder().build();
+        // A made-up micro-region around the first test crag only.
+        var regions = io.github.allannava.cragcast.avalanche.AvalancheRegions.parse("""
+                {"features":[{"properties":{"id":"XX-01"},"geometry":{"type":"MultiPolygon",
+                 "coordinates":[[[[8.9,44.9],[9.05,44.9],[9.05,45.05],[8.9,45.05],[8.9,44.9]]]]}}]}""", json);
+        var level = new io.github.allannava.cragcast.avalanche.Avalanche("XX-01", "TEST", 2,
+                List.of(new io.github.allannava.cragcast.avalanche.Avalanche.Rating(2, "2000", null, null)),
+                List.of("wind_slab"), "https://example.org/bulletin");
+        var days = List.of(LocalDate.of(2026, 6, 3), LocalDate.of(2026, 6, 4));
+        var out = ConditionsExport.build(twoCrags(), List.of(dryDays(), dryDays()), days, Instant.EPOCH,
+                regions, java.util.Map.of(LocalDate.of(2026, 6, 3), java.util.Map.of("XX-01", level)));
+
+        assertThat(out.crags().get(0).days().get("2026-06-03").avalanche()).isEqualTo(level);
+        assertThat(out.crags().get(0).days().get("2026-06-04").avalanche()).isNull();   // no bulletin that day
+        assertThat(out.crags().get(1).days().get("2026-06-03").avalanche()).isNull();   // outside the region
+        String written = json.writeValueAsString(out.crags().get(1).days().get("2026-06-03"));
+        assertThat(written).doesNotContain("avalanche");
+        assertThat(out.avalancheData()).contains("ARPA Lombardia");
+    }
 }

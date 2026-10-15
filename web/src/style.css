@@ -103,3 +103,6 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
 
 /* CG-35: data older than 3 h. */
 #updated.stale { color: var(--maybe); }
+
+/* CG-11: the avalanche bulletin. Text only: the level is written out, never a colour. */
+.avalanche { border-left: 3px solid var(--line); padding-left: 8px; }

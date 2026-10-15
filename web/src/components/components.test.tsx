@@ -95,3 +95,17 @@ group("panel", () => {
     expect(screen.getByText("Modifica su OSM").getAttribute("href")).toBe("https://www.openstreetmap.org/edit?node=1");
   });
 });
+
+group("avalanche in the panel", () => {
+  it("shows the bulletin when there is one, and nothing when there is none", () => {
+    const c = crag();
+    c.days[DAY].avalanche = { region: "IT-25-LC-01", name: "PREALPI CENTRALI", level: 2, bulletin: "https://example.org/b",
+      ratings: [{ level: 2, above: "1500", below: null, period: null }], problems: ["wet_snow"] };
+    const { container, unmount } = render(<DetailDialog crag={c} day={DAY} onClose={() => {}} />);
+    expect(container.querySelector(".avalanche")!.textContent)
+      .toBe("Valanghe: pericolo 2 (moderato) — zona Prealpi centrali: 2 moderato sopra 1500 m. Problemi: neve bagnata. Bollettino ARPA Lombardia");
+    unmount();
+    const { container: none } = render(<DetailDialog crag={crag()} day={DAY} onClose={() => {}} />);
+    expect(none.querySelector(".avalanche")).toBeNull();
+  });
+});

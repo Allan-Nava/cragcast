@@ -1,5 +1,6 @@
 import { describe as group, expect, it } from "vitest";
-import { allDetails, describe, detailParts, fold, osmEditUrl, place } from "./text";
+import { allDetails, dangerLabel, describe, detailParts, fold, osmEditUrl, place, problemParts, ratingParts, zoneName } from "./text";
+import type { Avalanche } from "../types";
 import { km } from "./geo";
 import { ticks } from "./ticks";
 import { readState, stateQuery } from "./state";
@@ -68,4 +69,23 @@ group("state", () => {
     expect(s.day).toBe("2026-10-16");
     expect(s.verdicts.size).toBe(3);
   });
+});
+
+group("avalanche", () => {
+  const a: Avalanche = {
+    region: "IT-25-SO-03", name: "RETICHE ORIENTALI", level: 3, bulletin: "https://example.org/b",
+    ratings: [{ level: 1, above: null, below: "treeline", period: "earlier" },
+              { level: 3, above: "2000", below: null, period: "later" },
+              { level: 2, above: "1500", below: "2000", period: null }],
+    problems: ["wind_slab", "persistent_weak_layers", "something_new"],
+  };
+  it("names the level on the European scale", () => expect(dangerLabel(3)).toBe("pericolo 3 (marcato)"));
+  it("writes each band and part of the day", () => {
+    expect(ratingParts(a)).toEqual(["1 debole sotto il limite del bosco, mattino", "3 marcato sopra 2000 m, pomeriggio",
+      "2 moderato tra 1500 m e 2000 m"]);
+  });
+  it("translates the problems, and passes an unknown one through readably", () => {
+    expect(problemParts(a)).toEqual(["neve ventata", "strati deboli persistenti", "something new"]);
+  });
+  it("writes the zone in sentence case", () => expect(zoneName(a)).toBe("Retiche orientali"));
 });

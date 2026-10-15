@@ -1,5 +1,9 @@
 package io.github.allannava.cragcast.export;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import io.github.allannava.cragcast.avalanche.Avalanche;
+import io.github.allannava.cragcast.avalanche.AvalancheBulletins;
+import io.github.allannava.cragcast.avalanche.AvalancheRegions;
 import io.github.allannava.cragcast.conditions.ConditionsScorer;
 import io.github.allannava.cragcast.conditions.Verdict;
 import io.github.allannava.cragcast.conditions.Weather;
@@ -7,6 +11,7 @@ import io.github.allannava.cragcast.crag.Aspect;
 import io.github.allannava.cragcast.weather.HourlyForecast;
 import io.github.allannava.cragcast.weather.OpenMeteoClient;
 import io.github.allannava.cragcast.weather.WeatherReducer;
+import java.net.http.HttpClient;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Instant;
@@ -16,11 +21,13 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
  * The serverless version: reads data/crags.json, fetches the forecast for every crag, scores
- * today, tomorrow and the day after, and writes the JSON the static page on GitHub Pages reads. Run hourly by
+ * today, tomorrow and the day after, adds the avalanche bulletin where it covers the crag (CG-11),
+ * and writes the JSON the static page on GitHub Pages reads. Run hourly by
  * .github/workflows/pages.yml; no database, no Spring context.
  *
  * <pre>java -cp ... io.github.allannava.cragcast.export.ConditionsExport data/crags.json site/data/conditions.json</pre>
@@ -53,7 +60,23 @@ public final class ConditionsExport {
 
         // CG-33: today, tomorrow and the day after — all three inside the 3 forecast days fetched.
         LocalDate today = LocalDate.now(ZONE);
-        Output out = build(crags, forecasts, List.of(today, today.plusDays(1), today.plusDays(2)), Instant.now());
+        List<LocalDate> days = List.of(today, today.plusDays(1), today.plusDays(2));
+
+        // CG-11: the avalanche bulletin by micro-region, for the crags inside one. The regions
+        // sit next to the crags (data/avalanche-regions.geojson); without the file, no bulletin.
+        Path regionsFile = Path.of(args[0]).toAbsolutePath().resolveSibling("avalanche-regions.geojson");
+        AvalancheRegions regions = Files.exists(regionsFile)
+                ? AvalancheRegions.parse(Files.readString(regionsFile), json) : AvalancheRegions.none();
+        Map<LocalDate, Map<String, Avalanche>> bulletins = new LinkedHashMap<>();
+        if (regions.size() > 0) {
+            HttpClient http = HttpClient.newBuilder().followRedirects(HttpClient.Redirect.NORMAL).build();
+            String base = System.getenv().getOrDefault("AVALANCHE_URL", AvalancheBulletins.BASE_URL);
+            for (LocalDate day : days) {
+                bulletins.put(day, AvalancheBulletins.fetch(http, base, day, json));
+            }
+        }
+
+        Output out = build(crags, forecasts, days, Instant.now(), regions, bulletins);
         Path target = Path.of(args[1]);
         Files.createDirectories(target.toAbsolutePath().getParent());
         Files.writeString(target, json.writeValueAsString(out));
@@ -67,12 +90,18 @@ public final class ConditionsExport {
             }
         }
         long go = out.crags().stream().filter(c -> c.days().get(today.plusDays(1).toString()).verdict() == Verdict.GO).count();
-        System.out.printf("%d crags scored for %s to %s; %d go tomorrow%n",
-                out.crags().size(), today, today.plusDays(2), go);
+        long avalanche = out.crags().stream().filter(c -> c.days().values().stream().anyMatch(d -> d.avalanche() != null)).count();
+        System.out.printf("%d crags scored for %s to %s; %d go tomorrow; %d with an avalanche bulletin%n",
+                out.crags().size(), today, today.plusDays(2), go, avalanche);
     }
 
-    /** The pure part: crags and their forecasts in, the page's JSON out. */
     static Output build(CragsFile crags, List<HourlyForecast> forecasts, List<LocalDate> days, Instant now) {
+        return build(crags, forecasts, days, now, AvalancheRegions.none(), Map.of());
+    }
+
+    /** The pure part: crags, their forecasts and the day's bulletins in, the page's JSON out. */
+    static Output build(CragsFile crags, List<HourlyForecast> forecasts, List<LocalDate> days, Instant now,
+                        AvalancheRegions regions, Map<LocalDate, Map<String, Avalanche>> bulletins) {
         if (forecasts.size() != crags.crags().size()) {
             throw new IllegalArgumentException(forecasts.size() + " forecasts for " + crags.crags().size() + " crags");
         }
@@ -80,11 +109,13 @@ public final class ConditionsExport {
         List<CragOut> out = new ArrayList<>();
         for (int i = 0; i < forecasts.size(); i++) {
             Crag c = crags.crags().get(i);
+            Optional<String> region = regions.regionOf(c.latitude(), c.longitude());
             Map<String, DayOut> byDay = new LinkedHashMap<>();
             for (LocalDate day : days) {
                 Weather w = WeatherReducer.reduce(forecasts.get(i), day);
                 ConditionsScorer.Result r = scorer.score(c.aspect(), w);
-                byDay.put(day.toString(), new DayOut(r.verdict(), r.reasons(), w, hours(forecasts.get(i), day)));
+                Avalanche avalanche = region.map(id -> bulletins.getOrDefault(day, Map.of()).get(id)).orElse(null);
+                byDay.put(day.toString(), new DayOut(r.verdict(), r.reasons(), w, hours(forecasts.get(i), day), avalanche));
             }
             out.add(new CragOut(c.id(), c.name(), c.latitude(), c.longitude(), c.aspect(), c.sourceUrl(),
                     c.details() == null ? Map.of() : c.details(), c.elevation(),
@@ -92,7 +123,7 @@ public final class ConditionsExport {
                     c.municipality(), c.province(), c.provinceCode(), byDay));
         }
         return new Output(now.toString(), ZONE.getId(), days.stream().map(LocalDate::toString).toList(),
-                crags.licence(), "Weather: Open-Meteo.com (CC BY 4.0)", crags.elevationSource(), out);
+                crags.licence(), "Weather: Open-Meteo.com (CC BY 4.0)", crags.elevationSource(), AVALANCHE_DATA, out);
     }
 
     /**
@@ -104,7 +135,7 @@ public final class ConditionsExport {
     static Map<String, Object> api(Output out) {
         Map<String, Object> files = new LinkedHashMap<>();
         Meta meta = new Meta(1, out.generatedAt(), out.timezone(), out.days(), out.cragData(), out.weatherData(),
-                out.elevationData(), "https://github.com/Allan-Nava/cragcast#api");
+                out.elevationData(), "https://github.com/Allan-Nava/cragcast#api", out.avalancheData());
         List<IndexEntry> index = new ArrayList<>();
         for (CragOut c : out.crags()) {
             Map<String, Verdict> verdicts = new LinkedHashMap<>();
@@ -117,8 +148,11 @@ public final class ConditionsExport {
         return files;
     }
 
+    static final String AVALANCHE_DATA = "Avalanche danger: bulletin of ARPA Lombardia (" + AvalancheBulletins.BULLETIN_PAGE
+            + "), through the EAWS (static.avalanche.report); micro-regions: EAWS (CC0)";
+
     record Meta(int version, String generatedAt, String timezone, List<String> days, String cragData,
-                String weatherData, String elevationData, String docs) {
+                String weatherData, String elevationData, String docs, String avalancheData) {
     }
 
     record IndexEntry(String id, String name, String municipality, String provinceCode, double latitude,
@@ -159,7 +193,9 @@ public final class ConditionsExport {
                 String municipality, String province, String provinceCode) {
     }
 
-    record DayOut(Verdict verdict, List<String> reasons, Weather weather, List<HourOut> hours) {
+    /** {@code avalanche}: CG-11, present only when the day's bulletin covers the crag. */
+    record DayOut(Verdict verdict, List<String> reasons, Weather weather, List<HourOut> hours,
+                  @JsonInclude(JsonInclude.Include.NON_NULL) Avalanche avalanche) {
     }
 
     record CragOut(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
@@ -168,6 +204,6 @@ public final class ConditionsExport {
     }
 
     record Output(String generatedAt, String timezone, List<String> days, String cragData, String weatherData,
-                  String elevationData, List<CragOut> crags) {
+                  String elevationData, String avalancheData, List<CragOut> crags) {
     }
 }
