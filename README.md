@@ -39,7 +39,9 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   the arrow keys, the same hours as a table, and directions (Google Maps, OSM);
 - **installable** on a phone's home screen (a web app manifest and a service worker): it shows
   the last data offline and says how old it is when it is more than 3 hours old;
-- updated every hour by `.github/workflows/pages.yml`, at about :17.
+- updated every hour by `.github/workflows/pages.yml`, at about :17;
+- built with React, TypeScript and Vite from `web/`, Leaflet and its cluster plugin bundled
+  from npm — no third-party script at runtime.
 
 ## History
 
@@ -84,12 +86,13 @@ Credit OpenStreetMap (ODbL), Open-Meteo (CC BY 4.0) and Copernicus when you show
 | `infra/oci/` | Terraform for that VM and its network, with `retry-apply.sh` for "Out of host capacity"; parked — nothing is applied (the VM never got capacity, the network was destroyed) |
 | `data/crags.json`, `tools/osm_crags.py` | the crags, from OpenStreetMap (`climbing=crag`), each with its OSM link, its aspect where mapped, its validated climbing details, its elevation (Copernicus DEM), its municipality and province (OSM administrative boundaries); a crag mapped twice under one name less than 50 m apart is folded into one, keeping both OSM links; ODbL. Rebuilt monthly by `crags-refresh.yml` through a reviewed PR, or by hand: `python3 tools/osm_crags.py` |
 | `backend/.../calibration/`, `data/observations.csv` | the replay of observed days against the verdict (CG-27) |
-| `backend/.../export/ConditionsExport.java`, `site/` | the serverless version: hourly scores to `site/data/conditions.json` and the static API in `site/api/v1/`, a static page with a map, on GitHub Pages |
-| `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), Terraform fmt and validate, backlog check |
+| `backend/.../export/ConditionsExport.java` | the serverless version: hourly scores to `site/data/conditions.json` and the static API in `site/api/v1/`, on GitHub Pages |
+| `web/` | the page: React 19, TypeScript, Vite, Leaflet; `npm test` runs the Vitest unit and component tests; `npm run build` writes `site/` (generated, never committed) |
+| `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), the page's types, tests and build, Terraform fmt and validate, backlog check |
 | `.github/workflows/pages.yml` | hourly and on push: scores every crag and publishes `site/` on GitHub Pages |
 | `.github/workflows/image.yml` | on push to main: the linux/arm64 backend image to GHCR, on a native ARM runner |
 | `.github/workflows/lighthouse.yml`, `lighthouserc.json` | on PRs touching the page: builds it with real data and fails when Lighthouse (desktop, median of 3) drops below performance 0.85 or accessibility, best practices, SEO 0.95 — measured on 2026-10-15 at 0.95 / 1 / 1 / 1 |
-| `tools/build_site.sh` | builds `site/` as Pages serves it (scores, data, API, logo); used by `pages.yml` and `lighthouse.yml` |
+| `tools/build_site.sh` | builds `site/` as Pages serves it (the page from `web/`, then scores, data, API, logo); used by `pages.yml` and `lighthouse.yml` |
 | `.github/workflows/uptime.yml`, `monitoring/checkfleet.yml` | hourly at :47: [checkfleet](https://github.com/Allan-Nava/checkfleet) checks the page, the data, the API and the TLS certificate, and a step fails when the data is over 150 minutes old; a failed run is GitHub's email alert |
 | `.github/workflows/history.yml`, `tools/history_append.py` | every evening: today's verdict and weather for every crag, one CSV per month on the [`history`](https://github.com/Allan-Nava/cragcast/tree/history) branch, never on main |
 | `.github/workflows/crags-refresh.yml` | on the 1st of every month: rebuilds `data/crags.json` from OSM and opens a PR with the changes (`tools/crags_diff.py`) when there are any |
@@ -153,6 +156,14 @@ curl localhost:8080/api/crags/osm-node-1739484761/conditions   # tomorrow's verd
 
 Tests: `./mvnw verify`. The tests that need PostgreSQL start it with Testcontainers; on a
 machine without Docker they are skipped, not failed, and CI always runs them.
+
+The page as Pages serves it, with real data — Java 21 and Node 22:
+
+```bash
+tools/build_site.sh              # builds web/ into site/, then scores every crag into site/data/
+cd web && npx vite preview       # http://localhost:4173
+cd web && npm test               # unit and component tests
+```
 
 ## Licence
 
