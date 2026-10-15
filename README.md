@@ -46,7 +46,9 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 - the view in the URL (`?q=&v=&p=&a=&day=`): a link opens the same view, and back works;
 - per crag, where OpenStreetMap has them: grades, route length, rock, style, website; the
   **elevation** of every crag; a link to the crag on OSM and to its OSM edit view;
-- a **panel per crag** ("Dettagli"): the day's hours from 06:00 to 21:00 as two small charts —
+- a **panel per crag** ("Dettagli") — beside the map from 900 px, which stays usable, and a
+  sheet from the bottom on phones; the day switches inside it with buttons or a sideways swipe,
+  and a downward swipe closes the sheet: the day's hours from 06:00 to 21:00 as two small charts —
   temperature and rain, never one chart with two axes — a readout that follows the pointer or
   the arrow keys, the same hours as a table, and directions (Google Maps, OSM);
 - in the avalanche season, the **avalanche bulletin** of ARPA Lombardia for the crag's zone,

@@ -87,6 +87,10 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   respect `prefers-reduced-motion`. Headless Chrome screenshots do not run Leaflet's
   animations (requestAnimationFrame stalls), so map interactions are tested in
   `CragMap.test.tsx` with the real Leaflet in jsdom, not by screenshot.
+- **The panel is a dialog either way** (CG-40): non-modal `show()` beside the map from 900 px
+  (Esc handled by the component), modal `showModal()` as a bottom sheet below. Swipes never
+  start on a chart (`.hchart` reads the pointer itself). Closing goes through `close()` in
+  `DetailDialog` for the slide-out, and `shut()` covers browsers without `dialog.close`.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
   never in the URL, never in a request, never in storage.
 - **History lives on the `history` branch, never on main** (CG-34). `history.yml` appends the
