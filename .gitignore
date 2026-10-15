@@ -23,3 +23,5 @@ lhci/
 web/coverage/
 .coverage
 htmlcov/
+web/test-results/
+web/playwright-report/

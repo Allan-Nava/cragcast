@@ -9,6 +9,7 @@ export default defineConfig({
   build: { outDir: "../site", emptyOutDir: true },
   test: {
     environment: "jsdom",
+    include: ["src/**/*.test.{ts,tsx}"],          // e2e/ belongs to Playwright
     // CG-47: the floors are the coverage measured when they were set, rounded down; raise them
     // as tests are added, never lower them.
     coverage: {
