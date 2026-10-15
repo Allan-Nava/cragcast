@@ -1,5 +1,6 @@
 package io.github.allannava.cragcast.crag;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -56,9 +57,12 @@ class CragImporter implements ApplicationRunner {
         }
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     record File(String region, String source, String licence, List<Entry> crags) {
     }
 
+    /** The crag details (grades, length, rock…) are for the page; the service does not store them yet. */
+    @JsonIgnoreProperties(ignoreUnknown = true)
     record Entry(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl) {
     }
 }

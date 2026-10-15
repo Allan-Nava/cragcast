@@ -9,6 +9,7 @@ is null otherwise: never guessed. Data © OpenStreetMap contributors, ODbL 1.0.
     python3 tools/osm_crags.py --from answer.json   # from a saved Overpass answer
 """
 import json
+import re
 import sys
 import pathlib
 import time
@@ -50,6 +51,49 @@ def fetch():
     raise SystemExit(f"Overpass unavailable: {last}")
 
 
+GRADE = re.compile(r"^[1-9][abc]?\+?$")          # French grade: 4, 5c, 6b+, 8a
+ROCK_IT = {"limestone": "calcare", "granite": "granito", "gneiss": "gneiss", "sandstone": "arenaria",
+           "conglomerate": "conglomerato", "dolomite": "dolomia", "serpentinite": "serpentino",
+           "porphyry": "porfido", "quartzite": "quarzite", "schist": "scisto"}
+
+
+def number(value):
+    """A length or count as a number: "30", "30 m", "25.5" -> 30, 30, 25.5; anything else -> None."""
+    m = re.fullmatch(r"\s*(\d+(?:[.,]\d+)?)\s*m?\s*", value or "")
+    if not m:
+        return None
+    n = float(m.group(1).replace(",", "."))
+    return int(n) if n.is_integer() else n
+
+
+def details(tags):
+    """The climbing tags OSM has for a crag, validated; keys are left out when absent or malformed."""
+    d = {}
+    for key, name in (("min", "gradeMin"), ("max", "gradeMax"), ("mean", "gradeMean")):
+        g = tags.get(f"climbing:grade:french:{key}", "").strip().lower()
+        if GRADE.match(g):
+            d[name] = g
+    for key, name in (("climbing:length", "length"), ("climbing:length:min", "lengthMin"),
+                      ("climbing:length:max", "lengthMax"), ("climbing:routes", "routes")):
+        n = number(tags.get(key))
+        if n is not None:
+            d[name] = n
+    rock = tags.get("climbing:rock", "").strip().lower()
+    if rock:
+        d["rock"] = rock
+        if rock in ROCK_IT:
+            d["rockIt"] = ROCK_IT[rock]
+    styles = [s for s in ("sport", "trad", "multipitch") if tags.get(f"climbing:{s}", "no") not in ("no", "")]
+    if styles:
+        d["styles"] = styles
+    if tags.get("climbing:bolted") == "yes":
+        d["bolted"] = True
+    site = tags.get("website") or tags.get("url") or tags.get("contact:website")
+    if site and site.startswith(("http://", "https://")):
+        d["website"] = site
+    return d
+
+
 def crag(e):
     tags = e.get("tags", {})
     name = tags.get("name")
@@ -64,6 +108,7 @@ def crag(e):
         "longitude": round(pos["lon"], 6),
         "aspect": aspect if aspect in ASPECTS else None,
         "sourceUrl": f"https://www.openstreetmap.org/{e['type']}/{e['id']}",
+        "details": details(tags),
     }
 
 
@@ -84,7 +129,9 @@ def main():
         "crags": crags,
     }, ensure_ascii=False, indent=2) + "\n")
     with_aspect = sum(1 for c in crags if c["aspect"])
-    print(f"{len(crags)} crags written to {OUT.relative_to(OUT.parent.parent)}, {with_aspect} with an aspect")
+    with_grades = sum(1 for c in crags if "gradeMin" in c["details"] or "gradeMax" in c["details"])
+    print(f"{len(crags)} crags written to {OUT.relative_to(OUT.parent.parent)}: "
+          f"{with_aspect} with an aspect, {with_grades} with grades")
 
 
 if __name__ == "__main__":

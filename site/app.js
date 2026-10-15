@@ -11,6 +11,27 @@ const REASON_IT = {
   "hot on a sunny wall": "caldo su parete al sole",
 };
 const ASPECT_IT = { N: "N", NE: "NE", E: "E", SE: "SE", S: "S", SW: "SO", W: "O", NW: "NO" };
+const STYLE_IT = { sport: "sportiva", trad: "trad", multipitch: "vie lunghe" };
+
+/** The OSM climbing details that exist for a crag, as short Italian phrases; [] when none. */
+function detailParts(d) {
+  if (!d) return [];
+  const parts = [];
+  if (d.gradeMin || d.gradeMax) {
+    const range = d.gradeMin && d.gradeMax ? `${d.gradeMin}–${d.gradeMax}` : d.gradeMin ? `da ${d.gradeMin}` : `fino a ${d.gradeMax}`;
+    parts.push(`gradi ${range}` + (d.gradeMean ? ` (media ${d.gradeMean})` : ""));
+  } else if (d.gradeMean) {
+    parts.push(`grado medio ${d.gradeMean}`);
+  }
+  if (d.lengthMin && d.lengthMax) parts.push(`vie da ${d.lengthMin} a ${d.lengthMax} m`);
+  else if (d.lengthMax) parts.push(`vie fino a ${d.lengthMax} m`);
+  else if (d.length) parts.push(`vie di ${d.length} m`);
+  if (d.routes) parts.push(`${d.routes} vie`);
+  if (d.rock) parts.push(d.rockIt || d.rock);
+  if (d.styles && d.styles.length) parts.push(d.styles.map(x => STYLE_IT[x] || x).join(", "));
+  if (d.bolted) parts.push("chiodata");
+  return parts;
+}
 
 const map = L.map("map", { scrollWheelZoom: false }).setView([45.95, 9.7], 8);
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -76,9 +97,13 @@ function render(data) {
   for (const crag of shown) {
     const info = describe(crag, day);
     const cls = info.verdict.toLowerCase();
+    const details = detailParts(crag.details);
+    const site = crag.details && crag.details.website;
     const popup = `<strong>${escapeHtml(crag.name)}</strong><br>${LABEL[info.verdict]} — ${escapeHtml(info.aspect)}<br>` +
                   (info.reasons.length ? escapeHtml(info.reasons.join("; ")) + "<br>" : "") +
-                  `<small>${escapeHtml(info.facts)}</small><br><a href="${crag.sourceUrl}">fonte OpenStreetMap</a>`;
+                  (details.length ? escapeHtml(details.join(" · ")) + "<br>" : "") +
+                  `<small>${escapeHtml(info.facts)}</small><br><a href="${crag.sourceUrl}">fonte OpenStreetMap</a>` +
+                  (site ? ` · <a href="${encodeURI(site)}" rel="noopener">sito</a>` : "");
     const marker = L.circleMarker([crag.latitude, crag.longitude], {
       radius: 8, weight: 2, color: "#050505",
       fillColor: getComputedStyle(document.documentElement).getPropertyValue("--" + cls).trim(), fillOpacity: 0.95,
@@ -93,6 +118,12 @@ function render(data) {
     const p = document.createElement("p");
     p.textContent = [info.aspect, ...info.reasons].join(" · ");
     li.append(h, p);
+    if (details.length) {
+      const extra = document.createElement("p");
+      extra.className = "details";
+      extra.textContent = details.join(" · ");
+      li.append(extra);
+    }
     const open = () => { map.setView([crag.latitude, crag.longitude], 12); marker.openPopup(); };
     li.addEventListener("click", open);
     li.addEventListener("keydown", e => { if (e.key === "Enter") open(); });

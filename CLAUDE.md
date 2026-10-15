@@ -13,7 +13,9 @@
   the verdict lands in both. `site/data/` is generated, never committed.
 - **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:
   credit OSM on every surface that shows them). The aspect is `climbing:orientation` or null —
-  never filled in by guess; the fix for a missing aspect is an edit on OSM.
+  never filled in by guess; the fix for a missing aspect is an edit on OSM. The same holds for
+  the `details` (grades, route length, rock, style, website): read from OSM's climbing tags,
+  validated in `osm_crags.py`, dropped when malformed, shown only where present.
 - **Thresholds live in `ConditionsScorer` as named constants**, each with a one-line reason. A
   change to one is a reviewed change, with a test for the day it fixes.
 - **The schema belongs to Flyway** (`backend/src/main/resources/db/migration`); Hibernate only
