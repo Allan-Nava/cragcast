@@ -77,28 +77,28 @@ public final class ConditionsExport {
                 byDay.put(day.toString(), new DayOut(r.verdict(), r.reasons(), w));
             }
             out.add(new CragOut(c.id(), c.name(), c.latitude(), c.longitude(), c.aspect(), c.sourceUrl(),
-                    c.details() == null ? Map.of() : c.details(), byDay));
+                    c.details() == null ? Map.of() : c.details(), c.elevation(), byDay));
         }
         return new Output(now.toString(), ZONE.getId(), days.stream().map(LocalDate::toString).toList(),
-                crags.licence(), "Weather: Open-Meteo.com (CC BY 4.0)", out);
+                crags.licence(), "Weather: Open-Meteo.com (CC BY 4.0)", crags.elevationSource(), out);
     }
 
-    record CragsFile(String region, String source, String licence, List<Crag> crags) {
+    record CragsFile(String region, String source, String licence, String elevationSource, List<Crag> crags) {
     }
 
     /** {@code details}: the climbing tags OSM has for the crag (grades, length, rock…), passed through. */
     record Crag(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
-                Map<String, Object> details) {
+                Map<String, Object> details, Integer elevation) {
     }
 
     record DayOut(Verdict verdict, List<String> reasons, Weather weather) {
     }
 
     record CragOut(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
-                   Map<String, Object> details, Map<String, DayOut> days) {
+                   Map<String, Object> details, Integer elevation, Map<String, DayOut> days) {
     }
 
     record Output(String generatedAt, String timezone, List<String> days, String cragData, String weatherData,
-                  List<CragOut> crags) {
+                  String elevationData, List<CragOut> crags) {
     }
 }

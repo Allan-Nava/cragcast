@@ -34,7 +34,9 @@ scores a day's weather; the crag list, the conditions endpoint and the web page 
 
 Weather comes from [Open-Meteo](https://open-meteo.com/) (free, no key, CC BY 4.0). Crags come
 from OpenStreetMap — © OpenStreetMap contributors, ODbL — and each carries the link it was
-taken from. A crag without `climbing:orientation` on OSM is judged as a shaded wall, the
+taken from. Elevation: Copernicus DEM GLO-90 (2021,
+[doi:10.5270/ESA-c5d3d65](https://doi.org/10.5270/ESA-c5d3d65)) through Open-Meteo's elevation API —
+the ground of the area at 90 m resolution, not of a given route. A crag without `climbing:orientation` on OSM is judged as a shaded wall, the
 cautious reading; adding the tag on OpenStreetMap sharpens its verdict at the next refresh.
 
 ## Run it locally

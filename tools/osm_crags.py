@@ -27,6 +27,9 @@ area["ISO3166-2"="IT-25"]->.region;
 out center tags;"""
 ASPECTS = {"N", "NE", "E", "SE", "S", "SW", "W", "NW"}
 OUT = pathlib.Path(__file__).resolve().parent.parent / "data" / "crags.json"
+ELEVATION = "https://api.open-meteo.com/v1/elevation"
+ELEVATION_SOURCE = ("Copernicus DEM GLO-90 (2021 release, 90 m), https://doi.org/10.5270/ESA-c5d3d65, "
+                    "through the Open-Meteo elevation API")
 
 
 def fetch():
@@ -94,6 +97,26 @@ def details(tags):
     return d
 
 
+def elevations(crags):
+    """Ground elevation in metres for every crag, 100 coordinates per request (the API's limit).
+    A 90 m model: the altitude of the area, not of a given route."""
+    out = []
+    for i in range(0, len(crags), 100):
+        batch = crags[i:i + 100]
+        query = urllib.parse.urlencode({
+            "latitude": ",".join(str(c["latitude"]) for c in batch),
+            "longitude": ",".join(str(c["longitude"]) for c in batch),
+        })
+        req = urllib.request.Request(f"{ELEVATION}?{query}",
+                                     headers={"User-Agent": "cragcast (github.com/Allan-Nava/cragcast)"})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            values = json.load(r)["elevation"]
+        if len(values) != len(batch):
+            raise SystemExit(f"elevation API returned {len(values)} values for {len(batch)} crags")
+        out.extend(round(v) for v in values)
+    return out
+
+
 def crag(e):
     tags = e.get("tags", {})
     name = tags.get("name")
@@ -122,10 +145,13 @@ def main():
     crags = sorted(filter(None, map(crag, elements)), key=lambda c: c["name"].lower())
     if not crags:
         raise SystemExit("no crags in the answer: data/crags.json left as it was")
+    for c, ele in zip(crags, elevations(crags)):
+        c["elevation"] = ele
     OUT.write_text(json.dumps({
         "region": "Lombardia",
         "source": "OpenStreetMap, climbing=crag",
         "licence": "© OpenStreetMap contributors, ODbL 1.0 — https://www.openstreetmap.org/copyright",
+        "elevationSource": ELEVATION_SOURCE,
         "crags": crags,
     }, ensure_ascii=False, indent=2) + "\n")
     with_aspect = sum(1 for c in crags if c["aspect"])

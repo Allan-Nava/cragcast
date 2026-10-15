@@ -2,6 +2,7 @@
   "region": "Lombardia",
   "source": "OpenStreetMap, climbing=crag",
   "licence": "© OpenStreetMap contributors, ODbL 1.0 — https://www.openstreetmap.org/copyright",
+  "elevationSource": "Copernicus DEM GLO-90 (2021 release, 90 m), https://doi.org/10.5270/ESA-c5d3d65, through the Open-Meteo elevation API",
   "crags": [
     {
       "id": "osm-node-6822611838",
@@ -12,7 +13,8 @@
       "sourceUrl": "https://www.openstreetmap.org/node/6822611838",
       "details": {
         "website": "https://www.paolo-sonja.net/retiche/bagni.html"
-      }
+      },
+      "elevation": 1482
     },
     {
       "id": "osm-node-11872141961",
@@ -21,7 +23,8 @@
       "longitude": 10.459846,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/11872141961",
-      "details": {}
+      "details": {},
+      "elevation": 2251
     },
     {
       "id": "osm-way-188805657",
@@ -37,7 +40,8 @@
           "sport",
           "multipitch"
         ]
-      }
+      },
+      "elevation": 1185
     },
     {
       "id": "osm-node-2917721733",
@@ -56,7 +60,8 @@
         "styles": [
           "sport"
         ]
-      }
+      },
+      "elevation": 1164
     },
     {
       "id": "osm-node-12068677095",
@@ -65,7 +70,8 @@
       "longitude": 10.367238,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12068677095",
-      "details": {}
+      "details": {},
+      "elevation": 1526
     },
     {
       "id": "osm-node-2888957867",
@@ -80,7 +86,8 @@
         "styles": [
           "sport"
         ]
-      }
+      },
+      "elevation": 263
     },
     {
       "id": "osm-node-12036611131",
@@ -89,7 +96,8 @@
       "longitude": 10.2887,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12036611131",
-      "details": {}
+      "details": {},
+      "elevation": 1677
     },
     {
       "id": "osm-node-3757612224",
@@ -98,7 +106,8 @@
       "longitude": 9.745775,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/3757612224",
-      "details": {}
+      "details": {},
+      "elevation": 1175
     },
     {
       "id": "osm-node-3757609511",
@@ -107,7 +116,8 @@
       "longitude": 9.74665,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/3757609511",
-      "details": {}
+      "details": {},
+      "elevation": 1222
     },
     {
       "id": "osm-node-3757612208",
@@ -116,7 +126,8 @@
       "longitude": 9.746196,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/3757612208",
-      "details": {}
+      "details": {},
+      "elevation": 1222
     },
     {
       "id": "osm-node-13196357817",
@@ -125,7 +136,8 @@
       "longitude": 9.373783,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196357817",
-      "details": {}
+      "details": {},
+      "elevation": 256
     },
     {
       "id": "osm-node-1796890725",
@@ -140,7 +152,8 @@
         "styles": [
           "sport"
         ]
-      }
+      },
+      "elevation": 557
     },
     {
       "id": "osm-relation-15056469",
@@ -155,7 +168,8 @@
         "styles": [
           "sport"
         ]
-      }
+      },
+      "elevation": 557
     },
     {
       "id": "osm-node-13184333761",
@@ -164,7 +178,8 @@
       "longitude": 10.358762,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13184333761",
-      "details": {}
+      "details": {},
+      "elevation": 1651
     },
     {
       "id": "osm-node-14030990596",
@@ -173,7 +188,8 @@
       "longitude": 9.43467,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/14030990596",
-      "details": {}
+      "details": {},
+      "elevation": 771
     },
     {
       "id": "osm-way-1307589396",
@@ -189,7 +205,8 @@
           "sport"
         ],
         "bolted": true
-      }
+      },
+      "elevation": 1754
     },
     {
       "id": "osm-relation-14910904",
@@ -204,7 +221,8 @@
         "styles": [
           "sport"
         ]
-      }
+      },
+      "elevation": 1539
     },
     {
       "id": "osm-way-201832117",
@@ -213,7 +231,8 @@
       "longitude": 9.204405,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/201832117",
-      "details": {}
+      "details": {},
+      "elevation": 785
     },
     {
       "id": "osm-relation-19468980",
@@ -222,7 +241,8 @@
       "longitude": 9.210237,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/relation/19468980",
-      "details": {}
+      "details": {},
+      "elevation": 831
     },
     {
       "id": "osm-way-1262988766",
@@ -236,7 +256,8 @@
           "sport"
         ],
         "website": "https://luigimoro1976.wordpress.com/2019/07/13/falesia-di-alme/"
-      }
+      },
+      "elevation": 234
     },
     {
       "id": "osm-node-7599712466",
@@ -245,7 +266,8 @@
       "longitude": 9.455392,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/7599712466",
-      "details": {}
+      "details": {},
+      "elevation": 262
     },
     {
       "id": "osm-node-14122790227",
@@ -256,7 +278,8 @@
       "sourceUrl": "https://www.openstreetmap.org/node/14122790227",
       "details": {
         "website": "https://larioclimb.paolo-sonja.net/falesie_lecco/civate/index.html"
-      }
+      },
+      "elevation": 460
     },
     {
       "id": "osm-relation-14906312",
@@ -273,7 +296,8 @@
           "trad",
           "multipitch"
         ]
-      }
+      },
+      "elevation": 453
     },
     {
       "id": "osm-node-2433844045",
@@ -282,7 +306,8 @@
       "longitude": 10.463865,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/2433844045",
-      "details": {}
+      "details": {},
+      "elevation": 274
     },
     {
       "id": "osm-node-13196357821",
@@ -291,7 +316,8 @@
       "longitude": 9.37126,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196357821",
-      "details": {}
+      "details": {},
+      "elevation": 295
     },
     {
       "id": "osm-node-12151154725",
@@ -300,7 +326,8 @@
       "longitude": 10.556513,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12151154725",
-      "details": {}
+      "details": {},
+      "elevation": 2193
     },
     {
       "id": "osm-node-13184333763",
@@ -309,7 +336,8 @@
       "longitude": 10.297407,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13184333763",
-      "details": {}
+      "details": {},
+      "elevation": 1520
     },
     {
       "id": "osm-node-13184333762",
@@ -318,7 +346,8 @@
       "longitude": 10.301554,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13184333762",
-      "details": {}
+      "details": {},
+      "elevation": 1460
     },
     {
       "id": "osm-node-13196357819",
@@ -327,7 +356,8 @@
       "longitude": 9.37323,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196357819",
-      "details": {}
+      "details": {},
+      "elevation": 338
     },
     {
       "id": "osm-node-13184333733",
@@ -336,7 +366,8 @@
       "longitude": 10.304699,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13184333733",
-      "details": {}
+      "details": {},
+      "elevation": 1057
     },
     {
       "id": "osm-node-13196357820",
@@ -345,7 +376,8 @@
       "longitude": 9.373651,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196357820",
-      "details": {}
+      "details": {},
+      "elevation": 400
     },
     {
       "id": "osm-relation-16068105",
@@ -354,7 +386,8 @@
       "longitude": 9.09846,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/relation/16068105",
-      "details": {}
+      "details": {},
+      "elevation": 432
     },
     {
       "id": "osm-node-13196357818",
@@ -363,7 +396,8 @@
       "longitude": 9.372834,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196357818",
-      "details": {}
+      "details": {},
+      "elevation": 338
     },
     {
       "id": "osm-node-13196338094",
@@ -372,7 +406,8 @@
       "longitude": 9.458073,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196338094",
-      "details": {}
+      "details": {},
+      "elevation": 853
     },
     {
       "id": "osm-node-8086095920",
@@ -381,7 +416,8 @@
       "longitude": 8.60007,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/8086095920",
-      "details": {}
+      "details": {},
+      "elevation": 255
     },
     {
       "id": "osm-node-13245785600",
@@ -390,7 +426,8 @@
       "longitude": 8.598683,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13245785600",
-      "details": {}
+      "details": {},
+      "elevation": 261
     },
     {
       "id": "osm-node-13196399311",
@@ -399,7 +436,8 @@
       "longitude": 9.456859,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196399311",
-      "details": {}
+      "details": {},
+      "elevation": 895
     },
     {
       "id": "osm-node-13184333734",
@@ -408,7 +446,8 @@
       "longitude": 10.353447,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13184333734",
-      "details": {}
+      "details": {},
+      "elevation": 1013
     },
     {
       "id": "osm-node-1741194816",
@@ -417,7 +456,8 @@
       "longitude": 9.451837,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/1741194816",
-      "details": {}
+      "details": {},
+      "elevation": 595
     },
     {
       "id": "osm-node-14041775583",
@@ -426,7 +466,8 @@
       "longitude": 8.77973,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/14041775583",
-      "details": {}
+      "details": {},
+      "elevation": 1033
     },
     {
       "id": "osm-way-1385623007",
@@ -439,7 +480,8 @@
         "styles": [
           "sport"
         ]
-      }
+      },
+      "elevation": 259
     },
     {
       "id": "osm-node-11171764068",
@@ -454,7 +496,8 @@
         "styles": [
           "multipitch"
         ]
-      }
+      },
+      "elevation": 1124
     },
     {
       "id": "osm-way-1502439088",
@@ -469,7 +512,8 @@
         "styles": [
           "sport"
         ]
-      }
+      },
+      "elevation": 664
     },
     {
       "id": "osm-way-837046156",
@@ -482,7 +526,8 @@
         "styles": [
           "sport"
         ]
-      }
+      },
+      "elevation": 747
     },
     {
       "id": "osm-node-13196399312",
@@ -491,7 +536,8 @@
       "longitude": 9.456651,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196399312",
-      "details": {}
+      "details": {},
+      "elevation": 841
     },
     {
       "id": "osm-node-11859077873",
@@ -500,7 +546,8 @@
       "longitude": 9.451996,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/11859077873",
-      "details": {}
+      "details": {},
+      "elevation": 646
     },
     {
       "id": "osm-node-1741194869",
@@ -509,7 +556,8 @@
       "longitude": 9.451567,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/1741194869",
-      "details": {}
+      "details": {},
+      "elevation": 581
     },
     {
       "id": "osm-node-9429027374",
@@ -518,7 +566,8 @@
       "longitude": 9.425662,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/9429027374",
-      "details": {}
+      "details": {},
+      "elevation": 387
     },
     {
       "id": "osm-node-9176169531",
@@ -527,7 +576,8 @@
       "longitude": 9.452417,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/9176169531",
-      "details": {}
+      "details": {},
+      "elevation": 646
     },
     {
       "id": "osm-node-4641789089",
@@ -536,7 +586,8 @@
       "longitude": 9.452076,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/4641789089",
-      "details": {}
+      "details": {},
+      "elevation": 595
     },
     {
       "id": "osm-node-3452238619",
@@ -552,7 +603,8 @@
           "multipitch"
         ],
         "bolted": true
-      }
+      },
+      "elevation": 936
     },
     {
       "id": "osm-node-7273907091",
@@ -561,7 +613,8 @@
       "longitude": 9.456307,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/7273907091",
-      "details": {}
+      "details": {},
+      "elevation": 841
     },
     {
       "id": "osm-node-11662207868",
@@ -570,7 +623,8 @@
       "longitude": 9.415798,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/11662207868",
-      "details": {}
+      "details": {},
+      "elevation": 439
     },
     {
       "id": "osm-node-4409711985",
@@ -579,7 +633,8 @@
       "longitude": 9.455389,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/4409711985",
-      "details": {}
+      "details": {},
+      "elevation": 836
     },
     {
       "id": "osm-node-12255821505",
@@ -599,7 +654,8 @@
           "sport"
         ],
         "website": "https://www.campioneunivela.it/de/trips/climbing/"
-      }
+      },
+      "elevation": 345
     },
     {
       "id": "osm-node-1739484761",
@@ -614,7 +670,8 @@
         "styles": [
           "sport"
         ]
-      }
+      },
+      "elevation": 401
     },
     {
       "id": "osm-node-1741194868",
@@ -623,7 +680,8 @@
       "longitude": 9.448643,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/1741194868",
-      "details": {}
+      "details": {},
+      "elevation": 697
     },
     {
       "id": "osm-node-9536753691",
@@ -634,7 +692,8 @@
       "sourceUrl": "https://www.openstreetmap.org/node/9536753691",
       "details": {
         "website": "https://www.campingacquafraggia.com/Marmittegiganti.htm"
-      }
+      },
+      "elevation": 388
     },
     {
       "id": "osm-node-11872141963",
@@ -643,7 +702,8 @@
       "longitude": 10.55478,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/11872141963",
-      "details": {}
+      "details": {},
+      "elevation": 2160
     },
     {
       "id": "osm-node-12151154724",
@@ -652,7 +712,8 @@
       "longitude": 10.556052,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12151154724",
-      "details": {}
+      "details": {},
+      "elevation": 2140
     },
     {
       "id": "osm-way-201200731",
@@ -661,7 +722,8 @@
       "longitude": 9.207805,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/201200731",
-      "details": {}
+      "details": {},
+      "elevation": 749
     },
     {
       "id": "osm-way-751262115",
@@ -670,7 +732,8 @@
       "longitude": 9.208969,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/751262115",
-      "details": {}
+      "details": {},
+      "elevation": 730
     },
     {
       "id": "osm-node-4641745891",
@@ -679,7 +742,8 @@
       "longitude": 9.450896,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/4641745891",
-      "details": {}
+      "details": {},
+      "elevation": 581
     },
     {
       "id": "osm-way-201200730",
@@ -688,7 +752,8 @@
       "longitude": 9.210888,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/201200730",
-      "details": {}
+      "details": {},
+      "elevation": 700
     },
     {
       "id": "osm-way-297774960",
@@ -697,7 +762,8 @@
       "longitude": 9.207156,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/297774960",
-      "details": {}
+      "details": {},
+      "elevation": 682
     },
     {
       "id": "osm-node-1886634638",
@@ -711,7 +777,8 @@
           "sport",
           "trad"
         ]
-      }
+      },
+      "elevation": 911
     },
     {
       "id": "osm-node-13196338093",
@@ -720,7 +787,8 @@
       "longitude": 9.45886,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196338093",
-      "details": {}
+      "details": {},
+      "elevation": 977
     },
     {
       "id": "osm-node-12304593894",
@@ -729,7 +797,8 @@
       "longitude": 9.257852,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12304593894",
-      "details": {}
+      "details": {},
+      "elevation": 389
     },
     {
       "id": "osm-node-12304593897",
@@ -738,7 +807,8 @@
       "longitude": 9.256129,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12304593897",
-      "details": {}
+      "details": {},
+      "elevation": 429
     },
     {
       "id": "osm-node-13196381745",
@@ -747,7 +817,8 @@
       "longitude": 9.458417,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13196381745",
-      "details": {}
+      "details": {},
+      "elevation": 977
     },
     {
       "id": "osm-node-4541277052",
@@ -756,7 +827,8 @@
       "longitude": 9.459913,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/4541277052",
-      "details": {}
+      "details": {},
+      "elevation": 915
     },
     {
       "id": "osm-node-14219981089",
@@ -765,7 +837,8 @@
       "longitude": 9.370696,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/14219981089",
-      "details": {}
+      "details": {},
+      "elevation": 1509
     },
     {
       "id": "osm-node-14041775584",
@@ -774,7 +847,8 @@
       "longitude": 8.77886,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/14041775584",
-      "details": {}
+      "details": {},
+      "elevation": 1036
     },
     {
       "id": "osm-node-2888957866",
@@ -788,7 +862,8 @@
           "sport",
           "multipitch"
         ]
-      }
+      },
+      "elevation": 337
     },
     {
       "id": "osm-node-6758871493",
@@ -797,7 +872,8 @@
       "longitude": 9.779458,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/6758871493",
-      "details": {}
+      "details": {},
+      "elevation": 1267
     },
     {
       "id": "osm-node-13184333732",
@@ -806,7 +882,8 @@
       "longitude": 10.286669,
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13184333732",
-      "details": {}
+      "details": {},
+      "elevation": 817
     }
   ]
 }
