@@ -153,6 +153,9 @@ function render(data) {
                   (details.length ? escapeHtml(details.join(" · ")) + "<br>" : "") +
                   `<small>${escapeHtml(info.facts)}</small><br><a href="${crag.sourceUrl}">fonte OpenStreetMap</a>` +
                   (site ? ` · <a href="${encodeURI(site)}" rel="noopener">sito</a>` : "") +
+                  ((crag.alsoMapped || []).length
+                    ? " · anche " + crag.alsoMapped.map((u, i) => `<a href="${encodeURI(u)}">OSM ${i + 2}</a>`).join(", ")
+                    : "") +
                   (edit ? `<br><a href="${edit}" rel="noopener">modifica su OpenStreetMap</a>` : "");
     const marker = L.marker([crag.latitude, crag.longitude], {
       verdict: info.verdict,             // read by the cluster mark

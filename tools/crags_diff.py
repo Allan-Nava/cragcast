@@ -14,10 +14,17 @@ def load(path):
 def main(old_path, new_path):
     old, new = load(old_path), load(new_path)
     added = sorted((new[i]["name"], i) for i in new.keys() - old.keys())
-    removed = sorted((old[i]["name"], i) for i in old.keys() - new.keys())
+    # A crag that left the list because tools/osm_crags.py folded it into a same-name twin is a
+    # merge, not a removal: its OSM link lives on in the twin's alsoMapped.
+    folded = {u: c for c in new.values() for u in c.get("alsoMapped", [])}
+    merged = sorted((old[i]["name"], i, folded[old[i]["sourceUrl"]]["id"])
+                    for i in old.keys() - new.keys() if old[i]["sourceUrl"] in folded)
+    removed = sorted((old[i]["name"], i) for i in old.keys() - new.keys() if old[i]["sourceUrl"] not in folded)
     lines = [f"**{len(new)} crags** (was {len(old)}).", ""]
     if added:
         lines += ["**Added**", ""] + [f"- {n} — `{i}`" for n, i in added] + [""]
+    if merged:
+        lines += ["**Merged** (same name, under 50 m)", ""] + [f"- {n} — `{i}` into `{t}`" for n, i, t in merged] + [""]
     if removed:
         lines += ["**Removed from OSM**", ""] + [f"- {n} — `{i}`" for n, i in removed] + [""]
     changes = []
@@ -38,7 +45,7 @@ def main(old_path, new_path):
             changes.append(f"- {n['name']}: " + "; ".join(what))
     if changes:
         lines += ["**Changed**", ""] + changes + [""]
-    if not (added or removed or changes):
+    if not (added or merged or removed or changes):
         lines.append("Only elevations or formatting differ.")
     print("\n".join(lines))
 

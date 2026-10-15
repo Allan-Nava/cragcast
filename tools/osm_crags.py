@@ -9,6 +9,7 @@ is null otherwise: never guessed. Data © OpenStreetMap contributors, ODbL 1.0.
     python3 tools/osm_crags.py --from answer.json   # from a saved Overpass answer
 """
 import json
+import math
 import re
 import sys
 import pathlib
@@ -97,6 +98,36 @@ def details(tags):
     return d
 
 
+MERGE_WITHIN_M = 50   # same name closer than this: one crag mapped twice (a node and a relation…)
+KIND = {"node": 0, "way": 1, "relation": 2}
+
+
+def metres(a, b):
+    r = math.pi / 180
+    dlat, dlon = (b["latitude"] - a["latitude"]) * r, (b["longitude"] - a["longitude"]) * r
+    h = math.sin(dlat / 2) ** 2 + math.cos(a["latitude"] * r) * math.cos(b["latitude"] * r) * math.sin(dlon / 2) ** 2
+    return 2 * 6371000 * math.asin(math.sqrt(h))
+
+
+def merge_duplicates(crags):
+    """Folds crags with the same name less than MERGE_WITHIN_M apart into one. The one kept is the
+    node (then way, then relation), whose id stays stable; every other OSM link goes to
+    alsoMapped, and missing details or aspect are filled from the duplicates. Same-name crags
+    farther apart (generic names like "Settore Destro") are left alone: they may be different crags."""
+    out = []
+    for c in sorted(crags, key=lambda c: (KIND[c["id"].split("-")[1]], c["id"])):
+        twin = next((k for k in out if k["name"].strip().lower() == c["name"].strip().lower()
+                     and metres(k, c) < MERGE_WITHIN_M), None)
+        if twin is None:
+            out.append(c)
+            continue
+        twin.setdefault("alsoMapped", []).append(c["sourceUrl"])
+        twin["aspect"] = twin["aspect"] or c["aspect"]
+        for k, v in c["details"].items():
+            twin["details"].setdefault(k, v)
+    return sorted(out, key=lambda c: c["name"].lower())
+
+
 def elevations(crags):
     """Ground elevation in metres for every crag, 100 coordinates per request (the API's limit).
     A 90 m model: the altitude of the area, not of a given route."""
@@ -142,7 +173,7 @@ def main():
         elements = json.loads(pathlib.Path(sys.argv[2]).read_text())["elements"]
     else:
         elements = fetch()
-    crags = sorted(filter(None, map(crag, elements)), key=lambda c: c["name"].lower())
+    crags = merge_duplicates(list(filter(None, map(crag, elements))))
     if not crags:
         raise SystemExit("no crags in the answer: data/crags.json left as it was")
     for c, ele in zip(crags, elevations(crags)):

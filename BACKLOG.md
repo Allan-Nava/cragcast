@@ -78,11 +78,13 @@ What the live page needs so a climber finds a crag and trusts the answer in seco
   a neutral mark with the count and the split written out; no clustering from zoom 12. <!-- cg: prio=low size=S labels=frontend ver=main -->
 - [ ] **CG-24 — Crag detail**: a panel per crag with the day's hours of rain and temperature,
   the OSM link and a directions link. <!-- cg: prio=med size=M labels=frontend -->
-- [ ] **CG-26 — Duplicate crags**: OSM has some crags twice under one name (two "Falesia Corna
-  De Par"): merge entries with the same name less than ~500 m apart in `tools/osm_crags.py`,
-  keeping every OSM link. <!-- cg: prio=med size=S labels=data -->
+- [x] **CG-26 — Duplicate crags**: OSM has some crags twice under one name (two "Falesia Corna
+  De Par"): merge entries with the same name in `tools/osm_crags.py`, keeping every OSM link.
+  Done at under 50 m, not ~500: the only other same-name pair is two "Settore Destro" 134 m
+  apart, a generic name that may be two crags — left apart (see CG-25). 76 → 75 crags. <!-- cg: prio=med size=S labels=data ver=main -->
 - [ ] **CG-25 — Area of each crag**: the province or valley next to the name and as a filter,
-  from OpenStreetMap's administrative boundaries in `tools/osm_crags.py`. <!-- cg: prio=low size=M labels=data,frontend -->
+  from OpenStreetMap's administrative boundaries in `tools/osm_crags.py`. Also tells apart sectors
+  with a generic name (two "Settore Destro"). <!-- cg: prio=low size=M labels=data,frontend -->
 
 ## v0.2.2 — Crag details <!-- ms: phase=now -->
 
