@@ -34,3 +34,30 @@ group("live data (CG-41)", () => {
     expect(calls).toBe(2);
   });
 });
+
+group("a link to a crag (CG-44)", () => {
+  it("opens on the crag's panel, and closing it takes the crag out of the URL", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve({ ok: true, json: () => Promise.resolve(conditions("2026-10-16T08:20:00Z", "GO")) })));
+    history.replaceState(null, "", `/?crag=${encodeURIComponent("node/1")}&day=${DAY}`);
+    render(<App />);
+    await screen.findAllByText("Corna di Medale — Si va");          // the list's row and the panel's title
+    expect(document.getElementById("d-title")?.textContent).toContain("Corna di Medale — Si va");
+    expect((document.getElementById("detail") as HTMLDialogElement).hasAttribute("open")).toBe(true);
+    await act(async () => { screen.getByLabelText("Chiudi").click(); await new Promise(r => setTimeout(r, 250)); });
+    expect(new URLSearchParams(location.search).get("crag")).toBeNull();
+  });
+
+  it("back closes the panel", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve({ ok: true, json: () => Promise.resolve(conditions("2026-10-16T08:20:00Z", "GO")) })));
+    history.replaceState(null, "", `/?day=${DAY}`);
+    render(<App />);
+    await screen.findByText("Corna di Medale — Si va");
+    await act(async () => { screen.getAllByText("Dettagli")[0].click(); });
+    expect(new URLSearchParams(location.search).get("crag")).toBe("node/1");
+    await act(async () => {
+      history.replaceState(null, "", `/?day=${DAY}`);
+      dispatchEvent(new PopStateEvent("popstate"));
+    });
+    expect((document.getElementById("detail") as HTMLDialogElement).hasAttribute("open")).toBe(false);
+  });
+});

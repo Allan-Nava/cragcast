@@ -86,8 +86,8 @@ dialog#detail.side { position: fixed; inset: 0 0 0 auto; margin: 0; width: min(4
                      border-radius: 0; border-width: 0 0 0 1px; z-index: 1100; box-shadow: -8px 0 24px rgba(0, 0, 0, .5); }
 dialog#detail .handle { position: absolute; top: 8px; left: 50%; width: 40px; height: 4px; margin-left: -20px;
                         border-radius: 2px; background: var(--muted); opacity: .6; }
-dialog#detail h2:focus { outline: none; }
-dialog#detail h2:focus-visible { outline: 2px solid var(--go); outline-offset: 2px; }
+/* The title takes focus so a screen reader starts there; it is not a control, so no ring. */
+dialog#detail h2:focus, dialog#detail h2:focus-visible { outline: none; }
 .d-days { display: flex; gap: 6px; margin: 0 0 8px; flex-wrap: wrap; }
 .d-days button { display: inline-flex; align-items: center; background: transparent; color: var(--muted); border: 1px solid var(--line);
                  border-radius: 999px; padding: 3px 10px; font: inherit; font-size: .85rem; cursor: pointer; }
@@ -172,3 +172,8 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
   #list li:not(.ghost):not(.empty) { animation: rise .2s ease-out; }
   @keyframes rise { from { opacity: 0; transform: translateY(4px); } }
 }
+
+/* CG-44: share the crag. */
+.share { margin: 10px 0 4px; }
+.share .more { margin-top: 0; }
+.share [role="status"] { color: var(--muted); font-size: .9rem; overflow-wrap: anywhere; }

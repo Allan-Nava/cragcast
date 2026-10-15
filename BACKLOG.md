@@ -198,8 +198,10 @@ Asked for on 2026-10-15.
   crags (Maddalena, Predore, Cimbergo, Galbiate…), the 75 keep their ids, names and data;
   sectors fold by base name or distance without lending their route count or aspect; a
   truncated Overpass answer for the municipalities is now asked again, never written. <!-- cg: prio=high size=M labels=data ver=main -->
-- [ ] **CG-44 — A link per crag**: `?crag=<id>` opens the page on that crag's panel, a "Copia
-  link" in the panel, and the browser's share sheet where there is one. <!-- cg: prio=high size=S labels=frontend -->
+- [x] **CG-44 — A link per crag**: `?crag=<id>` opens the page on that crag's panel, a "Copia
+  link" in the panel, and the browser's share sheet where there is one. Done: the open panel
+  is part of the URL state, so back closes it; the shared link carries no day, so it opens on
+  the reader's tomorrow. <!-- cg: prio=high size=S labels=frontend ver=main -->
 - [ ] **CG-45 — A preview when shared**: a static page per crag, rebuilt hourly, whose Open
   Graph tags carry the name, tomorrow's verdict and weather, so WhatsApp and Telegram show
   them; it sends a browser on to the crag's panel. <!-- cg: prio=med size=M labels=frontend,backend -->

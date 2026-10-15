@@ -3,7 +3,7 @@ import { allDetails, dangerLabel, describe, detailParts, fold, osmEditUrl, place
 import type { Avalanche } from "../types";
 import { km } from "./geo";
 import { ticks } from "./ticks";
-import { inArea, readState, stateQuery } from "./state";
+import { cragLink, inArea, readState, stateQuery } from "./state";
 import { crag } from "../test/fixtures";
 
 const DAYS = ["2026-10-15", "2026-10-16", "2026-10-17"];
@@ -104,5 +104,17 @@ group("area (CG-38)", () => {
   it("tells whether a point is inside", () => {
     expect(inArea([45, 9, 46, 10], 45.5, 9.5)).toBe(true);
     expect(inArea([45, 9, 46, 10], 46.5, 9.5)).toBe(false);
+  });
+});
+
+group("crag link (CG-44)", () => {
+  it("keeps the open crag in the URL", () => {
+    const s = readState("?crag=osm-node-12&day=2026-10-16", DAYS);
+    expect(s.crag).toBe("osm-node-12");
+    expect(stateQuery(s)).toBe("?crag=osm-node-12&day=2026-10-16");
+    expect(readState("?crag=", DAYS).crag).toBeNull();
+  });
+  it("shares the page and the crag only, so the day is the reader's tomorrow", () => {
+    expect(cragLink("https://x.test/cragcast/", "osm-node-12")).toBe("https://x.test/cragcast/?crag=osm-node-12");
   });
 });

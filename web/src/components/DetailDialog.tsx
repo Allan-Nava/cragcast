@@ -9,6 +9,31 @@ import type { Crag } from "../types";
 import { LABEL, LETTER, allDetails, dayLabel, describe, osmEditUrl, place } from "../lib/text";
 import { HourChart, HourTable, hourReadout } from "./HourChart";
 import { AvalancheLine } from "./AvalancheLine";
+import { cragLink } from "../lib/state";
+
+/** CG-44: share the crag — the system share sheet where there is one, else copy the link. */
+function Share({ crag }: { crag: Crag }) {
+  const [copied, setCopied] = useState<"ok" | "fail" | null>(null);
+  const link = cragLink(location.origin + location.pathname, crag.id);
+  const canShare = typeof navigator.share === "function";
+  const share = async () => {
+    if (canShare) {
+      try { await navigator.share({ title: `${crag.name} — cragcast`, url: link }); } catch { /* dismissed */ }
+      return;
+    }
+    try { await navigator.clipboard.writeText(link); setCopied("ok"); }
+    catch { setCopied("fail"); }
+  };
+  return (
+    <p className="share">
+      <button type="button" className="more" onClick={share}>{canShare ? "Condividi" : "Copia link"}</button>
+      <span role="status">
+        {copied === "ok" && " Link copiato."}
+        {copied === "fail" && <> Copia il link: <a href={link}>{link}</a></>}
+      </span>
+    </p>
+  );
+}
 
 interface Props {
   crag: Crag | null;
@@ -133,6 +158,7 @@ export function DetailDialog({ crag, day, days = [], onDay, onClose }: Props) {
               <HourTable hours={hours} />
             </>
           )}
+          <Share key={crag.id} crag={crag} />
           <p className="links">
             <a href={`https://www.google.com/maps/dir/?api=1&destination=${crag.latitude},${crag.longitude}`} rel="noopener">Indicazioni (Google Maps)</a>{" "}
             <a href={`https://www.openstreetmap.org/directions?route=%3B${crag.latitude}%2C${crag.longitude}`} rel="noopener">Indicazioni (OSM)</a>{" "}
