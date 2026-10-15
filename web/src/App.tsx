@@ -12,15 +12,21 @@ import { CragList } from "./components/CragList";
 import { DetailDialog } from "./components/DetailDialog";
 import { Help } from "./components/Help";
 import { Footer } from "./components/Footer";
+import { Summary } from "./components/Summary";
+
+/** The crags matching search, province and area — every verdict (CG-39 counts them). */
+export function matching(crags: Crag[], s: ViewState): Crag[] {
+  const q = fold(s.q.trim());
+  return crags
+    .filter(c => !q || fold(c.name).includes(q) || fold(place(c)).includes(q))
+    .filter(c => !s.province || c.provinceCode === s.province)
+    .filter(c => !s.area || inArea(s.area, c.latitude, c.longitude));
+}
 
 /** The crags the view shows, in the order of the list. */
 export function visible(crags: Crag[], s: ViewState, distance: ((c: Crag) => number) | null): Crag[] {
-  const q = fold(s.q.trim());
-  return crags
+  return matching(crags, s)
     .filter(c => s.verdicts.has(c.days[s.day].verdict))
-    .filter(c => !q || fold(c.name).includes(q) || fold(place(c)).includes(q))
-    .filter(c => !s.province || c.provinceCode === s.province)
-    .filter(c => !s.area || inArea(s.area, c.latitude, c.longitude))
     .sort(distance
       ? (a, b) => distance(a) - distance(b)
       : (a, b) => ORDER[a.days[s.day].verdict] - ORDER[b.days[s.day].verdict] || a.name.localeCompare(b.name, "it"));
@@ -119,11 +125,13 @@ export function App() {
                 onToggle={toggle}
                 onProvince={province => view && go({ ...view, province }, true)}
                 onNear={near} />
+      {data && view && <Summary crags={matching(data.crags, view)} day={view.day} index={data.days.indexOf(view.day)} />}
       <main>
         <CragMap crags={shown} day={view?.day ?? ""} here={here} onDetail={openDetail} apiRef={mapApi}
                  hot={hot} area={view?.area ?? null} onArea={onArea} onChosen={onChosen} />
         {data && view
-          ? <CragList crags={shown} day={view.day} distance={distance} chosen={chosen}
+          ? <CragList crags={shown} day={view.day} days={data.days} onDay={day => go({ ...view, day }, true)}
+                      distance={distance} chosen={chosen}
                       onOpen={c => { setChosen(c.id); mapApi.current?.open(c.id); }} onDetail={openDetail} onHot={setHot} />
           : <ul id="list" />}
       </main>

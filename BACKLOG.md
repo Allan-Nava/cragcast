@@ -169,9 +169,11 @@ panel is a modal, and nothing moves on its own. Asked for on 2026-10-15.
   the list to what the map shows. Done: the mark or its cluster is ringed (pulsing unless
   reduced motion), the map flies to zoom 13 and opens the popup, the crag opened is outlined in
   the list, and the area lives in the URL as `a=s,w,n,e`. <!-- cg: prio=high size=M labels=frontend ver=main -->
-- [ ] **CG-39 — Three days at a glance**: each crag in the list shows the three verdicts
+- [x] **CG-39 — Three days at a glance**: each crag in the list shows the three verdicts
   (today, tomorrow, the day after) with a weather symbol, and a summary above the list counts
-  the day's verdicts ("Domani: 60 si va, 10 forse, 5 no"). Never by colour alone. <!-- cg: prio=high size=M labels=frontend -->
+  the day's verdicts ("Domani: 60 si va, 10 forse, 5 no"). Never by colour alone. Done: the
+  weather symbol is the max temperature and, from 0.5 mm, a rain drop with the mm — no sun,
+  since the data has no cloud cover; each day is a button that switches the page. <!-- cg: prio=high size=M labels=frontend ver=main -->
 - [ ] **CG-40 — Panel as a sheet**: the crag's panel becomes a side panel on desktop and a
   bottom sheet on phones, with the day switchable inside it (buttons and swipe) and gentle
   transitions that respect `prefers-reduced-motion`. <!-- cg: prio=med size=L labels=frontend -->

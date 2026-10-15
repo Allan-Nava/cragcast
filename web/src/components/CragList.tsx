@@ -5,6 +5,9 @@ import { LABEL, LETTER, allDetails, describe, place } from "../lib/text";
 interface Props {
   crags: Crag[];
   day: string;
+  /** CG-39: every day of the data, for the three verdicts in each row. */
+  days?: string[];
+  onDay?(day: string): void;
   distance: ((c: Crag) => number) | null;
   onOpen(crag: Crag): void;
   onDetail(crag: Crag): void;
@@ -13,7 +16,7 @@ interface Props {
   chosen?: string | null;
 }
 
-export function CragList({ crags, day, distance, onOpen, onDetail, onHot, chosen }: Props) {
+export function CragList({ crags, day, days = [], onDay, distance, onOpen, onDetail, onHot, chosen }: Props) {
   // A crag chosen on the map comes into view in the list — where the list scrolls by itself
   // (side by side from 900 px); on a phone that would yank the page away from the map.
   useEffect(() => {
@@ -39,11 +42,49 @@ export function CragList({ crags, day, distance, onOpen, onDetail, onHot, chosen
             </h2>
             <p>{[place(crag), info.aspect, ...info.reasons].filter(Boolean).join(" · ")}</p>
             {details.length > 0 && <p className="details">{details.join(" · ")}</p>}
+            {days.length > 1 && <DayStrip crag={crag} days={days} day={day} onDay={onDay} />}
             <button type="button" className="more" onClick={e => { e.stopPropagation(); onDetail(crag); }}>Dettagli</button>
           </li>
         );
       })}
       {crags.length === 0 && <li className="empty">Nessuna falesia corrisponde alla ricerca.</li>}
     </ul>
+  );
+}
+
+const short = (day: string) => new Date(day + "T12:00:00").toLocaleDateString("it-IT", { weekday: "short" });
+const long = (day: string) => new Date(day + "T12:00:00").toLocaleDateString("it-IT", { weekday: "long", day: "numeric" });
+
+/**
+ * CG-39: the three days of one crag side by side — verdict mark, day, max temperature, and the
+ * rain of the day when there is any (a drop and the mm; the data has no cloud cover, so no sun
+ * is drawn). Each is a button that switches the page to that day.
+ */
+function DayStrip({ crag, days, day, onDay }: { crag: Crag; days: string[]; day: string; onDay?(d: string): void }) {
+  return (
+    <div className="strip" role="group" aria-label={`${crag.name}: i giorni`}>
+      {days.map(d => {
+        const v = crag.days[d];
+        if (!v) return null;
+        const rain = v.weather.rainDuringDayMm;
+        const wet = rain >= 0.5;
+        const label = `${long(d)}: ${LABEL[v.verdict].toLowerCase()}, massima ${Math.round(v.weather.maxTemperatureC)} °C` +
+          (wet ? `, pioggia ${rain.toFixed(1).replace(".", ",")} mm` : "");
+        return (
+          <button key={d} type="button" className="day" aria-pressed={d === day} aria-label={label} title={label}
+                  onClick={e => { e.stopPropagation(); onDay?.(d); }}>
+            <span className={"mark small " + v.verdict.toLowerCase()} aria-hidden="true"><b>{LETTER[v.verdict]}</b></span>
+            <span aria-hidden="true">{short(d)}</span>
+            <span className="t" aria-hidden="true">{`${Math.round(v.weather.maxTemperatureC)}°`}</span>
+            {wet && (
+              <span className="rain" aria-hidden="true">
+                <svg viewBox="0 0 10 14" width="8" height="11"><path d="M5 0C5 0 0 6.5 0 9.2A5 5 0 0 0 10 9.2C10 6.5 5 0 5 0Z" fill="#3987e5" /></svg>
+                {Math.round(rain)}
+              </span>
+            )}
+          </button>
+        );
+      })}
+    </div>
   );
 }

@@ -34,6 +34,11 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   verdict written out (e.g. `20 · 7S·8F·5N`); zooming in or picking a crag in the list opens it;
 - **near me**: the list sorted by distance from the reader, with the km, the map centred on
   them — the position is used in the browser only, never sent and never put in the URL;
+- **three days at a glance**: each crag in the list shows today, tomorrow and the day after
+  side by side — verdict mark, max temperature, and a drop with the mm when it rains (the data
+  has no cloud cover, so no sun is drawn) — and each switches the page to that day; above the
+  list, the day's verdicts counted ("Domani, venerdì 16 ottobre: 19 si va · 0 forse · 0 no")
+  over the crags matching the search, province and area, whatever the verdict toggles;
 - **map and list together**: pointing at a crag in the list (mouse or keyboard) lights its
   mark, or the group it is in; choosing one flies the map to it and opens it; a crag opened on
   the map is outlined in the list; after moving the map, **"Cerca in quest'area"** limits the
