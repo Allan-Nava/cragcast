@@ -25,6 +25,8 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   colour alone: go is a green circle S, maybe a yellow diamond F, no a red square N — and the
   reasons under each crag (rain, recent rain, wind, cold or heat, an unmapped aspect);
 - **search** by name, ignoring case and accents, and **toggles** for go / maybe / no go;
+- crowded areas (Lecco, Val Masino) gather into one mark with the count and the split by
+  verdict written out (e.g. `20 · 7S·8F·5N`); zooming in or picking a crag in the list opens it;
 - **near me**: the list sorted by distance from the reader, with the km, the map centred on
   them — the position is used in the browser only, never sent and never put in the URL;
 - the view in the URL (`?q=&v=&day=`): a link opens the same view, and back works;

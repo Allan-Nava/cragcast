@@ -67,3 +67,10 @@ footer { color: var(--muted); font-size: .85rem; padding: 16px; }
 #near[aria-pressed="true"] { border-color: var(--go); color: var(--go); }
 .km { color: var(--muted); font-weight: 400; margin-left: 6px; font-size: .9rem; }
 .me { display: block; width: 14px; height: 14px; border-radius: 50%; background: #4aa3ff; border: 2px solid #fff; box-shadow: 0 0 0 2px #050505; }
+
+/* CG-23: a group of crags. Neutral fill, so colour never stands for a verdict here; the split
+   is written out (e.g. 5S·2F·0N) and read aloud through aria-label. */
+.cluster { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 46px; height: 46px;
+           border-radius: 50%; background: #f2f4f5; color: #050505; border: 2px solid #050505;
+           box-shadow: 0 0 0 3px rgba(16, 207, 83, .55); font: 800 15px/1 system-ui, sans-serif; }
+.cluster small { font: 700 8px/1.1 system-ui, sans-serif; margin-top: 2px; }

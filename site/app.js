@@ -52,7 +52,24 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 17,
   attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
-const layer = L.layerGroup().addTo(map);
+// CG-23: crags close together (Lecco, Val Masino) gather into one mark until you zoom in. The
+// mark says how many crags and how they split — in text, not colour (CG-21).
+const layer = L.markerClusterGroup({
+  maxClusterRadius: 40,
+  disableClusteringAtZoom: 12,
+  showCoverageOnHover: false,
+  iconCreateFunction(cluster) {
+    const n = { GO: 0, MAYBE: 0, NO_GO: 0 };
+    cluster.getAllChildMarkers().forEach(m => n[m.options.verdict]++);
+    const label = `${cluster.getChildCount()} falesie: ${n.GO} si va, ${n.MAYBE} forse, ${n.NO_GO} no`;
+    return L.divIcon({
+      className: "",
+      html: `<span class="cluster" role="img" aria-label="${label}" title="${label}"><b>${cluster.getChildCount()}</b>` +
+            `<small>${n.GO}S·${n.MAYBE}F·${n.NO_GO}N</small></span>`,
+      iconSize: [46, 46],
+    });
+  },
+}).addTo(map);
 
 /** Lower case, accents removed: "Còrna" and "CORNA" both become "corna". */
 const fold = s => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
@@ -138,6 +155,7 @@ function render(data) {
                   (site ? ` · <a href="${encodeURI(site)}" rel="noopener">sito</a>` : "") +
                   (edit ? `<br><a href="${edit}" rel="noopener">modifica su OpenStreetMap</a>` : "");
     const marker = L.marker([crag.latitude, crag.longitude], {
+      verdict: info.verdict,             // read by the cluster mark
       icon: verdictIcon(info.verdict, crag.name),
       title: `${crag.name} — ${LABEL[info.verdict]}`,
       keyboard: true,
@@ -166,7 +184,8 @@ function render(data) {
       extra.textContent = details.join(" · ");
       li.append(extra);
     }
-    const open = () => { map.setView([crag.latitude, crag.longitude], 12); marker.openPopup(); };
+    // zoomToShowLayer opens the cluster the crag sits in before showing its popup.
+    const open = () => layer.zoomToShowLayer(marker, () => marker.openPopup());
     li.addEventListener("click", open);
     li.addEventListener("keydown", e => { if (e.key === "Enter") open(); });
     list.append(li);

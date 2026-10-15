@@ -51,7 +51,8 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
 
 - **The verdict is never told by colour alone** (CG-21): every mark has a shape and a letter
   (circle S, diamond F, square N) and its text label; colours keep ≥4.5:1 contrast with the black
-  letter. A new verdict surface follows the same rule.
+  letter. A new verdict surface follows the same rule — the cluster mark (CG-23) is neutral grey
+  and writes the split out.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
   never in the URL, never in a request, never in storage.
 - **Docs move with the code.** Every PR updates what it changes in README.md (the page's
