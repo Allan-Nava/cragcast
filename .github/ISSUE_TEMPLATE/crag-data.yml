@@ -1,0 +1,50 @@
+name: Crag data
+description: Something to add or fix about a crag — aspect, grades, route length, rock, position.
+title: "Crag data: <crag name>"
+labels: [data]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        cragcast reads its crags from OpenStreetMap. The quickest fix is often to edit the crag on
+        OSM yourself (see "Help map your crag" in the README); cragcast picks it up at the next
+        refresh of the crag list. Use this form when you would rather someone else does it.
+
+        **Only what you know first-hand.** OpenStreetMap does not accept data copied from
+        guidebooks or websites under copyright, and neither does cragcast.
+  - type: input
+    id: crag
+    attributes:
+      label: Crag
+      description: Its name as shown on cragcast, or its OpenStreetMap link.
+    validations:
+      required: true
+  - type: dropdown
+    id: what
+    attributes:
+      label: What to add or fix
+      multiple: true
+      options:
+        - Wall aspect (which way it faces)
+        - Grades (lowest, highest)
+        - Route length
+        - Rock
+        - Style (sport, trad, multipitch)
+        - Position on the map
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: values
+    attributes:
+      label: The values
+      description: "For example: faces south-west; grades 5a to 7b; routes 10–30 m; limestone."
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: How you know
+      description: "For example: I climb there regularly; I checked the aspect with a compass on 12 October."
+    validations:
+      required: true

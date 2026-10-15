@@ -39,6 +39,25 @@ taken from. Elevation: Copernicus DEM GLO-90 (2021,
 the ground of the area at 90 m resolution, not of a given route. A crag without `climbing:orientation` on OSM is judged as a shaded wall, the
 cautious reading; adding the tag on OpenStreetMap sharpens its verdict at the next refresh.
 
+## Help map your crag
+
+cragcast knows what OpenStreetMap knows. Most crags still lack their wall aspect, so cragcast
+judges them as shaded walls; grades and route lengths are rarer still. If you know a crag, open
+it on OpenStreetMap (every crag on the page links to its OSM edit view) and add:
+
+| Tag | What | Example |
+|---|---|---|
+| `climbing:orientation` | which way the wall faces — sharpens the verdict most | `SW` |
+| `climbing:grade:french:min`, `…:max` | easiest and hardest route | `5a`, `7b` |
+| `climbing:length:max` | longest routes, in metres | `30` |
+| `climbing:rock` | the rock | `limestone` |
+
+**Only what you know first-hand**: OpenStreetMap does not accept data copied from guidebooks or
+websites under copyright. Rather not edit OSM yourself? Open a
+[crag data issue](https://github.com/Allan-Nava/cragcast/issues/new?template=crag-data.yml).
+Changes reach cragcast when the crag list is rebuilt (`tools/osm_crags.py`; monthly once CG-17
+is done).
+
 ## Run it locally
 
 Java 21 and Docker.

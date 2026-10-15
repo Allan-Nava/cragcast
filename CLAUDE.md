@@ -16,6 +16,9 @@
   never filled in by guess; the fix for a missing aspect is an edit on OSM. The same holds for
   the `details` (grades, route length, rock, style, website): read from OSM's climbing tags,
   validated in `osm_crags.py`, dropped when malformed, shown only where present.
+- **Contributions go to OpenStreetMap, first-hand only.** The page, the README and the issue form
+  ask climbers to map what they know themselves; never suggest copying from guidebooks or
+  sites under copyright — OSM refuses it, and so does cragcast.
 - **Thresholds live in `ConditionsScorer` as named constants**, each with a one-line reason. A
   change to one is a reviewed change, with a test for the day it fixes.
 - **The schema belongs to Flyway** (`backend/src/main/resources/db/migration`); Hibernate only
