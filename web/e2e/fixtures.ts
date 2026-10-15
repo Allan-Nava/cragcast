@@ -32,10 +32,14 @@ export const CRAGS = [
   crag("osm-node-6", "Torre Inventata", 46.30, 10.30, ["Bormio", "Sondrio", "SO"], ["MAYBE", "MAYBE", "MAYBE"]),
 ];
 
-export const conditions = () => ({
+export const conditions = (crags = CRAGS) => ({
   generatedAt: new Date().toISOString(), timezone: "Europe/Rome", days: DAYS,
-  cragData: "test", weatherData: "test", elevationData: "test", crags: CRAGS,
+  cragData: "test", weatherData: "test", elevationData: "test", crags,
 });
+
+/** CG-57: forty more made-up crags, for a list long enough to scroll. */
+export const MANY = [...CRAGS, ...Array.from({ length: 40 }, (_, i) =>
+  crag(`osm-way-${100 + i}`, `Parete Lunga ${String(i).padStart(2, "0")}`, 45.6 + i * 0.01, 9.5, ["Lecco", "Lecco", "LC"], ["GO", "GO", "GO"]))];
 
 const BLANK_PNG = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=", "base64");
 

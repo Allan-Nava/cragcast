@@ -271,8 +271,10 @@ the filters and the list. Each fix comes with an end-to-end test (CG-51) at the 
   of 11 px or more), still written out, never told by colour alone. Done: 64×50 marks, the count
   at 17 px and the split at 11 px without its zero parts; the full split stays in the label read
   aloud; clusters gather within 50 px instead of 40. <!-- cg: prio=med size=S labels=frontend ver=main -->
-- [ ] **CG-57 — A long list**: with 220 crags, a "Torna su" button once the list is scrolled,
-  and the summary kept in sight while scrolling. <!-- cg: prio=low size=S labels=frontend -->
+- [x] **CG-57 — A long list**: with 220 crags, a "Torna su" button once the list is scrolled,
+  and the summary kept in sight while scrolling. Done: a sticky summary; "Torna su" after
+  600 px of the page or of the list's own column, smooth unless motion is reduced. It can sit
+  over the last visible card's star for a moment. <!-- cg: prio=low size=S labels=frontend ver=main -->
 
 ## v0.7.0 — Beyond Lombardy <!-- ms: phase=later -->
 

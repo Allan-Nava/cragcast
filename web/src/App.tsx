@@ -13,6 +13,7 @@ import { DetailDialog } from "./components/DetailDialog";
 import { Help } from "./components/Help";
 import { Footer } from "./components/Footer";
 import { Summary } from "./components/Summary";
+import { BackToTop } from "./components/BackToTop";
 import { loadFavourites, loadOnly, saveFavourites, saveOnly } from "./lib/favourites";
 
 /** The crags matching search, province, area and (CG-46) favourites — every verdict (CG-39
@@ -227,6 +228,7 @@ export function App() {
                       onDay={day => view && go({ ...view, day }, true)}
                       onClose={() => { if (viewRef.current?.crag) go({ ...viewRef.current, crag: null }, true); }} />
       </main>
+      <BackToTop />
       <Help />
       <Footer generatedAt={data?.generatedAt ?? null} error={error} />
     </>
