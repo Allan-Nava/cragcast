@@ -33,6 +33,10 @@
   `npx backlogsync roadmap`, and the issues follow on push to main.
 - Commits without a Claude co-author line.
 
+- **Docs move with the code.** Every PR updates what it changes in README.md (the page's
+  features, the "How it is built" table, how to run it), this file and BACKLOG.md. A PR whose
+  docs still describe the old behaviour is not done.
+
 ## Verify
 
 ```bash
