@@ -43,7 +43,10 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   mark, or the group it is in; choosing one flies the map to it and opens it; a crag opened on
   the map is outlined in the list; after moving the map, **"Cerca in quest'area"** limits the
   list to what the map shows, until it is cleared;
-- the view in the URL (`?q=&v=&p=&a=&day=`): a link opens the same view, and back works;
+- the view in the URL (`?q=&v=&p=&a=&crag=&day=`): a link opens the same view, and back works;
+- **a link per crag**: `?crag=<id>` opens the page on that crag's panel with the map on it;
+  opening a panel puts it in the URL and back closes it; "Condividi" in the panel uses the
+  phone's share sheet, or copies the link where there is none;
 - per crag, where OpenStreetMap has them: grades, route length, rock, style, website; the
   **elevation** of every crag; a link to the crag on OSM and to its OSM edit view;
 - a **panel per crag** ("Dettagli") — beside the map from 900 px, which stays usable, and a

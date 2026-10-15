@@ -123,7 +123,7 @@ export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area =
         programmatic.current(() => { if (reducedMotion()) m.setView(to, zoom); else m.flyTo(to, zoom, { duration: 0.8 }); });
       },
     };
-    return () => { m.remove(); map.current = null; };
+    return () => { apiRef.current = null; m.remove(); map.current = null; };
   }, [apiRef]);
 
   useEffect(() => {                                   // the markers, whenever the view changes

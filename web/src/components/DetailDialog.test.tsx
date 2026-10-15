@@ -77,3 +77,22 @@ group("panel (CG-40)", () => {
     expect(dialog.open).toBe(false);
   });
 });
+
+group("share (CG-44)", () => {
+  it("copies the link where the browser has no share sheet", async () => {
+    const writeText = vi.fn(() => Promise.resolve());
+    vi.stubGlobal("navigator", { ...navigator, share: undefined, clipboard: { writeText } });
+    setup(true);
+    fireEvent.click(screen.getByRole("button", { name: "Copia link" }));
+    expect(await screen.findByText("Link copiato.", { exact: false })).toBeTruthy();
+    expect(writeText).toHaveBeenCalledWith(`${location.origin}${location.pathname}?crag=node%2F1`);
+  });
+  it("uses the share sheet where there is one", async () => {
+    const share = vi.fn(() => Promise.resolve());
+    vi.stubGlobal("navigator", { ...navigator, share });
+    setup(false);
+    fireEvent.click(screen.getByRole("button", { name: "Condividi" }));
+    await act(async () => {});
+    expect(share).toHaveBeenCalledWith({ title: "Corna di Medale — cragcast", url: expect.stringContaining("?crag=node%2F1") });
+  });
+});

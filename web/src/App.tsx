@@ -43,7 +43,6 @@ export function App() {
   const [here, setHere] = useState<{ lat: number; lon: number } | null>(null);
   const [asking, setAsking] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
-  const [detail, setDetail] = useState<Crag | null>(null);
   // CG-38: the crag under the pointer or keyboard focus in the list, and the one last chosen.
   const [hot, setHot] = useState<string | null>(null);
   const [chosen, setChosen] = useState<string | null>(null);
@@ -73,7 +72,6 @@ export function App() {
           setData(d);
           // Past midnight a day drops out of the data: fall back as a fresh visit would.
           setView(v => (v && !d.days.includes(v.day) ? { ...v, day: readState("", d.days).day } : v));
-          setDetail(c => (c ? d.crags.find(x => x.id === c.id) ?? null : c));
         })
         .catch(() => {})
         .finally(() => { busy = false; });
@@ -108,7 +106,23 @@ export function App() {
 
   const distance = useMemo(() => here ? (c: Crag) => km(here.lat, here.lon, c.latitude, c.longitude) : null, [here]);
   const shown = useMemo(() => data && view ? visible(data.crags, view, distance) : [], [data, view, distance]);
-  const openDetail = useCallback((c: Crag) => setDetail(c), []);
+  // CG-44: the open panel lives in the URL, so a link opens on it and back closes it.
+  const detail = data && view?.crag ? data.crags.find(c => c.id === view.crag) ?? null : null;
+  const viewRef = useRef(view);
+  viewRef.current = view;
+  const openDetail = useCallback((c: Crag) => {
+    const v = viewRef.current;
+    if (v && v.crag !== c.id) go({ ...v, crag: c.id }, true);
+  }, []);
+  // A link straight to a crag: once the map has its marks, fly to it.
+  const landed = useRef(false);
+  useEffect(() => {
+    if (landed.current || !detail) return;
+    landed.current = true;
+    setChosen(detail.id);
+    const t = setTimeout(() => mapApi.current?.open(detail.id), 0);
+    return () => clearTimeout(t);
+  }, [detail]);
   const onChosen = useCallback((id: string) => setChosen(id), []);
   const onArea = (area: Area | null) => { if (view) go({ ...view, area }, true); };
 
@@ -148,7 +162,7 @@ export function App() {
         </div>
       </header>
       <Controls days={data?.days ?? []} provinces={provinces}
-                state={view ?? { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null }}
+                state={view ?? { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null }}
                 near={asking ? "asking" : here ? "on" : "off"} count={count}
                 onDay={day => view && go({ ...view, day }, true)}
                 onQuery={q => view && go({ ...view, q }, false)}
@@ -170,7 +184,8 @@ export function App() {
             </ul>}
       </main>
       <DetailDialog crag={detail} day={view?.day ?? ""} days={data?.days ?? []}
-                    onDay={day => view && go({ ...view, day }, true)} onClose={() => setDetail(null)} />
+                    onDay={day => view && go({ ...view, day }, true)}
+                    onClose={() => { if (viewRef.current?.crag) go({ ...viewRef.current, crag: null }, true); }} />
       <Help />
       <Footer generatedAt={data?.generatedAt ?? null} error={error} />
     </>
