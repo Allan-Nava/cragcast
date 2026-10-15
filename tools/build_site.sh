@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Build site/ as GitHub Pages serves it: compile the scorer, score every crag, write
+# site/data/conditions.json and the static API in site/api/v1/, copy the logo.
+# Used by pages.yml (publish) and lighthouse.yml (measure); runnable locally with Java 21.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+(
+  cd backend
+  ./mvnw -q -B -DskipTests package
+  ./mvnw -q -B dependency:build-classpath -Dmdep.outputFile=target/cp.txt -Dmdep.includeScope=runtime
+  java -cp "target/classes:$(cat target/cp.txt)" io.github.allannava.cragcast.export.ConditionsExport \
+    ../data/crags.json ../site/data/conditions.json ../site/api/v1
+)
+cp assets/logo.svg site/logo.svg

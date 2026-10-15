@@ -8,7 +8,7 @@ on:
     - cron: "17 * * * *"      # hourly, off the top of the hour when GitHub's queue is busiest
   push:
     branches: [main]
-    paths: [site/**, data/**, assets/logo.svg, backend/src/main/**, .github/workflows/pages.yml]
+    paths: [site/**, data/**, assets/logo.svg, backend/src/main/**, tools/build_site.sh, .github/workflows/pages.yml]
   workflow_dispatch:
 
 permissions:
@@ -30,15 +30,8 @@ jobs:
           distribution: temurin
           java-version: "21"
           cache: maven
-      - name: Compile the scorer
-        working-directory: backend
-        run: |
-          ./mvnw -q -B -DskipTests package
-          ./mvnw -q -B dependency:build-classpath -Dmdep.outputFile=target/cp.txt -Dmdep.includeScope=runtime
-      - name: Score every crag for today, tomorrow and the day after
-        working-directory: backend
-        run: java -cp "target/classes:$(cat target/cp.txt)" io.github.allannava.cragcast.export.ConditionsExport ../data/crags.json ../site/data/conditions.json ../site/api/v1
-      - run: cp assets/logo.svg site/logo.svg
+      - name: Score every crag for today, tomorrow and the day after, and build site/
+        run: tools/build_site.sh
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

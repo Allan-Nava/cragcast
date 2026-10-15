@@ -88,6 +88,8 @@ Credit OpenStreetMap (ODbL), Open-Meteo (CC BY 4.0) and Copernicus when you show
 | `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), Terraform fmt and validate, backlog check |
 | `.github/workflows/pages.yml` | hourly and on push: scores every crag and publishes `site/` on GitHub Pages |
 | `.github/workflows/image.yml` | on push to main: the linux/arm64 backend image to GHCR, on a native ARM runner |
+| `.github/workflows/lighthouse.yml`, `lighthouserc.json` | on PRs touching the page: builds it with real data and fails when Lighthouse (desktop, median of 3) drops below performance 0.85 or accessibility, best practices, SEO 0.95 — measured on 2026-10-15 at 0.95 / 1 / 1 / 1 |
+| `tools/build_site.sh` | builds `site/` as Pages serves it (scores, data, API, logo); used by `pages.yml` and `lighthouse.yml` |
 | `.github/workflows/history.yml`, `tools/history_append.py` | every evening: today's verdict and weather for every crag, one CSV per month on the [`history`](https://github.com/Allan-Nava/cragcast/tree/history) branch, never on main |
 | `.github/workflows/crags-refresh.yml` | on the 1st of every month: rebuilds `data/crags.json` from OSM and opens a PR with the changes (`tools/crags_diff.py`) when there are any |
 | `.github/workflows/backlog-issues.yml` | on push to main touching `BACKLOG.md`: issues and milestones follow the backlog |

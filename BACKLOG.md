@@ -144,8 +144,9 @@ API, GitHub Actions for everything that runs, git for history. No VM, no card.
   added to a phone's home screen and shows the last data offline. Done: manifest with any and
   maskable icons from the logo, network-first service worker, a notice when the data is over
   3 h old; map tiles never cached. <!-- cg: prio=med size=M labels=frontend ver=main -->
-- [ ] **CG-36 — Lighthouse CI on pull requests**: performance and accessibility budgets that
-  fail the PR when they drop. <!-- cg: prio=low size=S labels=infra,frontend -->
+- [x] **CG-36 — Lighthouse CI on pull requests**: performance and accessibility budgets that
+  fail the PR when they drop. Done: measured 0.95 / 1 / 1 / 1, budgets 0.85 / 0.95 / 0.95 /
+  0.95 on the median of three desktop runs; `tools/build_site.sh` shared with pages.yml. <!-- cg: prio=low size=S labels=infra,frontend ver=main -->
 - [ ] **CG-37 — Uptime with checkfleet**: an hourly check of the page and of the data's age,
   with Allan's own checkfleet, that fails loudly when the JSON is stale. <!-- cg: prio=low size=S labels=infra -->
 

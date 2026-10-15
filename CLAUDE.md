@@ -75,6 +75,9 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
 - **`/api/v1/` is a contract** (CG-32): `ConditionsExport.api()` may add fields, never rename or
   remove one; a breaking change is a new `/api/v2/` next to v1. The README's API section lists
   every field — a new field goes there in the same PR.
+- **Lighthouse budgets are a floor, not a target** (CG-36): `lighthouserc.json` fails a PR below
+  performance 0.85 or accessibility / best practices / SEO 0.95 (median of 3, desktop). Lower a
+  budget only with the reason in the commit; the measured baseline is in the README.
 - **Docs move with the code.** Every PR updates what it changes in README.md (the page's
   features, the "How it is built" table, how to run it), this file and BACKLOG.md. A PR whose
   docs still describe the old behaviour is not done.
