@@ -1,0 +1,31 @@
+# CG-37: what "cragcast is up" means, checked hourly by .github/workflows/uptime.yml with
+# checkfleet (github.com/Allan-Nava/checkfleet). The age of the data is checked by the workflow
+# itself: checkfleet's http module reads status, latency and a body substring, not a JSON field.
+timeout_seconds: 20
+retries: 2
+retry_backoff_ms: 500
+checks:
+  certs:
+    warn_days: 21
+    crit_days: 7
+    port: 443
+    targets:
+      - allan-nava.github.io
+  http:
+    targets:
+      - url: https://allan-nava.github.io/cragcast/
+        expect_status: 200
+        max_latency_ms: 3000
+        expect_body: "cragcast"
+      - url: https://allan-nava.github.io/cragcast/data/conditions.json
+        expect_status: 200
+        max_latency_ms: 3000
+        expect_body: "\"generatedAt\""
+      - url: https://allan-nava.github.io/cragcast/api/v1/crags.json
+        expect_status: 200
+        max_latency_ms: 3000
+        expect_body: "\"version\":1"
+      - url: https://allan-nava.github.io/cragcast/api/v1/crags/osm-node-1739484761.json
+        expect_status: 200
+        max_latency_ms: 3000
+        expect_body: "\"hours\""

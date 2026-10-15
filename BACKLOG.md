@@ -147,8 +147,10 @@ API, GitHub Actions for everything that runs, git for history. No VM, no card.
 - [x] **CG-36 — Lighthouse CI on pull requests**: performance and accessibility budgets that
   fail the PR when they drop. Done: measured 0.95 / 1 / 1 / 1, budgets 0.85 / 0.95 / 0.95 /
   0.95 on the median of three desktop runs; `tools/build_site.sh` shared with pages.yml. <!-- cg: prio=low size=S labels=infra,frontend ver=main -->
-- [ ] **CG-37 — Uptime with checkfleet**: an hourly check of the page and of the data's age,
-  with Allan's own checkfleet, that fails loudly when the JSON is stale. <!-- cg: prio=low size=S labels=infra -->
+- [x] **CG-37 — Uptime with checkfleet**: an hourly check of the page and of the data's age,
+  with Allan's own checkfleet, that fails loudly when the JSON is stale. Done: checkfleet 1.34.2
+  (http, certs) on the page, data, API and TLS, plus a freshness step on `generatedAt` (150
+  min); checkfleet has no JSON-field age check, so the step lives in the workflow. <!-- cg: prio=low size=S labels=infra ver=main -->
 
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 
