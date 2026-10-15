@@ -21,7 +21,7 @@ public class Crag {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    /** Null for crags from OpenStreetMap, which gives no area (CG-25). */
     private String region;
 
     @Column(nullable = false)
@@ -30,8 +30,9 @@ public class Crag {
     @Column(nullable = false)
     private double longitude;
 
+    /** Null when nobody has mapped it: the scorer then judges the wall as shaded. */
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 2)
+    @Column(length = 2)
     private Aspect aspect;
 
     @Column(name = "source_url", nullable = false)
@@ -44,6 +45,17 @@ public class Crag {
     public Crag(String slug, String name, String region, double latitude, double longitude,
                 Aspect aspect, String sourceUrl) {
         this.slug = slug;
+        this.name = name;
+        this.region = region;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.aspect = aspect;
+        this.sourceUrl = sourceUrl;
+    }
+
+    /** Takes the latest values from the source, keeping the id and slug. */
+    public void update(String name, String region, double latitude, double longitude, Aspect aspect,
+                       String sourceUrl) {
         this.name = name;
         this.region = region;
         this.latitude = latitude;

@@ -17,7 +17,7 @@ import org.springframework.web.client.RestClient;
 @Component
 public class OpenMeteoClient {
 
-    static final String TIMEZONE = "Europe/Rome";
+    public static final String TIMEZONE = "Europe/Rome";
 
     private final RestClient rest;
 

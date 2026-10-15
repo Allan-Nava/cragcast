@@ -4,13 +4,13 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**26 items · 9 shipped · 17 open · 4 milestones.**
+**27 items · 11 shipped · 16 open · 4 milestones.**
 
 ## At a glance
 
 | Milestone | Phase | Progress | Open | Shipped |
 |---|---|---|---|---|
-| **v0.1.0 — A verdict for one crag** | now | `#######...` 67% | 2 | 4 |
+| **v0.1.0 — A verdict for one crag** | now | `#########.` 86% | 1 | 6 |
 | **v0.2.0 — On the internet, for free** | next | `###.......` 25% | 6 | 2 |
 | **v0.2.1 — UX and UI** | now | `###.......` 33% | 6 | 3 |
 | **v0.3.0 — The page climbers use** | later | `..........` 0% | 3 | 0 |
@@ -20,9 +20,10 @@
 - [x] **CG-1** — Backend skeleton · high · M · backend, infra · `main`
 - [x] **CG-2** — The crag list · high · M · data · `main`
 - [x] **CG-3** — Open-Meteo client · high · M · backend · `main`
-- [ ] **CG-4** — Conditions endpoint · high · M · backend
+- [x] **CG-4** — Conditions endpoint · high · M · backend · `main`
 - [x] **CG-14** — Logo · low · S · docs · `main`
-- [ ] **CG-5** — Hourly refresh · med · M · backend
+- [x] **CG-5** — Hourly refresh · med · M · backend · `main`
+- [ ] **CG-27** — Calibrate the thresholds on real days · med · M · backend, data
 
 ## v0.2.0 — On the internet, for free
 

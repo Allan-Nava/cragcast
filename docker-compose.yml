@@ -17,7 +17,9 @@ services:
       retries: 10
 
   backend:
-    build: ./backend
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
     environment:
       DATABASE_URL: jdbc:postgresql://db:5432/cragcast
       DATABASE_USER: cragcast
