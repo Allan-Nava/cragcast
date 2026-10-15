@@ -25,6 +25,8 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   colour alone: go is a green circle S, maybe a yellow diamond F, no a red square N — and the
   reasons under each crag (rain, recent rain, wind, cold or heat, an unmapped aspect);
 - **search** by name, ignoring case and accents, and **toggles** for go / maybe / no go;
+- **near me**: the list sorted by distance from the reader, with the km, the map centred on
+  them — the position is used in the browser only, never sent and never put in the URL;
 - the view in the URL (`?q=&v=&day=`): a link opens the same view, and back works;
 - per crag, where OpenStreetMap has them: grades, route length, rock, style, website; the
   **elevation** of every crag; a link to the crag on OSM and to its OSM edit view;
