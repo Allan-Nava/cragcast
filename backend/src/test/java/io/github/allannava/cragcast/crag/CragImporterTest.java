@@ -20,5 +20,7 @@ class CragImporterTest {
             assertThat(e.latitude()).isBetween(45.0, 47.0);
         });
         assertThat(entries).anyMatch(e -> e.aspect() == null);
+        assertThat(entries).allSatisfy(e -> assertThat(e.elevation()).isNotNull());
+        assertThat(entries).anyMatch(e -> e.details() != null && e.details().containsKey("gradeMax"));
     }
 }

@@ -32,8 +32,10 @@ class CragApiTests {
     void seed() {
         crags.deleteAll();
         // Test data only: a made-up crag, not a real place.
-        crags.save(new Crag("test-wall", "Test Wall", "Test", 45.0, 9.0, Aspect.S,
-                "https://example.org/test-wall"));
+        Crag c = new Crag("test-wall", "Test Wall", "Test", 45.0, 9.0, Aspect.S,
+                "https://example.org/test-wall");
+        c.setExtras(820, "{\"gradeMin\":\"5a\",\"gradeMax\":\"7b\",\"styles\":[\"sport\"]}");
+        crags.save(c);
     }
 
     @Test
@@ -42,7 +44,10 @@ class CragApiTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].slug").value("test-wall"))
                 .andExpect(jsonPath("$[0].aspect").value("S"))
-                .andExpect(jsonPath("$[0].id").doesNotExist());
+                .andExpect(jsonPath("$[0].id").doesNotExist())
+                .andExpect(jsonPath("$[0].elevation").value(820))
+                .andExpect(jsonPath("$[0].details.gradeMax").value("7b"))
+                .andExpect(jsonPath("$[0].details.styles[0]").value("sport"));
     }
 
     @Test

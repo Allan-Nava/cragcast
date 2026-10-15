@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
@@ -39,12 +40,16 @@ class CragImporter implements ApplicationRunner {
         int inserted = 0;
         int updated = 0;
         for (Entry e : read()) {
+            String details = json.writeValueAsString(e.details() == null ? Map.of() : e.details());
             var existing = crags.findBySlug(e.id());
             if (existing.isPresent()) {
                 existing.get().update(e.name(), null, e.latitude(), e.longitude(), e.aspect(), e.sourceUrl());
+                existing.get().setExtras(e.elevation(), details);
                 updated++;
             } else {
-                crags.save(new Crag(e.id(), e.name(), null, e.latitude(), e.longitude(), e.aspect(), e.sourceUrl()));
+                Crag c = new Crag(e.id(), e.name(), null, e.latitude(), e.longitude(), e.aspect(), e.sourceUrl());
+                c.setExtras(e.elevation(), details);
+                crags.save(c);
                 inserted++;
             }
         }
@@ -61,8 +66,8 @@ class CragImporter implements ApplicationRunner {
     record File(String region, String source, String licence, List<Entry> crags) {
     }
 
-    /** The crag details (grades, length, rock…) are for the page; the service does not store them yet. */
     @JsonIgnoreProperties(ignoreUnknown = true)
-    record Entry(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl) {
+    record Entry(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
+                 Map<String, Object> details, Integer elevation) {
     }
 }
