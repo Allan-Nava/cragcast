@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**46 items · 38 shipped · 8 open · 9 milestones.**
+**46 items · 39 shipped · 7 open · 9 milestones.**
 
 ## At a glance
 
@@ -17,7 +17,7 @@
 | **v0.3.0 — The page climbers use** | later | `##########` 100% | 0 | 3 |
 | **v0.4.0 — Free stack** | next | `##########` 100% | 0 | 6 |
 | **v0.5.0 — A livelier page** | next | `##########` 100% | 0 | 4 |
-| **v0.6.0 — More crags, one link each** | next | `######....` 60% | 2 | 3 |
+| **v0.6.0 — More crags, one link each** | next | `########..` 80% | 1 | 4 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
 ## v0.1.0 — A verdict for one crag
@@ -83,7 +83,7 @@
 - [x] **CG-42** — Crags tagged only sport=climbing · high · M · data · `main`
 - [x] **CG-44** — A link per crag · high · S · frontend · `main`
 - [x] **CG-45** — A preview when shared · med · M · frontend, backend · `main`
-- [ ] **CG-46** — Favourite crags · med · S · frontend
+- [x] **CG-46** — Favourite crags · med · S · frontend · `main`
 - [ ] **CG-43** — Neighbouring regions · low · L · data, backend
 
 ## v1.0.0 — Self-hosted on a VM (parked)

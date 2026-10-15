@@ -10,6 +10,7 @@ import { LABEL, LETTER, allDetails, dayLabel, describe, osmEditUrl, place } from
 import { HourChart, HourTable, hourReadout } from "./HourChart";
 import { AvalancheLine } from "./AvalancheLine";
 import { cragLink } from "../lib/state";
+import { Star } from "./Star";
 
 /** CG-44: share the crag — the system share sheet where there is one, else copy the link. */
 function Share({ crag }: { crag: Crag }) {
@@ -42,6 +43,9 @@ interface Props {
   days?: string[];
   onDay?(day: string): void;
   onClose(): void;
+  /** CG-46 */
+  favourite?: boolean;
+  onFavourite?(id: string): void;
 }
 
 const media = (q: string) => typeof matchMedia === "function" && matchMedia(q).matches;
@@ -56,7 +60,7 @@ function shut(d: HTMLDialogElement) {
 /** How far a swipe must travel, in px, to count. */
 export const SWIPE = 60;
 
-export function DetailDialog({ crag, day, days = [], onDay, onClose }: Props) {
+export function DetailDialog({ crag, day, days = [], onDay, onClose, favourite = false, onFavourite }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
   const title = useRef<HTMLHeadingElement>(null);
   const back = useRef<Element | null>(null);
@@ -130,6 +134,7 @@ export function DetailDialog({ crag, day, days = [], onDay, onClose }: Props) {
           <h2 id="d-title" ref={title} tabIndex={-1}>
             <span className={"mark " + info.verdict.toLowerCase()} aria-hidden="true"><b>{LETTER[info.verdict]}</b></span>
             {` ${crag.name} — ${LABEL[info.verdict]}`}
+            {onFavourite && <Star name={crag.name} on={favourite} onToggle={() => onFavourite(crag.id)} />}
           </h2>
           {days.length > 1 && (
             <nav className="d-days" aria-label="Giorno">

@@ -13,19 +13,23 @@ import { DetailDialog } from "./components/DetailDialog";
 import { Help } from "./components/Help";
 import { Footer } from "./components/Footer";
 import { Summary } from "./components/Summary";
+import { loadFavourites, loadOnly, saveFavourites, saveOnly } from "./lib/favourites";
 
-/** The crags matching search, province and area — every verdict (CG-39 counts them). */
-export function matching(crags: Crag[], s: ViewState): Crag[] {
+/** The crags matching search, province, area and (CG-46) favourites — every verdict (CG-39
+ * counts them). */
+export function matching(crags: Crag[], s: ViewState, favourites: Set<string> | null = null): Crag[] {
   const q = fold(s.q.trim());
   return crags
+    .filter(c => !favourites || favourites.has(c.id))
     .filter(c => !q || fold(c.name).includes(q) || fold(place(c)).includes(q))
     .filter(c => !s.province || c.provinceCode === s.province)
     .filter(c => !s.area || inArea(s.area, c.latitude, c.longitude));
 }
 
 /** The crags the view shows, in the order of the list. */
-export function visible(crags: Crag[], s: ViewState, distance: ((c: Crag) => number) | null): Crag[] {
-  return matching(crags, s)
+export function visible(crags: Crag[], s: ViewState, distance: ((c: Crag) => number) | null,
+                        favourites: Set<string> | null = null): Crag[] {
+  return matching(crags, s, favourites)
     .filter(c => s.verdicts.has(c.days[s.day].verdict))
     .sort(distance
       ? (a, b) => distance(a) - distance(b)
@@ -46,6 +50,16 @@ export function App() {
   // CG-38: the crag under the pointer or keyboard focus in the list, and the one last chosen.
   const [hot, setHot] = useState<string | null>(null);
   const [chosen, setChosen] = useState<string | null>(null);
+  // CG-46: favourites live in this browser only.
+  const [favourites, setFavourites] = useState(loadFavourites);
+  const [onlyFavourites, setOnlyFavourites] = useState(loadOnly);
+  const toggleFavourite = useCallback((id: string) => setFavourites(prev => {
+    const next = new Set(prev);
+    if (next.has(id)) next.delete(id); else next.add(id);
+    saveFavourites(next);
+    return next;
+  }), []);
+  const scope = onlyFavourites ? favourites : null;
   const mapApi = useRef<MapApi | null>(null);
 
   useEffect(() => {
@@ -105,7 +119,7 @@ export function App() {
   }, [data]);
 
   const distance = useMemo(() => here ? (c: Crag) => km(here.lat, here.lon, c.latitude, c.longitude) : null, [here]);
-  const shown = useMemo(() => data && view ? visible(data.crags, view, distance) : [], [data, view, distance]);
+  const shown = useMemo(() => data && view ? visible(data.crags, view, distance, scope) : [], [data, view, distance, scope]);
   // CG-44: the open panel lives in the URL, so a link opens on it and back closes it.
   const detail = data && view?.crag ? data.crags.find(c => c.id === view.crag) ?? null : null;
   const viewRef = useRef(view);
@@ -168,22 +182,27 @@ export function App() {
                 onQuery={q => view && go({ ...view, q }, false)}
                 onToggle={toggle}
                 onProvince={province => view && go({ ...view, province }, true)}
-                onNear={near} />
+                onNear={near}
+                favourites={favourites.size} onlyFavourites={onlyFavourites}
+                onOnlyFavourites={() => setOnlyFavourites(on => { saveOnly(!on); return !on; })} />
       {data && view
-        ? <Summary crags={matching(data.crags, view)} day={view.day} index={data.days.indexOf(view.day)} />
+        ? <Summary crags={matching(data.crags, view, scope)} day={view.day} index={data.days.indexOf(view.day)} />
         : !error && <p className="summary ghost" aria-hidden="true" />}
       <main>
         <CragMap crags={shown} day={view?.day ?? ""} here={here} onDetail={openDetail} apiRef={mapApi}
                  hot={hot} area={view?.area ?? null} onArea={onArea} onChosen={onChosen} />
         {data && view
           ? <CragList crags={shown} day={view.day} days={data.days} onDay={day => go({ ...view, day }, true)}
-                      distance={distance} chosen={chosen}
+                      distance={distance} chosen={chosen} favourites={favourites} onFavourite={toggleFavourite}
+                      empty={onlyFavourites && favourites.size === 0
+                        ? "Nessuna preferita: tocca la stella di una falesia per aggiungerla." : undefined}
                       onOpen={c => { setChosen(c.id); mapApi.current?.open(c.id); }} onDetail={openDetail} onHot={setHot} />
           : <ul id="list" className={error ? undefined : "loading"} aria-busy={!error}>
               {!error && [0, 1, 2, 3, 4].map(i => <li key={i} className="ghost" aria-hidden="true" />)}
             </ul>}
       </main>
       <DetailDialog crag={detail} day={view?.day ?? ""} days={data?.days ?? []}
+                    favourite={detail ? favourites.has(detail.id) : false} onFavourite={toggleFavourite}
                     onDay={day => view && go({ ...view, day }, true)}
                     onClose={() => { if (viewRef.current?.crag) go({ ...viewRef.current, crag: null }, true); }} />
       <Help />

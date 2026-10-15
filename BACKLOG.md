@@ -207,8 +207,9 @@ Asked for on 2026-10-15.
   them; it sends a browser on to the crag's panel. Done: `site/c/<id>.html` from
   `SharePages`, the day as a date, the project's social image; "Condividi" shares it; the
   main page gained its own Open Graph tags. <!-- cg: prio=med size=M labels=frontend,backend ver=main -->
-- [ ] **CG-46 — Favourite crags**: a star on each crag, kept in the browser only, and a
-  "Preferite" filter. <!-- cg: prio=med size=S labels=frontend -->
+- [x] **CG-46 — Favourite crags**: a star on each crag, kept in the browser only, and a
+  "Preferite" filter. Done: in the list and the panel; the filter is remembered too; storage
+  failures leave favourites for the visit. <!-- cg: prio=med size=S labels=frontend ver=main -->
 - [ ] **CG-43 — Neighbouring regions**: crags beyond Lombardy (Piedmont, Trentino, the Ticino)
   where Lombard climbers go — the province, avalanche and API fields must hold beyond one
   region. <!-- cg: prio=low size=L labels=data,backend -->

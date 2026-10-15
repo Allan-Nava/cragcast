@@ -107,6 +107,9 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   is read later than it is made). Its reason words copy `REASON_IT` in `web/src/lib/text.ts`:
   change one, change both. Absolute URLs come from `SITE_URL` (default the Pages URL), and
   `web/index.html` carries the same URL in its own Open Graph tags.
+- **Favourites never leave the browser either** (CG-46): `localStorage` only, every access in
+  try/catch (`web/src/lib/favourites.ts`), never in the URL or a request. The favourites
+  filter scopes the list and the summary like the province does.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
   never in the URL, never in a request, never in storage.
 - **History lives on the `history` branch, never on main** (CG-34). `history.yml` appends the
