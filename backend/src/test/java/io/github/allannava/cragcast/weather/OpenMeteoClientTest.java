@@ -59,6 +59,25 @@ class OpenMeteoClientTest {
     }
 
     @Test
+    void asksForManyPlacesInOneRequest() throws IOException {
+        // two-locations-hourly.json: recorded 2026-10-15 for central Milan and 46.14,9.39.
+        String body = new ClassPathResource("open-meteo/two-locations-hourly.json")
+                .getContentAsString(StandardCharsets.UTF_8);
+        server.expect(requestTo(startsWith("https://api.open-meteo.com/v1/forecast")))
+                .andExpect(queryParam("latitude", "45.46,46.14"))
+                .andExpect(queryParam("longitude", "9.19,9.39"))
+                .andExpect(queryParam("forecast_days", "3"))
+                .andRespond(withSuccess(body, MediaType.APPLICATION_JSON));
+        var forecasts = client.hourly(java.util.List.of(new double[] {45.46, 9.19}, new double[] {46.14, 9.39}));
+        assertThat(forecasts).hasSize(2);
+        // Values computed independently from the fixture, for 2026-10-16.
+        var day = LocalDate.of(2026, 10, 16);
+        assertThat(WeatherReducer.reduce(forecasts.get(0), day).maxTemperatureC()).isEqualTo(21.5);
+        assertThat(WeatherReducer.reduce(forecasts.get(1), day).maxWindKmh()).isEqualTo(4.7);
+        server.verify();
+    }
+
+    @Test
     void reducesTheRecordedDayToTheScorersWeather() throws IOException {
         respondWithFixture();
         var w = client.weatherFor(45.46, 9.19, LocalDate.of(2026, 10, 15));

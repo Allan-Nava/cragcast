@@ -41,6 +41,14 @@ class ConditionsScorerTest {
     }
 
     @Test
+    void anUnmappedAspectIsJudgedAsShadeAndSaysSo() {
+        var eightMmYesterday = new Weather(8, 0, 18, 10);
+        var result = scorer.score(null, eightMmYesterday);
+        assertThat(result.verdict()).isEqualTo(Verdict.MAYBE);
+        assertThat(result.reasons()).contains("wall aspect not mapped: judged as a shaded wall");
+    }
+
+    @Test
     void heatOnlyMattersOnSunnyWalls() {
         var hot = new Weather(0, 0, 35, 10);
         assertThat(scorer.score(Aspect.SW, hot).verdict()).isEqualTo(Verdict.MAYBE);

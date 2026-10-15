@@ -15,9 +15,11 @@ main.
 - [x] **CG-1 — Backend skeleton**: Spring Boot 4 on Java 21 with PostgreSQL and Flyway; the
   crag table and `GET /api/crags`, `GET /api/crags/{slug}`; the conditions scorer with its
   tests; Docker Compose, k3s manifests, CI. <!-- cg: prio=high size=M labels=backend,infra ver=main -->
-- [ ] **CG-2 — The crag list**: 20–30 crags in Lombardy, each with name, region, coordinates,
-  wall aspect and the public source they come from, loaded by a Flyway migration. No
-  coordinates typed from memory. <!-- cg: prio=high size=M labels=data -->
+- [x] **CG-2 — The crag list**: 20–30 crags in Lombardy, each with name, region, coordinates,
+  wall aspect and the public source they come from. Done from OpenStreetMap (climbing=crag):
+  `tools/osm_crags.py` writes `data/crags.json`, 76 crags, each with its OSM link; the aspect
+  is the OSM tag `climbing:orientation` where mapped (2 of 76), null otherwise. No coordinates
+  typed from memory. <!-- cg: prio=high size=M labels=data ver=main -->
 - [x] **CG-3 — Open-Meteo client**: hourly precipitation, temperature and wind for a crag's
   coordinates, reduced to the `Weather` record (rain in the previous 48 h, rain in climbing
   hours, max temperature, max wind); tests against a recorded response. <!-- cg: prio=high size=M labels=backend ver=main -->
@@ -30,6 +32,16 @@ main.
   hour and stores it, so the API never waits on Open-Meteo. <!-- cg: prio=med size=M labels=backend -->
 
 ## v0.2.0 — On the internet, for free <!-- ms: phase=next -->
+
+- [x] **CG-15 — Serverless version on GitHub Pages**: an hourly Action scores today and
+  tomorrow for every crag with the Java scorer (`ConditionsExport`, one Open-Meteo request
+  for all crags) and publishes a static page — Leaflet map, traffic lights, reasons, sources.
+  Free, no VM. <!-- cg: prio=high size=M labels=frontend,infra ver=main -->
+- [ ] **CG-16 — Wall aspects on OpenStreetMap**: 74 of 76 crags have no
+  `climbing:orientation`; add it on OSM from public guides, crag by crag, then rerun
+  `tools/osm_crags.py`. Every aspect added makes its verdict sharper. <!-- cg: prio=med size=M labels=data -->
+- [ ] **CG-17 — Refresh the crag list**: a monthly Action reruns `tools/osm_crags.py` and
+  opens a PR when OSM has changed. <!-- cg: prio=low size=S labels=data,infra -->
 
 - [ ] **CG-6 — The VM as code**: Terraform for the Oracle Cloud Always Free A1.Flex VM in
   eu-milan-1 with its VCN, public subnet, internet gateway, route and security rules; a
@@ -46,8 +58,8 @@ main.
 
 ## v0.3.0 — The page climbers use <!-- ms: phase=later -->
 
-- [ ] **CG-10 — Web page**: React on GitHub Pages — a map of the crags with tomorrow's
-  verdict as a traffic light, and the reasons on click. <!-- cg: prio=med size=L labels=frontend -->
+- [ ] **CG-10 — Web page in React**: rewrite the static page (CG-15) in React with a build
+  step — filters by area and verdict, a page per crag. <!-- cg: prio=med size=L labels=frontend -->
 - [ ] **CG-11 — Avalanche bulletin**: for winter routes, the AINEVA / regional bulletin next
   to the weather. <!-- cg: prio=low size=M labels=data,backend -->
 - [ ] **CG-12 — Write-up**: a post on allan-nava.github.io and on LinkedIn on how the verdict
