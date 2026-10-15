@@ -210,6 +210,13 @@ Asked for on 2026-10-15.
 - [x] **CG-46 — Favourite crags**: a star on each crag, kept in the browser only, and a
   "Preferite" filter. Done: in the list and the panel; the filter is remembered too; storage
   failures leave favourites for the visit. <!-- cg: prio=med size=S labels=frontend ver=main -->
+
+## v0.7.0 — Beyond Lombardy <!-- ms: phase=later -->
+
+Moved out of v0.6.0 on 2026-10-15, when that milestone closed: a larger job, since the
+province, the avalanche bulletin (another per region, the SLF in the Ticino) and the API
+assume Lombardy.
+
 - [ ] **CG-43 — Neighbouring regions**: crags beyond Lombardy (Piedmont, Trentino, the Ticino)
   where Lombard climbers go — the province, avalanche and API fields must hold beyond one
   region. <!-- cg: prio=low size=L labels=data,backend -->
