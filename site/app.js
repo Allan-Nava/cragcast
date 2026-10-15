@@ -97,7 +97,7 @@ function render(data) {
   for (const crag of shown) {
     const info = describe(crag, day);
     const cls = info.verdict.toLowerCase();
-    const details = detailParts(crag.details);
+    const details = (crag.elevation != null ? [`quota circa ${crag.elevation} m`] : []).concat(detailParts(crag.details));
     const site = crag.details && crag.details.website;
     const popup = `<strong>${escapeHtml(crag.name)}</strong><br>${LABEL[info.verdict]} — ${escapeHtml(info.aspect)}<br>` +
                   (info.reasons.length ? escapeHtml(info.reasons.join("; ")) + "<br>" : "") +

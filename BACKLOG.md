@@ -101,9 +101,11 @@ memory or copied from guidebook sites.
   them for now (CG-31). <!-- cg: prio=high size=M labels=data,frontend ver=main -->
 - [ ] **CG-31 — Crag details in the API**: store the details from data/crags.json in the
   database (a V3 migration) and return them from `GET /api/crags/{slug}`. <!-- cg: prio=low size=S labels=backend -->
-- [ ] **CG-29 — Elevation of every crag**: the altitude of each crag from a digital elevation
+- [x] **CG-29 — Elevation of every crag**: the altitude of each crag from a digital elevation
   model through Open-Meteo's elevation API, stored in `data/crags.json` with its source, and
-  shown on the page. <!-- cg: prio=high size=S labels=data,frontend -->
+  shown on the page. Done: Copernicus DEM GLO-90 (90 m) via Open-Meteo, computed once in
+  `tools/osm_crags.py`, 234–2251 m across the 76 crags; the page says "about", and credits
+  Copernicus. <!-- cg: prio=high size=S labels=data,frontend ver=main -->
 - [ ] **CG-30 — Help map your crag**: a short guide on the page and in the README, an "edit
   on OpenStreetMap" link per crag and a GitHub issue form, so climbers add aspect, grades and
   route length on OSM, where cragcast picks them up. <!-- cg: prio=med size=S labels=docs,frontend -->
