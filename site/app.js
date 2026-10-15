@@ -99,11 +99,15 @@ function render(data) {
     const cls = info.verdict.toLowerCase();
     const details = (crag.elevation != null ? [`quota circa ${crag.elevation} m`] : []).concat(detailParts(crag.details));
     const site = crag.details && crag.details.website;
+    // https://www.openstreetmap.org/node/123 -> https://www.openstreetmap.org/edit?node=123
+    const m = crag.sourceUrl.match(/openstreetmap\.org\/(node|way|relation)\/(\d+)/);
+    const edit = m ? `https://www.openstreetmap.org/edit?${m[1]}=${m[2]}` : null;
     const popup = `<strong>${escapeHtml(crag.name)}</strong><br>${LABEL[info.verdict]} — ${escapeHtml(info.aspect)}<br>` +
                   (info.reasons.length ? escapeHtml(info.reasons.join("; ")) + "<br>" : "") +
                   (details.length ? escapeHtml(details.join(" · ")) + "<br>" : "") +
                   `<small>${escapeHtml(info.facts)}</small><br><a href="${crag.sourceUrl}">fonte OpenStreetMap</a>` +
-                  (site ? ` · <a href="${encodeURI(site)}" rel="noopener">sito</a>` : "");
+                  (site ? ` · <a href="${encodeURI(site)}" rel="noopener">sito</a>` : "") +
+                  (edit ? `<br><a href="${edit}" rel="noopener">modifica su OpenStreetMap</a>` : "");
     const marker = L.circleMarker([crag.latitude, crag.longitude], {
       radius: 8, weight: 2, color: "#050505",
       fillColor: getComputedStyle(document.documentElement).getPropertyValue("--" + cls).trim(), fillOpacity: 0.95,

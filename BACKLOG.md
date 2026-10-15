@@ -45,8 +45,9 @@ main.
   for all crags) and publishes a static page — Leaflet map, traffic lights, reasons, sources.
   Free, no VM. <!-- cg: prio=high size=M labels=frontend,infra ver=main -->
 - [ ] **CG-16 — Wall aspects on OpenStreetMap**: 74 of 76 crags have no
-  `climbing:orientation`; add it on OSM from public guides, crag by crag, then rerun
-  `tools/osm_crags.py`. Every aspect added makes its verdict sharper. <!-- cg: prio=med size=M labels=data -->
+  `climbing:orientation`; add it on OSM from first-hand knowledge — OSM does not accept data
+  copied from guidebooks under copyright — crag by crag, then rerun `tools/osm_crags.py`.
+  Every aspect added makes its verdict sharper. <!-- cg: prio=med size=M labels=data -->
 - [ ] **CG-17 — Refresh the crag list**: a monthly Action reruns `tools/osm_crags.py` and
   opens a PR when OSM has changed. <!-- cg: prio=low size=S labels=data,infra -->
 
@@ -106,9 +107,10 @@ memory or copied from guidebook sites.
   shown on the page. Done: Copernicus DEM GLO-90 (90 m) via Open-Meteo, computed once in
   `tools/osm_crags.py`, 234–2251 m across the 76 crags; the page says "about", and credits
   Copernicus. <!-- cg: prio=high size=S labels=data,frontend ver=main -->
-- [ ] **CG-30 — Help map your crag**: a short guide on the page and in the README, an "edit
+- [x] **CG-30 — Help map your crag**: a short guide on the page and in the README, an "edit
   on OpenStreetMap" link per crag and a GitHub issue form, so climbers add aspect, grades and
-  route length on OSM, where cragcast picks them up. <!-- cg: prio=med size=S labels=docs,frontend -->
+  route length on OSM, where cragcast picks them up. Done, and the guide says plainly: only
+  first-hand knowledge, nothing copied from guidebooks. <!-- cg: prio=med size=S labels=docs,frontend ver=main -->
 
 ## v0.3.0 — The page climbers use <!-- ms: phase=later -->
 

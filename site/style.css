@@ -43,3 +43,8 @@ footer { color: var(--muted); font-size: .85rem; padding: 16px; }
   #list { max-height: 70vh; overflow-y: auto; }
 }
 .leaflet-popup-content { font: 14px/1.4 system-ui, sans-serif; }
+.help { padding: 8px 16px 0; }
+.help details { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.help summary { cursor: pointer; font-weight: 600; }
+.help li { margin: 4px 0; }
+.help code { color: var(--go); }
