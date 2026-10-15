@@ -1,4 +1,4 @@
-// The view in the URL (?q=&v=&p=&a=&crag=&day=), so a link opens the same view and back works (CG-20).
+// The view in the URL (?q=&v=&p=&a=&crag=&show=&day=), so a link opens the same view and back works (CG-20).
 // The reader's position is never part of it (CG-22).
 import type { Verdict } from "../types";
 import { ORDER, VERDICTS } from "./text";
@@ -12,6 +12,8 @@ export interface ViewState {
   area: Area | null;
   /** CG-44: the crag whose panel is open; a link with ?crag= opens on it. */
   crag: string | null;
+  /** CG-54: on a phone, the map or the list (the list by default). */
+  show: "list" | "map";
 }
 
 export type Area = [number, number, number, number];
@@ -38,6 +40,7 @@ export function readState(search: string, days: string[]): ViewState {
     province: p.get("p") ?? "",
     area: readArea(p.get("a")),
     crag: p.get("crag") || null,
+    show: p.get("show") === "map" ? "map" : "list",
   };
 }
 
@@ -48,6 +51,7 @@ export function stateQuery(s: ViewState): string {
   if (s.province) p.set("p", s.province);
   if (s.area) p.set("a", s.area.map(x => x.toFixed(3)).join(","));
   if (s.crag) p.set("crag", s.crag);
+  if (s.show === "map") p.set("show", "map");
   p.set("day", s.day);
   return "?" + p.toString();
 }

@@ -57,3 +57,10 @@ test("CG-53: on a desktop the filters stay in the row, without the 'Filtri' butt
   await expect(page.getByLabel("Provincia")).toBeVisible();
   await expect(page.locator(".summary .date")).toBeVisible();
 });
+
+test("CG-54: on a desktop the map and the list show together, without the switch", async ({ page }) => {
+  await page.goto("./?show=map");
+  await expect(page.getByRole("group", { name: "Vista" })).toBeHidden();
+  await expect(page.locator("#map")).toBeVisible();
+  await expect(page.locator("#list")).toBeVisible();
+});

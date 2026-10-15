@@ -36,6 +36,9 @@ export function visible(crags: Crag[], s: ViewState, distance: ((c: Crag) => num
       : (a, b) => ORDER[a.days[s.day].verdict] - ORDER[b.days[s.day].verdict] || a.name.localeCompare(b.name, "it"));
 }
 
+/** CG-54: the width below which the page shows the map or the list, not both (style.css). */
+const narrow = () => typeof matchMedia === "function" && matchMedia("(max-width: 599px)").matches;
+
 /** How often the page looks for new data; the data itself changes hourly, at about :20. */
 export const REFRESH_MS = 10 * 60 * 1000;
 
@@ -128,6 +131,9 @@ export function App() {
     const v = viewRef.current;
     if (v && v.crag !== c.id) go({ ...v, crag: c.id }, true);
   }, []);
+  // CG-54: a map that was hidden has no size; measure it when it comes back.
+  useEffect(() => { if (view?.show === "map") mapApi.current?.refresh(); }, [view?.show]);
+
   // A link straight to a crag: once the map has its marks, fly to it.
   const landed = useRef(false);
   useEffect(() => {
@@ -177,7 +183,7 @@ export function App() {
         </div>
       </header>
       <Controls days={data?.days ?? []} provinces={provinces}
-                state={view ?? { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null }}
+                state={view ?? { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null, show: "list" }}
                 near={asking ? "asking" : here ? "on" : "off"} active={active}
                 onDay={day => view && go({ ...view, day }, true)}
                 onQuery={q => view && go({ ...view, q }, false)}
@@ -189,7 +195,16 @@ export function App() {
       {data && view
         ? <Summary crags={matching(data.crags, view, scope)} day={view.day} index={data.days.indexOf(view.day)} count={count} />
         : <p className={error ? "summary" : "summary ghost"}><span id="count" aria-live="polite">{count}</span></p>}
-      <main>
+      {/* CG-54: on a phone, the map or the list; hidden from 600 px, where both show. */}
+      <div className="show" role="group" aria-label="Vista">
+        {(["list", "map"] as const).map(s => (
+          <button key={s} type="button" aria-pressed={(view?.show ?? "list") === s}
+                  onClick={() => view && view.show !== s && go({ ...view, show: s }, true)}>
+            {s === "list" ? "Lista" : "Mappa"}
+          </button>
+        ))}
+      </div>
+      <main className={"show-" + (view?.show ?? "list")}>
         <CragMap crags={shown} day={view?.day ?? ""} here={here} onDetail={openDetail} apiRef={mapApi}
                  hot={hot} area={view?.area ?? null} onArea={onArea} onChosen={onChosen} />
         {data && view
@@ -197,7 +212,12 @@ export function App() {
                       distance={distance} chosen={chosen} favourites={favourites} onFavourite={toggleFavourite}
                       empty={onlyFavourites && favourites.size === 0
                         ? "Nessuna preferita: tocca la stella di una falesia per aggiungerla." : undefined}
-                      onOpen={c => { setChosen(c.id); mapApi.current?.open(c.id); }} onDetail={openDetail} onHot={setHot} />
+                      onOpen={c => {
+                        setChosen(c.id);
+                        // On a phone the list hides the map: show it, then fly (CG-54).
+                        if (narrow() && view.show !== "map") go({ ...view, show: "map" }, true);
+                        setTimeout(() => mapApi.current?.open(c.id), 0);
+                      }} onDetail={openDetail} onHot={setHot} />
           : <ul id="list" className={error ? undefined : "loading"} aria-busy={!error}>
               {!error && [0, 1, 2, 3, 4].map(i => <li key={i} className="ghost" aria-hidden="true" />)}
             </ul>}

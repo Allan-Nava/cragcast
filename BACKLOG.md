@@ -259,8 +259,10 @@ the filters and the list. Each fix comes with an end-to-end test (CG-51) at the 
   of the filters on; one line for the count and the day's summary instead of two; a shorter
   header. Desktop keeps its row. Done below 600 px: the map now starts at about 280 px instead
   of about 600; e2e tests at Pixel 7 and desktop widths. <!-- cg: prio=high size=M labels=frontend ver=main -->
-- [ ] **CG-54 — Map or list on a phone**: a "Mappa | Lista" switch under the controls, the list
-  first, the choice kept in the URL; choosing a crag in the list shows it on the map. <!-- cg: prio=high size=M labels=frontend -->
+- [x] **CG-54 — Map or list on a phone**: a "Mappa | Lista" switch under the controls, the list
+  first, the choice kept in the URL; choosing a crag in the list shows it on the map. Done below
+  600 px: the first crag now on the first screen; the map is measured again whenever it comes
+  back, so its tiles fill it. <!-- cg: prio=high size=M labels=frontend ver=main -->
 - [ ] **CG-56 — The panel beside, not over**: on a desktop the crag's panel takes the list's
   column instead of covering the filters and the list; the map keeps its place. <!-- cg: prio=med size=M labels=frontend -->
 - [ ] **CG-55 — Readable cluster marks**: the count and the split legible at 100% zoom (text

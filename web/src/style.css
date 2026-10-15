@@ -209,3 +209,16 @@ dialog#detail h2 .star { margin-right: 0; }
   .summary { gap: 4px 10px; font-size: .9rem; }
   .summary .date { display: none; }
 }
+
+/* CG-54: map or list on a phone. The switch shows only below 600 px; there the list comes
+   first and the map takes the screen's height when chosen. */
+.show { display: none; }
+@media (max-width: 599px) {
+  .show { display: flex; gap: 0; margin: 0 16px 10px; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .show button { flex: 1; background: var(--panel); color: var(--muted); border: 0; padding: 8px 0; font: inherit;
+                 font-size: .9rem; cursor: pointer; }
+  .show button[aria-pressed="true"] { background: #1b2a20; color: var(--go); font-weight: 600; }
+  main.show-list .mapwrap { display: none; }
+  main.show-map #list { display: none; }
+  main.show-map #map { height: calc(100vh - 230px); min-height: 360px; }
+}
