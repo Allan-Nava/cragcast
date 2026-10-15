@@ -185,6 +185,27 @@ panel is a modal, and nothing moves on its own. Asked for on 2026-10-15.
   looks for new data every 10 minutes and on return to the tab, swapping it only when
   `generatedAt` changed; crags entering the list rise in. <!-- cg: prio=med size=M labels=frontend ver=main -->
 
+## v0.6.0 — More crags, one link each <!-- ms: phase=next -->
+
+Many Lombard crags are on OpenStreetMap without `climbing=crag` — Galbiate, Corna Rossa di
+Valmadrera, San Tomas — so cragcast never sees them; and a crag cannot be shared as a link.
+Asked for on 2026-10-15.
+
+- [ ] **CG-42 — Crags tagged only sport=climbing**: import the named outdoor climbing places
+  that OSM tags `sport=climbing` (a cliff, a rock, a `single_rock` relation) without
+  `climbing=crag`; leave out gyms, shops, buildings and single routes; fold the sectors mapped
+  as loose points into the crag around them. Every import keeps its OSM link. <!-- cg: prio=high size=M labels=data -->
+- [ ] **CG-44 — A link per crag**: `?crag=<id>` opens the page on that crag's panel, a "Copia
+  link" in the panel, and the browser's share sheet where there is one. <!-- cg: prio=high size=S labels=frontend -->
+- [ ] **CG-45 — A preview when shared**: a static page per crag, rebuilt hourly, whose Open
+  Graph tags carry the name, tomorrow's verdict and weather, so WhatsApp and Telegram show
+  them; it sends a browser on to the crag's panel. <!-- cg: prio=med size=M labels=frontend,backend -->
+- [ ] **CG-46 — Favourite crags**: a star on each crag, kept in the browser only, and a
+  "Preferite" filter. <!-- cg: prio=med size=S labels=frontend -->
+- [ ] **CG-43 — Neighbouring regions**: crags beyond Lombardy (Piedmont, Trentino, the Ticino)
+  where Lombard climbers go — the province, avalanche and API fields must hold beyond one
+  region. <!-- cg: prio=low size=L labels=data,backend -->
+
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 
 Parked on 2026-10-15: Oracle Cloud's Always Free A1 VM could not be created in Milan (39 tries
