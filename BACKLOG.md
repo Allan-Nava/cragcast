@@ -236,10 +236,12 @@ Asked for on 2026-10-15: unit and integration tests for everything. Baseline tha
   data load, the controls, and the charts' pointer. Done: 74 tests, the page from 88% to 99% of
   lines (statements 96, functions 95, branches 89); dragging the map is left to the browser
   tests (CG-51), since jsdom cannot drive Leaflet's drag. <!-- cg: prio=med size=S labels=frontend ver=main -->
-- [ ] **CG-51 — End to end in a browser**: Playwright in CI on the built site with fixture
+- [x] **CG-51 — End to end in a browser**: Playwright in CI on the built site with fixture
   data — search, filters, days, the panel and the sheet, a crag link and its share page,
   favourites, the area search after a real drag, a phone viewport, and an accessibility
-  scan. <!-- cg: prio=high size=L labels=frontend,infra -->
+  scan. Done: Playwright 1.63 with 22 tests on desktop and a Pixel 7; the axe scan found the
+  day buttons' accessible name did not start with their visible text (WCAG 2.5.3), now fixed;
+  the share page's redirect stays covered by the Java tests of its content. <!-- cg: prio=high size=L labels=frontend,infra ver=main -->
 - [ ] **CG-52 — Lint the plumbing**: actionlint on the workflows and shellcheck on the
   scripts, in CI. <!-- cg: prio=low size=S labels=infra -->
 

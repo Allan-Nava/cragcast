@@ -155,8 +155,9 @@ group("three days at a glance (CG-39)", () => {
     render(<CragList crags={[threeDays()]} day={D[1]} days={D} onDay={onDay} distance={null} onOpen={onOpen} onDetail={() => {}} />);
     const buttons = screen.getAllByRole("button").filter(b => b.classList.contains("day"));
     expect(buttons).toHaveLength(3);
-    expect(buttons[0].getAttribute("aria-label")).toMatch(/: no, massima 14 °C, pioggia 6,2 mm$/);
-    expect(buttons[1].getAttribute("aria-label")).toMatch(/: forse, massima 17 °C$/);      // 0.2 mm is not shown
+    // The accessible name starts with what is seen, then the full reading (WCAG 2.5.3).
+    expect(buttons[0].textContent).toBe("Ngio14°6 — giovedì 15: no, massima 14 °C, pioggia 6,2 mm");
+    expect(buttons[1].textContent).toMatch(/: forse, massima 17 °C$/);                      // 0.2 mm is not shown
     expect(buttons[1].getAttribute("aria-pressed")).toBe("true");
     expect(buttons[0].querySelector(".rain")!.textContent).toBe("6");
     expect(buttons[1].querySelector(".rain")).toBeNull();

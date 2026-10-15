@@ -128,7 +128,7 @@ and ARPA Lombardia for the avalanche levels.
 | `backend/.../export/ConditionsExport.java` | the serverless version: hourly scores to `site/data/conditions.json` and the static API in `site/api/v1/`, on GitHub Pages |
 | `web/` | the page: React 19, TypeScript, Vite, Leaflet; `npm test` runs the Vitest unit and component tests; `npm run build` writes `site/` (generated, never committed) |
 | `backend/.../export/SharePages.java` | CG-45: one static page per crag in `site/c/`, rebuilt with the data, whose Open Graph tags carry the name, the next day's verdict and weather; it forwards a browser to `?crag=<id>`. The preview image is `assets/social-preview.png`, published as `og.png` |
-| `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), the page's types, tests and build, the tools' tests (every script, network paths against a fake local server) — each with its coverage in the run summary and a floor (backend 93%, page 99% of lines, tools 97%) that fails the job below it, Terraform fmt and validate, backlog check |
+| `.github/workflows/ci.yml` | on every push and PR: backend build and tests (Testcontainers on a real PostgreSQL), the page's types, tests and build, the page end to end in Chromium (Playwright, desktop and phone, axe), the tools' tests (every script, network paths against a fake local server) — each with its coverage in the run summary and a floor (backend 93%, page 99% of lines, tools 97%) that fails the job below it, Terraform fmt and validate, backlog check |
 | `.github/workflows/pages.yml` | hourly and on push: scores every crag and publishes `site/` on GitHub Pages |
 | `.github/workflows/image.yml` | on push to main: the linux/arm64 backend image to GHCR, on a native ARM runner |
 | `.github/workflows/lighthouse.yml`, `lighthouserc.json` | on PRs touching the page or the data (a bigger crag list weighs on it): builds it with real data and fails when Lighthouse (desktop, median of 3) drops below performance 0.85 or accessibility, best practices, SEO 0.95 — measured on 2026-10-15 at 0.95 / 1 / 1 / 1 |
@@ -205,6 +205,10 @@ servers on localhost (`FakeHttp`), in verify's integration-test phase (failsafe)
 measured on every run (CG-47) and fails below a floor set from CI's figures — without Docker
 the backend reads lower, so there run `./mvnw verify -Djacoco.haltOnFailure=false`. The page:
 `cd web && npm run coverage`. The tools: `python3 -m unittest discover -s tools -p 'test_*.py'`.
+
+End to end (CG-51): `cd web && npx playwright install chromium && npm run e2e` builds the page and
+drives it in Chromium, desktop and phone, on fixture data (`web/e2e/fixtures.ts`), with an axe
+accessibility scan.
 
 The page as Pages serves it, with real data — Java 21 and Node 22:
 

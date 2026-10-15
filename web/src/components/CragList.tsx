@@ -78,18 +78,21 @@ function DayStrip({ crag, days, day, onDay }: { crag: Crag; days: string[]; day:
         const wet = rain >= 0.5;
         const label = `${long(d)}: ${LABEL[v.verdict].toLowerCase()}, massima ${Math.round(v.weather.maxTemperatureC)} °C` +
           (wet ? `, pioggia ${rain.toFixed(1).replace(".", ",")} mm` : "");
+        // The name starts with what is seen ("ven 19°"), so voice control can say it (WCAG 2.5.3);
+        // the full reading follows for screen readers.
         return (
-          <button key={d} type="button" className="day" aria-pressed={d === day} aria-label={label} title={label}
+          <button key={d} type="button" className="day" aria-pressed={d === day} title={label}
                   onClick={e => { e.stopPropagation(); onDay?.(d); }}>
             <span className={"mark small " + v.verdict.toLowerCase()} aria-hidden="true"><b>{LETTER[v.verdict]}</b></span>
-            <span aria-hidden="true">{short(d)}</span>
-            <span className="t" aria-hidden="true">{`${Math.round(v.weather.maxTemperatureC)}°`}</span>
+            <span>{short(d)}</span>
+            <span className="t">{`${Math.round(v.weather.maxTemperatureC)}°`}</span>
             {wet && (
-              <span className="rain" aria-hidden="true">
-                <svg viewBox="0 0 10 14" width="8" height="11"><path d="M5 0C5 0 0 6.5 0 9.2A5 5 0 0 0 10 9.2C10 6.5 5 0 5 0Z" fill="#3987e5" /></svg>
+              <span className="rain">
+                <svg viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0C5 0 0 6.5 0 9.2A5 5 0 0 0 10 9.2C10 6.5 5 0 5 0Z" fill="#3987e5" /></svg>
                 {Math.round(rain)}
               </span>
             )}
+            <span className="sr-only">{` — ${label}`}</span>
           </button>
         );
       })}

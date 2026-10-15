@@ -67,6 +67,12 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   surefire would never run. Entry points that read the environment take it as an argument
   (`ConditionsExport.run(args, env)`, `Calibrate.run(…, url)`) so the tests point them at
   `FakeHttp`; keep `main` a thin wrapper.
+- **The browser tests own what jsdom cannot do** (CG-51): dragging and zooming the map, real
+  layout, swipes, the axe scan. They run on fixture data with tiles stubbed and the service
+  worker blocked — never against OSM's tile servers. A new interaction on the map gets an
+  `e2e/` test; serious or critical axe findings fail CI. Locally on WSL without sudo, the
+  headless shell's libraries (libnspr4, libnss3, libasound2) come from `apt-get download`
+  into a folder on `LD_LIBRARY_PATH`.
 - **Coverage floors only go up** (CG-47): the backend's in `backend/pom.xml`
   (`coverage.floor`), the page's in `web/vite.config.ts` (`thresholds`), the tools' in
   `ci.yml` (`--fail-under`). Each is CI's figure rounded down when set; a PR that adds tests
