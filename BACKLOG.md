@@ -247,6 +247,26 @@ Asked for on 2026-10-15: unit and integration tests for everything. Baseline tha
   in retry-apply.sh that could fail silently, an unused variable in uptime.yml, and a
   JavaScript template in single quotes, silenced on its line. <!-- cg: prio=low size=S labels=infra ver=main -->
 
+## v0.9.0 — UI fixes <!-- ms: phase=next -->
+
+From the screenshots of v0.5.0–v0.8.0, asked for on 2026-10-15: on a phone the controls take
+three rows and about 600 px come before the first crag; the map fills the screen and the list
+starts below it; the cluster marks' split is set at 8 px; on a desktop the side panel covers
+the filters and the list. Each fix comes with an end-to-end test (CG-51) at the width it fixes.
+
+- [ ] **CG-53 — Compact controls on a phone**: the day, the search and a "Filtri" button on one
+  row, the verdict, province, near-me and favourite filters in a panel it opens, with a count
+  of the filters on; one line for the count and the day's summary instead of two; a shorter
+  header. Desktop keeps its row. <!-- cg: prio=high size=M labels=frontend -->
+- [ ] **CG-54 — Map or list on a phone**: a "Mappa | Lista" switch under the controls, the list
+  first, the choice kept in the URL; choosing a crag in the list shows it on the map. <!-- cg: prio=high size=M labels=frontend -->
+- [ ] **CG-56 — The panel beside, not over**: on a desktop the crag's panel takes the list's
+  column instead of covering the filters and the list; the map keeps its place. <!-- cg: prio=med size=M labels=frontend -->
+- [ ] **CG-55 — Readable cluster marks**: the count and the split legible at 100% zoom (text
+  of 11 px or more), still written out, never told by colour alone. <!-- cg: prio=med size=S labels=frontend -->
+- [ ] **CG-57 — A long list**: with 220 crags, a "Torna su" button once the list is scrolled,
+  and the summary kept in sight while scrolling. <!-- cg: prio=low size=S labels=frontend -->
+
 ## v0.7.0 — Beyond Lombardy <!-- ms: phase=later -->
 
 Moved out of v0.6.0 on 2026-10-15, when that milestone closed: a larger job, since the
