@@ -20,10 +20,17 @@
   </header>
 
   <nav class="days" aria-label="Giorno"></nav>
-  <div class="legend">
-    <span><i class="dot go"></i>Si va</span>
-    <span><i class="dot maybe"></i>Forse</span>
-    <span><i class="dot no_go"></i>No</span>
+  <div class="controls">
+    <label class="search">
+      <span class="sr-only">Cerca una falesia</span>
+      <input id="q" type="search" placeholder="Cerca una falesia…" autocomplete="off" spellcheck="false">
+    </label>
+    <div class="legend" role="group" aria-label="Mostra per verdetto">
+      <button type="button" data-verdict="GO" aria-pressed="true"><i class="dot go"></i>Si va</button>
+      <button type="button" data-verdict="MAYBE" aria-pressed="true"><i class="dot maybe"></i>Forse</button>
+      <button type="button" data-verdict="NO_GO" aria-pressed="true"><i class="dot no_go"></i>No</button>
+    </div>
+    <p id="count" aria-live="polite"></p>
   </div>
 
   <main>

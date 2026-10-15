@@ -1,13 +1,14 @@
 // Reads data/conditions.json, written every hour by the GitHub Action (ConditionsExport),
-// and draws one dot per crag, coloured by the verdict for the chosen day.
+// and draws one dot per crag, coloured by the verdict for the chosen day. Search, verdict
+// filter and day live in the URL (?q=&v=&day=), so a link opens the same view.
 const LABEL = { GO: "Si va", MAYBE: "Forse", NO_GO: "No" };
+const ORDER = { GO: 0, MAYBE: 1, NO_GO: 2 };
 const REASON_IT = {
   "rain forecast during the day": "pioggia prevista durante il giorno",
   "strong wind": "vento forte",
   "rock may still be wet from recent rain": "roccia forse ancora bagnata dalla pioggia recente",
   "cold": "freddo",
   "hot on a sunny wall": "caldo su parete al sole",
-  "wall aspect not mapped: judged as a shaded wall": "esposizione non mappata: valutata come parete in ombra",
 };
 const ASPECT_IT = { N: "N", NE: "NE", E: "E", SE: "SE", S: "S", SW: "SO", W: "O", NW: "NO" };
 
@@ -18,11 +19,8 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 const layer = L.layerGroup().addTo(map);
 
-function dayLabel(iso, i) {
-  const d = new Date(iso + "T12:00:00");
-  const name = d.toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
-  return (i === 0 ? "Oggi" : i === 1 ? "Domani" : name) + " · " + name;
-}
+/** Lower case, accents removed: "Còrna" and "CORNA" both become "corna". */
+const fold = s => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
 
 function escapeHtml(s) {
   return s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -40,15 +38,42 @@ function describe(crag, day) {
   return { verdict: d.verdict, reasons, facts, aspect };
 }
 
-function render(data, day) {
+// --- State, read from and written to the URL ------------------------------------------------
+
+const state = { day: null, q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]) };
+
+function readUrl(days) {
+  const p = new URLSearchParams(location.search);
+  state.day = days.includes(p.get("day")) ? p.get("day") : days[Math.min(1, days.length - 1)];
+  state.q = p.get("q") || "";
+  const v = (p.get("v") || "").split(",").filter(x => x in ORDER);
+  state.verdicts = new Set(v.length ? v : Object.keys(ORDER));
+}
+
+function writeUrl(push) {
+  const p = new URLSearchParams();
+  if (state.q) p.set("q", state.q);
+  if (state.verdicts.size < 3) p.set("v", [...state.verdicts].join(","));
+  p.set("day", state.day);
+  const url = location.pathname + "?" + p.toString();
+  push ? history.pushState(null, "", url) : history.replaceState(null, "", url);
+}
+
+// --- Drawing ---------------------------------------------------------------------------------
+
+function render(data) {
+  const day = state.day;
+  const q = fold(state.q.trim());
   layer.clearLayers();
   const list = document.getElementById("list");
   list.replaceChildren();
-  const order = { GO: 0, MAYBE: 1, NO_GO: 2 };
-  const crags = [...data.crags].sort((a, b) =>
-    order[a.days[day].verdict] - order[b.days[day].verdict] || a.name.localeCompare(b.name, "it"));
 
-  for (const crag of crags) {
+  const shown = data.crags
+    .filter(c => state.verdicts.has(c.days[day].verdict))
+    .filter(c => !q || fold(c.name).includes(q))
+    .sort((a, b) => ORDER[a.days[day].verdict] - ORDER[b.days[day].verdict] || a.name.localeCompare(b.name, "it"));
+
+  for (const crag of shown) {
     const info = describe(crag, day);
     const cls = info.verdict.toLowerCase();
     const popup = `<strong>${escapeHtml(crag.name)}</strong><br>${LABEL[info.verdict]} — ${escapeHtml(info.aspect)}<br>` +
@@ -60,6 +85,7 @@ function render(data, day) {
     }).bindPopup(popup).addTo(layer);
 
     const li = document.createElement("li");
+    li.tabIndex = 0;
     const h = document.createElement("h2");
     const dot = document.createElement("i");
     dot.className = "dot " + cls;
@@ -67,31 +93,61 @@ function render(data, day) {
     const p = document.createElement("p");
     p.textContent = [info.aspect, ...info.reasons].join(" · ");
     li.append(h, p);
-    li.addEventListener("click", () => { map.setView([crag.latitude, crag.longitude], 12); marker.openPopup(); });
+    const open = () => { map.setView([crag.latitude, crag.longitude], 12); marker.openPopup(); };
+    li.addEventListener("click", open);
+    li.addEventListener("keydown", e => { if (e.key === "Enter") open(); });
     list.append(li);
   }
+
+  if (!shown.length) {
+    const li = document.createElement("li");
+    li.className = "empty";
+    li.textContent = "Nessuna falesia corrisponde alla ricerca.";
+    list.append(li);
+  }
+  document.getElementById("count").textContent =
+    shown.length === data.crags.length ? `${shown.length} falesie` : `${shown.length} di ${data.crags.length} falesie`;
+}
+
+function syncControls(data) {
+  document.getElementById("q").value = state.q;
+  document.querySelectorAll(".days button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.day === state.day)));
+  document.querySelectorAll(".legend button").forEach(b =>
+    b.setAttribute("aria-pressed", String(state.verdicts.has(b.dataset.verdict))));
+  render(data);
 }
 
 fetch("data/conditions.json", { cache: "no-cache" })
   .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(data => {
+    readUrl(data.days);
+
     const nav = document.querySelector(".days");
     data.days.forEach((day, i) => {
       const b = document.createElement("button");
+      b.type = "button";
+      b.dataset.day = day;
       b.textContent = i === 0 ? "Oggi" : i === 1 ? "Domani" : day;
-      b.title = dayLabel(day, i);
-      b.setAttribute("aria-pressed", String(i === 1));
-      b.addEventListener("click", () => {
-        nav.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", "false"));
-        b.setAttribute("aria-pressed", "true");
-        render(data, day);
-      });
+      b.title = new Date(day + "T12:00:00").toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
+      b.addEventListener("click", () => { state.day = day; writeUrl(true); syncControls(data); });
       nav.append(b);
     });
-    render(data, data.days[Math.min(1, data.days.length - 1)]);
+
+    document.querySelectorAll(".legend button").forEach(b => b.addEventListener("click", () => {
+      const v = b.dataset.verdict;
+      state.verdicts.has(v) ? state.verdicts.delete(v) : state.verdicts.add(v);
+      writeUrl(true);
+      syncControls(data);
+    }));
+
+    const input = document.getElementById("q");
+    input.addEventListener("input", () => { state.q = input.value; writeUrl(false); render(data); });
+
+    window.addEventListener("popstate", () => { readUrl(data.days); syncControls(data); });
+
+    syncControls(data);
     const t = new Date(data.generatedAt);
     document.getElementById("updated").textContent =
-      "Aggiornato " + t.toLocaleString("it-IT", { dateStyle: "medium", timeStyle: "short" }) +
-      ` · ${data.crags.length} falesie`;
+      "Aggiornato " + t.toLocaleString("it-IT", { dateStyle: "medium", timeStyle: "short" });
   })
   .catch(e => { document.getElementById("updated").textContent = "Dati non disponibili (" + e.message + ")."; });
