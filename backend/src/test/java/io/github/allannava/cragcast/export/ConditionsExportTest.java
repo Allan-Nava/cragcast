@@ -44,6 +44,10 @@ class ConditionsExportTest {
         var sunny = out.crags().get(0).days().get("2026-06-04");
         assertThat(sunny.verdict()).isEqualTo(Verdict.GO);
         assertThat(sunny.weather().maxTemperatureC()).isEqualTo(18.0);
+        // 06:00 to 21:00 of the day: 16 hours, in order.
+        assertThat(sunny.hours()).hasSize(16);
+        assertThat(sunny.hours().getFirst().hour()).isEqualTo(6);
+        assertThat(sunny.hours().getLast().hour()).isEqualTo(21);
         assertThat(out.cragData()).isEqualTo("test licence");
         assertThat(out.crags().get(0).details()).containsEntry("gradeMax", "7b");
         assertThat(out.crags().get(1).details()).isEmpty();

@@ -74,7 +74,7 @@ public final class ConditionsExport {
             for (LocalDate day : days) {
                 Weather w = WeatherReducer.reduce(forecasts.get(i), day);
                 ConditionsScorer.Result r = scorer.score(c.aspect(), w);
-                byDay.put(day.toString(), new DayOut(r.verdict(), r.reasons(), w));
+                byDay.put(day.toString(), new DayOut(r.verdict(), r.reasons(), w, hours(forecasts.get(i), day)));
             }
             out.add(new CragOut(c.id(), c.name(), c.latitude(), c.longitude(), c.aspect(), c.sourceUrl(),
                     c.details() == null ? Map.of() : c.details(), c.elevation(),
@@ -82,6 +82,24 @@ public final class ConditionsExport {
         }
         return new Output(now.toString(), ZONE.getId(), days.stream().map(LocalDate::toString).toList(),
                 crags.licence(), "Weather: Open-Meteo.com (CC BY 4.0)", crags.elevationSource(), out);
+    }
+
+    /** CG-24: the day's hours from 06:00 to 21:00, for the chart in the crag's panel. */
+    static List<HourOut> hours(HourlyForecast f, LocalDate day) {
+        List<HourOut> out = new ArrayList<>();
+        for (int k = 0; k < f.time().size(); k++) {
+            var t = f.time().get(k);
+            if (t.toLocalDate().equals(day) && t.getHour() >= FIRST_HOUR && t.getHour() <= LAST_HOUR) {
+                out.add(new HourOut(t.getHour(), f.precipitation().get(k), f.temperature().get(k), f.windSpeed().get(k)));
+            }
+        }
+        return out;
+    }
+
+    static final int FIRST_HOUR = 6;
+    static final int LAST_HOUR = 21;
+
+    record HourOut(int hour, double rainMm, double temperatureC, double windKmh) {
     }
 
     record CragsFile(String region, String source, String licence, String elevationSource, List<Crag> crags) {
@@ -93,7 +111,7 @@ public final class ConditionsExport {
                 Map<String, Object> details, Integer elevation, List<String> alsoMapped) {
     }
 
-    record DayOut(Verdict verdict, List<String> reasons, Weather weather) {
+    record DayOut(Verdict verdict, List<String> reasons, Weather weather, List<HourOut> hours) {
     }
 
     record CragOut(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,

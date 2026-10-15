@@ -42,6 +42,11 @@
     <ul id="list"></ul>
   </main>
 
+  <dialog id="detail" aria-labelledby="d-title">
+    <form method="dialog"><button class="close" aria-label="Chiudi">×</button></form>
+    <div id="d-body"></div>
+  </dialog>
+
   <section class="help">
     <details>
       <summary>Aiuta a mappare la tua falesia</summary>
@@ -77,5 +82,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"
           integrity="sha384-eXVCORTRlv4FUUgS/xmOyr66XBVraen8ATNLMESp92FKXLAMiKkerixTiBvXriZr" crossorigin="anonymous"></script>
   <script src="app.js"></script>
+  <script src="detail.js"></script>
 </body>
 </html>
