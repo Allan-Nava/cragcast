@@ -35,6 +35,7 @@ main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding:
            padding: 10px 12px; margin-bottom: 8px; cursor: pointer; }
 #list li h2 { margin: 0; font-size: 1rem; display: flex; align-items: center; }
 #list li p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+#list li p.details { color: var(--text); }
 footer { color: var(--muted); font-size: .85rem; padding: 16px; }
 @media (min-width: 900px) {
   main { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }

@@ -28,8 +28,9 @@ class ConditionsExportTest {
 
     private static ConditionsExport.CragsFile twoCrags() {
         return new ConditionsExport.CragsFile("Test", "test", "test licence", List.of(
-                new ConditionsExport.Crag("t-1", "Sunny Test Wall", 45.0, 9.0, Aspect.S, "https://example.org/1"),
-                new ConditionsExport.Crag("t-2", "Unmapped Test Wall", 45.1, 9.1, null, "https://example.org/2")));
+                new ConditionsExport.Crag("t-1", "Sunny Test Wall", 45.0, 9.0, Aspect.S, "https://example.org/1",
+                        java.util.Map.of("gradeMin", "5a", "gradeMax", "7b")),
+                new ConditionsExport.Crag("t-2", "Unmapped Test Wall", 45.1, 9.1, null, "https://example.org/2", null)));
     }
 
     @Test
@@ -43,6 +44,8 @@ class ConditionsExportTest {
         assertThat(sunny.verdict()).isEqualTo(Verdict.GO);
         assertThat(sunny.weather().maxTemperatureC()).isEqualTo(18.0);
         assertThat(out.cragData()).isEqualTo("test licence");
+        assertThat(out.crags().get(0).details()).containsEntry("gradeMax", "7b");
+        assertThat(out.crags().get(1).details()).isEmpty();
     }
 
     @Test
