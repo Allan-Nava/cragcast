@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**17 items · 6 shipped · 11 open · 3 milestones.**
+**26 items · 9 shipped · 17 open · 4 milestones.**
 
 ## At a glance
 
@@ -12,6 +12,7 @@
 |---|---|---|---|---|
 | **v0.1.0 — A verdict for one crag** | now | `#######...` 67% | 2 | 4 |
 | **v0.2.0 — On the internet, for free** | next | `###.......` 25% | 6 | 2 |
+| **v0.2.1 — UX and UI** | now | `###.......` 33% | 6 | 3 |
 | **v0.3.0 — The page climbers use** | later | `..........` 0% | 3 | 0 |
 
 ## v0.1.0 — A verdict for one crag
@@ -33,6 +34,18 @@
 - [ ] **CG-8** — Domain and HTTPS · med · S · infra
 - [x] **CG-9** — The arm64 image · med · S · infra · `main`
 - [ ] **CG-13** — Continuous delivery · med · M · infra
+
+## v0.2.1 — UX and UI
+
+- [x] **CG-18** — Search by name · high · S · frontend · `main`
+- [x] **CG-19** — Filter by verdict · high · S · frontend · `main`
+- [x] **CG-20** — Shareable state · med · S · frontend · `main`
+- [ ] **CG-21** — Not by colour alone · med · S · frontend
+- [ ] **CG-22** — Near me · med · M · frontend
+- [ ] **CG-23** — Crowded areas · low · S · frontend
+- [ ] **CG-24** — Crag detail · med · M · frontend
+- [ ] **CG-26** — Duplicate crags · med · S · data
+- [ ] **CG-25** — Area of each crag · low · M · data, frontend
 
 ## v0.3.0 — The page climbers use
 

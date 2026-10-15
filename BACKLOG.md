@@ -56,6 +56,30 @@ main.
 - [ ] **CG-13 — Continuous delivery**: after the image, roll the k3s deployment on the VM
   (a deploy key or a pull-based tool), once CG-7 has put the cluster up. <!-- cg: prio=med size=M labels=infra -->
 
+## v0.2.1 — UX and UI <!-- ms: phase=now -->
+
+What the live page needs so a climber finds a crag and trusts the answer in seconds.
+
+- [x] **CG-18 — Search by name**: a search box that filters the list and the map as you
+  type, ignoring case and accents ("corna", "Còrna" and "CORNA" find the same crags). <!-- cg: prio=high size=S labels=frontend ver=main -->
+- [x] **CG-19 — Filter by verdict**: the legend becomes three toggles (Si va / Forse / No)
+  that show or hide those crags on the map and in the list. <!-- cg: prio=high size=S labels=frontend ver=main -->
+- [x] **CG-20 — Shareable state**: search, verdict filter and day live in the URL, so a link
+  opens the same view and the browser's back button works. <!-- cg: prio=med size=S labels=frontend ver=main -->
+- [ ] **CG-21 — Not by colour alone**: the verdict also as a letter or shape on the marker,
+  for colour-blind readers and for print; contrast checked on the dark theme. <!-- cg: prio=med size=S labels=frontend -->
+- [ ] **CG-22 — Near me**: sort by distance from the browser's location, computed in the page
+  and never sent anywhere; the list says how far each crag is. <!-- cg: prio=med size=M labels=frontend -->
+- [ ] **CG-23 — Crowded areas**: cluster the markers where crags sit close together (Lecco,
+  Val Masino) and spread them as you zoom in. <!-- cg: prio=low size=S labels=frontend -->
+- [ ] **CG-24 — Crag detail**: a panel per crag with the day's hours of rain and temperature,
+  the OSM link and a directions link. <!-- cg: prio=med size=M labels=frontend -->
+- [ ] **CG-26 — Duplicate crags**: OSM has some crags twice under one name (two "Falesia Corna
+  De Par"): merge entries with the same name less than ~500 m apart in `tools/osm_crags.py`,
+  keeping every OSM link. <!-- cg: prio=med size=S labels=data -->
+- [ ] **CG-25 — Area of each crag**: the province or valley next to the name and as a filter,
+  from OpenStreetMap's administrative boundaries in `tools/osm_crags.py`. <!-- cg: prio=low size=M labels=data,frontend -->
+
 ## v0.3.0 — The page climbers use <!-- ms: phase=later -->
 
 - [ ] **CG-10 — Web page in React**: rewrite the static page (CG-15) in React with a build
