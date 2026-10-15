@@ -24,6 +24,9 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   Duplicates (CG-26): same name and under 50 m apart is one crag mapped twice — folded, the node
   kept (stable id), the others' links in `alsoMapped`. Same name farther apart stays separate:
   generic sector names ("Settore Destro") may belong to different crags.
+- **`docs/aspects-todo.md` is generated** by `tools/aspects_todo.py` from `data/crags.json`
+  (CG-16) and committed with it by `crags-refresh.yml`; never edit it by hand. It never names
+  who knows which crag: the list is for anyone who climbs there.
 - **Overpass is often busy** (502/500, or a mirror answering empty). `osm_crags.py` retries
   each query on two servers and refuses an empty answer, so a failed run leaves
   `data/crags.json` as it was; the monthly refresh then simply fails — run it again by hand
