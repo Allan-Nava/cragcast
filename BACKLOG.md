@@ -174,9 +174,11 @@ panel is a modal, and nothing moves on its own. Asked for on 2026-10-15.
   the day's verdicts ("Domani: 60 si va, 10 forse, 5 no"). Never by colour alone. Done: the
   weather symbol is the max temperature and, from 0.5 mm, a rain drop with the mm — no sun,
   since the data has no cloud cover; each day is a button that switches the page. <!-- cg: prio=high size=M labels=frontend ver=main -->
-- [ ] **CG-40 — Panel as a sheet**: the crag's panel becomes a side panel on desktop and a
+- [x] **CG-40 — Panel as a sheet**: the crag's panel becomes a side panel on desktop and a
   bottom sheet on phones, with the day switchable inside it (buttons and swipe) and gentle
-  transitions that respect `prefers-reduced-motion`. <!-- cg: prio=med size=L labels=frontend -->
+  transitions that respect `prefers-reduced-motion`. Done: non-modal beside the map from
+  900 px, modal sheet below with a downward swipe to close; the day buttons carry the
+  verdicts and switch the page's day. <!-- cg: prio=med size=L labels=frontend ver=main -->
 - [ ] **CG-41 — A live page**: a skeleton while the data loads, "aggiornato 12 min fa" that
   keeps itself current, the data reloaded every hour without a page reload, and short
   transitions when filters change — all off under `prefers-reduced-motion`. <!-- cg: prio=med size=M labels=frontend -->

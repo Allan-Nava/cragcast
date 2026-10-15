@@ -135,7 +135,8 @@ export function App() {
                       onOpen={c => { setChosen(c.id); mapApi.current?.open(c.id); }} onDetail={openDetail} onHot={setHot} />
           : <ul id="list" />}
       </main>
-      <DetailDialog crag={detail} day={view?.day ?? ""} onClose={() => setDetail(null)} />
+      <DetailDialog crag={detail} day={view?.day ?? ""} days={data?.days ?? []}
+                    onDay={day => view && go({ ...view, day }, true)} onClose={() => setDetail(null)} />
       <Help />
       <Footer generatedAt={data?.generatedAt ?? null} error={error} />
     </>
