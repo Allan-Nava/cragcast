@@ -17,7 +17,14 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   the verdict lands in both. All of `site/` is generated (`tools/build_site.sh`: Vite from `web/`,
   then the data), never committed.
 - **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:
-  credit OSM on every surface that shows them). The aspect is `climbing:orientation` or null —
+  credit OSM on every surface that shows them): `climbing=crag`, and since CG-42 named outdoor
+  `sport=climbing` places (a cliff, a rock, a climbing site relation) — never gyms, shops,
+  buildings or single routes. Sectors fold into their crag (`group()`): a shape within 50 m of a
+  crag is the same place unless it is a sibling sector; parts sharing a base name within 2 km
+  are one crag, named by that base; a loose point within 300 m is a sector. A climbing=crag
+  never loses its id, its name or another climbing=crag to grouping. A sector's route count,
+  mean grade or aspect never becomes the crag's: grades widen to the parts' range, and the
+  aspect stays only when every part agrees. `tools/test_osm_crags.py` holds these rules. The aspect is `climbing:orientation` or null —
   never filled in by guess; the fix for a missing aspect is an edit on OSM. The same holds for
   the `details` (grades, route length, rock, style, website): read from OSM's climbing tags,
   validated in `osm_crags.py`, dropped when malformed, shown only where present.

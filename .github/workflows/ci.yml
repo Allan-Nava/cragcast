@@ -43,6 +43,16 @@ jobs:
       - run: npm test
       - run: npm run build
 
+  # CG-42: the OSM import's rules (which objects are crags, how sectors fold) on made-up data.
+  tools:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 -m unittest discover -s tools -p 'test_*.py' -v
+
   terraform:
     runs-on: ubuntu-latest
     defaults:

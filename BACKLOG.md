@@ -191,10 +191,13 @@ Many Lombard crags are on OpenStreetMap without `climbing=crag` — Galbiate, Co
 Valmadrera, San Tomas — so cragcast never sees them; and a crag cannot be shared as a link.
 Asked for on 2026-10-15.
 
-- [ ] **CG-42 — Crags tagged only sport=climbing**: import the named outdoor climbing places
+- [x] **CG-42 — Crags tagged only sport=climbing**: import the named outdoor climbing places
   that OSM tags `sport=climbing` (a cliff, a rock, a `single_rock` relation) without
   `climbing=crag`; leave out gyms, shops, buildings and single routes; fold the sectors mapped
-  as loose points into the crag around them. Every import keeps its OSM link. <!-- cg: prio=high size=M labels=data -->
+  as loose points into the crag around them. Every import keeps its OSM link. Done: 75 → 220
+  crags (Maddalena, Predore, Cimbergo, Galbiate…), the 75 keep their ids, names and data;
+  sectors fold by base name or distance without lending their route count or aspect; a
+  truncated Overpass answer for the municipalities is now asked again, never written. <!-- cg: prio=high size=M labels=data ver=main -->
 - [ ] **CG-44 — A link per crag**: `?crag=<id>` opens the page on that crag's panel, a "Copia
   link" in the panel, and the browser's share sheet where there is one. <!-- cg: prio=high size=S labels=frontend -->
 - [ ] **CG-45 — A preview when shared**: a static page per crag, rebuilt hourly, whose Open
