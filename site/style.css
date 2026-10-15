@@ -60,3 +60,10 @@ footer { color: var(--muted); font-size: .85rem; padding: 16px; }
 .mark.no_go { background: var(--no_go); border-radius: 2px; }
 .mark.small { width: 16px; height: 16px; font-size: 9px; border-width: 1.5px; margin-right: 6px; vertical-align: -3px; }
 #list li h2 .mark.small { flex: none; margin-right: 8px; }
+
+/* CG-22: "Vicino a me". */
+#near { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
+        padding: 5px 12px; font: inherit; font-size: .9rem; cursor: pointer; }
+#near[aria-pressed="true"] { border-color: var(--go); color: var(--go); }
+.km { color: var(--muted); font-weight: 400; margin-left: 6px; font-size: .9rem; }
+.me { display: block; width: 14px; height: 14px; border-radius: 50%; background: #4aa3ff; border: 2px solid #fff; box-shadow: 0 0 0 2px #050505; }

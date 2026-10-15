@@ -70,8 +70,9 @@ What the live page needs so a climber finds a crag and trusts the answer in seco
   for colour-blind readers and for print; contrast checked on the dark theme. Done: circle S,
   diamond F, square N on the map, in the list and in the legend; black letters at 9.8, 11.2 and
   5.2:1. <!-- cg: prio=med size=S labels=frontend ver=main -->
-- [ ] **CG-22 — Near me**: sort by distance from the browser's location, computed in the page
-  and never sent anywhere; the list says how far each crag is. <!-- cg: prio=med size=M labels=frontend -->
+- [x] **CG-22 — Near me**: sort by distance from the browser's location, computed in the page
+  and never sent anywhere; the list says how far each crag is. Done: a "Vicino a me" toggle,
+  haversine km, the map centred on the reader; a second click goes back to the verdict order. <!-- cg: prio=med size=M labels=frontend ver=main -->
 - [ ] **CG-23 — Crowded areas**: cluster the markers where crags sit close together (Lecco,
   Val Masino) and spread them as you zoom in. <!-- cg: prio=low size=S labels=frontend -->
 - [ ] **CG-24 — Crag detail**: a panel per crag with the day's hours of rain and temperature,

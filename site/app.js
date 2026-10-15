@@ -73,6 +73,18 @@ function describe(crag, day) {
   return { verdict: d.verdict, reasons, facts, aspect };
 }
 
+/** Great-circle distance in km (haversine). */
+function km(aLat, aLon, bLat, bLon) {
+  const r = Math.PI / 180, R = 6371;
+  const dLat = (bLat - aLat) * r, dLon = (bLon - aLon) * r;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(aLat * r) * Math.cos(bLat * r) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+
+// CG-22: the reader's position lives only in this variable — never in the URL, never sent.
+let here = null;
+let hereMarker = null;
+
 // --- State, read from and written to the URL ------------------------------------------------
 
 const state = { day: null, q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]) };
@@ -103,10 +115,13 @@ function render(data) {
   const list = document.getElementById("list");
   list.replaceChildren();
 
+  const dist = c => here ? km(here.lat, here.lon, c.latitude, c.longitude) : null;
   const shown = data.crags
     .filter(c => state.verdicts.has(c.days[day].verdict))
     .filter(c => !q || fold(c.name).includes(q))
-    .sort((a, b) => ORDER[a.days[day].verdict] - ORDER[b.days[day].verdict] || a.name.localeCompare(b.name, "it"));
+    .sort(here
+      ? (a, b) => dist(a) - dist(b)
+      : (a, b) => ORDER[a.days[day].verdict] - ORDER[b.days[day].verdict] || a.name.localeCompare(b.name, "it"));
 
   for (const crag of shown) {
     const info = describe(crag, day);
@@ -136,6 +151,12 @@ function render(data) {
     dot.setAttribute("aria-hidden", "true");   // the verdict is in the text next to it
     dot.innerHTML = `<b>${LETTER[info.verdict]}</b>`;
     h.append(dot, `${crag.name} — ${LABEL[info.verdict]}`);
+    if (here) {
+      const k = document.createElement("span");
+      k.className = "km";
+      k.textContent = `${Math.round(dist(crag))} km`;
+      h.append(k);
+    }
     const p = document.createElement("p");
     p.textContent = [info.aspect, ...info.reasons].join(" · ");
     li.append(h, p);
@@ -196,6 +217,38 @@ fetch("data/conditions.json", { cache: "no-cache" })
     input.addEventListener("input", () => { state.q = input.value; writeUrl(false); render(data); });
 
     window.addEventListener("popstate", () => { readUrl(data.days); syncControls(data); });
+
+    const near = document.getElementById("near");
+    near.addEventListener("click", () => {
+      if (here) {                       // second click: back to the verdict order
+        here = null;
+        if (hereMarker) { hereMarker.remove(); hereMarker = null; }
+        near.setAttribute("aria-pressed", "false");
+        render(data);
+        return;
+      }
+      if (!navigator.geolocation) {
+        document.getElementById("count").textContent = "Il browser non dà la posizione.";
+        return;
+      }
+      near.textContent = "Cerco la posizione…";
+      navigator.geolocation.getCurrentPosition(pos => {
+        here = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+        near.textContent = "Vicino a me";
+        near.setAttribute("aria-pressed", "true");
+        hereMarker = L.marker([here.lat, here.lon], {
+          icon: L.divIcon({ className: "", html: '<span class="me" aria-label="La tua posizione"></span>', iconSize: [14, 14] }),
+          title: "La tua posizione", keyboard: false,
+        }).addTo(map);
+        map.setView([here.lat, here.lon], 9);
+        render(data);
+      }, err => {
+        near.textContent = "Vicino a me";
+        document.getElementById("count").textContent = err.code === err.PERMISSION_DENIED
+          ? "Posizione non concessa: l'ordine resta per verdetto."
+          : "Posizione non disponibile al momento.";
+      }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 600000 });
+    });
 
     syncControls(data);
     const t = new Date(data.generatedAt);
