@@ -16,6 +16,11 @@
   never filled in by guess; the fix for a missing aspect is an edit on OSM. The same holds for
   the `details` (grades, route length, rock, style, website): read from OSM's climbing tags,
   validated in `osm_crags.py`, dropped when malformed, shown only where present.
+- **The crag list changes only through a reviewed PR.** `crags-refresh.yml` rebuilds
+  `data/crags.json` on the 1st of each month and opens a PR (branch `crags/<date>`, summary from
+  `tools/crags_diff.py`); it never pushes to main, and skips while such a PR is open. GitHub runs
+  no CI on a PR opened with GITHUB_TOKEN: close and reopen it to start CI. The repo setting
+  "Allow GitHub Actions to create … pull requests" must stay on for it to work.
 - **Contributions go to OpenStreetMap, first-hand only.** The page, the README and the issue form
   ask climbers to map what they know themselves; never suggest copying from guidebooks or
   sites under copyright — OSM refuses it, and so does cragcast.
