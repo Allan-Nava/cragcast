@@ -1,5 +1,5 @@
 // Words of the page: verdict labels and letters, the reasons and details in Italian.
-import type { Aspect, Avalanche, Crag, Details, Verdict } from "../types";
+import type { Aspect, Avalanche, Crag, Details, Verdict, Weather } from "../types";
 
 export const LABEL: Record<Verdict, string> = { GO: "Si va", MAYBE: "Forse", NO_GO: "No" };
 // CG-21: the verdict is never told by colour alone — circle S, diamond F, square N.
@@ -27,20 +27,16 @@ export const place = (c: Pick<Crag, "municipality" | "provinceCode">): string =>
 export interface Described {
   verdict: Verdict;
   reasons: string[];
-  facts: string;
   aspect: string;
 }
 
 export function describe(crag: Crag, day: string): Described {
   const d = crag.days[day];
-  const w = d.weather;
   // The unmapped-aspect note goes in the aspect line, not again among the reasons.
   const reasons = d.reasons.filter(r => !r.startsWith("wall aspect not mapped")).map(r => REASON_IT[r] ?? r);
-  const facts = `pioggia ultime 48 h ${w.rainLast48hMm.toFixed(1)} mm · in giornata ${w.rainDuringDayMm.toFixed(1)} mm · ` +
-    `max ${Math.round(w.maxTemperatureC)} °C · vento ${Math.round(w.maxWindKmh)} km/h`;
   const aspect = crag.aspect ? `parete esposta a ${ASPECT_IT[crag.aspect]}`
     : "esposizione non mappata: valutata come parete in ombra";
-  return { verdict: d.verdict, reasons, facts, aspect };
+  return { verdict: d.verdict, reasons, aspect };
 }
 
 /** The OSM climbing details that exist for a crag, as short Italian phrases; [] when none. */
@@ -108,3 +104,19 @@ export const zoneName = (a: Avalanche): string =>
  * shows the short "esposizione ?" tag; the panel and the popup keep the full sentence). */
 export const aspectShort = (c: Pick<Crag, "aspect">): string | null =>
   c.aspect ? `esposta a ${ASPECT_IT[c.aspect]}` : null;
+
+/** CG-59: how many OSM objects a crag was folded from (itself and alsoMapped). */
+export const mappedTimes = (c: Pick<Crag, "alsoMapped">): number => 1 + (c.alsoMapped?.length ?? 0);
+
+const num = (n: number, d: number) => n.toLocaleString("it-IT", { minimumFractionDigits: d, maximumFractionDigits: d });
+
+/** CG-59: the weather the verdict was made from, as label and value pairs for a small table,
+ * numbers in Italian ("0,4 mm", not "0.4 mm"). */
+export function weatherRows(w: Weather): [string, string][] {
+  return [
+    ["Pioggia 48 h prima", `${num(w.rainLast48hMm, 1)}\u00a0mm`],
+    ["Pioggia in giornata", `${num(w.rainDuringDayMm, 1)}\u00a0mm`],
+    ["Massima", `${num(w.maxTemperatureC, 0)}\u00a0°C`],
+    ["Vento massimo", `${num(w.maxWindKmh, 0)}\u00a0km/h`],
+  ];
+}

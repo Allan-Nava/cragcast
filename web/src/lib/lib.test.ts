@@ -1,5 +1,5 @@
 import { describe as group, expect, it } from "vitest";
-import { allDetails, dangerLabel, describe, detailParts, fold, osmEditUrl, place, problemParts, ratingParts, zoneName } from "./text";
+import { allDetails, dangerLabel, describe, detailParts, fold, osmEditUrl, place, problemParts, ratingParts, weatherRows, zoneName } from "./text";
 import type { Avalanche } from "../types";
 import { km } from "./geo";
 import { ticks } from "./ticks";
@@ -127,5 +127,13 @@ group("map or list (CG-54)", () => {
     expect(stateQuery(s)).toBe("?show=map&day=2026-10-16");
     expect(readState("?show=nonsense", DAYS).show).toBe("list");
     expect(stateQuery(readState("?day=2026-10-16", DAYS))).toBe("?day=2026-10-16");
+  });
+});
+
+group("weather table (CG-59)", () => {
+  it("labels and Italian numbers, units tied to them", () => {
+    expect(weatherRows({ rainLast48hMm: 12.34, rainDuringDayMm: 0.04, maxTemperatureC: 18.6, maxWindKmh: 7.4 })).toEqual([
+      ["Pioggia 48 h prima", "12,3\u00a0mm"], ["Pioggia in giornata", "0,0\u00a0mm"],
+      ["Massima", "19\u00a0°C"], ["Vento massimo", "7\u00a0km/h"]]);
   });
 });

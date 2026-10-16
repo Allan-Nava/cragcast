@@ -48,7 +48,7 @@ test("CG-53: the controls take two rows and the filters fold behind 'Filtri'", a
   await page.getByLabel("Provincia").selectOption("LC");
   await page.getByRole("button", { name: /^N?\s*No$/ }).click();
   await expect(page.getByRole("button", { name: "Filtri (2)" })).toBeVisible();
-  expect(await listNames(page)).toEqual(["Còrna Test — Si va", "Placca Prova — Forse"]);
+  await expect.poll(() => listNames(page)).toEqual(["Còrna Test — Si va", "Placca Prova — Forse"]);
   await page.getByRole("button", { name: "Filtri (2)" }).click();
   await expect(page.getByLabel("Provincia")).toBeHidden();
   await openFilters(page);

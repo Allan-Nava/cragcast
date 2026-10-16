@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import L from "../lib/leaflet";
 import "leaflet.markercluster";
-import type { Crag, Verdict } from "../types";
+import type { Crag, Verdict, Weather } from "../types";
 import type { Area } from "../lib/state";
-import { LABEL, LETTER, allDetails, dangerLabel, describe, osmEditUrl, place, zoneName } from "../lib/text";
+import { LABEL, LETTER, allDetails, dangerLabel, describe, mappedTimes, osmEditUrl, place, weatherRows, zoneName } from "../lib/text";
 
 export interface MapApi {
   /** Zoom into the cluster a crag sits in and open its popup. */
@@ -36,6 +36,17 @@ function verdictIcon(verdict: Verdict, name: string): L.DivIcon {
   return L.divIcon({ className: "", html: span, iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
 }
 
+/** CG-59: the day's weather as a small two-column table, built from DOM nodes. */
+function weatherTable(w: Weather): HTMLElement {
+  const t = Object.assign(document.createElement("table"), { className: "facts" });
+  for (const [k, v] of weatherRows(w)) {
+    const tr = t.insertRow();
+    tr.append(Object.assign(document.createElement("th"), { scope: "row", textContent: k }),
+              Object.assign(document.createElement("td"), { textContent: v }));
+  }
+  return t;
+}
+
 /** The popup, built from DOM nodes: names and texts from OSM never become markup. */
 function popupFor(crag: Crag, day: string, onDetail: (c: Crag) => void): HTMLElement {
   const info = describe(crag, day);
@@ -47,14 +58,16 @@ function popupFor(crag: Crag, day: string, onDetail: (c: Crag) => void): HTMLEle
   line(`${LABEL[info.verdict]} — ${info.aspect}`);
   if (info.reasons.length) line(info.reasons.join("; "));
   if (details.length) line(details.join(" · "));
-  line(Object.assign(document.createElement("small"), { textContent: info.facts }));
+  box.append(weatherTable(crag.days[day].weather));       // CG-59
   const av = crag.days[day].avalanche;                // CG-11
   if (av) line(Object.assign(document.createElement("strong"), { textContent: `Valanghe: ${dangerLabel(av.level)}` }),
     ` — zona ${zoneName(av)}`);
   const a = (href: string, text: string) => Object.assign(document.createElement("a"), { href, textContent: text, rel: "noopener" });
   const links: (Node | string)[] = [a(crag.sourceUrl, "fonte OpenStreetMap")];
   if (crag.details?.website) links.push(" · ", a(crag.details.website, "sito"));
-  crag.alsoMapped?.forEach((u, i) => links.push(i === 0 ? " · anche " : ", ", a(u, `OSM ${i + 2}`)));
+  // CG-59: a crag folded from many objects says how many, not a row of "OSM n" links; the
+  // panel lists them.
+  if (mappedTimes(crag) > 1) links.push(` · mappata ${mappedTimes(crag)} volte`);
   line(...links);
   const edit = osmEditUrl(crag.sourceUrl);
   if (edit) line(a(edit, "modifica su OpenStreetMap"));
@@ -146,7 +159,9 @@ export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area =
         keyboard: true,
       });
       (mk.options as { verdict?: Verdict }).verdict = verdict;     // read by the cluster mark
-      mk.bindPopup(() => popupFor(crag, day, onDetail));
+      // CG-59: the popup grew a table; keep a margin round it when the map pans to fit it, so its
+      // close button is never cut at the map's edge.
+      mk.bindPopup(() => popupFor(crag, day, onDetail), { autoPanPadding: [20, 20] });
       mk.on("popupopen", () => chosenRef.current?.(crag.id));
       markers.current.set(crag.id, mk);
       group.addLayer(mk);

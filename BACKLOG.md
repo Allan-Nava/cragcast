@@ -297,9 +297,11 @@ and no grade filter; and no test notices when a change moves the layout.
   before it ships. Done: 7 views from CI, fixed data and clock, 25-pixel tolerance; on their first
   look they found the logo missing from the page's own build and a chart label cut at the
   edge, both fixed. <!-- cg: prio=high size=S labels=frontend,infra ver=main -->
-- [ ] **CG-59 — Tidy popup and panel**: the OSM links of a crag mapped many times folded into one
+- [x] **CG-59 — Tidy popup and panel**: the OSM links of a crag mapped many times folded into one
   line ("mappata 14 volte su OpenStreetMap"), the weather facts set as a small table, one
-  button style across popup, panel and list. <!-- cg: prio=med size=S labels=frontend -->
+  button style across popup, panel and list. Done in three commits; the weather numbers now use
+  the Italian comma, and the popup's button, at 2.1:1 on white, is now 5.4:1 — measured by an
+  end-to-end test, since axe only flagged it for review. <!-- cg: prio=med size=S labels=frontend ver=main -->
 - [ ] **CG-61 — Order and grades**: order by verdict, name, distance or elevation, and a grade
   filter (e.g. "fino al 6a", "dal 7a") over the crags whose grades OSM has, saying how many
   have none. <!-- cg: prio=med size=M labels=frontend -->

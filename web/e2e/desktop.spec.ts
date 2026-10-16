@@ -37,8 +37,7 @@ test("after a real drag, 'Cerca in quest'area' limits the list to the map", asyn
   await page.mouse.up();
   await page.getByRole("button", { name: "Cerca in quest'area" }).click();
   await expect(page).toHaveURL(/a=/);
-  const shown = await listNames(page);
-  expect(shown.length).toBeLessThan(6);
+  await expect.poll(async () => (await listNames(page)).length).toBeLessThan(6);
   await page.getByRole("button", { name: "Togli il filtro dell'area" }).click();
   await expect(page.locator("#count")).toHaveText("6 falesie");
 });
@@ -48,7 +47,7 @@ test("choosing a crag in the list flies the map to it and opens its popup", asyn
   await page.locator("#crag-osm-node-5 h2").click();
   await expect(page.locator(".leaflet-popup-content")).toContainText("Parete Immaginaria");
   await expect(page.locator("#crag-osm-node-5")).toHaveClass(/chosen/);
-  expect((await listNames(page)).length).toBe(6);
+  await expect.poll(async () => (await listNames(page)).length).toBe(6);
 });
 
 test("CG-53: on a desktop the filters stay in the row, without the 'Filtri' button", async ({ page }) => {

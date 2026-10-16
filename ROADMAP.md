@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**65 items · 53 shipped · 12 open · 13 milestones.**
+**65 items · 54 shipped · 11 open · 13 milestones.**
 
 ## At a glance
 
@@ -20,7 +20,7 @@
 | **v0.6.0 — More crags, one link each** | next | `##########` 100% | 0 | 4 |
 | **v0.8.0 — Tested end to end** | now | `##########` 100% | 0 | 6 |
 | **v0.9.0 — UI fixes** | next | `##########` 100% | 0 | 5 |
-| **v0.10.0 — A better frontend** | next | `####......` 38% | 5 | 3 |
+| **v0.10.0 — A better frontend** | next | `#####.....` 50% | 4 | 4 |
 | **v0.7.0 — Beyond Lombardy** | later | `..........` 0% | 1 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
@@ -111,7 +111,7 @@
 - [x] **CG-65** — Architectural Decision Records · med · S · docs · `main`
 - [x] **CG-58** — Compact crag cards · high · M · frontend · `main`
 - [x] **CG-63** — Visual snapshots · high · S · frontend, infra · `main`
-- [ ] **CG-59** — Tidy popup and panel · med · S · frontend
+- [x] **CG-59** — Tidy popup and panel · med · S · frontend · `main`
 - [ ] **CG-61** — Order and grades · med · M · frontend
 - [ ] **CG-60** — A light theme · med · M · frontend
 - [ ] **CG-62** — Design tokens · low · M · frontend

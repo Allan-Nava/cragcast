@@ -64,7 +64,10 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   verdict and weather for the next day, with the date ("Falesie di Galbiate — venerdì 16
   ottobre: si va"), and a browser goes straight on to the panel;
 - per crag, where OpenStreetMap has them: grades, route length, rock, style, website; the
-  **elevation** of every crag; a link to the crag on OSM and to its OSM edit view;
+  **elevation** of every crag; a link to the crag on OSM and to its OSM edit view; a crag folded
+  from several OSM objects says how many ("mappata 14 volte"), and its panel lists them;
+- the day's **weather** behind the verdict as a small table — rain in the 48 hours before, rain
+  during the day, the maximum, the wind — in the popup and the panel;
 - a **panel per crag** ("Dettagli") — from 900 px in the list's column, below the controls, with
   the map still usable and the list back when it closes, and a
   sheet from the bottom on phones; the day switches inside it with buttons or a sideways swipe,
