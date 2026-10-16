@@ -7,7 +7,7 @@ WORKDIR /src/backend
 COPY backend/.mvn .mvn
 COPY backend/mvnw backend/pom.xml ./
 RUN ./mvnw -q -B dependency:go-offline
-COPY data/crags.json /src/data/crags.json
+COPY data/crags.json data/avalanche-regions.geojson /src/data/
 COPY backend/src src
 RUN ./mvnw -q -B package -DskipTests
 

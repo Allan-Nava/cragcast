@@ -5,11 +5,14 @@ import io.github.allannava.cragcast.crag.CragRepository;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -33,12 +36,17 @@ public class WeatherRefresh {
     private final CragWeatherRepository weather;
     private final OpenMeteoClient openMeteo;
     private final Clock clock;
+    private final ApplicationEventPublisher events;
+    /** The forecasts of the last refresh, by crag slug, for {@link ForecastsRefreshed}. */
+    private Map<String, HourlyForecast> last = Map.of();
 
-    public WeatherRefresh(CragRepository crags, CragWeatherRepository weather, OpenMeteoClient openMeteo, Clock clock) {
+    public WeatherRefresh(CragRepository crags, CragWeatherRepository weather, OpenMeteoClient openMeteo, Clock clock,
+                          ApplicationEventPublisher events) {
         this.crags = crags;
         this.weather = weather;
         this.openMeteo = openMeteo;
         this.clock = clock;
+        this.events = events;
     }
 
     @EventListener(ApplicationReadyEvent.class)
@@ -58,6 +66,13 @@ public class WeatherRefresh {
         } catch (RuntimeException e) {
             // Keep the last good hour; the next run tries again.
             log.warn("weather refresh failed, keeping the previous data: {}", e.toString());
+            return;
+        }
+        try {
+            // CG-110: outside the refresh's transaction; a failure there leaves the table as written.
+            events.publishEvent(new ForecastsRefreshed(last, clock.instant()));
+        } catch (RuntimeException e) {
+            log.warn("page data not rebuilt, keeping the previous one: {}", e.toString());
         }
     }
 
@@ -68,11 +83,13 @@ public class WeatherRefresh {
         Instant now = clock.instant();
         LocalDate today = LocalDate.now(clock);
         int rows = 0;
+        Map<String, HourlyForecast> bySlug = new LinkedHashMap<>();
         for (int i = 0; i < all.size(); i += BATCH) {
             List<Crag> batch = all.subList(i, Math.min(i + BATCH, all.size()));
             List<HourlyForecast> forecasts = openMeteo.hourly(
                     batch.stream().map(c -> new double[] {c.getLatitude(), c.getLongitude()}).toList());
             for (int j = 0; j < batch.size(); j++) {
+                bySlug.put(batch.get(j).getSlug(), forecasts.get(j));
                 for (int d = 0; d < DAYS; d++) {
                     LocalDate day = today.plusDays(d);
                     var w = WeatherReducer.reduce(forecasts.get(j), day);
@@ -90,6 +107,7 @@ public class WeatherRefresh {
                 }
             }
         }
+        last = bySlug;
         return rows;
     }
 }

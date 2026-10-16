@@ -43,6 +43,7 @@ class WeatherRefreshTest {
     private static Crag crag(long id) {
         Crag c = mock(Crag.class);
         when(c.getId()).thenReturn(id);
+        when(c.getSlug()).thenReturn("test-crag-" + id);
         when(c.getLatitude()).thenReturn(45.0 + id);
         when(c.getLongitude()).thenReturn(9.0);
         when(c.getAspect()).thenReturn(Aspect.S);
@@ -59,7 +60,7 @@ class WeatherRefreshTest {
         when(openMeteo.hourly(anyList())).thenReturn(List.of(dry(), dry()));
         when(weather.findById(any())).thenReturn(Optional.empty());
 
-        int rows = new WeatherRefresh(crags, weather, openMeteo, JUNE_2_MORNING).refresh();
+        int rows = new WeatherRefresh(crags, weather, openMeteo, JUNE_2_MORNING, e -> { }).refresh();
 
         assertThat(rows).isEqualTo(6);
         ArgumentCaptor<CragWeather> saved = ArgumentCaptor.forClass(CragWeather.class);
@@ -84,10 +85,51 @@ class WeatherRefreshTest {
         when(weather.findById(any())).thenReturn(Optional.empty());
         when(weather.findById(new CragWeather.Key(1, LocalDate.of(2026, 6, 3)))).thenReturn(Optional.of(old));
 
-        new WeatherRefresh(crags, weather, openMeteo, JUNE_2_MORNING).refresh();
+        new WeatherRefresh(crags, weather, openMeteo, JUNE_2_MORNING, e -> { }).refresh();
 
         assertThat(old.weather().maxWindKmh()).isEqualTo(9.0);
         assertThat(old.getFetchedAt()).isEqualTo(Instant.now(JUNE_2_MORNING));
         verify(weather).save(old);
+    }
+
+    @Test
+    void afterARefreshTheForecastsGoOutBySlug() {
+        CragRepository crags = mock(CragRepository.class);
+        CragWeatherRepository weather = mock(CragWeatherRepository.class);
+        OpenMeteoClient openMeteo = mock(OpenMeteoClient.class);
+        List<Crag> two = List.of(crag(1), crag(2));
+        when(crags.findAll()).thenReturn(two);
+        HourlyForecast first = dry(), second = dry();
+        when(openMeteo.hourly(anyList())).thenReturn(List.of(first, second));
+        when(weather.findById(any())).thenReturn(Optional.empty());
+        List<Object> events = new ArrayList<>();
+
+        new WeatherRefresh(crags, weather, openMeteo, JUNE_2_MORNING, events::add).atStartup();
+
+        assertThat(events).singleElement().isInstanceOfSatisfying(ForecastsRefreshed.class, e -> {
+            assertThat(e.forecasts()).containsExactly(
+                    java.util.Map.entry("test-crag-1", first), java.util.Map.entry("test-crag-2", second));
+            assertThat(e.fetchedAt()).isEqualTo(Instant.now(JUNE_2_MORNING));
+        });
+    }
+
+    @Test
+    void aFailedRefreshSendsNothingAndAFailedListenerKeepsTheRows() {
+        CragRepository crags = mock(CragRepository.class);
+        CragWeatherRepository weather = mock(CragWeatherRepository.class);
+        OpenMeteoClient openMeteo = mock(OpenMeteoClient.class);
+        List<Crag> one = List.of(crag(1));
+        when(crags.findAll()).thenReturn(one);
+        when(openMeteo.hourly(anyList())).thenThrow(new IllegalStateException("Open-Meteo is down"));
+        List<Object> events = new ArrayList<>();
+
+        new WeatherRefresh(crags, weather, openMeteo, JUNE_2_MORNING, events::add).hourly();
+        assertThat(events).isEmpty();
+
+        OpenMeteoClient working = mock(OpenMeteoClient.class);
+        when(working.hourly(anyList())).thenReturn(List.of(dry()));
+        when(weather.findById(any())).thenReturn(Optional.empty());
+        new WeatherRefresh(crags, weather, working, JUNE_2_MORNING, e -> { throw new IllegalStateException("no"); }).hourly();
+        verify(weather, times(3)).save(any());
     }
 }
