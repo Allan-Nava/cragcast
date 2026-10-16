@@ -294,3 +294,223 @@ date,crag_id,crag_name,province,verdict,rain_last48h_mm,rain_day_mm,max_temp_c,m
 2026-10-16,osm-way-365080249,Virle - settore est,BS,GO,0.0,0.0,21.3,7.8,,2026-10-15T23:10:00.924475692Z
 2026-10-16,osm-node-3097814772,Zoia Alta,SO,GO,0.0,0.0,14.8,6.0,wall aspect not mapped: judged as a shaded wall,2026-10-15T23:10:00.924475692Z
 2026-10-16,osm-node-14064515297,Zoia Bassa,SO,GO,0.0,0.0,14.8,5.4,wall aspect not mapped: judged as a shaded wall,2026-10-15T23:10:00.924475692Z
+2026-10-17,osm-way-238134303,Anfiteatro naturale del Bogn,BG,GO,0.0,0.0,21.2,11.3,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-6822611838,Bagni Vecchi Bassa,SO,GO,0.0,0.0,17.5,8.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-948457898,Brutal Block,BG,GO,0.0,0.0,16.9,10.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1428080037,Buco del piombo,CO,GO,0.0,0.0,16.2,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-11872141961,Calar,SO,GO,0.0,0.0,11.5,10.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-495911204,Camerate,BS,GO,0.0,0.0,18.9,9.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1387869754,Campiano,LC,GO,0.0,0.0,12.6,8.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2709076678,Capo di Ponte,BS,GO,0.0,0.0,20.5,12.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-188805657,Corna Bianca,BG,GO,0.0,0.0,14.3,8.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-226999713,Corna delle Capre,BS,GO,0.0,0.0,14.4,6.6,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-949382719,Corna di Fenere,BS,GO,0.0,0.0,19.5,12.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-857264782,Corna dòl Tàs,BG,GO,0.0,0.0,12.7,5.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-163401086,Corna Rossa,BS,GO,0.0,0.0,20.5,7.9,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2917721733,Corna Rossa di Lantana,BG,GO,0.0,0.0,15.5,8.8,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-449601797,Corna Ventitre,BS,GO,0.0,0.0,18.7,8.1,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-12068677095,Crap de la Tureglia,SO,GO,0.0,0.0,16.8,11.3,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-7775951092,denti della vecchia,SO,GO,0.0,0.0,11.3,8.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2888957867,Discoteca,LC,GO,0.0,0.0,21.0,6.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-948457903,Esotica,BG,GO,0.0,0.0,16.4,10.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-12036611131,Falesia,SO,GO,0.0,0.0,13.9,9.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-3757612224,"Falesia ""Omonimi""",BG,GO,0.0,0.0,15.0,7.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-3757609511,"Falesia ""Pagliaccetti""",BG,GO,0.0,0.0,14.7,7.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-3757612208,"Falesia ""Totem""",BG,GO,0.0,0.0,14.7,7.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-537995582,Falesia Alessandro Visentini,CO,GO,0.0,0.0,16.2,8.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-331595789,Falesia Aperitivo,BS,GO,0.0,0.0,16.5,10.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1456514469,Falesia Arcadia,BS,GO,0.0,0.0,16.1,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-5126773805,Falesia Bracca,BG,GO,0.0,0.0,17.4,8.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1389326679,Falesia Bus del Tuel,BS,GO,0.0,0.0,19.4,8.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-11147710677,Falesia Carbonera,BG,GO,0.0,0.0,16.5,6.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13196357817,Falesia Cascata,LC,GO,0.0,0.0,21.1,6.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-366017015,Falesia Castello di Gaino,BS,GO,0.0,0.0,17.9,9.4,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-235311109,Falesia Cividate 1,BS,GO,0.0,0.0,20.6,9.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2433713312,Falesia Colere (Roby Piantoni),BG,GO,0.0,0.0,15.7,10.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1056254032,Falesia Corna Coegia,BG,GO,0.0,0.0,16.5,6.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-1796890725,Falesia Corna De Par,BG,GO,0.0,0.0,18.7,8.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-758381785,Falesia Corna di Marte,BG,GO,0.0,0.0,15.9,7.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-829103791,Falesia Corna Rossa di Valmadrera,LC,GO,0.0,0.0,19.8,6.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-12104258610,Falesia Cornagera - Chiappe della Carolina,BG,GO,0.0,0.0,13.8,6.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-235314407,Falesia Corne Rosse,BS,GO,0.0,0.0,20.4,10.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13184333761,Falesia Corno del Caprone,SO,GO,0.0,0.0,16.3,8.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-332572974,Falesia dei Laghetti,LC,GO,0.0,0.0,17.8,8.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-8913985417,Falesia del Balabiott,LC,GO,0.0,0.0,16.5,8.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-14030990596,Falesia del brigante,LC,GO,0.0,0.0,17.7,8.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-222743760,Falesia del Budellone,BS,GO,0.0,0.0,19.3,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1085403223,Falesia del Corniolo,BS,GO,0.0,0.0,13.9,3.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1307589396,Falesia del Ferro,SO,GO,0.0,0.0,12.0,6.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-231704472,Falesia del Gaver,BS,GO,0.0,0.0,15.0,9.8,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-507488307,Falesia del Lago Moro,BS,GO,0.0,0.0,19.2,10.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1293565162,Falesia del Leves,LC,GO,0.0,0.0,16.2,10.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1387598843,Falesia del Monte San Primo,CO,GO,0.0,0.0,16.1,8.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-9777827971,Falesia del Mùrlansì,BG,GO,0.0,0.0,17.2,7.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2895215952,Falesia del Nibbio,LC,GO,0.0,0.0,13.0,8.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1107716788,Falesia del Passo della Presolana,BG,GO,0.0,0.0,13.7,7.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-6656895797,Falesia del Passo dello Spino,BS,GO,0.0,0.0,12.8,7.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-relation-11740994,Falesia del Picuz,VA,GO,0.0,0.0,19.6,8.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-relation-14910904,Falesia del Piero,BG,GO,0.0,0.0,12.2,6.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1023331384,Falesia del Renico,BS,GO,0.0,0.0,15.7,8.3,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-5239327287,Falesia del Sasso Pelo,CO,GO,0.0,0.0,18.0,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-201832117,Falesia del Tramonto,CO,GO,0.0,0.0,16.1,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-12063546686,Falesia Del Vallone,BG,GO,0.0,0.0,17.4,7.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-5087441239,Falesia dell'Era Glaciale,LC,GO,0.0,0.0,11.9,3.1,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-975403744,Falesia della Rocca di Manerba,BS,GO,0.0,0.0,21.1,8.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1308976112,Falesia della Sorgente,BG,GO,0.0,0.0,14.7,10.9,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-relation-19468980,Falesia delle Onde,CO,GO,0.0,0.0,15.8,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-11734615275,Falesia di Almenno,BG,GO,0.0,0.0,20.6,6.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1262988766,Falesia di Almè,BG,GO,0.0,0.0,20.8,6.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-464613071,Falesia di Barghe Il Ronchino,BS,GO,0.0,0.0,17.2,9.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-836392757,Falesia di Bione,BS,GO,0.0,0.0,16.8,8.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-3311820205,Falesia di Brembilla,BG,GO,0.0,0.0,14.4,6.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-160423372,Falesia di Caionvico,BS,GO,0.0,0.0,19.3,8.8,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-7599712466,Falesia di Calusco,BG,GO,0.0,0.0,20.2,5.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-175334975,Falesia di Castro,BG,GO,0.0,0.0,20.5,11.3,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-158753503,Falesia di Cerezzata,BS,GO,0.0,0.0,20.0,7.5,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-421673913,Falesia di Cima Caldoline,BS,GO,0.0,0.0,11.5,6.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-423004800,Falesia di Cimbergo,BS,GO,0.0,0.0,18.5,10.1,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-14122790227,Falesia di Civate,LC,GO,0.0,0.0,18.7,8.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-365050395,Falesia di Costorio,BS,GO,0.0,0.0,19.7,7.3,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-982400720,falesia di Esino - Petua,LC,GO,0.0,0.0,14.9,3.3,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-729512879,Falesia di Gajum - Cliff Climbing Wall,CO,GO,0.0,0.0,17.0,8.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13888746134,Falesia di Giambi Settore paretino,BG,GO,0.0,0.0,15.9,8.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-relation-14906312,Falesia di Grone (Casazza),BG,GO,0.0,0.0,18.2,7.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1330428267,Falesia di Mazzano,BS,GO,0.0,0.0,19.5,9.0,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1023067086,Falesia di Nasolino,BG,GO,0.0,0.0,15.4,8.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-178561713,Falesia di Nave,BS,GO,0.0,0.0,19.0,6.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-974794830,Falesia di Paline,BS,GO,0.0,0.0,16.6,7.0,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1304488659,Falesia di Predarossa,SO,GO,0.0,0.0,11.3,7.4,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-relation-15077421,Falesia di Predore,BG,GO,0.0,0.0,19.4,9.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-3292246899,Falesia di San Pellegrino Terme,BG,GO,0.0,0.0,19.6,9.1,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-941481222,Falesia di Sovere,BG,GO,0.0,0.0,17.8,11.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-971413461,Falesia di Strozza,BG,GO,0.0,0.0,18.9,8.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-222704971,Falesia Di Villanuova Sul Clisi - Settore Alto,BS,GO,0.0,0.0,19.1,7.9,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2433844045,Falesia Di Villanuova Sul Clisi - Settore Basso,BS,GO,0.0,0.0,19.6,7.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13196357821,Falesia Duracell,LC,GO,0.0,0.0,20.3,9.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-10127566462,Falesia Foglia,VA,GO,0.0,0.0,15.8,7.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-184641293,Falesia Fontanei,BG,GO,0.0,0.0,14.6,8.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-12151154725,Falesia Forni,SO,GO,0.0,0.0,12.1,10.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1497168006,Falesia Francesco Cancarini,BS,GO,0.0,0.0,16.2,7.1,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-438145101,Falesia Ginetto,BS,GO,0.0,0.0,15.2,8.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-727393768,Falesia Guido Omodei,BS,GO,0.0,0.0,15.8,9.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13184333763,Falesia Isolaccia - Jardin d'escalade,SO,GO,0.0,0.0,17.3,9.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13184333762,Falesia Isolaccia - Tavolino,SO,GO,0.0,0.0,17.7,9.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-3622933477,Falesia Lago Nero,BG,GO,0.0,0.0,10.0,7.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13196357819,Falesia Le Promesse nel Sole,LC,GO,0.0,0.0,20.0,9.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-413118218,Falesia Le Scale,BS,GO,0.0,0.0,15.6,5.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1049720124,Falesia Maddalena,BS,GO,0.0,0.0,16.5,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-191006767,Falesia Madonna della Rota,BS,GO,0.0,0.0,17.4,13.1,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-191006769,Falesia Marone,BS,GO,0.0,0.0,18.3,13.1,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-727393767,Falesia Meta,BS,GO,0.0,0.0,15.7,9.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1456514467,Falesia Meteore,BS,GO,0.0,0.0,15.9,7.8,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13184333733,Falesia Migiondo,SO,GO,0.0,0.0,17.0,6.1,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-957454448,Falesia Minions 1,BS,GO,0.0,0.0,14.9,8.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-989387640,Falesia Minions 2,BS,GO,0.0,0.0,15.1,8.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-485227807,Falesia Opera,BS,GO,0.0,0.0,16.1,9.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-957454446,Falesia Pacifico,BS,GO,0.0,0.0,14.2,8.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13196357820,Falesia Passi di Danza,LC,GO,0.0,0.0,19.5,10.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-12863165485,Falesia Pettirosso,BS,GO,0.0,0.0,18.2,8.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-945812457,Falesia Piazza-Maelì,BG,GO,0.0,0.0,17.4,11.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-relation-16068105,Falesia Placche di Albate,CO,GO,0.0,0.0,19.2,5.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-216075910,Falesia Placche di Bette (Mese),SO,GO,0.0,0.0,20.3,4.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13196357818,Falesia Pungitopo,LC,GO,0.0,0.0,20.0,9.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-179011129,Falesia Rendena,BS,GO,0.0,0.0,18.4,6.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13196338094,Falesia Rocce Basse,LC,GO,0.0,0.0,17.7,10.3,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-983536145,Falesia Roncola,BG,GO,0.0,0.0,13.7,7.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1020892684,Falesia Salmonella B,BS,GO,0.0,0.0,15.7,9.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-365092288,Falesia San Gallo Nuova,BS,GO,0.0,0.0,16.9,7.8,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2433779305,Falesia San Pellerino (La Torre),BG,GO,0.0,0.0,18.9,9.1,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-935439944,Falesia San Tomas,LC,GO,0.0,0.0,17.5,10.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-8086095920,Falesia Sasso Ballaro,VA,GO,0.0,0.0,20.8,10.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13245785600,Falesia Sasso Ballaro -  Settore Saigon,VA,GO,0.0,0.0,20.8,10.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-982399708,falesia Sasso Carlano,LC,GO,0.0,0.0,13.2,8.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-985128253,Falesia Sebino,BS,GO,0.0,0.0,16.4,9.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13196399311,Falesia Trittico,LC,GO,0.0,0.0,17.1,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-288953365,Falesia Valgua (Lentasia),BG,GO,0.0,0.0,16.7,7.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2935803563,Falesia Valle Dei Mulini,BG,GO,0.0,0.0,15.5,8.2,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2433793428,Falesia Valle dell' Oro,LC,GO,0.0,0.0,20.3,6.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1350335984,Falesia Valsecca,BG,GO,0.0,0.0,16.3,6.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13184333734,Falesia Vernuga,SO,GO,0.0,0.0,17.7,4.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-4992406813,Falesia Villa d' Almé (Traliccio),BG,GO,0.0,0.0,20.7,7.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2433793424,Falesia Zogno,BG,GO,0.0,0.0,19.3,5.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2620248440,Falesie dei Campelli,LC,GO,0.0,0.0,17.1,10.1,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-relation-1863381,Falesie di Galbiate,LC,GO,0.0,0.0,18.6,8.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-464552480,Giardino Segreto,BS,GO,0.0,0.0,20.5,7.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-1741194816,Gran Placca,LC,GO,0.0,0.0,19.3,6.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-761344649,Grotta del Mandulì,BS,GO,0.0,0.0,16.8,11.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-14041775583,Grotta Rudera,VA,GO,0.0,0.0,14.8,6.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-165967300,I Cavalieri,BS,GO,0.0,0.0,19.2,8.8,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1199525837,Il Resort dell'Aquila,BG,GO,0.0,0.0,11.1,8.3,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2372935820,La Biblioteca,BS,GO,0.0,0.0,19.1,8.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-718831135,La Caduta dei Giganti,SO,GO,0.0,0.0,14.8,5.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-365079021,La Cava,BS,GO,0.0,0.0,21.0,8.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-948457899,La Mia Regina,BG,GO,0.0,0.0,17.2,10.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1385623007,Lagoland,LC,GO,0.0,0.0,21.5,15.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-513842818,Lirone,SO,GO,0.0,0.0,16.0,6.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-11171764068,Liss dei Pesgunfi,SO,GO,0.0,0.0,15.3,5.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1502439088,Lo Sprofondo,CO,GO,0.0,0.0,17.1,8.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-948457901,Miralago,BG,GO,0.0,0.0,16.7,10.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1536755379,Muretto del Gio',LC,GO,0.0,0.0,17.1,8.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-837046156,Muro del Butch,LC,GO,0.0,0.0,16.4,8.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13196399312,Muro del Pianto,LC,GO,0.0,0.0,17.8,10.3,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-485227805,Muro dell'Ilex,BS,GO,0.0,0.0,16.1,9.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-11859077873,Muro di Introbio,LC,GO,0.0,0.0,18.9,9.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-282816934,Nuovo Cinema Maddalena,BS,GO,0.0,0.0,15.6,7.8,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-1741194869,Pala Condor,LC,GO,0.0,0.0,19.3,6.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-relation-18915445,Palestra di roccia del gruppo speleologico prealpino,VA,GO,0.0,0.0,19.6,7.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-9904213314,Palestra di roccia Il Crènch,BS,GO,0.0,0.0,19.0,10.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-3658805427,Palestra di roccia rifugio Sandro Occhi,BS,GO,0.0,0.0,12.2,7.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-166615030,Palestra di roccia Ugolino Ugolini,BS,GO,0.0,0.0,20.1,7.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-relation-18757044,Palestra Ronchetti,VA,GO,0.0,0.0,17.0,7.1,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-9429027374,Paretina dell'amico Fritz,SO,GO,0.0,0.0,20.5,4.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-9176169531,Pilastrini,LC,GO,0.0,0.0,18.9,9.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-4641789089,Placca Condor,LC,GO,0.0,0.0,19.3,6.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-3452238619,Placca del Bhikku,LC,GO,0.0,0.0,16.8,7.8,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-7273907091,Placca del Pistolino,LC,GO,0.0,0.0,17.8,10.3,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-11662207868,Placca del Prato Grande,SO,GO,0.0,0.0,20.2,4.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-4918601924,placca morose,BS,GO,0.0,0.0,17.3,8.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-365090771,Placca Poli,BS,GO,0.0,0.0,17.3,7.8,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-4409711985,Placche di Sherwood,LC,GO,0.0,0.0,17.7,9.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-860340484,Placchette del San Martino,LC,GO,0.0,0.0,17.5,8.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-948457900,Politeama,BG,GO,0.0,0.0,17.2,10.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1003256148,Polèer dól Gipi,LC,GO,0.0,0.0,16.4,6.1,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-12255821505,Porto di Tremosine,BS,GO,0.0,0.0,18.9,16.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-1739484761,Pradello,LC,GO,0.0,0.0,19.5,10.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-761344647,Predulì,BS,GO,0.0,0.0,17.2,11.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-1741194868,Rocca di Baiedo,LC,GO,0.0,0.0,18.6,9.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-9536753691,Rock Stadium,SO,GO,0.0,0.0,20.5,4.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-relation-18047636,Ronda Nera,MI,GO,0.0,0.0,20.9,5.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-11872141963,Saletina,SO,GO,0.0,0.0,12.3,10.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-12151154724,Saletina Bassa,SO,GO,0.0,0.0,12.8,10.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1213400747,San Vigilio,BG,GO,0.0,0.0,14.8,10.6,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-183348081,Sass Negher,LC,GO,0.0,0.0,20.9,20.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-231956641,Sasso bianco,SO,GO,0.0,0.0,18.7,6.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-201200731,Sasso d'Erba,CO,GO,0.0,0.0,16.3,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-751262115,Sasso dell'Edera,CO,GO,0.0,0.0,16.5,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-1803201264,Sasso dell'Elefante,BS,GO,0.0,0.0,19.5,8.8,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-4641745891,Sasso di Introbio,LC,GO,0.0,0.0,19.3,6.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1183974242,Sasso Galletto,VA,GO,0.0,0.0,21.1,9.7,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-9986935533,Sasso Garibaldi,SO,GO,0.0,0.0,18.1,8.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-201200730,Sasso Giallo,CO,GO,0.0,0.0,16.7,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-297774960,Sasso Muschiato,CO,GO,0.0,0.0,16.8,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-1886634638,Sasso Remenno,SO,GO,0.0,0.0,16.6,5.9,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13196338093,Settore Anfiteatro,LC,GO,0.0,0.0,16.6,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-12304593894,Settore Destro,CO,GO,0.0,0.0,19.2,8.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-12304593897,Settore Destro,CO,GO,0.0,0.0,19.0,8.0,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13196381745,Sperone dell'Astinenza,LC,GO,0.0,0.0,16.6,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-761344648,Spigolo,BS,GO,0.0,0.0,17.3,11.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-948338662,Teatro degli Orrori,BG,GO,0.0,0.0,16.5,10.6,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-331595790,Terra di Mezzo,BS,GO,0.0,0.0,16.1,9.5,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-4541277052,Terzo sperone,LC,GO,0.0,0.0,17.0,7.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-1090727155,The Pai Bridge,SO,GO,0.0,0.0,16.1,5.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-14219981089,Torrione del Pertusio,LC,GO,0.0,0.0,13.2,6.5,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-14041775584,Torrione Farfalla,VA,GO,0.0,0.0,14.8,6.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-2888957866,Torrione Realba,LC,GO,0.0,0.0,19.9,10.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-6758871493,Torrioni Cornagera,BG,GO,0.0,0.0,13.7,6.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-13184333732,Vermuga,SO,GO,0.0,0.0,18.5,6.1,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-513713057,Vho,SO,GO,0.0,0.0,15.7,6.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-4918589878,Vie di roccia del Forametto,BS,GO,0.0,0.0,14.1,5.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-4918589843,Vie di roccia delle placche delle Marmere,BS,GO,0.0,0.0,13.7,5.4,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-way-365080249,Virle - settore est,BS,GO,0.0,0.0,21.1,8.2,,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-3097814772,Zoia Alta,SO,GO,0.0,0.0,11.6,10.8,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
+2026-10-17,osm-node-14064515297,Zoia Bassa,SO,GO,0.0,0.0,12.2,9.2,wall aspect not mapped: judged as a shaded wall,2026-10-16T22:56:16.027399579Z
