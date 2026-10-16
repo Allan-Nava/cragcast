@@ -283,6 +283,9 @@ tall on a phone, and 193 of 220 cards repeat the same unmapped-aspect sentence; 
 list fourteen "OSM n" links; the page is dark only; there is no order but verdict or distance
 and no grade filter; and no test notices when a change moves the layout.
 
+- [x] **CG-65 — Architectural Decision Records**: the decisions behind cragcast written down
+  in `docs/adr/`, one numbered record each, and a rule that a new decision brings its record.
+  Done: ADR 0001–0014, written on 2026-10-16 from the backlog, the PRs and git. <!-- cg: prio=med size=S labels=docs ver=main -->
 - [ ] **CG-58 — Compact crag cards**: the unmapped-aspect sentence becomes a short "esposizione
   ?" tag (its meaning said once, in the help and the tag's label), "Dettagli" joins the card's
   first row, so a phone shows about twice as many crags per screen. <!-- cg: prio=high size=M labels=frontend -->
