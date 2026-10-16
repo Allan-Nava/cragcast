@@ -283,6 +283,9 @@ tall on a phone, and 193 of 220 cards repeat the same unmapped-aspect sentence; 
 list fourteen "OSM n" links; the page is dark only; there is no order but verdict or distance
 and no grade filter; and no test notices when a change moves the layout.
 
+- [x] **CG-66 — Architecture document**: `docs/ARCHITECTURE.md`, how the parts fit — the hourly
+  run and the page's modules as diagrams, the contracts, the workflows, the tests. Done on
+  2026-10-16. <!-- cg: prio=med size=S labels=docs ver=main -->
 - [x] **CG-65 — Architectural Decision Records**: the decisions behind cragcast written down
   in `docs/adr/`, one numbered record each, and a rule that a new decision brings its record.
   Done: ADR 0001–0014, written on 2026-10-16 from the backlog, the PRs and git. <!-- cg: prio=med size=S labels=docs ver=main -->
