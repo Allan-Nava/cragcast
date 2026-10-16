@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**77 items · 59 shipped · 18 open · 15 milestones.**
+**77 items · 60 shipped · 17 open · 15 milestones.**
 
 ## At a glance
 
@@ -22,7 +22,7 @@
 | **v0.9.0 — UI fixes** | next | `##########` 100% | 0 | 5 |
 | **v0.10.0 — A better frontend** | next | `########..` 78% | 2 | 7 |
 | **v0.7.0 — Beyond Lombardy** | later | `..........` 0% | 1 | 0 |
-| **v1.1.0 — On a Raspberry Pi** | now | `#####.....` 50% | 2 | 2 |
+| **v1.1.0 — On a Raspberry Pi** | now | `########..` 75% | 1 | 3 |
 | **v1.2.0 — Everything in PostgreSQL** | next | `..........` 0% | 7 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
@@ -129,7 +129,7 @@
 - [x] **CG-100** — The Pi pulls its stack · med · S · infra · `main`
 - [x] **CG-101** — History in PostgreSQL · med · S · backend · `main`
 - [ ] **CG-102** — The Pi over Tailscale · low · S · infra
-- [ ] **CG-110** — The page on the Pi · med · M · frontend, backend, infra
+- [x] **CG-110** — The page on the Pi · med · M · frontend, backend, infra · `main`
 
 ## v1.2.0 — Everything in PostgreSQL
 
