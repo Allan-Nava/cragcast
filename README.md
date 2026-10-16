@@ -121,6 +121,8 @@ and ARPA Lombardia for the avalanche levels.
 
 ## How it is built
 
+Why it is built this way: the [Architectural Decision Records](docs/adr/README.md) in `docs/adr/`.
+
 | Part | What |
 |---|---|
 | `backend/` | Java 21, Spring Boot 4, PostgreSQL, Flyway. `GET /api/crags` and `GET /api/crags/{slug}` (position, aspect, elevation, OSM details), `GET /api/crags/{slug}/conditions?date=`; imports the crags from `data/crags.json` at startup and refreshes the weather every hour |
