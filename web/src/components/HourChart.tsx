@@ -1,6 +1,6 @@
 // One measure per chart, never two y-axes (CG-24). Rain #3987e5 and temperature #d95926 are
-// validated on the panel surface #111418 (dataviz validator: CVD ΔE 26.8, ≥3:1) and are not
-// verdict colours. The readout and the table carry every value the chart shows.
+// validated on both panels, dark #111418 and light #ffffff (dataviz validator: CVD ΔE 26.8, ≥3:1;
+// CG-60), and are not verdict colours. The readout and the table carry every value the chart shows.
 import type { Hour } from "../types";
 import { ticks } from "../lib/ticks";
 
@@ -66,7 +66,7 @@ export function HourChart({ hours, kind, cursor, onCursor }: Props) {
           <>
             <polyline points={hours.map((h, i) => `${x(i)},${y(h.temperatureC)}`).join(" ")} fill="none" stroke={TEMP}
                       strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
-            <circle cx={x(iMax)} cy={y(vals[iMax])} r={4} fill={TEMP} stroke="#111418" strokeWidth={2} />
+            <circle cx={x(iMax)} cy={y(vals[iMax])} r={4} fill={TEMP} style={{ stroke: "var(--panel)" }} strokeWidth={2} />
             {/* Near an edge the label leans inwards, so it is never cut (CG-63 found "max 16" clipped). */}
             <text className="label" x={x(iMax)} y={y(vals[iMax]) - 7}
                   textAnchor={x(iMax) > W - R - 28 ? "end" : x(iMax) < L + 28 ? "start" : "middle"}>{`max ${fmt(vals[iMax])}°`}</text>

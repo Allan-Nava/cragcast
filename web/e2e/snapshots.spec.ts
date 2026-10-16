@@ -47,3 +47,21 @@ test("the filters open", async ({ page, isMobile }) => {
   await page.getByRole("button", { name: /^Filtri/ }).click();
   await expect(page.locator(".controls")).toHaveScreenshot("filters.png");
 });
+
+// CG-60: the light theme, the views where its palette shows: the page and a crag's panel.
+test.describe("light theme", () => {
+  test.use({ colorScheme: "light" });
+
+  test("the page, light", async ({ page }) => {
+    await page.goto("./?day=2026-10-17");
+    await ready(page);
+    await expect(page).toHaveScreenshot("page-light.png", { fullPage: true, ...mask(page) });
+  });
+
+  test("a crag's panel, light", async ({ page }) => {
+    await page.goto("./?day=2026-10-17&crag=osm-node-2");
+    await ready(page);
+    await expect(page.locator("dialog#detail")).toBeVisible();
+    await expect(page).toHaveScreenshot("panel-light.png", mask(page));
+  });
+});
