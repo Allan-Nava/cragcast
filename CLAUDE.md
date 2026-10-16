@@ -18,9 +18,11 @@ network.
 - **No invented places.** A crag enters the database only with coordinates and aspect taken
   from a public source, whose URL goes in `source_url`. Test data is made up and says so.
 - **Two ways to run, one scorer.** The serverless version (`ConditionsExport` + the page in `web/`,
-  published hourly by `pages.yml` on GitHub Pages) and the Spring service (`deploy/k8s/`, on
-  the Oracle VM) share `ConditionsScorer`, `WeatherReducer` and `OpenMeteoClient`. A change to
-  the verdict lands in both. All of `site/` is generated (`tools/build_site.sh`: Vite from `web/`,
+  published hourly by `pages.yml` on GitHub Pages) and the Spring service (on the Pi; `deploy/k8s/`
+  for the parked VM) share `ConditionsScorer`, `WeatherReducer` and `OpenMeteoClient`. A change to
+  the verdict lands in both. The Pi also serves the page (CG-110, ADR 0018): `SiteData` builds
+  its data with `ConditionsExport.build()` from the forecasts `WeatherRefresh` already fetched —
+  never a second Open-Meteo request — and `SiteController` serves it at Pages' paths. All of `site/` is generated (`tools/build_site.sh`: Vite from `web/`,
   then the data), never committed.
 - **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:
   credit OSM on every surface that shows them): `climbing=crag`, and since CG-42 named outdoor
@@ -65,7 +67,7 @@ network.
   validates. Never edit a migration that has run — add the next one.
 - **Tests that need PostgreSQL** use Testcontainers and `@EnabledIf(DockerAvailable.CHECK)`:
   skipped without Docker, always run in CI. Logic tests need no database.
-- **arm64 first.** The VM is Ampere: images must be multi-arch; `image.yml` builds `linux/arm64` on a native ARM runner (`ubuntu-24.04-arm`) and pushes `ghcr.io/allan-nava/cragcast-backend:main` and `:<sha>`.
+- **arm64 first.** The VM is Ampere: images must be multi-arch; `image.yml` builds `linux/arm64` on a native ARM runner (`ubuntu-24.04-arm`) and pushes `ghcr.io/allan-nava/cragcast-backend` and (CG-110) `cragcast-web`, `:main` and `:<sha>`.
 - **Free tier only.** Nothing in `deploy/` or `infra/` may exceed Oracle Always Free (A1.Flex
   2 OCPU / 12 GB in total, 200 GB of block storage). Secrets and Terraform state never get
   committed.

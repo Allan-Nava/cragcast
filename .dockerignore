@@ -1,0 +1,8 @@
+# Build contexts start at the repository root (backend/Dockerfile, web/Dockerfile); what each
+# image needs is copied by name, so this only keeps local build output out of the context.
+**/node_modules
+site
+backend/target
+web/test-results
+web/playwright-report
+web/coverage

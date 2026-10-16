@@ -355,6 +355,12 @@ place for the Spring service and its database while the Oracle VM stays parked.
   exit node: the friend's network stays out of the tailnet
   ([ADR 0017](docs/adr/0017-the-pi-over-tailscale.md)). Done when `/actuator/health` and psql
   answer from outside that network. <!-- cg: prio=low size=S labels=infra -->
+- [ ] **CG-110 — The page on the Pi**: the same page next to GitHub Pages, in an nginx image
+  (`cragcast-web`, linux/arm64), its data from the Pi's backend: `SiteData` builds
+  `data/conditions.json`, the API v1 and the share pages with `ConditionsExport.build()` from the
+  forecasts `WeatherRefresh` already fetched — no new Open-Meteo requests
+  ([ADR 0018](docs/adr/0018-the-pi-serves-the-page-from-its-backend.md)). Done when the Pi's page
+  answers on port 8081 with today's data. <!-- cg: prio=med size=M labels=frontend,backend,infra -->
 
 ## v1.2.0 — Everything in PostgreSQL <!-- ms: phase=next -->
 

@@ -73,7 +73,8 @@ flowchart LR
 | Calibration | `backend/…/calibration` | replays first-hand observed days (`data/observations.csv`) against Open-Meteo's Historical Forecast API, to tune the scorer's thresholds |
 | The page | `web/src` | React 19 + TypeScript; reads `data/conditions.json`, keeps the view in the URL |
 | Data tools | `tools/*.py` | `osm_crags.py` (the crag list from OSM, sectors folded — [ADR 0009](adr/0009-sport-climbing-crags-and-sectors.md)), `crags_diff.py`, `history_append.py`, `aspects_todo.py`, `avalanche_regions.py` |
-| Raspberry Pi stack | `deploy/pi/compose.yml` | the Spring service and PostgreSQL as a Portainer Git stack: Portainer polls main and re-pulls the GHCR image; no runner, no inbound port; the home network and the owner's tailnet ([ADR 0017](adr/0017-the-pi-over-tailscale.md)), PostgreSQL on the Pi's localhost only |
+| The Pi's page | `export/SiteData`, `SiteController`, `web/Dockerfile`, `web/nginx.conf` | the same page on the Pi: nginx serves the Vite build and hands `data/`, `api/v1/` and `c/` to the backend, which builds them with `ConditionsExport.build()` from the forecasts its hourly refresh fetched — no second Open-Meteo request ([ADR 0018](adr/0018-the-pi-serves-the-page-from-its-backend.md)) |
+| Raspberry Pi stack | `deploy/pi/compose.yml` | the Spring service, PostgreSQL and the page as a Portainer Git stack: Portainer polls main and re-pulls the GHCR image; no runner, no inbound port; the home network and the owner's tailnet ([ADR 0017](adr/0017-the-pi-over-tailscale.md)), PostgreSQL on the Pi's localhost only |
 | Infrastructure *(parked)* | `infra/oci`, `deploy/k8s` | Terraform for the Oracle VM and k3s manifests; kept, not applied |
 
 ### Inside the page
@@ -135,7 +136,7 @@ flowchart TB
 | `crags-refresh.yml` | the 1st of the month, 05:23 UTC | rebuilds `data/crags.json` and `docs/aspects-todo.md` from OSM; opens a PR when they changed |
 | `ci.yml` | every push to main and every PR | the jobs below |
 | `lighthouse.yml` | PRs touching the page, data or scorer | Lighthouse budgets on the built page with real data |
-| `image.yml` | push to main touching the backend | the linux/arm64 image of the Spring service, to GHCR |
+| `image.yml` | push to main touching the backend, the page or the data they ship | the linux/arm64 images of the Spring service and (CG-110) the page with nginx, to GHCR |
 | `backlog-issues.yml` | push to main touching `BACKLOG.md` | GitHub issues and milestones follow the backlog |
 
 ## Tests

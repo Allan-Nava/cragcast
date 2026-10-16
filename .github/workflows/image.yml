@@ -1,12 +1,13 @@
-# Builds the backend image for linux/arm64 — the architecture of the Oracle Ampere VM — and
-# pushes it to GHCR on every push to main that touches the backend. The runner is ARM itself,
-# so there is no QEMU emulation and the Maven build runs at native speed.
+# Builds the images for linux/arm64 — the Raspberry Pi's architecture (and the parked Oracle
+# Ampere VM's) — and pushes them to GHCR on every push to main that touches them: the backend,
+# and since CG-110 the page served by nginx. The runner is ARM itself, so there is no QEMU
+# emulation. Both jobs run on any of the paths; the layer cache keeps an unchanged one short.
 name: Image
 
 on:
   push:
     branches: [main]
-    paths: [backend/**, data/crags.json, .github/workflows/image.yml]
+    paths: [backend/**, data/crags.json, data/avalanche-regions.geojson, web/**, assets/**, .github/workflows/image.yml]
   workflow_dispatch:
 
 permissions:
@@ -38,3 +39,28 @@ jobs:
             org.opencontainers.image.licenses=MIT
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+  web:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: web/Dockerfile
+          platforms: linux/arm64
+          push: true
+          tags: |
+            ghcr.io/allan-nava/cragcast-web:main
+            ghcr.io/allan-nava/cragcast-web:${{ github.sha }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.licenses=MIT
+          cache-from: type=gha,scope=web
+          cache-to: type=gha,mode=max,scope=web

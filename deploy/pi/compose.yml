@@ -6,9 +6,13 @@
 # deploy/pi/compose.yml; GitOps updates on (polling), "Re-pull image" on; environment variable
 # DATABASE_PASSWORD set in Portainer, never in this file.
 #
-# The backend on the Pi's port 8080 (BACKEND_PORT to change it): the home network and the
-# owner's tailnet (CG-102, ADR 0017). PostgreSQL on the Pi's 127.0.0.1 only (DB_PORT), for psql
-# through an SSH tunnel; nothing else reaches it.
+# The backend on the Pi's port 8080 (BACKEND_PORT to change it) and the page on 8081 (WEB_PORT,
+# CG-110): the home network and the owner's tailnet (CG-102, ADR 0017). PostgreSQL on the Pi's
+# 127.0.0.1 only (DB_PORT), for psql through an SSH tunnel; nothing else reaches it.
+#
+# The page is the same build as GitHub Pages; its data comes from this backend, made from the
+# forecasts the backend fetches anyway (ADR 0018). SITE_URL is the page's address as readers
+# open it (e.g. http://<the Pi>:8081/), for the share pages' links; GitHub Pages if unset.
 services:
   db:
     image: postgres:17-alpine
@@ -33,6 +37,7 @@ services:
       DATABASE_URL: jdbc:postgresql://db:5432/cragcast
       DATABASE_USER: cragcast
       DATABASE_PASSWORD: ${DATABASE_PASSWORD:?set DATABASE_PASSWORD in the Portainer stack}
+      SITE_URL: ${SITE_URL:-https://allan-nava.github.io/cragcast/}
     ports:
       - "${BACKEND_PORT:-8080}:8080"
     # The JVM takes 75% of this (Dockerfile); room left for PostgreSQL on a 4 GB Pi.
@@ -40,6 +45,15 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+  web:
+    image: ghcr.io/allan-nava/cragcast-web:main
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-8081}:8080"
+    mem_limit: 64m
+    depends_on:
+      - backend
 
 volumes:
   db-data:

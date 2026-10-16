@@ -110,12 +110,14 @@
 				<directory>src/main/resources</directory>
 			</resource>
 			<!-- data/crags.json (from OpenStreetMap) ships in the jar as classpath:data/crags.json:
-			     one list of crags for the static page and the Spring service. -->
+			     one list of crags for the static page and the Spring service; the avalanche
+			     micro-regions with it, for the page's data served by the service (CG-110). -->
 			<resource>
 				<directory>../data</directory>
 				<targetPath>data</targetPath>
 				<includes>
 					<include>crags.json</include>
+					<include>avalanche-regions.geojson</include>
 				</includes>
 			</resource>
 		</resources>
