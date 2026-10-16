@@ -2,6 +2,9 @@ import { CRAGS, expect, listNames, openFilters, test } from "./fixtures";
 
 test.skip(({ isMobile }) => !isMobile, "phone layout");
 
+/** CG-58: the tallest card on a Pixel 7 with the fixture data, in px (was about 190; 118 when set). */
+const CARD_MAX = 125;
+
 async function swipe(page: import("@playwright/test").Page, from: { x: number; y: number }, dx: number, dy: number) {
   const el = page.locator("dialog#detail");
   const opts = (x: number, y: number) => ({ clientX: x, clientY: y, pointerType: "touch", isPrimary: true, bubbles: true });
@@ -73,4 +76,15 @@ test("CG-54: the list first; 'Mappa' shows the map; a crag chosen in the list op
   await page.locator("#crag-osm-node-3 h2").click();
   await expect(page.locator("#map")).toBeVisible();
   await expect(page.locator(".leaflet-popup-content")).toContainText("Muro Esempio");
+});
+
+test("CG-58: compact cards — a crag's card stays short on a phone", async ({ page }) => {
+  await page.goto("./");
+  const heights = await page.locator("#list li").evaluateAll(lis => lis.map(li => li.getBoundingClientRect().height));
+  const tallest = Math.max(...heights);
+  expect(tallest).toBeLessThan(CARD_MAX);
+  // The tag says the aspect is unknown; the days and "Dettagli" share one row.
+  const card = page.locator("#crag-osm-node-1");
+  const strip = (await card.locator(".strip").boundingBox())!, more = (await card.locator(".more").boundingBox())!;
+  expect(Math.abs(strip.y - more.y)).toBeLessThan(12);
 });

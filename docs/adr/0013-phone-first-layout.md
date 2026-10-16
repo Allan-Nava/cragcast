@@ -19,7 +19,8 @@ the crag's panel covered the filters and the list.
 
 ## Consequences
 
-- On a phone the first crag is on the first screen. CG-58's compact cards (in progress on
-  2026-10-16) bring a card from about 190 to under 125 px, about twice as many per screen.
+- On a phone the first crag is on the first screen, and CG-58's compact cards bring a card from
+  about 190 to under 125 px — about twice as many per screen; the list's own width (a container
+  query), not the screen's, decides when a card tightens.
 - Two layouts to keep working; the Playwright projects (desktop, Pixel 7) and, with CG-63,
   visual snapshots guard them.

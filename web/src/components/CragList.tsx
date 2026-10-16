@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Star } from "./Star";
 import type { Crag } from "../types";
-import { LABEL, LETTER, allDetails, describe, place } from "../lib/text";
+import { LABEL, LETTER, allDetails, aspectShort, describe, place } from "../lib/text";
 
 interface Props {
   crags: Crag[];
@@ -41,17 +41,31 @@ export function CragList({ crags, day, days = [], onDay, distance, onOpen, onDet
               onClick={() => onOpen(crag)} onKeyDown={e => { if (e.key === "Enter") onOpen(crag); }}
               onMouseEnter={() => onHot?.(crag.id)} onMouseLeave={() => onHot?.(null)}
               onFocus={e => { if (e.target === e.currentTarget) onHot?.(crag.id); }} onBlur={() => onHot?.(null)}>
-            <h2>
-              {/* the verdict is in the text next to the mark */}
-              <span className={"mark small " + info.verdict.toLowerCase()} aria-hidden="true"><b>{LETTER[info.verdict]}</b></span>
-              {`${crag.name} — ${LABEL[info.verdict]}`}
-              {distance && <span className="km">{`${Math.round(distance(crag))} km`}</span>}
+            {/* CG-58: compact — the star sits beside the heading, not in it, so the heading reads as
+                the crag; the days and "Dettagli" share the last row. */}
+            <div className="head">
+              <h2>
+                {/* the verdict is in the text next to the mark */}
+                <span className={"mark small " + info.verdict.toLowerCase()} aria-hidden="true"><b>{LETTER[info.verdict]}</b></span>
+                {`${crag.name} — ${LABEL[info.verdict]}`}
+                {distance && <span className="km">{`${Math.round(distance(crag))} km`}</span>}
+              </h2>
               {onFavourite && <Star name={crag.name} on={!!favourites?.has(crag.id)} onToggle={() => onFavourite(crag.id)} />}
-            </h2>
-            <p>{[place(crag), info.aspect, ...info.reasons].filter(Boolean).join(" · ")}</p>
-            {details.length > 0 && <p className="details">{details.join(" · ")}</p>}
-            {days.length > 1 && <DayStrip crag={crag} days={days} day={day} onDay={onDay} />}
-            <button type="button" className="more" onClick={e => { e.stopPropagation(); onDetail(crag); }}>Dettagli</button>
+            </div>
+            <p className="meta">
+              {[place(crag), aspectShort(crag)].filter(Boolean).join(" · ")}
+              {!crag.aspect && <>{place(crag) ? " · " : ""}<span className="tag" title="Esposizione non mappata su OpenStreetMap: valutata come parete in ombra">
+                esposizione ?<span className="sr-only"> (non mappata: valutata come parete in ombra)</span></span></>}
+              {info.reasons.length > 0 && ` · ${info.reasons.join(" · ")}`}
+              {details.length > 0 && <> · <span className="details">{details.join(" · ")}</span></>}
+            </p>
+            <div className="row">
+              {days.length > 1 && <DayStrip crag={crag} days={days} day={day} onDay={onDay} />}
+              {/* In a narrow list the word yields to "›" (style.css); the name stays "Dettagli". */}
+              <button type="button" className="more" onClick={e => { e.stopPropagation(); onDetail(crag); }}>
+                <span className="more-text">Dettagli</span><span className="more-icon" aria-hidden="true">›</span>
+              </button>
+            </div>
           </li>
         );
       })}

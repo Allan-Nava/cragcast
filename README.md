@@ -35,6 +35,9 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   URL (`show=map`); a crag chosen in the list opens on the map;
 - the day's summary stays at the top while the crags scroll, and **"Torna su"** shows once
   they have been scrolled (the page on a phone, the list's column on a desktop);
+- **compact crag cards**: the name and verdict, then the place, the aspect — an
+  "esposizione ?" tag where it is not mapped — the reasons and the details on one line, then
+  the three days and "Dettagli" ("›" in a narrow list); about twice as many per screen;
 - **search** by name or municipality, ignoring case and accents, **toggles** for go / maybe /
   no go, and a **province** filter; each crag shows where it is ("Canzo (CO)");
 - crowded areas (Lecco, Val Masino) gather into one mark with the count and the split by

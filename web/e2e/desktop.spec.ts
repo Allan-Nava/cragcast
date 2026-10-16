@@ -95,3 +95,13 @@ test("CG-55: the cluster marks' split is readable at 100% zoom", async ({ page }
   }));
   expect(fits).toBe(true);
 });
+
+test("CG-58: in the desktop's narrow list column the days and 'Dettagli' share one row", async ({ page }) => {
+  await page.goto("./");
+  const rows = await page.locator("#list li").evaluateAll(lis => lis.map(li => {
+    const a = li.querySelector(".strip")!.getBoundingClientRect(), b = li.querySelector(".more")!.getBoundingClientRect();
+    return Math.abs(a.top - b.top) < 12;
+  }));
+  expect(rows.every(Boolean)).toBe(true);
+  await expect(page.locator("#list li .more").first()).toHaveAccessibleName("Dettagli");
+});
