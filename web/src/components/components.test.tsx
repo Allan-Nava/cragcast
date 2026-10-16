@@ -259,3 +259,15 @@ group("compact cards (CG-58)", () => {
     expect(document.querySelector("#list li .row > .more")).not.toBeNull();
   });
 });
+
+group("chart label at the edge (CG-63)", () => {
+  it("leans inwards when the maximum is at the first or last hour", () => {
+    const rising = hours.map((h, i) => ({ ...h, temperatureC: 5 + i }));
+    const { container, unmount } = render(<HourChart hours={rising} kind="temperature" cursor={null} onCursor={() => {}} />);
+    expect(container.querySelector("text.label")!.getAttribute("text-anchor")).toBe("end");
+    unmount();
+    const falling = hours.map((h, i) => ({ ...h, temperatureC: 25 - i }));
+    const { container: c2 } = render(<HourChart hours={falling} kind="temperature" cursor={null} onCursor={() => {}} />);
+    expect(c2.querySelector("text.label")!.getAttribute("text-anchor")).toBe("start");
+  });
+});

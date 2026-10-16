@@ -8,6 +8,10 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [["list"], ["html", { open: "never" }]] : "list",
+  // CG-63: one folder of images per project. Repeated runs on one machine are identical to the
+  // pixel, so the tolerance is a few pixels: a ratio of 1% let a broken logo pass.
+  snapshotPathTemplate: "{testDir}/__snapshots__/{projectName}/{arg}{ext}",
+  expect: { toHaveScreenshot: { maxDiffPixels: 25, animations: "disabled", caret: "hide" } },
   use: {
     baseURL: "http://localhost:4173/",
     serviceWorkers: "block",

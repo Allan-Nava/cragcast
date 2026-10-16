@@ -7,9 +7,10 @@ export const DAYS = [0, 1, 2].map(n => iso(new Date(Date.now() + n * 864e5)));
 export const [TODAY, TOMORROW, AFTER] = DAYS;
 
 type V = "GO" | "MAYBE" | "NO_GO";
-function crag(id: string, name: string, lat: number, lon: number, province: [string, string, string], verdicts: V[], extra = {}) {
+function crag(id: string, name: string, lat: number, lon: number, province: [string, string, string], verdicts: V[], extra = {},
+              on: string[] = DAYS) {
   const days: Record<string, unknown> = {};
-  DAYS.forEach((d, i) => {
+  on.forEach((d, i) => {
     const rain = verdicts[i] === "NO_GO" ? 4 : 0;
     days[d] = {
       verdict: verdicts[i],
@@ -23,19 +24,25 @@ function crag(id: string, name: string, lat: number, lon: number, province: [str
            days, ...extra };
 }
 
-export const CRAGS = [
-  crag("osm-node-1", "Còrna Test", 45.86, 9.40, ["Lecco", "Lecco", "LC"], ["GO", "GO", "MAYBE"], { details: { gradeMax: "7a" } }),
-  crag("osm-node-2", "Placca Prova", 45.87, 9.42, ["Lecco", "Lecco", "LC"], ["NO_GO", "MAYBE", "GO"]),
-  crag("osm-node-3", "Muro Esempio", 46.17, 9.87, ["Sondrio", "Sondrio", "SO"], ["MAYBE", "NO_GO", "GO"]),
-  crag("osm-node-4", "Sasso Finto", 45.70, 9.67, ["Bergamo", "Bergamo", "BG"], ["GO", "GO", "GO"]),
-  crag("osm-node-5", "Parete Immaginaria", 45.55, 10.22, ["Brescia", "Brescia", "BS"], ["GO", "NO_GO", "NO_GO"]),
-  crag("osm-node-6", "Torre Inventata", 46.30, 10.30, ["Bormio", "Sondrio", "SO"], ["MAYBE", "MAYBE", "MAYBE"]),
+const build = (on: string[]) => [
+  crag("osm-node-1", "Còrna Test", 45.86, 9.40, ["Lecco", "Lecco", "LC"], ["GO", "GO", "MAYBE"], { details: { gradeMax: "7a" } }, on),
+  crag("osm-node-2", "Placca Prova", 45.87, 9.42, ["Lecco", "Lecco", "LC"], ["NO_GO", "MAYBE", "GO"], { aspect: null }, on),
+  crag("osm-node-3", "Muro Esempio", 46.17, 9.87, ["Sondrio", "Sondrio", "SO"], ["MAYBE", "NO_GO", "GO"], {}, on),
+  crag("osm-node-4", "Sasso Finto", 45.70, 9.67, ["Bergamo", "Bergamo", "BG"], ["GO", "GO", "GO"], {}, on),
+  crag("osm-node-5", "Parete Immaginaria", 45.55, 10.22, ["Brescia", "Brescia", "BS"], ["GO", "NO_GO", "NO_GO"], {}, on),
+  crag("osm-node-6", "Torre Inventata", 46.30, 10.30, ["Bormio", "Sondrio", "SO"], ["MAYBE", "MAYBE", "MAYBE"], {}, on),
 ];
+export const CRAGS = build(DAYS);
 
-export const conditions = (crags = CRAGS) => ({
-  generatedAt: new Date().toISOString(), timezone: "Europe/Rome", days: DAYS,
+export const conditions = (crags = CRAGS, days = DAYS, generatedAt = new Date()) => ({
+  generatedAt: generatedAt.toISOString(), timezone: "Europe/Rome", days,
   cragData: "test", weatherData: "test", elevationData: "test", crags,
 });
+
+/** CG-63: a fixed moment for the visual snapshots, so weekdays and "aggiornato adesso" never move. */
+export const FIXED_NOW = new Date("2026-10-16T08:00:00Z");
+export const FIXED_DAYS = ["2026-10-16", "2026-10-17", "2026-10-18"];
+export const fixedConditions = () => conditions(build(FIXED_DAYS), FIXED_DAYS, FIXED_NOW);
 
 /** CG-57: forty more made-up crags, for a list long enough to scroll. */
 export const MANY = [...CRAGS, ...Array.from({ length: 40 }, (_, i) =>
