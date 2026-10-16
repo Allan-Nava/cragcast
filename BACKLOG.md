@@ -352,6 +352,41 @@ place for the Spring service and its database while the Oracle VM stays parked.
   ([ADR 0017](docs/adr/0017-the-pi-over-tailscale.md)). Done when `/actuator/health` and psql
   answer from outside that network. <!-- cg: prio=low size=S labels=infra -->
 
+## v1.2.0 — Everything in PostgreSQL <!-- ms: phase=next -->
+
+Asked for on 2026-10-16: the Pi's PostgreSQL to hold all the climbing data OpenStreetMap has for
+Lombardy and everything cragcast produces, not only the crag list and the evening summary.
+OpenStreetMap stays the only outside source of places (ADR 0003): no guidebook or third-party
+site, scraped or copied. Today the database is a copy rebuilt by a restart (ADR 0016); the
+hourly archive below exists nowhere else, so from CG-108 on it needs a backup.
+
+- [ ] **CG-103 — OSM's climbing objects, whole**: `osm_crags.py` also writes
+  `data/osm-climbing.json` — every `climbing=*` and `sport=climbing` object of the query it
+  already runs (crags, sectors, single routes, route bottoms), with its type, id, position and
+  validated climbing tags — committed through the same reviewed monthly PR. The backend imports
+  it into `osm_object` at startup, as `CragImporter` does; tags as JSON text, a column for
+  anything worth filtering on. ODbL, credited where shown. <!-- cg: prio=med size=M labels=data,backend -->
+- [ ] **CG-104 — Sectors kept**: the sectors that `group()` folds into a crag, in a `sector`
+  table linked to their crag, with their own position, aspect and grades — the crag's folded
+  values unchanged. <!-- cg: prio=med size=S labels=data,backend -->
+- [ ] **CG-105 — Routes**: OSM's single routes in a `route` table — name, grade (French, as a
+  rank column), length, bolts — linked to the crag or sector they belong to by OSM relation or
+  distance. Stored and served by the API, never listed as crags (the CG-42 rule holds). <!-- cg: prio=med size=M labels=data,backend -->
+- [ ] **CG-106 — The hourly forecasts, archived**: each `WeatherRefresh` also appends what it
+  computed — per crag and day, the verdict, the reasons, the four weather numbers and the hours
+  (JSON text) — to `crag_forecast`, keyed by crag, day and fetch time, so "what did cragcast say
+  at 18:00 the day before" stays answerable. About 16 000 rows a day; a retention rule if the
+  Pi's disk asks for one. <!-- cg: prio=med size=M labels=backend -->
+- [ ] **CG-107 — Avalanche bulletins, archived**: each day's bulletin per micro-region — levels,
+  bands, problem types, the link — never its text (ARPA Lombardia states no licence, CG-11). <!-- cg: prio=low size=S labels=backend -->
+- [ ] **CG-108 — Observations copied**: `data/observations.csv` into an `observation` table,
+  read from main like the history (CG-101); the CSV stays the source and changes only by a
+  reviewed PR. <!-- cg: prio=low size=S labels=backend,data -->
+- [ ] **CG-109 — Backup, now that it matters**: from CG-106 the database holds rows that exist
+  nowhere else. A nightly `pg_dump` from a container in the Pi's stack, kept for 14 days on a
+  volume (an SSD, not the SD card) and copied off the Pi; a restore tried once and written down.
+  ADR 0016's "no backup needed" is superseded by a new record. <!-- cg: prio=high size=S labels=infra -->
+
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 
 Parked on 2026-10-15: Oracle Cloud's Always Free A1 VM could not be created in Milan (39 tries
