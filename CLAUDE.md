@@ -11,7 +11,9 @@ The Spring service also runs on a Raspberry Pi on a friend's home network (CG-10
 the home network and the owner's tailnet (CG-102, ADR 0017: Tailscale on the host, no routes
 advertised, no exit node), PostgreSQL on the Pi's 127.0.0.1 only, the password in Portainer.
 **Never a self-hosted runner**: the repository is public, and a fork's PR could run code on that
-network.
+network. The `backup` service dumps the database nightly onto a USB disk (CG-109, ADR 0019) and
+writes only where `.cragcast-backup-target` is — never onto the SD card; a change to the schema
+or to the dump keeps `docs/pi-backup.md`'s restore true.
 
 ## Rules
 

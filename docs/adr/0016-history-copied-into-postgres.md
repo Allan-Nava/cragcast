@@ -1,6 +1,6 @@
 # 0016 — History copied into PostgreSQL; the CSV stays the source
 
-- **Status:** accepted
+- **Status:** accepted; its consequence that the database needs no backup superseded by [0019](0019-backup-on-a-usb-disk.md)
 - **Date:** 2026-10-16
 - **Backlog:** CG-101
 
