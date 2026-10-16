@@ -1,7 +1,8 @@
-// The view in the URL (?q=&v=&p=&a=&crag=&show=&day=), so a link opens the same view and back works (CG-20).
+// The view in the URL (?q=&v=&p=&g=&o=&a=&crag=&show=&day=), so a link opens the same view and back works (CG-20).
 // The reader's position is never part of it (CG-22).
 import type { Verdict } from "../types";
 import { ORDER, VERDICTS } from "./text";
+import { gradeParam, readGrade, type GradeFilter } from "./grades";
 
 export interface ViewState {
   day: string;
@@ -14,7 +15,16 @@ export interface ViewState {
   crag: string | null;
   /** CG-54: on a phone, the map or the list (the list by default). */
   show: "list" | "map";
+  /** CG-61: crags with routes up to or from a grade; null for every crag. */
+  grade: GradeFilter | null;
+  /** CG-61: the list's order. Distance is not one of them: it needs the position, which never
+   * reaches the URL (CG-22), so the page keeps it in memory. */
+  order: Order;
 }
+
+/** CG-61: by verdict (the default), name, or elevation from the lowest or the highest. */
+export type Order = "verdict" | "name" | "low" | "high";
+const ORDERS: Order[] = ["verdict", "name", "low", "high"];
 
 export type Area = [number, number, number, number];
 
@@ -41,6 +51,8 @@ export function readState(search: string, days: string[]): ViewState {
     area: readArea(p.get("a")),
     crag: p.get("crag") || null,
     show: p.get("show") === "map" ? "map" : "list",
+    grade: readGrade(p.get("g")),
+    order: ORDERS.find(o => o === p.get("o")) ?? "verdict",
   };
 }
 
@@ -49,6 +61,8 @@ export function stateQuery(s: ViewState): string {
   if (s.q) p.set("q", s.q);
   if (s.verdicts.size < 3) p.set("v", VERDICTS.filter(v => s.verdicts.has(v)).join(","));
   if (s.province) p.set("p", s.province);
+  if (s.grade) p.set("g", gradeParam(s.grade));
+  if (s.order !== "verdict") p.set("o", s.order);
   if (s.area) p.set("a", s.area.map(x => x.toFixed(3)).join(","));
   if (s.crag) p.set("crag", s.crag);
   if (s.show === "map") p.set("show", "map");

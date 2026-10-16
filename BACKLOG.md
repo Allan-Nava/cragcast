@@ -305,9 +305,11 @@ and no grade filter; and no test notices when a change moves the layout.
   button style across popup, panel and list. Done in three commits; the weather numbers now use
   the Italian comma, and the popup's button, at 2.1:1 on white, is now 5.4:1 — measured by an
   end-to-end test, since axe only flagged it for review. <!-- cg: prio=med size=S labels=frontend ver=main -->
-- [ ] **CG-61 — Order and grades**: order by verdict, name, distance or elevation, and a grade
+- [x] **CG-61 — Order and grades**: order by verdict, name, distance or elevation, and a grade
   filter (e.g. "fino al 6a", "dal 7a") over the crags whose grades OSM has, saying how many
-  have none. <!-- cg: prio=med size=M labels=frontend -->
+  have none. Done: `?g=le6a`/`?g=ge7a` and `?o=name|low|high` in the URL, distance in memory
+  only (CG-22); a crag is kept only when its OSM grades settle the range, and the count says how
+  many were left out for having none — 180 of 220 on 2026-10-16. <!-- cg: prio=med size=M labels=frontend ver=main -->
 - [ ] **CG-60 — A light theme**: the site's light palette when the system asks for it, both
   themes checked by the axe scan, the verdict colours re-validated on the light surface. <!-- cg: prio=med size=M labels=frontend -->
 - [ ] **CG-62 — Design tokens**: spacing, type sizes, radii and focus rings as CSS variables, used

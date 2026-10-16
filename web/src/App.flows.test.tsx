@@ -212,3 +212,83 @@ group("panel beside (CG-56)", () => {
     expect(main.querySelector("dialog#detail")).not.toBeNull();            // the panel lives in the grid
   });
 });
+
+group("order and grades (CG-61)", () => {
+  // Made-up crags: Alfa low and easy, Beta high and hard, Gamma with no grades on OSM.
+  const graded = (): Conditions => {
+    const d = data();
+    const [a, b] = d.crags;
+    a.elevation = 300; a.details = { gradeMin: "4c", gradeMax: "6b" };
+    b.elevation = 1400; b.details = { gradeMin: "6c", gradeMax: "8a" };
+    const g = crag({ id: "g", name: "Parete Gamma", verdict: "MAYBE", latitude: 45.9, longitude: 9.5, elevation: 800 });
+    g.days[NEXT] = { ...g.days[DAY] };
+    return { ...d, crags: [a, b, g] };
+  };
+
+  it("orders by name and elevation, in the URL; going back restores the verdict order", async () => {
+    serve(graded());
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    expect(names()).toEqual(["Parete Alfa — Si va", "Parete Gamma — Forse", "Parete Beta — No"]);
+    const order = screen.getByLabelText("Ordine") as HTMLSelectElement;
+    expect([...order.options].map(o => o.textContent)).toEqual(["Per verdetto", "Per nome", "Dalle più basse", "Dalle più alte"]);
+
+    await act(async () => { fireEvent.change(order, { target: { value: "high" } }); });
+    expect(names()).toEqual(["Parete Beta — No", "Parete Gamma — Forse", "Parete Alfa — Si va"]);
+    expect(new URLSearchParams(location.search).get("o")).toBe("high");
+    await act(async () => { fireEvent.change(order, { target: { value: "low" } }); });
+    expect(names()).toEqual(["Parete Alfa — Si va", "Parete Gamma — Forse", "Parete Beta — No"]);
+    await act(async () => { fireEvent.change(order, { target: { value: "name" } }); });
+    expect(names()).toEqual(["Parete Alfa — Si va", "Parete Beta — No", "Parete Gamma — Forse"]);
+
+    await act(async () => {
+      history.replaceState(null, "", `/?day=${DAY}`);
+      dispatchEvent(new PopStateEvent("popstate"));
+    });
+    expect(names()).toEqual(["Parete Alfa — Si va", "Parete Gamma — Forse", "Parete Beta — No"]);
+    expect(order.value).toBe("verdict");
+  });
+
+  it("filters by grade, says how many have none, and counts as a filter", async () => {
+    serve(graded());
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    const grade = screen.getByLabelText("Gradi") as HTMLSelectElement;
+
+    await act(async () => { fireEvent.change(grade, { target: { value: "le6a" } }); });
+    expect(names()).toEqual(["Parete Alfa — Si va"]);
+    expect(new URLSearchParams(location.search).get("g")).toBe("le6a");
+    expect(document.getElementById("count")?.textContent).toBe("1 di 3 falesie · 1 senza gradi su OpenStreetMap, escluse");
+    expect(screen.getByRole("button", { name: "Filtri (1)" })).toBeTruthy();
+
+    await act(async () => { fireEvent.change(grade, { target: { value: "ge7a" } }); });
+    expect(names()).toEqual(["Parete Beta — No"]);
+    await act(async () => { fireEvent.change(grade, { target: { value: "" } }); });
+    expect(names()).toHaveLength(3);
+    expect(document.getElementById("count")?.textContent).toBe("3 falesie");
+  });
+
+  it("near me adds distance to the orders; another order keeps the km, a second press drops both", async () => {
+    serve(graded());
+    vi.stubGlobal("navigator", { ...navigator, geolocation: {
+      getCurrentPosition: vi.fn((ok: PositionCallback) => ok({ coords: { latitude: 46.17, longitude: 9.87 } } as GeolocationPosition)),
+    } });
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    await act(async () => { fireEvent.click(screen.getByRole("button", { name: "Vicino a me" })); });
+    const order = screen.getByLabelText("Ordine") as HTMLSelectElement;
+    expect(order.value).toBe("distance");
+    expect(names()[0]).toBe("Parete Beta — No");
+
+    await act(async () => { fireEvent.change(order, { target: { value: "name" } }); });
+    expect(names()).toEqual(["Parete Alfa — Si va", "Parete Beta — No", "Parete Gamma — Forse"]);
+    expect(document.querySelectorAll(".km")).toHaveLength(3);
+    expect(location.search).not.toMatch(/distance|46\.17/);              // the position is never in the URL
+
+    await act(async () => { fireEvent.change(order, { target: { value: "distance" } }); });
+    expect(names()[0]).toBe("Parete Beta — No");
+    await act(async () => { fireEvent.click(screen.getByRole("button", { name: "Vicino a me" })); });
+    expect([...order.options].map(o => o.value)).not.toContain("distance");
+    expect(order.value).toBe("name");
+  });
+});

@@ -1,7 +1,13 @@
 import { useState } from "react";
 import type { Verdict } from "../types";
 import { LABEL, LETTER, VERDICTS, dayLabel } from "../lib/text";
-import type { ViewState } from "../lib/state";
+import type { Order, ViewState } from "../lib/state";
+import { GRADE_CHOICES, gradeLabel, gradeParam, readGrade, type GradeFilter } from "../lib/grades";
+
+/** CG-61: the orders offered; "distance" only while the position is known. */
+const ORDER_LABEL: Record<Order | "distance", string> = {
+  verdict: "Per verdetto", name: "Per nome", low: "Dalle più basse", high: "Dalle più alte", distance: "Per distanza",
+};
 
 interface Props {
   days: string[];
@@ -14,6 +20,10 @@ interface Props {
   onQuery(q: string): void;
   onToggle(v: Verdict): void;
   onProvince(code: string): void;
+  /** CG-61: the grade filter and the order; byDistance when "Vicino a me" orders the list. */
+  onGrade?(grade: GradeFilter | null): void;
+  onOrder?(order: Order | "distance"): void;
+  byDistance?: boolean;
   onNear(): void;
   /** CG-46: how many favourites, and the filter on them. */
   favourites?: number;
@@ -22,7 +32,8 @@ interface Props {
 }
 
 export function Controls({ days, provinces, state, near, active = 0, onDay, onQuery, onToggle, onProvince, onNear,
-                          favourites = 0, onlyFavourites = false, onOnlyFavourites }: Props) {
+                          favourites = 0, onlyFavourites = false, onOnlyFavourites,
+                          onGrade, onOrder, byDistance = false }: Props) {
   // CG-53: on a phone the filters fold behind one button; from 600 px they stay in the row and
   // the button is hidden (style.css).
   const [open, setOpen] = useState(false);
@@ -59,6 +70,23 @@ export function Controls({ days, provinces, state, near, active = 0, onDay, onQu
           <select id="province" value={state.province} onChange={e => onProvince(e.target.value)}>
             <option value="">Tutte le province</option>
             {provinces.map(p => <option key={p.code} value={p.code}>{`${p.name} (${p.count})`}</option>)}
+          </select>
+        </label>
+        <label className="area">
+          <span className="sr-only">Gradi</span>
+          <select id="grade" value={state.grade ? gradeParam(state.grade) : ""}
+                  title="Le falesie di cui OpenStreetMap non dà i gradi restano fuori: il conteggio dice quante."
+                  onChange={e => onGrade?.(readGrade(e.target.value))}>
+            <option value="">Tutti i gradi</option>
+            {GRADE_CHOICES.map(g => <option key={gradeParam(g)} value={gradeParam(g)}>{gradeLabel(g)}</option>)}
+          </select>
+        </label>
+        <label className="area">
+          <span className="sr-only">Ordine</span>
+          <select id="order" value={byDistance ? "distance" : state.order}
+                  onChange={e => onOrder?.(e.target.value as Order | "distance")}>
+            {(["verdict", "name", "low", "high"] as const).map(o => <option key={o} value={o}>{ORDER_LABEL[o]}</option>)}
+            {near === "on" && <option value="distance">{ORDER_LABEL.distance}</option>}
           </select>
         </label>
         <button type="button" id="near" aria-pressed={near === "on"} onClick={onNear}

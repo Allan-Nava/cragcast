@@ -5,6 +5,7 @@ import { km } from "./geo";
 import { ticks } from "./ticks";
 import { cragLink, inArea, readState, stateQuery } from "./state";
 import { crag } from "../test/fixtures";
+import { GRADE_CHOICES, gradeLabel, gradeRank, hasGrades, inGrade, readGrade } from "./grades";
 
 const DAYS = ["2026-10-15", "2026-10-16", "2026-10-17"];
 
@@ -135,5 +136,49 @@ group("weather table (CG-59)", () => {
     expect(weatherRows({ rainLast48hMm: 12.34, rainDuringDayMm: 0.04, maxTemperatureC: 18.6, maxWindKmh: 7.4 })).toEqual([
       ["Pioggia 48 h prima", "12,3\u00a0mm"], ["Pioggia in giornata", "0,0\u00a0mm"],
       ["Massima", "19\u00a0°C"], ["Vento massimo", "7\u00a0km/h"]]);
+  });
+});
+
+group("grades (CG-61)", () => {
+  it("ranks French grades as osm_crags.py's grade_order does", () => {
+    const g = ["8a", "5c", "6a+", "6a", "4", "7c+", "6b"];
+    expect([...g].sort((a, b) => gradeRank(a)! - gradeRank(b)!)).toEqual(["4", "5c", "6a", "6a+", "6b", "7c+", "8a"]);
+    expect(gradeRank("V+")).toBeNull();
+    expect(gradeRank("")).toBeNull();
+  });
+  it("keeps a crag only when OSM's grades settle it, never by guess", () => {
+    const le6a = { dir: "le", grade: "6a" } as const, ge7a = { dir: "ge", grade: "7a" } as const;
+    expect(inGrade({ gradeMin: "5a", gradeMax: "8a" }, le6a)).toBe(true);
+    expect(inGrade({ gradeMin: "5a", gradeMax: "8a" }, ge7a)).toBe(true);
+    expect(inGrade({ gradeMin: "6b", gradeMax: "8a" }, le6a)).toBe(false);
+    expect(inGrade({ gradeMin: "4c", gradeMax: "6c" }, ge7a)).toBe(false);
+    expect(inGrade({ gradeMax: "5c" }, le6a)).toBe(true);             // up to 5c: surely routes up to 6a
+    expect(inGrade({ gradeMax: "7b" }, le6a)).toBe(false);            // easiest unknown: left out
+    expect(inGrade({ gradeMin: "7a+" }, ge7a)).toBe(true);
+    expect(inGrade({ gradeMin: "5a" }, ge7a)).toBe(false);
+    expect(inGrade({}, le6a)).toBe(false);
+    expect(inGrade(undefined, ge7a)).toBe(false);
+    expect(hasGrades({ gradeMax: "6a" })).toBe(true);
+    expect(hasGrades({ rock: "limestone" })).toBe(false);
+  });
+  it("reads only what it offers, and says it in Italian", () => {
+    expect(readGrade("le6a")).toEqual({ dir: "le", grade: "6a" });
+    expect(readGrade("ge8a")).toEqual({ dir: "ge", grade: "8a" });
+    expect(readGrade("lt6a")).toBeNull();
+    expect(readGrade("geX")).toBeNull();
+    expect(readGrade(null)).toBeNull();
+    expect(GRADE_CHOICES.map(gradeLabel)).toEqual(["fino al 5c", "fino al 6a", "fino al 6b", "fino al 6c",
+      "dal 7a", "dal 7b", "dal 7c", "dall'8a"]);
+    expect(gradeLabel({ dir: "le", grade: "8a" })).toBe("fino all'8a");
+  });
+  it("the grade and the order live in the URL, the defaults left out", () => {
+    const s = readState("?g=ge7a&o=high&day=2026-10-16", DAYS);
+    expect(s.grade).toEqual({ dir: "ge", grade: "7a" });
+    expect(s.order).toBe("high");
+    expect(stateQuery(s)).toBe("?g=ge7a&o=high&day=2026-10-16");
+    const d = readState("?g=zz&o=distance", DAYS);              // distance never comes from a URL
+    expect(d.grade).toBeNull();
+    expect(d.order).toBe("verdict");
+    expect(stateQuery(d)).toBe("?day=2026-10-16");
   });
 });
