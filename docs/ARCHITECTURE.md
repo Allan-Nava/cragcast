@@ -112,6 +112,8 @@ flowchart TB
   map tiles; the footer says how old the data is and warns after 3 hours.
 - **Accessibility.** No verdict by colour alone — shape, letter and words
   ([ADR 0014](adr/0014-never-by-colour-alone.md)).
+- **Themes.** Dark, or light when the system asks (CG-60): one set of colour tokens in
+  `style.css`, redefined for light; the axe scan and the snapshots cover both.
 
 ## Contracts
 

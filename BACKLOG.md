@@ -310,8 +310,12 @@ and no grade filter; and no test notices when a change moves the layout.
   have none. Done: `?g=le6a`/`?g=ge7a` and `?o=name|low|high` in the URL, distance in memory
   only (CG-22); a crag is kept only when its OSM grades settle the range, and the count says how
   many were left out for having none — 180 of 220 on 2026-10-16. <!-- cg: prio=med size=M labels=frontend ver=main -->
-- [ ] **CG-60 — A light theme**: the site's light palette when the system asks for it, both
-  themes checked by the axe scan, the verdict colours re-validated on the light surface. <!-- cg: prio=med size=M labels=frontend -->
+- [x] **CG-60 — A light theme**: the site's light palette when the system asks for it, both
+  themes checked by the axe scan, the verdict colours re-validated on the light surface. Done:
+  every colour a token, redefined under `prefers-color-scheme: light`; the verdicts' text and
+  rings darker on white (green 5.5:1, amber 5.9:1, red 6.6:1), the marks' fills unchanged under
+  their black letter (≥5.2:1); rain and temperature pass the dataviz validator on #ffffff; axe
+  and the snapshots run in both themes. <!-- cg: prio=med size=M labels=frontend ver=main -->
 - [ ] **CG-62 — Design tokens**: spacing, type sizes, radii and focus rings as CSS variables, used
   everywhere, so the next change touches one place. <!-- cg: prio=low size=M labels=frontend -->
 - [ ] **CG-64 — Faster first paint**: the crag panel and its charts loaded on demand, Leaflet in
