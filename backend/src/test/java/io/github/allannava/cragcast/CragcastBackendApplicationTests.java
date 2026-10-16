@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Import;
 
 @Import(TestcontainersConfiguration.class)
 // No hourly refresh in tests: it would call the real Open-Meteo.
-@SpringBootTest(properties = "cragcast.refresh.enabled=false")
+@SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false"})
 @EnabledIf(DockerAvailable.CHECK)
 class CragcastBackendApplicationTests {
 

@@ -335,6 +335,11 @@ place for the Spring service and its database while the Oracle VM stays parked.
   PostgreSQL on no port; no self-hosted runner, since the repository is public
   ([ADR 0015](docs/adr/0015-raspberry-pi-pulls-its-stack.md)). Done when the stack runs on the
   Pi and answers `/actuator/health`. <!-- cg: prio=med size=S labels=infra -->
+- [ ] **CG-101 — History in PostgreSQL**: `crag_history` (Flyway V4) filled by `HistorySync` from
+  the `history` branch's CSVs — every month at startup, the last two each night after
+  `history.yml`, each day replaced whole; the CSV stays the source
+  ([ADR 0016](docs/adr/0016-history-copied-into-postgres.md)). Done when the Pi's table has the
+  CSV's rows, day by day. <!-- cg: prio=med size=S labels=backend -->
 
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 

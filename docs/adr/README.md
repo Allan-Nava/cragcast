@@ -21,3 +21,4 @@ Why cragcast is built the way it is. One file per decision, numbered, in the for
 | [0013](0013-phone-first-layout.md) | A layout per width: the list first on a phone | accepted | 2026-10-16 |
 | [0014](0014-never-by-colour-alone.md) | The verdict is never told by colour alone | accepted | 2026-10-15 |
 | [0015](0015-raspberry-pi-pulls-its-stack.md) | The Raspberry Pi pulls its stack; no self-hosted runner | accepted | 2026-10-16 |
+| [0016](0016-history-copied-into-postgres.md) | History copied into PostgreSQL; the CSV stays the source | accepted | 2026-10-16 |
