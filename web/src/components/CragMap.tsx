@@ -159,7 +159,9 @@ export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area =
         keyboard: true,
       });
       (mk.options as { verdict?: Verdict }).verdict = verdict;     // read by the cluster mark
-      mk.bindPopup(() => popupFor(crag, day, onDetail));
+      // CG-59: the popup grew a table; keep a margin round it when the map pans to fit it, so its
+      // close button is never cut at the map's edge.
+      mk.bindPopup(() => popupFor(crag, day, onDetail), { autoPanPadding: [20, 20] });
       mk.on("popupopen", () => chosenRef.current?.(crag.id));
       markers.current.set(crag.id, mk);
       group.addLayer(mk);

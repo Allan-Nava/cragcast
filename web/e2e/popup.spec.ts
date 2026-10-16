@@ -34,3 +34,14 @@ test("CG-59: the popup's button is readable on the popup's white (4.5:1)", async
   }));
   expect(contrast(fg, bg)).toBeGreaterThanOrEqual(4.5);
 });
+
+test("CG-59: an open popup sits wholly inside the map, its close button with a margin", async ({ page }) => {
+  await page.goto("./");
+  await page.locator("#crag-osm-node-5 h2").click();
+  const popup = page.locator(".leaflet-popup-content-wrapper");
+  await expect(popup).toBeVisible();
+  await expect.poll(async () => {
+    const m = (await page.locator("#map").boundingBox())!, p = (await popup.boundingBox())!;
+    return p.y - m.y;
+  }).toBeGreaterThanOrEqual(10);
+});
