@@ -87,6 +87,9 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   `ci.yml` (`--fail-under`). Each is CI's figure rounded down when set; a PR that adds tests
   raises it, and none lowers it — when a change drops coverage, it brings tests. The backend's
   floor is CI's figure with the Testcontainers tests; a laptop without Docker reads lower.
+- **`docs/ARCHITECTURE.md` follows the code** (CG-66): a PR that adds or changes a part, a data
+  contract, a workflow or a test level updates it — its diagrams too (Mermaid; check them with
+  Mermaid's parser, GitHub shows an error in their place otherwise).
 - **Decisions get an Architectural Decision Record** (CG-65, [ADR 0001](docs/adr/0001-record-decisions.md)):
   a change to how cragcast is built, what data it trusts or what it promises its readers comes
   with a numbered record in `docs/adr/` (from `template.md`) in the same PR, listed in

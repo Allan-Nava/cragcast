@@ -127,7 +127,8 @@ and ARPA Lombardia for the avalanche levels.
 
 ## How it is built
 
-Why it is built this way: the [Architectural Decision Records](docs/adr/README.md) in `docs/adr/`.
+How the parts fit, with diagrams: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md). Why it is built this way: the
+[Architectural Decision Records](docs/adr/README.md) in `docs/adr/`.
 
 | Part | What |
 |---|---|
