@@ -67,6 +67,12 @@ never got capacity in Milan and its network was destroyed. Do not apply it witho
   surefire would never run. Entry points that read the environment take it as an argument
   (`ConditionsExport.run(args, env)`, `Calibrate.run(…, url)`) so the tests point them at
   `FakeHttp`; keep `main` a thin wrapper.
+- **Visual snapshots are CI's images** (CG-63): fonts differ between machines, so the reference
+  images in `web/e2e/__snapshots__/` are made by CI and never by a laptop; they run locally only
+  with `SNAPSHOTS=1`. A deliberate layout change updates them in the same PR from the run's
+  `snapshots` artifact (`gh run download <run> -n snapshots -D web/e2e/__snapshots__`), after
+  looking at the diff. The tolerance is a few pixels (`maxDiffPixels`): a ratio of 1% let a
+  broken logo through.
 - **The browser tests own what jsdom cannot do** (CG-51): dragging and zooming the map, real
   layout, swipes, the axe scan. They run on fixture data with tiles stubbed and the service
   worker blocked — never against OSM's tile servers. A new interaction on the map gets an

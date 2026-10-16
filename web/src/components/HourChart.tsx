@@ -67,7 +67,9 @@ export function HourChart({ hours, kind, cursor, onCursor }: Props) {
             <polyline points={hours.map((h, i) => `${x(i)},${y(h.temperatureC)}`).join(" ")} fill="none" stroke={TEMP}
                       strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
             <circle cx={x(iMax)} cy={y(vals[iMax])} r={4} fill={TEMP} stroke="#111418" strokeWidth={2} />
-            <text className="label" x={x(iMax)} y={y(vals[iMax]) - 7} textAnchor="middle">{`max ${fmt(vals[iMax])}°`}</text>
+            {/* Near an edge the label leans inwards, so it is never cut (CG-63 found "max 16" clipped). */}
+            <text className="label" x={x(iMax)} y={y(vals[iMax]) - 7}
+                  textAnchor={x(iMax) > W - R - 28 ? "end" : x(iMax) < L + 28 ? "start" : "middle"}>{`max ${fmt(vals[iMax])}°`}</text>
           </>
         )}
         {cursor != null && <line className="cross" x1={x(cursor)} x2={x(cursor)} y1={T} y2={H - B} />}

@@ -79,7 +79,16 @@ jobs:
           cache-dependency-path: web/package-lock.json
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
-      - run: npm run e2e
+      # CG-63: CI's images are the reference. A missing snapshot is written and its test fails,
+      # so a new view is looked at before it counts; one that differs fails with its diff in the
+      # report. Accept either by committing the "snapshots" artifact into web/e2e/__snapshots__/.
+      - run: npm run e2e -- --update-snapshots=missing
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: snapshots
+          path: web/e2e/__snapshots__/
+          retention-days: 14
       - if: failure()
         uses: actions/upload-artifact@v4
         with:

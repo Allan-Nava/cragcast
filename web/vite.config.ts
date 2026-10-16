@@ -1,11 +1,18 @@
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
+import { readFileSync } from "node:fs";
 
 // Builds the page into ../site, which GitHub Pages serves under /cragcast/: relative paths
 // ("./") so it works at any base. tools/build_site.sh then adds data/, api/ and the logo.
 export default defineConfig({
   base: "./",
-  plugins: [react()],
+  plugins: [react(), {
+    // The logo's one copy is assets/logo.svg (also the README's); the build emits it into site/.
+    name: "cragcast-logo",
+    generateBundle() {
+      this.emitFile({ type: "asset", fileName: "logo.svg", source: readFileSync(new URL("../assets/logo.svg", import.meta.url)) });
+    },
+  }],
   build: { outDir: "../site", emptyOutDir: true },
   test: {
     environment: "jsdom",
