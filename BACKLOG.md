@@ -396,8 +396,10 @@ hourly archive below exists nowhere else, so from CG-108 on it needs a backup.
   reviewed PR. <!-- cg: prio=low size=S labels=backend,data -->
 - [ ] **CG-109 — Backup, now that it matters**: from CG-106 the database holds rows that exist
   nowhere else. A nightly `pg_dump` from a container in the Pi's stack, kept for 14 days on a
-  volume (an SSD, not the SD card) and copied off the Pi; a restore tried once and written down.
-  ADR 0016's "no backup needed" is superseded by a new record. <!-- cg: prio=high size=S labels=infra -->
+  USB disk on the Pi (not the SD card), written only where the disk's marker file is; a restore
+  tried once and written down (`docs/pi-backup.md`). ADR 0016's "no backup needed" is superseded
+  by [ADR 0019](docs/adr/0019-backup-on-a-usb-disk.md). Done when the first dump is on the Pi's
+  disk. <!-- cg: prio=high size=S labels=infra -->
 
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 

@@ -13,6 +13,11 @@
 # The page is the same build as GitHub Pages; its data comes from this backend, made from the
 # forecasts the backend fetches anyway (ADR 0018). SITE_URL is the page's address as readers
 # open it (e.g. http://<the Pi>:8081/), for the share pages' links; GitHub Pages if unset.
+#
+# Backup (CG-109, ADR 0019): a pg_dump each night after 03:00 Italian time onto a USB disk
+# mounted on the Pi at BACKUP_DIR (/mnt/cragcast-backups by default), checked with pg_restore
+# --list, kept 14 days. It runs only when the disk carries the file .cragcast-backup-target, so
+# an unmounted disk never fills the SD card in its place. Restore: docs/pi-backup.md.
 services:
   db:
     image: postgres:17-alpine
@@ -54,6 +59,51 @@ services:
     mem_limit: 64m
     depends_on:
       - backend
+
+  backup:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      PGHOST: db
+      PGUSER: cragcast
+      PGDATABASE: cragcast
+      PGPASSWORD: ${DATABASE_PASSWORD:?set DATABASE_PASSWORD in the Portainer stack}
+      TZ: Europe/Rome
+      BACKUP_HOUR: ${BACKUP_HOUR:-3}
+      BACKUP_DAYS: ${BACKUP_DAYS:-14}
+    volumes:
+      - ${BACKUP_DIR:-/mnt/cragcast-backups}:/backups
+    # Every 10 minutes: if today's dump is missing and it is past BACKUP_HOUR, make it — a Pi
+    # that was off at 03:00 catches up when it comes back. "$$" is compose's escape for "$".
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        while true; do
+          if [ ! -f /backups/.cragcast-backup-target ]; then
+            echo "no .cragcast-backup-target in BACKUP_DIR: is the USB disk mounted? no backup" >&2
+          else
+            f=/backups/cragcast-$$(date +%F).dump
+            if [ ! -s "$$f" ] && [ "$$(date +%H)" -ge "$$BACKUP_HOUR" ]; then
+              if pg_dump -Fc -f "$$f.part" && pg_restore --list "$$f.part" > /dev/null; then
+                mv "$$f.part" "$$f"
+                echo "backup $$f, $$(du -h "$$f" | cut -f1)"
+                find /backups -maxdepth 1 -name 'cragcast-*.dump' -mtime +$$((BACKUP_DAYS - 1)) -print -delete
+              else
+                rm -f "$$f.part"
+                echo "backup FAILED, trying again in 10 minutes" >&2
+              fi
+            fi
+          fi
+          sleep 600
+        done
+    # Unhealthy in Portainer when the newest dump is over two days old; a day's grace at first.
+    healthcheck:
+      test: ["CMD-SHELL", "find /backups -maxdepth 1 -name 'cragcast-*.dump' -mtime -2 | grep -q ."]
+      interval: 1h
+      start_period: 26h
+    depends_on:
+      db:
+        condition: service_healthy
 
 volumes:
   db-data:
