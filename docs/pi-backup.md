@@ -8,16 +8,25 @@ card instead.
 
 ## Set up the disk, once
 
-On the Pi, with the USB disk plugged in (a whole disk for the backups; formatting erases it):
+On the Pi, with the USB disk plugged in (a whole disk for the backups; formatting erases it).
+One step at a time, reading each output before the next — not pasted as one block: without a
+disk, `/mnt/cragcast-backups` is a plain folder on the SD card, and a marker written there would
+send the dumps to the card.
 
 ```bash
-lsblk -f                                   # find it, e.g. sda1 — not mmcblk0, the SD card
+lsblk -f                                   # the disk must be listed, e.g. sda1 — not mmcblk0, the SD card
+```
+
+Only if it is:
+
+```bash
 sudo mkfs.ext4 -L cragcast-backups /dev/sda1
 sudo mkdir -p /mnt/cragcast-backups
 echo 'LABEL=cragcast-backups /mnt/cragcast-backups ext4 defaults,nofail,x-systemd.device-timeout=10s 0 2' \
   | sudo tee -a /etc/fstab                 # nofail: the Pi still boots without the disk
-sudo mount -a && findmnt /mnt/cragcast-backups
-sudo touch /mnt/cragcast-backups/.cragcast-backup-target
+sudo systemctl daemon-reload && sudo mount -a
+# The marker only on the mounted disk, never on the folder underneath it:
+mountpoint /mnt/cragcast-backups && sudo touch /mnt/cragcast-backups/.cragcast-backup-target
 ```
 
 Then **Pull and redeploy** the stack in Portainer. Another mount point: set `BACKUP_DIR` in the
