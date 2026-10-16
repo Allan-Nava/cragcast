@@ -325,6 +325,17 @@ assume Lombardy.
   where Lombard climbers go — the province, avalanche and API fields must hold beyond one
   region. <!-- cg: prio=low size=L labels=data,backend -->
 
+## v1.1.0 — On a Raspberry Pi <!-- ms: phase=now -->
+
+A Raspberry Pi with Portainer became available on 2026-10-16, on a friend's home network: a
+place for the Spring service and its database while the Oracle VM stays parked.
+
+- [ ] **CG-100 — The Pi pulls its stack**: `deploy/pi/compose.yml` as a Portainer Git stack
+  (polling main, re-pulling `cragcast-backend:main` from GHCR), the backend on the LAN only,
+  PostgreSQL on no port; no self-hosted runner, since the repository is public
+  ([ADR 0015](docs/adr/0015-raspberry-pi-pulls-its-stack.md)). Done when the stack runs on the
+  Pi and answers `/actuator/health`. <!-- cg: prio=med size=S labels=infra -->
+
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 
 Parked on 2026-10-15: Oracle Cloud's Always Free A1 VM could not be created in Milan (39 tries
