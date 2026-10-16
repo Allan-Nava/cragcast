@@ -110,8 +110,14 @@ network.
   letter. A new verdict surface follows the same rule — the cluster mark (CG-23) is neutral grey
   and writes the split out.
 - **Charts on the page** (`web/src/components/HourChart.tsx`): one measure per chart, never two y-axes; rain
-  `#3987e5`, temperature `#d95926`, validated on the panel `#111418` with the dataviz validator;
-  never a verdict colour for a series; every chart has a table of the same numbers.
+  `#3987e5`, temperature `#d95926`, validated on both panels (`#111418` dark, `#ffffff` light)
+  with the dataviz validator; never a verdict colour for a series; every chart has a table of
+  the same numbers.
+- **Two themes, one set of tokens** (CG-60): the page follows `prefers-color-scheme`; every
+  colour in `web/src/style.css` is a token on `:root`, redefined for light. A verdict colour has
+  two tokens: `--go` (text, borders, rings: ≥4.5:1 on the surface, so darker on white) and
+  `--go-fill` (the mark's fill under its black letter, the same in both). A new colour gets a
+  token in both themes; the axe scan and the snapshots run in both (Playwright's default is dark).
 - **The service worker** (`web/public/sw.js`, CG-35): network first for the page, its bundled
   assets and the data, cache only as the offline fallback; **map tiles never cached** (OSM's
   tile policy). Adding a file to `SHELL` or changing the strategy means bumping `CACHE`

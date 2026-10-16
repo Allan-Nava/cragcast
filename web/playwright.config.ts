@@ -19,6 +19,9 @@ export default defineConfig({
     timezoneId: "Europe/Rome",
     trace: "retain-on-failure",
     contextOptions: { reducedMotion: "reduce" },
+    // CG-60: the page follows the system's theme. Dark by default, as the reference images
+    // were made; the light theme has its own snapshots and axe scan.
+    colorScheme: "dark",
   },
   projects: [
     { name: "desktop", use: { ...devices["Desktop Chrome"], viewport: { width: 1280, height: 900 } } },

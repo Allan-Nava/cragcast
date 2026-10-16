@@ -1,7 +1,24 @@
-/* Palette of allan-nava.github.io: green #10cf53 on near-black #050505. */
+/* Palette of allan-nava.github.io: green #10cf53 on near-black #050505. The verdict colours have
+   two jobs: --go/--maybe/--no_go are text, borders and focus rings (≥4.5:1 on the surface), the
+   *-fill tokens are the marks' fills under a black letter (≥5.2:1) and a black outline, the
+   same in both themes (CG-21). */
 :root {
+  color-scheme: dark;
   --bg: #050505; --panel: #111418; --text: #f2f4f5; --muted: #9aa3ad;
   --go: #10cf53; --maybe: #f2b705; --no_go: #e5484d; --line: #23282e;
+  --go-fill: #10cf53; --maybe-fill: #f2b705; --no_go-fill: #e5484d;
+  --line-strong: #3a424b; --ghost: #181c21; --pressed: #1b2a20;
+}
+/* CG-60: the light theme, when the system asks for it. On white the site's green is 2.1:1, so
+   text and rings take darker steps: green 5.5:1, amber 5.9:1, red 6.6:1, grey 7.0:1 on the
+   panel. Chart colours stay: rain and temperature pass the dataviz validator on #ffffff too. */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --bg: #f4f6f8; --panel: #ffffff; --text: #111418; --muted: #515a65;
+    --go: #0a7a35; --maybe: #8a5a00; --no_go: #b42318; --line: #d0d7de;
+    --line-strong: #8c959f; --ghost: #e9edf1; --pressed: #e3f5e9;
+  }
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--text);
@@ -53,10 +70,10 @@ footer { color: var(--muted); font-size: .85rem; padding: 16px; }
 .mark { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px;
         border: 2px solid #050505; box-sizing: border-box; color: #050505; font: 800 12px/1 system-ui, sans-serif; }
 .mark b { display: block; }
-.mark.go { background: var(--go); border-radius: 50%; }
-.mark.maybe { background: var(--maybe); border-radius: 3px; transform: rotate(45deg); }
+.mark.go { background: var(--go-fill); border-radius: 50%; }
+.mark.maybe { background: var(--maybe-fill); border-radius: 3px; transform: rotate(45deg); }
 .mark.maybe b { transform: rotate(-45deg); }
-.mark.no_go { background: var(--no_go); border-radius: 2px; }
+.mark.no_go { background: var(--no_go-fill); border-radius: 2px; }
 .mark.small { width: 16px; height: 16px; font-size: 9px; border-width: 1.5px; margin-right: 6px; vertical-align: -3px; }
 #list li h2 .mark.small { flex: none; margin-right: 8px; }
 
@@ -126,7 +143,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
 .hchart figcaption { color: var(--muted); font-size: .85rem; }
 .hchart svg { width: 100%; height: auto; display: block; touch-action: pan-y; }
 .hchart svg:focus { outline: 2px solid var(--go); outline-offset: 2px; }
-.hchart .grid { stroke: #23282e; stroke-width: 1; }
+.hchart .grid { stroke: var(--line); stroke-width: 1; }
 .hchart .tick { fill: var(--muted); font: 10px system-ui, sans-serif; }
 .hchart .label { fill: var(--text); font: 600 10px system-ui, sans-serif; }
 .hchart .note { fill: var(--muted); font: 11px system-ui, sans-serif; }
@@ -159,7 +176,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
   .hot > .mark, .hot > .cluster { animation: hot 1.2s ease-in-out infinite; }
   @keyframes hot { 50% { box-shadow: 0 0 0 3px #f2f4f5, 0 0 0 9px rgba(16, 207, 83, .35); } }
 }
-#list li:hover, #list li:focus-visible { border-color: #3a424b; }
+#list li:hover, #list li:focus-visible { border-color: var(--line-strong); }
 #list li:focus-visible { outline: 2px solid var(--go); outline-offset: 1px; }
 #list li.chosen { border-color: var(--go); }
 
@@ -177,7 +194,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
 
 /* CG-41: a live page. The ghosts hold the place of the list while the data loads; crags that
    come into the list rise in. Motion only without prefers-reduced-motion. */
-#list li.ghost { height: 108px; cursor: default; background: linear-gradient(90deg, var(--panel) 0%, #181c21 50%, var(--panel) 100%);
+#list li.ghost { height: 108px; cursor: default; background: linear-gradient(90deg, var(--panel) 0%, var(--ghost) 50%, var(--panel) 100%);
                  background-size: 200% 100%; }
 .summary.ghost { height: 1.4em; width: min(420px, 70%); border-radius: 6px; background: var(--panel); }
 @media (prefers-reduced-motion: no-preference) {
@@ -231,7 +248,7 @@ dialog#detail h2 .star { margin-right: 0; }
   .show { display: flex; gap: 0; margin: 0 16px 10px; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
   .show button { flex: 1; background: var(--panel); color: var(--muted); border: 0; padding: 8px 0; font: inherit;
                  font-size: .9rem; cursor: pointer; }
-  .show button[aria-pressed="true"] { background: #1b2a20; color: var(--go); font-weight: 600; }
+  .show button[aria-pressed="true"] { background: var(--pressed); color: var(--go); font-weight: 600; }
   main.show-list .mapwrap { display: none; }
   main.show-map #list { display: none; }
   main.show-map #map { height: calc(100vh - 230px); min-height: 360px; }

@@ -24,6 +24,8 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 
 ## The page
 
+- **dark or light**, as the system asks (CG-60): the same contrast rules in both, the verdict
+  marks unchanged, the text and focus rings a darker green, amber and red on white;
 - a map and a list of the crags with the verdict for **today**, **tomorrow** or **the day
   after** — never by
   colour alone: go is a green circle S, maybe a yellow diamond F, no a red square N — and the

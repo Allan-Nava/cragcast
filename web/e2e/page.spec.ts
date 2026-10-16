@@ -70,13 +70,23 @@ test.describe("the page", () => {
     await expect(page.locator(".me")).toBeAttached();               // on a phone the map is behind "Mappa"
   });
 
-  test("no serious or critical accessibility violations", async ({ page }) => {
-    await page.goto("./");
-    await expect(page.locator("#list li h2").first()).toBeVisible();
-    const results = await new AxeBuilder({ page }).exclude(".leaflet-control-attribution").analyze();
-    const bad = results.violations.filter(v => v.impact === "serious" || v.impact === "critical");
-    expect(bad.map(v => `${v.id}: ${v.nodes.map(n => n.target.join(" ")).join(", ")}`)).toEqual([]);
-  });
+  // CG-60: both themes, each with a crag's panel open so its charts and table are scanned too.
+  for (const colorScheme of ["dark", "light"] as const) {
+    test(`no serious or critical accessibility violations, ${colorScheme} theme`, async ({ page }) => {
+      await page.emulateMedia({ colorScheme });
+      await page.goto("./");
+      await expect(page.locator("#list li h2").first()).toBeVisible();
+      const scan = async () => {
+        const results = await new AxeBuilder({ page }).exclude(".leaflet-control-attribution").analyze();
+        const bad = results.violations.filter(v => v.impact === "serious" || v.impact === "critical");
+        expect(bad.map(v => `${v.id}: ${v.nodes.map(n => n.target.join(" ")).join(", ")}`)).toEqual([]);
+      };
+      await scan();
+      await page.locator("#list li .more").first().click();
+      await expect(page.locator("dialog#detail")).toBeVisible();
+      await scan();
+    });
+  }
 
   test("tomorrow is the default day", async ({ page }) => {
     await page.goto("./");
