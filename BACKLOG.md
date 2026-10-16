@@ -330,16 +330,25 @@ assume Lombardy.
 A Raspberry Pi with Portainer became available on 2026-10-16, on a friend's home network: a
 place for the Spring service and its database while the Oracle VM stays parked.
 
-- [ ] **CG-100 — The Pi pulls its stack**: `deploy/pi/compose.yml` as a Portainer Git stack
+- [x] **CG-100 — The Pi pulls its stack**: `deploy/pi/compose.yml` as a Portainer Git stack
   (polling main, re-pulling `cragcast-backend:main` from GHCR), the backend on the LAN only,
   PostgreSQL on no port; no self-hosted runner, since the repository is public
   ([ADR 0015](docs/adr/0015-raspberry-pi-pulls-its-stack.md)). Done when the stack runs on the
-  Pi and answers `/actuator/health`. <!-- cg: prio=med size=S labels=infra -->
-- [ ] **CG-101 — History in PostgreSQL**: `crag_history` (Flyway V4) filled by `HistorySync` from
+  Pi and answers `/actuator/health`. Done on 2026-10-16: the stack runs on a 64-bit Pi with
+  8 GB; the first redeploy kept the old image while the stack still pointed at the PR's branch,
+  so the reference is `refs/heads/main`. <!-- cg: prio=med size=S labels=infra ver=main -->
+- [x] **CG-101 — History in PostgreSQL**: `crag_history` (Flyway V4) filled by `HistorySync` from
   the `history` branch's CSVs — every month at startup, the last two each night after
   `history.yml`, each day replaced whole; the CSV stays the source
   ([ADR 0016](docs/adr/0016-history-copied-into-postgres.md)). Done when the Pi's table has the
-  CSV's rows, day by day. <!-- cg: prio=med size=S labels=backend -->
+  CSV's rows, day by day. Done on 2026-10-16: Flyway at V4, 75 rows for 10-15 and 220 for 10-16,
+  the CSV's 295. <!-- cg: prio=med size=S labels=backend ver=main -->
+- [ ] **CG-102 — The Pi over Tailscale**: Tailscale on the Pi's host, so its owner reaches it
+  from anywhere — the backend on its tailnet address, SSH, and psql through an SSH tunnel to
+  PostgreSQL, now published on the Pi's 127.0.0.1 only. The Pi advertises no routes and is no
+  exit node: the friend's network stays out of the tailnet
+  ([ADR 0017](docs/adr/0017-the-pi-over-tailscale.md)). Done when `/actuator/health` and psql
+  answer from outside that network. <!-- cg: prio=low size=S labels=infra -->
 
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 

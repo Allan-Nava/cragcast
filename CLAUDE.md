@@ -8,8 +8,10 @@ self-hosted path (`infra/oci/`, `deploy/k8s/`) is parked since 2026-10-15: Oracl
 never got capacity in Milan and its network was destroyed. Do not apply it without asking.
 The Spring service also runs on a Raspberry Pi on a friend's home network (CG-100, ADR 0015):
 `deploy/pi/compose.yml` as a Portainer Git stack that polls main and re-pulls the GHCR image —
-LAN only, PostgreSQL on no port, the password in Portainer. **Never a self-hosted runner**: the
-repository is public, and a fork's PR could run code on that network.
+the home network and the owner's tailnet (CG-102, ADR 0017: Tailscale on the host, no routes
+advertised, no exit node), PostgreSQL on the Pi's 127.0.0.1 only, the password in Portainer.
+**Never a self-hosted runner**: the repository is public, and a fork's PR could run code on that
+network.
 
 ## Rules
 
