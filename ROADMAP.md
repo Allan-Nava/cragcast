@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**69 items · 59 shipped · 10 open · 14 milestones.**
+**76 items · 59 shipped · 17 open · 15 milestones.**
 
 ## At a glance
 
@@ -23,6 +23,7 @@
 | **v0.10.0 — A better frontend** | next | `########..` 78% | 2 | 7 |
 | **v0.7.0 — Beyond Lombardy** | later | `..........` 0% | 1 | 0 |
 | **v1.1.0 — On a Raspberry Pi** | now | `#######...` 67% | 1 | 2 |
+| **v1.2.0 — Everything in PostgreSQL** | next | `..........` 0% | 7 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
 ## v0.1.0 — A verdict for one crag
@@ -128,6 +129,16 @@
 - [x] **CG-100** — The Pi pulls its stack · med · S · infra · `main`
 - [x] **CG-101** — History in PostgreSQL · med · S · backend · `main`
 - [ ] **CG-102** — The Pi over Tailscale · low · S · infra
+
+## v1.2.0 — Everything in PostgreSQL
+
+- [ ] **CG-103** — OSM's climbing objects, whole · med · M · data, backend
+- [ ] **CG-104** — Sectors kept · med · S · data, backend
+- [ ] **CG-105** — Routes · med · M · data, backend
+- [ ] **CG-106** — The hourly forecasts, archived · med · M · backend
+- [ ] **CG-107** — Avalanche bulletins, archived · low · S · backend
+- [ ] **CG-108** — Observations copied · low · S · backend, data
+- [ ] **CG-109** — Backup, now that it matters · high · S · infra
 
 ## v1.0.0 — Self-hosted on a VM (parked)
 
