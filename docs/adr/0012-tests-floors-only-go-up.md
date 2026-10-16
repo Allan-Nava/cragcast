@@ -20,6 +20,7 @@ test of the whole pipeline and none in a browser.
 - Coverage is measured in CI, with floors set from CI's figures that only go up. A change that
   drops coverage brings tests.
 - actionlint and shellcheck lint the plumbing.
+- Since CG-63, visual snapshots of the main views, CI's own images, catch layout changes.
 
 ## Consequences
 

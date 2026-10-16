@@ -2,7 +2,8 @@
 // images in e2e/__snapshots__/. Fonts differ between machines, so the images are CI's own: the
 // comparison runs in CI (or with SNAPSHOTS=1 on a machine that made them); a change to the
 // layout shows up as a failed comparison with the diff in the run's artifact. To accept a change,
-// download CI's new images (the "snapshots" artifact) into e2e/__snapshots__/.
+// download CI's new images (the "snapshots" artifact) into e2e/__snapshots__/:
+//   gh run download <run> -n snapshots -D web/e2e/__snapshots__
 import { FIXED_NOW, expect, fixedConditions, test } from "./fixtures";
 
 test.skip(!process.env.CI && !process.env.SNAPSHOTS, "visual snapshots compare CI's own rendering");

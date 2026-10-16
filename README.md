@@ -219,6 +219,11 @@ measured on every run (CG-47) and fails below a floor set from CI's figures — 
 the backend reads lower, so there run `./mvnw verify -Djacoco.haltOnFailure=false`. The page:
 `cd web && npm run coverage`. The tools: `python3 -m unittest discover -s tools -p 'test_*.py'`.
 
+Visual snapshots (CG-63): `web/e2e/snapshots.spec.ts` compares the page, a crag's panel, the
+map and the phone's filters, desktop and phone, with CI's own images in
+`web/e2e/__snapshots__/`, on fixed data at a fixed moment; a layout change fails the PR with its
+diff, and is accepted by committing CI's `snapshots` artifact.
+
 End to end (CG-51): `cd web && npx playwright install chromium && npm run e2e` builds the page and
 drives it in Chromium, desktop and phone, on fixture data (`web/e2e/fixtures.ts`), with an axe
 accessibility scan.
