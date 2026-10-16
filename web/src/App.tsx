@@ -1,6 +1,6 @@
 // Reads data/conditions.json, written every hour by the GitHub Action (ConditionsExport), and
-// shows one mark per crag for the chosen day. Search, verdict filter, province and day live in
-// the URL (?q=&v=&p=&day=), so a link opens the same view and back works.
+// shows one mark per crag for the chosen day. Search, verdict filter, province, grades, order
+// and day live in the URL (?q=&v=&p=&g=&o=&day=), so a link opens the same view and back works.
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Conditions, Crag, Verdict } from "./types";
 import { ORDER, fold, place } from "./lib/text";
@@ -15,26 +15,40 @@ import { Footer } from "./components/Footer";
 import { Summary } from "./components/Summary";
 import { BackToTop } from "./components/BackToTop";
 import { loadFavourites, loadOnly, saveFavourites, saveOnly } from "./lib/favourites";
+import { hasGrades, inGrade } from "./lib/grades";
 
-/** The crags matching search, province, area and (CG-46) favourites — every verdict (CG-39
- * counts them). */
+/** The crags matching search, province, area, (CG-46) favourites and (CG-61) grades — every
+ * verdict (CG-39 counts them). */
 export function matching(crags: Crag[], s: ViewState, favourites: Set<string> | null = null): Crag[] {
   const q = fold(s.q.trim());
   return crags
     .filter(c => !favourites || favourites.has(c.id))
     .filter(c => !q || fold(c.name).includes(q) || fold(place(c)).includes(q))
     .filter(c => !s.province || c.provinceCode === s.province)
-    .filter(c => !s.area || inArea(s.area, c.latitude, c.longitude));
+    .filter(c => !s.area || inArea(s.area, c.latitude, c.longitude))
+    .filter(c => !s.grade || inGrade(c.details, s.grade));
 }
 
-/** The crags the view shows, in the order of the list. */
+/** CG-61: how many crags the grade filter leaves out only because OSM has no grade for them. */
+export const ungraded = (crags: Crag[], s: ViewState, favourites: Set<string> | null = null): number =>
+  s.grade ? matching(crags, { ...s, grade: null }, favourites).filter(c => !hasGrades(c.details)).length : 0;
+
+const byName = (a: Crag, b: Crag) => a.name.localeCompare(b.name, "it");
+const byVerdict = (day: string) => (a: Crag, b: Crag) => ORDER[a.days[day].verdict] - ORDER[b.days[day].verdict] || byName(a, b);
+/** Elevation, the unknown ones last whichever way. */
+const byElevation = (sign: 1 | -1) => (a: Crag, b: Crag) =>
+  (a.elevation == null ? 1 : 0) - (b.elevation == null ? 1 : 0)
+  || (a.elevation != null && b.elevation != null ? sign * (a.elevation - b.elevation) : 0) || byName(a, b);
+
+/** The crags the view shows, in the order of the list: by distance when given, else the view's. */
 export function visible(crags: Crag[], s: ViewState, distance: ((c: Crag) => number) | null,
                         favourites: Set<string> | null = null): Crag[] {
-  return matching(crags, s, favourites)
-    .filter(c => s.verdicts.has(c.days[s.day].verdict))
-    .sort(distance
-      ? (a, b) => distance(a) - distance(b)
-      : (a, b) => ORDER[a.days[s.day].verdict] - ORDER[b.days[s.day].verdict] || a.name.localeCompare(b.name, "it"));
+  const order = distance ? (a: Crag, b: Crag) => distance(a) - distance(b)
+    : s.order === "name" ? byName
+    : s.order === "low" ? byElevation(1)
+    : s.order === "high" ? byElevation(-1)
+    : byVerdict(s.day);
+  return matching(crags, s, favourites).filter(c => s.verdicts.has(c.days[s.day].verdict)).sort(order);
 }
 
 /** CG-54: the width below which the page shows the map or the list, not both (style.css). */
@@ -50,6 +64,9 @@ export function App() {
   // CG-22: the reader's position lives only in this state — never in the URL, never sent.
   const [here, setHere] = useState<{ lat: number; lon: number } | null>(null);
   const [asking, setAsking] = useState(false);
+  // CG-61: whether the list follows the distance — on with "Vicino a me", off when the reader
+  // picks another order; in memory only, as the position is.
+  const [byDistance, setByDistance] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   // CG-38: the crag under the pointer or keyboard focus in the list, and the one last chosen.
   const [hot, setHot] = useState<string | null>(null);
@@ -123,7 +140,8 @@ export function App() {
   }, [data]);
 
   const distance = useMemo(() => here ? (c: Crag) => km(here.lat, here.lon, c.latitude, c.longitude) : null, [here]);
-  const shown = useMemo(() => data && view ? visible(data.crags, view, distance, scope) : [], [data, view, distance, scope]);
+  const sortDistance = byDistance ? distance : null;
+  const shown = useMemo(() => data && view ? visible(data.crags, view, sortDistance, scope) : [], [data, view, sortDistance, scope]);
   // CG-44: the open panel lives in the URL, so a link opens on it and back closes it.
   const detail = data && view?.crag ? data.crags.find(c => c.id === view.crag) ?? null : null;
   const viewRef = useRef(view);
@@ -148,13 +166,14 @@ export function App() {
   const onArea = (area: Area | null) => { if (view) go({ ...view, area }, true); };
 
   const near = () => {
-    if (here) { setHere(null); setNotice(null); return; }       // second click: back to the verdict order
+    if (here) { setHere(null); setByDistance(false); setNotice(null); return; }   // second click: back to the view's order
     if (!navigator.geolocation) { setNotice("Il browser non dà la posizione."); return; }
     setAsking(true);
     navigator.geolocation.getCurrentPosition(pos => {
       setAsking(false);
       setNotice(null);
       setHere({ lat: pos.coords.latitude, lon: pos.coords.longitude });
+      setByDistance(true);
     }, err => {
       setAsking(false);
       setNotice(err.code === err.PERMISSION_DENIED
@@ -171,8 +190,10 @@ export function App() {
   };
 
   const total = data?.crags.length ?? 0;
-  const active = view ? [view.verdicts.size < 3, !!view.province, !!view.area, !!here, onlyFavourites].filter(Boolean).length : 0;
-  const count = notice ?? (!data ? (error ? "" : "Carico le falesie…") : shown.length === total ? `${shown.length} falesie` : `${shown.length} di ${total} falesie`);
+  const active = view ? [view.verdicts.size < 3, !!view.province, !!view.grade, !!view.area, !!here, onlyFavourites].filter(Boolean).length : 0;
+  const unknown = data && view ? ungraded(data.crags, view, scope) : 0;
+  const count = notice ?? (!data ? (error ? "" : "Carico le falesie…") : (shown.length === total ? `${shown.length} falesie` : `${shown.length} di ${total} falesie`)
+    + (unknown ? ` · ${unknown} senza gradi su OpenStreetMap, escluse` : ""));
 
   return (
     <>
@@ -184,12 +205,19 @@ export function App() {
         </div>
       </header>
       <Controls days={data?.days ?? []} provinces={provinces}
-                state={view ?? { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null, show: "list" }}
+                state={view ?? { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null, show: "list", grade: null, order: "verdict" }}
+                byDistance={byDistance && !!here}
                 near={asking ? "asking" : here ? "on" : "off"} active={active}
                 onDay={day => view && go({ ...view, day }, true)}
                 onQuery={q => view && go({ ...view, q }, false)}
                 onToggle={toggle}
                 onProvince={province => view && go({ ...view, province }, true)}
+                onGrade={grade => view && go({ ...view, grade }, true)}
+                onOrder={order => {
+                  if (order === "distance") { setByDistance(true); return; }
+                  setByDistance(false);
+                  if (view) go({ ...view, order }, true);
+                }}
                 onNear={near}
                 favourites={favourites.size} onlyFavourites={onlyFavourites}
                 onOnlyFavourites={() => setOnlyFavourites(on => { saveOnly(!on); return !on; })} />

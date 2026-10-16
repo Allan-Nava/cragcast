@@ -29,7 +29,7 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   colour alone: go is a green circle S, maybe a yellow diamond F, no a red square N — and the
   reasons under each crag (rain, recent rain, wind, cold or heat, an unmapped aspect);
 - on a phone the controls take two rows — the days, then the search and a **"Filtri"** button
-  that holds the verdict, province, near-me and favourite filters and counts those on
+  that holds the verdict, province, grade, order, near-me and favourite filters and counts those on
   ("Filtri (2)"); the day's summary and the number of crags shown share one line;
 - on a phone, **"Lista | Mappa"** shows one at a time, the list first, the choice kept in the
   URL (`show=map`); a crag chosen in the list opens on the map;
@@ -40,6 +40,12 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   the three days and "Dettagli" ("›" in a narrow list); about twice as many per screen;
 - **search** by name or municipality, ignoring case and accents, **toggles** for go / maybe /
   no go, and a **province** filter; each crag shows where it is ("Canzo (CO)");
+- **grades and order** (CG-61): a grade filter — "fino al 5c" to "fino al 6c", "dal 7a" to
+  "dall'8a" — over the grades OSM gives, keeping a crag only when they settle it, and the count
+  saying how many were left out for having none ("· 180 senza gradi su OpenStreetMap,
+  escluse"); the list ordered by verdict, name, or elevation from the lowest or the highest,
+  and by distance once "Vicino a me" has the position (distance stays out of the URL, like the
+  position);
 - crowded areas (Lecco, Val Masino) gather into one mark with the count and the split by
   verdict written out at a readable size, the parts at zero left out (e.g. `20 · 7S·8F·5N`, `9 · 9S`); zooming in or picking a crag in the list opens it;
 - **favourites**: a star on each crag, in the list and the panel, and a "Preferite" filter;
@@ -56,7 +62,7 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   mark, or the group it is in; choosing one flies the map to it and opens it; a crag opened on
   the map is outlined in the list; after moving the map, **"Cerca in quest'area"** limits the
   list to what the map shows, until it is cleared;
-- the view in the URL (`?q=&v=&p=&a=&crag=&show=&day=`): a link opens the same view, and back works;
+- the view in the URL (`?q=&v=&p=&g=&o=&a=&crag=&show=&day=`): a link opens the same view, and back works;
 - **a link per crag**: `?crag=<id>` opens the page on that crag's panel with the map on it;
   opening a panel puts it in the URL and back closes it; "Condividi" in the panel uses the
   phone's share sheet, or copies the link where there is none; the link shared is the crag's

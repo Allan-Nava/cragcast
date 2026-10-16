@@ -84,8 +84,9 @@ flowchart TB
   state["lib/state.ts<br/>URL ⇄ ViewState"]
   text["lib/text.ts<br/>Italian words, details, weather rows"]
   fav["lib/favourites.ts<br/>localStorage only"]
-  app --> state & text & fav
-  app --> controls["Controls<br/>days · search · Filtri"]
+  grades["lib/grades.ts<br/>French grades, the grade filter"]
+  app --> state & text & fav & grades
+  app --> controls["Controls<br/>days · search · Filtri · grades · order"]
   app --> summary["Summary<br/>the day's counts"]
   app --> list["CragList<br/>cards · day strip · star"]
   app --> map["CragMap<br/>Leaflet + markercluster, imperative"]
@@ -95,8 +96,9 @@ flowchart TB
   app --> top["BackToTop"]
 ```
 
-- **State.** The view — day, search, verdicts, province, area, open crag, map or list — lives in
-  the URL (`?q=&v=&p=&a=&crag=&show=&day=`), so a link opens the same view and back works. The
+- **State.** The view — day, search, verdicts, province, grades, order, area, open crag, map or
+  list — lives in the URL (`?q=&v=&p=&g=&o=&a=&crag=&show=&day=`), so a link opens the same view
+  and back works. Ordering by distance stays in memory, with the position (CG-61). The
   reader's position and favourites never leave the browser
   ([ADR 0011](adr/0011-the-reader-stays-in-the-browser.md)).
 - **The map.** Leaflet is driven imperatively inside `CragMap`; OSM text reaches the DOM as text
