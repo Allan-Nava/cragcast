@@ -73,7 +73,7 @@ flowchart LR
 | Calibration | `backend/…/calibration` | replays first-hand observed days (`data/observations.csv`) against Open-Meteo's Historical Forecast API, to tune the scorer's thresholds |
 | The page | `web/src` | React 19 + TypeScript; reads `data/conditions.json`, keeps the view in the URL |
 | Data tools | `tools/*.py` | `osm_crags.py` (the crag list from OSM, sectors folded — [ADR 0009](adr/0009-sport-climbing-crags-and-sectors.md)), `crags_diff.py`, `history_append.py`, `aspects_todo.py`, `avalanche_regions.py` |
-| Raspberry Pi stack | `deploy/pi/compose.yml` | the Spring service and PostgreSQL as a Portainer Git stack: Portainer polls main and re-pulls the GHCR image; no runner, no inbound port, LAN only |
+| Raspberry Pi stack | `deploy/pi/compose.yml` | the Spring service and PostgreSQL as a Portainer Git stack: Portainer polls main and re-pulls the GHCR image; no runner, no inbound port; the home network and the owner's tailnet ([ADR 0017](adr/0017-the-pi-over-tailscale.md)), PostgreSQL on the Pi's localhost only |
 | Infrastructure *(parked)* | `infra/oci`, `deploy/k8s` | Terraform for the Oracle VM and k3s manifests; kept, not applied |
 
 ### Inside the page

@@ -6,8 +6,9 @@
 # deploy/pi/compose.yml; GitOps updates on (polling), "Re-pull image" on; environment variable
 # DATABASE_PASSWORD set in Portainer, never in this file.
 #
-# LAN only: the backend on the Pi's port 8080 (BACKEND_PORT to change it), PostgreSQL on no
-# port at all.
+# The backend on the Pi's port 8080 (BACKEND_PORT to change it): the home network and the
+# owner's tailnet (CG-102, ADR 0017). PostgreSQL on the Pi's 127.0.0.1 only (DB_PORT), for psql
+# through an SSH tunnel; nothing else reaches it.
 services:
   db:
     image: postgres:17-alpine
@@ -16,6 +17,8 @@ services:
       POSTGRES_DB: cragcast
       POSTGRES_USER: cragcast
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD:?set DATABASE_PASSWORD in the Portainer stack}
+    ports:
+      - "127.0.0.1:${DB_PORT:-5432}:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
     healthcheck:
