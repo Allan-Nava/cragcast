@@ -53,9 +53,10 @@ export function detailParts(d: Details | undefined): string[] {
   } else if (d.gradeMean) {
     parts.push(`grado medio ${d.gradeMean}`);
   }
-  if (d.lengthMin && d.lengthMax) parts.push(`vie da ${d.lengthMin} a ${d.lengthMax} m`);
-  else if (d.lengthMax) parts.push(`vie fino a ${d.lengthMax} m`);
-  else if (d.length) parts.push(`vie di ${d.length} m`);
+  // A no-break space ties each number to its unit, so "m" never wraps alone (CG-58).
+  if (d.lengthMin && d.lengthMax) parts.push(`vie da ${d.lengthMin} a ${d.lengthMax}\u00a0m`);
+  else if (d.lengthMax) parts.push(`vie fino a ${d.lengthMax}\u00a0m`);
+  else if (d.length) parts.push(`vie di ${d.length}\u00a0m`);
   if (d.routes) parts.push(`${d.routes} vie`);
   if (d.rock) parts.push(d.rockIt || d.rock);
   if (d.styles && d.styles.length) parts.push(d.styles.map(x => STYLE_IT[x] ?? x).join(", "));
@@ -65,7 +66,7 @@ export function detailParts(d: Details | undefined): string[] {
 
 /** Elevation first, then the OSM details: the line under each crag. */
 export const allDetails = (c: Crag): string[] =>
-  (c.elevation != null ? [`quota circa ${c.elevation} m`] : []).concat(detailParts(c.details));
+  (c.elevation != null ? [`quota circa ${c.elevation}\u00a0m`] : []).concat(detailParts(c.details));
 
 /** https://www.openstreetmap.org/node/123 → https://www.openstreetmap.org/edit?node=123 */
 export function osmEditUrl(sourceUrl: string): string | null {
@@ -102,3 +103,8 @@ export const problemParts = (a: Avalanche): string[] => a.problems.map(p => PROB
 /** "Retiche orientali": the bulletin's zone name, which comes in capitals. */
 export const zoneName = (a: Avalanche): string =>
   a.name ? a.name.charAt(0) + a.name.slice(1).toLowerCase() : a.region;
+
+/** CG-58: the aspect for a list card — "esposta a SO", or null when not mapped (the card then
+ * shows the short "esposizione ?" tag; the panel and the popup keep the full sentence). */
+export const aspectShort = (c: Pick<Crag, "aspect">): string | null =>
+  c.aspect ? `esposta a ${ASPECT_IT[c.aspect]}` : null;

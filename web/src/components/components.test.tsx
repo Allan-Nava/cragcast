@@ -18,7 +18,7 @@ group("list", () => {
     const onOpen = vi.fn(), onDetail = vi.fn();
     render(<CragList crags={[crag({ elevation: 500 })]} day={DAY} distance={null} onOpen={onOpen} onDetail={onDetail} />);
     expect(screen.getByRole("heading").textContent).toContain("Corna di Medale — Si va");
-    expect(screen.getByText(/Lecco \(LC\) · parete esposta a S/)).toBeTruthy();
+    expect(screen.getByText(/Lecco \(LC\) · esposta a S/)).toBeTruthy();
     expect(screen.getByText("quota circa 500 m")).toBeTruthy();
     fireEvent.click(screen.getByText("Dettagli"));
     expect(onDetail).toHaveBeenCalledOnce();
@@ -243,5 +243,19 @@ group("compact controls (CG-53)", () => {
     render(<Summary crags={[crag()]} day={DAY} index={1} count="1 di 220 falesie" />);
     expect(document.getElementById("count")!.textContent).toBe("1 di 220 falesie");
     expect(document.querySelector(".summary .date")!.textContent).toBe(", venerdì 16 ottobre");
+  });
+});
+
+group("compact cards (CG-58)", () => {
+  it("an unmapped aspect is a short tag that still says what it means", () => {
+    render(<CragList crags={[crag({ aspect: null, verdict: "NO_GO" })]} day={DAY} distance={null} onOpen={() => {}} onDetail={() => {}}
+                     onFavourite={() => {}} favourites={new Set()} />);
+    const meta = document.querySelector("#list li p.meta")!;
+    expect(meta.textContent).toBe("Lecco (LC) · esposizione ? (non mappata: valutata come parete in ombra) · pioggia prevista durante il giorno");
+    expect(meta.querySelector(".tag")!.getAttribute("title")).toContain("valutata come parete in ombra");
+    // The heading reads as the crag alone; the star sits beside it.
+    expect(screen.getByRole("heading", { level: 2 }).textContent).toBe("NCorna di Medale — No");
+    expect(document.querySelector("#list li .head > .star")).not.toBeNull();
+    expect(document.querySelector("#list li .row > .more")).not.toBeNull();
   });
 });

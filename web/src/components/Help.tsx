@@ -9,7 +9,8 @@ export function Help() {
            aggiungi questi tag.</p>
         <ul>
           <li><code>climbing:orientation</code> — dove guarda la parete: N, NE, E, SE, S, SW, W o NW.
-              È il dato che rende il verdetto più preciso.</li>
+              È il dato che rende il verdetto più preciso: senza, la falesia porta l'etichetta
+              <em>esposizione ?</em> ed è valutata come parete in ombra, la lettura prudente.</li>
           <li><code>climbing:grade:french:min</code> e <code>climbing:grade:french:max</code> — grado più facile e più difficile, es. 5a e 7b.</li>
           <li><code>climbing:length:max</code> — lunghezza delle vie più lunghe, in metri.</li>
           <li><code>climbing:rock</code> — es. limestone (calcare), granite (granito), gneiss.</li>

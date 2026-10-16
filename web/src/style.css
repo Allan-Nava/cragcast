@@ -235,3 +235,26 @@ dialog#detail h2 .star { margin-right: 0; }
           border: 1px solid var(--go); border-radius: 999px; padding: 10px 16px; font: inherit; font-size: .9rem;
           cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .5); }
 .to-top:focus-visible { outline: 2px solid var(--go); outline-offset: 2px; }
+
+/* CG-58: compact crag cards — about twice as many per screen on a phone. */
+#list li { padding: 9px 12px; margin-bottom: 6px; }
+#list li .head { display: flex; align-items: flex-start; gap: 6px; }
+#list li .head h2 { flex: 1; min-width: 0; line-height: 1.3; }
+#list li .head .star { margin: -3px -4px 0 0; }
+#list li p.meta { margin-top: 3px; font-size: .85rem; line-height: 1.35; }
+#list li p.meta .details { color: var(--text); }
+#list li .tag { display: inline-block; padding: 0 6px; border: 1px dashed var(--muted); border-radius: 6px;
+                font-size: .78rem; line-height: 1.5; color: var(--muted); cursor: help; }
+#list li .row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 7px; }
+#list li .row .strip { margin-top: 0; }
+#list li .row .more { margin-top: 0; margin-left: auto; padding: 4px 12px; }
+#list li .more-icon { display: none; }
+/* The list's own width decides, not the screen's: a phone, and the list's column on a desktop. */
+#list { container-type: inline-size; container-name: list; }
+@container list (max-width: 460px) {
+  #list li .strip { gap: 4px; }
+  #list li .strip .day { padding: 2px 6px; gap: 4px; font-size: .8rem; }
+  #list li .row .more { padding: 2px 12px; font-size: 1.15rem; line-height: 1.2; }
+  #list li .row .more .more-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  #list li .row .more .more-icon { display: inline; }
+}

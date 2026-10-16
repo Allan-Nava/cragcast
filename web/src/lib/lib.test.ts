@@ -16,12 +16,12 @@ group("text", () => {
   });
   it("turns OSM details into Italian phrases", () => {
     expect(detailParts({ gradeMin: "5a", gradeMax: "7b", lengthMax: 30, rock: "limestone", rockIt: "calcare", styles: ["sport"], bolted: true }))
-      .toEqual(["gradi 5a–7b", "vie fino a 30 m", "calcare", "sportiva", "chiodata"]);
+      .toEqual(["gradi 5a–7b", "vie fino a 30\u00a0m", "calcare", "sportiva", "chiodata"]);
     expect(detailParts({ gradeMax: "6c" })).toEqual(["gradi fino a 6c"]);
     expect(detailParts(undefined)).toEqual([]);
   });
   it("puts the elevation first", () => {
-    expect(allDetails(crag({ elevation: 820, details: { routes: 40 } }))).toEqual(["quota circa 820 m", "40 vie"]);
+    expect(allDetails(crag({ elevation: 820, details: { routes: 40 } }))).toEqual(["quota circa 820\u00a0m", "40 vie"]);
   });
   it("keeps the unmapped-aspect note out of the reasons", () => {
     const c = crag({ aspect: null, verdict: "MAYBE" });

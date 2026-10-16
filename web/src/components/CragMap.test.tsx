@@ -80,7 +80,7 @@ group("map marks and popups (CG-50)", () => {
     expect(popup.textContent).toContain("Corna di Medale · Lecco (LC)");
     expect(popup.textContent).toContain("Forse — parete esposta a S");
     expect(popup.textContent).toContain("pioggia prevista durante il giorno");
-    expect(popup.textContent).toContain("quota circa 700 m · gradi fino a 7a");
+    expect(popup.textContent).toContain("quota circa 700\u00a0m · gradi fino a 7a");
     expect(popup.textContent).toContain("Valanghe: pericolo 2 (moderato) — zona Zona test");
     const links = [...popup.querySelectorAll("a")].map(a => [a.textContent, a.getAttribute("href")]);
     expect(links).toEqual([["fonte OpenStreetMap", "https://www.openstreetmap.org/node/1"], ["sito", "https://example.org/site"],

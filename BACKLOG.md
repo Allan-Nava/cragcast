@@ -286,9 +286,12 @@ and no grade filter; and no test notices when a change moves the layout.
 - [x] **CG-65 — Architectural Decision Records**: the decisions behind cragcast written down
   in `docs/adr/`, one numbered record each, and a rule that a new decision brings its record.
   Done: ADR 0001–0014, written on 2026-10-16 from the backlog, the PRs and git. <!-- cg: prio=med size=S labels=docs ver=main -->
-- [ ] **CG-58 — Compact crag cards**: the unmapped-aspect sentence becomes a short "esposizione
+- [x] **CG-58 — Compact crag cards**: the unmapped-aspect sentence becomes a short "esposizione
   ?" tag (its meaning said once, in the help and the tag's label), "Dettagli" joins the card's
-  first row, so a phone shows about twice as many crags per screen. <!-- cg: prio=high size=M labels=frontend -->
+  first row, so a phone shows about twice as many crags per screen. Done: "Dettagli" joined the
+  days' row instead ("›" when the list is under 460 px wide, by container query), the star moved
+  out of the heading, numbers tied to their units; a card on a Pixel 7 from about 190 to under
+  125 px. <!-- cg: prio=high size=M labels=frontend ver=main -->
 - [ ] **CG-63 — Visual snapshots**: Playwright screenshot comparisons of the main views (list,
   map, panel, sheet; desktop and phone) on fixture data, so a layout change is seen in review
   before it ships. <!-- cg: prio=high size=S labels=frontend,infra -->
