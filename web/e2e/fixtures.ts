@@ -39,10 +39,9 @@ export const conditions = (crags = CRAGS, days = DAYS, generatedAt = new Date())
   cragData: "test", weatherData: "test", elevationData: "test", crags,
 });
 
-/** CG-63: a fixed moment for the visual snapshots, so weekdays and "aggiornato adesso" never move. */
-export const FIXED_NOW = new Date("2026-10-16T08:00:00Z");
+/** CG-63: fixed days for the visual snapshots, so the weekdays never move. */
 export const FIXED_DAYS = ["2026-10-16", "2026-10-17", "2026-10-18"];
-export const fixedConditions = () => conditions(build(FIXED_DAYS), FIXED_DAYS, FIXED_NOW);
+export const fixedCrags = () => build(FIXED_DAYS);
 
 /** CG-57: forty more made-up crags, for a list long enough to scroll. */
 export const MANY = [...CRAGS, ...Array.from({ length: 40 }, (_, i) =>

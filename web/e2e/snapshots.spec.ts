@@ -4,14 +4,17 @@
 // layout shows up as a failed comparison with the diff in the run's artifact. To accept a change,
 // download CI's new images (the "snapshots" artifact) into e2e/__snapshots__/:
 //   gh run download <run> -n snapshots -D web/e2e/__snapshots__
-import { FIXED_NOW, expect, fixedConditions, test } from "./fixtures";
+import { FIXED_DAYS, conditions, expect, fixedCrags, test } from "./fixtures";
 
 test.skip(!process.env.CI && !process.env.SNAPSHOTS, "visual snapshots compare CI's own rendering");
 
+// Fixed days, so weekdays never move. The clock is not frozen: Leaflet times its pans by the
+// clock, and a frozen one stopped the pan that fits a popup. The one text that follows the
+// clock, the footer's "Aggiornato …", is masked instead.
 test.beforeEach(async ({ page }) => {
-  await page.clock.setFixedTime(FIXED_NOW);
-  await page.route("**/data/conditions.json*", r => r.fulfill({ json: fixedConditions() }));
+  await page.route("**/data/conditions.json*", r => r.fulfill({ json: conditions(fixedCrags(), FIXED_DAYS) }));
 });
+const mask = (page: import("@playwright/test").Page) => ({ mask: [page.locator("#updated")] });
 
 const ready = async (page: import("@playwright/test").Page) => {
   await expect(page.locator("#count")).toHaveText("6 falesie");
@@ -21,14 +24,14 @@ const ready = async (page: import("@playwright/test").Page) => {
 test("the page", async ({ page }) => {
   await page.goto("./?day=2026-10-17");
   await ready(page);
-  await expect(page).toHaveScreenshot("page.png", { fullPage: true });
+  await expect(page).toHaveScreenshot("page.png", { fullPage: true, ...mask(page) });
 });
 
 test("a crag's panel", async ({ page }) => {
   await page.goto("./?day=2026-10-17&crag=osm-node-2");
   await ready(page);
   await expect(page.locator("dialog#detail")).toBeVisible();
-  await expect(page).toHaveScreenshot("panel.png");
+  await expect(page).toHaveScreenshot("panel.png", mask(page));
 });
 
 test("the map", async ({ page, isMobile }) => {
