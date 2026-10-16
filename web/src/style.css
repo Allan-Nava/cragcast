@@ -263,3 +263,9 @@ dialog#detail h2 .star { margin-right: 0; }
 details.mapped { margin: 4px 0 8px; font-size: .9rem; }
 details.mapped summary { cursor: pointer; color: var(--muted); }
 details.mapped ul { display: flex; flex-wrap: wrap; gap: 4px 12px; list-style: none; margin: 6px 0 0; padding: 0; }
+
+/* CG-59: the day's weather as a small table, in the popup and the panel. */
+table.facts { border-collapse: collapse; margin: 6px 0; font-size: .85rem; font-variant-numeric: tabular-nums; }
+table.facts th { text-align: left; font-weight: 400; color: var(--muted); padding: 1px 14px 1px 0; }
+table.facts td { text-align: right; padding: 1px 0; }
+.leaflet-popup-content table.facts th { color: #515a65; }

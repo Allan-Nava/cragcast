@@ -6,7 +6,7 @@
 // prefers-reduced-motion.
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Crag } from "../types";
-import { LABEL, LETTER, allDetails, dayLabel, describe, mappedTimes, osmEditUrl, place } from "../lib/text";
+import { LABEL, LETTER, allDetails, dayLabel, describe, mappedTimes, osmEditUrl, place, weatherRows } from "../lib/text";
 import { HourChart, HourTable, hourReadout } from "./HourChart";
 import { AvalancheLine } from "./AvalancheLine";
 import { cragLink } from "../lib/state";
@@ -153,6 +153,12 @@ export function DetailDialog({ crag, day, days = [], onDay, onClose, favourite =
           <p className="muted">{[place(crag), info.aspect, ...info.reasons].filter(Boolean).join(" · ")}</p>
           {allDetails(crag).length > 0 && <p>{allDetails(crag).join(" · ")}</p>}
           {crag.days[day].avalanche && <AvalancheLine a={crag.days[day].avalanche} full />}
+          {/* CG-59: the weather the verdict was made from, before the hours. */}
+          <table className="facts">
+            <tbody>
+              {weatherRows(crag.days[day].weather).map(([k, v]) => <tr key={k}><th scope="row">{k}</th><td>{v}</td></tr>)}
+            </tbody>
+          </table>
           {hours.length > 0 && (
             <>
               <p className="readout" aria-live="polite">

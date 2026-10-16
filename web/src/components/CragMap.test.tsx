@@ -85,7 +85,9 @@ group("map marks and popups (CG-50)", () => {
     const links = [...popup.querySelectorAll("a")].map(a => [a.textContent, a.getAttribute("href")]);
     expect(links).toEqual([["fonte OpenStreetMap", "https://www.openstreetmap.org/node/1"], ["sito", "https://example.org/site"],
       ["modifica su OpenStreetMap", "https://www.openstreetmap.org/edit?node=1"]]);
-    expect(popup.textContent).toContain("sito · mappata 2 volte");             // CG-59: counted, listed in the panel
+    expect(popup.textContent).toContain("sito · mappata 2 volte");
+    expect([...popup.querySelectorAll("table.facts th")].map(th => th.textContent))
+      .toEqual(["Pioggia 48 h prima", "Pioggia in giornata", "Massima", "Vento massimo"]);             // CG-59: counted, listed in the panel
     fireEvent.click(popup.querySelector("button.more")!);
     expect(onDetail).toHaveBeenCalledWith(c);
   });
