@@ -1,0 +1,42 @@
+# The Spring service and its PostgreSQL on a Raspberry Pi, as a Portainer Git stack (CG-100,
+# ADR 0015). Portainer polls this repository and re-pulls the image that image.yml pushes to
+# GHCR (linux/arm64, so a 64-bit OS on the Pi); nothing from GitHub ever reaches into the Pi.
+#
+# Portainer: Stacks → Add stack → Repository; this repository, ref refs/heads/main, compose path
+# deploy/pi/compose.yml; GitOps updates on (polling), "Re-pull image" on; environment variable
+# DATABASE_PASSWORD set in Portainer, never in this file.
+#
+# LAN only: the backend on the Pi's port 8080 (BACKEND_PORT to change it), PostgreSQL on no
+# port at all.
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: cragcast
+      POSTGRES_USER: cragcast
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:?set DATABASE_PASSWORD in the Portainer stack}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cragcast"]
+      interval: 10s
+      retries: 10
+
+  backend:
+    image: ghcr.io/allan-nava/cragcast-backend:main
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: jdbc:postgresql://db:5432/cragcast
+      DATABASE_USER: cragcast
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:?set DATABASE_PASSWORD in the Portainer stack}
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    # The JVM takes 75% of this (Dockerfile); room left for PostgreSQL on a 4 GB Pi.
+    mem_limit: 1g
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:
