@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**77 items · 60 shipped · 17 open · 15 milestones.**
+**82 items · 60 shipped · 22 open · 16 milestones.**
 
 ## At a glance
 
@@ -24,6 +24,7 @@
 | **v0.7.0 — Beyond Lombardy** | later | `..........` 0% | 1 | 0 |
 | **v1.1.0 — On a Raspberry Pi** | now | `########..` 75% | 1 | 3 |
 | **v1.2.0 — Everything in PostgreSQL** | next | `..........` 0% | 7 | 0 |
+| **v1.3.0 — Vie ferrate** | later | `..........` 0% | 5 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
 ## v0.1.0 — A verdict for one crag
@@ -140,6 +141,14 @@
 - [ ] **CG-107** — Avalanche bulletins, archived · low · S · backend
 - [ ] **CG-108** — Observations copied · low · S · backend, data
 - [ ] **CG-109** — Backup, now that it matters · high · S · infra
+
+## v1.3.0 — Vie ferrate
+
+- [ ] **CG-111** — What OSM has · med · S · data
+- [ ] **CG-112** — The import · med · M · data
+- [ ] **CG-113** — A verdict of its own · med · M · backend
+- [ ] **CG-114** — On the page · med · M · frontend
+- [ ] **CG-115** — In the API and on the Pi · low · S · backend
 
 ## v1.0.0 — Self-hosted on a VM (parked)
 

@@ -401,6 +401,35 @@ hourly archive below exists nowhere else, so from CG-108 on it needs a backup.
   by [ADR 0019](docs/adr/0019-backup-on-a-usb-disk.md). Done when the first dump is on the Pi's
   disk. <!-- cg: prio=high size=S labels=infra -->
 
+## v1.3.0 — Vie ferrate <!-- ms: phase=later -->
+
+Proposed on 2026-10-16: "can I do that via ferrata tomorrow?" next to the crags — the same
+readers, the same question, a different answer. OpenStreetMap stays the only source of places
+(`highway=via_ferrata` ways, `route=via_ferrata` relations, `via_ferrata_scale` 0–6), first-hand
+and ODbL like the crags. A via ferrata is not a crag: its risk is the storm on the cable and the
+weather at the top, not wet rock on a wall, so it gets its own verdict, and a wrong "si va"
+costs more. An ADR comes with CG-112.
+
+- [ ] **CG-111 — What OSM has**: count Lombardy's via ferratas on OSM and how many carry a name,
+  `via_ferrata_scale` and a route relation — Overpass was down when this was written. Few or
+  thinly tagged: the first step is asking climbers to map them first-hand, as for the crags'
+  aspects (CG-16), not the import. <!-- cg: prio=med size=S labels=data -->
+- [ ] **CG-112 — The import**: `tools/osm_ferrate.py` into `data/ferrate.json`, through the same
+  reviewed monthly PR as the crags: name, OSM links, start and highest point (from the track,
+  elevation from the DEM), length, `via_ferrata_scale` validated or dropped. Never mixed into
+  `data/crags.json`, whose rule against single routes holds. With the ADR. <!-- cg: prio=med size=M labels=data -->
+- [ ] **CG-113 — A verdict of its own**: `FerrataScorer`, its thresholds named constants as in
+  `ConditionsScorer`: a thunderstorm forecast in the day (Open-Meteo's weather code, CAPE) is
+  never "si va"; wind, cold, snow and ice read at the highest point; the day's light against
+  the route. Conservative until observed days exist to calibrate it (CG-27). The avalanche
+  bulletin still informs and never scores (CG-11). <!-- cg: prio=med size=M labels=backend -->
+- [ ] **CG-114 — On the page**: "Falesie / Ferrate" to switch, the type said in words and by its
+  own mark — never by colour alone, and the S/F/N marks keep meaning the verdict (CG-21); the
+  difficulty shown as OSM gives it; a line saying conditions are checked on the spot. <!-- cg: prio=med size=M labels=frontend -->
+- [ ] **CG-115 — In the API and on the Pi**: the via ferratas as additive fields or files in
+  `/api/v1/` (CG-32), the README's API section with them; served by the Pi's backend from the
+  forecasts it fetches (ADR 0018), and archived with the crags' once CG-106 is in. <!-- cg: prio=low size=S labels=backend -->
+
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 
 Parked on 2026-10-15: Oracle Cloud's Always Free A1 VM could not be created in Milan (39 tries
