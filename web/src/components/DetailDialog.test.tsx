@@ -131,3 +131,19 @@ group("panel edges (CG-50)", () => {
     }
   });
 });
+
+group("tidy panel (CG-59)", () => {
+  it("lists every OSM object a crag was folded from, folded away", () => {
+    vi.stubGlobal("matchMedia", () => ({ matches: true }));
+    const c = crag({ alsoMapped: ["https://www.openstreetmap.org/way/2", "https://www.openstreetmap.org/node/3"] });
+    render(<DetailDialog crag={c} day="2026-10-16" onClose={() => {}} />);
+    const box = document.querySelector("details.mapped")!;
+    expect(box.querySelector("summary")!.textContent).toBe("Mappata 3 volte su OpenStreetMap");
+    expect([...box.querySelectorAll("a")].map(a => a.getAttribute("href"))).toEqual(c.alsoMapped);
+  });
+  it("shows nothing of the kind for a crag mapped once", () => {
+    vi.stubGlobal("matchMedia", () => ({ matches: true }));
+    render(<DetailDialog crag={crag()} day="2026-10-16" onClose={() => {}} />);
+    expect(document.querySelector("details.mapped")).toBeNull();
+  });
+});

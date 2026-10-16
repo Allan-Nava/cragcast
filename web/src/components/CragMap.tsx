@@ -3,7 +3,7 @@ import L from "../lib/leaflet";
 import "leaflet.markercluster";
 import type { Crag, Verdict } from "../types";
 import type { Area } from "../lib/state";
-import { LABEL, LETTER, allDetails, dangerLabel, describe, osmEditUrl, place, zoneName } from "../lib/text";
+import { LABEL, LETTER, allDetails, dangerLabel, describe, mappedTimes, osmEditUrl, place, zoneName } from "../lib/text";
 
 export interface MapApi {
   /** Zoom into the cluster a crag sits in and open its popup. */
@@ -54,7 +54,9 @@ function popupFor(crag: Crag, day: string, onDetail: (c: Crag) => void): HTMLEle
   const a = (href: string, text: string) => Object.assign(document.createElement("a"), { href, textContent: text, rel: "noopener" });
   const links: (Node | string)[] = [a(crag.sourceUrl, "fonte OpenStreetMap")];
   if (crag.details?.website) links.push(" · ", a(crag.details.website, "sito"));
-  crag.alsoMapped?.forEach((u, i) => links.push(i === 0 ? " · anche " : ", ", a(u, `OSM ${i + 2}`)));
+  // CG-59: a crag folded from many objects says how many, not a row of "OSM n" links; the
+  // panel lists them.
+  if (mappedTimes(crag) > 1) links.push(` · mappata ${mappedTimes(crag)} volte`);
   line(...links);
   const edit = osmEditUrl(crag.sourceUrl);
   if (edit) line(a(edit, "modifica su OpenStreetMap"));

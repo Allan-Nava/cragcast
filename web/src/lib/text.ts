@@ -108,3 +108,6 @@ export const zoneName = (a: Avalanche): string =>
  * shows the short "esposizione ?" tag; the panel and the popup keep the full sentence). */
 export const aspectShort = (c: Pick<Crag, "aspect">): string | null =>
   c.aspect ? `esposta a ${ASPECT_IT[c.aspect]}` : null;
+
+/** CG-59: how many OSM objects a crag was folded from (itself and alsoMapped). */
+export const mappedTimes = (c: Pick<Crag, "alsoMapped">): number => 1 + (c.alsoMapped?.length ?? 0);

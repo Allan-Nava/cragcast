@@ -6,7 +6,7 @@
 // prefers-reduced-motion.
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Crag } from "../types";
-import { LABEL, LETTER, allDetails, dayLabel, describe, osmEditUrl, place } from "../lib/text";
+import { LABEL, LETTER, allDetails, dayLabel, describe, mappedTimes, osmEditUrl, place } from "../lib/text";
 import { HourChart, HourTable, hourReadout } from "./HourChart";
 import { AvalancheLine } from "./AvalancheLine";
 import { cragLink } from "../lib/state";
@@ -170,6 +170,14 @@ export function DetailDialog({ crag, day, days = [], onDay, onClose, favourite =
             <a href={crag.sourceUrl} rel="noopener">Su OpenStreetMap</a>{" "}
             {edit && <a href={edit} rel="noopener">Modifica su OSM</a>}
           </p>
+          {mappedTimes(crag) > 1 && (
+            <details className="mapped">
+              <summary>{`Mappata ${mappedTimes(crag)} volte su OpenStreetMap`}</summary>
+              <ul>
+                {crag.alsoMapped.map((u, i) => <li key={u}><a href={u} rel="noopener">{`OSM ${i + 2}`}</a></li>)}
+              </ul>
+            </details>
+          )}
         </div>
       )}
     </dialog>
