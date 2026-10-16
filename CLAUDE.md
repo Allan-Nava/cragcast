@@ -151,7 +151,9 @@ repository is public, and a fork's PR could run code on that network.
   never in the URL, never in a request, never in storage.
 - **History lives on the `history` branch, never on main** (CG-34). `history.yml` appends the
   day's rows each evening through a worktree; a rerun replaces the day's rows. Its CSV columns
-  are a contract like the API: add columns at the end, never rename or drop one.
+  are a contract like the API: add columns at the end, never rename or drop one. The Spring
+  service copies it into `crag_history` (CG-101, ADR 0016) with `HistorySync`, reading columns
+  by name; the CSV stays the source, and Spring tests set `cragcast.history.enabled=false`.
 - **`/api/v1/` is a contract** (CG-32): `ConditionsExport.api()` may add fields, never rename or
   remove one; a breaking change is a new `/api/v2/` next to v1. The README's API section lists
   every field — a new field goes there in the same PR.
