@@ -100,6 +100,11 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
 - **`docs/ARCHITECTURE.md` follows the code** (CG-66): a PR that adds or changes a part, a data
   contract, a workflow or a test level updates it — its diagrams too (Mermaid; check them with
   Mermaid's parser, GitHub shows an error in their place otherwise).
+- **The stylesheet speaks in tokens** (CG-62): colours (CG-60), spacing (`--space-*`), type
+  (`--text-*`), radii (`--radius-*`) and the focus ring (`--focus-ring`) are variables at the top
+  of `web/src/style.css`; new CSS uses them, never a new pixel value. The exceptions are the
+  verdict and cluster marks and the charts' labels, drawn at fixed sizes like their shapes. One
+  `:where(…):focus-visible` rule gives every control the same ring; an e2e test tabs through them.
 - **Decisions get an Architectural Decision Record** (CG-65, [ADR 0001](docs/adr/0001-record-decisions.md)):
   a change to how cragcast is built, what data it trusts or what it promises its readers comes
   with a numbered record in `docs/adr/` (from `template.md`) in the same PR, listed in
