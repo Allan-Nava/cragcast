@@ -2,6 +2,18 @@
    two jobs: --go/--maybe/--no_go are text, borders and focus rings (≥4.5:1 on the surface), the
    *-fill tokens are the marks' fills under a black letter (≥5.2:1) and a black outline, the
    same in both themes (CG-21). */
+/* CG-62: the design tokens — spacing, type, radii, focus — so a change touches one line here.
+   Every padding, margin, gap and font size uses them. The verdict marks, the cluster marks and the
+   charts' labels keep pixel sizes on purpose: they are drawn at fixed sizes, like their shapes. */
+:root {
+  /* CG-62: the type scale; the page's base is the browser's 16px. */
+  --text-xs: .8rem; --text-sm: .85rem; --text-md: .9rem; --text-base: 1rem; --text-lg: 1.15rem;
+  --text-xl: 1.4rem; --text-xxl: 1.6rem;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 12px; --radius-xl: 16px; --radius-pill: 999px;
+  --focus-ring: 2px solid var(--go); --focus-offset: 2px;
+  --space-px: 1px; --space-1: 2px; --space-2: 4px; --space-3: 6px; --space-4: 8px; --space-5: 10px;
+  --space-6: 12px; --space-7: 14px; --space-8: 16px; --space-9: 20px; --space-10: 32px;
+}
 :root {
   color-scheme: dark;
   --bg: #050505; --panel: #111418; --text: #f2f4f5; --muted: #9aa3ad;
@@ -24,45 +36,45 @@
 body { margin: 0; background: var(--bg); color: var(--text);
        font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
 a { color: var(--go); }
-header { display: flex; gap: 14px; align-items: center; padding: 16px; }
-header h1 { margin: 0; font-size: 1.4rem; }
-header p { margin: 2px 0 0; color: var(--muted); }
-.days { display: flex; gap: 8px; padding: 0 16px; }
+header { display: flex; gap: var(--space-7); align-items: center; padding: var(--space-8); }
+header h1 { margin: 0; font-size: var(--text-xl); }
+header p { margin: var(--space-1) 0 0; color: var(--muted); }
+.days { display: flex; gap: var(--space-4); padding: 0 var(--space-8); }
 .days button { background: var(--panel); color: var(--text); border: 1px solid var(--line);
-               border-radius: 999px; padding: 6px 14px; font: inherit; cursor: pointer; }
+               border-radius: var(--radius-pill); padding: var(--space-3) var(--space-7); font: inherit; cursor: pointer; }
 .days button[aria-pressed="true"] { border-color: var(--go); color: var(--go); }
-.controls { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; padding: 12px 16px; }
+.controls { display: flex; flex-wrap: wrap; gap: var(--space-5) var(--space-6); align-items: center; padding: var(--space-6) var(--space-8); }
 /* CG-61: 200 px, so the grade and order selects keep the row on one line at 1280 px. */
 .search { flex: 1 1 200px; }
 .search input { width: 100%; background: var(--panel); color: var(--text); border: 1px solid var(--line);
-                border-radius: 10px; padding: 9px 12px; font: inherit; }
-.search input:focus { outline: 2px solid var(--go); outline-offset: 1px; border-color: transparent; }
-.legend { display: flex; gap: 8px; }
-.legend button { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
-                 padding: 5px 12px; font: inherit; font-size: .9rem; cursor: pointer; }
+                border-radius: var(--radius-md); padding: var(--space-5) var(--space-6); font: inherit; }
+.search input:focus { outline: var(--focus-ring); outline-offset: var(--focus-offset); border-color: transparent; }
+.legend { display: flex; gap: var(--space-4); }
+.legend button { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-pill);
+                 padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); cursor: pointer; }
 .legend button[aria-pressed="false"] { opacity: .45; text-decoration: line-through; }
-#count { color: var(--muted); font-size: .9rem; }
-.empty { color: var(--muted); padding: 12px 0; }
+#count { color: var(--muted); font-size: var(--text-md); }
+.empty { color: var(--muted); padding: var(--space-6) 0; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 0 16px; }
-#map { height: 55vh; min-height: 320px; border-radius: 12px; border: 1px solid var(--line); }
+main { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding: 0 var(--space-8); }
+#map { height: 55vh; min-height: 320px; border-radius: var(--radius-lg); border: 1px solid var(--line); }
 #list { list-style: none; margin: 0; padding: 0; }
-#list li { background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
-           padding: 10px 12px; margin-bottom: 8px; cursor: pointer; }
-#list li h2 { margin: 0; font-size: 1rem; display: flex; align-items: center; }
-#list li p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+#list li { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-md);
+           padding: var(--space-5) var(--space-6); margin-bottom: var(--space-4); cursor: pointer; }
+#list li h2 { margin: 0; font-size: var(--text-base); display: flex; align-items: center; }
+#list li p { margin: var(--space-2) 0 0; color: var(--muted); font-size: var(--text-md); }
 #list li p.details { color: var(--text); }
-footer { color: var(--muted); font-size: .85rem; padding: 16px; }
+footer { color: var(--muted); font-size: var(--text-sm); padding: var(--space-8); }
 @media (min-width: 900px) {
   main { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
   #map { height: 70vh; }
   #list { max-height: 70vh; overflow-y: auto; }
 }
 .leaflet-popup-content { font: 14px/1.4 system-ui, sans-serif; }
-.help { padding: 8px 16px 0; }
-.help details { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.help { padding: var(--space-4) var(--space-8) 0; }
+.help details { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-5) var(--space-7); }
 .help summary { cursor: pointer; font-weight: 600; }
-.help li { margin: 4px 0; }
+.help li { margin: var(--space-2) 0; }
 .help code { color: var(--go); }
 
 /* CG-21: verdict marks — shape and letter as well as colour. Black letters on all three fills:
@@ -74,54 +86,54 @@ footer { color: var(--muted); font-size: .85rem; padding: 16px; }
 .mark.maybe { background: var(--maybe-fill); border-radius: 3px; transform: rotate(45deg); }
 .mark.maybe b { transform: rotate(-45deg); }
 .mark.no_go { background: var(--no_go-fill); border-radius: 2px; }
-.mark.small { width: 16px; height: 16px; font-size: 9px; border-width: 1.5px; margin-right: 6px; vertical-align: -3px; }
-#list li h2 .mark.small { flex: none; margin-right: 8px; }
+.mark.small { width: 16px; height: 16px; font-size: 9px; border-width: 1.5px; margin-right: var(--space-3); vertical-align: -3px; }
+#list li h2 .mark.small { flex: none; margin-right: var(--space-4); }
 
 /* CG-22: "Vicino a me". */
-#near { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
-        padding: 5px 12px; font: inherit; font-size: .9rem; cursor: pointer; }
+#near { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-pill);
+        padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); cursor: pointer; }
 #near[aria-pressed="true"] { border-color: var(--go); color: var(--go); }
-.km { color: var(--muted); font-weight: 400; margin-left: 6px; font-size: .9rem; }
+.km { color: var(--muted); font-weight: 400; margin-left: var(--space-3); font-size: var(--text-md); }
 .me { display: block; width: 14px; height: 14px; border-radius: 50%; background: #4aa3ff; border: 2px solid #fff; box-shadow: 0 0 0 2px #050505; }
 
 /* CG-23: a group of crags. Neutral fill, so colour never stands for a verdict here; the split
    is written out (e.g. 5S·2F·0N) and read aloud through aria-label. */
 .cluster { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 64px; height: 50px;
-           border-radius: 25px; background: #f2f4f5; color: #050505; border: 2px solid #050505;
+           border-radius: var(--radius-pill); background: #f2f4f5; color: #050505; border: 2px solid #050505;
            box-shadow: 0 0 0 3px rgba(16, 207, 83, .55); font: 800 17px/1 system-ui, sans-serif; }
 /* CG-55: 11 px, readable at 100% zoom; the letters and counts say it, not the colour. */
-.cluster small { font: 700 11px/1.1 system-ui, sans-serif; margin-top: 3px; letter-spacing: .01em; white-space: nowrap; }
+.cluster small { font: 700 11px/1.1 system-ui, sans-serif; margin-top: var(--space-2); letter-spacing: .01em; white-space: nowrap; }
 
 /* CG-24: the crag's panel. */
 /* CG-59: one action button — "Dettagli" in the list and the popup, "Condividi" in the panel —
    one size, one shape, one hover and focus. On the popup's white the green is a step darker
    (#0a7a35, 5.4:1; the site's #10cf53 is 2.1:1 there). */
-.more { display: inline-flex; align-items: center; justify-content: center; gap: 4px; margin-top: 8px;
-        background: transparent; color: var(--go); border: 1px solid var(--line); border-radius: 999px;
-        padding: 4px 12px; font: inherit; font-size: .85rem; line-height: 1.3; cursor: pointer; }
+.more { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); margin-top: var(--space-4);
+        background: transparent; color: var(--go); border: 1px solid var(--line); border-radius: var(--radius-pill);
+        padding: var(--space-2) var(--space-6); font: inherit; font-size: var(--text-sm); line-height: 1.3; cursor: pointer; }
 .more:hover { border-color: var(--go); }
-.more:focus-visible { outline: 2px solid var(--go); outline-offset: 2px; }
-.leaflet-popup-content .more { color: #0a7a35; border-color: #c9d1d9; font-size: .85rem; }
+.more:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
+.leaflet-popup-content .more { color: #0a7a35; border-color: #c9d1d9; font-size: var(--text-sm); }
 .leaflet-popup-content .more:hover, .leaflet-popup-content .more:focus-visible { border-color: #0a7a35; outline-color: #0a7a35; }
-dialog#detail { background: var(--panel); color: var(--text); border: 1px solid var(--line); padding: 16px;
+dialog#detail { background: var(--panel); color: var(--text); border: 1px solid var(--line); padding: var(--space-8);
                 overflow-y: auto; overscroll-behavior: contain; }
 /* CG-40: a bottom sheet on phones (modal), a side panel from 900 px (non-modal). */
 dialog#detail.sheet { position: fixed; inset: auto 0 0 0; margin: 0; width: 100%; max-width: 100%; max-height: 88vh;
-                      border-radius: 16px 16px 0 0; border-bottom: 0; padding-top: 22px; }
+                      border-radius: var(--radius-xl) var(--radius-xl) 0 0; border-bottom: 0; padding-top: var(--space-9); }
 dialog#detail.sheet::backdrop { background: rgba(0, 0, 0, .6); }
 /* CG-56: beside, not over — from 900 px the open panel sits in the list's column of the grid,
    below the controls, as tall as the map; the list steps aside until it closes. */
 dialog#detail.side { position: relative; grid-column: 2; grid-row: 1; margin: 0; width: auto; height: 70vh; max-height: 70vh;
-                     border-radius: 12px; border-width: 1px; box-shadow: none; z-index: auto; }
+                     border-radius: var(--radius-lg); border-width: 1px; box-shadow: none; z-index: auto; }
 main.panel-open #list { display: none; }
 @media (max-width: 899px) { main.panel-open #list { display: revert; } }
-dialog#detail .handle { position: absolute; top: 8px; left: 50%; width: 40px; height: 4px; margin-left: -20px;
-                        border-radius: 2px; background: var(--muted); opacity: .6; }
+dialog#detail .handle { position: absolute; top: 8px; left: 50%; width: 40px; height: 4px; margin-left: calc(var(--space-9) * -1);
+                        border-radius: var(--radius-pill); background: var(--muted); opacity: .6; }
 /* The title takes focus so a screen reader starts there; it is not a control, so no ring. */
 dialog#detail h2:focus, dialog#detail h2:focus-visible { outline: none; }
-.d-days { display: flex; gap: 6px; margin: 0 0 8px; flex-wrap: wrap; }
+.d-days { display: flex; gap: var(--space-3); margin: 0 0 var(--space-4); flex-wrap: wrap; }
 .d-days button { display: inline-flex; align-items: center; background: transparent; color: var(--muted); border: 1px solid var(--line);
-                 border-radius: 999px; padding: 3px 10px; font: inherit; font-size: .85rem; cursor: pointer; }
+                 border-radius: var(--radius-pill); padding: var(--space-2) var(--space-5); font: inherit; font-size: var(--text-sm); cursor: pointer; }
 .d-days button[aria-pressed="true"] { color: var(--text); border-color: var(--go); }
 @media (prefers-reduced-motion: no-preference) {
   dialog#detail.sheet[open] { animation: sheet-in .22s ease-out; }
@@ -135,40 +147,40 @@ dialog#detail h2:focus, dialog#detail h2:focus-visible { outline: none; }
   @keyframes side-out { to { opacity: 0; transform: translateX(12px); } }
   @keyframes fade { from { opacity: .4; } }
 }
-dialog#detail h2 { margin: 0 32px 6px 0; font-size: 1.15rem; display: flex; align-items: center; gap: 8px; }
-dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
-.close { position: absolute; top: 8px; right: 10px; background: transparent; border: 0; color: var(--text); font-size: 1.6rem; cursor: pointer; }
-.readout { min-height: 1.4em; font-variant-numeric: tabular-nums; margin: 10px 0 4px; }
-.hchart { margin: 6px 0; }
-.hchart figcaption { color: var(--muted); font-size: .85rem; }
+dialog#detail h2 { margin: 0 var(--space-10) var(--space-3) 0; font-size: var(--text-lg); display: flex; align-items: center; gap: var(--space-4); }
+dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
+.close { position: absolute; top: 8px; right: 10px; background: transparent; border: 0; color: var(--text); font-size: var(--text-xxl); cursor: pointer; }
+.readout { min-height: 1.4em; font-variant-numeric: tabular-nums; margin: var(--space-5) 0 var(--space-2); }
+.hchart { margin: var(--space-3) 0; }
+.hchart figcaption { color: var(--muted); font-size: var(--text-sm); }
 .hchart svg { width: 100%; height: auto; display: block; touch-action: pan-y; }
-.hchart svg:focus { outline: 2px solid var(--go); outline-offset: 2px; }
+.hchart svg:focus { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
 .hchart .grid { stroke: var(--line); stroke-width: 1; }
 .hchart .tick { fill: var(--muted); font: 10px system-ui, sans-serif; }
 .hchart .label { fill: var(--text); font: 600 10px system-ui, sans-serif; }
 .hchart .note { fill: var(--muted); font: 11px system-ui, sans-serif; }
 .hchart .cross { stroke: var(--muted); stroke-width: 1; }
-.hours table { border-collapse: collapse; width: 100%; font-size: .85rem; font-variant-numeric: tabular-nums; }
-.hours th, .hours td { text-align: right; padding: 2px 6px; border-bottom: 1px solid var(--line); }
+.hours table { border-collapse: collapse; width: 100%; font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
+.hours th, .hours td { text-align: right; padding: var(--space-1) var(--space-3); border-bottom: 1px solid var(--line); }
 .hours th:first-child, .hours td:first-child { text-align: left; }
-.links a { margin-right: 10px; }
+.links a { margin-right: var(--space-5); }
 
 /* CG-25: province filter. */
-.area select { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
-               padding: 5px 12px; font: inherit; font-size: .9rem; }
+.area select { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-pill);
+               padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); }
 
 /* CG-35: data older than 3 h. */
 #updated.stale { color: var(--maybe); }
 
 /* CG-11: the avalanche bulletin. Text only: the level is written out, never a colour. */
-.avalanche { border-left: 3px solid var(--line); padding-left: 8px; }
+.avalanche { border-left: 3px solid var(--line); padding-left: var(--space-4); }
 
 /* CG-38: map and list together. */
 .mapwrap { position: relative; min-width: 0; }
 .mapbar { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1000;
-          display: flex; gap: 8px; pointer-events: none; }
+          display: flex; gap: var(--space-4); pointer-events: none; }
 .mapbar button { pointer-events: auto; background: var(--panel); color: var(--text); border: 1px solid var(--go);
-                 border-radius: 999px; padding: 6px 14px; font: inherit; font-size: .9rem; cursor: pointer;
+                 border-radius: var(--radius-pill); padding: var(--space-3) var(--space-7); font: inherit; font-size: var(--text-md); cursor: pointer;
                  box-shadow: 0 2px 8px rgba(0, 0, 0, .5); white-space: nowrap; }
 .mapbar button.clear { border-color: var(--line); }
 .hot > .mark, .hot > .cluster { box-shadow: 0 0 0 3px #f2f4f5, 0 0 0 6px var(--go); }
@@ -177,26 +189,26 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
   @keyframes hot { 50% { box-shadow: 0 0 0 3px #f2f4f5, 0 0 0 9px rgba(16, 207, 83, .35); } }
 }
 #list li:hover, #list li:focus-visible { border-color: var(--line-strong); }
-#list li:focus-visible { outline: 2px solid var(--go); outline-offset: 1px; }
+#list li:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
 #list li.chosen { border-color: var(--go); }
 
 /* CG-39: three days at a glance. */
-.summary { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin: 0 16px 10px; font-size: .95rem; }
+.summary { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-7); margin: 0 var(--space-8) var(--space-5); font-size: var(--text-md); }
 .summary .count { display: inline-flex; align-items: center; }
-.strip { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-.strip .day { display: inline-flex; align-items: center; gap: 5px; background: transparent; color: var(--muted);
-              border: 1px solid var(--line); border-radius: 8px; padding: 3px 8px; font: inherit; font-size: .82rem;
+.strip { display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap; }
+.strip .day { display: inline-flex; align-items: center; gap: var(--space-3); background: transparent; color: var(--muted);
+              border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); font: inherit; font-size: var(--text-xs);
               cursor: pointer; font-variant-numeric: tabular-nums; }
 .strip .day .mark.small { margin-right: 0; }
 .strip .day[aria-pressed="true"] { color: var(--text); border-color: var(--muted); }
 .strip .day .t { color: var(--text); }
-.strip .rain { display: inline-flex; align-items: center; gap: 2px; color: var(--text); }
+.strip .rain { display: inline-flex; align-items: center; gap: var(--space-1); color: var(--text); }
 
 /* CG-41: a live page. The ghosts hold the place of the list while the data loads; crags that
    come into the list rise in. Motion only without prefers-reduced-motion. */
 #list li.ghost { height: 108px; cursor: default; background: linear-gradient(90deg, var(--panel) 0%, var(--ghost) 50%, var(--panel) 100%);
                  background-size: 200% 100%; }
-.summary.ghost { height: 1.4em; width: min(420px, 70%); border-radius: 6px; background: var(--panel); }
+.summary.ghost { height: 1.4em; width: min(420px, 70%); border-radius: var(--radius-sm); background: var(--panel); }
 @media (prefers-reduced-motion: no-preference) {
   #list li.ghost { animation: shimmer 1.4s linear infinite; }
   @keyframes shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }
@@ -205,39 +217,39 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 6px; }
 }
 
 /* CG-44: share the crag. */
-.share { margin: 10px 0 4px; }
+.share { margin: var(--space-5) 0 var(--space-2); }
 .share .more { margin-top: 0; }
-.share [role="status"] { color: var(--muted); font-size: .9rem; overflow-wrap: anywhere; }
+.share [role="status"] { color: var(--muted); font-size: var(--text-md); overflow-wrap: anywhere; }
 
 /* CG-46: favourites. The star says its state by shape (outline / filled) and by its label. */
-.star { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; padding: 4px;
-        background: transparent; border: 0; color: var(--muted); cursor: pointer; border-radius: 6px; flex: none; }
+.star { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; padding: var(--space-2);
+        background: transparent; border: 0; color: var(--muted); cursor: pointer; border-radius: var(--radius-sm); flex: none; }
 .star[aria-pressed="true"] { color: var(--maybe); }
-.star:focus-visible { outline: 2px solid var(--go); }
+.star:focus-visible { outline: var(--focus-ring); }
 dialog#detail h2 .star { margin-right: 0; }
-#favs { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
-        padding: 5px 12px; font: inherit; font-size: .9rem; cursor: pointer; }
+#favs { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-pill);
+        padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); cursor: pointer; }
 #favs[aria-pressed="true"] { border-color: var(--go); color: var(--go); }
 
 /* CG-53: compact controls on a phone. The filters fold behind "Filtri"; the count joins the
    summary's line; the header is shorter; the date is left to the day buttons above. */
 .filters { display: contents; }
 .filters-toggle { display: none; background: var(--panel); color: var(--text); border: 1px solid var(--line);
-                  border-radius: 999px; padding: 8px 14px; font: inherit; font-size: .9rem; cursor: pointer; flex: none; }
+                  border-radius: var(--radius-pill); padding: var(--space-4) var(--space-7); font: inherit; font-size: var(--text-md); cursor: pointer; flex: none; }
 .filters-toggle[aria-expanded="true"] { border-color: var(--go); color: var(--go); }
 .summary #count { margin-left: auto; }            /* to the line's end, even when it wraps */
 @media (max-width: 599px) {
-  header { padding: 10px 16px; gap: 10px; }
+  header { padding: var(--space-5) var(--space-8); gap: var(--space-5); }
   header img { width: 32px; height: 32px; }
-  header h1 { font-size: 1.15rem; }
-  header p { font-size: .85rem; line-height: 1.3; }
-  .controls { padding: 10px 16px; gap: 8px; }
+  header h1 { font-size: var(--text-lg); }
+  header p { font-size: var(--text-sm); line-height: 1.3; }
+  .controls { padding: var(--space-5) var(--space-8); gap: var(--space-4); }
   .search { flex: 1 1 0; min-width: 0; }
-  .search input { padding: 8px 12px; }
+  .search input { padding: var(--space-4) var(--space-6); }
   .filters-toggle { display: inline-flex; }
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; flex-basis: 100%; }
+  .filters { display: flex; flex-wrap: wrap; gap: var(--space-4); flex-basis: 100%; }
   .filters[data-open="false"] { display: none; }
-  .summary { gap: 4px 10px; font-size: .9rem; }
+  .summary { gap: var(--space-2) var(--space-5); font-size: var(--text-md); }
   .summary .date { display: none; }
 }
 
@@ -245,9 +257,9 @@ dialog#detail h2 .star { margin-right: 0; }
    first and the map takes the screen's height when chosen. */
 .show { display: none; }
 @media (max-width: 599px) {
-  .show { display: flex; gap: 0; margin: 0 16px 10px; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
-  .show button { flex: 1; background: var(--panel); color: var(--muted); border: 0; padding: 8px 0; font: inherit;
-                 font-size: .9rem; cursor: pointer; }
+  .show { display: flex; gap: 0; margin: 0 var(--space-8) var(--space-5); border: 1px solid var(--line); border-radius: var(--radius-pill); overflow: hidden; }
+  .show button { flex: 1; background: var(--panel); color: var(--muted); border: 0; padding: var(--space-4) 0; font: inherit;
+                 font-size: var(--text-md); cursor: pointer; }
   .show button[aria-pressed="true"] { background: var(--pressed); color: var(--go); font-weight: 600; }
   main.show-list .mapwrap { display: none; }
   main.show-map #list { display: none; }
@@ -256,42 +268,46 @@ dialog#detail h2 .star { margin-right: 0; }
 
 /* CG-57: a long list. The day's summary stays in sight while the page scrolls, and "Torna su"
    shows once the crags have been scrolled. */
-.summary { position: sticky; top: 0; z-index: 1001; background: var(--bg); margin: 0; padding: 8px 16px 10px; }
+.summary { position: sticky; top: 0; z-index: 1001; background: var(--bg); margin: 0; padding: var(--space-4) var(--space-8) var(--space-5); }
 .to-top { position: fixed; right: 16px; bottom: 16px; z-index: 1002; background: var(--panel); color: var(--text);
-          border: 1px solid var(--go); border-radius: 999px; padding: 10px 16px; font: inherit; font-size: .9rem;
+          border: 1px solid var(--go); border-radius: var(--radius-pill); padding: var(--space-5) var(--space-8); font: inherit; font-size: var(--text-md);
           cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .5); }
-.to-top:focus-visible { outline: 2px solid var(--go); outline-offset: 2px; }
+.to-top:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
 
 /* CG-58: compact crag cards — about twice as many per screen on a phone. */
-#list li { padding: 9px 12px; margin-bottom: 6px; }
-#list li .head { display: flex; align-items: flex-start; gap: 6px; }
+#list li { padding: var(--space-5) var(--space-6); margin-bottom: var(--space-3); }
+#list li .head { display: flex; align-items: flex-start; gap: var(--space-3); }
 #list li .head h2 { flex: 1; min-width: 0; line-height: 1.3; }
-#list li .head .star { margin: -3px -4px 0 0; }
-#list li p.meta { margin-top: 3px; font-size: .85rem; line-height: 1.35; }
+#list li .head .star { margin: calc(var(--space-2) * -1) calc(var(--space-2) * -1) 0 0; }
+#list li p.meta { margin-top: var(--space-2); font-size: var(--text-sm); line-height: 1.35; }
 #list li p.meta .details { color: var(--text); }
-#list li .tag { display: inline-block; padding: 0 6px; border: 1px dashed var(--muted); border-radius: 6px;
-                font-size: .78rem; line-height: 1.5; color: var(--muted); cursor: help; }
-#list li .row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 7px; }
+#list li .tag { display: inline-block; padding: 0 var(--space-3); border: 1px dashed var(--muted); border-radius: var(--radius-sm);
+                font-size: var(--text-xs); line-height: 1.5; color: var(--muted); cursor: help; }
+#list li .row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
 #list li .row .strip { margin-top: 0; }
 #list li .row .more { margin-top: 0; margin-left: auto; }
 #list li .more-icon { display: none; }
 /* The list's own width decides, not the screen's: a phone, and the list's column on a desktop. */
 #list { container-type: inline-size; container-name: list; }
 @container list (max-width: 460px) {
-  #list li .strip { gap: 4px; }
-  #list li .strip .day { padding: 2px 6px; gap: 4px; font-size: .8rem; }
-  #list li .row .more { padding: 2px 12px; font-size: 1.15rem; line-height: 1.2; }
+  #list li .strip { gap: var(--space-2); }
+  #list li .strip .day { padding: var(--space-1) var(--space-3); gap: var(--space-2); font-size: var(--text-xs); }
+  #list li .row .more { padding: var(--space-1) var(--space-6); font-size: var(--text-lg); line-height: 1.2; }
   #list li .row .more .more-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   #list li .row .more .more-icon { display: inline; }
 }
 
 /* CG-59: the OSM objects a crag was folded from, in the panel. */
-details.mapped { margin: 4px 0 8px; font-size: .9rem; }
+details.mapped { margin: var(--space-2) 0 var(--space-4); font-size: var(--text-md); }
 details.mapped summary { cursor: pointer; color: var(--muted); }
-details.mapped ul { display: flex; flex-wrap: wrap; gap: 4px 12px; list-style: none; margin: 6px 0 0; padding: 0; }
+details.mapped ul { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); list-style: none; margin: var(--space-3) 0 0; padding: 0; }
 
 /* CG-59: the day's weather as a small table, in the popup and the panel. */
-table.facts { border-collapse: collapse; margin: 6px 0; font-size: .85rem; font-variant-numeric: tabular-nums; }
-table.facts th { text-align: left; font-weight: 400; color: var(--muted); padding: 1px 14px 1px 0; }
-table.facts td { text-align: right; padding: 1px 0; }
+table.facts { border-collapse: collapse; margin: var(--space-3) 0; font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
+table.facts th { text-align: left; font-weight: 400; color: var(--muted); padding: var(--space-px) var(--space-7) var(--space-px) 0; }
+table.facts td { text-align: right; padding: var(--space-px) 0; }
 .leaflet-popup-content table.facts th { color: #515a65; }
+
+/* CG-62: one focus ring for every control, keyboard focus only. :where() keeps it at zero
+   specificity, so a rule that means otherwise (the panel's title, not a control) still wins. */
+:where(a, button, input, select, summary, [tabindex]):focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }

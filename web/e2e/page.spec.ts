@@ -113,3 +113,20 @@ test("CG-57: a long list keeps the summary in sight and offers 'Torna su'", asyn
   if (isMobile) await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
   else await expect.poll(() => page.locator("#list").evaluate(l => l.scrollTop)).toBe(0);
 });
+
+test("CG-62: every control shows the same focus ring under the keyboard", async ({ page }) => {
+  await page.goto("./");
+  await expect(page.locator("#list li h2").first()).toBeVisible();
+  const rings = new Set<string>();
+  for (let i = 0; i < 12; i++) {
+    await page.keyboard.press("Tab");
+    const ring = await page.evaluate(() => {
+      const el = document.activeElement as HTMLElement | null;
+      if (!el || el === document.body) return null;
+      const s = getComputedStyle(el);
+      return `${s.outlineStyle} ${s.outlineWidth} ${s.outlineOffset}`;
+    });
+    if (ring) rings.add(ring);
+  }
+  expect([...rings]).toEqual(["solid 2px 2px"]);
+});

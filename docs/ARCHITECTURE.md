@@ -114,6 +114,8 @@ flowchart TB
 - **Live and offline.** The page fetches the data every 10 minutes and on return to the tab; a
   network-first service worker (`web/public/sw.js`) serves the last copy offline, never caching
   map tiles; the footer says how old the data is and warns after 3 hours.
+- **Design tokens.** Colours, spacing, type, radii and the focus ring are CSS variables at the top
+  of `style.css`; the light theme redefines the colours only (CG-60, CG-62).
 - **Accessibility.** No verdict by colour alone — shape, letter and words
   ([ADR 0014](adr/0014-never-by-colour-alone.md)).
 - **Themes.** Dark, or light when the system asks (CG-60): one set of colour tokens in

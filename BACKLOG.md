@@ -316,8 +316,10 @@ and no grade filter; and no test notices when a change moves the layout.
   rings darker on white (green 5.5:1, amber 5.9:1, red 6.6:1), the marks' fills unchanged under
   their black letter (≥5.2:1); rain and temperature pass the dataviz validator on #ffffff; axe
   and the snapshots run in both themes. <!-- cg: prio=med size=M labels=frontend ver=main -->
-- [ ] **CG-62 — Design tokens**: spacing, type sizes, radii and focus rings as CSS variables, used
-  everywhere, so the next change touches one place. <!-- cg: prio=low size=M labels=frontend -->
+- [x] **CG-62 — Design tokens**: spacing, type sizes, radii and focus rings as CSS variables, used
+  everywhere, so the next change touches one place. Done in four commits: eleven spacing steps
+  (odd pixels rounded, a 1–2 px shift), seven type sizes, five radii, one focus ring — before
+  it, tabbing met three different rings; the marks and charts keep their fixed pixel sizes. <!-- cg: prio=low size=M labels=frontend ver=main -->
 - [x] **CG-64 — Faster first paint**: the crag panel and its charts loaded on demand, Leaflet in
   its own chunk; the Lighthouse performance budget raised to what that reaches. Done, with a
   modest result: the panel (8.7 kB) is fetched on idle, React and Leaflet are chunks of their
