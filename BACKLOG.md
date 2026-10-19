@@ -318,8 +318,13 @@ and no grade filter; and no test notices when a change moves the layout.
   and the snapshots run in both themes. <!-- cg: prio=med size=M labels=frontend ver=main -->
 - [ ] **CG-62 — Design tokens**: spacing, type sizes, radii and focus rings as CSS variables, used
   everywhere, so the next change touches one place. <!-- cg: prio=low size=M labels=frontend -->
-- [ ] **CG-64 — Faster first paint**: the crag panel and its charts loaded on demand, Leaflet in
-  its own chunk; the Lighthouse performance budget raised to what that reaches. <!-- cg: prio=low size=S labels=frontend -->
+- [x] **CG-64 — Faster first paint**: the crag panel and its charts loaded on demand, Leaflet in
+  its own chunk; the Lighthouse performance budget raised to what that reaches. Done, with a
+  modest result: the panel (8.7 kB) is fetched on idle, React and Leaflet are chunks of their
+  own (cached across deploys); local performance 0.89 → ~0.91, total blocking time 212 → ~180 ms,
+  CI's median unchanged at 0.92. Tried and dropped: preconnecting to the tile server and
+  content-visibility (no change), drawing the list in idle steps (worse: 0.85, 277 ms). Budget
+  0.85 → 0.88. <!-- cg: prio=low size=S labels=frontend ver=main -->
 
 ## v0.7.0 — Beyond Lombardy <!-- ms: phase=later -->
 

@@ -108,6 +108,9 @@ flowchart TB
 - **Widths.** Below 600 px the filters fold behind "Filtri" and the map and the list show one at
   a time, the list first; from 900 px the panel takes the list's column; a card tightens when the
   *list* is under 460 px (a container query) ([ADR 0013](adr/0013-phone-first-layout.md)).
+- **Chunks.** The page's own code, React, and Leaflet with markercluster are separate chunks; the
+  crag's panel and its charts come in a fourth, fetched when the browser is idle or at the first
+  "Dettagli" (CG-64).
 - **Live and offline.** The page fetches the data every 10 minutes and on return to the tab; a
   network-first service worker (`web/public/sw.js`) serves the last copy offline, never caching
   map tiles; the footer says how old the data is and warns after 3 hours.

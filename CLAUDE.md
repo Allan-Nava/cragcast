@@ -170,7 +170,7 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   remove one; a breaking change is a new `/api/v2/` next to v1. The README's API section lists
   every field — a new field goes there in the same PR.
 - **Lighthouse budgets are a floor, not a target** (CG-36): `lighthouserc.json` fails a PR below
-  performance 0.85 or accessibility / best practices / SEO 0.95 (median of 3, desktop). Lower a
+  performance 0.88 or accessibility / best practices / SEO 0.95 (median of 3, desktop). Lower a
   budget only with the reason in the commit; the measured baseline is in the README.
 - **Uptime is checked from outside** (CG-37): `uptime.yml` runs checkfleet (pinned version, checksum
   verified) against `monitoring/checkfleet.yml` and checks the API's `generatedAt` age. A new
