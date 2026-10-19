@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**82 items · 60 shipped · 22 open · 16 milestones.**
+**82 items · 61 shipped · 21 open · 16 milestones.**
 
 ## At a glance
 
@@ -20,7 +20,7 @@
 | **v0.6.0 — More crags, one link each** | next | `##########` 100% | 0 | 4 |
 | **v0.8.0 — Tested end to end** | now | `##########` 100% | 0 | 6 |
 | **v0.9.0 — UI fixes** | next | `##########` 100% | 0 | 5 |
-| **v0.10.0 — A better frontend** | next | `########..` 78% | 2 | 7 |
+| **v0.10.0 — A better frontend** | next | `#########.` 89% | 1 | 8 |
 | **v0.7.0 — Beyond Lombardy** | later | `..........` 0% | 1 | 0 |
 | **v1.1.0 — On a Raspberry Pi** | now | `########..` 75% | 1 | 3 |
 | **v1.2.0 — Everything in PostgreSQL** | next | `..........` 0% | 7 | 0 |
@@ -119,7 +119,7 @@
 - [x] **CG-61** — Order and grades · med · M · frontend · `main`
 - [x] **CG-60** — A light theme · med · M · frontend · `main`
 - [ ] **CG-62** — Design tokens · low · M · frontend
-- [ ] **CG-64** — Faster first paint · low · S · frontend
+- [x] **CG-64** — Faster first paint · low · S · frontend · `main`
 
 ## v0.7.0 — Beyond Lombardy
 
