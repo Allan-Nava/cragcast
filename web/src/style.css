@@ -9,6 +9,7 @@
   /* CG-62: the type scale; the page's base is the browser's 16px. */
   --text-xs: .8rem; --text-sm: .85rem; --text-md: .9rem; --text-base: 1rem; --text-lg: 1.15rem;
   --text-xl: 1.4rem; --text-xxl: 1.6rem;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 12px; --radius-xl: 16px; --radius-pill: 999px;
   --space-px: 1px; --space-1: 2px; --space-2: 4px; --space-3: 6px; --space-4: 8px; --space-5: 10px;
   --space-6: 12px; --space-7: 14px; --space-8: 16px; --space-9: 20px; --space-10: 32px;
 }
@@ -39,25 +40,25 @@ header h1 { margin: 0; font-size: var(--text-xl); }
 header p { margin: var(--space-1) 0 0; color: var(--muted); }
 .days { display: flex; gap: var(--space-4); padding: 0 var(--space-8); }
 .days button { background: var(--panel); color: var(--text); border: 1px solid var(--line);
-               border-radius: 999px; padding: var(--space-3) var(--space-7); font: inherit; cursor: pointer; }
+               border-radius: var(--radius-pill); padding: var(--space-3) var(--space-7); font: inherit; cursor: pointer; }
 .days button[aria-pressed="true"] { border-color: var(--go); color: var(--go); }
 .controls { display: flex; flex-wrap: wrap; gap: var(--space-5) var(--space-6); align-items: center; padding: var(--space-6) var(--space-8); }
 /* CG-61: 200 px, so the grade and order selects keep the row on one line at 1280 px. */
 .search { flex: 1 1 200px; }
 .search input { width: 100%; background: var(--panel); color: var(--text); border: 1px solid var(--line);
-                border-radius: 10px; padding: var(--space-5) var(--space-6); font: inherit; }
+                border-radius: var(--radius-md); padding: var(--space-5) var(--space-6); font: inherit; }
 .search input:focus { outline: 2px solid var(--go); outline-offset: 1px; border-color: transparent; }
 .legend { display: flex; gap: var(--space-4); }
-.legend button { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
+.legend button { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-pill);
                  padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); cursor: pointer; }
 .legend button[aria-pressed="false"] { opacity: .45; text-decoration: line-through; }
 #count { color: var(--muted); font-size: var(--text-md); }
 .empty { color: var(--muted); padding: var(--space-6) 0; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 main { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding: 0 var(--space-8); }
-#map { height: 55vh; min-height: 320px; border-radius: 12px; border: 1px solid var(--line); }
+#map { height: 55vh; min-height: 320px; border-radius: var(--radius-lg); border: 1px solid var(--line); }
 #list { list-style: none; margin: 0; padding: 0; }
-#list li { background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+#list li { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-md);
            padding: var(--space-5) var(--space-6); margin-bottom: var(--space-4); cursor: pointer; }
 #list li h2 { margin: 0; font-size: var(--text-base); display: flex; align-items: center; }
 #list li p { margin: var(--space-2) 0 0; color: var(--muted); font-size: var(--text-md); }
@@ -70,7 +71,7 @@ footer { color: var(--muted); font-size: var(--text-sm); padding: var(--space-8)
 }
 .leaflet-popup-content { font: 14px/1.4 system-ui, sans-serif; }
 .help { padding: var(--space-4) var(--space-8) 0; }
-.help details { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: var(--space-5) var(--space-7); }
+.help details { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-5) var(--space-7); }
 .help summary { cursor: pointer; font-weight: 600; }
 .help li { margin: var(--space-2) 0; }
 .help code { color: var(--go); }
@@ -88,7 +89,7 @@ footer { color: var(--muted); font-size: var(--text-sm); padding: var(--space-8)
 #list li h2 .mark.small { flex: none; margin-right: var(--space-4); }
 
 /* CG-22: "Vicino a me". */
-#near { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
+#near { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-pill);
         padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); cursor: pointer; }
 #near[aria-pressed="true"] { border-color: var(--go); color: var(--go); }
 .km { color: var(--muted); font-weight: 400; margin-left: var(--space-3); font-size: var(--text-md); }
@@ -97,7 +98,7 @@ footer { color: var(--muted); font-size: var(--text-sm); padding: var(--space-8)
 /* CG-23: a group of crags. Neutral fill, so colour never stands for a verdict here; the split
    is written out (e.g. 5S·2F·0N) and read aloud through aria-label. */
 .cluster { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 64px; height: 50px;
-           border-radius: 25px; background: #f2f4f5; color: #050505; border: 2px solid #050505;
+           border-radius: var(--radius-pill); background: #f2f4f5; color: #050505; border: 2px solid #050505;
            box-shadow: 0 0 0 3px rgba(16, 207, 83, .55); font: 800 17px/1 system-ui, sans-serif; }
 /* CG-55: 11 px, readable at 100% zoom; the letters and counts say it, not the colour. */
 .cluster small { font: 700 11px/1.1 system-ui, sans-serif; margin-top: var(--space-2); letter-spacing: .01em; white-space: nowrap; }
@@ -107,7 +108,7 @@ footer { color: var(--muted); font-size: var(--text-sm); padding: var(--space-8)
    one size, one shape, one hover and focus. On the popup's white the green is a step darker
    (#0a7a35, 5.4:1; the site's #10cf53 is 2.1:1 there). */
 .more { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); margin-top: var(--space-4);
-        background: transparent; color: var(--go); border: 1px solid var(--line); border-radius: 999px;
+        background: transparent; color: var(--go); border: 1px solid var(--line); border-radius: var(--radius-pill);
         padding: var(--space-2) var(--space-6); font: inherit; font-size: var(--text-sm); line-height: 1.3; cursor: pointer; }
 .more:hover { border-color: var(--go); }
 .more:focus-visible { outline: 2px solid var(--go); outline-offset: 2px; }
@@ -117,21 +118,21 @@ dialog#detail { background: var(--panel); color: var(--text); border: 1px solid 
                 overflow-y: auto; overscroll-behavior: contain; }
 /* CG-40: a bottom sheet on phones (modal), a side panel from 900 px (non-modal). */
 dialog#detail.sheet { position: fixed; inset: auto 0 0 0; margin: 0; width: 100%; max-width: 100%; max-height: 88vh;
-                      border-radius: 16px 16px 0 0; border-bottom: 0; padding-top: var(--space-9); }
+                      border-radius: var(--radius-xl) var(--radius-xl) 0 0; border-bottom: 0; padding-top: var(--space-9); }
 dialog#detail.sheet::backdrop { background: rgba(0, 0, 0, .6); }
 /* CG-56: beside, not over — from 900 px the open panel sits in the list's column of the grid,
    below the controls, as tall as the map; the list steps aside until it closes. */
 dialog#detail.side { position: relative; grid-column: 2; grid-row: 1; margin: 0; width: auto; height: 70vh; max-height: 70vh;
-                     border-radius: 12px; border-width: 1px; box-shadow: none; z-index: auto; }
+                     border-radius: var(--radius-lg); border-width: 1px; box-shadow: none; z-index: auto; }
 main.panel-open #list { display: none; }
 @media (max-width: 899px) { main.panel-open #list { display: revert; } }
 dialog#detail .handle { position: absolute; top: 8px; left: 50%; width: 40px; height: 4px; margin-left: calc(var(--space-9) * -1);
-                        border-radius: 2px; background: var(--muted); opacity: .6; }
+                        border-radius: var(--radius-pill); background: var(--muted); opacity: .6; }
 /* The title takes focus so a screen reader starts there; it is not a control, so no ring. */
 dialog#detail h2:focus, dialog#detail h2:focus-visible { outline: none; }
 .d-days { display: flex; gap: var(--space-3); margin: 0 0 var(--space-4); flex-wrap: wrap; }
 .d-days button { display: inline-flex; align-items: center; background: transparent; color: var(--muted); border: 1px solid var(--line);
-                 border-radius: 999px; padding: var(--space-2) var(--space-5); font: inherit; font-size: var(--text-sm); cursor: pointer; }
+                 border-radius: var(--radius-pill); padding: var(--space-2) var(--space-5); font: inherit; font-size: var(--text-sm); cursor: pointer; }
 .d-days button[aria-pressed="true"] { color: var(--text); border-color: var(--go); }
 @media (prefers-reduced-motion: no-preference) {
   dialog#detail.sheet[open] { animation: sheet-in .22s ease-out; }
@@ -164,7 +165,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
 .links a { margin-right: var(--space-5); }
 
 /* CG-25: province filter. */
-.area select { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
+.area select { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-pill);
                padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); }
 
 /* CG-35: data older than 3 h. */
@@ -178,7 +179,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
 .mapbar { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1000;
           display: flex; gap: var(--space-4); pointer-events: none; }
 .mapbar button { pointer-events: auto; background: var(--panel); color: var(--text); border: 1px solid var(--go);
-                 border-radius: 999px; padding: var(--space-3) var(--space-7); font: inherit; font-size: var(--text-md); cursor: pointer;
+                 border-radius: var(--radius-pill); padding: var(--space-3) var(--space-7); font: inherit; font-size: var(--text-md); cursor: pointer;
                  box-shadow: 0 2px 8px rgba(0, 0, 0, .5); white-space: nowrap; }
 .mapbar button.clear { border-color: var(--line); }
 .hot > .mark, .hot > .cluster { box-shadow: 0 0 0 3px #f2f4f5, 0 0 0 6px var(--go); }
@@ -195,7 +196,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
 .summary .count { display: inline-flex; align-items: center; }
 .strip { display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap; }
 .strip .day { display: inline-flex; align-items: center; gap: var(--space-3); background: transparent; color: var(--muted);
-              border: 1px solid var(--line); border-radius: 8px; padding: var(--space-2) var(--space-4); font: inherit; font-size: var(--text-xs);
+              border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); font: inherit; font-size: var(--text-xs);
               cursor: pointer; font-variant-numeric: tabular-nums; }
 .strip .day .mark.small { margin-right: 0; }
 .strip .day[aria-pressed="true"] { color: var(--text); border-color: var(--muted); }
@@ -206,7 +207,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
    come into the list rise in. Motion only without prefers-reduced-motion. */
 #list li.ghost { height: 108px; cursor: default; background: linear-gradient(90deg, var(--panel) 0%, var(--ghost) 50%, var(--panel) 100%);
                  background-size: 200% 100%; }
-.summary.ghost { height: 1.4em; width: min(420px, 70%); border-radius: 6px; background: var(--panel); }
+.summary.ghost { height: 1.4em; width: min(420px, 70%); border-radius: var(--radius-sm); background: var(--panel); }
 @media (prefers-reduced-motion: no-preference) {
   #list li.ghost { animation: shimmer 1.4s linear infinite; }
   @keyframes shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }
@@ -221,11 +222,11 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
 
 /* CG-46: favourites. The star says its state by shape (outline / filled) and by its label. */
 .star { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; padding: var(--space-2);
-        background: transparent; border: 0; color: var(--muted); cursor: pointer; border-radius: 6px; flex: none; }
+        background: transparent; border: 0; color: var(--muted); cursor: pointer; border-radius: var(--radius-sm); flex: none; }
 .star[aria-pressed="true"] { color: var(--maybe); }
 .star:focus-visible { outline: 2px solid var(--go); }
 dialog#detail h2 .star { margin-right: 0; }
-#favs { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
+#favs { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-pill);
         padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); cursor: pointer; }
 #favs[aria-pressed="true"] { border-color: var(--go); color: var(--go); }
 
@@ -233,7 +234,7 @@ dialog#detail h2 .star { margin-right: 0; }
    summary's line; the header is shorter; the date is left to the day buttons above. */
 .filters { display: contents; }
 .filters-toggle { display: none; background: var(--panel); color: var(--text); border: 1px solid var(--line);
-                  border-radius: 999px; padding: var(--space-4) var(--space-7); font: inherit; font-size: var(--text-md); cursor: pointer; flex: none; }
+                  border-radius: var(--radius-pill); padding: var(--space-4) var(--space-7); font: inherit; font-size: var(--text-md); cursor: pointer; flex: none; }
 .filters-toggle[aria-expanded="true"] { border-color: var(--go); color: var(--go); }
 .summary #count { margin-left: auto; }            /* to the line's end, even when it wraps */
 @media (max-width: 599px) {
@@ -255,7 +256,7 @@ dialog#detail h2 .star { margin-right: 0; }
    first and the map takes the screen's height when chosen. */
 .show { display: none; }
 @media (max-width: 599px) {
-  .show { display: flex; gap: 0; margin: 0 var(--space-8) var(--space-5); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .show { display: flex; gap: 0; margin: 0 var(--space-8) var(--space-5); border: 1px solid var(--line); border-radius: var(--radius-pill); overflow: hidden; }
   .show button { flex: 1; background: var(--panel); color: var(--muted); border: 0; padding: var(--space-4) 0; font: inherit;
                  font-size: var(--text-md); cursor: pointer; }
   .show button[aria-pressed="true"] { background: var(--pressed); color: var(--go); font-weight: 600; }
@@ -268,7 +269,7 @@ dialog#detail h2 .star { margin-right: 0; }
    shows once the crags have been scrolled. */
 .summary { position: sticky; top: 0; z-index: 1001; background: var(--bg); margin: 0; padding: var(--space-4) var(--space-8) var(--space-5); }
 .to-top { position: fixed; right: 16px; bottom: 16px; z-index: 1002; background: var(--panel); color: var(--text);
-          border: 1px solid var(--go); border-radius: 999px; padding: var(--space-5) var(--space-8); font: inherit; font-size: var(--text-md);
+          border: 1px solid var(--go); border-radius: var(--radius-pill); padding: var(--space-5) var(--space-8); font: inherit; font-size: var(--text-md);
           cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .5); }
 .to-top:focus-visible { outline: 2px solid var(--go); outline-offset: 2px; }
 
@@ -279,7 +280,7 @@ dialog#detail h2 .star { margin-right: 0; }
 #list li .head .star { margin: calc(var(--space-2) * -1) calc(var(--space-2) * -1) 0 0; }
 #list li p.meta { margin-top: var(--space-2); font-size: var(--text-sm); line-height: 1.35; }
 #list li p.meta .details { color: var(--text); }
-#list li .tag { display: inline-block; padding: 0 var(--space-3); border: 1px dashed var(--muted); border-radius: 6px;
+#list li .tag { display: inline-block; padding: 0 var(--space-3); border: 1px dashed var(--muted); border-radius: var(--radius-sm);
                 font-size: var(--text-xs); line-height: 1.5; color: var(--muted); cursor: help; }
 #list li .row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
 #list li .row .strip { margin-top: 0; }
