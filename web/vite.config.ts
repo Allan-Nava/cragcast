@@ -13,7 +13,20 @@ export default defineConfig({
       this.emitFile({ type: "asset", fileName: "logo.svg", source: readFileSync(new URL("../assets/logo.svg", import.meta.url)) });
     },
   }],
-  build: { outDir: "../site", emptyOutDir: true },
+  build: {
+    outDir: "../site",
+    emptyOutDir: true,
+    // CG-64: the libraries change far less often than the page; in chunks of their own they stay
+    // cached across deploys, and the page's own code is a small file.
+    rollupOptions: {
+      output: {
+        manualChunks(id: string) {
+          if (/node_modules\/(leaflet|leaflet\.markercluster)\//.test(id)) return "leaflet";
+          if (/node_modules\/(react|react-dom|scheduler)\//.test(id)) return "react";
+        },
+      },
+    },
+  },
   test: {
     environment: "jsdom",
     include: ["src/**/*.test.{ts,tsx}"],          // e2e/ belongs to Playwright
