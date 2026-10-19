@@ -20,4 +20,6 @@ text from OSM reaches the DOM as text, never as markup.
 ## Consequences
 
 - A build step and node_modules; in return types, components and unit tests.
-- The bundle is about 430 KB (130 KB gzipped); CG-64 is to split it.
+- The bundle was about 430 KB (130 KB gzipped). Since CG-64 the page's code is a 32 KB chunk,
+  React and Leaflet chunks of their own that stay cached across deploys, and the crag's panel is
+  fetched on demand; the first render's cost is mostly React drawing the list.
