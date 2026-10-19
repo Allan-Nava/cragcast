@@ -10,6 +10,7 @@
   --text-xs: .8rem; --text-sm: .85rem; --text-md: .9rem; --text-base: 1rem; --text-lg: 1.15rem;
   --text-xl: 1.4rem; --text-xxl: 1.6rem;
   --radius-sm: 6px; --radius-md: 10px; --radius-lg: 12px; --radius-xl: 16px; --radius-pill: 999px;
+  --focus-ring: 2px solid var(--go); --focus-offset: 2px;
   --space-px: 1px; --space-1: 2px; --space-2: 4px; --space-3: 6px; --space-4: 8px; --space-5: 10px;
   --space-6: 12px; --space-7: 14px; --space-8: 16px; --space-9: 20px; --space-10: 32px;
 }
@@ -47,7 +48,7 @@ header p { margin: var(--space-1) 0 0; color: var(--muted); }
 .search { flex: 1 1 200px; }
 .search input { width: 100%; background: var(--panel); color: var(--text); border: 1px solid var(--line);
                 border-radius: var(--radius-md); padding: var(--space-5) var(--space-6); font: inherit; }
-.search input:focus { outline: 2px solid var(--go); outline-offset: 1px; border-color: transparent; }
+.search input:focus { outline: var(--focus-ring); outline-offset: var(--focus-offset); border-color: transparent; }
 .legend { display: flex; gap: var(--space-4); }
 .legend button { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-pill);
                  padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); cursor: pointer; }
@@ -111,7 +112,7 @@ footer { color: var(--muted); font-size: var(--text-sm); padding: var(--space-8)
         background: transparent; color: var(--go); border: 1px solid var(--line); border-radius: var(--radius-pill);
         padding: var(--space-2) var(--space-6); font: inherit; font-size: var(--text-sm); line-height: 1.3; cursor: pointer; }
 .more:hover { border-color: var(--go); }
-.more:focus-visible { outline: 2px solid var(--go); outline-offset: 2px; }
+.more:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
 .leaflet-popup-content .more { color: #0a7a35; border-color: #c9d1d9; font-size: var(--text-sm); }
 .leaflet-popup-content .more:hover, .leaflet-popup-content .more:focus-visible { border-color: #0a7a35; outline-color: #0a7a35; }
 dialog#detail { background: var(--panel); color: var(--text); border: 1px solid var(--line); padding: var(--space-8);
@@ -153,7 +154,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
 .hchart { margin: var(--space-3) 0; }
 .hchart figcaption { color: var(--muted); font-size: var(--text-sm); }
 .hchart svg { width: 100%; height: auto; display: block; touch-action: pan-y; }
-.hchart svg:focus { outline: 2px solid var(--go); outline-offset: 2px; }
+.hchart svg:focus { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
 .hchart .grid { stroke: var(--line); stroke-width: 1; }
 .hchart .tick { fill: var(--muted); font: 10px system-ui, sans-serif; }
 .hchart .label { fill: var(--text); font: 600 10px system-ui, sans-serif; }
@@ -188,7 +189,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
   @keyframes hot { 50% { box-shadow: 0 0 0 3px #f2f4f5, 0 0 0 9px rgba(16, 207, 83, .35); } }
 }
 #list li:hover, #list li:focus-visible { border-color: var(--line-strong); }
-#list li:focus-visible { outline: 2px solid var(--go); outline-offset: 1px; }
+#list li:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
 #list li.chosen { border-color: var(--go); }
 
 /* CG-39: three days at a glance. */
@@ -224,7 +225,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
 .star { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; padding: var(--space-2);
         background: transparent; border: 0; color: var(--muted); cursor: pointer; border-radius: var(--radius-sm); flex: none; }
 .star[aria-pressed="true"] { color: var(--maybe); }
-.star:focus-visible { outline: 2px solid var(--go); }
+.star:focus-visible { outline: var(--focus-ring); }
 dialog#detail h2 .star { margin-right: 0; }
 #favs { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-pill);
         padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); cursor: pointer; }
@@ -271,7 +272,7 @@ dialog#detail h2 .star { margin-right: 0; }
 .to-top { position: fixed; right: 16px; bottom: 16px; z-index: 1002; background: var(--panel); color: var(--text);
           border: 1px solid var(--go); border-radius: var(--radius-pill); padding: var(--space-5) var(--space-8); font: inherit; font-size: var(--text-md);
           cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .5); }
-.to-top:focus-visible { outline: 2px solid var(--go); outline-offset: 2px; }
+.to-top:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
 
 /* CG-58: compact crag cards — about twice as many per screen on a phone. */
 #list li { padding: var(--space-5) var(--space-6); margin-bottom: var(--space-3); }
@@ -306,3 +307,7 @@ table.facts { border-collapse: collapse; margin: var(--space-3) 0; font-size: va
 table.facts th { text-align: left; font-weight: 400; color: var(--muted); padding: var(--space-px) var(--space-7) var(--space-px) 0; }
 table.facts td { text-align: right; padding: var(--space-px) 0; }
 .leaflet-popup-content table.facts th { color: #515a65; }
+
+/* CG-62: one focus ring for every control, keyboard focus only. :where() keeps it at zero
+   specificity, so a rule that means otherwise (the panel's title, not a control) still wins. */
+:where(a, button, input, select, summary, [tabindex]):focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
