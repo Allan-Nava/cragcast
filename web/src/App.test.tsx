@@ -1,6 +1,6 @@
 // CG-41: the page picks up new data on its own, keeping the view.
 import { afterEach, describe as group, expect, it, vi } from "vitest";
-import { act, cleanup, render, screen } from "@testing-library/react";
+import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
 import { App, REFRESH_MS } from "./App";
 import { crag } from "./test/fixtures";
 import type { Conditions } from "./types";
@@ -41,7 +41,8 @@ group("a link to a crag (CG-44)", () => {
     history.replaceState(null, "", `/?crag=${encodeURIComponent("node/1")}&day=${DAY}`);
     render(<App />);
     await screen.findAllByText("Corna di Medale — Si va");          // the list's row and the panel's title
-    expect(document.getElementById("d-title")?.textContent).toContain("Corna di Medale — Si va");
+    // CG-64: the panel comes in its own chunk, a moment after the page.
+    await waitFor(() => expect(document.getElementById("d-title")?.textContent).toContain("Corna di Medale — Si va"));
     expect((document.getElementById("detail") as HTMLDialogElement).hasAttribute("open")).toBe(true);
     await act(async () => { screen.getByLabelText("Chiudi").click(); await new Promise(r => setTimeout(r, 250)); });
     expect(new URLSearchParams(location.search).get("crag")).toBeNull();

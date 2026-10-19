@@ -1,6 +1,6 @@
 // CG-50: the page's flows through App — near me, a failed load, the controls and history.
 import { afterEach, beforeEach, describe as group, expect, it, vi } from "vitest";
-import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { App, REFRESH_MS } from "./App";
 import { crag } from "./test/fixtures";
 import type { Conditions } from "./types";
@@ -290,5 +290,18 @@ group("order and grades (CG-61)", () => {
     await act(async () => { fireEvent.click(screen.getByRole("button", { name: "Vicino a me" })); });
     expect([...order.options].map(o => o.value)).not.toContain("distance");
     expect(order.value).toBe("name");
+  });
+});
+
+group("panel on demand (CG-64)", () => {
+  it("fetches the panel's chunk when the browser is idle", async () => {
+    serve(data());
+    const idle = vi.fn((f: () => void) => { f(); return 1; });
+    vi.stubGlobal("requestIdleCallback", idle);
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    expect(idle).toHaveBeenCalledOnce();
+    await act(async () => { fireEvent.click(screen.getAllByText("Dettagli")[0]); });
+    await waitFor(() => expect(document.getElementById("d-title")?.textContent).toContain("Parete Alfa — Si va"));
   });
 });

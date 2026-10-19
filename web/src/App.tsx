@@ -1,7 +1,7 @@
 // Reads data/conditions.json, written every hour by the GitHub Action (ConditionsExport), and
 // shows one mark per crag for the chosen day. Search, verdict filter, province, grades, order
 // and day live in the URL (?q=&v=&p=&g=&o=&day=), so a link opens the same view and back works.
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Conditions, Crag, Verdict } from "./types";
 import { ORDER, fold, place } from "./lib/text";
 import { km } from "./lib/geo";
@@ -9,7 +9,6 @@ import { inArea, readState, stateQuery, type Area, type ViewState } from "./lib/
 import { Controls } from "./components/Controls";
 import { CragMap, type MapApi } from "./components/CragMap";
 import { CragList } from "./components/CragList";
-import { DetailDialog } from "./components/DetailDialog";
 import { Help } from "./components/Help";
 import { Footer } from "./components/Footer";
 import { Summary } from "./components/Summary";
@@ -53,6 +52,11 @@ export function visible(crags: Crag[], s: ViewState, distance: ((c: Crag) => num
 
 /** CG-54: the width below which the page shows the map or the list, not both (style.css). */
 const narrow = () => typeof matchMedia === "function" && matchMedia("(max-width: 599px)").matches;
+
+// CG-64: the crag's panel and its charts are not needed for the first paint: they come in their
+// own chunk, fetched when the browser is idle or at the first "Dettagli", whichever is first.
+const loadPanel = () => import("./components/DetailDialog");
+const DetailDialog = lazy(() => loadPanel().then(m => ({ default: m.DetailDialog })));
 
 /** How often the page looks for new data; the data itself changes hourly, at about :20. */
 export const REFRESH_MS = 10 * 60 * 1000;
@@ -150,6 +154,16 @@ export function App() {
     const v = viewRef.current;
     if (v && v.crag !== c.id) go({ ...v, crag: c.id }, true);
   }, []);
+  // CG-64: fetch the panel's chunk once the page is idle, so "Dettagli" opens at once. Once a
+  // panel has been wanted it stays mounted, so its slide-out on close still runs.
+  const [panelWanted, setPanelWanted] = useState(false);
+  useEffect(() => { if (detail) setPanelWanted(true); }, [detail]);
+  useEffect(() => {
+    const idle = (window as { requestIdleCallback?: (f: () => void) => number }).requestIdleCallback;
+    const id = idle ? idle(() => { void loadPanel(); }) : setTimeout(() => { void loadPanel(); }, 2000);
+    return () => { if (!idle) clearTimeout(id); };
+  }, []);
+
   // CG-54: a map that was hidden has no size; measure it when it comes back.
   useEffect(() => { if (view?.show === "map") mapApi.current?.refresh(); }, [view?.show]);
 
@@ -208,7 +222,7 @@ export function App() {
                 state={view ?? { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null, show: "list", grade: null, order: "verdict" }}
                 byDistance={byDistance && !!here}
                 near={asking ? "asking" : here ? "on" : "off"} active={active}
-                onDay={day => view && go({ ...view, day }, true)}
+                             onDay={day => view && go({ ...view, day }, true)}
                 onQuery={q => view && go({ ...view, q }, false)}
                 onToggle={toggle}
                 onProvince={province => view && go({ ...view, province }, true)}
@@ -251,10 +265,14 @@ export function App() {
               {!error && [0, 1, 2, 3, 4].map(i => <li key={i} className="ghost" aria-hidden="true" />)}
             </ul>}
         {/* CG-56: inside the grid, so on a desktop the panel takes the list's column. */}
-  <DetailDialog crag={detail} day={view?.day ?? ""} days={data?.days ?? []}
-                      favourite={detail ? favourites.has(detail.id) : false} onFavourite={toggleFavourite}
-                      onDay={day => view && go({ ...view, day }, true)}
-                      onClose={() => { if (viewRef.current?.crag) go({ ...viewRef.current, crag: null }, true); }} />
+        {panelWanted && (
+          <Suspense fallback={null}>
+            <DetailDialog crag={detail} day={view?.day ?? ""} days={data?.days ?? []}
+                         favourite={detail ? favourites.has(detail.id) : false} onFavourite={toggleFavourite}
+            onDay={day => view && go({ ...view, day }, true)}
+                         onClose={() => { if (viewRef.current?.crag) go({ ...viewRef.current, crag: null }, true); }} />
+          </Suspense>
+        )}
       </main>
       <BackToTop />
       <Help />
