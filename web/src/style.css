@@ -2,9 +2,13 @@
    two jobs: --go/--maybe/--no_go are text, borders and focus rings (≥4.5:1 on the surface), the
    *-fill tokens are the marks' fills under a black letter (≥5.2:1) and a black outline, the
    same in both themes (CG-21). */
-/* CG-62: the spacing scale. Every padding, margin and gap uses it, so a change to the rhythm is
-   one line here. */
+/* CG-62: the design tokens — spacing, type, radii, focus — so a change touches one line here.
+   Every padding, margin, gap and font size uses them. The verdict marks, the cluster marks and the
+   charts' labels keep pixel sizes on purpose: they are drawn at fixed sizes, like their shapes. */
 :root {
+  /* CG-62: the type scale; the page's base is the browser's 16px. */
+  --text-xs: .8rem; --text-sm: .85rem; --text-md: .9rem; --text-base: 1rem; --text-lg: 1.15rem;
+  --text-xl: 1.4rem; --text-xxl: 1.6rem;
   --space-px: 1px; --space-1: 2px; --space-2: 4px; --space-3: 6px; --space-4: 8px; --space-5: 10px;
   --space-6: 12px; --space-7: 14px; --space-8: 16px; --space-9: 20px; --space-10: 32px;
 }
@@ -31,7 +35,7 @@ body { margin: 0; background: var(--bg); color: var(--text);
        font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
 a { color: var(--go); }
 header { display: flex; gap: var(--space-7); align-items: center; padding: var(--space-8); }
-header h1 { margin: 0; font-size: 1.4rem; }
+header h1 { margin: 0; font-size: var(--text-xl); }
 header p { margin: var(--space-1) 0 0; color: var(--muted); }
 .days { display: flex; gap: var(--space-4); padding: 0 var(--space-8); }
 .days button { background: var(--panel); color: var(--text); border: 1px solid var(--line);
@@ -45,9 +49,9 @@ header p { margin: var(--space-1) 0 0; color: var(--muted); }
 .search input:focus { outline: 2px solid var(--go); outline-offset: 1px; border-color: transparent; }
 .legend { display: flex; gap: var(--space-4); }
 .legend button { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
-                 padding: var(--space-3) var(--space-6); font: inherit; font-size: .9rem; cursor: pointer; }
+                 padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); cursor: pointer; }
 .legend button[aria-pressed="false"] { opacity: .45; text-decoration: line-through; }
-#count { color: var(--muted); font-size: .9rem; }
+#count { color: var(--muted); font-size: var(--text-md); }
 .empty { color: var(--muted); padding: var(--space-6) 0; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 main { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding: 0 var(--space-8); }
@@ -55,10 +59,10 @@ main { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6)
 #list { list-style: none; margin: 0; padding: 0; }
 #list li { background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
            padding: var(--space-5) var(--space-6); margin-bottom: var(--space-4); cursor: pointer; }
-#list li h2 { margin: 0; font-size: 1rem; display: flex; align-items: center; }
-#list li p { margin: var(--space-2) 0 0; color: var(--muted); font-size: .9rem; }
+#list li h2 { margin: 0; font-size: var(--text-base); display: flex; align-items: center; }
+#list li p { margin: var(--space-2) 0 0; color: var(--muted); font-size: var(--text-md); }
 #list li p.details { color: var(--text); }
-footer { color: var(--muted); font-size: .85rem; padding: var(--space-8); }
+footer { color: var(--muted); font-size: var(--text-sm); padding: var(--space-8); }
 @media (min-width: 900px) {
   main { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
   #map { height: 70vh; }
@@ -85,9 +89,9 @@ footer { color: var(--muted); font-size: .85rem; padding: var(--space-8); }
 
 /* CG-22: "Vicino a me". */
 #near { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
-        padding: var(--space-3) var(--space-6); font: inherit; font-size: .9rem; cursor: pointer; }
+        padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); cursor: pointer; }
 #near[aria-pressed="true"] { border-color: var(--go); color: var(--go); }
-.km { color: var(--muted); font-weight: 400; margin-left: var(--space-3); font-size: .9rem; }
+.km { color: var(--muted); font-weight: 400; margin-left: var(--space-3); font-size: var(--text-md); }
 .me { display: block; width: 14px; height: 14px; border-radius: 50%; background: #4aa3ff; border: 2px solid #fff; box-shadow: 0 0 0 2px #050505; }
 
 /* CG-23: a group of crags. Neutral fill, so colour never stands for a verdict here; the split
@@ -104,10 +108,10 @@ footer { color: var(--muted); font-size: .85rem; padding: var(--space-8); }
    (#0a7a35, 5.4:1; the site's #10cf53 is 2.1:1 there). */
 .more { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); margin-top: var(--space-4);
         background: transparent; color: var(--go); border: 1px solid var(--line); border-radius: 999px;
-        padding: var(--space-2) var(--space-6); font: inherit; font-size: .85rem; line-height: 1.3; cursor: pointer; }
+        padding: var(--space-2) var(--space-6); font: inherit; font-size: var(--text-sm); line-height: 1.3; cursor: pointer; }
 .more:hover { border-color: var(--go); }
 .more:focus-visible { outline: 2px solid var(--go); outline-offset: 2px; }
-.leaflet-popup-content .more { color: #0a7a35; border-color: #c9d1d9; font-size: .85rem; }
+.leaflet-popup-content .more { color: #0a7a35; border-color: #c9d1d9; font-size: var(--text-sm); }
 .leaflet-popup-content .more:hover, .leaflet-popup-content .more:focus-visible { border-color: #0a7a35; outline-color: #0a7a35; }
 dialog#detail { background: var(--panel); color: var(--text); border: 1px solid var(--line); padding: var(--space-8);
                 overflow-y: auto; overscroll-behavior: contain; }
@@ -127,7 +131,7 @@ dialog#detail .handle { position: absolute; top: 8px; left: 50%; width: 40px; he
 dialog#detail h2:focus, dialog#detail h2:focus-visible { outline: none; }
 .d-days { display: flex; gap: var(--space-3); margin: 0 0 var(--space-4); flex-wrap: wrap; }
 .d-days button { display: inline-flex; align-items: center; background: transparent; color: var(--muted); border: 1px solid var(--line);
-                 border-radius: 999px; padding: var(--space-2) var(--space-5); font: inherit; font-size: .85rem; cursor: pointer; }
+                 border-radius: 999px; padding: var(--space-2) var(--space-5); font: inherit; font-size: var(--text-sm); cursor: pointer; }
 .d-days button[aria-pressed="true"] { color: var(--text); border-color: var(--go); }
 @media (prefers-reduced-motion: no-preference) {
   dialog#detail.sheet[open] { animation: sheet-in .22s ease-out; }
@@ -141,12 +145,12 @@ dialog#detail h2:focus, dialog#detail h2:focus-visible { outline: none; }
   @keyframes side-out { to { opacity: 0; transform: translateX(12px); } }
   @keyframes fade { from { opacity: .4; } }
 }
-dialog#detail h2 { margin: 0 var(--space-10) var(--space-3) 0; font-size: 1.15rem; display: flex; align-items: center; gap: var(--space-4); }
+dialog#detail h2 { margin: 0 var(--space-10) var(--space-3) 0; font-size: var(--text-lg); display: flex; align-items: center; gap: var(--space-4); }
 dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
-.close { position: absolute; top: 8px; right: 10px; background: transparent; border: 0; color: var(--text); font-size: 1.6rem; cursor: pointer; }
+.close { position: absolute; top: 8px; right: 10px; background: transparent; border: 0; color: var(--text); font-size: var(--text-xxl); cursor: pointer; }
 .readout { min-height: 1.4em; font-variant-numeric: tabular-nums; margin: var(--space-5) 0 var(--space-2); }
 .hchart { margin: var(--space-3) 0; }
-.hchart figcaption { color: var(--muted); font-size: .85rem; }
+.hchart figcaption { color: var(--muted); font-size: var(--text-sm); }
 .hchart svg { width: 100%; height: auto; display: block; touch-action: pan-y; }
 .hchart svg:focus { outline: 2px solid var(--go); outline-offset: 2px; }
 .hchart .grid { stroke: var(--line); stroke-width: 1; }
@@ -154,14 +158,14 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
 .hchart .label { fill: var(--text); font: 600 10px system-ui, sans-serif; }
 .hchart .note { fill: var(--muted); font: 11px system-ui, sans-serif; }
 .hchart .cross { stroke: var(--muted); stroke-width: 1; }
-.hours table { border-collapse: collapse; width: 100%; font-size: .85rem; font-variant-numeric: tabular-nums; }
+.hours table { border-collapse: collapse; width: 100%; font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
 .hours th, .hours td { text-align: right; padding: var(--space-1) var(--space-3); border-bottom: 1px solid var(--line); }
 .hours th:first-child, .hours td:first-child { text-align: left; }
 .links a { margin-right: var(--space-5); }
 
 /* CG-25: province filter. */
 .area select { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
-               padding: var(--space-3) var(--space-6); font: inherit; font-size: .9rem; }
+               padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); }
 
 /* CG-35: data older than 3 h. */
 #updated.stale { color: var(--maybe); }
@@ -174,7 +178,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
 .mapbar { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1000;
           display: flex; gap: var(--space-4); pointer-events: none; }
 .mapbar button { pointer-events: auto; background: var(--panel); color: var(--text); border: 1px solid var(--go);
-                 border-radius: 999px; padding: var(--space-3) var(--space-7); font: inherit; font-size: .9rem; cursor: pointer;
+                 border-radius: 999px; padding: var(--space-3) var(--space-7); font: inherit; font-size: var(--text-md); cursor: pointer;
                  box-shadow: 0 2px 8px rgba(0, 0, 0, .5); white-space: nowrap; }
 .mapbar button.clear { border-color: var(--line); }
 .hot > .mark, .hot > .cluster { box-shadow: 0 0 0 3px #f2f4f5, 0 0 0 6px var(--go); }
@@ -187,11 +191,11 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
 #list li.chosen { border-color: var(--go); }
 
 /* CG-39: three days at a glance. */
-.summary { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-7); margin: 0 var(--space-8) var(--space-5); font-size: .95rem; }
+.summary { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-7); margin: 0 var(--space-8) var(--space-5); font-size: var(--text-md); }
 .summary .count { display: inline-flex; align-items: center; }
 .strip { display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap; }
 .strip .day { display: inline-flex; align-items: center; gap: var(--space-3); background: transparent; color: var(--muted);
-              border: 1px solid var(--line); border-radius: 8px; padding: var(--space-2) var(--space-4); font: inherit; font-size: .82rem;
+              border: 1px solid var(--line); border-radius: 8px; padding: var(--space-2) var(--space-4); font: inherit; font-size: var(--text-xs);
               cursor: pointer; font-variant-numeric: tabular-nums; }
 .strip .day .mark.small { margin-right: 0; }
 .strip .day[aria-pressed="true"] { color: var(--text); border-color: var(--muted); }
@@ -213,7 +217,7 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
 /* CG-44: share the crag. */
 .share { margin: var(--space-5) 0 var(--space-2); }
 .share .more { margin-top: 0; }
-.share [role="status"] { color: var(--muted); font-size: .9rem; overflow-wrap: anywhere; }
+.share [role="status"] { color: var(--muted); font-size: var(--text-md); overflow-wrap: anywhere; }
 
 /* CG-46: favourites. The star says its state by shape (outline / filled) and by its label. */
 .star { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; padding: var(--space-2);
@@ -222,28 +226,28 @@ dialog#detail .muted { color: var(--muted); margin: 0 0 var(--space-3); }
 .star:focus-visible { outline: 2px solid var(--go); }
 dialog#detail h2 .star { margin-right: 0; }
 #favs { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
-        padding: var(--space-3) var(--space-6); font: inherit; font-size: .9rem; cursor: pointer; }
+        padding: var(--space-3) var(--space-6); font: inherit; font-size: var(--text-md); cursor: pointer; }
 #favs[aria-pressed="true"] { border-color: var(--go); color: var(--go); }
 
 /* CG-53: compact controls on a phone. The filters fold behind "Filtri"; the count joins the
    summary's line; the header is shorter; the date is left to the day buttons above. */
 .filters { display: contents; }
 .filters-toggle { display: none; background: var(--panel); color: var(--text); border: 1px solid var(--line);
-                  border-radius: 999px; padding: var(--space-4) var(--space-7); font: inherit; font-size: .9rem; cursor: pointer; flex: none; }
+                  border-radius: 999px; padding: var(--space-4) var(--space-7); font: inherit; font-size: var(--text-md); cursor: pointer; flex: none; }
 .filters-toggle[aria-expanded="true"] { border-color: var(--go); color: var(--go); }
 .summary #count { margin-left: auto; }            /* to the line's end, even when it wraps */
 @media (max-width: 599px) {
   header { padding: var(--space-5) var(--space-8); gap: var(--space-5); }
   header img { width: 32px; height: 32px; }
-  header h1 { font-size: 1.15rem; }
-  header p { font-size: .85rem; line-height: 1.3; }
+  header h1 { font-size: var(--text-lg); }
+  header p { font-size: var(--text-sm); line-height: 1.3; }
   .controls { padding: var(--space-5) var(--space-8); gap: var(--space-4); }
   .search { flex: 1 1 0; min-width: 0; }
   .search input { padding: var(--space-4) var(--space-6); }
   .filters-toggle { display: inline-flex; }
   .filters { display: flex; flex-wrap: wrap; gap: var(--space-4); flex-basis: 100%; }
   .filters[data-open="false"] { display: none; }
-  .summary { gap: var(--space-2) var(--space-5); font-size: .9rem; }
+  .summary { gap: var(--space-2) var(--space-5); font-size: var(--text-md); }
   .summary .date { display: none; }
 }
 
@@ -253,7 +257,7 @@ dialog#detail h2 .star { margin-right: 0; }
 @media (max-width: 599px) {
   .show { display: flex; gap: 0; margin: 0 var(--space-8) var(--space-5); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
   .show button { flex: 1; background: var(--panel); color: var(--muted); border: 0; padding: var(--space-4) 0; font: inherit;
-                 font-size: .9rem; cursor: pointer; }
+                 font-size: var(--text-md); cursor: pointer; }
   .show button[aria-pressed="true"] { background: var(--pressed); color: var(--go); font-weight: 600; }
   main.show-list .mapwrap { display: none; }
   main.show-map #list { display: none; }
@@ -264,7 +268,7 @@ dialog#detail h2 .star { margin-right: 0; }
    shows once the crags have been scrolled. */
 .summary { position: sticky; top: 0; z-index: 1001; background: var(--bg); margin: 0; padding: var(--space-4) var(--space-8) var(--space-5); }
 .to-top { position: fixed; right: 16px; bottom: 16px; z-index: 1002; background: var(--panel); color: var(--text);
-          border: 1px solid var(--go); border-radius: 999px; padding: var(--space-5) var(--space-8); font: inherit; font-size: .9rem;
+          border: 1px solid var(--go); border-radius: 999px; padding: var(--space-5) var(--space-8); font: inherit; font-size: var(--text-md);
           cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .5); }
 .to-top:focus-visible { outline: 2px solid var(--go); outline-offset: 2px; }
 
@@ -273,10 +277,10 @@ dialog#detail h2 .star { margin-right: 0; }
 #list li .head { display: flex; align-items: flex-start; gap: var(--space-3); }
 #list li .head h2 { flex: 1; min-width: 0; line-height: 1.3; }
 #list li .head .star { margin: calc(var(--space-2) * -1) calc(var(--space-2) * -1) 0 0; }
-#list li p.meta { margin-top: var(--space-2); font-size: .85rem; line-height: 1.35; }
+#list li p.meta { margin-top: var(--space-2); font-size: var(--text-sm); line-height: 1.35; }
 #list li p.meta .details { color: var(--text); }
 #list li .tag { display: inline-block; padding: 0 var(--space-3); border: 1px dashed var(--muted); border-radius: 6px;
-                font-size: .78rem; line-height: 1.5; color: var(--muted); cursor: help; }
+                font-size: var(--text-xs); line-height: 1.5; color: var(--muted); cursor: help; }
 #list li .row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
 #list li .row .strip { margin-top: 0; }
 #list li .row .more { margin-top: 0; margin-left: auto; }
@@ -285,19 +289,19 @@ dialog#detail h2 .star { margin-right: 0; }
 #list { container-type: inline-size; container-name: list; }
 @container list (max-width: 460px) {
   #list li .strip { gap: var(--space-2); }
-  #list li .strip .day { padding: var(--space-1) var(--space-3); gap: var(--space-2); font-size: .8rem; }
-  #list li .row .more { padding: var(--space-1) var(--space-6); font-size: 1.15rem; line-height: 1.2; }
+  #list li .strip .day { padding: var(--space-1) var(--space-3); gap: var(--space-2); font-size: var(--text-xs); }
+  #list li .row .more { padding: var(--space-1) var(--space-6); font-size: var(--text-lg); line-height: 1.2; }
   #list li .row .more .more-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   #list li .row .more .more-icon { display: inline; }
 }
 
 /* CG-59: the OSM objects a crag was folded from, in the panel. */
-details.mapped { margin: var(--space-2) 0 var(--space-4); font-size: .9rem; }
+details.mapped { margin: var(--space-2) 0 var(--space-4); font-size: var(--text-md); }
 details.mapped summary { cursor: pointer; color: var(--muted); }
 details.mapped ul { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); list-style: none; margin: var(--space-3) 0 0; padding: 0; }
 
 /* CG-59: the day's weather as a small table, in the popup and the panel. */
-table.facts { border-collapse: collapse; margin: var(--space-3) 0; font-size: .85rem; font-variant-numeric: tabular-nums; }
+table.facts { border-collapse: collapse; margin: var(--space-3) 0; font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
 table.facts th { text-align: left; font-weight: 400; color: var(--muted); padding: var(--space-px) var(--space-7) var(--space-px) 0; }
 table.facts td { text-align: right; padding: var(--space-px) 0; }
 .leaflet-popup-content table.facts th { color: #515a65; }
