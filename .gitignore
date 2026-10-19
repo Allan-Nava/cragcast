@@ -25,3 +25,7 @@ web/coverage/
 htmlcov/
 web/test-results/
 web/playwright-report/
+
+# chrome-launcher (Lighthouse) under WSL names its temp profiles after the Windows TEMP path,
+# so they land in the working directory as "C:\\Users\\…"; never committed.
+/C:*
