@@ -36,7 +36,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if git diff --quiet -- data/crags.json; then
+          # CG-103: a route's new grade changes osm-climbing.json alone; either file opens the PR.
+          if git diff --quiet -- data/crags.json data/osm-climbing.json; then
             echo "OpenStreetMap unchanged: nothing to do."
             exit 0
           fi
@@ -48,7 +49,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"
-          git add data/crags.json docs/aspects-todo.md
+          git add data/crags.json data/osm-climbing.json docs/aspects-todo.md
           git commit -m "Crags refresh from OpenStreetMap ($(date -u +%Y-%m-%d))"
           git push origin "$branch"
           {
