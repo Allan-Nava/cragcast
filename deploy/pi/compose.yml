@@ -6,6 +6,11 @@
 # deploy/pi/compose.yml; GitOps updates on (polling), "Re-pull image" on; environment variable
 # DATABASE_PASSWORD set in Portainer, never in this file.
 #
+# Releases (ADR 0020): CRAGCAST_VERSION in the Portainer stack names the release both cragcast
+# images come from (vYYYY.MM.DD, from release.yml), so the Pi changes only when that variable
+# does — not at every merge — and going back is setting the previous release. Unset, the images
+# follow :main as before.
+#
 # The backend on the Pi's port 8080 (BACKEND_PORT to change it) and the page on 8081 (WEB_PORT,
 # CG-110): the home network and the owner's tailnet (CG-102, ADR 0017). PostgreSQL on the Pi's
 # 127.0.0.1 only (DB_PORT), for psql through an SSH tunnel; nothing else reaches it.
@@ -36,7 +41,7 @@ services:
       retries: 10
 
   backend:
-    image: ghcr.io/allan-nava/cragcast-backend:main
+    image: ghcr.io/allan-nava/cragcast-backend:${CRAGCAST_VERSION:-main}
     restart: unless-stopped
     environment:
       DATABASE_URL: jdbc:postgresql://db:5432/cragcast
@@ -52,7 +57,7 @@ services:
         condition: service_healthy
 
   web:
-    image: ghcr.io/allan-nava/cragcast-web:main
+    image: ghcr.io/allan-nava/cragcast-web:${CRAGCAST_VERSION:-main}
     restart: unless-stopped
     ports:
       - "${WEB_PORT:-8081}:8080"
