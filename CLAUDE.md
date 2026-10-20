@@ -26,6 +26,11 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   its data with `ConditionsExport.build()` from the forecasts `WeatherRefresh` already fetched —
   never a second Open-Meteo request — and `SiteController` serves it at Pages' paths. All of `site/` is generated (`tools/build_site.sh`: Vite from `web/`,
   then the data), never committed.
+- **`osm_object` is a copy of `data/osm-climbing.json`** (CG-103): every object of the same OSM
+  query, with a category; `OsmObjectImporter` replaces the table whole at startup, in one
+  transaction. Like the crags, it changes only through the reviewed monthly PR; nothing writes to
+  the table otherwise. A column is added for what is worth filtering on, the rest stays in
+  `details` as JSON text. Gyms and shops are kept there as `venue`, never shown as crags.
 - **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:
   credit OSM on every surface that shows them): `climbing=crag`, and since CG-42 named outdoor
   `sport=climbing` places (a cliff, a rock, a climbing site relation) — never gyms, shops,

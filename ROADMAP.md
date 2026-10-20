@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**82 items · 62 shipped · 20 open · 16 milestones.**
+**82 items · 63 shipped · 19 open · 16 milestones.**
 
 ## At a glance
 
@@ -23,7 +23,7 @@
 | **v0.10.0 — A better frontend** | next | `##########` 100% | 0 | 9 |
 | **v0.7.0 — Beyond Lombardy** | later | `..........` 0% | 1 | 0 |
 | **v1.1.0 — On a Raspberry Pi** | now | `########..` 75% | 1 | 3 |
-| **v1.2.0 — Everything in PostgreSQL** | next | `..........` 0% | 7 | 0 |
+| **v1.2.0 — Everything in PostgreSQL** | next | `#.........` 14% | 6 | 1 |
 | **v1.3.0 — Vie ferrate** | later | `..........` 0% | 5 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
@@ -134,7 +134,7 @@
 
 ## v1.2.0 — Everything in PostgreSQL
 
-- [ ] **CG-103** — OSM's climbing objects, whole · med · M · data, backend
+- [x] **CG-103** — OSM's climbing objects, whole · med · M · data, backend · `main`
 - [ ] **CG-104** — Sectors kept · med · S · data, backend
 - [ ] **CG-105** — Routes · med · M · data, backend
 - [ ] **CG-106** — The hourly forecasts, archived · med · M · backend
