@@ -26,6 +26,10 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   its data with `ConditionsExport.build()` from the forecasts `WeatherRefresh` already fetched —
   never a second Open-Meteo request — and `SiteController` serves it at Pages' paths. All of `site/` is generated (`tools/build_site.sh`: Vite from `web/`,
   then the data), never committed.
+- **A data file in the jar is a data file in the image**: `backend/pom.xml` puts `data/` files
+  on the classpath and `backend/Dockerfile` must copy each one, and `image.yml` must rebuild
+  when one changes. `tools/test_dockerfile_data.py` checks both — `osm-climbing.json` was once
+  in the jar built by CI and missing from the Pi's image.
 - **`osm_object` is a copy of `data/osm-climbing.json`** (CG-103): every object of the same OSM
   query, with a category; `OsmObjectImporter` replaces the table whole at startup, in one
   transaction. Like the crags, it changes only through the reviewed monthly PR; nothing writes to
