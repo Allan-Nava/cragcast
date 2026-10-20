@@ -15,6 +15,9 @@ RUN ./mvnw -q -B package -DskipTests
 
 FROM eclipse-temurin:21-jre
 WORKDIR /app
+# The release this image is (vYYYY.MM.DD, from release.yml), read by /actuator/info; dev otherwise.
+ARG VERSION=dev
+ENV CRAGCAST_VERSION=$VERSION
 RUN useradd --system --uid 10001 cragcast
 COPY --from=build /src/backend/target/cragcast-backend-*.jar app.jar
 USER 10001

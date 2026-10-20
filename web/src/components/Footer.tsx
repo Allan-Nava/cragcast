@@ -4,7 +4,12 @@ interface Props {
   generatedAt: string | null;
   error: string | null;
   now?: number;
+  /** The release this page was built for (vYYYY.MM.DD), set only in a release's image. */
+  version?: string;
 }
+
+/** The release in the page's build, from the image's build argument; none on GitHub Pages. */
+const BUILT_VERSION: string | undefined = import.meta.env.VITE_CRAGCAST_VERSION || undefined;
 
 /** CG-41: "adesso", "12 min fa", "2 ore fa". */
 export function ago(ms: number): string {
@@ -29,7 +34,7 @@ export function updatedText(generatedAt: string, now: number): { text: string; s
   };
 }
 
-export function Footer({ generatedAt, error, now }: Props) {
+export function Footer({ generatedAt, error, now, version = BUILT_VERSION }: Props) {
   // CG-41: the age keeps itself current — every 30 s is enough for minutes.
   const [tick, setTick] = useState(() => Date.now());
   useEffect(() => {
@@ -50,7 +55,8 @@ export function Footer({ generatedAt, error, now }: Props) {
          di ARPA Lombardia</a>, tramite EAWS.</p>
       <p><a href="api/v1/crags.json">API (JSON)</a> ·{" "}
          <a href="https://github.com/Allan-Nava/cragcast">Codice su GitHub</a> · MIT · un progetto di{" "}
-         <a href="https://allan-nava.github.io">Allan Nava</a></p>
+         <a href="https://allan-nava.github.io">Allan Nava</a>
+         {version && <> · <a href={`https://github.com/Allan-Nava/cragcast/releases/tag/${version}`}>{`versione ${version}`}</a></>}</p>
     </footer>
   );
 }
