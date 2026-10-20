@@ -371,6 +371,11 @@ place for the Spring service and its database while the Oracle VM stays parked.
   on the Pi, the page 200 on 8081 and `data/conditions.json` from the backend with the day's
   data. <!-- cg: prio=med size=M labels=frontend,backend,infra ver=main -->
 
+- [x] **CG-116 — Releases**: releases by date (`vYYYY.MM.DD`), images tagged with them and the
+  version inside, the GitHub Release with notes from the merged PRs, and the Pi pinned to one by
+  `CRAGCAST_VERSION`, so a merge no longer restarts it ([ADR 0020](docs/adr/0020-calendar-releases-the-pi-follows.md)).
+  Asked for on 2026-10-20, after a merge's restart of the Pi looked like a failure. <!-- cg: prio=med size=S labels=infra ver=main -->
+
 ## v1.2.0 — Everything in PostgreSQL <!-- ms: phase=next -->
 
 Asked for on 2026-10-16: the Pi's PostgreSQL to hold all the climbing data OpenStreetMap has for

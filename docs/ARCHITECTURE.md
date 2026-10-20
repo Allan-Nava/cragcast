@@ -143,6 +143,7 @@ flowchart TB
 | `ci.yml` | every push to main and every PR | the jobs below |
 | `lighthouse.yml` | PRs touching the page, data or scorer | Lighthouse budgets on the built page with real data |
 | `image.yml` | push to main touching the backend, the page or the data they ship | the linux/arm64 images of the Spring service and (CG-110) the page with nginx, to GHCR |
+| `release.yml` | by hand, from main | names the release `vYYYY.MM.DD`, builds both arm64 images with that tag and version inside, then publishes the GitHub Release with notes from the merged PRs ([ADR 0020](adr/0020-calendar-releases-the-pi-follows.md)) |
 | `backlog-issues.yml` | push to main touching `BACKLOG.md` | GitHub issues and milestones follow the backlog |
 
 ## Tests

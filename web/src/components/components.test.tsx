@@ -4,7 +4,7 @@ import { CragList } from "./CragList";
 import { Controls } from "./Controls";
 import { DetailDialog } from "./DetailDialog";
 import { HourChart, hourReadout } from "./HourChart";
-import { ago, updatedText } from "./Footer";
+import { Footer, ago, updatedText } from "./Footer";
 import { matching, visible } from "../App";
 import { Summary } from "./Summary";
 import { crag, hours } from "../test/fixtures";
@@ -269,5 +269,16 @@ group("chart label at the edge (CG-63)", () => {
     const falling = hours.map((h, i) => ({ ...h, temperatureC: 25 - i }));
     const { container: c2 } = render(<HourChart hours={falling} kind="temperature" cursor={null} onCursor={() => {}} />);
     expect(c2.querySelector("text.label")!.getAttribute("text-anchor")).toBe("start");
+  });
+});
+
+group("the release in the footer", () => {
+  it("names the release it was built for, linked to its notes, and nothing without one", () => {
+    const { unmount } = render(<Footer generatedAt={null} error={null} now={0} version="v2026.10.20" />);
+    expect(screen.getByRole("link", { name: "versione v2026.10.20" }).getAttribute("href"))
+      .toBe("https://github.com/Allan-Nava/cragcast/releases/tag/v2026.10.20");
+    unmount();
+    render(<Footer generatedAt={null} error={null} now={0} />);
+    expect(screen.queryByText(/versione/)).toBeNull();
   });
 });

@@ -255,6 +255,17 @@ cd web && npx vite preview       # http://localhost:4173
 cd web && npm test               # unit and component tests
 ```
 
+## Releases
+
+Releases are named by their day, `vYYYY.MM.DD` ([ADR 0020](docs/adr/0020-calendar-releases-the-pi-follows.md)).
+Run **Actions → Release → Run workflow** on main: it builds the backend's and the page's arm64
+images tagged with the release and carrying it (`/actuator/info`, the page's footer), then
+publishes the [GitHub Release](https://github.com/Allan-Nava/cragcast/releases) with notes from
+the merged PRs. The Raspberry Pi runs the release its Portainer stack names in
+`CRAGCAST_VERSION`; set it and *Pull and redeploy* to move, set the previous one to go back.
+Unset, the Pi follows `:main`, rebuilt at every merge. GitHub Pages is not versioned: it follows
+main hourly.
+
 ## Licence
 
 MIT — see [LICENSE](LICENSE).

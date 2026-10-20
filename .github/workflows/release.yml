@@ -1,0 +1,89 @@
+# Releases (ADR 0020), run by hand from main: Actions → Release → Run workflow. The release is
+# named by its day in Italy, vYYYY.MM.DD, with .2, .3… for a second or third on the same day.
+# The images come first — the backend's and the page's, linux/arm64 for the Raspberry Pi, with
+# the version inside — and the GitHub Release, with notes generated from the merged PRs, only
+# once they exist, so no release ever names an image that is not there. The Pi follows a release
+# when its stack's CRAGCAST_VERSION names it (deploy/pi/compose.yml).
+name: Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  version:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: tag
+        run: |
+          base="v$(TZ=Europe/Rome date +%Y.%m.%d)"
+          tag="$base"
+          n=1
+          while git rev-parse -q --verify "refs/tags/$tag" >/dev/null; do
+            n=$((n + 1))
+            tag="$base.$n"
+          done
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "### Release $tag of ${GITHUB_SHA:0:7}" >> "$GITHUB_STEP_SUMMARY"
+
+  images:
+    needs: version
+    runs-on: ubuntu-24.04-arm
+    strategy:
+      matrix:
+        image: [backend, web]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ matrix.image }}/Dockerfile
+          platforms: linux/arm64
+          push: true
+          build-args: |
+            VERSION=${{ needs.version.outputs.tag }}
+          tags: |
+            ghcr.io/allan-nava/cragcast-${{ matrix.image }}:${{ needs.version.outputs.tag }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.version=${{ needs.version.outputs.tag }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.licenses=MIT
+          cache-from: type=gha,scope=${{ matrix.image }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.image }}
+
+  release:
+    needs: [version, images]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: GitHub Release with the merged PRs as notes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ needs.version.outputs.tag }}
+        run: |
+          cat > notes.md <<NOTES
+          Images (linux/arm64): \`ghcr.io/allan-nava/cragcast-backend:$TAG\` and \`ghcr.io/allan-nava/cragcast-web:$TAG\`.
+
+          **On the Pi:** in Portainer, set the stack's \`CRAGCAST_VERSION\` to \`$TAG\`, then *Pull and redeploy*. To go back, set the previous release and redeploy again.
+          NOTES
+          gh release create "$TAG" --target "$GITHUB_SHA" --title "$TAG" --notes-file notes.md --generate-notes

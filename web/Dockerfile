@@ -8,6 +8,9 @@ COPY web/package.json web/package-lock.json ./
 RUN npm ci --no-audit --no-fund
 COPY assets /src/assets
 COPY web ./
+# The release this image is (vYYYY.MM.DD, from release.yml); the footer names it. Unset: none.
+ARG VERSION=
+ENV VITE_CRAGCAST_VERSION=$VERSION
 RUN npm run build
 
 FROM nginxinc/nginx-unprivileged:1.27-alpine
