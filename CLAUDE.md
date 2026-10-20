@@ -26,6 +26,11 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   its data with `ConditionsExport.build()` from the forecasts `WeatherRefresh` already fetched —
   never a second Open-Meteo request — and `SiteController` serves it at Pages' paths. All of `site/` is generated (`tools/build_site.sh`: Vite from `web/`,
   then the data), never committed.
+- **Releases are by date and the Pi follows one** ([ADR 0020](docs/adr/0020-calendar-releases-the-pi-follows.md)):
+  `release.yml`, run by hand from main, names the release `vYYYY.MM.DD` (`.2` for a second the
+  same day), builds both images with it, and only then publishes the GitHub Release. Never push a
+  release tag by hand, and never reuse one. The Pi's stack picks its images by `CRAGCAST_VERSION`;
+  a merge reaches it only through a new release.
 - **A data file in the jar is a data file in the image**: `backend/pom.xml` puts `data/` files
   on the classpath and `backend/Dockerfile` must copy each one, and `image.yml` must rebuild
   when one changes. `tools/test_dockerfile_data.py` checks both — `osm-climbing.json` was once

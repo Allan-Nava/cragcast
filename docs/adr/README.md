@@ -25,3 +25,4 @@ Why cragcast is built the way it is. One file per decision, numbered, in the for
 | [0017](0017-the-pi-over-tailscale.md) | The Pi over Tailscale, and only the Pi | accepted | 2026-10-16 |
 | [0018](0018-the-pi-serves-the-page-from-its-backend.md) | The Pi serves the page, with data from its own backend | accepted | 2026-10-16 |
 | [0019](0019-backup-on-a-usb-disk.md) | A nightly backup on a USB disk on the Pi | accepted | 2026-10-16 |
+| [0020](0020-calendar-releases-the-pi-follows.md) | Releases by date, and the Pi follows a release | accepted | 2026-10-20 |

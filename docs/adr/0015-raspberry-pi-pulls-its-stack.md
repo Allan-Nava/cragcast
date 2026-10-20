@@ -1,6 +1,6 @@
 # 0015 — The Raspberry Pi pulls its stack; no self-hosted runner
 
-- **Status:** accepted
+- **Status:** accepted; which image tag it pulls amended by [0020](0020-calendar-releases-the-pi-follows.md)
 - **Date:** 2026-10-16
 - **Backlog:** CG-100
 
