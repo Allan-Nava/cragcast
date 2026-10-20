@@ -9,10 +9,10 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIf;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.DefaultApplicationArguments;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
-import tools.jackson.databind.json.JsonMapper;
 
 /** Against PostgreSQL and the V5 migration (CG-103). */
 @SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false"})
@@ -26,10 +26,14 @@ class OsmObjectWriterTests {
     @Autowired
     OsmObjectWriter writer;
 
+    @Autowired
+    OsmObjectImporter importer;
+
     @Test
-    void theStartupImportFilledTheTableFromTheFile() throws Exception {
-        int inFile = new OsmObjectImporter(writer, JsonMapper.builder().build())
-                .read(new ClassPathResource(OsmObjectImporter.FILE)).size();
+    void theImportFillsTheTableFromTheFile() throws Exception {
+        // Run as at startup: the other test replaces the table, and test order is not fixed.
+        importer.run(new DefaultApplicationArguments());
+        int inFile = importer.read(new ClassPathResource(OsmObjectImporter.FILE)).size();
         assertThat(objects.count()).isEqualTo(inFile);
         assertThat(objects.countByCategory("route")).isPositive();
         assertThat(objects.findByCategoryOrderById("crag")).isNotEmpty();
