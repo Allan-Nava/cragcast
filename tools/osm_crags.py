@@ -12,6 +12,7 @@ is null otherwise: never guessed. Data © OpenStreetMap contributors, ODbL 1.0.
 
     python3 tools/osm_crags.py                  # rewrites data/crags.json
     python3 tools/osm_crags.py --from answer.json   # from a saved Overpass answer
+    python3 tools/osm_crags.py --objects-only       # data/osm-climbing.json only (CG-103)
 """
 import json
 import math
@@ -33,6 +34,8 @@ area["ISO3166-2"="IT-25"]->.region;
 out center tags;"""
 ASPECTS = {"N", "NE", "E", "SE", "S", "SW", "W", "NW"}
 OUT = pathlib.Path(__file__).resolve().parent.parent / "data" / "crags.json"
+# CG-103: every object of the same query, whole — crags, sectors, routes, gyms — for the database.
+OBJECTS = OUT.with_name("osm-climbing.json")
 ELEVATION = "https://api.open-meteo.com/v1/elevation"
 ELEVATION_SOURCE = ("Copernicus DEM GLO-90 (2021 release, 90 m), https://doi.org/10.5270/ESA-c5d3d65, "
                     "through the Open-Meteo elevation API")
@@ -375,6 +378,62 @@ def group(items):
     return out, dropped
 
 
+def category(e):
+    """CG-103: what an object of the query is, for data/osm-climbing.json. 'crag', 'cliff' and
+    'point' are kind()'s (the places a crag can come from), 'route' a single route or one of its
+    parts, 'venue' a gym, shop or building, 'other' anything else (often a nameless cliff)."""
+    t = e.get("tags", {})
+    if t.get("climbing") in ROUTE_PARTS:
+        return "route"
+    if any(k in t for k in NOT_A_CRAG) or t.get("indoor") == "yes":
+        return "venue"
+    return {"crag": "crag", "shape": "cliff", "point": "point"}.get(kind(e), "other")
+
+
+def osm_object(e):
+    """One object as data/osm-climbing.json holds it: OSM's type and id, the category, the name and
+    position, the raw climbing tag, and the climbing tags validated as for crags (plus a route's
+    own French grade). None for an object without a position."""
+    t = e.get("tags", {})
+    pos = e if e["type"] == "node" else e.get("center")
+    if not pos:
+        return None
+    aspect = t.get("climbing:orientation", "").strip().upper()
+    d = details(t)
+    grade = t.get("climbing:grade:french", "").strip().lower()
+    if GRADE.match(grade):
+        d["grade"] = grade
+    return {
+        "id": f"osm-{e['type']}-{e['id']}",
+        "osmType": e["type"],
+        "osmId": e["id"],
+        "category": category(e),
+        "name": t.get("name"),
+        "climbing": t.get("climbing"),
+        "latitude": round(pos["lat"], 6),
+        "longitude": round(pos["lon"], 6),
+        "aspect": aspect if aspect in ASPECTS else None,
+        "details": d,
+    }
+
+
+def write_objects(elements):
+    """data/osm-climbing.json: every object of the answer, by id; ODbL like crags.json."""
+    objects = sorted(filter(None, map(osm_object, elements)), key=lambda o: o["id"])
+    OBJECTS.write_text(json.dumps({
+        "region": "Lombardia",
+        "source": "OpenStreetMap: every climbing=crag and sport=climbing object of tools/osm_crags.py's query (CG-103)",
+        "licence": "© OpenStreetMap contributors, ODbL 1.0 — https://www.openstreetmap.org/copyright",
+        "objects": objects,
+    }, ensure_ascii=False, indent=1) + "\n")
+    counts = {}
+    for o in objects:
+        counts[o["category"]] = counts.get(o["category"], 0) + 1
+    print(f"{len(objects)} OSM objects written to {OBJECTS.relative_to(OBJECTS.parent.parent)}: "
+          + ", ".join(f"{n} {c}" for c, n in sorted(counts.items())))
+    return objects
+
+
 def crag(e):
     tags = e.get("tags", {})
     name = tags.get("name")
@@ -396,11 +455,18 @@ def crag(e):
 
 def main():
     # --from FILE: build from an Overpass JSON answer saved earlier (same query) when the
-    # public servers are down.
-    if len(sys.argv) == 3 and sys.argv[1] == "--from":
-        elements = json.loads(pathlib.Path(sys.argv[2]).read_text())["elements"]
+    # public servers are down. --objects-only: write data/osm-climbing.json alone (CG-103),
+    # without the elevation and municipality lookups or a new crags.json.
+    args = sys.argv[1:]
+    only_objects = "--objects-only" in args
+    args = [a for a in args if a != "--objects-only"]
+    if len(args) == 2 and args[0] == "--from":
+        elements = json.loads(pathlib.Path(args[1]).read_text())["elements"]
     else:
         elements = fetch()
+    if only_objects:
+        write_objects(elements)
+        return
     items = [c for c in filter(None, map(crag, elements)) if c["_kind"]]
     primary = merge_duplicates([c for c in items if c["_kind"] == "crag"])
     rest = merge_duplicates([c for c in items if c["_kind"] != "crag"])
@@ -416,6 +482,7 @@ def main():
     where = areas(crags)
     for c in crags:
         c.update(where.get(c["id"], {}))
+    write_objects(elements)
     OUT.write_text(json.dumps({
         "region": "Lombardia",
         "source": "OpenStreetMap: climbing=crag, and named outdoor sport=climbing places (CG-42)",

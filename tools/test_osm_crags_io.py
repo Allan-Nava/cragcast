@@ -126,12 +126,17 @@ class WholeRun(Server):
             saved, out = pathlib.Path(d, "answer.json"), pathlib.Path(d, "data", "crags.json")
             out.parent.mkdir()
             saved.write_text(json.dumps({"elements": elements}))
-            with mock.patch.object(o, "OUT", out), mock.patch.object(o.sys, "argv", ["osm_crags.py", "--from", str(saved)]), \
+            with mock.patch.object(o, "OUT", out), mock.patch.object(o, "OBJECTS", out.with_name("osm-climbing.json")), \
+                    mock.patch.object(o.sys, "argv", ["osm_crags.py", "--from", str(saved)]), \
                     mock.patch.object(o, "elevations", lambda crags: [300] * len(crags)), \
                     mock.patch.object(o, "areas", lambda crags: {c["id"]: {"municipality": "Testville"} for c in crags}):
                 self.quiet(o.main)
             data = json.loads(out.read_text())
+            objects = json.loads(out.with_name("osm-climbing.json").read_text())["objects"]
         self.assertEqual([c["name"] for c in data["crags"]], ["Test Cliff", "Test Crag"])
+        # CG-103: the gym left out of the crags is kept among the objects, as a venue.
+        self.assertEqual({o["id"]: o["category"] for o in objects},
+                         {"osm-node-1": "crag", "osm-way-2": "cliff", "osm-node-3": "venue"})
         crag = data["crags"][1]
         self.assertEqual((crag["aspect"], crag["elevation"], crag["municipality"]), ("SW", 300, "Testville"))
         self.assertNotIn("_kind", crag)
@@ -142,7 +147,7 @@ class WholeRun(Server):
             saved = pathlib.Path(d, "answer.json")
             saved.write_text(json.dumps({"elements": [{"type": "node", "id": 9, "lat": 1, "lon": 1, "tags": {"name": "Gym",
                                                                                                          "leisure": "sports_centre"}}]}))
-            with mock.patch.object(o, "OUT", pathlib.Path(d, "crags.json")), \
+            with mock.patch.object(o, "OUT", pathlib.Path(d, "crags.json")), mock.patch.object(o, "OBJECTS", pathlib.Path(d, "o.json")), \
                     mock.patch.object(o.sys, "argv", ["osm_crags.py", "--from", str(saved)]), self.assertRaises(SystemExit):
                 self.quiet(o.main)
             self.assertFalse(pathlib.Path(d, "crags.json").exists())
@@ -163,3 +168,49 @@ class Details(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Objects(unittest.TestCase):
+    """CG-103: data/osm-climbing.json, every object of the query."""
+
+    def el(self, kind, i, **tags):
+        e = {"type": kind, "id": i, "tags": tags}
+        if kind == "node":
+            e.update(lat=45.123456789, lon=9.987654321)
+        else:
+            e["center"] = {"lat": 45.1, "lon": 9.9}
+        return e
+
+    def test_categories(self):
+        cases = [(self.el("node", 1, name="A", climbing="crag"), "crag"),
+                 (self.el("way", 2, name="B", sport="climbing", natural="cliff"), "cliff"),
+                 (self.el("node", 3, name="C", sport="climbing"), "point"),
+                 (self.el("node", 4, name="Via", sport="climbing", climbing="route_bottom"), "route"),
+                 (self.el("node", 5, name="Gym", sport="climbing", leisure="sports_centre"), "venue"),
+                 (self.el("way", 6, sport="climbing", natural="cliff"), "other")]           # no name
+        for e, want in cases:
+            self.assertEqual(o.category(e), want, e)
+
+    def test_an_object_keeps_its_validated_tags_and_a_route_its_grade(self):
+        obj = o.osm_object(self.el("node", 7, name="Spigolo", sport="climbing", climbing="route_bottom",
+                                   **{"climbing:grade:french": "6A+", "climbing:orientation": "sw",
+                                      "climbing:length": "25 m", "climbing:grade:french:max": "nope"}))
+        self.assertEqual(obj, {"id": "osm-node-7", "osmType": "node", "osmId": 7, "category": "route",
+                               "name": "Spigolo", "climbing": "route_bottom", "latitude": 45.123457,
+                               "longitude": 9.987654, "aspect": "SW", "details": {"length": 25, "grade": "6a+"}})
+        self.assertIsNone(o.osm_object({"type": "way", "id": 8, "tags": {"name": "No centre"}}))
+
+    def test_objects_only_writes_the_file_alone(self):
+        with tempfile.TemporaryDirectory() as d:
+            saved = pathlib.Path(d, "answer.json")
+            saved.write_text(json.dumps({"elements": [self.el("node", 2, name="B"), self.el("node", 1, name="A", climbing="crag")]}))
+            out = pathlib.Path(d, "osm-climbing.json")
+            with mock.patch.object(o, "OBJECTS", out), mock.patch.object(o, "OUT", pathlib.Path(d, "crags.json")), \
+                    mock.patch.object(o.sys, "argv", ["osm_crags.py", "--objects-only", "--from", str(saved)]), \
+                    mock.patch.object(o, "elevations", side_effect=AssertionError("no elevation lookup")), \
+                    contextlib.redirect_stdout(io.StringIO()):
+                o.main()
+            data = json.loads(out.read_text())
+            self.assertFalse(pathlib.Path(d, "crags.json").exists())
+        self.assertEqual([x["id"] for x in data["objects"]], ["osm-node-1", "osm-node-2"])        # by id
+        self.assertIn("ODbL", data["licence"])

@@ -379,12 +379,15 @@ OpenStreetMap stays the only outside source of places (ADR 0003): no guidebook o
 site, scraped or copied. Today the database is a copy rebuilt by a restart (ADR 0016); the
 hourly archive below exists nowhere else, so from CG-108 on it needs a backup.
 
-- [ ] **CG-103 — OSM's climbing objects, whole**: `osm_crags.py` also writes
+- [x] **CG-103 — OSM's climbing objects, whole**: `osm_crags.py` also writes
   `data/osm-climbing.json` — every `climbing=*` and `sport=climbing` object of the query it
   already runs (crags, sectors, single routes, route bottoms), with its type, id, position and
   validated climbing tags — committed through the same reviewed monthly PR. The backend imports
   it into `osm_object` at startup, as `CragImporter` does; tags as JSON text, a column for
-  anything worth filtering on. ODbL, credited where shown. <!-- cg: prio=med size=M labels=data,backend -->
+  anything worth filtering on. ODbL, credited where shown. Done: 650 objects on 2026-10-20 (76
+  crags, 182 cliffs, 71 points, 150 routes, 140 venues, 31 others) in Flyway V5's `osm_object`,
+  replaced whole at startup; `--objects-only` writes the file without a new crags.json; the
+  monthly refresh watches both files. <!-- cg: prio=med size=M labels=data,backend ver=main -->
 - [ ] **CG-104 — Sectors kept**: the sectors that `group()` folds into a crag, in a `sector`
   table linked to their crag, with their own position, aspect and grades — the crag's folded
   values unchanged. <!-- cg: prio=med size=S labels=data,backend -->

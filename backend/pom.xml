@@ -117,6 +117,7 @@
 				<targetPath>data</targetPath>
 				<includes>
 					<include>crags.json</include>
+					<include>osm-climbing.json</include>
 					<include>avalanche-regions.geojson</include>
 				</includes>
 			</resource>
