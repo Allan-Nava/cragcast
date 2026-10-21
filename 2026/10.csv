@@ -1394,3 +1394,223 @@ date,crag_id,crag_name,province,verdict,rain_last48h_mm,rain_day_mm,max_temp_c,m
 2026-10-21,osm-way-365080249,Virle - settore est,BS,NO_GO,10.7,3.1,20.4,13.3,rain forecast during the day; rock may still be wet from recent rain,2026-10-20T23:17:07.435002254Z
 2026-10-21,osm-node-3097814772,Zoia Alta,SO,NO_GO,7.1,14.7,6.4,14.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-10-20T23:17:07.435002254Z
 2026-10-21,osm-node-14064515297,Zoia Bassa,SO,NO_GO,5.2,15.8,7.5,6.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-10-20T23:17:07.435002254Z
+2026-10-22,osm-way-238134303,Anfiteatro naturale del Bogn,BG,MAYBE,25.3,0.0,19.1,11.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-6822611838,Bagni Vecchi Bassa,SO,MAYBE,13.3,0.0,7.7,13.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-948457898,Brutal Block,BG,MAYBE,22.5,0.0,14.5,9.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1428080037,Buco del piombo,CO,MAYBE,27.0,0.0,14.6,21.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-11872141961,Calar,SO,MAYBE,13.4,0.0,0.1,8.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain; cold,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-495911204,Camerate,BS,MAYBE,19.7,0.0,17.2,18.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1387869754,Campiano,LC,MAYBE,26.2,0.0,10.2,10.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2709076678,Capo di Ponte,BS,MAYBE,6.7,0.0,16.9,10.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-188805657,Corna Bianca,BG,MAYBE,42.5,0.0,11.0,11.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-226999713,Corna delle Capre,BS,MAYBE,32.3,0.0,11.7,14.1,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-949382719,Corna di Fenere,BS,MAYBE,31.6,0.0,16.2,11.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-857264782,Corna dòl Tàs,BG,MAYBE,43.0,0.0,10.4,6.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-163401086,Corna Rossa,BS,MAYBE,16.6,0.0,18.0,5.9,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2917721733,Corna Rossa di Lantana,BG,MAYBE,23.5,0.0,11.5,11.2,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-449601797,Corna Ventitre,BS,MAYBE,21.5,0.0,15.5,7.6,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-12068677095,Crap de la Tureglia,SO,MAYBE,15.6,0.0,6.5,7.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-7775951092,denti della vecchia,SO,MAYBE,51.2,0.0,4.8,27.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain; cold,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2888957867,Discoteca,LC,MAYBE,24.8,0.0,17.5,16.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-948457903,Esotica,BG,MAYBE,22.5,0.0,14.0,9.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-12036611131,Falesia,SO,MAYBE,19.0,0.0,6.8,8.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-3757612224,"Falesia ""Omonimi""",BG,MAYBE,38.3,0.0,11.3,8.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-3757609511,"Falesia ""Pagliaccetti""",BG,MAYBE,38.3,0.0,11.0,8.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-3757612208,"Falesia ""Totem""",BG,MAYBE,38.3,0.0,11.0,8.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-537995582,Falesia Alessandro Visentini,CO,MAYBE,45.5,0.0,12.4,22.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-331595789,Falesia Aperitivo,BS,MAYBE,14.9,0.0,14.7,13.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1456514469,Falesia Arcadia,BS,MAYBE,17.3,0.0,13.7,5.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-5126773805,Falesia Bracca,BG,MAYBE,48.7,0.0,14.7,9.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1389326679,Falesia Bus del Tuel,BS,MAYBE,17.0,0.0,15.4,9.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-11147710677,Falesia Carbonera,BG,MAYBE,26.9,0.0,12.0,6.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13196357817,Falesia Cascata,LC,MAYBE,24.8,0.0,17.6,16.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-366017015,Falesia Castello di Gaino,BS,MAYBE,19.7,0.0,16.2,18.5,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-235311109,Falesia Cividate 1,BS,MAYBE,7.7,0.0,18.4,9.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2433713312,Falesia Colere (Roby Piantoni),BG,MAYBE,21.4,0.0,11.4,9.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1056254032,Falesia Corna Coegia,BG,MAYBE,39.2,0.0,13.9,12.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-1796890725,Falesia Corna De Par,BG,MAYBE,27.5,0.0,15.0,7.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-758381785,Falesia Corna di Marte,BG,MAYBE,24.0,0.0,13.4,8.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-829103791,Falesia Corna Rossa di Valmadrera,LC,MAYBE,25.1,0.0,16.4,15.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-12104258610,Falesia Cornagera - Chiappe della Carolina,BG,MAYBE,34.0,0.0,10.8,8.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-235314407,Falesia Corne Rosse,BS,MAYBE,8.6,0.0,18.0,15.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13184333761,Falesia Corno del Caprone,SO,MAYBE,14.0,0.0,6.5,6.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-332572974,Falesia dei Laghetti,LC,MAYBE,31.0,0.0,15.2,27.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-8913985417,Falesia del Balabiott,LC,MAYBE,31.5,0.0,13.9,14.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-14030990596,Falesia del brigante,LC,MAYBE,39.0,0.0,13.4,5.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-222743760,Falesia del Budellone,BS,MAYBE,17.7,0.0,17.0,9.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1085403223,Falesia del Corniolo,BS,MAYBE,33.5,0.0,9.4,15.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1307589396,Falesia del Ferro,SO,MAYBE,32.4,0.0,6.5,19.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-231704472,Falesia del Gaver,BS,MAYBE,34.9,0.0,9.3,10.5,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-507488307,Falesia del Lago Moro,BS,MAYBE,8.6,0.0,16.8,15.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1293565162,Falesia del Leves,LC,MAYBE,42.2,0.0,13.0,28.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1387598843,Falesia del Monte San Primo,CO,MAYBE,45.5,0.0,12.3,22.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-9777827971,Falesia del Mùrlansì,BG,MAYBE,35.8,0.0,15.2,10.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2895215952,Falesia del Nibbio,LC,MAYBE,26.2,0.0,10.6,10.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1107716788,Falesia del Passo della Presolana,BG,MAYBE,25.2,0.0,9.4,7.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-6656895797,Falesia del Passo dello Spino,BS,MAYBE,18.4,0.0,11.0,10.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-relation-11740994,Falesia del Picuz,VA,MAYBE,45.9,0.0,15.8,7.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-relation-14910904,Falesia del Piero,BG,MAYBE,35.3,0.0,8.3,9.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1023331384,Falesia del Renico,BS,MAYBE,18.0,0.0,13.3,7.8,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-5239327287,Falesia del Sasso Pelo,CO,MAYBE,25.6,0.0,12.4,7.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-201832117,Falesia del Tramonto,CO,MAYBE,27.0,0.0,14.5,21.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-12063546686,Falesia Del Vallone,BG,MAYBE,19.5,0.0,12.7,5.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-5087441239,Falesia dell'Era Glaciale,LC,MAYBE,41.4,0.0,6.7,8.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-975403744,Falesia della Rocca di Manerba,BS,MAYBE,22.0,0.0,19.0,18.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1308976112,Falesia della Sorgente,BG,MAYBE,33.5,0.0,11.9,14.7,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-relation-19468980,Falesia delle Onde,CO,MAYBE,27.0,0.0,14.2,21.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-11734615275,Falesia di Almenno,BG,MAYBE,21.9,0.0,18.3,6.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1262988766,Falesia di Almè,BG,MAYBE,21.9,0.0,18.5,6.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-464613071,Falesia di Barghe Il Ronchino,BS,MAYBE,20.7,0.0,14.3,9.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-836392757,Falesia di Bione,BS,MAYBE,24.7,0.0,13.7,7.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-3311820205,Falesia di Brembilla,BG,MAYBE,35.6,0.0,12.2,9.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-160423372,Falesia di Caionvico,BS,MAYBE,14.8,0.0,17.1,5.6,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-7599712466,Falesia di Calusco,BG,MAYBE,31.6,0.0,18.3,9.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-175334975,Falesia di Castro,BG,MAYBE,25.3,0.0,18.4,11.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-158753503,Falesia di Cerezzata,BS,MAYBE,20.8,0.0,17.3,9.5,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-421673913,Falesia di Cima Caldoline,BS,MAYBE,30.7,0.0,7.2,11.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-423004800,Falesia di Cimbergo,BS,MAYBE,9.7,0.0,14.7,9.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-14122790227,Falesia di Civate,LC,MAYBE,31.0,0.0,16.2,27.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-365050395,Falesia di Costorio,BS,MAYBE,7.3,0.0,17.3,9.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-982400720,falesia di Esino - Petua,LC,MAYBE,41.2,0.0,10.3,10.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-729512879,Falesia di Gajum - Cliff Climbing Wall,CO,MAYBE,43.8,0.0,14.7,32.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13888746134,Falesia di Giambi Settore paretino,BG,MAYBE,19.7,0.0,12.0,8.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-relation-14906312,Falesia di Grone (Casazza),BG,MAYBE,24.7,0.0,16.0,10.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1330428267,Falesia di Mazzano,BS,MAYBE,15.2,0.0,17.3,5.8,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1023067086,Falesia di Nasolino,BG,MAYBE,32.5,0.0,10.6,7.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-178561713,Falesia di Nave,BS,MAYBE,14.1,0.0,16.5,8.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-974794830,Falesia di Paline,BS,MAYBE,19.5,0.0,11.9,5.5,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1304488659,Falesia di Predarossa,SO,MAYBE,28.0,0.0,3.1,15.0,rock may still be wet from recent rain; cold,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-relation-15077421,Falesia di Predore,BG,MAYBE,13.9,0.0,17.1,19.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-3292246899,Falesia di San Pellegrino Terme,BG,MAYBE,25.2,0.0,17.0,9.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-941481222,Falesia di Sovere,BG,MAYBE,34.2,0.0,14.8,8.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-971413461,Falesia di Strozza,BG,MAYBE,24.7,0.0,16.5,10.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-222704971,Falesia Di Villanuova Sul Clisi - Settore Alto,BS,MAYBE,21.9,0.0,16.8,11.3,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2433844045,Falesia Di Villanuova Sul Clisi - Settore Basso,BS,MAYBE,21.9,0.0,17.3,11.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13196357821,Falesia Duracell,LC,MAYBE,23.1,0.0,17.1,22.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-10127566462,Falesia Foglia,VA,MAYBE,47.5,0.0,12.9,13.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-184641293,Falesia Fontanei,BG,MAYBE,33.3,0.0,11.9,11.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-12151154725,Falesia Forni,SO,MAYBE,14.2,0.0,0.6,7.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain; cold,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1497168006,Falesia Francesco Cancarini,BS,MAYBE,18.3,0.0,12.8,6.8,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-438145101,Falesia Ginetto,BS,MAYBE,22.3,0.0,13.1,10.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-727393768,Falesia Guido Omodei,BS,MAYBE,20.1,0.0,13.3,9.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13184333763,Falesia Isolaccia - Jardin d'escalade,SO,MAYBE,20.0,0.0,6.9,9.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13184333762,Falesia Isolaccia - Tavolino,SO,MAYBE,20.0,0.0,7.3,9.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-3622933477,Falesia Lago Nero,BG,MAYBE,39.6,0.0,5.4,16.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13196357819,Falesia Le Promesse nel Sole,LC,MAYBE,23.1,0.0,16.8,22.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-413118218,Falesia Le Scale,BS,MAYBE,21.4,0.0,12.7,7.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1049720124,Falesia Maddalena,BS,MAYBE,17.3,0.0,14.1,5.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-191006767,Falesia Madonna della Rota,BS,GO,9.5,0.0,15.3,15.1,,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-191006769,Falesia Marone,BS,MAYBE,9.5,0.0,16.2,15.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-727393767,Falesia Meta,BS,MAYBE,20.1,0.0,13.1,9.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1456514467,Falesia Meteore,BS,MAYBE,17.3,0.0,13.4,5.5,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13184333733,Falesia Migiondo,SO,MAYBE,17.6,0.0,11.5,16.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-957454448,Falesia Minions 1,BS,MAYBE,22.3,0.0,12.7,10.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-989387640,Falesia Minions 2,BS,MAYBE,22.3,0.0,12.9,10.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-485227807,Falesia Opera,BS,MAYBE,20.1,0.0,13.6,9.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-957454446,Falesia Pacifico,BS,MAYBE,22.3,0.0,12.1,10.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13196357820,Falesia Passi di Danza,LC,MAYBE,27.7,0.0,16.1,23.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-12863165485,Falesia Pettirosso,BS,MAYBE,16.9,0.0,14.6,8.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-945812457,Falesia Piazza-Maelì,BG,MAYBE,34.2,0.0,14.4,8.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-relation-16068105,Falesia Placche di Albate,CO,MAYBE,38.7,0.0,16.3,9.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-216075910,Falesia Placche di Bette (Mese),SO,MAYBE,25.9,0.0,16.4,8.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13196357818,Falesia Pungitopo,LC,MAYBE,23.1,0.0,16.8,22.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-179011129,Falesia Rendena,BS,MAYBE,8.7,0.0,15.4,7.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13196338094,Falesia Rocce Basse,LC,MAYBE,33.5,0.0,13.5,9.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-983536145,Falesia Roncola,BG,MAYBE,33.9,0.0,11.4,7.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1020892684,Falesia Salmonella B,BS,MAYBE,20.1,0.0,13.2,9.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-365092288,Falesia San Gallo Nuova,BS,MAYBE,17.3,0.0,14.5,5.5,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2433779305,Falesia San Pellerino (La Torre),BG,MAYBE,25.2,0.0,16.3,9.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-935439944,Falesia San Tomas,LC,MAYBE,33.6,0.0,14.3,32.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-8086095920,Falesia Sasso Ballaro,VA,MAYBE,48.8,0.0,17.0,10.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13245785600,Falesia Sasso Ballaro -  Settore Saigon,VA,MAYBE,48.8,0.0,17.0,10.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-982399708,falesia Sasso Carlano,LC,MAYBE,40.4,0.0,10.2,22.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-985128253,Falesia Sebino,BS,MAYBE,20.1,0.0,13.9,9.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13196399311,Falesia Trittico,LC,MAYBE,25.5,0.0,12.3,7.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-288953365,Falesia Valgua (Lentasia),BG,MAYBE,32.3,0.0,14.2,8.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2935803563,Falesia Valle Dei Mulini,BG,MAYBE,19.7,0.0,11.6,8.4,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2433793428,Falesia Valle dell' Oro,LC,MAYBE,27.0,0.0,17.6,19.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1350335984,Falesia Valsecca,BG,MAYBE,39.2,0.0,13.7,12.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13184333734,Falesia Vernuga,SO,MAYBE,23.1,0.0,11.9,7.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-4992406813,Falesia Villa d' Almé (Traliccio),BG,MAYBE,21.9,0.0,18.2,8.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2433793424,Falesia Zogno,BG,MAYBE,32.0,0.0,16.2,6.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2620248440,Falesie dei Campelli,LC,MAYBE,29.4,0.0,13.7,14.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-relation-1863381,Falesie di Galbiate,LC,MAYBE,31.0,0.0,16.0,27.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-464552480,Giardino Segreto,BS,MAYBE,16.3,0.0,18.2,5.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-1741194816,Gran Placca,LC,MAYBE,21.2,0.0,14.8,9.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-761344649,Grotta del Mandulì,BS,MAYBE,10.0,0.0,13.5,9.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-14041775583,Grotta Rudera,VA,MAYBE,53.6,0.0,11.8,17.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-165967300,I Cavalieri,BS,MAYBE,14.8,0.0,17.0,5.6,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1199525837,Il Resort dell'Aquila,BG,MAYBE,34.7,0.0,5.1,23.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2372935820,La Biblioteca,BS,MAYBE,17.8,0.0,17.1,6.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-718831135,La Caduta dei Giganti,SO,MAYBE,43.2,0.0,11.1,12.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-365079021,La Cava,BS,MAYBE,15.4,0.0,18.7,6.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-948457899,La Mia Regina,BG,MAYBE,22.5,0.0,14.7,9.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1385623007,Lagoland,LC,MAYBE,27.8,0.0,17.3,25.3,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-513842818,Lirone,SO,MAYBE,39.4,0.0,11.3,19.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-11171764068,Liss dei Pesgunfi,SO,MAYBE,29.5,0.0,9.8,5.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1502439088,Lo Sprofondo,CO,MAYBE,48.5,0.0,14.5,26.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-948457901,Miralago,BG,MAYBE,22.5,0.0,14.3,9.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1536755379,Muretto del Gio',LC,MAYBE,22.7,0.0,14.3,9.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-837046156,Muro del Butch,LC,MAYBE,31.5,0.0,13.8,14.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13196399312,Muro del Pianto,LC,MAYBE,33.5,0.0,13.6,9.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-485227805,Muro dell'Ilex,BS,MAYBE,20.1,0.0,13.6,9.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-11859077873,Muro di Introbio,LC,MAYBE,26.3,0.0,14.8,12.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-282816934,Nuovo Cinema Maddalena,BS,MAYBE,17.3,0.0,13.1,5.5,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-1741194869,Pala Condor,LC,MAYBE,21.2,0.0,14.9,9.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-relation-18915445,Palestra di roccia del gruppo speleologico prealpino,VA,MAYBE,40.6,0.0,16.8,16.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-9904213314,Palestra di roccia Il Crènch,BS,MAYBE,17.4,0.0,15.6,9.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-3658805427,Palestra di roccia rifugio Sandro Occhi,BS,MAYBE,17.3,0.0,4.9,7.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain; cold,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-166615030,Palestra di roccia Ugolino Ugolini,BS,MAYBE,16.6,0.0,17.6,5.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-relation-18757044,Palestra Ronchetti,VA,MAYBE,36.1,0.0,14.3,17.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-9429027374,Paretina dell'amico Fritz,SO,MAYBE,25.9,0.0,16.6,8.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-9176169531,Pilastrini,LC,MAYBE,26.3,0.0,14.8,12.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-4641789089,Placca Condor,LC,MAYBE,21.2,0.0,14.8,9.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-3452238619,Placca del Bhikku,LC,MAYBE,25.5,0.0,12.0,7.8,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-7273907091,Placca del Pistolino,LC,MAYBE,33.5,0.0,13.6,9.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-11662207868,Placca del Prato Grande,SO,MAYBE,25.9,0.0,16.3,8.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-4918601924,placca morose,BS,MAYBE,21.3,0.0,15.8,14.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-365090771,Placca Poli,BS,MAYBE,17.3,0.0,14.8,5.5,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-4409711985,Placche di Sherwood,LC,MAYBE,26.3,0.0,13.6,12.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-860340484,Placchette del San Martino,LC,MAYBE,22.7,0.0,14.7,9.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-948457900,Politeama,BG,MAYBE,22.5,0.0,14.7,9.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1003256148,Polèer dól Gipi,LC,MAYBE,26.8,0.0,12.2,13.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-12255821505,Porto di Tremosine,BS,MAYBE,40.6,0.0,17.1,26.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-1739484761,Pradello,LC,MAYBE,27.7,0.0,16.1,23.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-761344647,Predulì,BS,MAYBE,10.0,0.0,13.9,9.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-1741194868,Rocca di Baiedo,LC,MAYBE,26.3,0.0,14.5,12.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-9536753691,Rock Stadium,SO,MAYBE,25.9,0.0,16.6,8.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-relation-18047636,Ronda Nera,MI,MAYBE,21.6,0.0,19.2,8.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-11872141963,Saletina,SO,MAYBE,14.2,0.0,0.8,7.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain; cold,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-12151154724,Saletina Bassa,SO,MAYBE,13.3,0.0,1.2,7.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain; cold,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1213400747,San Vigilio,BG,MAYBE,17.8,0.0,12.1,15.5,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-183348081,Sass Negher,LC,MAYBE,25.1,0.0,16.2,20.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-231956641,Sasso bianco,SO,MAYBE,31.0,0.0,14.7,10.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-201200731,Sasso d'Erba,CO,MAYBE,27.0,0.0,14.7,21.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-751262115,Sasso dell'Edera,CO,MAYBE,27.0,0.0,14.9,21.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-1803201264,Sasso dell'Elefante,BS,MAYBE,14.8,0.0,17.3,5.6,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-4641745891,Sasso di Introbio,LC,MAYBE,21.2,0.0,14.9,9.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1183974242,Sasso Galletto,VA,MAYBE,52.6,0.0,17.1,7.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-9986935533,Sasso Garibaldi,SO,MAYBE,13.3,0.0,8.3,13.5,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-201200730,Sasso Giallo,CO,MAYBE,27.0,0.0,15.1,21.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-297774960,Sasso Muschiato,CO,MAYBE,27.0,0.0,15.2,21.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-1886634638,Sasso Remenno,SO,MAYBE,29.5,0.0,11.1,5.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13196338093,Settore Anfiteatro,LC,MAYBE,25.5,0.0,11.8,7.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-12304593894,Settore Destro,CO,MAYBE,34.3,0.0,16.9,27.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-12304593897,Settore Destro,CO,MAYBE,34.3,0.0,16.7,27.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13196381745,Sperone dell'Astinenza,LC,MAYBE,25.5,0.0,11.8,7.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-761344648,Spigolo,BS,MAYBE,10.0,0.0,14.0,9.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-948338662,Teatro degli Orrori,BG,MAYBE,22.5,0.0,14.1,9.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-331595790,Terra di Mezzo,BS,MAYBE,20.1,0.0,13.5,9.9,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-4541277052,Terzo sperone,LC,MAYBE,25.5,0.0,12.2,7.8,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-1090727155,The Pai Bridge,SO,MAYBE,39.3,0.0,10.3,6.2,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-14219981089,Torrione del Pertusio,LC,MAYBE,36.1,0.0,9.1,17.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-14041775584,Torrione Farfalla,VA,MAYBE,53.6,0.0,11.7,17.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-2888957866,Torrione Realba,LC,MAYBE,27.7,0.0,16.5,23.7,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-6758871493,Torrioni Cornagera,BG,MAYBE,34.0,0.0,10.6,8.0,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-13184333732,Vermuga,SO,MAYBE,17.6,0.0,13.1,16.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-513713057,Vho,SO,MAYBE,39.4,0.0,11.0,19.6,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-4918589878,Vie di roccia del Forametto,BS,MAYBE,20.9,0.0,11.3,8.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-4918589843,Vie di roccia delle placche delle Marmere,BS,MAYBE,20.9,0.0,10.9,8.1,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-way-365080249,Virle - settore est,BS,MAYBE,15.4,0.0,18.8,6.2,rock may still be wet from recent rain,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-3097814772,Zoia Alta,SO,MAYBE,26.5,0.0,3.0,11.9,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain; cold,2026-10-21T23:30:49.241665332Z
+2026-10-22,osm-node-14064515297,Zoia Bassa,SO,MAYBE,28.7,0.0,3.9,5.4,wall aspect not mapped: judged as a shaded wall; rock may still be wet from recent rain; cold,2026-10-21T23:30:49.241665332Z
