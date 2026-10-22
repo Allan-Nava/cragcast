@@ -170,7 +170,7 @@ export function DetailDialog({ crag, day, days = [], onDay, onClose, favourite =
               <HourTable hours={hours} />
             </>
           )}
-          <Climbing crag={crag} />
+          <Climbing key={`climbing-${crag.id}`} crag={crag} />
           <Share key={crag.id} crag={crag} />
           <p className="links">
             <a href={`https://www.google.com/maps/dir/?api=1&destination=${crag.latitude},${crag.longitude}`} rel="noopener">Indicazioni (Google Maps)</a>{" "}
