@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ import tools.jackson.databind.json.JsonMapper;
  * leaves OSM keeps its history until someone removes it on purpose.
  */
 @Component
+@Order(1)               // before SectorImporter, which links sectors to these rows
 @ConditionalOnProperty(name = "cragcast.import-crags", havingValue = "true", matchIfMissing = true)
 class CragImporter implements ApplicationRunner {
 

@@ -63,7 +63,7 @@ public class OsmObject {
         this.detailsJson = detailsJson;
     }
 
-    private static String text(OsmObjectsFile.Entry e, String key) {
+    static String text(OsmObjectsFile.Entry e, String key) {
         Object v = e.details() == null ? null : e.details().get(key);
         return v == null ? null : v.toString();
     }
