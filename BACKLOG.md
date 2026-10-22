@@ -393,9 +393,12 @@ hourly archive below exists nowhere else, so from CG-108 on it needs a backup.
   crags, 182 cliffs, 71 points, 150 routes, 140 venues, 31 others) in Flyway V5's `osm_object`,
   replaced whole at startup; `--objects-only` writes the file without a new crags.json; the
   monthly refresh watches both files. <!-- cg: prio=med size=M labels=data,backend ver=main -->
-- [ ] **CG-104 — Sectors kept**: the sectors that `group()` folds into a crag, in a `sector`
+- [x] **CG-104 — Sectors kept**: the sectors that `group()` folds into a crag, in a `sector`
   table linked to their crag, with their own position, aspect and grades — the crag's folded
-  values unchanged. <!-- cg: prio=med size=S labels=data,backend -->
+  values unchanged. Done: `group()` lists them by OSM id in `crags.json`'s `sectors` (the same
+  place drawn twice stays in `alsoMapped`); Flyway V6's `sector`, replaced whole at startup by
+  `SectorImporter` from those ids and `osm-climbing.json`; on 2026-10-22, 76 sectors on 30
+  crags, the 220 crags' values as before. <!-- cg: prio=med size=S labels=data,backend ver=main -->
 - [ ] **CG-105 — Routes**: OSM's single routes in a `route` table — name, grade (French, as a
   rank column), length, bolts — linked to the crag or sector they belong to by OSM relation or
   distance. Stored and served by the API, never listed as crags (the CG-42 rule holds). <!-- cg: prio=med size=M labels=data,backend -->
