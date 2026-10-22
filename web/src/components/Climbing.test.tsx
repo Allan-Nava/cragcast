@@ -1,6 +1,6 @@
 // CG-117: the sectors and routes in the panel. Made-up crag, sectors and routes.
 import { afterEach, describe as group, expect, it, vi } from "vitest";
-import { cleanup, render, within } from "@testing-library/react";
+import { cleanup, fireEvent, render, within } from "@testing-library/react";
 import { Climbing, shortName } from "./Climbing";
 import { DetailDialog } from "./DetailDialog";
 import { crag } from "../test/fixtures";
@@ -31,15 +31,42 @@ group("sectors and routes (CG-117)", () => {
     expect(document.querySelectorAll("details.climbing")).toHaveLength(1);       // no routes, no table
   });
 
-  it("shows the routes as a table, with a sector column only when one is known", () => {
+  it("shows the routes as a table under their levels, with a sector column only when one is known", () => {
     render(<Climbing crag={crag({ sectors, routes })} />);
     const table = document.querySelector("table.routes") as HTMLTableElement;
-    expect(document.querySelectorAll("details.climbing")[1].querySelector("summary")!.textContent).toBe("2 vie su OpenStreetMap");
+    expect(document.querySelectorAll("details.climbing")[1].querySelector("summary")!.textContent)
+      .toBe("2 vie su OpenStreetMap · solo 5c");
     expect([...table.querySelectorAll("thead th")].map(th => th.textContent)).toEqual(["Via", "Grado", "Lunghezza", "Spit", "Settore"]);
-    const [first, second] = [...table.querySelectorAll("tbody tr")];
-    expect([...first.children].map(c => c.textContent)).toEqual(["Diedro", "5c", "25,5 m", "11", "Settore Alto"]);
+    expect([...table.querySelectorAll("tr.level th")].map(th => th.textContent))
+      .toEqual(["Livello 5 · medio — 1 via", "Senza grado — 1 via"]);
+    const [first, second] = [...table.querySelectorAll("tbody tr:not(.level)")];
+    expect([...first.children].map(c => c.textContent)).toEqual(["Diedro", "5c", "25,5\u00a0m", "11", "Settore Alto"]);
     expect([...second.children].map(c => c.textContent)).toEqual(["Senza nome · 3 tiri", "—", "—", "—", "—"]);
     expect(within(first as HTMLElement).getByRole("link").getAttribute("href")).toBe("https://www.openstreetmap.org/node/1");
+    expect(document.querySelector("p.scale")!.textContent).toContain("5a, 5b, 5c, 5c+, poi 6a");
+  });
+
+  it("filters the table by level, each button with its count (CG-118)", () => {
+    const mixed: Route[] = ["3b", "4", "5b", "5c+", "6a", "6a+", "6c", "7a", "8a"].map((grade, i) =>
+      ({ id: `osm-node-${i + 10}`, name: `Via ${grade}`, grade, length: null, bolts: null, pitches: null, sector: null }));
+    render(<Climbing crag={crag({ routes: mixed })} />);
+    const buttons = () => [...document.querySelectorAll(".levels button")];
+    expect(buttons().map(b => b.textContent)).toEqual(["Tutte · 9", "4 e meno facile · 2", "5 medio · 2",
+      "6 impegnativo · 3", "7 difficile · 1", "8 e oltre estremo · 1"]);
+    expect(document.querySelector("summary")!.textContent).toBe("9 vie su OpenStreetMap · dal 3b all'8a");
+    expect(buttons()[0].getAttribute("aria-pressed")).toBe("true");
+    fireEvent.click(buttons()[3]);
+    expect(buttons()[3].getAttribute("aria-pressed")).toBe("true");
+    expect(buttons()[0].getAttribute("aria-pressed")).toBe("false");
+    expect([...document.querySelectorAll("table.routes tbody tr:not(.level) a")].map(a => a.textContent))
+      .toEqual(["Via 6a", "Via 6a+", "Via 6c"]);
+    fireEvent.click(buttons()[0]);
+    expect(document.querySelectorAll("table.routes tbody tr:not(.level)")).toHaveLength(9);
+  });
+
+  it("offers no level buttons when every route is of one level", () => {
+    render(<Climbing crag={crag({ routes: [routes[0]] })} />);
+    expect(document.querySelector(".levels")).toBeNull();
   });
 
   it("has no sector column and no sector list for routes alone", () => {
@@ -67,6 +94,6 @@ group("sectors and routes (CG-117)", () => {
   it("sits in the crag's panel", () => {
     vi.stubGlobal("matchMedia", () => ({ matches: true }));
     render(<DetailDialog crag={crag({ routes })} day="2026-10-16" onClose={() => {}} />);
-    expect(document.querySelector("#detail table.routes")).not.toBeNull();
+    expect(document.querySelectorAll("#detail table.routes")).toHaveLength(1);         // once, whatever the keys beside it
   });
 });
