@@ -145,12 +145,16 @@ test("CG-117: a crag's sectors and routes open in its panel, without overflowing
   await page.goto(`./?crag=${CRAGS[0].id}`);
   const panel = page.locator("dialog#detail");
   await expect(panel).toBeVisible();
-  await panel.getByText("2 vie su OpenStreetMap").click();
-  await panel.getByText("1 settore su OpenStreetMap").click();
+  await panel.locator("summary", { hasText: "2 vie su OpenStreetMap" }).click();
+  await panel.locator("summary", { hasText: "1 settore su OpenStreetMap" }).click();
   const table = panel.locator("table.routes");
-  await expect(table.locator("tbody tr")).toHaveCount(2);
-  await expect(table.locator("tbody tr").first()).toContainText("Settore Alto");
-  await expect(table.locator("tbody tr").first()).not.toContainText("Còrna Test");    // the title says it
+  await expect(table.locator("tbody tr:not(.level)")).toHaveCount(2);
+  await expect(table.locator("tbody tr:not(.level)").first()).toContainText("Settore Alto");
+  await expect(table.locator("tbody tr:not(.level)").first()).not.toContainText("Còrna Test");    // the title says it
+  // CG-118: one level at a time.
+  await panel.getByRole("button", { name: "6 impegnativo · 1" }).click();
+  await expect(table.locator("tbody tr:not(.level)")).toHaveCount(1);
+  await expect(table.locator("tbody tr:not(.level)")).toContainText("Spigolo");
   const results = await new AxeBuilder({ page }).include("dialog#detail").analyze();
   expect(results.violations.filter(v => v.impact === "serious" || v.impact === "critical").map(v => v.id)).toEqual([]);
   // The table may scroll inside its box, never the page sideways.
