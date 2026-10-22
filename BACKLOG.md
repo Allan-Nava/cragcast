@@ -412,6 +412,11 @@ hourly archive below exists nowhere else, so from CG-108 on it needs a backup.
   the API v1 crag file. Read from `data/osm-climbing.json` by the export, so GitHub Pages and the
   Pi show them alike. Asked for on 2026-10-22: the sectors and routes were in the database but
   nowhere on the page. <!-- cg: prio=med size=M labels=frontend,backend ver=main -->
+- [x] **CG-118 — Routes by level**: a crag's routes readable at a glance — the span of grades in
+  the summary ("dal 3b al 7a+"), a button per level (the grade's number: 4 and under, 5, 6, 7, 8
+  and over, ungraded) with its count and an indicative word, the table grouped by level, and a
+  line on how the French scale reads (5a, 5b, 5c, 5c+, then 6a). Asked for on 2026-10-22: a plain
+  list of 52 routes did not say which were within reach. <!-- cg: prio=med size=S labels=frontend ver=main -->
 - [ ] **CG-106 — The hourly forecasts, archived**: each `WeatherRefresh` also appends what it
   computed — per crag and day, the verdict, the reasons, the four weather numbers and the hours
   (JSON text) — to `crag_forecast`, keyed by crag, day and fetch time, so "what did cragcast say

@@ -58,6 +58,10 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   folded away under their count (`Climbing.tsx`); a crag without either shows nothing. Type-check
   the web app with `npm run typecheck` (`tsc --noEmit`): `tsc -b` writes `.js` files beside the
   sources, and Vitest then imports those stale copies.
+- **Routes read by level** (CG-118): the level is the grade's number (`routeLevel()`: 4 and under
+  together, 8 and over together); one button per level present with its count, the table grouped
+  under the same levels, and one line on how the French scale reads. The words (facile, medio,
+  impegnativo, difficile, estremo) are said to be indicative; the grade itself is OSM's.
 - **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:
   credit OSM on every surface that shows them): `climbing=crag`, and since CG-42 named outdoor
   `sport=climbing` places (a cliff, a rock, a climbing site relation) — never gyms, shops,
