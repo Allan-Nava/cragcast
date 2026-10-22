@@ -49,3 +49,36 @@ export function gradeLabel(f: GradeFilter): string {
   const vowel = f.grade.startsWith("8");
   return f.dir === "le" ? (vowel ? `fino all'${f.grade}` : `fino al ${f.grade}`) : (vowel ? `dall'${f.grade}` : `dal ${f.grade}`);
 }
+
+/** CG-118: a route's level, the grade's number: "le4" up to 4, then 5, 6 and 7, "ge8" from 8, or
+ * "none" for a route OSM gives no grade. */
+export type Level = "le4" | "5" | "6" | "7" | "ge8" | "none";
+
+/** The levels in order, each with what a climber reads it as; the words are indicative. */
+export const LEVELS: { level: Level; label: string; word: string | null }[] = [
+  { level: "le4", label: "4 e meno", word: "facile" },
+  { level: "5", label: "5", word: "medio" },
+  { level: "6", label: "6", word: "impegnativo" },
+  { level: "7", label: "7", word: "difficile" },
+  { level: "ge8", label: "8 e oltre", word: "estremo" },
+  { level: "none", label: "Senza grado", word: null },
+];
+
+export function routeLevel(grade: string | null): Level {
+  const r = grade == null ? null : gradeRank(grade);
+  if (r == null) return "none";
+  const n = Math.floor(r / 100);
+  return n <= 4 ? "le4" : n >= 8 ? "ge8" : (String(n) as Level);
+}
+
+/** "dal 3b al 7a", "solo 6a", or null without a grade; "all'8a" and "dall'8a" elide. */
+export function gradeSpan(grades: (string | null)[]): string | null {
+  const ranked = grades.filter((g): g is string => g != null && gradeRank(g) != null)
+    .sort((a, b) => gradeRank(a)! - gradeRank(b)!);
+  if (!ranked.length) return null;
+  const [lo, hi] = [ranked[0], ranked[ranked.length - 1]];
+  if (lo === hi) return `solo ${lo}`;
+  const from = lo.startsWith("8") ? `dall'${lo}` : `dal ${lo}`;
+  const to = hi.startsWith("8") ? `all'${hi}` : `al ${hi}`;
+  return `${from} ${to}`;
+}

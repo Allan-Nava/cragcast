@@ -5,7 +5,7 @@ import { km } from "./geo";
 import { ticks } from "./ticks";
 import { cragLink, inArea, readState, stateQuery } from "./state";
 import { crag } from "../test/fixtures";
-import { GRADE_CHOICES, gradeLabel, gradeRank, hasGrades, inGrade, readGrade } from "./grades";
+import { GRADE_CHOICES, gradeLabel, gradeRank, gradeSpan, hasGrades, inGrade, readGrade, routeLevel } from "./grades";
 
 const DAYS = ["2026-10-15", "2026-10-16", "2026-10-17"];
 
@@ -180,5 +180,20 @@ group("grades (CG-61)", () => {
     expect(d.grade).toBeNull();
     expect(d.order).toBe("verdict");
     expect(stateQuery(d)).toBe("?day=2026-10-16");
+  });
+});
+
+group("route levels (CG-118)", () => {
+  it("puts a grade under its number, the easy and the extreme together", () => {
+    expect(["3a", "4+", "5a", "5c+", "6b", "7c+", "8a", "9a"].map(routeLevel))
+      .toEqual(["le4", "le4", "5", "5", "6", "7", "ge8", "ge8"]);
+    expect(routeLevel(null)).toBe("none");
+    expect(routeLevel("V+")).toBe("none");
+  });
+  it("says the span of the grades, in order whatever the input's", () => {
+    expect(gradeSpan(["6a", null, "5b", "6c+"])).toBe("dal 5b al 6c+");
+    expect(gradeSpan(["8a", "8b"])).toBe("dall'8a all'8b");
+    expect(gradeSpan(["6a", "6a"])).toBe("solo 6a");
+    expect(gradeSpan([null, "boh"])).toBeNull();
   });
 });
