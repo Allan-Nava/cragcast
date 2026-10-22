@@ -1,8 +1,12 @@
 // CG-117: the crag's sectors (CG-104) and single routes (CG-105) from OpenStreetMap, in the
 // panel, each folded away under its count so the panel stays short. Routes come easiest first,
 // as the export sorts them; each name links to its object on OSM.
+// CG-118: the routes by level — a button per grade number with its count, the table grouped
+// under the same levels, and one line saying how the French scale reads.
+import { useState } from "react";
 import type { Crag, Route, Sector } from "../types";
 import { ASPECT_IT, osmUrl } from "../lib/text";
+import { LEVELS, gradeSpan, routeLevel, type Level } from "../lib/grades";
 
 const range = (s: Pick<Sector, "gradeMin" | "gradeMax">): string | null =>
   s.gradeMin && s.gradeMax ? (s.gradeMin === s.gradeMax ? s.gradeMin : `${s.gradeMin}–${s.gradeMax}`)
@@ -34,11 +38,33 @@ function SectorList({ sectors, crag }: { sectors: Sector[]; crag: string }) {
 }
 
 function RouteTable({ routes, sectors, crag }: { routes: Route[]; sectors: Sector[]; crag: string }) {
+  const [shown, setShown] = useState<Level | "all">("all");
   const sectorName = new Map(sectors.map(s => [s.id, shortName(s.name, crag)]));
   const bySector = routes.some(r => r.sector && sectorName.get(r.sector));
+  const groups = LEVELS.map(l => ({ ...l, routes: routes.filter(r => routeLevel(r.grade) === l.level) }))
+    .filter(g => g.routes.length > 0);
+  const span = gradeSpan(routes.map(r => r.grade));
+  const columns = bySector ? 5 : 4;
+  const title = (g: (typeof groups)[number]) => [g.level === "none" ? g.label : `Livello ${g.label}`, g.word].filter(Boolean).join(" · ");
   return (
     <details className="climbing">
-      <summary>{many(routes.length, "via", "vie")} su OpenStreetMap</summary>
+      <summary>{many(routes.length, "via", "vie")} su OpenStreetMap{span && ` · ${span}`}</summary>
+      {groups.length > 1 && (
+        <div className="levels" role="group" aria-label="Livello">
+          <button type="button" aria-pressed={shown === "all"} onClick={() => setShown("all")}>
+            {`Tutte · ${routes.length}`}
+          </button>
+          {groups.map(g => (
+            <button key={g.level} type="button" aria-pressed={shown === g.level} onClick={() => setShown(g.level)}>
+              <b>{g.label}</b>{g.word && ` ${g.word}`}{` · ${g.routes.length}`}
+            </button>
+          ))}
+        </div>
+      )}
+      <p className="muted scale">
+        Scala francese, come su OpenStreetMap: il numero è il livello, dal 3 all&apos;8 e oltre; a, b, c e +
+        salgono dentro il livello (5a, 5b, 5c, 5c+, poi 6a). I nomi dei livelli sono indicativi.
+      </p>
       <table className="routes">
         <thead>
           <tr>
@@ -49,18 +75,23 @@ function RouteTable({ routes, sectors, crag }: { routes: Route[]; sectors: Secto
             {bySector && <th scope="col">Settore</th>}
           </tr>
         </thead>
-        <tbody>
-          {routes.map(r => (
-            <tr key={r.id}>
-              <th scope="row"><a href={osmUrl(r.id)} rel="noopener">{r.name ?? "Senza nome"}</a>
-                {r.pitches != null && r.pitches > 1 && <span className="muted">{` · ${r.pitches} tiri`}</span>}</th>
-              <td>{r.grade ?? "—"}</td>
-              <td>{r.length != null ? `${r.length.toLocaleString("it-IT")} m` : "—"}</td>
-              <td>{r.bolts ?? "—"}</td>
-              {bySector && <td>{(r.sector && sectorName.get(r.sector)) ?? "—"}</td>}
+        {groups.filter(g => shown === "all" || g.level === shown).map(g => (
+          <tbody key={g.level}>
+            <tr className="level">
+              <th scope="rowgroup" colSpan={columns}>{`${title(g)} — ${many(g.routes.length, "via", "vie")}`}</th>
             </tr>
-          ))}
-        </tbody>
+            {g.routes.map(r => (
+              <tr key={r.id}>
+                <th scope="row"><a href={osmUrl(r.id)} rel="noopener">{r.name ?? "Senza nome"}</a>
+                  {r.pitches != null && r.pitches > 1 && <span className="muted">{` · ${r.pitches} tiri`}</span>}</th>
+                <td>{r.grade ? <b className="grade">{r.grade}</b> : "—"}</td>
+                <td>{r.length != null ? `${r.length.toLocaleString("it-IT")}\u00a0m` : "—"}</td>
+                <td>{r.bolts ?? "—"}</td>
+                {bySector && <td>{(r.sector && sectorName.get(r.sector)) ?? "—"}</td>}
+              </tr>
+            ))}
+          </tbody>
+        ))}
       </table>
     </details>
   );

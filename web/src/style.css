@@ -311,6 +311,15 @@ table.routes { border-collapse: collapse; margin: var(--space-3) 0 0; width: 100
 table.routes th, table.routes td { text-align: left; padding: var(--space-1) var(--space-3) var(--space-1) 0; vertical-align: top; }
 table.routes thead th { font-weight: 400; color: var(--muted); }
 table.routes tbody th { font-weight: 400; }
+/* CG-118: the routes by level. */
+.levels { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-3) 0; }
+.levels button { background: transparent; color: var(--muted); border: 1px solid var(--line); border-radius: var(--radius-pill);
+                 padding: var(--space-2) var(--space-5); font: inherit; font-size: var(--text-sm); cursor: pointer; }
+.levels button b { color: var(--text); }
+.levels button[aria-pressed="true"] { color: var(--text); border-color: var(--go); }
+details.climbing p.scale { font-size: var(--text-sm); margin: var(--space-2) 0; }
+table.routes tr.level th { padding-top: var(--space-5); color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--line); }
+table.routes b.grade { font-weight: 700; }
 
 /* CG-59: the day's weather as a small table, in the popup and the panel. */
 table.facts { border-collapse: collapse; margin: var(--space-3) 0; font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
