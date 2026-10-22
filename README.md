@@ -130,7 +130,10 @@ curl https://allan-nava.github.io/cragcast/api/v1/crags/osm-node-1739484761.json
   day: `region` and `name` of the EAWS micro-region, `level` (the day's highest, 1–5),
   `ratings` (`level`, `above`, `below` — metres or `treeline` — and `period`, `earlier`,
   `later` or null for all day), `problems` (CAAML v6 types such as `wind_slab`) and `bulletin`,
-  the official page.
+  the official page. Since CG-117 also `sectors` — `id`, `name`, `aspect`, `gradeMin`,
+  `gradeMax` of each sector folded into the crag (CG-104) — and `routes` — `id`, `name`,
+  `grade`, `length`, `bolts`, `pitches` and `sector` (a sector's `id` or null) of each single
+  route OSM links to it (CG-105), easiest first; both empty lists where OSM has none.
 
 Credit OpenStreetMap (ODbL), Open-Meteo (CC BY 4.0) and Copernicus when you show the data,
 and ARPA Lombardia for the avalanche levels.

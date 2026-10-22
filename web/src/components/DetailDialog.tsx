@@ -1,5 +1,5 @@
 // CG-24: the crag's panel — verdict, reasons, details, the day's hours as two charts and a
-// table, directions and OSM links.
+// table, directions and OSM links; since CG-117 the sectors and routes, folded away.
 // CG-40: from 900 px a non-modal panel beside the map, which stays usable — since CG-56 in the
 // list's column of the grid, below the controls; a bottom sheet on phones (modal). The day switches inside it, by buttons or a
 // sideways swipe; a downward swipe closes the sheet. Motion only without
@@ -11,6 +11,7 @@ import { HourChart, HourTable, hourReadout } from "./HourChart";
 import { AvalancheLine } from "./AvalancheLine";
 import { cragLink } from "../lib/state";
 import { Star } from "./Star";
+import { Climbing } from "./Climbing";
 
 /** CG-44: share the crag — the system share sheet where there is one, else copy the link. */
 function Share({ crag }: { crag: Crag }) {
@@ -169,6 +170,7 @@ export function DetailDialog({ crag, day, days = [], onDay, onClose, favourite =
               <HourTable hours={hours} />
             </>
           )}
+          <Climbing crag={crag} />
           <Share key={crag.id} crag={crag} />
           <p className="links">
             <a href={`https://www.google.com/maps/dir/?api=1&destination=${crag.latitude},${crag.longitude}`} rel="noopener">Indicazioni (Google Maps)</a>{" "}

@@ -49,6 +49,26 @@ export interface Details {
   website?: string;
 }
 
+/** CG-104/CG-117: one sector folded into the crag, with its own aspect and grades. */
+export interface Sector {
+  id: string;
+  name: string | null;
+  aspect: Aspect | null;
+  gradeMin: string | null;
+  gradeMax: string | null;
+}
+
+/** CG-105/CG-117: one single route of the crag from OSM; sector is a Sector's id, or null. */
+export interface Route {
+  id: string;
+  name: string | null;
+  grade: string | null;
+  length: number | null;
+  bolts: number | null;
+  pitches: number | null;
+  sector: string | null;
+}
+
 export interface Crag {
   id: string;
   name: string;
@@ -63,6 +83,9 @@ export interface Crag {
   province: string | null;
   provinceCode: string | null;
   days: Record<string, Day>;
+  /** CG-117: absent in data written before it (a page cached by the service worker). */
+  sectors?: Sector[];
+  routes?: Route[];
 }
 
 export interface Conditions {

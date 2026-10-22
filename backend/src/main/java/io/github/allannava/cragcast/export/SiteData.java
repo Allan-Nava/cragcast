@@ -39,6 +39,7 @@ public class SiteData {
     private final JsonMapper json = JsonMapper.builder().build();
     private final ConditionsExport.CragsFile crags;
     private final AvalancheRegions regions;
+    private final OsmClimbing climbing;
     private final HttpClient http;
     private final String avalancheUrl;
     private final String siteUrl;
@@ -48,13 +49,19 @@ public class SiteData {
     @Autowired
     SiteData(@Value("${cragcast.avalanche.base-url}") String avalancheUrl,
              @Value("${cragcast.site.url}") String siteUrl, Clock clock) throws IOException {
-        this(readCrags(), readRegions(), avalancheUrl, siteUrl, clock);
+        this(readCrags(), readRegions(), readClimbing(), avalancheUrl, siteUrl, clock);
     }
 
     SiteData(ConditionsExport.CragsFile crags, AvalancheRegions regions, String avalancheUrl, String siteUrl,
              Clock clock) {
+        this(crags, regions, OsmClimbing.none(), avalancheUrl, siteUrl, clock);
+    }
+
+    SiteData(ConditionsExport.CragsFile crags, AvalancheRegions regions, OsmClimbing climbing, String avalancheUrl,
+             String siteUrl, Clock clock) {
         this.crags = crags;
         this.regions = regions;
+        this.climbing = climbing;
         this.avalancheUrl = avalancheUrl;
         this.siteUrl = siteUrl.endsWith("/") ? siteUrl : siteUrl + "/";
         this.clock = clock;
@@ -75,6 +82,17 @@ public class SiteData {
         }
         try (InputStream in = file.getInputStream()) {
             return AvalancheRegions.parse(new String(in.readAllBytes(), StandardCharsets.UTF_8), JsonMapper.builder().build());
+        }
+    }
+
+    /** CG-117: the sectors and routes ship in the jar too; without the file, none. */
+    private static OsmClimbing readClimbing() throws IOException {
+        var file = new ClassPathResource("data/osm-climbing.json");
+        if (!file.exists()) {
+            return OsmClimbing.none();
+        }
+        try (InputStream in = file.getInputStream()) {
+            return OsmClimbing.parse(new String(in.readAllBytes(), StandardCharsets.UTF_8), JsonMapper.builder().build());
         }
     }
 
@@ -107,7 +125,7 @@ public class SiteData {
         }
         var file = new ConditionsExport.CragsFile(crags.region(), crags.source(), crags.licence(),
                 crags.elevationSource(), scored);
-        ConditionsExport.Output out = ConditionsExport.build(file, theirs, days, now, regions, bulletins);
+        ConditionsExport.Output out = ConditionsExport.build(file, theirs, days, now, regions, bulletins, climbing);
         Map<String, String> api = new LinkedHashMap<>();
         ConditionsExport.api(out).forEach((path, doc) -> api.put(path, json.writeValueAsString(doc)));
         latest = new Snapshot(now, json.writeValueAsString(out), api, SharePages.pages(out, siteUrl));

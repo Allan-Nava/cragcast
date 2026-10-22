@@ -14,7 +14,7 @@ const REASON_IT: Record<string, string> = {
   "cold": "freddo",
   "hot on a sunny wall": "caldo su parete al sole",
 };
-const ASPECT_IT: Record<Aspect, string> = { N: "N", NE: "NE", E: "E", SE: "SE", S: "S", SW: "SO", W: "O", NW: "NO" };
+export const ASPECT_IT: Record<Aspect, string> = { N: "N", NE: "NE", E: "E", SE: "SE", S: "S", SW: "SO", W: "O", NW: "NO" };
 const STYLE_IT: Record<string, string> = { sport: "sportiva", trad: "trad", multipitch: "vie lunghe" };
 
 /** Lower case, accents removed: "Còrna" and "CORNA" both become "corna". */
@@ -69,6 +69,12 @@ export function osmEditUrl(sourceUrl: string): string | null {
   const m = sourceUrl.match(/openstreetmap\.org\/(node|way|relation)\/(\d+)/);
   return m ? `https://www.openstreetmap.org/edit?${m[1]}=${m[2]}` : null;
 }
+
+/** CG-117: an object's page on OSM from its id: "osm-node-123" -> …/node/123. */
+export const osmUrl = (id: string): string => {
+  const [, kind, n] = id.split("-");
+  return `https://www.openstreetmap.org/${kind}/${n}`;
+};
 
 export const dayLabel = (i: number, day: string): string => ["Oggi", "Domani", "Dopodomani"][i] ?? day;
 

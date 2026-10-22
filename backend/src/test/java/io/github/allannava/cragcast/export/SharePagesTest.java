@@ -18,7 +18,7 @@ class SharePagesTest {
         days.put("2026-10-15", new ConditionsExport.DayOut(Verdict.GO, List.of(), w, List.of(), null));
         days.put("2026-10-16", new ConditionsExport.DayOut(tomorrow, reasons, w, List.of(), null));
         return new ConditionsExport.CragOut("osm-node-1", name, 45.8, 9.4, null, "https://example.org/1", Map.of(), 482,
-                List.of(), "Testville", "Testshire", "TT", days);
+                List.of(), "Testville", "Testshire", "TT", days, List.of(), List.of());
     }
 
     private static ConditionsExport.Output out(ConditionsExport.CragOut c) {

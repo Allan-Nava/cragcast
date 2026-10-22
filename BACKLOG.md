@@ -406,6 +406,12 @@ hourly archive below exists nowhere else, so from CG-108 on it needs a backup.
   nearest crag or sector within 400 m; Flyway V7's `route` with `grade_rank`, and
   `GET /api/crags/{slug}/routes`. On 2026-10-22, of 148 single routes 102 linked by relation, 14
   by distance, 32 unlinked (mountain routes far from any crag). <!-- cg: prio=med size=M labels=data,backend ver=main -->
+- [x] **CG-117 — Sectors and routes on the page**: the crag's panel lists its sectors (CG-104)
+  with aspect and grades, and its single routes (CG-105) as a table — grade, length, bolts, the
+  sector — easiest first, each linked to OSM and folded away under its count; the same lists in
+  the API v1 crag file. Read from `data/osm-climbing.json` by the export, so GitHub Pages and the
+  Pi show them alike. Asked for on 2026-10-22: the sectors and routes were in the database but
+  nowhere on the page. <!-- cg: prio=med size=M labels=frontend,backend ver=main -->
 - [ ] **CG-106 — The hourly forecasts, archived**: each `WeatherRefresh` also appends what it
   computed — per crag and day, the verdict, the reasons, the four weather numbers and the hours
   (JSON text) — to `crag_forecast`, keyed by crag, day and fetch time, so "what did cragcast say

@@ -52,6 +52,12 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   guessed farther. Anchors and abseils are parts of a route, not routes. The `route` table and
   `GET /api/crags/{slug}/routes` serve them; they never enter `crags.json` or `/api/crags`.
   `grade_rank` is `FrenchGrade.rank()` (6a = 36, six steps a number) so routes sort by grade.
+- **The page shows sectors and routes from the same file** (CG-117): `ConditionsExport` reads
+  `data/osm-climbing.json` next to `crags.json` (`SiteData` from the jar) through `OsmClimbing`,
+  so GitHub Pages and the Pi show the same lists without a database. In the panel they stay
+  folded away under their count (`Climbing.tsx`); a crag without either shows nothing. Type-check
+  the web app with `npm run typecheck` (`tsc --noEmit`): `tsc -b` writes `.js` files beside the
+  sources, and Vitest then imports those stale copies.
 - **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:
   credit OSM on every surface that shows them): `climbing=crag`, and since CG-42 named outdoor
   `sport=climbing` places (a cliff, a rock, a climbing site relation) — never gyms, shops,

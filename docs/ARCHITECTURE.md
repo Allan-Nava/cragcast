@@ -127,7 +127,7 @@ flowchart TB
 |---|---|---|
 | `data/crags.json` | `tools/osm_crags.py`; read by `ConditionsExport.Crag`, `CragImporter` and `SectorImporter` | ids (`osm-<type>-<id>`) are stable; changed only by a reviewed PR; `sectors` lists the OSM ids folded in as sectors (CG-104), each one in `osm-climbing.json` |
 | `data/osm-climbing.json` | `tools/osm_crags.py` (`osm_object()`); read by `OsmObjectImporter` into `osm_object` (Flyway V5) | every object of the OSM query with its category; the table is replaced whole at startup, the file is the source (CG-103); with `crags.json`'s `sectors`, also into `sector` (Flyway V6, CG-104); the single routes, linked to their crag and sector (`crag`, `sector`, `linkedBy`), into `route` (Flyway V7, CG-105) |
-| `data/conditions.json` | `ConditionsExport.Output`; typed in `web/src/types.ts` | the page's input; Java and TypeScript change together |
+| `data/conditions.json` | `ConditionsExport.Output`; typed in `web/src/types.ts` | the page's input; Java and TypeScript change together; since CG-117 each crag carries `sectors` and `routes`, from `data/osm-climbing.json` (`OsmClimbing`) |
 | `/api/v1/` | `ConditionsExport.api()` | fields only added, never renamed or removed; a break goes to `/api/v2/` |
 | History CSV | `tools/history_append.py` (`FIELDS`) | on the `history` branch, one file per month; columns only added at the end ([ADR 0006](adr/0006-history-on-its-own-branch.md)); read by name by `HistoryCsv` |
 | Share pages | `SharePages` | the day written as a date; reason words kept equal to `web/src/lib/text.ts` |
