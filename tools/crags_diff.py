@@ -41,6 +41,8 @@ def main(old_path, new_path):
                 what.append(f"{k} {o.get(k) or '—'} → {n.get(k) or '—'}")
         if (o["latitude"], o["longitude"]) != (n["latitude"], n["longitude"]):
             what.append("moved")
+        if o.get("sectors", []) != n.get("sectors", []):
+            what.append(f"sectors {len(o.get('sectors', []))} → {len(n.get('sectors', []))}")
         od, nd = o.get("details", {}), n.get("details", {})
         for k in sorted(od.keys() | nd.keys()):
             if od.get(k) != nd.get(k):

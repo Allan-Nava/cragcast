@@ -62,6 +62,33 @@ class Group(unittest.TestCase):
         self.assertEqual(list(crags), ["Falesia Test"])
         self.assertEqual(len(crags["Falesia Test"]["alsoMapped"]), 2)
 
+    def test_the_sectors_folded_in_are_listed_by_id_the_one_kept_first(self):
+        crags, _ = build(el("way", 1, "Falesia Test - Settore A", 0, sport="climbing", natural="cliff"),
+                         el("way", 2, "Falesia Test - Settore B", 400, sport="climbing", natural="cliff"),
+                         el("node", 3, "Muro Test", 100, sport="climbing"))
+        c = crags["Falesia Test"]
+        self.assertEqual(c["id"], "osm-way-1")
+        self.assertEqual(c["sectors"], ["osm-way-1", "osm-way-2", "osm-node-3"])
+        self.assertNotIn("_sectors", c)
+
+    def test_the_same_place_drawn_twice_is_no_sector(self):
+        crags, _ = build(el("node", 1, "Rocce Test", 0, climbing="crag"),
+                         el("way", 2, "Zucco Test - Rocce", 20, sport="climbing", natural="cliff"))
+        self.assertNotIn("sectors", crags["Rocce Test"])
+        self.assertEqual(crags["Rocce Test"]["alsoMapped"], ["https://www.openstreetmap.org/way/2"])
+
+    def test_a_climbing_crag_lists_the_sectors_around_it_but_not_itself(self):
+        crags, _ = build(el("node", 1, "Test Disco", 0, climbing="crag", **{"climbing:grade:french:max": "8a+"}),
+                         el("node", 2, "Bastionata Test", 200, sport="climbing",
+                            **{"climbing:grade:french:max": "6a"}))
+        c = crags["Test Disco"]
+        self.assertEqual(c["sectors"], ["osm-node-2"])
+        self.assertEqual(c["details"]["gradeMax"], "8a+")             # the crag's own values unchanged
+
+    def test_a_crag_without_sectors_has_no_sectors_key(self):
+        crags, _ = build(el("node", 1, "Test Wall", 0, climbing="crag"))
+        self.assertNotIn("sectors", crags["Test Wall"])
+
     def test_the_same_base_name_far_apart_stays_two_crags(self):
         crags, _ = build(el("way", 1, "Falesia Test - Nord", 0, sport="climbing", natural="cliff"),
                          el("way", 2, "Falesia Test - Sud", 5000, sport="climbing", natural="cliff"))

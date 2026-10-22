@@ -40,6 +40,12 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   transaction. Like the crags, it changes only through the reviewed monthly PR; nothing writes to
   the table otherwise. A column is added for what is worth filtering on, the rest stays in
   `details` as JSON text. Gyms and shops are kept there as `venue`, never shown as crags.
+- **A sector keeps its own values, the crag keeps the folded ones** (CG-104): `group()` lists the
+  OSM ids it folds in as sectors in the crag's `sectors` (the same place drawn twice stays in
+  `alsoMapped` only); `SectorImporter` runs after `CragImporter` (`@Order`) and replaces the
+  `sector` table whole from those ids and `osm-climbing.json`. The crag's grades, aspect and
+  counts never change because a sector is kept; `SectorImporterTest` fails when a listed
+  sector is missing from the objects file.
 - **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:
   credit OSM on every surface that shows them): `climbing=crag`, and since CG-42 named outdoor
   `sport=climbing` places (a cliff, a rock, a climbing site relation) — never gyms, shops,

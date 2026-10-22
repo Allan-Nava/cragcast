@@ -4,7 +4,7 @@
 Two kinds of OSM object become crags: climbing=crag, and (CG-42) named outdoor places tagged
 only sport=climbing — a cliff, a rock, a climbing site. Gyms, shops, buildings and single routes
 are left out; the sectors of one crag, mapped as separate cliffs or loose points, are folded
-into it (see group()).
+into it (see group()) and listed by OSM id in its "sectors" (CG-104).
 
 Every crag keeps its OSM id and a link to it, so a position can always be traced to its source.
 The wall's aspect comes from the OSM tag climbing:orientation when someone has mapped it, and
@@ -277,6 +277,10 @@ def absorb(into, other, sector=False):
     so the aspect is kept only while every part that has one agrees (settled in group())."""
     into.setdefault("alsoMapped", []).append(other["sourceUrl"])
     into["alsoMapped"].extend(other.pop("alsoMapped", []))
+    if sector:
+        # CG-104: the sector's own OSM object, kept by id so the database can list it apart.
+        into.setdefault("_sectors", []).append(other["id"])
+        into["_sectors"].extend(other.pop("_sectors", []))
     if sector and into.get("_kind") == "crag":
         # A climbing=crag is a crag in its own right: a sector found around it adds its link
         # and what holds crag-wide where missing, never its grades, counts or aspect.
@@ -364,6 +368,13 @@ def group(items):
         else:
             dropped.append(p["name"])
     for c in out:
+        # CG-104: the sectors folded in, by OSM id. A crag gathered from sectors kept the id of
+        # one of them ("… - Settore A"): that one is a sector too, and listed first.
+        sectors = c.pop("_sectors", [])
+        if sectors and c["_kind"] != "crag" and c["name"] != base(c["name"]):
+            sectors.insert(0, c["id"])
+        if sectors:
+            c["sectors"] = sectors
         # A crag gathered from sectors takes their common name: "Falesia Maddalena", not the
         # name of the sector whose id it kept. A climbing=crag keeps its own name.
         if c["_kind"] != "crag" and c.get("alsoMapped"):

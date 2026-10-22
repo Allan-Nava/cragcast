@@ -119,6 +119,10 @@
         "https://www.openstreetmap.org/node/1740501850",
         "https://www.openstreetmap.org/node/1704845845"
       ],
+      "sectors": [
+        "osm-node-1740501850",
+        "osm-node-1704845845"
+      ],
       "elevation": 1355,
       "municipality": "Ballabio",
       "province": "Lecco",
@@ -187,6 +191,9 @@
       "details": {},
       "alsoMapped": [
         "https://www.openstreetmap.org/node/776120027"
+      ],
+      "sectors": [
+        "osm-node-776120027"
       ],
       "elevation": 435,
       "municipality": "Idro",
@@ -317,6 +324,9 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/way/837566148",
         "https://www.openstreetmap.org/node/1739484467"
+      ],
+      "sectors": [
+        "osm-node-1739484467"
       ],
       "elevation": 263,
       "municipality": "Lecco",
@@ -595,6 +605,9 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/node/12169715549"
       ],
+      "sectors": [
+        "osm-node-12169715549"
+      ],
       "elevation": 863,
       "municipality": "Sorisole",
       "province": "Bergamo",
@@ -703,6 +716,9 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/node/14047508747"
       ],
+      "sectors": [
+        "osm-node-14047508747"
+      ],
       "elevation": 771,
       "municipality": "Ballabio",
       "province": "Lecco",
@@ -779,6 +795,9 @@
       },
       "alsoMapped": [
         "https://www.openstreetmap.org/way/231620488"
+      ],
+      "sectors": [
+        "osm-way-231620488"
       ],
       "elevation": 1510,
       "municipality": "Breno",
@@ -940,6 +959,9 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/way/1221616849"
       ],
+      "sectors": [
+        "osm-way-1221616849"
+      ],
       "elevation": 792,
       "municipality": "Villanuova sul Clisi",
       "province": "Brescia",
@@ -961,6 +983,9 @@
       },
       "alsoMapped": [
         "https://www.openstreetmap.org/node/8238656319"
+      ],
+      "sectors": [
+        "osm-node-8238656319"
       ],
       "elevation": 748,
       "municipality": "Peglio",
@@ -1051,6 +1076,10 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/way/1308976114"
       ],
+      "sectors": [
+        "osm-way-1308976112",
+        "osm-way-1308976114"
+      ],
       "elevation": 1208,
       "municipality": "Piazza Brembana",
       "province": "Bergamo",
@@ -1118,6 +1147,10 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/way/464613072"
       ],
+      "sectors": [
+        "osm-way-464613071",
+        "osm-way-464613072"
+      ],
       "elevation": 645,
       "municipality": "Barghe",
       "province": "Brescia",
@@ -1149,6 +1182,12 @@
         "https://www.openstreetmap.org/node/3496660985",
         "https://www.openstreetmap.org/node/4432155793"
       ],
+      "sectors": [
+        "osm-node-3311820205",
+        "osm-node-3311820198",
+        "osm-node-3496660985",
+        "osm-node-4432155793"
+      ],
       "elevation": 1076,
       "municipality": "Val Brembilla",
       "province": "Bergamo",
@@ -1174,6 +1213,11 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/way/181082831",
         "https://www.openstreetmap.org/node/12863259193"
+      ],
+      "sectors": [
+        "osm-way-160423372",
+        "osm-way-181082831",
+        "osm-node-12863259193"
       ],
       "elevation": 356,
       "municipality": "Brescia",
@@ -1285,6 +1329,15 @@
         "https://www.openstreetmap.org/way/423220240",
         "https://www.openstreetmap.org/way/423220241"
       ],
+      "sectors": [
+        "osm-way-423004800",
+        "osm-way-423004802",
+        "osm-way-423220237",
+        "osm-way-423220238",
+        "osm-way-423220239",
+        "osm-way-423220240",
+        "osm-way-423220241"
+      ],
       "elevation": 693,
       "municipality": "Cimbergo",
       "province": "Brescia",
@@ -1303,6 +1356,9 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/way/675774889",
         "https://www.openstreetmap.org/way/675774890"
+      ],
+      "sectors": [
+        "osm-way-675774890"
       ],
       "elevation": 460,
       "municipality": "Civate",
@@ -1517,6 +1573,14 @@
         "https://www.openstreetmap.org/way/327325146",
         "https://www.openstreetmap.org/way/327325149"
       ],
+      "sectors": [
+        "osm-way-1278483380",
+        "osm-way-214848110",
+        "osm-way-214848111",
+        "osm-way-327325142",
+        "osm-way-327325146",
+        "osm-way-327325149"
+      ],
       "elevation": 376,
       "municipality": "Predore",
       "province": "Bergamo",
@@ -1532,6 +1596,9 @@
       "details": {},
       "alsoMapped": [
         "https://www.openstreetmap.org/node/11758619714"
+      ],
+      "sectors": [
+        "osm-node-11758619714"
       ],
       "elevation": 355,
       "municipality": "San Pellegrino Terme",
@@ -1561,6 +1628,9 @@
       "details": {},
       "alsoMapped": [
         "https://www.openstreetmap.org/node/11186195797"
+      ],
+      "sectors": [
+        "osm-node-11186195797"
       ],
       "elevation": 403,
       "municipality": "Strozza",
@@ -1640,6 +1710,9 @@
       },
       "alsoMapped": [
         "https://www.openstreetmap.org/way/184675507"
+      ],
+      "sectors": [
+        "osm-way-184675507"
       ],
       "elevation": 1026,
       "municipality": "Gandino",
@@ -1813,6 +1886,16 @@
         "https://www.openstreetmap.org/way/420046016",
         "https://www.openstreetmap.org/way/365088791",
         "https://www.openstreetmap.org/way/832535003"
+      ],
+      "sectors": [
+        "osm-way-1049720124",
+        "osm-way-165644841",
+        "osm-way-200445051",
+        "osm-way-365084224",
+        "osm-way-365087259",
+        "osm-way-365087260",
+        "osm-way-365088791",
+        "osm-way-832535003"
       ],
       "elevation": 710,
       "municipality": "Botticino",
@@ -2164,6 +2247,11 @@
         "https://www.openstreetmap.org/way/365092503",
         "https://www.openstreetmap.org/way/365092779"
       ],
+      "sectors": [
+        "osm-way-365092288",
+        "osm-way-365092503",
+        "osm-way-365092779"
+      ],
       "elevation": 647,
       "municipality": "Botticino",
       "province": "Brescia",
@@ -2312,6 +2400,12 @@
         "https://www.openstreetmap.org/node/6918499609",
         "https://www.openstreetmap.org/node/2433809123"
       ],
+      "sectors": [
+        "osm-node-2935803563",
+        "osm-node-2918232733",
+        "osm-node-6918499609",
+        "osm-node-2433809123"
+      ],
       "elevation": 1098,
       "municipality": "Castione della Presolana",
       "province": "Bergamo",
@@ -2424,6 +2518,20 @@
         "https://www.openstreetmap.org/node/1517545751",
         "https://www.openstreetmap.org/node/6445041511"
       ],
+      "sectors": [
+        "osm-node-1517545745",
+        "osm-node-1517545743",
+        "osm-node-5865805696",
+        "osm-node-1517545749",
+        "osm-node-6445036109",
+        "osm-node-1517545744",
+        "osm-node-1517545742",
+        "osm-node-1517545750",
+        "osm-node-1510227633",
+        "osm-node-1517545748",
+        "osm-node-1517545751",
+        "osm-node-6445041511"
+      ],
       "elevation": 482,
       "municipality": "Galbiate",
       "province": "Lecco",
@@ -2487,6 +2595,9 @@
       },
       "alsoMapped": [
         "https://www.openstreetmap.org/node/14041775582"
+      ],
+      "sectors": [
+        "osm-node-14041775582"
       ],
       "elevation": 1033,
       "municipality": "Varese",
@@ -2583,6 +2694,10 @@
       },
       "alsoMapped": [
         "https://www.openstreetmap.org/way/365079831"
+      ],
+      "sectors": [
+        "osm-way-365079021",
+        "osm-way-365079831"
       ],
       "elevation": 200,
       "municipality": "Rezzato",
@@ -2758,6 +2873,9 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/node/4853720809"
       ],
+      "sectors": [
+        "osm-node-4853720809"
+      ],
       "elevation": 804,
       "municipality": "Marone",
       "province": "Brescia",
@@ -2795,6 +2913,11 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/way/282816946",
         "https://www.openstreetmap.org/way/332467010"
+      ],
+      "sectors": [
+        "osm-way-282816934",
+        "osm-way-282816946",
+        "osm-way-332467010"
       ],
       "elevation": 858,
       "municipality": "Botticino",
@@ -3033,6 +3156,10 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/way/860340485"
       ],
+      "sectors": [
+        "osm-way-860340484",
+        "osm-way-860340485"
+      ],
       "elevation": 648,
       "municipality": "Lecco",
       "province": "Lecco",
@@ -3108,6 +3235,9 @@
       },
       "alsoMapped": [
         "https://www.openstreetmap.org/node/8664259654"
+      ],
+      "sectors": [
+        "osm-node-8664259654"
       ],
       "elevation": 401,
       "municipality": "Abbadia Lariana",
@@ -3220,6 +3350,9 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/way/1213400748",
         "https://www.openstreetmap.org/way/1213400749"
+      ],
+      "sectors": [
+        "osm-way-1213400748"
       ],
       "elevation": 1057,
       "municipality": "Rogno",
@@ -3398,6 +3531,9 @@
       "details": {},
       "alsoMapped": [
         "https://www.openstreetmap.org/node/712287576"
+      ],
+      "sectors": [
+        "osm-node-712287576"
       ],
       "elevation": 977,
       "municipality": "Barzio",

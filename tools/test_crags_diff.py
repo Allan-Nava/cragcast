@@ -44,6 +44,11 @@ class Diff(unittest.TestCase):
         self.assertIn("- New Name: aspect — → S; name was Old Name; municipality A → B; moved; "
                       "gradeMax 6a → 6b; routes — → 12", text)
 
+    def test_a_sector_more_or_less_is_a_change(self):
+        out = self.run_diff([crag(1, "Test Wall", sectors=["osm-node-2"])],
+                            [crag(1, "Test Wall", sectors=["osm-node-2", "osm-way-3"])])
+        self.assertIn("- Test Wall: sectors 1 → 2", out)
+
     def test_nothing_but_elevation(self):
         text = self.run_diff([crag(1, "Wall", elevation=500)], [crag(1, "Wall", elevation=510)])
         self.assertIn("Only elevations or formatting differ.", text)
