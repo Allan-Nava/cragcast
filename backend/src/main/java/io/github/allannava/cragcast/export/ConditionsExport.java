@@ -87,7 +87,12 @@ public final class ConditionsExport {
             }
         }
 
-        Output out = build(crags, forecasts, days, Instant.now(), regions, bulletins);
+        // CG-117: the sectors and single routes, from the OSM objects file next to the crags.
+        Path climbingFile = Path.of(args[0]).toAbsolutePath().resolveSibling("osm-climbing.json");
+        OsmClimbing climbing = Files.exists(climbingFile)
+                ? OsmClimbing.parse(Files.readString(climbingFile), json) : OsmClimbing.none();
+
+        Output out = build(crags, forecasts, days, Instant.now(), regions, bulletins, climbing);
         Path target = Path.of(args[1]);
         Files.createDirectories(target.toAbsolutePath().getParent());
         Files.writeString(target, json.writeValueAsString(out));
@@ -120,9 +125,15 @@ public final class ConditionsExport {
         return build(crags, forecasts, days, now, AvalancheRegions.none(), Map.of());
     }
 
-    /** The pure part: crags, their forecasts and the day's bulletins in, the page's JSON out. */
     static Output build(CragsFile crags, List<HourlyForecast> forecasts, List<LocalDate> days, Instant now,
                         AvalancheRegions regions, Map<LocalDate, Map<String, Avalanche>> bulletins) {
+        return build(crags, forecasts, days, now, regions, bulletins, OsmClimbing.none());
+    }
+
+    /** The pure part: crags, their forecasts, the day's bulletins and the OSM objects in, the page's JSON out. */
+    static Output build(CragsFile crags, List<HourlyForecast> forecasts, List<LocalDate> days, Instant now,
+                        AvalancheRegions regions, Map<LocalDate, Map<String, Avalanche>> bulletins,
+                        OsmClimbing climbing) {
         if (forecasts.size() != crags.crags().size()) {
             throw new IllegalArgumentException(forecasts.size() + " forecasts for " + crags.crags().size() + " crags");
         }
@@ -141,7 +152,8 @@ public final class ConditionsExport {
             out.add(new CragOut(c.id(), c.name(), c.latitude(), c.longitude(), c.aspect(), c.sourceUrl(),
                     c.details() == null ? Map.of() : c.details(), c.elevation(),
                     c.alsoMapped() == null ? List.of() : c.alsoMapped(),
-                    c.municipality(), c.province(), c.provinceCode(), byDay));
+                    c.municipality(), c.province(), c.provinceCode(), byDay,
+                    climbing.sectors(c.sectors()), climbing.routes(c.id())));
         }
         return new Output(now.toString(), ZONE.getId(), days.stream().map(LocalDate::toString).toList(),
                 crags.licence(), "Weather: Open-Meteo.com (CC BY 4.0)", crags.elevationSource(), AVALANCHE_DATA, out);
@@ -209,9 +221,19 @@ public final class ConditionsExport {
 
     /** {@code details}: the climbing tags OSM has for the crag (grades, length, rock…), passed through. */
     /** {@code alsoMapped}: OSM links of duplicates folded into this crag by tools/osm_crags.py. */
+    /** {@code sectors}: CG-104, the OSM ids of the sectors folded into this crag. */
     record Crag(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
                 Map<String, Object> details, Integer elevation, List<String> alsoMapped,
-                String municipality, String province, String provinceCode) {
+                String municipality, String province, String provinceCode, List<String> sectors) {
+    }
+
+    /** CG-117: one sector of the crag, with its own aspect and grades. */
+    record SectorOut(String id, String name, Aspect aspect, String gradeMin, String gradeMax) {
+    }
+
+    /** CG-117: one single route of the crag; {@code sector} is the id of its sector, or null. */
+    record RouteOut(String id, String name, String grade, Double length, Integer bolts, Integer pitches,
+                    String sector) {
     }
 
     /** {@code avalanche}: CG-11, present only when the day's bulletin covers the crag. */
@@ -221,7 +243,8 @@ public final class ConditionsExport {
 
     record CragOut(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
                    Map<String, Object> details, Integer elevation, List<String> alsoMapped,
-                   String municipality, String province, String provinceCode, Map<String, DayOut> days) {
+                   String municipality, String province, String provinceCode, Map<String, DayOut> days,
+                   List<SectorOut> sectors, List<RouteOut> routes) {
     }
 
     record Output(String generatedAt, String timezone, List<String> days, String cragData, String weatherData,

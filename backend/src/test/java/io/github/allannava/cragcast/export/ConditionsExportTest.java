@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 /** Synthetic crags and forecasts: made-up names and numbers, not real places. */
 class ConditionsExportTest {
 
-    private static HourlyForecast dryDays() {
+    static HourlyForecast dryDays() {
         List<LocalDateTime> t = new ArrayList<>();
         for (int i = 0; i < 120; i++) {
             t.add(LocalDateTime.of(2026, 6, 1, 0, 0).plusHours(i));
@@ -30,8 +30,8 @@ class ConditionsExportTest {
         return new ConditionsExport.CragsFile("Test", "test", "test licence", "test elevation", List.of(
                 new ConditionsExport.Crag("t-1", "Sunny Test Wall", 45.0, 9.0, Aspect.S, "https://example.org/1",
                         java.util.Map.of("gradeMin", "5a", "gradeMax", "7b"), 820,
-                        List.of("https://example.org/1-twin"), "Testville", "Testshire", "TT"),
-                new ConditionsExport.Crag("t-2", "Unmapped Test Wall", 45.1, 9.1, null, "https://example.org/2", null, null, null, null, null, null)));
+                        List.of("https://example.org/1-twin"), "Testville", "Testshire", "TT", List.of("osm-way-5", "osm-way-404")),
+                new ConditionsExport.Crag("t-2", "Unmapped Test Wall", 45.1, 9.1, null, "https://example.org/2", null, null, null, null, null, null, null)));
     }
 
     @Test

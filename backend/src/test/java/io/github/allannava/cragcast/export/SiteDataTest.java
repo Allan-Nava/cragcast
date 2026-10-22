@@ -48,11 +48,11 @@ class SiteDataTest {
     private static ConditionsExport.CragsFile threeCrags() {
         return new ConditionsExport.CragsFile("Test", "test", "test licence", "test elevation", List.of(
                 new ConditionsExport.Crag("t-1", "Sunny Test Wall", 45.0, 9.0, Aspect.S, "https://example.org/1",
-                        Map.of("gradeMax", "7b"), 820, List.of(), "Testville", "Testshire", "TT"),
+                        Map.of("gradeMax", "7b"), 820, List.of(), "Testville", "Testshire", "TT", null),
                 new ConditionsExport.Crag("t-2", "Forecastless Test Wall", 45.1, 9.1, null, "https://example.org/2",
-                        null, null, null, null, null, null),
+                        null, null, null, null, null, null, null),
                 new ConditionsExport.Crag("t-3", "Shady Test Wall", 45.2, 9.2, Aspect.N, "https://example.org/3",
-                        null, 1400, null, null, null, null)));
+                        null, 1400, null, null, null, null, null)));
     }
 
     private static SiteData site() {
