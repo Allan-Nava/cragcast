@@ -302,6 +302,16 @@ details.mapped { margin: var(--space-2) 0 var(--space-4); font-size: var(--text-
 details.mapped summary { cursor: pointer; color: var(--muted); }
 details.mapped ul { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); list-style: none; margin: var(--space-3) 0 0; padding: 0; }
 
+/* CG-117: the sectors and routes in the panel, folded like the OSM links. */
+details.climbing { margin: var(--space-2) 0 var(--space-4); font-size: var(--text-md); overflow-x: auto; }
+details.climbing summary { cursor: pointer; color: var(--muted); }
+details.climbing ul { list-style: none; margin: var(--space-3) 0 0; padding: 0; }
+details.climbing li { padding: var(--space-px) 0; }
+table.routes { border-collapse: collapse; margin: var(--space-3) 0 0; width: 100%; font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
+table.routes th, table.routes td { text-align: left; padding: var(--space-1) var(--space-3) var(--space-1) 0; vertical-align: top; }
+table.routes thead th { font-weight: 400; color: var(--muted); }
+table.routes tbody th { font-weight: 400; }
+
 /* CG-59: the day's weather as a small table, in the popup and the panel. */
 table.facts { border-collapse: collapse; margin: var(--space-3) 0; font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
 table.facts th { text-align: left; font-weight: 400; color: var(--muted); padding: var(--space-px) var(--space-7) var(--space-px) 0; }
