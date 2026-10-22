@@ -49,7 +49,9 @@ class RouteApiTests {
         importer.run(new DefaultApplicationArguments());
         var inFile = importer.read(new ClassPathResource(OsmObjectImporter.FILE));
         assertThat(routes.count()).isEqualTo(inFile.size());
-        assertThat(routes.countByCragIdIsNull()).isEqualTo(inFile.stream().filter(r -> r.crag() == null).count());
+        // Linked only to the crags the table holds: CragApiTests empties it, and test order is not fixed.
+        var slugs = crags.findAll().stream().map(Crag::getSlug).collect(java.util.stream.Collectors.toSet());
+        assertThat(routes.countByCragIdIsNull()).isEqualTo(inFile.stream().filter(r -> !slugs.contains(r.crag())).count());
     }
 
     @Test
