@@ -130,3 +130,29 @@ test("CG-62: every control shows the same focus ring under the keyboard", async 
   }
   expect([...rings]).toEqual(["solid 2px 2px"]);
 });
+
+test("CG-117: a crag's sectors and routes open in its panel, without overflowing it", async ({ page }) => {
+  // Made-up sectors and routes on the first test crag.
+  const withRoutes = CRAGS.map((c, i) => i ? c : {
+    ...c,
+    sectors: [{ id: "osm-way-11", name: "Còrna Test - Settore Alto", aspect: "SW", gradeMin: "5b", gradeMax: "7a" }],
+    routes: [
+      { id: "osm-node-21", name: "Diedro Lungo del Test", grade: "5c", length: 25, bolts: 11, pitches: 1, sector: "osm-way-11" },
+      { id: "osm-node-22", name: "Spigolo", grade: "6a+", length: null, bolts: null, pitches: 3, sector: null },
+    ],
+  });
+  await page.route("**/data/conditions.json*", r => r.fulfill({ json: conditions(withRoutes) }));
+  await page.goto(`./?crag=${CRAGS[0].id}`);
+  const panel = page.locator("dialog#detail");
+  await expect(panel).toBeVisible();
+  await panel.getByText("2 vie su OpenStreetMap").click();
+  await panel.getByText("1 settore su OpenStreetMap").click();
+  const table = panel.locator("table.routes");
+  await expect(table.locator("tbody tr")).toHaveCount(2);
+  await expect(table.locator("tbody tr").first()).toContainText("Settore Alto");
+  await expect(table.locator("tbody tr").first()).not.toContainText("Còrna Test");    // the title says it
+  const results = await new AxeBuilder({ page }).include("dialog#detail").analyze();
+  expect(results.violations.filter(v => v.impact === "serious" || v.impact === "critical").map(v => v.id)).toEqual([]);
+  // The table may scroll inside its box, never the page sideways.
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
