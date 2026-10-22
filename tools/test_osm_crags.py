@@ -198,5 +198,51 @@ class Group(unittest.TestCase):
         self.assertEqual(list(crags), ["Falesia del Sasso Test"])
 
 
+class LinkRoutes(unittest.TestCase):
+    """CG-105: made-up crags and routes, not real places."""
+
+    def objects(self, *elements):
+        return sorted(filter(None, map(o.osm_object, elements)), key=lambda x: x["id"])
+
+    def test_a_member_of_the_crags_relation_is_linked_by_relation_however_far(self):
+        rel = el("relation", 1, "Falesia Test", 0, climbing="crag")
+        rel["members"] = [{"type": "node", "ref": 2, "role": ""}]
+        route = el("node", 2, "Via Lunga", 3000, sport="climbing", climbing="route_bottom")
+        crags, _ = build(rel, route)
+        objs = {x["id"]: x for x in o.link_routes([rel, route], self.objects(rel, route), list(crags.values()))}
+        self.assertEqual((objs["osm-node-2"]["crag"], objs["osm-node-2"]["sector"], objs["osm-node-2"]["linkedBy"]),
+                         ("osm-relation-1", None, "relation"))
+        self.assertNotIn("linkedBy", objs["osm-relation-1"])            # a crag is no route
+
+    def test_a_route_by_a_sector_is_linked_to_it_and_its_crag(self):
+        els = [el("way", 1, "Falesia Test - Settore A", 0, sport="climbing", natural="cliff"),
+               el("way", 2, "Falesia Test - Settore B", 1000, sport="climbing", natural="cliff"),
+               el("node", 3, "Spigolo", 1050, sport="climbing", climbing="route_bottom"),
+               el("node", 4, "Placca", 30, sport="climbing", climbing="route")]
+        crags, _ = build(*els)
+        objs = {x["id"]: x for x in o.link_routes(els, self.objects(*els), list(crags.values()))}
+        self.assertEqual((objs["osm-node-3"]["crag"], objs["osm-node-3"]["sector"]), ("osm-way-1", "osm-way-2"))
+        self.assertEqual((objs["osm-node-4"]["sector"], objs["osm-node-4"]["linkedBy"]), ("osm-way-1", "distance"))
+
+    def test_a_route_far_from_every_crag_is_kept_unlinked(self):
+        els = [el("node", 1, "Falesia Test", 0, climbing="crag"),
+               el("node", 2, "Via Alpina", 800, sport="climbing", climbing="route_bottom"),
+               el("node", 3, "Ancoraggio", 5, sport="climbing", climbing="anchor")]
+        crags, _ = build(*els)
+        objs = {x["id"]: x for x in o.link_routes(els, self.objects(*els), list(crags.values()))}
+        self.assertEqual((objs["osm-node-2"]["crag"], objs["osm-node-2"]["linkedBy"]), (None, None))
+        self.assertNotIn("crag", objs["osm-node-3"])                    # an anchor is part of a route, not one
+
+    def test_a_route_in_a_relation_folded_into_a_crag_follows_the_crag(self):
+        crag = el("node", 1, "Falesia Test", 0, climbing="crag")
+        rel = el("relation", 5, "Falesia Test", 20, climbing="crag")
+        rel["members"] = [{"type": "node", "ref": 6, "role": ""}]
+        route = el("node", 6, "Via", 2500, sport="climbing", climbing="route_bottom")
+        crags, _ = build(crag, rel, route)
+        self.assertEqual(list(crags), ["Falesia Test"])
+        objs = {x["id"]: x for x in o.link_routes([crag, rel, route], self.objects(crag, rel, route), list(crags.values()))}
+        self.assertEqual((objs["osm-node-6"]["crag"], objs["osm-node-6"]["linkedBy"]), ("osm-node-1", "relation"))
+
+
 if __name__ == "__main__":
     unittest.main()

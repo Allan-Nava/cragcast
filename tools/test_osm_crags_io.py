@@ -200,6 +200,21 @@ class Objects(unittest.TestCase):
                                "longitude": 9.987654, "aspect": "SW", "details": {"length": 25, "grade": "6a+"}})
         self.assertIsNone(o.osm_object({"type": "way", "id": 8, "tags": {"name": "No centre"}}))
 
+    def test_a_route_keeps_its_bolts_and_pitches(self):
+        obj = o.osm_object(self.el("node", 9, name="Diedro", sport="climbing", climbing="route_bottom",
+                                   **{"climbing:bolts": "12", "climbing:pitches": "3", "climbing:grade:french": "5c"}))
+        self.assertEqual(obj["details"], {"grade": "5c", "bolts": 12, "pitches": 3})
+        cliff = o.osm_object(self.el("way", 10, name="Parete", sport="climbing", natural="cliff", **{"climbing:bolts": "40"}))
+        self.assertNotIn("bolts", cliff["details"])
+
+    def test_each_relation_is_one_element_with_its_members(self):
+        centre = {"type": "relation", "id": 1, "center": {"lat": 45, "lon": 9}, "tags": {"name": "A"}}
+        body = {"type": "relation", "id": 1, "tags": {"name": "A"}, "members": [{"type": "node", "ref": 2, "role": ""}]}
+        out = o.with_members([centre, {"type": "node", "id": 2}, body])
+        self.assertEqual([(e["type"], e["id"]) for e in out], [("relation", 1), ("node", 2)])
+        self.assertEqual(out[0]["center"], {"lat": 45, "lon": 9})
+        self.assertEqual(out[0]["members"][0]["ref"], 2)
+
     def test_objects_only_writes_the_file_alone(self):
         with tempfile.TemporaryDirectory() as d:
             saved = pathlib.Path(d, "answer.json")
