@@ -30,8 +30,10 @@ OVERPASS = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.sy
 QUERY = """[out:json][timeout:120];
 area["ISO3166-2"="IT-25"]->.region;
 (nwr["climbing"="crag"](area.region);
- nwr["sport"="climbing"]["climbing"!="crag"](area.region););
-out center tags;"""
+ nwr["sport"="climbing"]["climbing"!="crag"](area.region);)->.found;
+.found out center tags;
+rel.found;
+out body;"""                     # CG-105: the relations again, with their members (see with_members())
 ASPECTS = {"N", "NE", "E", "SE", "S", "SW", "W", "NW"}
 OUT = pathlib.Path(__file__).resolve().parent.parent / "data" / "crags.json"
 # CG-103: every object of the same query, whole — crags, sectors, routes, gyms — for the database.
@@ -42,7 +44,22 @@ ELEVATION_SOURCE = ("Copernicus DEM GLO-90 (2021 release, 90 m), https://doi.org
 
 
 def fetch():
-    return overpass(QUERY)
+    return with_members(overpass(QUERY))
+
+
+def with_members(elements):
+    """The query answers each relation twice, with its centre and then with its members (CG-105):
+    one element each, the centre and the members together."""
+    seen, out = {}, []
+    for e in elements:
+        k = (e["type"], e["id"])
+        if k in seen:
+            if "members" in e:
+                seen[k].setdefault("members", e["members"])
+            continue
+        seen[k] = e
+        out.append(e)
+    return out
 
 
 def overpass(query):
@@ -414,6 +431,12 @@ def osm_object(e):
     grade = t.get("climbing:grade:french", "").strip().lower()
     if GRADE.match(grade):
         d["grade"] = grade
+    if category(e) == "route":
+        # CG-105: what a single route says of itself, beyond the crag's tags.
+        for key, name in (("climbing:bolts", "bolts"), ("climbing:pitches", "pitches")):
+            n = number(t.get(key))
+            if n is not None:
+                d[name] = n
     return {
         "id": f"osm-{e['type']}-{e['id']}",
         "osmType": e["type"],
@@ -428,20 +451,70 @@ def osm_object(e):
     }
 
 
-def write_objects(elements):
-    """data/osm-climbing.json: every object of the answer, by id; ODbL like crags.json."""
-    objects = sorted(filter(None, map(osm_object, elements)), key=lambda o: o["id"])
+# CG-105: a single route, not one of its parts (an anchor, an abseil), is linked to a crag.
+ROUTES = {"route", "route_bottom", "route_top"}
+ROUTE_M = 400           # a route this close to a crag or sector belongs to it (none on 2026-10-22
+                        # lay between 343 m and 788 m: the farther ones are on mountains, not crags)
+
+
+def osm_id(url):
+    """https://www.openstreetmap.org/node/123 -> osm-node-123."""
+    kind, n = url.rstrip("/").split("/")[-2:]
+    return f"osm-{kind}-{n}"
+
+
+def link_routes(elements, objects, crags):
+    """CG-105: each single route of the objects gets the crag it belongs to ("crag"), the sector
+    when there is one ("sector"), and how that was found ("linkedBy"): "relation" when it is a
+    member of an OSM relation that is the crag, one of its sectors or a duplicate folded into
+    it; else "distance", the nearest crag or sector within ROUTE_M; else all three null."""
+    by_id = {o["id"]: o for o in objects}
+    owner, places = {}, []
+    for c in crags:
+        for u in c.get("alsoMapped", []):
+            owner[osm_id(u)] = (c["id"], None)
+        owner[c["id"]] = (c["id"], None)
+        if c["id"] not in c.get("sectors", []):
+            places.append((c, (c["id"], None)))
+        for s in c.get("sectors", []):           # after alsoMapped: a sector's link is there too
+            owner[s] = (c["id"], s)
+            if s in by_id:
+                places.append((by_id[s], (c["id"], s)))
+    members = {}
+    for e in elements:
+        rid = f"osm-{e['type']}-{e['id']}"
+        for m in e.get("members", []) if rid in owner else []:
+            members.setdefault(f"osm-{m['type']}-{m['ref']}", owner[rid])
+    for o in objects:
+        if o["category"] != "route" or o["climbing"] not in ROUTES:
+            continue
+        link, by = members.get(o["id"]), "relation"
+        if link is None:
+            near = min(places, key=lambda p: metres(p[0], o), default=None)
+            link, by = (near[1], "distance") if near and metres(near[0], o) < ROUTE_M else ((None, None), None)
+        o.update(crag=link[0], sector=link[1], linkedBy=by)
+    return objects
+
+
+def write_objects(elements, crags=()):
+    """data/osm-climbing.json: every object of the answer, by id, its single routes linked to the
+    crags (CG-105); ODbL like crags.json."""
+    objects = link_routes(elements, sorted(filter(None, map(osm_object, elements)), key=lambda o: o["id"]), crags)
     OBJECTS.write_text(json.dumps({
         "region": "Lombardia",
-        "source": "OpenStreetMap: every climbing=crag and sport=climbing object of tools/osm_crags.py's query (CG-103)",
+        "source": "OpenStreetMap: every climbing=crag and sport=climbing object of tools/osm_crags.py's query (CG-103), "
+                  "single routes linked to their crag (CG-105)",
         "licence": "© OpenStreetMap contributors, ODbL 1.0 — https://www.openstreetmap.org/copyright",
         "objects": objects,
     }, ensure_ascii=False, indent=1) + "\n")
     counts = {}
     for o in objects:
         counts[o["category"]] = counts.get(o["category"], 0) + 1
+    linked = [o["linkedBy"] for o in objects if "linkedBy" in o]
     print(f"{len(objects)} OSM objects written to {OBJECTS.relative_to(OBJECTS.parent.parent)}: "
-          + ", ".join(f"{n} {c}" for c, n in sorted(counts.items())))
+          + ", ".join(f"{n} {c}" for c, n in sorted(counts.items()))
+          + f"; of {len(linked)} single routes, {linked.count('relation')} linked by relation, "
+            f"{linked.count('distance')} by distance")
     return objects
 
 
@@ -472,17 +545,17 @@ def main():
     only_objects = "--objects-only" in args
     args = [a for a in args if a != "--objects-only"]
     if len(args) == 2 and args[0] == "--from":
-        elements = json.loads(pathlib.Path(args[1]).read_text())["elements"]
+        elements = with_members(json.loads(pathlib.Path(args[1]).read_text())["elements"])
     else:
         elements = fetch()
-    if only_objects:
-        write_objects(elements)
-        return
     items = [c for c in filter(None, map(crag, elements)) if c["_kind"]]
     primary = merge_duplicates([c for c in items if c["_kind"] == "crag"])
     rest = merge_duplicates([c for c in items if c["_kind"] != "crag"])
     crags, dropped = group(primary + rest)
     crags.sort(key=lambda c: c["name"].lower())
+    if only_objects:
+        write_objects(elements, crags)           # the grouping only, for the routes' links
+        return
     if dropped:
         print(f"{len(dropped)} sport=climbing places left out (a sector label alone, or a point far from any crag without crag in its name): "
               + ", ".join(sorted(dropped)))
@@ -493,7 +566,7 @@ def main():
     where = areas(crags)
     for c in crags:
         c.update(where.get(c["id"], {}))
-    write_objects(elements)
+    write_objects(elements, crags)
     OUT.write_text(json.dumps({
         "region": "Lombardia",
         "source": "OpenStreetMap: climbing=crag, and named outdoor sport=climbing places (CG-42)",
