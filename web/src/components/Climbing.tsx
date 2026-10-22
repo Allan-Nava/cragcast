@@ -8,16 +8,23 @@ const range = (s: Pick<Sector, "gradeMin" | "gradeMax">): string | null =>
   s.gradeMin && s.gradeMax ? (s.gradeMin === s.gradeMax ? s.gradeMin : `${s.gradeMin}–${s.gradeMax}`)
     : s.gradeMin ? `da ${s.gradeMin}` : s.gradeMax ? `fino a ${s.gradeMax}` : null;
 
+/** "Còrna Test - Settore Alto" -> "Settore Alto" in Còrna Test's panel: the crag is in the title. */
+export const shortName = (name: string | null, crag: string): string | null => {
+  if (!name) return null;
+  const m = name.match(/^(.*?)\s*(?:-|–|,)\s+(.+)$/);
+  return m && m[1].toLowerCase() === crag.toLowerCase() ? m[2] : name;
+};
+
 const many = (n: number, one: string, more: string) => `${n} ${n === 1 ? one : more}`;
 
-function SectorList({ sectors }: { sectors: Sector[] }) {
+function SectorList({ sectors, crag }: { sectors: Sector[]; crag: string }) {
   return (
     <details className="climbing">
       <summary>{many(sectors.length, "settore", "settori")} su OpenStreetMap</summary>
       <ul>
         {sectors.map(s => (
           <li key={s.id}>
-            <a href={osmUrl(s.id)} rel="noopener">{s.name ?? "Settore senza nome"}</a>
+            <a href={osmUrl(s.id)} rel="noopener">{shortName(s.name, crag) ?? "Settore senza nome"}</a>
             {[s.aspect ? `esposto a ${ASPECT_IT[s.aspect]}` : null, range(s)].filter(Boolean).map(t => ` · ${t}`).join("")}
           </li>
         ))}
@@ -26,8 +33,8 @@ function SectorList({ sectors }: { sectors: Sector[] }) {
   );
 }
 
-function RouteTable({ routes, sectors }: { routes: Route[]; sectors: Sector[] }) {
-  const sectorName = new Map(sectors.map(s => [s.id, s.name]));
+function RouteTable({ routes, sectors, crag }: { routes: Route[]; sectors: Sector[]; crag: string }) {
+  const sectorName = new Map(sectors.map(s => [s.id, shortName(s.name, crag)]));
   const bySector = routes.some(r => r.sector && sectorName.get(r.sector));
   return (
     <details className="climbing">
@@ -65,8 +72,8 @@ export function Climbing({ crag }: { crag: Crag }) {
   if (!sectors.length && !routes.length) return null;
   return (
     <>
-      {sectors.length > 0 && <SectorList sectors={sectors} />}
-      {routes.length > 0 && <RouteTable routes={routes} sectors={sectors} />}
+      {sectors.length > 0 && <SectorList sectors={sectors} crag={crag.name} />}
+      {routes.length > 0 && <RouteTable routes={routes} sectors={sectors} crag={crag.name} />}
     </>
   );
 }

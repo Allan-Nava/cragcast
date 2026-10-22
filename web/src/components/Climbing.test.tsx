@@ -1,7 +1,7 @@
 // CG-117: the sectors and routes in the panel. Made-up crag, sectors and routes.
 import { afterEach, describe as group, expect, it, vi } from "vitest";
 import { cleanup, render, within } from "@testing-library/react";
-import { Climbing } from "./Climbing";
+import { Climbing, shortName } from "./Climbing";
 import { DetailDialog } from "./DetailDialog";
 import { crag } from "../test/fixtures";
 import type { Route, Sector } from "../types";
@@ -9,7 +9,7 @@ import type { Route, Sector } from "../types";
 afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
 
 const sectors: Sector[] = [
-  { id: "osm-way-5", name: "Settore Alto", aspect: "SW", gradeMin: "5b", gradeMax: "7a" },
+  { id: "osm-way-5", name: "Corna di Medale - Settore Alto", aspect: "SW", gradeMin: "5b", gradeMax: "7a" },
   { id: "osm-node-6", name: null, aspect: null, gradeMin: null, gradeMax: "6a" },
   { id: "osm-node-7", name: "Settore Basso", aspect: null, gradeMin: "6a", gradeMax: "6a" },
   { id: "osm-node-8", name: "Placchetta", aspect: null, gradeMin: "4", gradeMax: null },
@@ -47,6 +47,14 @@ group("sectors and routes (CG-117)", () => {
     expect(document.querySelectorAll("details.climbing")).toHaveLength(1);
     expect([...document.querySelectorAll("table.routes thead th")].map(th => th.textContent)).not.toContain("Settore");
     expect(document.querySelector("table.routes .muted")).toBeNull();               // one pitch says nothing
+  });
+
+  it("drops the crag's own name from a sector's, and only that", () => {
+    expect(shortName("Corna di Medale - Settore Alto", "Corna di Medale")).toBe("Settore Alto");
+    expect(shortName("corna di medale, Placche", "Corna di Medale")).toBe("Placche");
+    expect(shortName("Sasso Altro - Settore Alto", "Corna di Medale")).toBe("Sasso Altro - Settore Alto");
+    expect(shortName("Muro Giallo", "Corna di Medale")).toBe("Muro Giallo");
+    expect(shortName(null, "Corna di Medale")).toBeNull();
   });
 
   it("shows nothing for a crag without either, or from data before them", () => {
