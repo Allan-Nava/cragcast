@@ -399,9 +399,13 @@ hourly archive below exists nowhere else, so from CG-108 on it needs a backup.
   place drawn twice stays in `alsoMapped`); Flyway V6's `sector`, replaced whole at startup by
   `SectorImporter` from those ids and `osm-climbing.json`; on 2026-10-22, 76 sectors on 30
   crags, the 220 crags' values as before. <!-- cg: prio=med size=S labels=data,backend ver=main -->
-- [ ] **CG-105 — Routes**: OSM's single routes in a `route` table — name, grade (French, as a
+- [x] **CG-105 — Routes**: OSM's single routes in a `route` table — name, grade (French, as a
   rank column), length, bolts — linked to the crag or sector they belong to by OSM relation or
-  distance. Stored and served by the API, never listed as crags (the CG-42 rule holds). <!-- cg: prio=med size=M labels=data,backend -->
+  distance. Stored and served by the API, never listed as crags (the CG-42 rule holds). Done:
+  the query also returns the relations' members; `link_routes()` links by relation, else to the
+  nearest crag or sector within 400 m; Flyway V7's `route` with `grade_rank`, and
+  `GET /api/crags/{slug}/routes`. On 2026-10-22, of 148 single routes 102 linked by relation, 14
+  by distance, 32 unlinked (mountain routes far from any crag). <!-- cg: prio=med size=M labels=data,backend ver=main -->
 - [ ] **CG-106 — The hourly forecasts, archived**: each `WeatherRefresh` also appends what it
   computed — per crag and day, the verdict, the reasons, the four weather numbers and the hours
   (JSON text) — to `crag_forecast`, keyed by crag, day and fetch time, so "what did cragcast say
