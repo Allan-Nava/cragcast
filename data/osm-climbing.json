@@ -1,6 +1,6 @@
 {
  "region": "Lombardia",
- "source": "OpenStreetMap: every climbing=crag and sport=climbing object of tools/osm_crags.py's query (CG-103)",
+ "source": "OpenStreetMap: every climbing=crag and sport=climbing object of tools/osm_crags.py's query (CG-103), single routes linked to their crag (CG-105)",
  "licence": "© OpenStreetMap contributors, ODbL 1.0 — https://www.openstreetmap.org/copyright",
  "objects": [
   {
@@ -27,8 +27,12 @@
    "aspect": null,
    "details": {
     "gradeMean": "6a",
-    "length": 18
-   }
+    "length": 18,
+    "bolts": 9
+   },
+   "crag": "osm-relation-14906312",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10200680163",
@@ -43,8 +47,12 @@
    "details": {
     "gradeMin": "4c",
     "gradeMax": "5a",
-    "length": 20
-   }
+    "length": 20,
+    "bolts": 9
+   },
+   "crag": "osm-relation-14906312",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204100813",
@@ -58,8 +66,12 @@
    "aspect": null,
    "details": {
     "length": 14,
-    "grade": "6b+"
-   }
+    "grade": "6b+",
+    "bolts": 6
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204100814",
@@ -73,8 +85,12 @@
    "aspect": null,
    "details": {
     "length": 13,
-    "grade": "6c+"
-   }
+    "grade": "6c+",
+    "bolts": 7
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204100815",
@@ -87,8 +103,12 @@
    "longitude": 9.786286,
    "aspect": null,
    "details": {
-    "length": 12
-   }
+    "length": 12,
+    "bolts": 7
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204100816",
@@ -101,8 +121,12 @@
    "longitude": 9.786316,
    "aspect": null,
    "details": {
-    "length": 17
-   }
+    "length": 17,
+    "bolts": 8
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204177517",
@@ -116,8 +140,12 @@
    "aspect": null,
    "details": {
     "length": 16,
-    "grade": "6a+"
-   }
+    "grade": "6a+",
+    "bolts": 9
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204177518",
@@ -131,8 +159,12 @@
    "aspect": null,
    "details": {
     "length": 17,
-    "grade": "6a+"
-   }
+    "grade": "6a+",
+    "bolts": 9
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204177519",
@@ -145,8 +177,12 @@
    "longitude": 9.786397,
    "aspect": null,
    "details": {
-    "length": 20.5
-   }
+    "length": 20.5,
+    "bolts": 9
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204177520",
@@ -160,8 +196,12 @@
    "aspect": null,
    "details": {
     "length": 15,
-    "grade": "6b+"
-   }
+    "grade": "6b+",
+    "bolts": 7
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204177521",
@@ -175,8 +215,12 @@
    "aspect": null,
    "details": {
     "length": 15,
-    "grade": "6a+"
-   }
+    "grade": "6a+",
+    "bolts": 7
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204177522",
@@ -190,8 +234,12 @@
    "aspect": null,
    "details": {
     "length": 20,
-    "grade": "5a"
-   }
+    "grade": "5a",
+    "bolts": 8
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204177523",
@@ -205,8 +253,12 @@
    "aspect": null,
    "details": {
     "length": 19,
-    "grade": "6b"
-   }
+    "grade": "6b",
+    "bolts": 8
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204177524",
@@ -221,8 +273,12 @@
    "details": {
     "gradeMean": "6a",
     "length": 16.5,
-    "grade": "5c+"
-   }
+    "grade": "5c+",
+    "bolts": 8
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204177525",
@@ -236,8 +292,12 @@
    "aspect": null,
    "details": {
     "length": 16.5,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "bolts": 7
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204177526",
@@ -251,8 +311,12 @@
    "aspect": null,
    "details": {
     "length": 17,
-    "grade": "5c"
-   }
+    "grade": "5c",
+    "bolts": 6
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10204177527",
@@ -266,8 +330,12 @@
    "aspect": null,
    "details": {
     "length": 18,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "bolts": 5
+   },
+   "crag": "osm-relation-14910904",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-10272162562",
@@ -354,8 +422,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6b"
-   }
+    "grade": "6b",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11034011916",
@@ -373,8 +445,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5b"
-   }
+    "grade": "5b",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11034011917",
@@ -392,8 +468,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a+"
-   }
+    "grade": "6a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11034011918",
@@ -411,8 +491,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5c"
-   }
+    "grade": "5c",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11034011919",
@@ -430,8 +514,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11034011920",
@@ -449,8 +537,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11034011921",
@@ -468,8 +560,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6c+"
-   }
+    "grade": "6c+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11034011922",
@@ -487,8 +583,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11034011923",
@@ -506,8 +606,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5c+"
-   }
+    "grade": "5c+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11034011924",
@@ -525,8 +629,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11034011925",
@@ -544,8 +652,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11034011926",
@@ -563,8 +675,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5c+"
-   }
+    "grade": "5c+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11034011927",
@@ -582,8 +698,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a+"
-   }
+    "grade": "6a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-16068105",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-11073354980",
@@ -757,7 +877,10 @@
    "latitude": 45.86138,
    "longitude": 10.133365,
    "aspect": null,
-   "details": {}
+   "details": {},
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-11898905841",
@@ -785,7 +908,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-11927671977",
@@ -1242,7 +1368,10 @@
      "sport"
     ],
     "bolted": true
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798139",
@@ -1259,7 +1388,10 @@
      "sport"
     ],
     "bolted": true
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798140",
@@ -1276,7 +1408,10 @@
      "sport"
     ],
     "bolted": true
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798141",
@@ -1293,7 +1428,10 @@
      "sport"
     ],
     "bolted": true
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798142",
@@ -1312,7 +1450,10 @@
     ],
     "bolted": true,
     "grade": "5c+"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798143",
@@ -1331,7 +1472,10 @@
     ],
     "bolted": true,
     "grade": "5c+"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798144",
@@ -1350,7 +1494,10 @@
     ],
     "bolted": true,
     "grade": "5c+"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798145",
@@ -1368,7 +1515,10 @@
     ],
     "bolted": true,
     "grade": "6a+"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798146",
@@ -1386,7 +1536,10 @@
     ],
     "bolted": true,
     "grade": "6b"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798147",
@@ -1405,7 +1558,10 @@
     ],
     "bolted": true,
     "grade": "6a+"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798148",
@@ -1423,7 +1579,10 @@
     ],
     "bolted": true,
     "grade": "5c"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798149",
@@ -1441,7 +1600,10 @@
     ],
     "bolted": true,
     "grade": "5a"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798150",
@@ -1459,7 +1621,10 @@
     ],
     "bolted": true,
     "grade": "6a+"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798151",
@@ -1477,7 +1642,10 @@
     ],
     "bolted": true,
     "grade": "6a+"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798152",
@@ -1495,7 +1663,10 @@
     ],
     "bolted": true,
     "grade": "6a+"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798153",
@@ -1513,7 +1684,10 @@
     ],
     "bolted": true,
     "grade": "6b+"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798154",
@@ -1531,7 +1705,10 @@
     ],
     "bolted": true,
     "grade": "5a"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798155",
@@ -1550,7 +1727,10 @@
     ],
     "bolted": true,
     "grade": "4c"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798156",
@@ -1569,7 +1749,10 @@
     ],
     "bolted": true,
     "grade": "4c"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13074798157",
@@ -1588,7 +1771,10 @@
     ],
     "bolted": true,
     "grade": "6a"
-   }
+   },
+   "crag": "osm-relation-19468980",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-13184333732",
@@ -1672,7 +1858,10 @@
    "latitude": 46.487862,
    "longitude": 10.467874,
    "aspect": null,
-   "details": {}
+   "details": {},
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13184333765",
@@ -1684,7 +1873,10 @@
    "latitude": 46.467561,
    "longitude": 10.58918,
    "aspect": null,
-   "details": {}
+   "details": {},
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13192056452",
@@ -1696,7 +1888,10 @@
    "latitude": 46.289886,
    "longitude": 9.599525,
    "aspect": null,
-   "details": {}
+   "details": {},
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13196338093",
@@ -1916,7 +2111,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": "osm-node-3757609511",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-13254373743",
@@ -1932,7 +2130,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": "osm-node-3757609511",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-13254442739",
@@ -1960,7 +2161,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13254646516",
@@ -1976,7 +2180,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13255908160",
@@ -1992,7 +2199,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13255908161",
@@ -2008,7 +2218,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13255908169",
@@ -2024,7 +2237,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13255988752",
@@ -2040,7 +2256,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13255988754",
@@ -2056,7 +2275,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13256007581",
@@ -2068,7 +2290,10 @@
    "latitude": 45.862107,
    "longitude": 10.133855,
    "aspect": null,
-   "details": {}
+   "details": {},
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13256066507",
@@ -2080,7 +2305,10 @@
    "latitude": 45.862578,
    "longitude": 10.1343,
    "aspect": null,
-   "details": {}
+   "details": {},
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13261022933",
@@ -2108,7 +2336,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13261022941",
@@ -2124,7 +2355,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13261022965",
@@ -2152,7 +2386,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-13261058865",
@@ -2168,7 +2405,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": "osm-way-235311109",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-13261058867",
@@ -2196,7 +2436,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": "osm-way-235311109",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-13261058869",
@@ -2236,7 +2479,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": "osm-way-235311109",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-13261088554",
@@ -2252,7 +2498,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": "osm-way-235311109",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-13261088562",
@@ -2268,7 +2517,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": "osm-way-235311109",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-13261088563",
@@ -2284,7 +2536,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": "osm-way-235311109",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-13261504646",
@@ -2300,7 +2555,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": "osm-way-423004800",
+   "sector": "osm-way-423220241",
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-13265485909",
@@ -2604,7 +2862,10 @@
     "styles": [
      "multipitch"
     ]
-   }
+   },
+   "crag": "osm-way-513842818",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-1510227633",
@@ -4254,7 +4515,10 @@
     "styles": [
      "sport"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-7563078399",
@@ -4318,7 +4582,10 @@
     "styles": [
      "multipitch"
     ]
-   }
+   },
+   "crag": "osm-way-513842818",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-7717701503",
@@ -4430,8 +4697,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a+"
-   }
+    "grade": "6a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450199",
@@ -4449,8 +4720,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6b+"
-   }
+    "grade": "6b+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450200",
@@ -4468,8 +4743,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450201",
@@ -4487,8 +4766,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6b"
-   }
+    "grade": "6b",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450202",
@@ -4506,8 +4789,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450203",
@@ -4525,8 +4812,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5a"
-   }
+    "grade": "5a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450204",
@@ -4544,8 +4835,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5a+"
-   }
+    "grade": "5a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450205",
@@ -4563,8 +4858,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "4c"
-   }
+    "grade": "4c",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450206",
@@ -4582,8 +4881,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5a+"
-   }
+    "grade": "5a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450207",
@@ -4601,8 +4904,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5b"
-   }
+    "grade": "5b",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450208",
@@ -4620,8 +4927,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5b+"
-   }
+    "grade": "5b+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450209",
@@ -4639,8 +4950,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5b"
-   }
+    "grade": "5b",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450210",
@@ -4658,8 +4973,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5b+"
-   }
+    "grade": "5b+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450211",
@@ -4677,8 +4996,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5a+"
-   }
+    "grade": "5a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450212",
@@ -4696,8 +5019,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "3b"
-   }
+    "grade": "3b",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450213",
@@ -4715,8 +5042,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "4b"
-   }
+    "grade": "4b",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450214",
@@ -4734,8 +5065,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5b"
-   }
+    "grade": "5b",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450215",
@@ -4753,8 +5088,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450216",
@@ -4772,8 +5111,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5c+"
-   }
+    "grade": "5c+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450217",
@@ -4791,8 +5134,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5c"
-   }
+    "grade": "5c",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450218",
@@ -4810,8 +5157,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5c+"
-   }
+    "grade": "5c+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450219",
@@ -4829,8 +5180,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a+"
-   }
+    "grade": "6a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450220",
@@ -4848,8 +5203,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a+"
-   }
+    "grade": "6a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995450221",
@@ -4867,8 +5226,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6b"
-   }
+    "grade": "6b",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995621771",
@@ -4886,8 +5249,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6c"
-   }
+    "grade": "6c",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995621772",
@@ -4904,8 +5271,12 @@
     "styles": [
      "sport"
     ],
-    "bolted": true
-   }
+    "bolted": true,
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995621774",
@@ -4922,8 +5293,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a+"
-   }
+    "grade": "6a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995621775",
@@ -4940,8 +5315,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995621776",
@@ -4958,8 +5337,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995621777",
@@ -4976,8 +5359,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5b"
-   }
+    "grade": "5b",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995621778",
@@ -4994,8 +5381,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995621779",
@@ -5012,8 +5403,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5c"
-   }
+    "grade": "5c",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995621780",
@@ -5030,8 +5425,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a+"
-   }
+    "grade": "6a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995621782",
@@ -5048,8 +5447,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6b+"
-   }
+    "grade": "6b+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7995621784",
@@ -5066,8 +5469,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6c"
-   }
+    "grade": "6c",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997565082",
@@ -5084,8 +5491,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5a+"
-   }
+    "grade": "5a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997565083",
@@ -5102,8 +5513,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5c+"
-   }
+    "grade": "5c+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997565084",
@@ -5120,8 +5535,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5c+"
-   }
+    "grade": "5c+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568785",
@@ -5138,8 +5557,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5a+"
-   }
+    "grade": "5a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568786",
@@ -5156,8 +5579,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "7a+"
-   }
+    "grade": "7a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568787",
@@ -5174,8 +5601,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6c+"
-   }
+    "grade": "6c+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568788",
@@ -5192,8 +5623,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6"
-   }
+    "grade": "6",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568789",
@@ -5210,8 +5645,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6"
-   }
+    "grade": "6",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568790",
@@ -5228,8 +5667,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6c+"
-   }
+    "grade": "6c+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568791",
@@ -5246,8 +5689,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568792",
@@ -5264,8 +5711,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a"
-   }
+    "grade": "6a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568793",
@@ -5282,8 +5733,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6a+"
-   }
+    "grade": "6a+",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568794",
@@ -5300,8 +5755,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "6b"
-   }
+    "grade": "6b",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568795",
@@ -5318,8 +5777,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5c"
-   }
+    "grade": "5c",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568796",
@@ -5336,8 +5799,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5b"
-   }
+    "grade": "5b",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568797",
@@ -5354,8 +5821,12 @@
      "sport"
     ],
     "bolted": true,
-    "grade": "5a"
-   }
+    "grade": "5a",
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7997568798",
@@ -5371,8 +5842,12 @@
     "styles": [
      "sport"
     ],
-    "bolted": true
-   }
+    "bolted": true,
+    "pitches": 1
+   },
+   "crag": "osm-relation-11740994",
+   "sector": null,
+   "linkedBy": "relation"
   },
   {
    "id": "osm-node-7998814560",
@@ -5412,7 +5887,10 @@
     "styles": [
      "multipitch"
     ]
-   }
+   },
+   "crag": "osm-way-860340484",
+   "sector": "osm-way-860340484",
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-8063766826",
@@ -5480,7 +5958,10 @@
     "styles": [
      "multipitch"
     ]
-   }
+   },
+   "crag": "osm-node-13196338094",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-8137738948",
@@ -5508,7 +5989,10 @@
     "styles": [
      "multipitch"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-8149857141",
@@ -5524,7 +6008,10 @@
     "styles": [
      "multipitch"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-8152035191",
@@ -5540,7 +6027,10 @@
     "styles": [
      "multipitch"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-8152035202",
@@ -5556,7 +6046,10 @@
     "styles": [
      "multipitch"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-8155075821",
@@ -5572,7 +6065,10 @@
     "styles": [
      "multipitch"
     ]
-   }
+   },
+   "crag": "osm-way-513842818",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-node-8158600913",
@@ -5588,7 +6084,10 @@
     "styles": [
      "multipitch"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-8238656319",
@@ -5910,7 +6409,10 @@
     "styles": [
      "trad"
     ]
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-node-9777827971",
@@ -6784,7 +7286,10 @@
    "latitude": 46.291767,
    "longitude": 9.598788,
    "aspect": null,
-   "details": {}
+   "details": {},
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-way-1345261044",
@@ -6796,7 +7301,10 @@
    "latitude": 46.293289,
    "longitude": 9.586532,
    "aspect": null,
-   "details": {}
+   "details": {},
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-way-1350335984",
@@ -7002,7 +7510,10 @@
    "latitude": 45.939253,
    "longitude": 8.705037,
    "aspect": null,
-   "details": {}
+   "details": {},
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-way-1456514467",
@@ -7122,7 +7633,10 @@
    "latitude": 46.31661,
    "longitude": 9.953321,
    "aspect": null,
-   "details": {}
+   "details": {},
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-way-1563610858",
@@ -7134,7 +7648,10 @@
    "latitude": 46.316419,
    "longitude": 9.952725,
    "aspect": null,
-   "details": {}
+   "details": {},
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-way-158753503",
@@ -7679,7 +8196,10 @@
    "latitude": 46.298117,
    "longitude": 9.586413,
    "aspect": null,
-   "details": {}
+   "details": {},
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-way-230150888",
@@ -7908,7 +8428,10 @@
    "details": {
     "rock": "limestone",
     "rockIt": "calcare"
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-way-297774960",
@@ -9264,7 +9787,10 @@
    "details": {
     "rock": "limestone",
     "rockIt": "calcare"
-   }
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
   },
   {
    "id": "osm-way-751262115",
