@@ -84,6 +84,11 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   two names in one; an unnamed group is left out and listed. `via_ferrata_scale` is a whole 0–6
   or dropped and listed — `2+` is never read as 2. Start and top from the DEM, sampled along
   the track. `tools/test_osm_ferrate.py` holds these rules.
+- **A via ferrata's verdict is its own** (CG-113, ADR 0024): `FerrataScorer` reads the weather at
+  the top (`FerrataClient` passes the DEM elevation; `FerrataReducer`, 07:00–19:00). A
+  thunderstorm hour or CAPE from 1000 J/kg is never "si va". Its thresholds are named constants
+  like `ConditionsScorer`'s, with the same rule: a change is reviewed, with a test for the day it
+  fixes. It never reuses the crags' thresholds, and the avalanche bulletin never scores here either.
 - **`docs/aspects-todo.md` is generated** by `tools/aspects_todo.py` from `data/crags.json`
   (CG-16) and committed with it by `crags-refresh.yml`; never edit it by hand. It never names
   who knows which crag: the list is for anyone who climbs there.
