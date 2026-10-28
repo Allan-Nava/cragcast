@@ -90,8 +90,9 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 - the **via ferratas** (CG-114): a "Falesie / Vie ferrate" switch shows them instead of the
   crags, each with its own verdict read at the top — a thunderstorm is never "si va" — and a
   peak beside its mark; the difficulty as OpenStreetMap gives it (`via_ferrata_scale` 0–6, or
-  "non mappata"), the length, the start and top elevations, the top's weather and hours; and,
-  everywhere, that conditions are checked on the spot
+  "non mappata"), the length, the start and top elevations, the top's weather and hours; a
+  share link of its own (CG-119), whose preview says it is a via ferrata; and, everywhere, that
+  conditions are checked on the spot
   ([ADR 0025](docs/adr/0025-via-ferratas-on-the-page.md));
 - **installable** on a phone's home screen (a web app manifest and a service worker): it shows
   the last data offline and says how old it is when it is more than 3 hours old;

@@ -95,7 +95,7 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   only when there are some. A via ferrata keeps the verdict's shape and letter with a peak beside
   it (`.peak`, `.vf` on the map) and says "via ferrata" in words; never a colour for the kind.
   Wherever its verdict shows in full, a line says conditions are checked on the spot
-  (`ON_THE_SPOT`). Province and grade filters never hide one. No share page for one yet.
+  (`ON_THE_SPOT`). Province and grade filters never hide one.
 - **Via ferratas in the API and on the Pi** (CG-115): `api/v1/ferrate.json` and
   `ferrate/<id>.json`, new files so v1 holds (CG-32). On the Pi, `WeatherRefresh` asks for the
   tops (`FerrataTops`, from `FerrateData`: `data/ferrate.json` in the jar) after the crags, in
@@ -225,7 +225,9 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   link previews never run JavaScript. The day is written as a date, never "domani" (a preview
   is read later than it is made). Its reason words copy `REASON_IT` in `web/src/lib/text.ts`:
   change one, change both. Absolute URLs come from `SITE_URL` (default the Pages URL), and
-  `web/index.html` carries the same URL in its own Open Graph tags.
+  `web/index.html` carries the same URL in its own Open Graph tags. A via ferrata gets one too
+  (CG-119): titled "Via ferrata …", read at the top, saying to check on the spot, and opening on
+  `?k=ferrate&crag=<id>`; a crag keeps the path if an id ever met one.
 - **Favourites never leave the browser either** (CG-46): `localStorage` only, every access in
   try/catch (`web/src/lib/favourites.ts`), never in the URL or a request. The favourites
   filter scopes the list and the summary like the province does.

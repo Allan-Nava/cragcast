@@ -487,6 +487,11 @@ costs more. An ADR comes with CG-112.
   `ferrate/<id>.json`; on the Pi, `WeatherRefresh` asks for the tops after the crags (from
   `data/ferrate.json`, now in the jar and the image), `SiteData` serves the same files and
   `ForecastArchive` keeps them in Flyway V11's `ferrata_forecast`; two uptime targets. <!-- cg: prio=low size=S labels=backend ver=main -->
+- [x] **CG-119 — Share pages for via ferratas**: `c/<id>.html` for each via ferrata, as for the
+  crags (CG-45): titled "Via ferrata …", tomorrow's verdict with the reasons and the weather at
+  the top, the difficulty and the top's elevation, and that conditions are checked on the spot;
+  a browser goes on to `?k=ferrate&crag=<id>`. The panel's "Condividi" comes back for them.
+  Asked for on 2026-10-28, after CG-114 left them without one. <!-- cg: prio=low size=S labels=backend,frontend ver=main -->
 
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 

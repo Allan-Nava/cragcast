@@ -21,13 +21,25 @@ final class SharePages {
     static final String IMAGE = "og.png";
     private static final DateTimeFormatter DAY = DateTimeFormatter.ofPattern("EEEE d MMMM", Locale.ITALIAN);
     private static final Map<Verdict, String> LABEL = Map.of(Verdict.GO, "si va", Verdict.MAYBE, "forse", Verdict.NO_GO, "no");
-    /** The same words as the page (web/src/lib/text.ts, REASON_IT). */
-    private static final Map<String, String> REASON_IT = Map.of(
-            "rain forecast during the day", "pioggia prevista durante il giorno",
-            "strong wind", "vento forte",
-            "rock may still be wet from recent rain", "roccia forse ancora bagnata dalla pioggia recente",
-            "cold", "freddo",
-            "hot on a sunny wall", "caldo su parete al sole");
+    /** The same words as the page (web/src/lib/text.ts, REASON_IT): change one, change both. */
+    private static final Map<String, String> REASON_IT = Map.ofEntries(
+            Map.entry("rain forecast during the day", "pioggia prevista durante il giorno"),
+            Map.entry("strong wind", "vento forte"),
+            Map.entry("rock may still be wet from recent rain", "roccia forse ancora bagnata dalla pioggia recente"),
+            Map.entry("cold", "freddo"),
+            Map.entry("hot on a sunny wall", "caldo su parete al sole"),
+            // CG-119: the via ferratas' own reasons (FerrataScorer).
+            Map.entry("thunderstorm forecast", "temporale previsto"),
+            Map.entry("unstable air: storms can build", "aria instabile: si possono formare temporali"),
+            Map.entry("some instability: storms possible", "un po' di instabilità: temporali possibili"),
+            Map.entry("fresh snow at the top", "neve fresca in cima"),
+            Map.entry("ice likely: rain, then frost at the top", "probabile ghiaccio: pioggia e poi gelo in cima"),
+            Map.entry("strong gusts at the top", "raffiche forti in cima"),
+            Map.entry("windy at the top", "vento in cima"),
+            Map.entry("rock and cables may still be wet from recent rain", "roccia e cavi forse ancora bagnati dalla pioggia recente"),
+            Map.entry("cold at the top", "freddo in cima"),
+            Map.entry("hot: the cables burn in the sun", "caldo: i cavi scottano al sole"),
+            Map.entry("short day: little light for the route", "giornata corta: poca luce per l'itinerario"));
 
     private SharePages() {
     }
@@ -39,18 +51,37 @@ final class SharePages {
         for (ConditionsExport.CragOut c : out.crags()) {
             files.put("c/" + c.id() + ".html", page(c, day, siteUrl));
         }
+        // CG-119: the via ferratas too, opening on their own view; a crag keeps its path if ids ever met.
+        for (FerrateExport.FerrataOut f : out.ferrate()) {
+            files.putIfAbsent("c/" + f.id() + ".html", page(f, day, siteUrl));
+        }
         return files;
     }
 
     static String page(ConditionsExport.CragOut c, String day, String siteUrl) {
         ConditionsExport.DayOut d = c.days().get(day);
+        return page(c.id(), c.name(), "crag=" + c.id(), description(c, d, date(day)), d, day, siteUrl);
+    }
+
+    /** CG-119: a via ferrata's page — said to be one, read at the top, checked on the spot. */
+    static String page(FerrateExport.FerrataOut f, String day, String siteUrl) {
+        ConditionsExport.DayOut d = f.days().get(day);
+        return page(f.id(), "Via ferrata " + f.name(), "k=ferrate&crag=" + f.id(), description(f, d, date(day)), d, day, siteUrl);
+    }
+
+    /** "Venerdì 16 ottobre". */
+    private static String date(String day) {
         String date = DAY.format(LocalDate.parse(day));
-        date = Character.toUpperCase(date.charAt(0)) + date.substring(1);
-        String title = c.name() + " — " + date.substring(0, 1).toLowerCase(Locale.ITALIAN) + date.substring(1)
+        return Character.toUpperCase(date.charAt(0)) + date.substring(1);
+    }
+
+    private static String page(String id, String name, String query, String description, ConditionsExport.DayOut d,
+                               String day, String siteUrl) {
+        String date = date(day);
+        String title = name + " — " + date.substring(0, 1).toLowerCase(Locale.ITALIAN) + date.substring(1)
                 + ": " + LABEL.get(d.verdict());
-        String description = description(c, d, date);
-        String app = siteUrl + "?crag=" + c.id();
-        String self = siteUrl + "c/" + c.id() + ".html";
+        String app = siteUrl + "?" + query;
+        String self = siteUrl + "c/" + id + ".html";
         return """
                 <!doctype html>
                 <html lang="it">
@@ -71,15 +102,16 @@ final class SharePages {
                 <meta property="og:image:width" content="1280">
                 <meta property="og:image:height" content="640">
                 <meta name="twitter:card" content="summary_large_image">
-                <meta http-equiv="refresh" content="0; url=../?crag=%6$s">
+                <meta http-equiv="refresh" content="0; url=../?%6$s">
                 </head>
                 <body style="background:#050505;color:#f2f4f5;font:16px/1.45 system-ui,sans-serif;padding:16px">
-                <p><a href="../?crag=%6$s" style="color:#10cf53">%1$s</a></p>
+                <p><a href="../?%6$s" style="color:#10cf53">%1$s</a></p>
                 <p>%2$s</p>
-                <script>location.replace("../?crag=%6$s" + location.hash)</script>
+                <script>location.replace("../?%7$s" + location.hash)</script>
                 </body>
                 </html>
-                """.formatted(html(title), html(description), html(app), html(self), html(siteUrl + IMAGE), html(c.id()));
+                """.formatted(html(title), html(description), html(app), html(self), html(siteUrl + IMAGE), html(query),
+                query.replace("\\", "\\\\").replace("\"", "\\\""));
     }
 
     /** "Venerdì 16 ottobre: si va. Max 19 °C, pioggia 0,0 mm, vento 12 km/h. Galbiate (LC), quota circa 482 m." */
@@ -97,6 +129,25 @@ final class SharePages {
             s.append(c.elevation() != null ? ", quota circa " + c.elevation() + " m." : ".");
         }
         return s.toString();
+    }
+
+    /**
+     * "Venerdì 16 ottobre: no (temporale previsto). In cima: max 12 °C, pioggia 0,0 mm, vento 20 km/h.
+     * Difficoltà 2–3 (scala 0–6), cima circa 1300 m. Condizioni da verificare sempre sul posto."
+     */
+    static String description(FerrateExport.FerrataOut f, ConditionsExport.DayOut d, String date) {
+        StringBuilder s = new StringBuilder(date).append(": ").append(LABEL.get(d.verdict()));
+        List<String> reasons = d.reasons().stream().map(r -> REASON_IT.getOrDefault(r, r)).collect(Collectors.toList());
+        if (!reasons.isEmpty()) {
+            s.append(" (").append(String.join("; ", reasons)).append(')');
+        }
+        s.append(String.format(Locale.ITALIAN, ". In cima: max %d °C, pioggia %.1f mm, vento %d km/h. ",
+                Math.round(d.weather().maxTemperatureC()), d.weather().rainDuringDayMm(), Math.round(d.weather().maxWindKmh())));
+        s.append(f.scaleMin() == null || f.scaleMax() == null ? "Difficoltà non mappata"
+                : f.scaleMin().equals(f.scaleMax()) ? "Difficoltà " + f.scaleMin() + " (scala 0–6)"
+                : "Difficoltà " + f.scaleMin() + "–" + f.scaleMax() + " (scala 0–6)");
+        s.append(f.top().elevation() != null ? ", cima circa " + f.top().elevation() + " m. " : ". ");
+        return s.append("Condizioni da verificare sempre sul posto.").toString();
     }
 
     /** Text and attribute escaping: names come from OSM. */
