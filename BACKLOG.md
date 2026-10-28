@@ -430,9 +430,11 @@ hourly archive below exists nowhere else, so from CG-108 on it needs a backup.
   `AvalancheArchive` reads today's at startup and at 09:30, 13:30 and 18:30 into Flyway V9's
   `avalanche_bulletin`; the latest issue replaces the day, none keeps it
   ([ADR 0022](docs/adr/0022-avalanche-bulletins-kept.md)). <!-- cg: prio=low size=S labels=backend ver=main -->
-- [ ] **CG-108 — Observations copied**: `data/observations.csv` into an `observation` table,
+- [x] **CG-108 — Observations copied**: `data/observations.csv` into an `observation` table,
   read from main like the history (CG-101); the CSV stays the source and changes only by a
-  reviewed PR. <!-- cg: prio=low size=S labels=backend,data -->
+  reviewed PR. Done: `ObservationSync` into Flyway V10's `observation`, at startup and at 04:40,
+  replaced whole in one transaction; a read without the header or with a bad row keeps the
+  table. <!-- cg: prio=low size=S labels=backend,data ver=main -->
 - [ ] **CG-109 — Backup, now that it matters**: from CG-106 the database holds rows that exist
   nowhere else. A nightly `pg_dump` from a container in the Pi's stack, kept for 14 days on a
   USB disk on the Pi (not the SD card), written only where the disk's marker file is; a restore

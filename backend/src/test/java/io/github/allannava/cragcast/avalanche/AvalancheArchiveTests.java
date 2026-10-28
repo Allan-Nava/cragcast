@@ -27,7 +27,8 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 /** Against PostgreSQL and the V9 migration, the bulletin from a fake server (a recorded issue). */
 @SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false",
-        "cragcast.avalanche.archive.enabled=false"})
+        "cragcast.avalanche.archive.enabled=false",
+        "cragcast.observations.enabled=false"})
 @Import(TestcontainersConfigurationAccess.Config.class)
 @EnabledIf(DockerAvailable.CHECK)
 class AvalancheArchiveTests {

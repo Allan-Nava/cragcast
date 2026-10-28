@@ -71,6 +71,7 @@ flowchart LR
 | Spring service | `backend/…/crag`, `weather/WeatherRefresh`, `*Controller` | the same scorer behind a REST API with PostgreSQL (Flyway); image on GHCR (`image.yml`, linux/arm64), run on a Raspberry Pi's home network only ([ADR 0015](adr/0015-raspberry-pi-pulls-its-stack.md)) |
 | Forecast archive | `weather/ForecastArchive` | after each refresh, appends every crag-day it computed — verdict, reasons, the four numbers, the day's hours — to `crag_forecast` (Flyway V8), keyed by the refresh's time; scored from the `ForecastsRefreshed` forecasts, never rewritten, a failure loses that hour only (CG-106, [ADR 0021](adr/0021-hourly-forecasts-archived.md)) |
 | Bulletin archive | `avalanche/AvalancheArchive` | today's avalanche bulletin at startup and at 09:30, 13:30 and 18:30, kept in `avalanche_bulletin` (Flyway V9) per day and micro-region — levels, bands, problem types, the link, never the text; the latest issue replaces the day, none keeps it (CG-107, [ADR 0022](adr/0022-avalanche-bulletins-kept.md)) |
+| Observations copy | `calibration/ObservationSync` | `data/observations.csv` read from main into `observation` (Flyway V10) at startup and each night, the table replaced whole; a missing header or a bad row keeps it; the CSV stays the source (CG-108, as [ADR 0016](adr/0016-history-copied-into-postgres.md) for the history) |
 | History copy | `backend/…/history` | `HistorySync` reads the `history` branch's CSVs from GitHub into `crag_history` (Flyway V4) at startup and each night, a day replaced whole; the CSV stays the source ([ADR 0016](adr/0016-history-copied-into-postgres.md)) |
 | Calibration | `backend/…/calibration` | replays first-hand observed days (`data/observations.csv`) against Open-Meteo's Historical Forecast API, to tune the scorer's thresholds |
 | The page | `web/src` | React 19 + TypeScript; reads `data/conditions.json`, keeps the view in the URL |
@@ -156,7 +157,7 @@ flowchart TB
 | Integration | `*IT` under failsafe, `FakeHttp`; a fake Overpass | the export and the calibration run whole against fake servers; Testcontainers against PostgreSQL in CI | — |
 | End to end | Playwright (Chromium; desktop and Pixel 7), axe | flows jsdom cannot do: dragging the map, layout per width, swipes, accessibility | — |
 | Visual | Playwright snapshots, CI's own images | seven views on fixed data; a layout change fails with its diff | 25 px |
-| Coverage | JaCoCo, Vitest v8, coverage.py | measured in CI, floors only go up ([ADR 0012](adr/0012-tests-floors-only-go-up.md)) | backend 93%, page 99%, tools 97% of lines |
+| Coverage | JaCoCo, Vitest v8, coverage.py | measured in CI, floors only go up ([ADR 0012](adr/0012-tests-floors-only-go-up.md)) | backend 96%, page 99%, tools 97% of lines |
 | Plumbing | actionlint, shellcheck, `backlogsync check`, `terraform validate` | workflows, scripts, the backlog, the parked Terraform | — |
 
 CI's jobs: `backend`, `web`, `e2e`, `tools`, `lint`, `terraform`, `backlog`; Lighthouse runs as

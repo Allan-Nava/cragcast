@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**85 items · 70 shipped · 15 open · 16 milestones.**
+**85 items · 71 shipped · 14 open · 16 milestones.**
 
 ## At a glance
 
@@ -23,7 +23,7 @@
 | **v0.10.0 — A better frontend** | next | `##########` 100% | 0 | 9 |
 | **v0.7.0 — Beyond Lombardy** | later | `..........` 0% | 1 | 0 |
 | **v1.1.0 — On a Raspberry Pi** | now | `########..` 80% | 1 | 4 |
-| **v1.2.0 — Everything in PostgreSQL** | next | `########..` 78% | 2 | 7 |
+| **v1.2.0 — Everything in PostgreSQL** | next | `#########.` 89% | 1 | 8 |
 | **v1.3.0 — Vie ferrate** | later | `..........` 0% | 5 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
@@ -142,7 +142,7 @@
 - [x] **CG-118** — Routes by level · med · S · frontend · `main`
 - [x] **CG-106** — The hourly forecasts, archived · med · M · backend · `main`
 - [x] **CG-107** — Avalanche bulletins, archived · low · S · backend · `main`
-- [ ] **CG-108** — Observations copied · low · S · backend, data
+- [x] **CG-108** — Observations copied · low · S · backend, data · `main`
 - [ ] **CG-109** — Backup, now that it matters · high · S · infra
 
 ## v1.3.0 — Vie ferrate
