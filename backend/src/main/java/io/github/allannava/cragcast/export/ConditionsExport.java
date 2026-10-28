@@ -123,7 +123,11 @@ public final class ConditionsExport {
         Output out = build(crags, forecasts, days, Instant.now(), regions, bulletins, climbing, ferrate);
         Path target = Path.of(args[1]);
         Files.createDirectories(target.toAbsolutePath().getParent());
-        Files.writeString(target, json.writeValueAsString(out));
+        // CG-43: the page's data by region; the API and the share pages below take every crag.
+        for (Map.Entry<String, Output> f : split(out).entrySet()) {
+            Path file = f.getKey().equals("conditions.json") ? target : target.resolveSibling(f.getKey());
+            Files.writeString(file, json.writeValueAsString(f.getValue()));
+        }
         if (args.length >= 3) {
             // CG-32: the static API, one index and one file per crag, next to the page.
             Path api = Path.of(args[2]);
@@ -325,15 +329,71 @@ public final class ConditionsExport {
         }
     }
 
-    /** {@code ferrate}: CG-114, left out when there are none, so data without via ferratas reads as before. */
+    /**
+     * {@code ferrate}: CG-114, left out when there are none, so data without via ferratas reads as before.
+     * {@code regions}: CG-43, the other regions' files next to this one, left out when there are none.
+     */
     record Output(String generatedAt, String timezone, List<String> days, String cragData, String weatherData,
                   String elevationData, String avalancheData, List<CragOut> crags,
-                  @JsonInclude(JsonInclude.Include.NON_EMPTY) List<FerrateExport.FerrataOut> ferrate) {
+                  @JsonInclude(JsonInclude.Include.NON_EMPTY) List<FerrateExport.FerrataOut> ferrate,
+                  @JsonInclude(JsonInclude.Include.NON_EMPTY) List<RegionFile> regions) {
 
         /** Data without via ferratas, as before CG-114. */
         Output(String generatedAt, String timezone, List<String> days, String cragData, String weatherData,
                String elevationData, String avalancheData, List<CragOut> crags) {
             this(generatedAt, timezone, days, cragData, weatherData, elevationData, avalancheData, crags, List.of());
         }
+
+        Output(String generatedAt, String timezone, List<String> days, String cragData, String weatherData,
+               String elevationData, String avalancheData, List<CragOut> crags, List<FerrateExport.FerrataOut> ferrate) {
+            this(generatedAt, timezone, days, cragData, weatherData, elevationData, avalancheData, crags, ferrate, List.of());
+        }
+
+        Output with(List<CragOut> crags, List<FerrateExport.FerrataOut> ferrate, List<RegionFile> regions) {
+            return new Output(generatedAt, timezone, days, cragData, weatherData, elevationData, avalancheData, crags,
+                    ferrate, regions);
+        }
+    }
+
+    /** CG-43: another region's crags, in {@code file} next to conditions.json. */
+    record RegionFile(String name, int count, String file) {
+    }
+
+    /** CG-43: the region the page shows first, whose crags (and the via ferratas) stay in conditions.json. */
+    static final String MAIN_REGION = "Lombardia";
+
+    /**
+     * CG-43: the page's data split by region, as file name → document. conditions.json keeps
+     * Lombardy's crags (and those without a region), the via ferratas and the list of the other
+     * files; each other region gets conditions-&lt;slug&gt;.json with its crags alone, fetched by the
+     * page when that region is chosen. One file for every crag was too heavy (Lighthouse 0.73).
+     */
+    static Map<String, Output> split(Output out) {
+        Map<String, List<CragOut>> byRegion = new LinkedHashMap<>();
+        List<CragOut> main = new ArrayList<>();
+        for (CragOut c : out.crags()) {
+            if (c.region() == null || c.region().equals(MAIN_REGION)) {
+                main.add(c);
+            } else {
+                byRegion.computeIfAbsent(c.region(), r -> new ArrayList<>()).add(c);
+            }
+        }
+        Map<String, Output> files = new LinkedHashMap<>();
+        List<RegionFile> regions = new ArrayList<>();
+        byRegion.forEach((region, crags) -> {
+            String file = "conditions-" + slug(region) + ".json";
+            regions.add(new RegionFile(region, crags.size(), file));
+            files.put(file, out.with(crags, List.of(), List.of()));
+        });
+        Map<String, Output> all = new LinkedHashMap<>();
+        all.put("conditions.json", out.with(main, out.ferrate(), regions));
+        all.putAll(files);
+        return all;
+    }
+
+    /** "Trentino-Alto Adige" → "trentino-alto-adige". */
+    static String slug(String region) {
+        String folded = java.text.Normalizer.normalize(region, java.text.Normalizer.Form.NFD).replaceAll("\\p{M}", "");
+        return folded.toLowerCase(java.util.Locale.ROOT).replaceAll("[^a-z0-9]+", "-").replaceAll("(^-|-$)", "");
     }
 }

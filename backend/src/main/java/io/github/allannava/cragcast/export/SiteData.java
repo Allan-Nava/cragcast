@@ -34,7 +34,8 @@ import tools.jackson.databind.json.JsonMapper;
 public class SiteData {
 
     /** What one refresh produced: every file the page and its API read, as text. */
-    record Snapshot(Instant generatedAt, String conditions, Map<String, String> api, Map<String, String> pages) {
+    record Snapshot(Instant generatedAt, String conditions, Map<String, String> api, Map<String, String> pages,
+                    Map<String, String> regions) {
     }
 
     private final JsonMapper json = JsonMapper.builder().build();
@@ -146,7 +147,10 @@ public class SiteData {
                 ferrate(tops, days, bulletins));
         Map<String, String> api = new LinkedHashMap<>();
         ConditionsExport.api(out).forEach((path, doc) -> api.put(path, json.writeValueAsString(doc)));
-        latest = new Snapshot(now, json.writeValueAsString(out), api, SharePages.pages(out, siteUrl));
+        // CG-43: by region, as on GitHub Pages: conditions.json and conditions-<slug>.json.
+        Map<String, String> data = new LinkedHashMap<>();
+        ConditionsExport.split(out).forEach((name, doc) -> data.put(name, json.writeValueAsString(doc)));
+        latest = new Snapshot(now, data.remove("conditions.json"), api, SharePages.pages(out, siteUrl), data);
     }
 
     /**

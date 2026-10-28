@@ -133,4 +133,6 @@ export interface Conditions {
   crags: Crag[];
   /** CG-114: absent when there are none (the Pi's data before CG-115, older data). */
   ferrate?: Ferrata[];
+  /** CG-43: the other regions' crags, each in `file` next to this one (data/<file>); absent when none. */
+  regions?: { name: string; count: number; file: string }[];
 }

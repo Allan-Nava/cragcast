@@ -65,8 +65,10 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
 - **Three regions, Lombardy first** (CG-43, ADR 0026): `osm_crags.py` queries IT-25, IT-21 and
   IT-32 at once; each crag's `region` comes from OSM's boundaries (admin level 4), never from the
   query. The page shows one region at a time, Lombardy unless `?r=` says otherwise; a crag
-  without a region is Lombardy's. One `conditions.json` until Lighthouse says otherwise, then
-  one file per region. Open-Meteo is asked 100 places a request; the elevation lookup pauses
+  without a region is Lombardy's. `conditions.json` holds Lombardy (and the via ferratas) and
+  lists the other regions' `conditions-<slug>.json` in `regions`; the page fetches one when its
+  region is chosen, `history_append.py` and the Pi read and serve them all. One file for every
+  crag scored 0.73 on Lighthouse. Open-Meteo is asked 100 places a request; the elevation lookup pauses
   between requests and waits out a 429. The avalanche bulletins and via ferratas are still
   Lombardy's only.
 - **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:

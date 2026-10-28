@@ -35,6 +35,10 @@ def rows(conditions, day):
 
 def main(conditions_path, history_dir, day=None):
     conditions = json.loads(pathlib.Path(conditions_path).read_text())
+    # CG-43: the other regions' crags sit in the files conditions.json lists, next to it.
+    for region in conditions.get("regions", []):
+        other = json.loads((pathlib.Path(conditions_path).parent / region["file"]).read_text())
+        conditions["crags"] = conditions["crags"] + other["crags"]
     day = day or conditions["days"][0]
     path = pathlib.Path(history_dir) / day[:4] / f"{day[5:7]}.csv"
     kept = []

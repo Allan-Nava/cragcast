@@ -22,9 +22,12 @@ no Italian province, its own avalanche service.
 - **Lombardy stays the default view.** The page shows one region at a time, Lombardy unless
   `?r=` says otherwise, or all of them; the provinces follow the region. A crag without a region
   (data from before) counts as Lombardy.
-- **One data file, for now.** `conditions.json` holds every crag. Its size grows with them; the
-  Lighthouse budget (CG-36) decides: if it fails, the next step is one file per region, loaded
-  when the region is chosen.
+- **One data file per region.** One `conditions.json` for every crag was tried first: 3.5 MB,
+  and Lighthouse's performance fell to 0.73 against the 0.88 floor (CG-36). So
+  `conditions.json` keeps Lombardy's crags, the via ferratas and a `regions` list; each other
+  region's crags go to `conditions-<slug>.json` next to it, fetched by the page when that region
+  (or all of them) is chosen, and read by `history_append.py` and served by the Pi the same way.
+  The API v1 keeps every crag in its own files.
 - **`region` is added** to `conditions.json`, the API v1 crag and index entries (CG-32), and the
   Pi's crag table.
 - **Every 3 hours, not every hour.** Open-Meteo's free tier counts every place — 600 a minute,
