@@ -458,12 +458,14 @@ costs more. An ADR comes with CG-112.
   2026-10-28, 74 ways and 5 relations, about 42 via ferratas — 35 named, 22 with a plain 0–6
   scale, 7 ways with `2+`, `3+` or `K2`. Enough to import with the difficulty shown only where
   mapped; relations nearly absent, so CG-112 groups the ways itself. <!-- cg: prio=med size=S labels=data ver=main -->
-- [ ] **CG-112 — The import**: `tools/osm_ferrate.py` into `data/ferrate.json`, through the same
+- [x] **CG-112 — The import**: `tools/osm_ferrate.py` into `data/ferrate.json`, through the same
   reviewed monthly PR as the crags: name, OSM links, start and highest point (from the track,
   elevation from the DEM), length, `via_ferrata_scale` validated or dropped. Never mixed into
   `data/crags.json`, whose rule against single routes holds. With the ADR. CG-111 found few
   relations: the ways are grouped by name and distance, with tests, and a generated list asks
-  for the missing scales. <!-- cg: prio=med size=M labels=data -->
+  for the missing scales. Done ([ADR 0023](docs/adr/0023-via-ferratas-from-openstreetmap.md)):
+  on 2026-10-28, 42 via ferratas in `data/ferrate.json`, 24 with a difficulty, 12 unnamed groups
+  left out; `docs/ferrate-todo.md` lists what to map; the monthly refresh rebuilds both. <!-- cg: prio=med size=M labels=data ver=main -->
 - [ ] **CG-113 — A verdict of its own**: `FerrataScorer`, its thresholds named constants as in
   `ConditionsScorer`: a thunderstorm forecast in the day (Open-Meteo's weather code, CAPE) is
   never "si va"; wind, cold, snow and ice read at the highest point; the day's light against

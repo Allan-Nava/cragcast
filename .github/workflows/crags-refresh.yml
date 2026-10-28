@@ -32,12 +32,17 @@ jobs:
           cp data/crags.json "$RUNNER_TEMP/crags-before.json"
           python3 tools/osm_crags.py
           python3 tools/aspects_todo.py      # CG-16: the list of walls still to map follows the crags
+      - name: Rebuild data/ferrate.json from OpenStreetMap
+        # CG-112: the via ferratas ride the same reviewed PR. Their own query: a busy Overpass
+        # leaves the file as it was and the crags' PR still opens.
+        run: |
+          python3 tools/osm_ferrate.py || echo "::warning::via ferratas not refreshed; data/ferrate.json left as it was"
       - name: Open a pull request if OSM changed
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           # CG-103: a route's new grade changes osm-climbing.json alone; either file opens the PR.
-          if git diff --quiet -- data/crags.json data/osm-climbing.json; then
+          if git diff --quiet -- data/crags.json data/osm-climbing.json data/ferrate.json; then
             echo "OpenStreetMap unchanged: nothing to do."
             exit 0
           fi
@@ -49,13 +54,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"
-          git add data/crags.json data/osm-climbing.json docs/aspects-todo.md
+          git add data/crags.json data/osm-climbing.json docs/aspects-todo.md data/ferrate.json docs/ferrate-todo.md
           git commit -m "Crags refresh from OpenStreetMap ($(date -u +%Y-%m-%d))"
           git push origin "$branch"
           {
             echo "Monthly rebuild of \`data/crags.json\` from OpenStreetMap (\`tools/osm_crags.py\`)."
             echo
             python3 tools/crags_diff.py "$RUNNER_TEMP/crags-before.json" data/crags.json
+            echo
+            jq -r '"Via ferratas (CG-112): \(.ferrate | length) in `data/ferrate.json`, \([.ferrate[] | select(.scaleMin != null)] | length) with a difficulty; what is missing on OSM is in `docs/ferrate-todo.md`."' data/ferrate.json
             echo
             echo "Check the new and changed crags on OSM before merging. CI does not start by itself on"
             echo "a PR opened by a workflow: close and reopen this PR to run it."

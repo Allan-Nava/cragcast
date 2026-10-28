@@ -77,6 +77,13 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   Duplicates (CG-26): same name and under 50 m apart is one crag mapped twice — folded, the node
   kept (stable id), the others' links in `alsoMapped`. Same name farther apart stays separate:
   generic sector names ("Settore Destro") may belong to different crags.
+- **Via ferratas are not crags** (CG-112, ADR 0023): `tools/osm_ferrate.py` writes
+  `data/ferrate.json` and `docs/ferrate-todo.md` (generated, never edited by hand), through the
+  same reviewed monthly PR; never into `data/crags.json`. A relation is one via ferrata; loose
+  ways join by the same name within `NAME_M` (500 m) or, unnamed, by touching (`TOUCH_M`), never
+  two names in one; an unnamed group is left out and listed. `via_ferrata_scale` is a whole 0–6
+  or dropped and listed — `2+` is never read as 2. Start and top from the DEM, sampled along
+  the track. `tools/test_osm_ferrate.py` holds these rules.
 - **`docs/aspects-todo.md` is generated** by `tools/aspects_todo.py` from `data/crags.json`
   (CG-16) and committed with it by `crags-refresh.yml`; never edit it by hand. It never names
   who knows which crag: the list is for anyone who climbs there.
