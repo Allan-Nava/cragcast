@@ -157,7 +157,7 @@ flowchart TB
 | Integration | `*IT` under failsafe, `FakeHttp`; a fake Overpass | the export and the calibration run whole against fake servers; Testcontainers against PostgreSQL in CI | — |
 | End to end | Playwright (Chromium; desktop and Pixel 7), axe | flows jsdom cannot do: dragging the map, layout per width, swipes, accessibility | — |
 | Visual | Playwright snapshots, CI's own images | seven views on fixed data; a layout change fails with its diff | 25 px |
-| Coverage | JaCoCo, Vitest v8, coverage.py | measured in CI, floors only go up ([ADR 0012](adr/0012-tests-floors-only-go-up.md)) | backend 96%, page 99%, tools 97% of lines |
+| Coverage | JaCoCo, Vitest v8, coverage.py | measured in CI, floors only go up ([ADR 0012](adr/0012-tests-floors-only-go-up.md)) | backend 95%, page 99%, tools 97% of lines |
 | Plumbing | actionlint, shellcheck, `backlogsync check`, `terraform validate` | workflows, scripts, the backlog, the parked Terraform | — |
 
 CI's jobs: `backend`, `web`, `e2e`, `tools`, `lint`, `terraform`, `backlog`; Lighthouse runs as
