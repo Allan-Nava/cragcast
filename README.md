@@ -2,7 +2,8 @@
 
 # cragcast
 
-**Can I climb there tomorrow?** cragcast answers it for crags in Lombardy: for each crag,
+**Can I climb there tomorrow?** cragcast answers it for crags in Lombardy and, since CG-43, in
+Piedmont and Trentino-Alto Adige: for each crag,
 tomorrow's weather, the rain of the last two days and the aspect of the wall become a
 verdict — **go**, **maybe**, **no go** — with the reasons.
 
@@ -11,8 +12,8 @@ how much it rained and how much sun the wall gets. A south-facing slab after 8 m
 usually fine the next day; a north-facing one often is not. cragcast puts that judgement in
 code, with the thresholds in one place so they can be argued with.
 
-**Live:** [allan-nava.github.io/cragcast](https://allan-nava.github.io/cragcast/) — 220 crags,
-updated every hour by a GitHub Action, no server.
+**Live:** [allan-nava.github.io/cragcast](https://allan-nava.github.io/cragcast/) — 780 crags (Lombardy 222,
+Piedmont 317, Trentino-Alto Adige 241), updated every hour by a GitHub Action, no server.
 
 **How it works, in Italian:** [cragcast: si arrampica domani?](https://allan-nava.github.io/blog/2026/10/15/allan-nava-cragcast.html)
 — the verdict's rules, the Oracle VM that never came, and the free stack it runs on instead.
@@ -85,8 +86,12 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 - in the avalanche season, the **avalanche bulletin** of ARPA Lombardia for the crag's zone,
   in the popup and the panel: the danger level (1–5) by elevation band and part of the day,
   the avalanche problems, and a link to the official bulletin. Only the crags inside one of
-  the bulletin's micro-regions get it — 119 of 220; the low crags lie outside them. The verdict
+  the bulletin's micro-regions get it — 119 of Lombardy's crags; the low crags lie outside them, and
+  Piedmont's and Trentino-Alto Adige's have no bulletin yet (CG-120). The verdict
   does not change: it is about the rock, the bulletin about the approach and winter routes;
+- **three regions** (CG-43): Lombardy by default, Piedmont or Trentino-Alto Adige — or all of
+  them — from a choice next to the province, kept in the URL (`?r=`); the provinces follow the
+  region ([ADR 0026](docs/adr/0026-beyond-lombardy.md));
 - the **via ferratas** (CG-114): a "Falesie / Vie ferrate" switch shows them instead of the
   crags, each with its own verdict read at the top — a thunderstorm is never "si va" — and a
   peak beside its mark; the difficulty as OpenStreetMap gives it (`via_ferrata_scale` 0–6, or
@@ -138,7 +143,7 @@ curl https://allan-nava.github.io/cragcast/api/v1/ferrate.json
   `elevation`, `verdicts` by day (`GO`, `MAYBE`, `NO_GO`) and `url`, the path of its own file.
 - **`crags/<id>.json`** — `meta` and the whole `crag`: the fields above plus `sourceUrl`,
   `alsoMapped`, `details` (grades, route length, rock, style, website — where OSM has them),
-  `province` and `days`: per day the `verdict`, the `reasons`, the `weather` it was computed
+  `province`, `region` (CG-43: the crag's Italian region, also in `crags.json`'s entries) and `days`: per day the `verdict`, the `reasons`, the `weather` it was computed
   from (rain in the previous 48 h, rain, max temperature and max wind from 08:00 to 18:00) and
   the `hours` from 06:00 to 21:00, and `avalanche` only when a bulletin covers the crag that
   day: `region` and `name` of the EAWS micro-region, `level` (the day's highest, 1–5),

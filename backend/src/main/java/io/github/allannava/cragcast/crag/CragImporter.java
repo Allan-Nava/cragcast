@@ -45,11 +45,11 @@ class CragImporter implements ApplicationRunner {
             String details = json.writeValueAsString(e.details() == null ? Map.of() : e.details());
             var existing = crags.findBySlug(e.id());
             if (existing.isPresent()) {
-                existing.get().update(e.name(), null, e.latitude(), e.longitude(), e.aspect(), e.sourceUrl());
+                existing.get().update(e.name(), e.region(), e.latitude(), e.longitude(), e.aspect(), e.sourceUrl());
                 existing.get().setExtras(e.elevation(), details);
                 updated++;
             } else {
-                Crag c = new Crag(e.id(), e.name(), null, e.latitude(), e.longitude(), e.aspect(), e.sourceUrl());
+                Crag c = new Crag(e.id(), e.name(), e.region(), e.latitude(), e.longitude(), e.aspect(), e.sourceUrl());
                 c.setExtras(e.elevation(), details);
                 crags.save(c);
                 inserted++;
@@ -69,7 +69,8 @@ class CragImporter implements ApplicationRunner {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
+    /** {@code region}: CG-43, the crag's Italian region, into the crag table's region column. */
     record Entry(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
-                 Map<String, Object> details, Integer elevation) {
+                 Map<String, Object> details, Integer elevation, String region) {
     }
 }

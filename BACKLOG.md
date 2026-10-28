@@ -334,9 +334,21 @@ Moved out of v0.6.0 on 2026-10-15, when that milestone closed: a larger job, sin
 province, the avalanche bulletin (another per region, the SLF in the Ticino) and the API
 assume Lombardy.
 
-- [ ] **CG-43 — Neighbouring regions**: crags beyond Lombardy (Piedmont, Trentino, the Ticino)
+- [x] **CG-43 — Neighbouring regions**: crags beyond Lombardy (Piedmont, Trentino, the Ticino)
   where Lombard climbers go — the province, avalanche and API fields must hold beyond one
-  region. <!-- cg: prio=low size=L labels=data,backend -->
+  region. First step done
+  ([ADR 0026](docs/adr/0026-beyond-lombardy.md)): Piedmont and Trentino-Alto Adige from the same
+  query, each crag's `region` from OSM's boundaries; on 2026-10-28, 780 crags (Lombardy 222,
+  Piedmont 317, Trentino-Alto Adige 241); the page shows one region at a time, Lombardy first;
+  `region` in `conditions.json` and the API v1. The rest is CG-120 to CG-122. <!-- cg: prio=low size=L labels=data,backend ver=main -->
+- [ ] **CG-120 — Avalanche bulletins beyond Lombardy**: Piedmont's (IT-21) and Trentino-Alto
+  Adige's (IT-32-TN, IT-32-BZ) bulletins and micro-regions next to Lombardy's, through
+  `AvalancheBulletins` and `tools/avalanche_regions.py`; each credited to its own service, its
+  licence checked before any of it is shown. Informs, never scores (CG-11). <!-- cg: prio=med size=M labels=backend,data -->
+- [ ] **CG-121 — Via ferratas beyond Lombardy**: `tools/osm_ferrate.py` over the same three
+  regions, the page's region choice applying to them too; the todo list grows with them. <!-- cg: prio=low size=S labels=data -->
+- [ ] **CG-122 — The Ticino**: Swiss crags where Lombard climbers go — no Italian province (the
+  canton instead), the SLF's avalanche bulletin, a border in the data. Its own ADR. <!-- cg: prio=low size=L labels=data,backend -->
 
 ## v1.1.0 — On a Raspberry Pi <!-- ms: phase=now -->
 

@@ -38,5 +38,9 @@ class CragImporterRunTest {
         assertThat(known.getName()).isEqualTo(first.name());
         assertThat(known.getLatitude()).isEqualTo(first.latitude());
         assertThat(known.getElevation()).isEqualTo(first.elevation());
+        // CG-43: every crag of the file says its region, and the table keeps it.
+        assertThat(known.getRegion()).isEqualTo(first.region());
+        assertThat(entries).allSatisfy(e -> assertThat(e.region())
+                .isIn("Lombardia", "Piemonte", "Trentino-Alto Adige"));
     }
 }

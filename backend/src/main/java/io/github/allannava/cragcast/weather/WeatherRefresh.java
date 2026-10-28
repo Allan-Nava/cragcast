@@ -32,7 +32,8 @@ import org.springframework.transaction.annotation.Transactional;
 @ConditionalOnProperty(name = "cragcast.refresh.enabled", havingValue = "true", matchIfMissing = true)
 public class WeatherRefresh {
 
-    static final int BATCH = 50;
+    /** Places per Open-Meteo request, as the hourly export asks (CG-43: about a thousand crags). */
+    static final int BATCH = 100;
     static final int DAYS = 3;
     private static final Logger log = LoggerFactory.getLogger(WeatherRefresh.class);
 

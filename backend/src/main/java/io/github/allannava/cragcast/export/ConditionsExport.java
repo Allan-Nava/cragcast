@@ -36,8 +36,11 @@ import tools.jackson.databind.json.JsonMapper;
 public final class ConditionsExport {
 
     static final ZoneId ZONE = ZoneId.of("Europe/Rome");
-    /** Places per Open-Meteo request, to keep the URL short. */
-    static final int BATCH = 50;
+    /**
+     * Places per Open-Meteo request: few requests an hour (CG-43 brought about a thousand crags),
+     * and a URL still well under the server's limit.
+     */
+    static final int BATCH = 100;
 
     private ConditionsExport() {
     }
@@ -177,7 +180,7 @@ public final class ConditionsExport {
                     c.details() == null ? Map.of() : c.details(), c.elevation(),
                     c.alsoMapped() == null ? List.of() : c.alsoMapped(),
                     c.municipality(), c.province(), c.provinceCode(), byDay,
-                    climbing.sectors(c.sectors()), climbing.routes(c.id())));
+                    climbing.sectors(c.sectors()), climbing.routes(c.id()), c.region()));
         }
         return new Output(now.toString(), ZONE.getId(), days.stream().map(LocalDate::toString).toList(),
                 crags.licence(), "Weather: Open-Meteo.com (CC BY 4.0)", crags.elevationSource(), AVALANCHE_DATA, out, ferrate);
@@ -198,7 +201,7 @@ public final class ConditionsExport {
             Map<String, Verdict> verdicts = new LinkedHashMap<>();
             c.days().forEach((day, d) -> verdicts.put(day, d.verdict()));
             index.add(new IndexEntry(c.id(), c.name(), c.municipality(), c.provinceCode(), c.latitude(), c.longitude(),
-                    c.aspect(), c.elevation(), verdicts, "crags/" + c.id() + ".json"));
+                    c.aspect(), c.elevation(), verdicts, "crags/" + c.id() + ".json", c.region()));
             files.put("crags/" + c.id() + ".json", new CragDocument(meta, c));
         }
         files.put("crags.json", new Index(meta, index));
@@ -236,7 +239,8 @@ public final class ConditionsExport {
     }
 
     record IndexEntry(String id, String name, String municipality, String provinceCode, double latitude,
-                      double longitude, Aspect aspect, Integer elevation, Map<String, Verdict> verdicts, String url) {
+                      double longitude, Aspect aspect, Integer elevation, Map<String, Verdict> verdicts, String url,
+                      String region) {
     }
 
     record Index(Meta meta, List<IndexEntry> crags) {
@@ -269,9 +273,17 @@ public final class ConditionsExport {
     /** {@code details}: the climbing tags OSM has for the crag (grades, length, rock…), passed through. */
     /** {@code alsoMapped}: OSM links of duplicates folded into this crag by tools/osm_crags.py. */
     /** {@code sectors}: CG-104, the OSM ids of the sectors folded into this crag. */
+    /** {@code region}: CG-43, the crag's Italian region from OSM's boundaries; null in older files. */
     record Crag(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
                 Map<String, Object> details, Integer elevation, List<String> alsoMapped,
-                String municipality, String province, String provinceCode, List<String> sectors) {
+                String municipality, String province, String provinceCode, List<String> sectors, String region) {
+
+        Crag(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
+             Map<String, Object> details, Integer elevation, List<String> alsoMapped,
+             String municipality, String province, String provinceCode, List<String> sectors) {
+            this(id, name, latitude, longitude, aspect, sourceUrl, details, elevation, alsoMapped, municipality, province,
+                    provinceCode, sectors, null);
+        }
     }
 
     /** CG-117: one sector of the crag, with its own aspect and grades. */
@@ -288,10 +300,19 @@ public final class ConditionsExport {
                   @JsonInclude(JsonInclude.Include.NON_NULL) Avalanche avalanche) {
     }
 
+    /** {@code region}: CG-43, added at the end as the API v1 allows. */
     record CragOut(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
                    Map<String, Object> details, Integer elevation, List<String> alsoMapped,
                    String municipality, String province, String provinceCode, Map<String, DayOut> days,
-                   List<SectorOut> sectors, List<RouteOut> routes) {
+                   List<SectorOut> sectors, List<RouteOut> routes, String region) {
+
+        CragOut(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
+                Map<String, Object> details, Integer elevation, List<String> alsoMapped,
+                String municipality, String province, String provinceCode, Map<String, DayOut> days,
+                List<SectorOut> sectors, List<RouteOut> routes) {
+            this(id, name, latitude, longitude, aspect, sourceUrl, details, elevation, alsoMapped, municipality, province,
+                    provinceCode, days, sectors, routes, null);
+        }
     }
 
     /** {@code ferrate}: CG-114, left out when there are none, so data without via ferratas reads as before. */

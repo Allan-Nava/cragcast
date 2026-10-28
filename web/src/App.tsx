@@ -16,7 +16,7 @@ import { BackToTop } from "./components/BackToTop";
 import { loadFavourites, loadOnly, saveFavourites, saveOnly } from "./lib/favourites";
 import { hasGrades, inGrade } from "./lib/grades";
 import { ON_THE_SPOT, asPlace } from "./lib/ferrate";
-import type { Kind } from "./lib/state";
+import { ALL_REGIONS, DEFAULT_REGION, regionOf, type Kind } from "./lib/state";
 
 /** The crags matching search, province, area, (CG-46) favourites and (CG-61) grades — every
  * verdict (CG-39 counts them). */
@@ -25,6 +25,8 @@ export function matching(crags: Crag[], s: ViewState, favourites: Set<string> | 
   return crags
     .filter(c => !favourites || favourites.has(c.id))
     .filter(c => !q || fold(c.name).includes(q) || fold(place(c)).includes(q))
+    // CG-43: one region at a time, or all; the via ferratas are Lombardy's and never hidden by it.
+    .filter(c => s.region === ALL_REGIONS || !!c.ferrata || regionOf(c) === s.region)
     // CG-114: province and grades are the crags' filters; a via ferrata has neither from OSM.
     .filter(c => !s.province || !!c.ferrata || c.provinceCode === s.province)
     .filter(c => !s.area || inArea(s.area, c.latitude, c.longitude))
@@ -138,13 +140,21 @@ export function App() {
     setView(next);
   };
 
+  // CG-43: the regions with their crag counts, and the provinces of the region shown.
+  const regions = useMemo(() => {
+    const n = new Map<string, number>();
+    (data?.crags ?? []).forEach(c => n.set(regionOf(c), (n.get(regionOf(c)) ?? 0) + 1));
+    return [...n].sort((a, b) => a[0].localeCompare(b[0], "it")).map(([name, count]) => ({ name, count }));
+  }, [data]);
+  const region = view?.region ?? "";
   const provinces = useMemo(() => {
     if (!data) return [];
+    const inRegion = data.crags.filter(c => region === ALL_REGIONS || regionOf(c) === region);
     const names = new Map<string, string>();
-    data.crags.forEach(c => { if (c.provinceCode) names.set(c.provinceCode, c.province ?? c.provinceCode); });
+    inRegion.forEach(c => { if (c.provinceCode) names.set(c.provinceCode, c.province ?? c.provinceCode); });
     return [...names].sort((a, b) => a[1].localeCompare(b[1], "it"))
-      .map(([code, name]) => ({ code, name, count: data.crags.filter(c => c.provinceCode === code).length }));
-  }, [data]);
+      .map(([code, name]) => ({ code, name, count: inRegion.filter(c => c.provinceCode === code).length }));
+  }, [data, region]);
 
   // CG-114: the via ferratas as places; the view shows them or the crags, never both.
   const ferrate = useMemo(() => (data?.ferrate ?? []).map(asPlace), [data]);
@@ -213,7 +223,7 @@ export function App() {
 
   const total = places.length;
   const noun = kind === "ferrate" ? "vie ferrate" : "falesie";
-  const active = view ? [view.verdicts.size < 3, !!view.province, !!view.grade, !!view.area, !!here, onlyFavourites].filter(Boolean).length : 0;
+  const active = view ? [view.verdicts.size < 3, view.region !== DEFAULT_REGION, !!view.province, !!view.grade, !!view.area, !!here, onlyFavourites].filter(Boolean).length : 0;
   const unknown = data && view ? ungraded(places, view, scope) : 0;
   const count = notice ?? (!data ? (error ? "" : "Carico le falesie…") : (shown.length === total ? `${shown.length} ${noun}` : `${shown.length} di ${total} ${noun}`)
     + (unknown ? ` · ${unknown} senza gradi su OpenStreetMap, escluse` : ""));
@@ -224,7 +234,7 @@ export function App() {
         <img src="logo.svg" alt="" width={40} height={40} />
         <div>
           <h1>cragcast</h1>
-          <p>Si arrampica domani? Le falesie della Lombardia, dal meteo e dall'esposizione della parete.</p>
+          <p>Si arrampica domani? Le falesie di Lombardia, Piemonte e Trentino-Alto Adige, dal meteo e dall'esposizione della parete.</p>
         </div>
       </header>
       {/* CG-114: crags or via ferratas, said in words; only when the data has via ferratas. */}
@@ -239,7 +249,9 @@ export function App() {
         </div>
       )}
       <Controls days={data?.days ?? []} provinces={kind === "ferrate" ? [] : provinces}
-                state={view ? { ...view, kind } : { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null, show: "list", grade: null, order: "verdict", kind: "crags" }}
+                regions={kind === "ferrate" ? [] : regions}
+                onRegion={r => view && go({ ...view, region: r, province: "", area: null }, true)}
+                state={view ? { ...view, kind } : { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null, show: "list", grade: null, order: "verdict", kind: "crags", region: "Lombardia" }}
                 byDistance={byDistance && !!here}
                 near={asking ? "asking" : here ? "on" : "off"} active={active}
                              onDay={day => view && go({ ...view, day }, true)}

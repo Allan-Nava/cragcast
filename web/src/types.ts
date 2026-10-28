@@ -86,6 +86,8 @@ export interface Crag {
   /** CG-117: absent in data written before it (a page cached by the service worker). */
   sectors?: Sector[];
   routes?: Route[];
+  /** CG-43: the Italian region, from OSM's boundaries; absent in data before it (all Lombardy). */
+  region?: string | null;
   /** CG-114: set on a via ferrata turned into a place for the list, the map and the panel. */
   ferrata?: FerrataFacts;
 }

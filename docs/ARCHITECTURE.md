@@ -19,7 +19,7 @@ through a reviewed monthly PR ([ADR 0003](adr/0003-crags-from-openstreetmap.md))
 ```mermaid
 flowchart LR
   subgraph repo["Repository (main)"]
-    crags["data/crags.json<br/>220 crags from OSM"]
+    crags["data/crags.json<br/>780 crags from OSM, 3 regions"]
     regions["data/avalanche-regions.geojson<br/>EAWS micro-regions"]
     ferrate["data/ferrate.json<br/>via ferratas from OSM"]
     web["web/<br/>React + Vite"]
@@ -40,7 +40,7 @@ flowchart LR
   crags --> export
   regions --> export
   ferrate --> export
-  meteo -- "hourly, 2 days back, 3 ahead;<br/>50 crags a request, then the via ferratas' tops" --> export
+  meteo -- "hourly, 2 days back, 3 ahead;<br/>100 crags a request, then the via ferratas' tops" --> export
   eaws -- "one bulletin a day,<br/>404 out of season" --> export
   export --> data & api & share
   page -- "fetch every 10 min" --> data

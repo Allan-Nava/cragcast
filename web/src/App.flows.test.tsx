@@ -361,3 +361,37 @@ group("via ferratas (CG-114)", () => {
     expect(names()).toHaveLength(2);
   });
 });
+
+group("regions (CG-43)", () => {
+  const withPiemonte = (): Conditions => {
+    const d = data();
+    const c = crag({ id: "p", name: "Parete Gamma", latitude: 45.5, longitude: 7.5, provinceCode: "TO", province: "Torino",
+                     municipality: "Torino", region: "Piemonte" });
+    c.days[NEXT] = { ...c.days[DAY] };
+    return { ...d, crags: [...d.crags, c] };
+  };
+
+  it("no choice when the data has one region", async () => {
+    serve(data());
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    expect(screen.queryByLabelText("Regione")).toBeNull();
+  });
+
+  it("Lombardy by default; another region in the URL with its own provinces; all of them on request", async () => {
+    serve(withPiemonte());
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    expect(names()).toEqual(["Parete Alfa — Si va", "Parete Beta — No"]);
+    const region = screen.getByLabelText("Regione") as HTMLSelectElement;
+    expect([...region.options].map(o => o.text)).toEqual(["Lombardia (2)", "Piemonte (1)", "Tutte le regioni (3)"]);
+    await act(async () => { fireEvent.change(region, { target: { value: "Piemonte" } }); });
+    expect(location.search).toBe(`?r=Piemonte&day=${DAY}`);
+    expect(names()).toEqual(["Parete Gamma — Si va"]);
+    expect([...(screen.getByLabelText("Provincia") as HTMLSelectElement).options].map(o => o.text))
+      .toEqual(["Tutte le province", "Torino (1)"]);
+    expect(screen.getByRole("button", { name: /^Filtri/ }).textContent).toBe("Filtri (1)");
+    await act(async () => { fireEvent.change(region, { target: { value: "all" } }); });
+    expect(names()).toHaveLength(3);
+  });
+});

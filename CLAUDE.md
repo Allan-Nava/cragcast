@@ -1,6 +1,6 @@
 # CLAUDE.md — cragcast
 
-"Can I climb there tomorrow?" for crags in Lombardy. Java 21 + Spring Boot 4 + PostgreSQL in
+"Can I climb there tomorrow?" for crags in Lombardy, Piedmont and Trentino-Alto Adige. Java 21 + Spring Boot 4 + PostgreSQL in
 `backend/`; k3s manifests in `deploy/k8s/` for an Oracle Cloud Always Free Ampere VM (arm64).
 
 **Where it runs:** GitHub Pages, built hourly by `pages.yml` — the only live surface. The
@@ -62,6 +62,13 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   together, 8 and over together); one button per level present with its count, the table grouped
   under the same levels, and one line on how the French scale reads. The words (facile, medio,
   impegnativo, difficile, estremo) are said to be indicative; the grade itself is OSM's.
+- **Three regions, Lombardy first** (CG-43, ADR 0026): `osm_crags.py` queries IT-25, IT-21 and
+  IT-32 at once; each crag's `region` comes from OSM's boundaries (admin level 4), never from the
+  query. The page shows one region at a time, Lombardy unless `?r=` says otherwise; a crag
+  without a region is Lombardy's. One `conditions.json` until Lighthouse says otherwise, then
+  one file per region. Open-Meteo is asked 100 places a request; the elevation lookup pauses
+  between requests and waits out a 429. The avalanche bulletins and via ferratas are still
+  Lombardy's only.
 - **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:
   credit OSM on every surface that shows them): `climbing=crag`, and since CG-42 named outdoor
   `sport=climbing` places (a cliff, a rock, a climbing site relation) — never gyms, shops,

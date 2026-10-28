@@ -1,4 +1,4 @@
-// The view in the URL (?q=&v=&p=&g=&o=&a=&crag=&show=&k=&day=), so a link opens the same view and back works (CG-20).
+// The view in the URL (?q=&v=&r=&p=&g=&o=&a=&crag=&show=&k=&day=), so a link opens the same view and back works (CG-20).
 // The reader's position is never part of it (CG-22).
 import type { Verdict } from "../types";
 import { ORDER, VERDICTS } from "./text";
@@ -22,7 +22,16 @@ export interface ViewState {
   order: Order;
   /** CG-114: the crags or the via ferratas (?k=ferrate). */
   kind: Kind;
+  /** CG-43: the region shown (?r=), Lombardy by default; ALL_REGIONS for every one. */
+  region: string;
 }
+
+/** CG-43: the region a fresh visit shows, and the value for all of them. */
+export const DEFAULT_REGION = "Lombardia";
+export const ALL_REGIONS = "all";
+
+/** A crag's region; data from before CG-43 had Lombardy only. */
+export const regionOf = (c: { region?: string | null }): string => c.region ?? DEFAULT_REGION;
 
 /** CG-114: which places the page shows. */
 export type Kind = "crags" | "ferrate";
@@ -59,6 +68,7 @@ export function readState(search: string, days: string[]): ViewState {
     grade: readGrade(p.get("g")),
     order: ORDERS.find(o => o === p.get("o")) ?? "verdict",
     kind: p.get("k") === "ferrate" ? "ferrate" : "crags",
+    region: p.get("r") || DEFAULT_REGION,
   };
 }
 
@@ -73,6 +83,7 @@ export function stateQuery(s: ViewState): string {
   if (s.crag) p.set("crag", s.crag);
   if (s.show === "map") p.set("show", "map");
   if (s.kind === "ferrate") p.set("k", "ferrate");
+  if (s.region !== DEFAULT_REGION) p.set("r", s.region);
   p.set("day", s.day);
   return "?" + p.toString();
 }

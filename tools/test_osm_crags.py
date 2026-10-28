@@ -129,6 +129,12 @@ class Group(unittest.TestCase):
         self.assertEqual(len(crags["Falesie Test"]["alsoMapped"]), 3)
         self.assertEqual(dropped, ["Climbing point"])
 
+    def test_a_klettergarten_far_from_any_crag_is_one_cg43(self):
+        crags, dropped = build(el("node", 1, "Klettergarten Test", 0, sport="climbing"),
+                               el("node", 2, "Kletterschule Test", 9000, sport="climbing"))
+        self.assertEqual(list(crags), ["Klettergarten Test"])
+        self.assertEqual(dropped, ["Kletterschule Test"])            # a school may be indoors: not a crag word
+
     def test_two_climbing_crags_are_never_grouped(self):
         crags, _ = build(el("node", 1, "Settore Destro", 0, climbing="crag"),
                          el("node", 2, "Settore Destro", 800, climbing="crag"))

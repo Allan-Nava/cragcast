@@ -17,7 +17,7 @@ class CragImporterTest {
         assertThat(entries).allSatisfy(e -> {
             assertThat(e.id()).startsWith("osm-");
             assertThat(e.sourceUrl()).startsWith("https://www.openstreetmap.org/");
-            assertThat(e.latitude()).isBetween(45.0, 47.0);
+            assertThat(e.latitude()).isBetween(44.0, 47.1);      // the three regions (CG-43)
         });
         assertThat(entries).anyMatch(e -> e.aspect() == null);
         assertThat(entries).allSatisfy(e -> assertThat(e.elevation()).isNotNull());

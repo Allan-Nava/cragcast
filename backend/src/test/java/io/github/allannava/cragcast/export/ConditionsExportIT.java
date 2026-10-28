@@ -63,7 +63,7 @@ class ConditionsExportIT {
                 {"region":"Test","source":"test","licence":"test licence","elevationSource":"test dem","crags":[
                  {"id":"osm-node-1","name":"Dry Test Wall","latitude":46.47,"longitude":10.37,"aspect":"S",
                   "sourceUrl":"https://example.org/1","details":{"gradeMax":"7a"},"elevation":1400,
-                  "municipality":"Testville","province":"Testshire","provinceCode":"TT"},
+                  "municipality":"Testville","province":"Testshire","provinceCode":"TT","region":"Piemonte"},
                  {"id":"osm-way-2","name":"Wet Test Wall","latitude":45.5,"longitude":9.2,"aspect":null,
                   "sourceUrl":"https://example.org/2","details":{}},
                  {"id":"osm-node-3","name":"Third <Test> Wall","latitude":45.6,"longitude":9.3,"aspect":"N",
@@ -106,6 +106,10 @@ class ConditionsExportIT {
         assertThat(index.path("meta").path("version").asInt()).isEqualTo(1);
         assertThat(index.path("crags").get(1).path("verdicts").path(tomorrow).asString()).isEqualTo("NO_GO");
         assertThat(index.path("crags").get(0).path("url").asString()).isEqualTo("crags/osm-node-1.json");
+        // CG-43: the region, added at the end; null where the file has none.
+        assertThat(index.path("crags").get(0).path("region").asString()).isEqualTo("Piemonte");
+        assertThat(index.path("crags").get(1).path("region").isNull()).isTrue();
+        assertThat(data.path("crags").get(0).path("region").asString()).isEqualTo("Piemonte");
         JsonNode one = JSON.readTree(Files.readString(dir.resolve("site/api/v1/crags/osm-node-1.json")));
         assertThat(one.path("crag").path("details").path("gradeMax").asString()).isEqualTo("7a");
 
