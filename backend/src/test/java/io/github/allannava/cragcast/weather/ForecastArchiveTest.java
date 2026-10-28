@@ -81,4 +81,16 @@ class ForecastArchiveTest {
         assertThat(hours.get("rainMm").get(15)).isEqualTo(4.0);
         assertThat(hours.get("temperatureC")).containsOnly(17.0);
     }
+
+    @Test
+    void theViaFerratasTopForecastsArchivedPerDayScoredAtTheTop() {
+        var rows = archive().ferrataRows(Map.of("osm-way-10", io.github.allannava.cragcast.export.SiteDataTestAccess.top(true)),
+                JUNE_2_MORNING);
+        assertThat(rows).extracting(r -> r.ferrataId() + " " + r.day() + " " + r.verdict())
+                .containsExactly("osm-way-10 2026-06-02 GO", "osm-way-10 2026-06-03 NO_GO", "osm-way-10 2026-06-04 GO");
+        assertThat(rows.get(1).reasons()).isEqualTo("[\"thunderstorm forecast\"]");
+        assertThat(rows.get(1).weather()).contains("\"thunderstormHours\":1");
+        assertThat(rows.get(1).hours()).contains("\"weatherCode\":[").contains("\"isDay\":[");
+        assertThat(archive().ferrataRows(Map.of(), JUNE_2_MORNING)).isEmpty();
+    }
 }

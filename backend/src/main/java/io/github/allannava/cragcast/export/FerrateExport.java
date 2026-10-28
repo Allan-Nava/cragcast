@@ -51,13 +51,16 @@ public final class FerrateExport {
         List<FerrataForecast> out = new ArrayList<>();
         List<Ferrata> all = file.ferrate();
         for (int i = 0; i < all.size(); i += batch) {
-            out.addAll(client.hourly(all.subList(i, Math.min(i + batch, all.size())).stream()
-                    .map(f -> new FerrataClient.Top(f.top().latitude(), f.top().longitude(),
-                            // NaN asks Open-Meteo for its grid's own height: no correction without a DEM value.
-                            f.top().elevation() == null ? Double.NaN : f.top().elevation()))
-                    .toList()));
+            out.addAll(client.hourly(all.subList(i, Math.min(i + batch, all.size())).stream().map(FerrateExport::top).toList()));
         }
         return out;
+    }
+
+    /** Where a via ferrata's forecast is asked: its top, at the DEM's elevation. */
+    static FerrataClient.Top top(Ferrata f) {
+        // NaN asks Open-Meteo for its grid's own height: no correction without a DEM value.
+        return new FerrataClient.Top(f.top().latitude(), f.top().longitude(),
+                f.top().elevation() == null ? Double.NaN : f.top().elevation());
     }
 
     /** The pure part: via ferratas and their forecasts in, the page's entries out. */

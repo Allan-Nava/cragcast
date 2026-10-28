@@ -128,6 +128,7 @@ removed (a breaking change would go to `/api/v2/`).
 ```bash
 curl https://allan-nava.github.io/cragcast/api/v1/crags.json
 curl https://allan-nava.github.io/cragcast/api/v1/crags/osm-node-1739484761.json
+curl https://allan-nava.github.io/cragcast/api/v1/ferrate.json
 ```
 
 - **`crags.json`** — `meta` (version, `generatedAt`, timezone, the `days` covered, the
@@ -146,6 +147,15 @@ curl https://allan-nava.github.io/cragcast/api/v1/crags/osm-node-1739484761.json
   `gradeMax` of each sector folded into the crag (CG-104) — and `routes` — `id`, `name`,
   `grade`, `length`, `bolts`, `pitches` and `sector` (a sector's `id` or null) of each single
   route OSM links to it (CG-105), easiest first; both empty lists where OSM has none.
+- **`ferrate.json`** (CG-115) — `meta` and `ferrate`: for each via ferrata `id`, `name`,
+  `latitude` and `longitude` of its start, `topElevation`, `scaleMin` and `scaleMax`
+  (`via_ferrata_scale` 0–6, null when not mapped), `verdicts` by day and `url`, the path of its
+  own file. Its verdict is its own, read at the top — a thunderstorm is never `GO`
+  ([ADR 0024](docs/adr/0024-a-via-ferrata-verdict-of-its-own.md)).
+- **`ferrate/<id>.json`** — `meta` and the whole `ferrata`: the fields above plus `sourceUrl`,
+  `pieces` (the OSM ways it is drawn in), `start` and `top` (`latitude`, `longitude`,
+  `elevation`), `lengthM`, `scaleDropped` (values on OSM off the 0–6 scale, such as `2+`) and
+  `days` as for a crag — the `weather` and `hours` being the top's, the window 07:00–19:00.
 
 Credit OpenStreetMap (ODbL), Open-Meteo (CC BY 4.0) and Copernicus when you show the data,
 and ARPA Lombardia for the avalanche levels.

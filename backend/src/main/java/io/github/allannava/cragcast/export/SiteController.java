@@ -41,6 +41,16 @@ class SiteController {
         return serve(s -> s.api().get("crags/" + file), MediaType.APPLICATION_JSON);
     }
 
+    @GetMapping("/api/v1/ferrate.json")
+    ResponseEntity<String> ferrate() {
+        return serve(s -> s.api().get("ferrate.json"), MediaType.APPLICATION_JSON);
+    }
+
+    @GetMapping("/api/v1/ferrate/{file:.+}")
+    ResponseEntity<String> ferrata(@PathVariable String file) {
+        return serve(s -> s.api().get("ferrate/" + file), MediaType.APPLICATION_JSON);
+    }
+
     @GetMapping("/c/{file:.+}")
     ResponseEntity<String> share(@PathVariable String file) {
         return serve(s -> s.pages().get("c/" + file), HTML);

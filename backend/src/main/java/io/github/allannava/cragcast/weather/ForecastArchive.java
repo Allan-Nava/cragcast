@@ -5,6 +5,10 @@ import io.github.allannava.cragcast.conditions.Verdict;
 import io.github.allannava.cragcast.conditions.Weather;
 import io.github.allannava.cragcast.crag.Crag;
 import io.github.allannava.cragcast.crag.CragRepository;
+import io.github.allannava.cragcast.ferrata.FerrataForecast;
+import io.github.allannava.cragcast.ferrata.FerrataReducer;
+import io.github.allannava.cragcast.ferrata.FerrataScorer;
+import io.github.allannava.cragcast.ferrata.FerrataWeather;
 import java.sql.Timestamp;
 import java.time.Clock;
 import java.time.Instant;
@@ -39,14 +43,24 @@ public class ForecastArchive {
                 rain_during_day_mm, max_temperature_c, max_wind_kmh, hours)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT DO NOTHING""";
+    private static final String INSERT_FERRATA = """
+            INSERT INTO ferrata_forecast (ferrata_id, day, fetched_at, verdict, reasons, weather, hours)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT DO NOTHING""";
 
     /** One crag-day as the refresh at {@code fetchedAt} saw it; reasons and hours as JSON text. */
     record Row(long cragId, LocalDate day, Instant fetchedAt, Verdict verdict, String reasons, Weather weather,
                String hours) {
     }
 
+    /** CG-115: one via ferrata-day; reasons, weather (the top's FerrataWeather) and hours as JSON text. */
+    record FerrataRow(String ferrataId, LocalDate day, Instant fetchedAt, Verdict verdict, String reasons,
+                      String weather, String hours) {
+    }
+
     private final JsonMapper json = JsonMapper.builder().build();
     private final ConditionsScorer scorer = new ConditionsScorer();
+    private final FerrataScorer ferrataScorer = new FerrataScorer();
     private final CragRepository crags;
     private final JdbcTemplate jdbc;
     private final TransactionTemplate tx;
@@ -68,6 +82,70 @@ public class ForecastArchive {
             // Never thrown on: the page's data listens to the same event.
             log.warn("forecasts not archived for {}: {}", e.fetchedAt(), ex.toString());
         }
+        try {
+            int n = appendFerrate(ferrataRows(e.ferrate(), e.fetchedAt()));
+            if (n > 0) {
+                log.info("via ferrata forecasts archived: {} days", n);
+            }
+        } catch (RuntimeException ex) {
+            log.warn("via ferrata forecasts not archived for {}: {}", e.fetchedAt(), ex.toString());
+        }
+    }
+
+    /** CG-115: today to the day after tomorrow for each via ferrata with a forecast, scored at its top. */
+    List<FerrataRow> ferrataRows(Map<String, FerrataForecast> forecasts, Instant fetchedAt) {
+        LocalDate today = LocalDate.ofInstant(fetchedAt, clock.getZone());
+        List<FerrataRow> out = new ArrayList<>();
+        forecasts.forEach((id, f) -> {
+            for (int d = 0; d < WeatherRefresh.DAYS; d++) {
+                LocalDate day = today.plusDays(d);
+                FerrataWeather w = FerrataReducer.reduce(f, day);
+                FerrataScorer.Result r = ferrataScorer.score(w);
+                out.add(new FerrataRow(id, day, fetchedAt, r.verdict(), json.writeValueAsString(r.reasons()),
+                        json.writeValueAsString(w), json.writeValueAsString(ferrataHours(f, day))));
+            }
+        });
+        return out;
+    }
+
+    /** The whole day at the top, as parallel lists, with what the via ferrata verdict reads. */
+    static Map<String, List<Object>> ferrataHours(FerrataForecast f, LocalDate day) {
+        Map<String, List<Object>> out = new LinkedHashMap<>();
+        for (String k : List.of("hour", "rainMm", "temperatureC", "windKmh", "gustKmh", "weatherCode", "capeJkg",
+                "snowCm", "isDay")) {
+            out.put(k, new ArrayList<>());
+        }
+        for (int k = 0; k < f.time().size(); k++) {
+            if (f.time().get(k).toLocalDate().equals(day)) {
+                out.get("hour").add(f.time().get(k).getHour());
+                out.get("rainMm").add(f.precipitation().get(k));
+                out.get("temperatureC").add(f.temperature().get(k));
+                out.get("windKmh").add(f.windSpeed().get(k));
+                out.get("gustKmh").add(f.windGusts().get(k));
+                out.get("weatherCode").add(f.weatherCode().get(k));
+                out.get("capeJkg").add(f.cape().get(k));
+                out.get("snowCm").add(f.snowfall().get(k));
+                out.get("isDay").add(f.isDay().get(k));
+            }
+        }
+        return out;
+    }
+
+    /** CG-115: as {@link #append}, for the via ferratas; nothing to write touches nothing. */
+    int appendFerrate(List<FerrataRow> rows) {
+        if (rows.isEmpty()) {
+            return 0;
+        }
+        tx.executeWithoutResult(s -> jdbc.batchUpdate(INSERT_FERRATA, rows, 500, (ps, r) -> {
+            ps.setString(1, r.ferrataId());
+            ps.setObject(2, r.day());
+            ps.setTimestamp(3, Timestamp.from(r.fetchedAt()));
+            ps.setString(4, r.verdict().name());
+            ps.setString(5, r.reasons());
+            ps.setString(6, r.weather());
+            ps.setString(7, r.hours());
+        }));
+        return rows.size();
     }
 
     /** The same days the refresh stores, today to the day after tomorrow, in the refresh's zone. */

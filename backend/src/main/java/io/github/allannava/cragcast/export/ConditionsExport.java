@@ -202,7 +202,30 @@ public final class ConditionsExport {
             files.put("crags/" + c.id() + ".json", new CragDocument(meta, c));
         }
         files.put("crags.json", new Index(meta, index));
+        // CG-115: the via ferratas, as their own files — new files, so v1 holds. Absent when there are none.
+        if (!out.ferrate().isEmpty()) {
+            List<FerrataIndexEntry> ferrate = new ArrayList<>();
+            for (FerrateExport.FerrataOut f : out.ferrate()) {
+                Map<String, Verdict> verdicts = new LinkedHashMap<>();
+                f.days().forEach((day, d) -> verdicts.put(day, d.verdict()));
+                ferrate.add(new FerrataIndexEntry(f.id(), f.name(), f.latitude(), f.longitude(), f.top().elevation(),
+                        f.scaleMin(), f.scaleMax(), verdicts, "ferrate/" + f.id() + ".json"));
+                files.put("ferrate/" + f.id() + ".json", new FerrataDocument(meta, f));
+            }
+            files.put("ferrate.json", new FerrateIndex(meta, ferrate));
+        }
         return files;
+    }
+
+    /** CG-115: one via ferrata in api/v1/ferrate.json — at its start; {@code topElevation} from the DEM. */
+    record FerrataIndexEntry(String id, String name, double latitude, double longitude, Integer topElevation,
+                             Integer scaleMin, Integer scaleMax, Map<String, Verdict> verdicts, String url) {
+    }
+
+    record FerrateIndex(Meta meta, List<FerrataIndexEntry> ferrate) {
+    }
+
+    record FerrataDocument(Meta meta, FerrateExport.FerrataOut ferrata) {
     }
 
     static final String AVALANCHE_DATA = "Avalanche danger: bulletin of ARPA Lombardia (" + AvalancheBulletins.BULLETIN_PAGE

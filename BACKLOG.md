@@ -481,9 +481,12 @@ costs more. An ADR comes with CG-112.
   `FerrateExport` scores them into `conditions.json`'s `ferrate`; a "Falesie / Vie ferrate" switch
   (`?k=ferrate`), a peak beside the verdict's mark, the difficulty, length, start and top, and
   the line on checking on the spot in the summary, panel and popup. <!-- cg: prio=med size=M labels=frontend ver=main -->
-- [ ] **CG-115 — In the API and on the Pi**: the via ferratas as additive fields or files in
+- [x] **CG-115 — In the API and on the Pi**: the via ferratas as additive fields or files in
   `/api/v1/` (CG-32), the README's API section with them; served by the Pi's backend from the
-  forecasts it fetches (ADR 0018), and archived with the crags' once CG-106 is in. <!-- cg: prio=low size=S labels=backend -->
+  forecasts it fetches (ADR 0018), and archived with the crags' once CG-106 is in. Done: `api/v1/ferrate.json` and
+  `ferrate/<id>.json`; on the Pi, `WeatherRefresh` asks for the tops after the crags (from
+  `data/ferrate.json`, now in the jar and the image), `SiteData` serves the same files and
+  `ForecastArchive` keeps them in Flyway V11's `ferrata_forecast`; two uptime targets. <!-- cg: prio=low size=S labels=backend ver=main -->
 
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 

@@ -95,8 +95,13 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   only when there are some. A via ferrata keeps the verdict's shape and letter with a peak beside
   it (`.peak`, `.vf` on the map) and says "via ferrata" in words; never a colour for the kind.
   Wherever its verdict shows in full, a line says conditions are checked on the spot
-  (`ON_THE_SPOT`). Province and grade filters never hide one. No share page or API v1 entry
-  until CG-115.
+  (`ON_THE_SPOT`). Province and grade filters never hide one. No share page for one yet.
+- **Via ferratas in the API and on the Pi** (CG-115): `api/v1/ferrate.json` and
+  `ferrate/<id>.json`, new files so v1 holds (CG-32). On the Pi, `WeatherRefresh` asks for the
+  tops (`FerrataTops`, from `FerrateData`: `data/ferrate.json` in the jar) after the crags, in
+  their own request; a failure never holds the crags back. `ForecastsRefreshed` carries them, so
+  `SiteData` serves the same files with no request of its own, and `ForecastArchive` appends them
+  to `ferrata_forecast` (V11), never rewritten.
 - **`docs/aspects-todo.md` is generated** by `tools/aspects_todo.py` from `data/crags.json`
   (CG-16) and committed with it by `crags-refresh.yml`; never edit it by hand. It never names
   who knows which crag: the list is for anyone who climbs there.

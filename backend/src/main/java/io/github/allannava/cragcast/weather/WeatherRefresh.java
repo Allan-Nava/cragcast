@@ -2,6 +2,9 @@ package io.github.allannava.cragcast.weather;
 
 import io.github.allannava.cragcast.crag.Crag;
 import io.github.allannava.cragcast.crag.CragRepository;
+import io.github.allannava.cragcast.ferrata.FerrataClient;
+import io.github.allannava.cragcast.ferrata.FerrataForecast;
+import io.github.allannava.cragcast.ferrata.FerrataTops;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -10,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationEventPublisher;
@@ -37,6 +41,9 @@ public class WeatherRefresh {
     private final OpenMeteoClient openMeteo;
     private final Clock clock;
     private final ApplicationEventPublisher events;
+    /** CG-115: the via ferratas' tops and their client; null where there are none (tests). */
+    private final FerrataClient ferrataClient;
+    private final FerrataTops tops;
     /** The forecasts of the last refresh, by crag slug, for {@link ForecastsRefreshed}. */
     private Map<String, HourlyForecast> last = Map.of();
     /** When the last refresh ran: crag_weather's fetched_at, and the archive's (CG-106). */
@@ -44,6 +51,14 @@ public class WeatherRefresh {
 
     public WeatherRefresh(CragRepository crags, CragWeatherRepository weather, OpenMeteoClient openMeteo, Clock clock,
                           ApplicationEventPublisher events) {
+        this(crags, weather, openMeteo, clock, events, null, null);
+    }
+
+    @Autowired
+    public WeatherRefresh(CragRepository crags, CragWeatherRepository weather, OpenMeteoClient openMeteo, Clock clock,
+                          ApplicationEventPublisher events, FerrataClient ferrataClient, FerrataTops tops) {
+        this.ferrataClient = ferrataClient;
+        this.tops = tops;
         this.crags = crags;
         this.weather = weather;
         this.openMeteo = openMeteo;
@@ -70,11 +85,38 @@ public class WeatherRefresh {
             log.warn("weather refresh failed, keeping the previous data: {}", e.toString());
             return;
         }
+        Map<String, FerrataForecast> ferrate = ferrateSafely();
         try {
             // CG-110: outside the refresh's transaction; a failure there leaves the table as written.
-            events.publishEvent(new ForecastsRefreshed(last, lastAt));
+            events.publishEvent(new ForecastsRefreshed(last, ferrate, lastAt));
         } catch (RuntimeException e) {
             log.warn("page data not rebuilt, keeping the previous one: {}", e.toString());
+        }
+    }
+
+    /**
+     * CG-115: the via ferratas' forecasts at their tops, one request per {@link #BATCH}, by id. Never
+     * holds the crags back: a failure is logged and the hour simply has no via ferratas.
+     */
+    Map<String, FerrataForecast> ferrateSafely() {
+        if (ferrataClient == null || tops == null) {
+            return Map.of();
+        }
+        try {
+            List<Map.Entry<String, FerrataClient.Top>> all = List.copyOf(tops.tops().entrySet());
+            Map<String, FerrataForecast> out = new LinkedHashMap<>();
+            for (int i = 0; i < all.size(); i += BATCH) {
+                var batch = all.subList(i, Math.min(i + BATCH, all.size()));
+                List<FerrataForecast> got = ferrataClient.hourly(batch.stream().map(Map.Entry::getValue).toList());
+                for (int j = 0; j < batch.size(); j++) {
+                    out.put(batch.get(j).getKey(), got.get(j));
+                }
+            }
+            log.info("via ferratas refreshed: {}", out.size());
+            return out;
+        } catch (RuntimeException e) {
+            log.warn("via ferratas not refreshed: {}", e.toString());
+            return Map.of();
         }
     }
 

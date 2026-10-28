@@ -3,6 +3,7 @@ package io.github.allannava.cragcast.export;
 import io.github.allannava.cragcast.avalanche.Avalanche;
 import io.github.allannava.cragcast.avalanche.AvalancheBulletins;
 import io.github.allannava.cragcast.avalanche.AvalancheRegions;
+import io.github.allannava.cragcast.ferrata.FerrataForecast;
 import io.github.allannava.cragcast.weather.ForecastsRefreshed;
 import io.github.allannava.cragcast.weather.HourlyForecast;
 import java.io.IOException;
@@ -40,6 +41,8 @@ public class SiteData {
     private final ConditionsExport.CragsFile crags;
     private final AvalancheRegions regions;
     private final OsmClimbing climbing;
+    /** CG-115: the via ferratas, scored from the refresh's forecasts at their tops. */
+    private final FerrateExport.FerrateFile ferrate;
     private final HttpClient http;
     private final String avalancheUrl;
     private final String siteUrl;
@@ -48,8 +51,12 @@ public class SiteData {
 
     @Autowired
     SiteData(@Value("${cragcast.avalanche.base-url}") String avalancheUrl,
-             @Value("${cragcast.site.url}") String siteUrl, Clock clock) throws IOException {
-        this(readCrags(), readRegions(), readClimbing(), avalancheUrl, siteUrl, clock);
+             @Value("${cragcast.site.url}") String siteUrl, Clock clock, FerrateData ferrate) throws IOException {
+        this(readCrags(), readRegions(), readClimbing(), ferrate.file(), avalancheUrl, siteUrl, clock);
+    }
+
+    SiteData(String avalancheUrl, String siteUrl, Clock clock) throws IOException {
+        this(readCrags(), readRegions(), readClimbing(), FerrateData.none(), avalancheUrl, siteUrl, clock);
     }
 
     SiteData(ConditionsExport.CragsFile crags, AvalancheRegions regions, String avalancheUrl, String siteUrl,
@@ -59,6 +66,12 @@ public class SiteData {
 
     SiteData(ConditionsExport.CragsFile crags, AvalancheRegions regions, OsmClimbing climbing, String avalancheUrl,
              String siteUrl, Clock clock) {
+        this(crags, regions, climbing, FerrateData.none(), avalancheUrl, siteUrl, clock);
+    }
+
+    SiteData(ConditionsExport.CragsFile crags, AvalancheRegions regions, OsmClimbing climbing,
+             FerrateExport.FerrateFile ferrate, String avalancheUrl, String siteUrl, Clock clock) {
+        this.ferrate = ferrate;
         this.crags = crags;
         this.regions = regions;
         this.climbing = climbing;
@@ -98,14 +111,18 @@ public class SiteData {
 
     @EventListener
     void on(ForecastsRefreshed e) {
-        publish(e.forecasts(), e.fetchedAt());
+        publish(e.forecasts(), e.ferrate(), e.fetchedAt());
+    }
+
+    public void publish(Map<String, HourlyForecast> forecasts, Instant now) {
+        publish(forecasts, Map.of(), now);
     }
 
     /**
      * A new snapshot from the refresh's forecasts, by crag slug (the OSM id of data/crags.json).
      * Crags without a forecast are left out, in the file's order, as the export lists them.
      */
-    public void publish(Map<String, HourlyForecast> forecasts, Instant now) {
+    public void publish(Map<String, HourlyForecast> forecasts, Map<String, FerrataForecast> tops, Instant now) {
         List<ConditionsExport.Crag> scored = new ArrayList<>();
         List<HourlyForecast> theirs = new ArrayList<>();
         for (ConditionsExport.Crag c : crags.crags()) {
@@ -125,10 +142,34 @@ public class SiteData {
         }
         var file = new ConditionsExport.CragsFile(crags.region(), crags.source(), crags.licence(),
                 crags.elevationSource(), scored);
-        ConditionsExport.Output out = ConditionsExport.build(file, theirs, days, now, regions, bulletins, climbing);
+        ConditionsExport.Output out = ConditionsExport.build(file, theirs, days, now, regions, bulletins, climbing,
+                ferrate(tops, days, bulletins));
         Map<String, String> api = new LinkedHashMap<>();
         ConditionsExport.api(out).forEach((path, doc) -> api.put(path, json.writeValueAsString(doc)));
         latest = new Snapshot(now, json.writeValueAsString(out), api, SharePages.pages(out, siteUrl));
+    }
+
+    /**
+     * CG-115: the via ferratas with a forecast, in the file's order, scored as on GitHub Pages
+     * (FerrateExport). A failure leaves them out, never the crags.
+     */
+    private List<FerrateExport.FerrataOut> ferrate(Map<String, FerrataForecast> tops, List<LocalDate> days,
+                                                   Map<LocalDate, Map<String, Avalanche>> bulletins) {
+        List<FerrateExport.Ferrata> scored = new ArrayList<>();
+        List<FerrataForecast> theirs = new ArrayList<>();
+        for (FerrateExport.Ferrata f : ferrate.ferrate()) {
+            FerrataForecast forecast = tops.get(f.id());
+            if (forecast != null) {
+                scored.add(f);
+                theirs.add(forecast);
+            }
+        }
+        try {
+            return FerrateExport.build(new FerrateExport.FerrateFile(ferrate.region(), ferrate.source(), ferrate.licence(),
+                    ferrate.elevationSource(), scored), theirs, days, regions, bulletins);
+        } catch (RuntimeException e) {
+            return List.of();
+        }
     }
 
     /** The last snapshot, or null before the first refresh has finished. */

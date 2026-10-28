@@ -104,6 +104,13 @@ class FerrateExportIT {
         assertThat(storm.path("days").path(tomorrow).path("reasons").get(0).asString()).isEqualTo("thunderstorm forecast");
         assertThat(storm.path("scaleDropped").get(0).asString()).isEqualTo("2+");
         assertThat(Files.readString(dir.resolve("site/api/v1/crags.json"))).doesNotContain("Ferrata");
+        // CG-115: their own files in the API v1, next to the crags'.
+        JsonNode index = JSON.readTree(Files.readString(dir.resolve("site/api/v1/ferrate.json")));
+        assertThat(index.path("meta").path("version").asInt()).isEqualTo(1);
+        assertThat(index.path("ferrate").get(1).path("verdicts").path(tomorrow).asString()).isEqualTo("NO_GO");
+        assertThat(index.path("ferrate").get(0).path("url").asString()).isEqualTo("ferrate/osm-way-10.json");
+        assertThat(JSON.readTree(Files.readString(dir.resolve("site/api/v1/ferrate/osm-relation-20.json")))
+                .path("ferrata").path("scaleDropped").get(0).asString()).isEqualTo("2+");
     }
 
     @Test

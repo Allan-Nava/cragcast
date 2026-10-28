@@ -7,7 +7,7 @@ name: Image
 on:
   push:
     branches: [main]
-    paths: [backend/**, data/crags.json, data/avalanche-regions.geojson, data/osm-climbing.json, web/**, assets/**, .github/workflows/image.yml]
+    paths: [backend/**, data/crags.json, data/avalanche-regions.geojson, data/osm-climbing.json, data/ferrate.json, web/**, assets/**, .github/workflows/image.yml]
   workflow_dispatch:
 
 permissions:
