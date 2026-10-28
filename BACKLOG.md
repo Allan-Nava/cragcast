@@ -466,11 +466,15 @@ costs more. An ADR comes with CG-112.
   for the missing scales. Done ([ADR 0023](docs/adr/0023-via-ferratas-from-openstreetmap.md)):
   on 2026-10-28, 42 via ferratas in `data/ferrate.json`, 24 with a difficulty, 12 unnamed groups
   left out; `docs/ferrate-todo.md` lists what to map; the monthly refresh rebuilds both. <!-- cg: prio=med size=M labels=data ver=main -->
-- [ ] **CG-113 — A verdict of its own**: `FerrataScorer`, its thresholds named constants as in
+- [x] **CG-113 — A verdict of its own**: `FerrataScorer`, its thresholds named constants as in
   `ConditionsScorer`: a thunderstorm forecast in the day (Open-Meteo's weather code, CAPE) is
   never "si va"; wind, cold, snow and ice read at the highest point; the day's light against
   the route. Conservative until observed days exist to calibrate it (CG-27). The avalanche
-  bulletin still informs and never scores (CG-11). <!-- cg: prio=med size=M labels=backend -->
+  bulletin still informs and never scores (CG-11). Done ([ADR 0024](docs/adr/0024-a-via-ferrata-verdict-of-its-own.md)):
+  `FerrataScorer`, `FerrataReducer` (07:00–19:00, 48 h before, hours of light) and
+  `FerrataClient` (the tops in one request, with their elevation); "no" for a storm hour, CAPE
+  from 1000, rain over 1 mm, fresh snow, rain then frost, gusts over 60 km/h. Nothing calls it
+  until CG-114/115. <!-- cg: prio=med size=M labels=backend ver=main -->
 - [ ] **CG-114 — On the page**: "Falesie / Ferrate" to switch, the type said in words and by its
   own mark — never by colour alone, and the S/F/N marks keep meaning the verdict (CG-21); the
   difficulty shown as OSM gives it; a line saying conditions are checked on the spot. <!-- cg: prio=med size=M labels=frontend -->
