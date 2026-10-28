@@ -417,11 +417,14 @@ hourly archive below exists nowhere else, so from CG-108 on it needs a backup.
   and over, ungraded) with its count and an indicative word, the table grouped by level, and a
   line on how the French scale reads (5a, 5b, 5c, 5c+, then 6a). Asked for on 2026-10-22: a plain
   list of 52 routes did not say which were within reach. <!-- cg: prio=med size=S labels=frontend ver=main -->
-- [ ] **CG-106 — The hourly forecasts, archived**: each `WeatherRefresh` also appends what it
+- [x] **CG-106 — The hourly forecasts, archived**: each `WeatherRefresh` also appends what it
   computed — per crag and day, the verdict, the reasons, the four weather numbers and the hours
   (JSON text) — to `crag_forecast`, keyed by crag, day and fetch time, so "what did cragcast say
   at 18:00 the day before" stays answerable. About 16 000 rows a day; a retention rule if the
-  Pi's disk asks for one. <!-- cg: prio=med size=M labels=backend -->
+  Pi's disk asks for one. Done: `ForecastArchive` listens to `ForecastsRefreshed`, scores the
+  refresh's forecasts and inserts 660 rows an hour into Flyway V8's `crag_forecast`, never
+  rewritten; the hours as parallel lists; a failure loses that hour only
+  ([ADR 0021](docs/adr/0021-hourly-forecasts-archived.md)). <!-- cg: prio=med size=M labels=backend ver=main -->
 - [ ] **CG-107 — Avalanche bulletins, archived**: each day's bulletin per micro-region — levels,
   bands, problem types, the link — never its text (ARPA Lombardia states no licence, CG-11). <!-- cg: prio=low size=S labels=backend -->
 - [ ] **CG-108 — Observations copied**: `data/observations.csv` into an `observation` table,

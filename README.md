@@ -107,6 +107,12 @@ data the calibration (CG-27) needs next to the observations. The Spring service 
 PostgreSQL (`crag_history`, CG-101): every month at startup, the last two each night; the CSV
 stays the source ([ADR 0016](docs/adr/0016-history-copied-into-postgres.md)).
 
+The Spring service also keeps every hour's answer (CG-106): each refresh appends, per crag and
+day, the verdict, the reasons, the four numbers and the day's hours to `crag_forecast`, keyed by
+the time it ran — so "what did cragcast say at 18:00 the day before" stays answerable. Those
+rows exist only on the Pi; the nightly backup is their copy
+([ADR 0021](docs/adr/0021-hourly-forecasts-archived.md)).
+
 ## API
 
 The same data as the page, as static JSON on GitHub Pages — rebuilt every hour, free to call,
@@ -145,7 +151,7 @@ How the parts fit, with diagrams: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 
 | Part | What |
 |---|---|
-| `backend/` | Java 21, Spring Boot 4, PostgreSQL, Flyway. `GET /api/crags` and `GET /api/crags/{slug}` (position, aspect, elevation, OSM details), `GET /api/crags/{slug}/conditions?date=`, `GET /api/crags/{slug}/routes` (CG-105: the crag's single routes from OSM, easiest first — name, French grade, length, bolts, pitches, sector, OSM link); imports the crags from `data/crags.json` at startup and refreshes the weather every hour |
+| `backend/` | Java 21, Spring Boot 4, PostgreSQL, Flyway. `GET /api/crags` and `GET /api/crags/{slug}` (position, aspect, elevation, OSM details), `GET /api/crags/{slug}/conditions?date=`, `GET /api/crags/{slug}/routes` (CG-105: the crag's single routes from OSM, easiest first — name, French grade, length, bolts, pitches, sector, OSM link); imports the crags from `data/crags.json` at startup and refreshes the weather every hour, appending each hour's verdicts to `crag_forecast` (CG-106) |
 | `backend/.../conditions/ConditionsScorer.java` | the verdict: weather + aspect → go / maybe / no go, with reasons |
 | `backend/.../weather/` | Open-Meteo client and the reduction of an hourly forecast to one day: rain in the previous 48 h, and rain, max temperature and max wind from 08:00 to 18:00 |
 | `docker-compose.yml` | PostgreSQL (and the backend) for local development |
