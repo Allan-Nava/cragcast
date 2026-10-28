@@ -94,7 +94,9 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   sites under copyright — OSM refuses it, and so does cragcast.
 - **Observations are first-hand or nothing.** `data/observations.csv` holds only days someone saw
   the rock, with who saw it; never a guessed or reconstructed row. Smoke tests of `Calibrate`
-  use a file outside the repo.
+  use a file outside the repo. `ObservationSync` (CG-108) copies it from main into `observation`,
+  replaced whole; a read without the header, a bad row or a failed request keeps the table, and
+  Spring tests set `cragcast.observations.enabled=false`.
 - **Thresholds live in `ConditionsScorer` as named constants**, each with a one-line reason. A
   change to one is a reviewed change, with a test for the day it fixes.
 - **Crag details are JSON text in the database** (`crag.details`, V3): written and read whole

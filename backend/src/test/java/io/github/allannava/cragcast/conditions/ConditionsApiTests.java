@@ -23,7 +23,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 
 /** Against a real PostgreSQL (Testcontainers); made-up crag and weather. */
-@SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false", "cragcast.avalanche.archive.enabled=false"})
+@SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false", "cragcast.avalanche.archive.enabled=false",
+        "cragcast.observations.enabled=false"})
 @AutoConfigureMockMvc
 @Import(TestcontainersConfigurationAccess.Config.class)
 @EnabledIf(DockerAvailable.CHECK)
