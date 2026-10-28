@@ -14,6 +14,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationEventPublisher;
@@ -23,8 +24,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Every hour (and once at startup), fetches the forecast for every crag — one Open-Meteo
- * request per 50 crags — and stores the reduced weather of today, tomorrow and the day after.
+ * Every 3 hours (CG-43; hourly before) and once at startup, fetches the forecast for every crag —
+ * one Open-Meteo request per 100 crags, paced — and stores the reduced weather of today, tomorrow and the day after.
  * The conditions endpoint reads only the table, so a slow or failing Open-Meteo never makes a
  * user wait: the API serves the last good hour.
  */
@@ -34,6 +35,8 @@ public class WeatherRefresh {
 
     /** Places per Open-Meteo request, as the hourly export asks (CG-43: about a thousand crags). */
     static final int BATCH = 100;
+    /** CG-43: as the hourly export, a pause between requests: Open-Meteo counts every place, 600 a minute. */
+    private long pauseMs = 15_000;
     static final int DAYS = 3;
     private static final Logger log = LoggerFactory.getLogger(WeatherRefresh.class);
 
@@ -67,12 +70,27 @@ public class WeatherRefresh {
         this.events = events;
     }
 
+    @Value("${cragcast.refresh.pause-ms:15000}")
+    void setPauseMs(long pauseMs) {
+        this.pauseMs = pauseMs;
+    }
+
+    private void pause() {
+        try {
+            Thread.sleep(pauseMs);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("interrupted between Open-Meteo requests", e);
+        }
+    }
+
     @EventListener(ApplicationReadyEvent.class)
     public void atStartup() {
         refreshSafely();
     }
 
-    @Scheduled(cron = "${cragcast.refresh.cron:0 7 * * * *}", zone = OpenMeteoClient.TIMEZONE)
+    // CG-43: every 3 hours, as GitHub Pages: about 820 places a run on the free tier's 10,000 a day.
+    @Scheduled(cron = "${cragcast.refresh.cron:0 7 */3 * * *}", zone = OpenMeteoClient.TIMEZONE)
     public void hourly() {
         refreshSafely();
     }
@@ -107,6 +125,7 @@ public class WeatherRefresh {
             List<Map.Entry<String, FerrataClient.Top>> all = List.copyOf(tops.tops().entrySet());
             Map<String, FerrataForecast> out = new LinkedHashMap<>();
             for (int i = 0; i < all.size(); i += BATCH) {
+                pause();                                   // after the crags, in the same minute's count
                 var batch = all.subList(i, Math.min(i + BATCH, all.size()));
                 List<FerrataForecast> got = ferrataClient.hourly(batch.stream().map(Map.Entry::getValue).toList());
                 for (int j = 0; j < batch.size(); j++) {
@@ -130,6 +149,9 @@ public class WeatherRefresh {
         int rows = 0;
         Map<String, HourlyForecast> bySlug = new LinkedHashMap<>();
         for (int i = 0; i < all.size(); i += BATCH) {
+            if (i > 0) {
+                pause();
+            }
             List<Crag> batch = all.subList(i, Math.min(i + BATCH, all.size()));
             List<HourlyForecast> forecasts = openMeteo.hourly(
                     batch.stream().map(c -> new double[] {c.getLatitude(), c.getLongitude()}).toList());

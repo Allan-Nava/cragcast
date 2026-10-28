@@ -41,6 +41,11 @@ public final class ConditionsExport {
      * and a URL still well under the server's limit.
      */
     static final int BATCH = 100;
+    /**
+     * CG-43: Open-Meteo's free tier counts every place, 600 a minute: a pause between requests of
+     * {@link #BATCH} keeps a run near 400 a minute. OPEN_METEO_PAUSE_MS overrides it (tests: 0).
+     */
+    static final long PAUSE_MS = 15_000;
 
     private ConditionsExport() {
     }
@@ -66,8 +71,12 @@ public final class ConditionsExport {
 
         OpenMeteoClient weather = OpenMeteoClient.create(
                 env.getOrDefault("OPEN_METEO_URL", "https://api.open-meteo.com"));
+        long pause = Long.parseLong(env.getOrDefault("OPEN_METEO_PAUSE_MS", Long.toString(PAUSE_MS)));
         List<HourlyForecast> forecasts = new ArrayList<>();
         for (int i = 0; i < crags.crags().size(); i += BATCH) {
+            if (i > 0) {
+                Thread.sleep(pause);
+            }
             List<double[]> places = crags.crags().subList(i, Math.min(i + BATCH, crags.crags().size()))
                     .stream().map(c -> new double[] {c.latitude(), c.longitude()}).toList();
             forecasts.addAll(weather.hourly(places));
@@ -104,6 +113,7 @@ public final class ConditionsExport {
             try {
                 FerrateExport.FerrateFile file = json.readValue(Files.readString(ferrateFile), FerrateExport.FerrateFile.class);
                 FerrataClient client = FerrataClient.create(env.getOrDefault("OPEN_METEO_URL", "https://api.open-meteo.com"));
+                Thread.sleep(pause);                       // the tops count against the same minute
                 ferrate = FerrateExport.build(file, FerrateExport.fetch(client, file, BATCH), days, regions, bulletins);
             } catch (RuntimeException e) {
                 System.err.println("via ferratas skipped: " + e);

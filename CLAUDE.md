@@ -3,7 +3,7 @@
 "Can I climb there tomorrow?" for crags in Lombardy, Piedmont and Trentino-Alto Adige. Java 21 + Spring Boot 4 + PostgreSQL in
 `backend/`; k3s manifests in `deploy/k8s/` for an Oracle Cloud Always Free Ampere VM (arm64).
 
-**Where it runs:** GitHub Pages, built hourly by `pages.yml` — the only live surface. The
+**Where it runs:** GitHub Pages, built every 3 hours by `pages.yml` (CG-43: Open-Meteo's free tier counts every place) — the only live surface. The
 self-hosted path (`infra/oci/`, `deploy/k8s/`) is parked since 2026-10-15: Oracle's free A1 VM
 never got capacity in Milan and its network was destroyed. Do not apply it without asking.
 The Spring service also runs on a Raspberry Pi on a friend's home network (CG-100, ADR 0015):
@@ -20,7 +20,7 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
 - **No invented places.** A crag enters the database only with coordinates and aspect taken
   from a public source, whose URL goes in `source_url`. Test data is made up and says so.
 - **Two ways to run, one scorer.** The serverless version (`ConditionsExport` + the page in `web/`,
-  published hourly by `pages.yml` on GitHub Pages) and the Spring service (on the Pi; `deploy/k8s/`
+  published every 3 hours by `pages.yml` on GitHub Pages) and the Spring service (on the Pi; `deploy/k8s/`
   for the parked VM) share `ConditionsScorer`, `WeatherReducer` and `OpenMeteoClient`. A change to
   the verdict lands in both. The Pi also serves the page (CG-110, ADR 0018): `SiteData` builds
   its data with `ConditionsExport.build()` from the forecasts `WeatherRefresh` already fetched —
@@ -209,7 +209,7 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   so `ConditionsScorer` ignores the bulletin. Only its facts are shown (levels, bands, problem
   types), never its text — ARPA Lombardia states no licence — always with the link to the
   official bulletin. A bulletin that is missing (out of season, before the morning issue) or
-  fails leaves the line out; it never fails the hourly build. The Spring service keeps the same
+  fails leaves the line out; it never fails the build. The Spring service keeps the same
   facts per day and micro-region in `avalanche_bulletin` (CG-107, ADR 0022, `AvalancheArchive`):
   the latest issue replaces the day, none keeps it, and nothing scores from it. The micro-regions
   in `data/avalanche-regions.geojson` change only through `tools/avalanche_regions.py` and a PR.
@@ -227,8 +227,8 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
 - **An open page refreshes itself** (CG-41): `App` fetches `data/conditions.json` every
   `REFRESH_MS` (10 min) and on `visibilitychange`, and swaps the data only when `generatedAt`
   changed. A refresh must never reset the view, the open panel or the position, and a failed
-  one keeps the data shown — the footer's age and the 3 h notice tell the reader.
-- **Link previews are static HTML** (CG-45): `SharePages` writes `site/c/<id>.html` every hour —
+  one keeps the data shown — the footer's age and the notice past `STALE_HOURS` (7 h, two missed 3-hourly runs) tell the reader.
+- **Link previews are static HTML** (CG-45): `SharePages` writes `site/c/<id>.html` with every build —
   link previews never run JavaScript. The day is written as a date, never "domani" (a preview
   is read later than it is made). Its reason words copy `REASON_IT` in `web/src/lib/text.ts`:
   change one, change both. Absolute URLs come from `SITE_URL` (default the Pages URL), and

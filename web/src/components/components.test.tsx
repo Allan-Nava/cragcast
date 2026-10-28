@@ -81,12 +81,12 @@ group("charts", () => {
 });
 
 group("footer", () => {
-  it("warns when the data is older than 3 h", () => {
+  it("warns when the data is older than 7 h, two missed 3-hourly runs (CG-43)", () => {
     const t = "2026-10-15T08:00:00Z";
-    expect(updatedText(t, Date.parse(t) + 2 * 3.6e6).stale).toBe(false);
-    const old = updatedText(t, Date.parse(t) + 5 * 3.6e6);
+    expect(updatedText(t, Date.parse(t) + 5 * 3.6e6).stale).toBe(false);
+    const old = updatedText(t, Date.parse(t) + 8 * 3.6e6);
     expect(old.stale).toBe(true);
-    expect(old.text).toMatch(/^Aggiornato 5 ore fa \(.*\) — sei offline o l'aggiornamento non è riuscito\.$/);
+    expect(old.text).toMatch(/^Aggiornato 8 ore fa \(.*\) — sei offline o l'aggiornamento non è riuscito\.$/);
   });
   it("says how long ago, in words", () => {
     expect(ago(20_000)).toBe("adesso");

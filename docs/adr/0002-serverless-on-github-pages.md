@@ -1,6 +1,7 @@
 # 0002 — Run on GitHub Pages, without a server
 
-- **Status:** accepted
+- **Status:** accepted; its hourly cadence amended to every 3 hours by
+  [0026](0026-beyond-lombardy.md) (Open-Meteo's free tier counts every place)
 - **Date:** 2026-10-15
 - **Backlog:** CG-15, CG-31–CG-37; parked: CG-6, CG-7, CG-8, CG-13 (v1.0.0)
 

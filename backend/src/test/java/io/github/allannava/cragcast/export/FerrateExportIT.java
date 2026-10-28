@@ -85,7 +85,7 @@ class FerrateExportIT {
             int code = ConditionsExport.run(new String[] {dir.resolve("crags.json").toString(),
                     dir.resolve("site/data/conditions.json").toString(), dir.resolve("site/api/v1").toString(),
                     dir.resolve("site").toString()},
-                    Map.of("OPEN_METEO_URL", meteo.url(), "AVALANCHE_URL", avalanche.url()));
+                    Map.of("OPEN_METEO_URL", meteo.url(), "AVALANCHE_URL", avalanche.url(), "OPEN_METEO_PAUSE_MS", "0"));
             assertThat(code).isZero();
             assertThat(meteo.asked()).hasSize(2);                 // the crags, then the tops
             Map<String, String> tops = FakeHttp.query(meteo.asked().get(1));
@@ -123,7 +123,7 @@ class FerrateExportIT {
         try (var meteo = new FakeHttp(uri -> forTops(uri) ? new Answer(500, "busy") : Answer.ok(forecasts(1, false)));
              var avalanche = new FakeHttp(uri -> Answer.NOT_FOUND)) {
             int code = ConditionsExport.run(new String[] {dir.resolve("crags.json").toString(), dir.resolve("out.json").toString()},
-                    Map.of("OPEN_METEO_URL", meteo.url(), "AVALANCHE_URL", avalanche.url()));
+                    Map.of("OPEN_METEO_URL", meteo.url(), "AVALANCHE_URL", avalanche.url(), "OPEN_METEO_PAUSE_MS", "0"));
             assertThat(code).isZero();
         }
         JsonNode data = JSON.readTree(Files.readString(dir.resolve("out.json")));

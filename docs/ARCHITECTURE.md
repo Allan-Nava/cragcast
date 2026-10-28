@@ -14,7 +14,7 @@ page built from `web/`. There is no server and no database in production
 ([ADR 0002](adr/0002-serverless-on-github-pages.md)); the crag list comes from OpenStreetMap
 through a reviewed monthly PR ([ADR 0003](adr/0003-crags-from-openstreetmap.md)).
 
-## The hourly run
+## The run every 3 hours
 
 ```mermaid
 flowchart LR
@@ -24,7 +24,7 @@ flowchart LR
     ferrate["data/ferrate.json<br/>via ferratas from OSM"]
     web["web/<br/>React + Vite"]
   end
-  subgraph action["pages.yml — hourly at :17 (tools/build_site.sh)"]
+  subgraph action["pages.yml — every 3 h at :17 (tools/build_site.sh)"]
     vite["vite build<br/>page + logo.svg"]
     export["ConditionsExport (Java 21)"]
   end
@@ -40,7 +40,7 @@ flowchart LR
   crags --> export
   regions --> export
   ferrate --> export
-  meteo -- "hourly, 2 days back, 3 ahead;<br/>100 crags a request, then the via ferratas' tops" --> export
+  meteo -- "hourly values, 2 days back, 3 ahead;<br/>100 crags a request, 15 s apart, then the tops" --> export
   eaws -- "one bulletin a day,<br/>404 out of season" --> export
   export --> data & api & share
   page -- "fetch every 10 min" --> data
@@ -70,7 +70,7 @@ flowchart LR
 
 | Part | Where | What it does |
 |---|---|---|
-| Scorer and export | `backend/src/main/java/…/conditions`, `weather`, `export`, `avalanche` | the verdict, the weather reduction, the hourly export, the bulletin, the share pages; plain Java, no Spring needed at run time |
+| Scorer and export | `backend/src/main/java/…/conditions`, `weather`, `export`, `avalanche` | the verdict, the weather reduction, the export, the bulletin, the share pages; plain Java, no Spring needed at run time |
 | Spring service | `backend/…/crag`, `weather/WeatherRefresh`, `*Controller` | the same scorer behind a REST API with PostgreSQL (Flyway); image on GHCR (`image.yml`, linux/arm64), run on a Raspberry Pi's home network only ([ADR 0015](adr/0015-raspberry-pi-pulls-its-stack.md)) |
 | Via ferrata verdict | `ferrata/FerrataScorer`, `FerrataReducer`, `FerrataClient`, `export/FerrateExport`, `export/FerrateData` | the weather at a via ferrata's top (Open-Meteo with the DEM elevation; gusts, weather code, CAPE, snowfall, light) reduced to one day from 07:00 to 19:00 and scored stricter than a crag: a thunderstorm is never "si va" (CG-113, [ADR 0024](adr/0024-a-via-ferrata-verdict-of-its-own.md)); plain Java; the hourly export calls it for the page (CG-114); on the Pi (CG-115) `WeatherRefresh` asks for the tops after the crags and `SiteData` serves them; `ForecastArchive` keeps them in `ferrata_forecast` (Flyway V11); the API v1 lists them in `ferrate.json` and `ferrate/<id>.json` |
 | Forecast archive | `weather/ForecastArchive` | after each refresh, appends every crag-day it computed — verdict, reasons, the four numbers, the day's hours — to `crag_forecast` (Flyway V8), keyed by the refresh's time; scored from the `ForecastsRefreshed` forecasts, never rewritten, a failure loses that hour only (CG-106, [ADR 0021](adr/0021-hourly-forecasts-archived.md)) |
@@ -144,8 +144,8 @@ flowchart TB
 
 | Workflow | When | Does |
 |---|---|---|
-| `pages.yml` | hourly at :17, and on push to main touching the page, data or scorer | builds `site/` and deploys it |
-| `uptime.yml` | hourly at :47 | checkfleet on the page, data, API and TLS; fails when the data is over 150 minutes old |
+| `pages.yml` | every 3 hours at :17 (CG-43), and on push to main touching the page, data or scorer | builds `site/` and deploys it |
+| `uptime.yml` | hourly at :47 | checkfleet on the page, data, API and TLS; fails when the data is over 420 minutes old (one missed 3-hourly run) |
 | `history.yml` | daily at 20:30 UTC | appends the day's verdicts to the `history` branch |
 | `crags-refresh.yml` | the 1st of the month, 05:23 UTC | rebuilds `data/crags.json`, `data/osm-climbing.json` and `docs/aspects-todo.md` from OSM, and (CG-112) `data/ferrate.json` with `docs/ferrate-todo.md`; opens a PR when any data file changed |
 | `ci.yml` | every push to main and every PR | the jobs below |

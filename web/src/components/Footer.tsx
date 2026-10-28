@@ -20,13 +20,16 @@ export function ago(ms: number): string {
   return h === 1 ? "1 ora fa" : `${h} ore fa`;
 }
 
-/** "Aggiornato 12 min fa (…)", with a warning when the data is older than 3 h (CG-35). */
+/** Two missed 3-hourly runs and a margin (CG-43; it was 3 h while the data was hourly). */
+export const STALE_HOURS = 7;
+
+/** "Aggiornato 12 min fa (…)", with a warning when the data is older than STALE_HOURS (CG-35). */
 export function updatedText(generatedAt: string, now: number): { text: string; stale: boolean } {
   const t = new Date(generatedAt);
   const hoursOld = (now - t.getTime()) / 3.6e6;
-  // The data is rebuilt every hour; older than 3 h means offline (the service worker served
-  // the cached copy) or a failed run. Say so rather than show stale verdicts as current.
-  const stale = hoursOld > 3;
+  // The data is rebuilt every 3 hours (CG-43); older than STALE_HOURS means offline (the service
+  // worker served the cached copy) or two failed runs. Say so rather than show stale verdicts as current.
+  const stale = hoursOld > STALE_HOURS;
   return {
     text: `Aggiornato ${ago(now - t.getTime())} (${t.toLocaleString("it-IT", { dateStyle: "medium", timeStyle: "short" })})` +
       (stale ? " — sei offline o l'aggiornamento non è riuscito." : ""),

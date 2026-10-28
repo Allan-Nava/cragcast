@@ -340,7 +340,8 @@ assume Lombardy.
   ([ADR 0026](docs/adr/0026-beyond-lombardy.md)): Piedmont and Trentino-Alto Adige from the same
   query, each crag's `region` from OSM's boundaries; on 2026-10-28, 780 crags (Lombardy 222,
   Piedmont 317, Trentino-Alto Adige 241); the page shows one region at a time, Lombardy first;
-  `region` in `conditions.json` and the API v1. The rest is CG-120 to CG-122. <!-- cg: prio=low size=L labels=data,backend ver=main -->
+  `region` in `conditions.json` and the API v1. Open-Meteo's free tier counts every place, so
+  Pages and the Pi refresh every 3 hours, paced. The rest is CG-120 to CG-122. <!-- cg: prio=low size=L labels=data,backend ver=main -->
 - [ ] **CG-120 — Avalanche bulletins beyond Lombardy**: Piedmont's (IT-21) and Trentino-Alto
   Adige's (IT-32-TN, IT-32-BZ) bulletins and micro-regions next to Lombardy's, through
   `AvalancheBulletins` and `tools/avalanche_regions.py`; each credited to its own service, its

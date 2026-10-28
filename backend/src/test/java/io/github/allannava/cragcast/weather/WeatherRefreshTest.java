@@ -149,16 +149,40 @@ class WeatherRefreshTest {
         when(client.hourly(List.of(top))).thenReturn(List.of(forecast));
         List<Object> events = new ArrayList<>();
 
-        new WeatherRefresh(crags, weather, openMeteo, JUNE_2_MORNING, events::add, client, tops).hourly();
+        var refresh = new WeatherRefresh(crags, weather, openMeteo, JUNE_2_MORNING, events::add, client, tops);
+        refresh.setPauseMs(0);
+        refresh.hourly();
         assertThat(events).singleElement().isInstanceOfSatisfying(ForecastsRefreshed.class,
                 e -> assertThat(e.ferrate()).containsExactly(java.util.Map.entry("osm-way-10", forecast)));
 
         when(client.hourly(anyList())).thenThrow(new IllegalStateException("Open-Meteo is busy"));
         events.clear();
-        new WeatherRefresh(crags, weather, openMeteo, JUNE_2_MORNING, events::add, client, tops).hourly();
+        refresh.hourly();
         assertThat(events).singleElement().isInstanceOfSatisfying(ForecastsRefreshed.class, e -> {
             assertThat(e.ferrate()).isEmpty();
             assertThat(e.forecasts()).containsKey("test-crag-1");
         });
+    }
+
+    @Test
+    void manyCragsArePacedBetweenRequests() {
+        CragRepository crags = mock(CragRepository.class);
+        CragWeatherRepository weather = mock(CragWeatherRepository.class);
+        OpenMeteoClient openMeteo = mock(OpenMeteoClient.class);
+        List<Crag> many = new ArrayList<>();
+        for (int i = 0; i < WeatherRefresh.BATCH + 1; i++) {
+            many.add(crag(i));
+        }
+        when(crags.findAll()).thenReturn(many);
+        when(openMeteo.hourly(anyList())).thenAnswer(a -> Collections.nCopies(((List<?>) a.getArgument(0)).size(), dry()));
+        when(weather.findById(any())).thenReturn(Optional.empty());
+        var refresh = new WeatherRefresh(crags, weather, openMeteo, JUNE_2_MORNING, e -> { });
+        refresh.setPauseMs(30);
+
+        long start = System.nanoTime();
+        refresh.refresh();
+
+        verify(openMeteo, times(2)).hourly(anyList());
+        assertThat((System.nanoTime() - start) / 1_000_000).isGreaterThanOrEqualTo(30);
     }
 }

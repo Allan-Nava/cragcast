@@ -27,16 +27,22 @@ no Italian province, its own avalanche service.
   when the region is chosen.
 - **`region` is added** to `conditions.json`, the API v1 crag and index entries (CG-32), and the
   Pi's crag table.
-- **Open-Meteo stays in budget.** 100 places a request instead of 50: about ten requests an hour
-  for the crags, on Pages and on the Pi each. Open-Meteo counts a request, not a place, as far
-  as its pricing page says; if that changes, the hourly run is what breaks first.
+- **Every 3 hours, not every hour.** Open-Meteo's free tier counts every place — 600 a minute,
+  10,000 a day — as the first run of this change found (429, minute limit exceeded). About 820
+  places every hour would be ~19,700 a day; every 3 hours it is ~6,600 on GitHub Pages, and the
+  Pi has its own budget. Both ask 100 places a request, 15 s apart (about 400 a minute). The
+  hourly cadence of ADR 0002 becomes every 3 hours; the page warns past 7 h instead of 3 h,
+  and the uptime check allows 420 minutes. Forecast models update every few hours, so the
+  verdict loses little.
 - **Not yet:** the avalanche bulletins of Piedmont and Trentino-Alto Adige (their crags have no
   avalanche line until then), their via ferratas, and the Ticino — each its own backlog item.
 
 ## Consequences
 
-- Four to five times the crags: a longer monthly refresh PR to review, a longer aspects todo, a
-  larger history branch and, on the Pi, about four times the rows in `crag_forecast` — the
-  retention rule ADR 0021 deferred becomes likelier.
+- Data up to 3 hours old instead of 1. A paid Open-Meteo plan would bring the hour back; the
+  project stays on the free tier.
+- Three and a half times the crags: a longer monthly refresh PR to review, a longer aspects
+  todo and a larger history branch. On the Pi, `crag_forecast` gets 3.5 times the crags but a
+  third of the refreshes — about as many rows a day as before.
 - A reader in Lombardy sees what they saw before unless they choose another region.
 - The verdict is the same everywhere; nothing in `ConditionsScorer` knows about regions.
