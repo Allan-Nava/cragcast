@@ -175,8 +175,10 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   so `ConditionsScorer` ignores the bulletin. Only its facts are shown (levels, bands, problem
   types), never its text — ARPA Lombardia states no licence — always with the link to the
   official bulletin. A bulletin that is missing (out of season, before the morning issue) or
-  fails leaves the line out; it never fails the hourly build. The micro-regions in
-  `data/avalanche-regions.geojson` change only through `tools/avalanche_regions.py` and a PR.
+  fails leaves the line out; it never fails the hourly build. The Spring service keeps the same
+  facts per day and micro-region in `avalanche_bulletin` (CG-107, ADR 0022, `AvalancheArchive`):
+  the latest issue replaces the day, none keeps it, and nothing scores from it. The micro-regions
+  in `data/avalanche-regions.geojson` change only through `tools/avalanche_regions.py` and a PR.
 - **Map moves: the reader's or the page's** (CG-38). Only a drag or a zoom by the reader offers
   "Cerca in quest'area"; moves the page makes (flying to a crag, centring on the reader) go
   through `programmatic` in `CragMap`, so a new programmatic move must too. Animations

@@ -425,8 +425,11 @@ hourly archive below exists nowhere else, so from CG-108 on it needs a backup.
   refresh's forecasts and inserts 660 rows an hour into Flyway V8's `crag_forecast`, never
   rewritten; the hours as parallel lists; a failure loses that hour only
   ([ADR 0021](docs/adr/0021-hourly-forecasts-archived.md)). <!-- cg: prio=med size=M labels=backend ver=main -->
-- [ ] **CG-107 — Avalanche bulletins, archived**: each day's bulletin per micro-region — levels,
-  bands, problem types, the link — never its text (ARPA Lombardia states no licence, CG-11). <!-- cg: prio=low size=S labels=backend -->
+- [x] **CG-107 — Avalanche bulletins, archived**: each day's bulletin per micro-region — levels,
+  bands, problem types, the link — never its text (ARPA Lombardia states no licence, CG-11). Done:
+  `AvalancheArchive` reads today's at startup and at 09:30, 13:30 and 18:30 into Flyway V9's
+  `avalanche_bulletin`; the latest issue replaces the day, none keeps it
+  ([ADR 0022](docs/adr/0022-avalanche-bulletins-kept.md)). <!-- cg: prio=low size=S labels=backend ver=main -->
 - [ ] **CG-108 — Observations copied**: `data/observations.csv` into an `observation` table,
   read from main like the history (CG-101); the CSV stays the source and changes only by a
   reviewed PR. <!-- cg: prio=low size=S labels=backend,data -->

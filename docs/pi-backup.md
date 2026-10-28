@@ -7,7 +7,8 @@ carries the file `.cragcast-backup-target`, so a disk that failed to mount never
 card instead.
 
 Since CG-106 the dump is the only copy of `crag_forecast`, every hourly forecast the Pi has
-made ([ADR 0021](adr/0021-hourly-forecasts-archived.md)); the other tables can be rebuilt from
+made ([ADR 0021](adr/0021-hourly-forecasts-archived.md)), and since CG-107 of `avalanche_bulletin`
+([ADR 0022](adr/0022-avalanche-bulletins-kept.md)); the other tables can be rebuilt from
 the repository and the `history` branch.
 
 ## Set up the disk, once

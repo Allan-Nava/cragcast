@@ -27,3 +27,4 @@ Why cragcast is built the way it is. One file per decision, numbered, in the for
 | [0019](0019-backup-on-a-usb-disk.md) | A nightly backup on a USB disk on the Pi | accepted | 2026-10-16 |
 | [0020](0020-calendar-releases-the-pi-follows.md) | Releases by date, and the Pi follows a release | accepted | 2026-10-20 |
 | [0021](0021-hourly-forecasts-archived.md) | Every hourly forecast is archived, appended and never rewritten | accepted | 2026-10-28 |
+| [0022](0022-avalanche-bulletins-kept.md) | The avalanche bulletin's facts are kept, its text never | accepted | 2026-10-28 |

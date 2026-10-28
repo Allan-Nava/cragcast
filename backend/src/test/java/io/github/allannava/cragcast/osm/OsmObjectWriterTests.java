@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
 
 /** Against PostgreSQL and the V5 migration (CG-103). */
-@SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false"})
+@SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false", "cragcast.avalanche.archive.enabled=false"})
 @Import(TestcontainersConfigurationAccess.Config.class)
 @EnabledIf(DockerAvailable.CHECK)
 class OsmObjectWriterTests {

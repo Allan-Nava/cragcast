@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /** Against PostgreSQL and the V8 migration; a made-up crag. */
-@SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false"})
+@SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false", "cragcast.avalanche.archive.enabled=false"})
 @Import(TestcontainersConfigurationAccess.Config.class)
 @EnabledIf(DockerAvailable.CHECK)
 class ForecastArchiveTests {
