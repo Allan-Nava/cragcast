@@ -1,4 +1,4 @@
-// The view in the URL (?q=&v=&p=&g=&o=&a=&crag=&show=&day=), so a link opens the same view and back works (CG-20).
+// The view in the URL (?q=&v=&p=&g=&o=&a=&crag=&show=&k=&day=), so a link opens the same view and back works (CG-20).
 // The reader's position is never part of it (CG-22).
 import type { Verdict } from "../types";
 import { ORDER, VERDICTS } from "./text";
@@ -20,7 +20,12 @@ export interface ViewState {
   /** CG-61: the list's order. Distance is not one of them: it needs the position, which never
    * reaches the URL (CG-22), so the page keeps it in memory. */
   order: Order;
+  /** CG-114: the crags or the via ferratas (?k=ferrate). */
+  kind: Kind;
 }
+
+/** CG-114: which places the page shows. */
+export type Kind = "crags" | "ferrate";
 
 /** CG-61: by verdict (the default), name, or elevation from the lowest or the highest. */
 export type Order = "verdict" | "name" | "low" | "high";
@@ -53,6 +58,7 @@ export function readState(search: string, days: string[]): ViewState {
     show: p.get("show") === "map" ? "map" : "list",
     grade: readGrade(p.get("g")),
     order: ORDERS.find(o => o === p.get("o")) ?? "verdict",
+    kind: p.get("k") === "ferrate" ? "ferrate" : "crags",
   };
 }
 
@@ -66,6 +72,7 @@ export function stateQuery(s: ViewState): string {
   if (s.area) p.set("a", s.area.map(x => x.toFixed(3)).join(","));
   if (s.crag) p.set("crag", s.crag);
   if (s.show === "map") p.set("show", "map");
+  if (s.kind === "ferrate") p.set("k", "ferrate");
   p.set("day", s.day);
   return "?" + p.toString();
 }

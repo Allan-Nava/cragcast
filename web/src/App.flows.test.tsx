@@ -2,7 +2,7 @@
 import { afterEach, beforeEach, describe as group, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { App, REFRESH_MS } from "./App";
-import { crag } from "./test/fixtures";
+import { crag, ferrata } from "./test/fixtures";
 import type { Conditions } from "./types";
 
 const DAY = "2026-10-16", NEXT = "2026-10-17";
@@ -22,7 +22,8 @@ const serve = (...bodies: (Conditions | number)[]) => {
   vi.stubGlobal("fetch", f);
   return f;
 };
-const names = () => [...document.querySelectorAll("#list li h2")].map(h => h.firstChild?.nextSibling?.textContent ?? "");
+// The heading's own text: after the verdict mark and, for a via ferrata (CG-114), its peak.
+const names = () => [...document.querySelectorAll("#list li h2")].map(h => [...h.childNodes].find(n => n.nodeType === 3)?.textContent ?? "");
 
 beforeEach(() => { history.replaceState(null, "", `/?day=${DAY}`); localStorage.clear(); });
 afterEach(() => { cleanup(); vi.unstubAllGlobals(); vi.useRealTimers(); });
@@ -303,5 +304,60 @@ group("panel on demand (CG-64)", () => {
     expect(idle).toHaveBeenCalledOnce();
     await act(async () => { fireEvent.click(screen.getAllByText("Dettagli")[0]); });
     await waitFor(() => expect(document.getElementById("d-title")?.textContent).toContain("Parete Alfa — Si va"));
+  });
+});
+
+group("via ferratas (CG-114)", () => {
+  const withFerrate = (): Conditions => ({ ...data(), ferrate: [ferrata({ verdict: "NO_GO" }), ferrata({ id: "osm-way-20", name: "Ferrata Seconda" })] });
+  for (const f of withFerrate().ferrate!) f.days[NEXT] = { ...f.days[DAY] };
+
+  it("no switch when the data has none", async () => {
+    serve(data());
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    expect(screen.queryByRole("group", { name: "Cosa mostrare" })).toBeNull();
+  });
+
+  it("the switch shows the via ferratas alone, says so, and keeps it in the URL", async () => {
+    const d = withFerrate();
+    for (const f of d.ferrate!) f.days[NEXT] = { ...f.days[DAY] };
+    serve(d);
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    history.replaceState(null, "", `/?p=LC&day=${DAY}`);
+    await act(async () => { fireEvent.click(screen.getByRole("button", { name: "Vie ferrate" })); });
+    expect(location.search).toBe(`?k=ferrate&day=${DAY}`);           // the crags' province left behind
+    expect(names()).toEqual(["Ferrata Seconda — Si va", "Ferrata Prova — No"]);
+    expect(screen.getByText("2 vie ferrate")).toBeTruthy();
+    expect(screen.getByText(/si verificano sempre sul posto/)).toBeTruthy();
+    expect(document.querySelectorAll("#list .peak")).toHaveLength(2);
+    expect(screen.queryByLabelText("Provincia")).toBeNull();
+    expect(screen.getByPlaceholderText("Cerca una via ferrata…")).toBeTruthy();
+    await act(async () => { fireEvent.click(screen.getByRole("button", { name: "Falesie" })); });
+    expect(names()).toEqual(["Parete Alfa — Si va", "Parete Beta — No"]);
+  });
+
+  it("a link to a via ferrata opens its panel, with the line on checking on the spot and no share", async () => {
+    const d = withFerrate();
+    for (const f of d.ferrate!) f.days[NEXT] = { ...f.days[DAY] };
+    serve(d);
+    history.replaceState(null, "", `/?k=ferrate&crag=osm-way-10&day=${DAY}`);
+    render(<App />);
+    const title = await screen.findByRole("heading", { name: /Via ferrata Ferrata Prova — No/ });
+    const panel = title.closest("dialog")!;
+    expect(panel.textContent).toContain("difficoltà 2–3 (scala 0–6)");
+    expect(panel.textContent).toContain("Il giudizio è una stima dal meteo previsto in cima");
+    expect(panel.textContent).toContain("Disegnata in 2 tratti su OpenStreetMap");
+    expect(panel.querySelector(".share")).toBeNull();
+  });
+
+  it("a province or grade in a shared link never hides the via ferratas", async () => {
+    const d = withFerrate();
+    for (const f of d.ferrate!) f.days[NEXT] = { ...f.days[DAY] };
+    serve(d);
+    history.replaceState(null, "", `/?k=ferrate&p=LC&g=le6a&day=${DAY}`);
+    render(<App />);
+    await screen.findByText("Ferrata Prova — No");
+    expect(names()).toHaveLength(2);
   });
 });

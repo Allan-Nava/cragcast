@@ -8,6 +8,7 @@ import io.github.allannava.cragcast.conditions.ConditionsScorer;
 import io.github.allannava.cragcast.conditions.Verdict;
 import io.github.allannava.cragcast.conditions.Weather;
 import io.github.allannava.cragcast.crag.Aspect;
+import io.github.allannava.cragcast.ferrata.FerrataClient;
 import io.github.allannava.cragcast.weather.HourlyForecast;
 import io.github.allannava.cragcast.weather.OpenMeteoClient;
 import io.github.allannava.cragcast.weather.WeatherReducer;
@@ -92,7 +93,21 @@ public final class ConditionsExport {
         OsmClimbing climbing = Files.exists(climbingFile)
                 ? OsmClimbing.parse(Files.readString(climbingFile), json) : OsmClimbing.none();
 
-        Output out = build(crags, forecasts, days, Instant.now(), regions, bulletins, climbing);
+        // CG-114: the via ferratas next to the crags, scored at their tops. They never hold the
+        // crags back: without the file, or when their forecast fails, the page has none.
+        List<FerrateExport.FerrataOut> ferrate = List.of();
+        Path ferrateFile = Path.of(args[0]).toAbsolutePath().resolveSibling("ferrate.json");
+        if (Files.exists(ferrateFile)) {
+            try {
+                FerrateExport.FerrateFile file = json.readValue(Files.readString(ferrateFile), FerrateExport.FerrateFile.class);
+                FerrataClient client = FerrataClient.create(env.getOrDefault("OPEN_METEO_URL", "https://api.open-meteo.com"));
+                ferrate = FerrateExport.build(file, FerrateExport.fetch(client, file, BATCH), days, regions, bulletins);
+            } catch (RuntimeException e) {
+                System.err.println("via ferratas skipped: " + e);
+            }
+        }
+
+        Output out = build(crags, forecasts, days, Instant.now(), regions, bulletins, climbing, ferrate);
         Path target = Path.of(args[1]);
         Files.createDirectories(target.toAbsolutePath().getParent());
         Files.writeString(target, json.writeValueAsString(out));
@@ -116,8 +131,8 @@ public final class ConditionsExport {
         }
         long go = out.crags().stream().filter(c -> c.days().get(today.plusDays(1).toString()).verdict() == Verdict.GO).count();
         long avalanche = out.crags().stream().filter(c -> c.days().values().stream().anyMatch(d -> d.avalanche() != null)).count();
-        System.out.printf("%d crags scored for %s to %s; %d go tomorrow; %d with an avalanche bulletin%n",
-                out.crags().size(), today, today.plusDays(2), go, avalanche);
+        System.out.printf("%d crags scored for %s to %s; %d go tomorrow; %d with an avalanche bulletin; %d via ferratas%n",
+                out.crags().size(), today, today.plusDays(2), go, avalanche, out.ferrate().size());
         return 0;
     }
 
@@ -130,10 +145,19 @@ public final class ConditionsExport {
         return build(crags, forecasts, days, now, regions, bulletins, OsmClimbing.none());
     }
 
-    /** The pure part: crags, their forecasts, the day's bulletins and the OSM objects in, the page's JSON out. */
     static Output build(CragsFile crags, List<HourlyForecast> forecasts, List<LocalDate> days, Instant now,
                         AvalancheRegions regions, Map<LocalDate, Map<String, Avalanche>> bulletins,
                         OsmClimbing climbing) {
+        return build(crags, forecasts, days, now, regions, bulletins, climbing, List.of());
+    }
+
+    /**
+     * The pure part: crags, their forecasts, the day's bulletins and the OSM objects in, the page's
+     * JSON out; {@code ferrate} (CG-114) already scored by {@link FerrateExport}.
+     */
+    static Output build(CragsFile crags, List<HourlyForecast> forecasts, List<LocalDate> days, Instant now,
+                        AvalancheRegions regions, Map<LocalDate, Map<String, Avalanche>> bulletins,
+                        OsmClimbing climbing, List<FerrateExport.FerrataOut> ferrate) {
         if (forecasts.size() != crags.crags().size()) {
             throw new IllegalArgumentException(forecasts.size() + " forecasts for " + crags.crags().size() + " crags");
         }
@@ -156,7 +180,7 @@ public final class ConditionsExport {
                     climbing.sectors(c.sectors()), climbing.routes(c.id())));
         }
         return new Output(now.toString(), ZONE.getId(), days.stream().map(LocalDate::toString).toList(),
-                crags.licence(), "Weather: Open-Meteo.com (CC BY 4.0)", crags.elevationSource(), AVALANCHE_DATA, out);
+                crags.licence(), "Weather: Open-Meteo.com (CC BY 4.0)", crags.elevationSource(), AVALANCHE_DATA, out, ferrate);
     }
 
     /**
@@ -247,7 +271,15 @@ public final class ConditionsExport {
                    List<SectorOut> sectors, List<RouteOut> routes) {
     }
 
+    /** {@code ferrate}: CG-114, left out when there are none, so data without via ferratas reads as before. */
     record Output(String generatedAt, String timezone, List<String> days, String cragData, String weatherData,
-                  String elevationData, String avalancheData, List<CragOut> crags) {
+                  String elevationData, String avalancheData, List<CragOut> crags,
+                  @JsonInclude(JsonInclude.Include.NON_EMPTY) List<FerrateExport.FerrataOut> ferrate) {
+
+        /** Data without via ferratas, as before CG-114. */
+        Output(String generatedAt, String timezone, List<String> days, String cragData, String weatherData,
+               String elevationData, String avalancheData, List<CragOut> crags) {
+            this(generatedAt, timezone, days, cragData, weatherData, elevationData, avalancheData, crags, List.of());
+        }
     }
 }

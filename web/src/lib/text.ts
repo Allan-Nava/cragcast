@@ -1,5 +1,6 @@
 // Words of the page: verdict labels and letters, the reasons and details in Italian.
 import type { Aspect, Avalanche, Crag, Details, Verdict, Weather } from "../types";
+import { ferrataParts } from "./ferrate";
 
 export const LABEL: Record<Verdict, string> = { GO: "Si va", MAYBE: "Forse", NO_GO: "No" };
 // CG-21: the verdict is never told by colour alone — circle S, diamond F, square N.
@@ -13,6 +14,18 @@ const REASON_IT: Record<string, string> = {
   "rock may still be wet from recent rain": "roccia forse ancora bagnata dalla pioggia recente",
   "cold": "freddo",
   "hot on a sunny wall": "caldo su parete al sole",
+  // CG-114: the via ferratas' own reasons (FerrataScorer).
+  "thunderstorm forecast": "temporale previsto",
+  "unstable air: storms can build": "aria instabile: si possono formare temporali",
+  "some instability: storms possible": "un po' di instabilità: temporali possibili",
+  "fresh snow at the top": "neve fresca in cima",
+  "ice likely: rain, then frost at the top": "probabile ghiaccio: pioggia e poi gelo in cima",
+  "strong gusts at the top": "raffiche forti in cima",
+  "windy at the top": "vento in cima",
+  "rock and cables may still be wet from recent rain": "roccia e cavi forse ancora bagnati dalla pioggia recente",
+  "cold at the top": "freddo in cima",
+  "hot: the cables burn in the sun": "caldo: i cavi scottano al sole",
+  "short day: little light for the route": "giornata corta: poca luce per l'itinerario",
 };
 export const ASPECT_IT: Record<Aspect, string> = { N: "N", NE: "NE", E: "E", SE: "SE", S: "S", SW: "SO", W: "O", NW: "NO" };
 const STYLE_IT: Record<string, string> = { sport: "sportiva", trad: "trad", multipitch: "vie lunghe" };
@@ -34,7 +47,9 @@ export function describe(crag: Crag, day: string): Described {
   const d = crag.days[day];
   // The unmapped-aspect note goes in the aspect line, not again among the reasons.
   const reasons = d.reasons.filter(r => !r.startsWith("wall aspect not mapped")).map(r => REASON_IT[r] ?? r);
-  const aspect = crag.aspect ? `parete esposta a ${ASPECT_IT[crag.aspect]}`
+  // CG-114: a via ferrata has no wall aspect; the line says what kind of place it is instead.
+  const aspect = crag.ferrata ? "via ferrata, meteo in cima"
+    : crag.aspect ? `parete esposta a ${ASPECT_IT[crag.aspect]}`
     : "esposizione non mappata: valutata come parete in ombra";
   return { verdict: d.verdict, reasons, aspect };
 }
@@ -62,7 +77,7 @@ export function detailParts(d: Details | undefined): string[] {
 
 /** Elevation first, then the OSM details: the line under each crag. */
 export const allDetails = (c: Crag): string[] =>
-  (c.elevation != null ? [`quota circa ${c.elevation}\u00a0m`] : []).concat(detailParts(c.details));
+  c.ferrata ? ferrataParts(c) : (c.elevation != null ? [`quota circa ${c.elevation}\u00a0m`] : []).concat(detailParts(c.details));
 
 /** https://www.openstreetmap.org/node/123 → https://www.openstreetmap.org/edit?node=123 */
 export function osmEditUrl(sourceUrl: string): string | null {
@@ -108,8 +123,8 @@ export const zoneName = (a: Avalanche): string =>
 
 /** CG-58: the aspect for a list card — "esposta a SO", or null when not mapped (the card then
  * shows the short "esposizione ?" tag; the panel and the popup keep the full sentence). */
-export const aspectShort = (c: Pick<Crag, "aspect">): string | null =>
-  c.aspect ? `esposta a ${ASPECT_IT[c.aspect]}` : null;
+export const aspectShort = (c: Pick<Crag, "aspect" | "ferrata">): string | null =>
+  c.ferrata ? null : c.aspect ? `esposta a ${ASPECT_IT[c.aspect]}` : null;
 
 /** CG-59: how many OSM objects a crag was folded from (itself and alsoMapped). */
 export const mappedTimes = (c: Pick<Crag, "alsoMapped">): number => 1 + (c.alsoMapped?.length ?? 0);

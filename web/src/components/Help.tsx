@@ -14,6 +14,8 @@ export function Help() {
           <li><code>climbing:grade:french:min</code> e <code>climbing:grade:french:max</code> — grado più facile e più difficile, es. 5a e 7b.</li>
           <li><code>climbing:length:max</code> — lunghezza delle vie più lunghe, in metri.</li>
           <li><code>climbing:rock</code> — es. limestone (calcare), granite (granito), gneiss.</li>
+          <li>Per una via ferrata (CG-114): <code>via_ferrata_scale</code> — la difficoltà, un numero intero
+              da 0 a 6, senza <em>+</em>. Senza, la via ferrata dice <em>difficoltà non mappata</em>.</li>
         </ul>
         <p><strong>Solo quello che conosci di persona:</strong> OpenStreetMap non accetta dati copiati
            da guide o siti protetti da copyright. Preferisci che lo faccia qualcun altro?{" "}

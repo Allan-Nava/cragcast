@@ -27,13 +27,17 @@ interface Props {
 
 const reducedMotion = () => typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function verdictIcon(verdict: Verdict, name: string): L.DivIcon {
+function verdictIcon(verdict: Verdict, name: string, ferrata = false): L.DivIcon {
   const span = document.createElement("span");
   span.className = "mark " + verdict.toLowerCase();
   span.setAttribute("role", "img");
-  span.setAttribute("aria-label", `${name}: ${LABEL[verdict]}`);
+  span.setAttribute("aria-label", `${ferrata ? "Via ferrata " : ""}${name}: ${LABEL[verdict]}`);
   span.append(Object.assign(document.createElement("b"), { textContent: LETTER[verdict] }));
-  return L.divIcon({ className: "", html: span, iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
+  if (!ferrata) return L.divIcon({ className: "", html: span, iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
+  // CG-114: a via ferrata's own mark — a peak at the corner — beside the verdict's shape and letter.
+  const wrap = Object.assign(document.createElement("span"), { className: "vf" });
+  wrap.append(span, Object.assign(document.createElement("i"), { className: "peak" }));
+  return L.divIcon({ className: "", html: wrap, iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
 }
 
 /** CG-59: the day's weather as a small two-column table, built from DOM nodes. */
@@ -57,6 +61,7 @@ function popupFor(crag: Crag, day: string, onDetail: (c: Crag) => void): HTMLEle
   line(strong, place(crag) ? ` · ${place(crag)}` : "");
   line(`${LABEL[info.verdict]} — ${info.aspect}`);
   if (info.reasons.length) line(info.reasons.join("; "));
+  if (crag.ferrata) line(Object.assign(document.createElement("em"), { textContent: "Condizioni da verificare sempre sul posto." }));
   if (details.length) line(details.join(" · "));
   box.append(weatherTable(crag.days[day].weather));       // CG-59
   const av = crag.days[day].avalanche;                // CG-11
@@ -154,8 +159,8 @@ export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area =
     for (const crag of crags) {
       const verdict = crag.days[day].verdict;
       const mk = L.marker([crag.latitude, crag.longitude], {
-        icon: verdictIcon(verdict, crag.name),
-        title: `${crag.name} — ${LABEL[verdict]}`,
+        icon: verdictIcon(verdict, crag.name, !!crag.ferrata),
+        title: `${crag.ferrata ? "Via ferrata " : ""}${crag.name} — ${LABEL[verdict]}`,
         keyboard: true,
       });
       (mk.options as { verdict?: Verdict }).verdict = verdict;     // read by the cluster mark

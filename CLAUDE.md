@@ -89,6 +89,14 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   thunderstorm hour or CAPE from 1000 J/kg is never "si va". Its thresholds are named constants
   like `ConditionsScorer`'s, with the same rule: a change is reviewed, with a test for the day it
   fixes. It never reuses the crags' thresholds, and the avalanche bulletin never scores here either.
+- **Via ferratas on the page** (CG-114, ADR 0025): `FerrateExport` scores `data/ferrate.json` into
+  `conditions.json`'s `ferrate` (left out when empty; a failed forecast leaves them out and never
+  the crags). The page shows the crags or the via ferratas (`?k=ferrate`), never both; the switch
+  only when there are some. A via ferrata keeps the verdict's shape and letter with a peak beside
+  it (`.peak`, `.vf` on the map) and says "via ferrata" in words; never a colour for the kind.
+  Wherever its verdict shows in full, a line says conditions are checked on the spot
+  (`ON_THE_SPOT`). Province and grade filters never hide one. No share page or API v1 entry
+  until CG-115.
 - **`docs/aspects-todo.md` is generated** by `tools/aspects_todo.py` from `data/crags.json`
   (CG-16) and committed with it by `crags-refresh.yml`; never edit it by hand. It never names
   who knows which crag: the list is for anyone who climbs there.

@@ -12,6 +12,7 @@ import { AvalancheLine } from "./AvalancheLine";
 import { cragLink } from "../lib/state";
 import { Star } from "./Star";
 import { Climbing } from "./Climbing";
+import { ON_THE_SPOT } from "../lib/ferrate";
 
 /** CG-44: share the crag — the system share sheet where there is one, else copy the link. */
 function Share({ crag }: { crag: Crag }) {
@@ -134,7 +135,8 @@ export function DetailDialog({ crag, day, days = [], onDay, onClose, favourite =
         <div key={day}>
           <h2 id="d-title" ref={title} tabIndex={-1}>
             <span className={"mark " + info.verdict.toLowerCase()} aria-hidden="true"><b>{LETTER[info.verdict]}</b></span>
-            {` ${crag.name} — ${LABEL[info.verdict]}`}
+            {crag.ferrata && <i className="peak" aria-hidden="true" />}
+            {` ${crag.ferrata ? "Via ferrata " : ""}${crag.name} — ${LABEL[info.verdict]}`}
             {onFavourite && <Star name={crag.name} on={favourite} onToggle={() => onFavourite(crag.id)} />}
           </h2>
           {days.length > 1 && (
@@ -153,6 +155,10 @@ export function DetailDialog({ crag, day, days = [], onDay, onClose, favourite =
           )}
           <p className="muted">{[place(crag), info.aspect, ...info.reasons].filter(Boolean).join(" · ")}</p>
           {allDetails(crag).length > 0 && <p>{allDetails(crag).join(" · ")}</p>}
+          {crag.ferrata && <p className="note">{ON_THE_SPOT}</p>}
+          {crag.ferrata && crag.ferrata.scaleDropped.length > 0 && (
+            <p className="muted">{`Su OpenStreetMap anche ${crag.ferrata.scaleDropped.map(v => `«${v}»`).join(", ")}: fuori dalla scala 0–6, non letto.`}</p>
+          )}
           {crag.days[day].avalanche && <AvalancheLine a={crag.days[day].avalanche} full />}
           {/* CG-59: the weather the verdict was made from, before the hours. */}
           <table className="facts">
@@ -171,13 +177,22 @@ export function DetailDialog({ crag, day, days = [], onDay, onClose, favourite =
             </>
           )}
           <Climbing key={`climbing-${crag.id}`} crag={crag} />
-          <Share key={crag.id} crag={crag} />
+          {/* CG-114: no share page for a via ferrata yet (CG-115). */}
+          {!crag.ferrata && <Share key={crag.id} crag={crag} />}
           <p className="links">
             <a href={`https://www.google.com/maps/dir/?api=1&destination=${crag.latitude},${crag.longitude}`} rel="noopener">Indicazioni (Google Maps)</a>{" "}
             <a href={`https://www.openstreetmap.org/directions?route=%3B${crag.latitude}%2C${crag.longitude}`} rel="noopener">Indicazioni (OSM)</a>{" "}
             <a href={crag.sourceUrl} rel="noopener">Su OpenStreetMap</a>{" "}
             {edit && <a href={edit} rel="noopener">Modifica su OSM</a>}
           </p>
+          {crag.ferrata && crag.ferrata.pieces.length > 1 && (
+            <details className="mapped">
+              <summary>{`Disegnata in ${crag.ferrata.pieces.length} tratti su OpenStreetMap`}</summary>
+              <ul>
+                {crag.ferrata.pieces.map((u, i) => <li key={u}><a href={u} rel="noopener">{`Tratto ${i + 1}`}</a></li>)}
+              </ul>
+            </details>
+          )}
           {mappedTimes(crag) > 1 && (
             <details className="mapped">
               <summary>{`Mappata ${mappedTimes(crag)} volte su OpenStreetMap`}</summary>

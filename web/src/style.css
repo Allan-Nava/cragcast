@@ -255,6 +255,20 @@ dialog#detail h2 .star { margin-right: 0; }
 
 /* CG-54: map or list on a phone. The switch shows only below 600 px; there the list comes
    first and the map takes the screen's height when chosen. */
+/* CG-114: crags or via ferratas — the same pill as the phone's list/map switch, at every width. */
+.kind { display: flex; gap: 0; margin: 0 var(--space-8) var(--space-5); border: 1px solid var(--line);
+        border-radius: var(--radius-pill); overflow: hidden; }
+.kind button { flex: 1; background: var(--panel); color: var(--muted); border: 0; padding: var(--space-4) 0; font: inherit; cursor: pointer; }
+.kind button[aria-pressed="true"] { background: var(--pressed); color: var(--go); font-weight: 600; }
+p.note { margin: 0 var(--space-8) var(--space-5); color: var(--muted); font-size: var(--text-sm); }
+#detail p.note { margin: var(--space-4) 0; }
+/* CG-114: a via ferrata's own mark, a peak beside the verdict's mark — never a colour, and the
+   S/F/N shapes keep meaning the verdict. Drawn at a fixed size, like the marks. */
+.peak { display: inline-block; width: 12px; height: 10px; background: var(--text); margin-right: var(--space-3);
+        clip-path: polygon(50% 0, 100% 100%, 0 100%); vertical-align: -1px; }
+.vf { position: relative; display: inline-flex; }
+.vf .peak { position: absolute; top: -8px; right: -9px; margin: 0; background: #050505;
+            filter: drop-shadow(0 0 1px #ffffff) drop-shadow(0 0 1px #ffffff); }
 .show { display: none; }
 @media (max-width: 599px) {
   .show { display: flex; gap: 0; margin: 0 var(--space-8) var(--space-5); border: 1px solid var(--line); border-radius: var(--radius-pill); overflow: hidden; }

@@ -30,3 +30,4 @@ Why cragcast is built the way it is. One file per decision, numbered, in the for
 | [0022](0022-avalanche-bulletins-kept.md) | The avalanche bulletin's facts are kept, its text never | accepted | 2026-10-28 |
 | [0023](0023-via-ferratas-from-openstreetmap.md) | Via ferratas from OpenStreetMap, in their own file | accepted | 2026-10-28 |
 | [0024](0024-a-via-ferrata-verdict-of-its-own.md) | A via ferrata gets a verdict of its own, stricter than a crag's | accepted | 2026-10-28 |
+| [0025](0025-via-ferratas-on-the-page.md) | Via ferratas on the page: their own switch, their own mark | accepted | 2026-10-28 |

@@ -4,7 +4,8 @@ import { afterAll, afterEach, beforeAll, describe as group, expect, it, vi } fro
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { createRef } from "react";
 import { CragMap, type MapApi } from "./CragMap";
-import { crag } from "../test/fixtures";
+import { crag, ferrata } from "../test/fixtures";
+import { asPlace } from "../lib/ferrate";
 
 const DAY = "2026-10-16";
 afterEach(cleanup);
@@ -111,4 +112,19 @@ group("map marks and popups (CG-50)", () => {
 
   // A real drag needs a browser: jsdom lacks the SVG and layout Leaflet's dragging reads.
   // The end-to-end tests (CG-51) drag the map in Chromium.
+});
+
+group("a via ferrata on the map (CG-114)", () => {
+  it("has its own mark beside the verdict's, says so, and its popup says to check on the spot", async () => {
+    const api = createRef<MapApi | null>() as React.RefObject<MapApi | null>;
+    const { container } = render(<CragMap crags={[asPlace(ferrata({ verdict: "NO_GO" }))]} day={DAY} here={null}
+                                          onDetail={() => {}} apiRef={api} />);
+    const mark = container.querySelector(".vf .mark.no_go");
+    expect(mark?.getAttribute("aria-label")).toBe("Via ferrata Ferrata Prova: No");
+    expect(container.querySelector(".vf .peak")).not.toBeNull();
+    await act(async () => { api.current!.open("osm-way-10"); await new Promise(r => setTimeout(r, 50)); });
+    const popup = container.querySelector(".leaflet-popup-content");
+    expect(popup?.textContent).toContain("No — via ferrata, meteo in cima");
+    expect(popup?.textContent).toContain("Condizioni da verificare sempre sul posto.");
+  });
 });
