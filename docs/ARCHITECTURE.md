@@ -33,7 +33,7 @@ flowchart LR
   subgraph site["site/ → GitHub Pages"]
     page["index.html + assets/"]
     data["data/conditions.json"]
-    api["api/v1/crags.json<br/>api/v1/crags/&lt;id&gt;.json"]
+    api["api/v1/crags.json, crags/&lt;id&gt;.json<br/>api/v1/ferrate.json, ferrate/&lt;id&gt;.json"]
     share["c/&lt;id&gt;.html<br/>link previews"]
   end
   web --> vite --> page
@@ -71,7 +71,7 @@ flowchart LR
 |---|---|---|
 | Scorer and export | `backend/src/main/java/…/conditions`, `weather`, `export`, `avalanche` | the verdict, the weather reduction, the hourly export, the bulletin, the share pages; plain Java, no Spring needed at run time |
 | Spring service | `backend/…/crag`, `weather/WeatherRefresh`, `*Controller` | the same scorer behind a REST API with PostgreSQL (Flyway); image on GHCR (`image.yml`, linux/arm64), run on a Raspberry Pi's home network only ([ADR 0015](adr/0015-raspberry-pi-pulls-its-stack.md)) |
-| Via ferrata verdict | `ferrata/FerrataScorer`, `FerrataReducer`, `FerrataClient`, `export/FerrateExport` | the weather at a via ferrata's top (Open-Meteo with the DEM elevation; gusts, weather code, CAPE, snowfall, light) reduced to one day from 07:00 to 19:00 and scored stricter than a crag: a thunderstorm is never "si va" (CG-113, [ADR 0024](adr/0024-a-via-ferrata-verdict-of-its-own.md)); plain Java; the hourly export calls it for the page (CG-114), the Pi not yet (CG-115) |
+| Via ferrata verdict | `ferrata/FerrataScorer`, `FerrataReducer`, `FerrataClient`, `export/FerrateExport`, `export/FerrateData` | the weather at a via ferrata's top (Open-Meteo with the DEM elevation; gusts, weather code, CAPE, snowfall, light) reduced to one day from 07:00 to 19:00 and scored stricter than a crag: a thunderstorm is never "si va" (CG-113, [ADR 0024](adr/0024-a-via-ferrata-verdict-of-its-own.md)); plain Java; the hourly export calls it for the page (CG-114); on the Pi (CG-115) `WeatherRefresh` asks for the tops after the crags and `SiteData` serves them; `ForecastArchive` keeps them in `ferrata_forecast` (Flyway V11); the API v1 lists them in `ferrate.json` and `ferrate/<id>.json` |
 | Forecast archive | `weather/ForecastArchive` | after each refresh, appends every crag-day it computed — verdict, reasons, the four numbers, the day's hours — to `crag_forecast` (Flyway V8), keyed by the refresh's time; scored from the `ForecastsRefreshed` forecasts, never rewritten, a failure loses that hour only (CG-106, [ADR 0021](adr/0021-hourly-forecasts-archived.md)) |
 | Bulletin archive | `avalanche/AvalancheArchive` | today's avalanche bulletin at startup and at 09:30, 13:30 and 18:30, kept in `avalanche_bulletin` (Flyway V9) per day and micro-region — levels, bands, problem types, the link, never the text; the latest issue replaces the day, none keeps it (CG-107, [ADR 0022](adr/0022-avalanche-bulletins-kept.md)) |
 | Observations copy | `calibration/ObservationSync` | `data/observations.csv` read from main into `observation` (Flyway V10) at startup and each night, the table replaced whole; a missing header or a bad row keeps it; the CSV stays the source (CG-108, as [ADR 0016](adr/0016-history-copied-into-postgres.md) for the history) |
@@ -135,7 +135,7 @@ flowchart TB
 | `data/ferrate.json` | `tools/osm_ferrate.py`; nothing reads it yet (CG-113 to CG-115) | the via ferratas, never crags: ids (`osm-relation-<id>` or the lowest `osm-way-<id>`) stable; `pieces`, `start` and `top` (with DEM elevation), `lengthM`, `scaleMin`/`scaleMax` (0–6 or null), `scaleDropped`; changed only by a reviewed PR ([ADR 0023](adr/0023-via-ferratas-from-openstreetmap.md)) |
 | `data/osm-climbing.json` | `tools/osm_crags.py` (`osm_object()`); read by `OsmObjectImporter` into `osm_object` (Flyway V5) | every object of the OSM query with its category; the table is replaced whole at startup, the file is the source (CG-103); with `crags.json`'s `sectors`, also into `sector` (Flyway V6, CG-104); the single routes, linked to their crag and sector (`crag`, `sector`, `linkedBy`), into `route` (Flyway V7, CG-105) |
 | `data/conditions.json` | `ConditionsExport.Output`; typed in `web/src/types.ts` | the page's input; Java and TypeScript change together; since CG-117 each crag carries `sectors` and `routes`, from `data/osm-climbing.json` (`OsmClimbing`); since CG-114 `ferrate` (left out when empty) lists the via ferratas of `data/ferrate.json` from `FerrateExport`, each at its start with the days scored at its top |
-| `/api/v1/` | `ConditionsExport.api()` | fields only added, never renamed or removed; a break goes to `/api/v2/` |
+| `/api/v1/` | `ConditionsExport.api()` | fields only added, never renamed or removed; a break goes to `/api/v2/`; since CG-115 also `ferrate.json` and `ferrate/<id>.json`, files of their own |
 | History CSV | `tools/history_append.py` (`FIELDS`) | on the `history` branch, one file per month; columns only added at the end ([ADR 0006](adr/0006-history-on-its-own-branch.md)); read by name by `HistoryCsv` |
 | Share pages | `SharePages` | the day written as a date; reason words kept equal to `web/src/lib/text.ts` |
 

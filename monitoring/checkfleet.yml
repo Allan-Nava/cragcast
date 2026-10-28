@@ -29,3 +29,12 @@ checks:
         expect_status: 200
         max_latency_ms: 3000
         expect_body: "\"hours\""
+      # CG-115: the via ferratas' API files; a relation's id, steadier than a way's.
+      - url: https://allan-nava.github.io/cragcast/api/v1/ferrate.json
+        expect_status: 200
+        max_latency_ms: 3000
+        expect_body: "\"ferrate\""
+      - url: https://allan-nava.github.io/cragcast/api/v1/ferrate/osm-relation-17637064.json
+        expect_status: 200
+        max_latency_ms: 3000
+        expect_body: "\"hours\""

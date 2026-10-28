@@ -9,7 +9,7 @@ WORKDIR /src/backend
 COPY backend/.mvn .mvn
 COPY backend/mvnw backend/pom.xml ./
 RUN ./mvnw -q -B dependency:go-offline
-COPY data/crags.json data/avalanche-regions.geojson data/osm-climbing.json /src/data/
+COPY data/crags.json data/avalanche-regions.geojson data/osm-climbing.json data/ferrate.json /src/data/
 COPY backend/src src
 RUN ./mvnw -q -B package -DskipTests
 

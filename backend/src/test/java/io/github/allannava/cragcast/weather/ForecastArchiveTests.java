@@ -49,6 +49,7 @@ class ForecastArchiveTests {
     @BeforeEach
     void oneCrag() {
         jdbc.update("DELETE FROM crag_forecast");
+        jdbc.update("DELETE FROM ferrata_forecast");
         cragId = crags.findBySlug("osm-node-999999998")
                 .orElseGet(() -> crags.save(new Crag("osm-node-999999998", "Test Wall", null, 45.0, 9.0, null,
                         "https://example.org/t")))
@@ -87,5 +88,16 @@ class ForecastArchiveTests {
         // A forecast list too short for the day fails the scoring; the event still returns.
         var empty = new HourlyForecast(List.of(), List.of(), List.of(), List.of());
         events.publishEvent(new ForecastsRefreshed(Map.of("osm-node-999999998", empty), SIX));
+    }
+
+    @Test
+    void theViaFerratasAreAppendedOnceAndNothingToWriteTouchesNothing() {
+        var row = new ForecastArchive.FerrataRow("osm-way-10", OCT_28, SIX, Verdict.NO_GO, "[]", "{}", "{}");
+        assertThat(archive.appendFerrate(List.of())).isZero();
+        archive.appendFerrate(List.of(row));
+        archive.appendFerrate(List.of(new ForecastArchive.FerrataRow("osm-way-10", OCT_28, SIX, Verdict.GO, "[]", "{}", "{}"),
+                new ForecastArchive.FerrataRow("osm-way-10", OCT_28, SEVEN, Verdict.GO, "[]", "{}", "{}")));
+        assertThat(jdbc.queryForList("SELECT verdict FROM ferrata_forecast ORDER BY fetched_at", String.class))
+                .containsExactly("NO_GO", "GO");
     }
 }

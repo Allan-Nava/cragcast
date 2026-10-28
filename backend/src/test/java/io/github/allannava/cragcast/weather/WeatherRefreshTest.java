@@ -132,4 +132,33 @@ class WeatherRefreshTest {
         new WeatherRefresh(crags, weather, working, JUNE_2_MORNING, e -> { throw new IllegalStateException("no"); }).hourly();
         verify(weather, times(3)).save(any());
     }
+
+    @Test
+    void theViaFerratasTopsGoOutWithTheCragsAndTheirFailureNeverHoldsTheCragsBack() {
+        CragRepository crags = mock(CragRepository.class);
+        CragWeatherRepository weather = mock(CragWeatherRepository.class);
+        OpenMeteoClient openMeteo = mock(OpenMeteoClient.class);
+        List<Crag> one = List.of(crag(1));
+        when(crags.findAll()).thenReturn(one);
+        when(openMeteo.hourly(anyList())).thenReturn(List.of(dry()));
+        when(weather.findById(any())).thenReturn(Optional.empty());
+        var top = new io.github.allannava.cragcast.ferrata.FerrataClient.Top(46.0, 9.5, 1800);
+        io.github.allannava.cragcast.ferrata.FerrataTops tops = () -> java.util.Map.of("osm-way-10", top);
+        var client = mock(io.github.allannava.cragcast.ferrata.FerrataClient.class);
+        var forecast = mock(io.github.allannava.cragcast.ferrata.FerrataForecast.class);
+        when(client.hourly(List.of(top))).thenReturn(List.of(forecast));
+        List<Object> events = new ArrayList<>();
+
+        new WeatherRefresh(crags, weather, openMeteo, JUNE_2_MORNING, events::add, client, tops).hourly();
+        assertThat(events).singleElement().isInstanceOfSatisfying(ForecastsRefreshed.class,
+                e -> assertThat(e.ferrate()).containsExactly(java.util.Map.entry("osm-way-10", forecast)));
+
+        when(client.hourly(anyList())).thenThrow(new IllegalStateException("Open-Meteo is busy"));
+        events.clear();
+        new WeatherRefresh(crags, weather, openMeteo, JUNE_2_MORNING, events::add, client, tops).hourly();
+        assertThat(events).singleElement().isInstanceOfSatisfying(ForecastsRefreshed.class, e -> {
+            assertThat(e.ferrate()).isEmpty();
+            assertThat(e.forecasts()).containsKey("test-crag-1");
+        });
+    }
 }
