@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Verdict } from "../types";
 import { LABEL, LETTER, VERDICTS, dayLabel } from "../lib/text";
-import { ALL_REGIONS, type Order, type ViewState } from "../lib/state";
+import { ALL_REGIONS, DEFAULT_REGION, type Order, type ViewState } from "../lib/state";
 import { GRADE_CHOICES, gradeLabel, gradeParam, readGrade, type GradeFilter } from "../lib/grades";
 
 /** CG-61: the orders offered; "distance" only while the position is known. */
@@ -12,7 +12,7 @@ const ORDER_LABEL: Record<Order | "distance", string> = {
 interface Props {
   days: string[];
   provinces: { code: string; name: string; count: number }[];
-  /** CG-43: the regions in the data with their crags; the choice shows only with more than one. */
+  /** CG-43: the regions in the data with their crags; Lombardy alone before the data. */
   regions?: { name: string; count: number }[];
   onRegion?(region: string): void;
   state: ViewState;
@@ -71,15 +71,18 @@ export function Controls({ days, provinces, state, near, active = 0, onDay, onQu
         </div>
         {/* CG-114: a via ferrata has no province or grades from OSM: those filters are for crags. */}
         {!ferrate && <>
-        {regions.length > 1 && (
-          <label className="area">
-            <span className="sr-only">Regione</span>
-            <select id="region" value={state.region} onChange={e => onRegion?.(e.target.value)}>
-              {regions.map(r => <option key={r.name} value={r.name}>{`${r.name} (${r.count})`}</option>)}
-              <option value={ALL_REGIONS}>{`Tutte le regioni (${regions.reduce((n, r) => n + r.count, 0)})`}</option>
-            </select>
-          </label>
-        )}
+        {/* CG-43: there from the first paint — Lombardy alone until the data names the others — so
+            the row never grows when the data arrives (it shifted the page: Lighthouse CLS 0.7). */}
+        <label className="area">
+          <span className="sr-only">Regione</span>
+          <select id="region" value={state.region} onChange={e => onRegion?.(e.target.value)}>
+            {(regions.length ? regions : [{ name: DEFAULT_REGION, count: 0 }]).map(r =>
+              <option key={r.name} value={r.name}>{r.count ? `${r.name} (${r.count})` : r.name}</option>)}
+            <option value={ALL_REGIONS}>
+              {regions.length ? `Tutte le regioni (${regions.reduce((n, r) => n + r.count, 0)})` : "Tutte le regioni"}
+            </option>
+          </select>
+        </label>
         <label className="area">
           <span className="sr-only">Provincia</span>
           <select id="province" value={state.province} onChange={e => onProvince(e.target.value)}>

@@ -371,11 +371,14 @@ group("regions (CG-43)", () => {
     return { ...d, crags: [...d.crags, c] };
   };
 
-  it("no choice when the data has one region", async () => {
+  it("the choice is there from the first paint, Lombardy alone until the data says more", async () => {
     serve(data());
     render(<App />);
+    expect([...(screen.getByLabelText("Regione") as HTMLSelectElement).options].map(o => o.text))
+      .toEqual(["Lombardia", "Tutte le regioni"]);
     await screen.findByText("Parete Alfa — Si va");
-    expect(screen.queryByLabelText("Regione")).toBeNull();
+    expect([...(screen.getByLabelText("Regione") as HTMLSelectElement).options].map(o => o.text))
+      .toEqual(["Lombardia (2)", "Tutte le regioni (2)"]);
   });
 
   it("Lombardy by default; another region in the URL with its own provinces; all of them on request", async () => {
