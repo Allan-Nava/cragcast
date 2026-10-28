@@ -60,7 +60,8 @@ flowchart LR
    bands and problems. It never changes the verdict, and a missing bulletin never fails the run
    ([ADR 0007](adr/0007-avalanche-bulletin-informs.md)).
 4. **Write.** `site/data/conditions.json` (what the page reads), `site/api/v1/`
-   ([ADR 0005](adr/0005-static-api-v1.md)) and `site/c/<id>.html` from `SharePages`
+   ([ADR 0005](adr/0005-static-api-v1.md)) and `site/c/<id>.html` from `SharePages`, for each
+   crag and (CG-119) each via ferrata
    ([ADR 0010](adr/0010-link-previews-as-static-pages.md)); `og.png` is copied from
    `assets/social-preview.png`.
 5. **Publish.** The workflow uploads `site/` and deploys it to GitHub Pages.

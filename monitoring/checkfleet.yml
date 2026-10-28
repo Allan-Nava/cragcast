@@ -38,3 +38,8 @@ checks:
         expect_status: 200
         max_latency_ms: 3000
         expect_body: "\"hours\""
+      # CG-119: a via ferrata's share page.
+      - url: https://allan-nava.github.io/cragcast/c/osm-relation-17637064.html
+        expect_status: 200
+        max_latency_ms: 3000
+        expect_body: "Via ferrata"

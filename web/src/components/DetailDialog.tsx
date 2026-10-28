@@ -21,7 +21,7 @@ function Share({ crag }: { crag: Crag }) {
   const canShare = typeof navigator.share === "function";
   const share = async () => {
     if (canShare) {
-      try { await navigator.share({ title: `${crag.name} — cragcast`, url: link }); } catch { /* dismissed */ }
+      try { await navigator.share({ title: `${crag.ferrata ? "Via ferrata " : ""}${crag.name} — cragcast`, url: link }); } catch { /* dismissed */ }
       return;
     }
     try { await navigator.clipboard.writeText(link); setCopied("ok"); }
@@ -177,8 +177,8 @@ export function DetailDialog({ crag, day, days = [], onDay, onClose, favourite =
             </>
           )}
           <Climbing key={`climbing-${crag.id}`} crag={crag} />
-          {/* CG-114: no share page for a via ferrata yet (CG-115). */}
-          {!crag.ferrata && <Share key={crag.id} crag={crag} />}
+          {/* CG-119: a via ferrata has its share page too, which opens on the via ferratas. */}
+          <Share key={crag.id} crag={crag} />
           <p className="links">
             <a href={`https://www.google.com/maps/dir/?api=1&destination=${crag.latitude},${crag.longitude}`} rel="noopener">Indicazioni (Google Maps)</a>{" "}
             <a href={`https://www.openstreetmap.org/directions?route=%3B${crag.latitude}%2C${crag.longitude}`} rel="noopener">Indicazioni (OSM)</a>{" "}

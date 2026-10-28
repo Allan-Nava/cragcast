@@ -161,7 +161,7 @@ class SiteDataTest {
         mvc.perform(get("/api/v1/ferrate/osm-way-10.json")).andExpect(status().isOk())
                 .andExpect(jsonPath("$.ferrata.name").value("Ferrata Test"));
         mvc.perform(get("/api/v1/ferrate/osm-way-20.json")).andExpect(status().isNotFound());
-        assertThat(site.latest().pages()).containsOnlyKeys("c/t-1.html");      // no share page for one yet
+        assertThat(site.latest().pages()).containsOnlyKeys("c/t-1.html", "c/osm-way-10.html");   // CG-119
     }
 
     @Test

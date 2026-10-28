@@ -337,7 +337,7 @@ group("via ferratas (CG-114)", () => {
     expect(names()).toEqual(["Parete Alfa — Si va", "Parete Beta — No"]);
   });
 
-  it("a link to a via ferrata opens its panel, with the line on checking on the spot and no share", async () => {
+  it("a link to a via ferrata opens its panel, with the line on checking on the spot and its share link", async () => {
     const d = withFerrate();
     for (const f of d.ferrate!) f.days[NEXT] = { ...f.days[DAY] };
     serve(d);
@@ -348,7 +348,7 @@ group("via ferratas (CG-114)", () => {
     expect(panel.textContent).toContain("difficoltà 2–3 (scala 0–6)");
     expect(panel.textContent).toContain("Il giudizio è una stima dal meteo previsto in cima");
     expect(panel.textContent).toContain("Disegnata in 2 tratti su OpenStreetMap");
-    expect(panel.querySelector(".share")).toBeNull();
+    expect(panel.querySelector(".share")).not.toBeNull();                // CG-119: c/<id>.html exists for it
   });
 
   it("a province or grade in a shared link never hides the via ferratas", async () => {

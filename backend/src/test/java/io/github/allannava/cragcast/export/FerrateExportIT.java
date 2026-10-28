@@ -83,7 +83,8 @@ class FerrateExportIT {
         try (var meteo = new FakeHttp(uri -> Answer.ok(forecasts(FakeHttp.query(uri).get("latitude").split(",").length, forTops(uri))));
              var avalanche = new FakeHttp(uri -> Answer.NOT_FOUND)) {
             int code = ConditionsExport.run(new String[] {dir.resolve("crags.json").toString(),
-                    dir.resolve("site/data/conditions.json").toString(), dir.resolve("site/api/v1").toString()},
+                    dir.resolve("site/data/conditions.json").toString(), dir.resolve("site/api/v1").toString(),
+                    dir.resolve("site").toString()},
                     Map.of("OPEN_METEO_URL", meteo.url(), "AVALANCHE_URL", avalanche.url()));
             assertThat(code).isZero();
             assertThat(meteo.asked()).hasSize(2);                 // the crags, then the tops
@@ -111,6 +112,9 @@ class FerrateExportIT {
         assertThat(index.path("ferrate").get(0).path("url").asString()).isEqualTo("ferrate/osm-way-10.json");
         assertThat(JSON.readTree(Files.readString(dir.resolve("site/api/v1/ferrate/osm-relation-20.json")))
                 .path("ferrata").path("scaleDropped").get(0).asString()).isEqualTo("2+");
+        // CG-119: a share page each, opening on the via ferratas.
+        assertThat(Files.readString(dir.resolve("site/c/osm-relation-20.html")))
+                .contains("Via ferrata Ferrata Temporale").contains("?k=ferrate&amp;crag=osm-relation-20");
     }
 
     @Test
