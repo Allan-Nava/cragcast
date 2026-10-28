@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
 /** Against PostgreSQL and the V4 migration; made-up crags. */
-@SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false"})
+@SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false", "cragcast.avalanche.archive.enabled=false"})
 @Import(TestcontainersConfigurationAccess.Config.class)
 @EnabledIf(DockerAvailable.CHECK)
 class HistoryWriterTests {

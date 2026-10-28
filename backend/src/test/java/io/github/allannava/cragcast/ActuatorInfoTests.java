@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 
 /** /actuator/info says which release runs: the image's CRAGCAST_VERSION, set by release.yml. */
-@SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false",
+@SpringBootTest(properties = {"cragcast.refresh.enabled=false", "cragcast.history.enabled=false", "cragcast.avalanche.archive.enabled=false",
         "CRAGCAST_VERSION=v2026.01.01"})
 @AutoConfigureMockMvc
 @Import(TestcontainersConfigurationAccess.Config.class)
