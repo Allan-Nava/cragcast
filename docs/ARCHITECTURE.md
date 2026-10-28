@@ -129,6 +129,7 @@ flowchart TB
 | Contract | Shape defined in | Rule |
 |---|---|---|
 | `data/crags.json` | `tools/osm_crags.py`; read by `ConditionsExport.Crag`, `CragImporter` and `SectorImporter` | ids (`osm-<type>-<id>`) are stable; changed only by a reviewed PR; `sectors` lists the OSM ids folded in as sectors (CG-104), each one in `osm-climbing.json` |
+| `data/ferrate.json` | `tools/osm_ferrate.py`; nothing reads it yet (CG-113 to CG-115) | the via ferratas, never crags: ids (`osm-relation-<id>` or the lowest `osm-way-<id>`) stable; `pieces`, `start` and `top` (with DEM elevation), `lengthM`, `scaleMin`/`scaleMax` (0–6 or null), `scaleDropped`; changed only by a reviewed PR ([ADR 0023](adr/0023-via-ferratas-from-openstreetmap.md)) |
 | `data/osm-climbing.json` | `tools/osm_crags.py` (`osm_object()`); read by `OsmObjectImporter` into `osm_object` (Flyway V5) | every object of the OSM query with its category; the table is replaced whole at startup, the file is the source (CG-103); with `crags.json`'s `sectors`, also into `sector` (Flyway V6, CG-104); the single routes, linked to their crag and sector (`crag`, `sector`, `linkedBy`), into `route` (Flyway V7, CG-105) |
 | `data/conditions.json` | `ConditionsExport.Output`; typed in `web/src/types.ts` | the page's input; Java and TypeScript change together; since CG-117 each crag carries `sectors` and `routes`, from `data/osm-climbing.json` (`OsmClimbing`) |
 | `/api/v1/` | `ConditionsExport.api()` | fields only added, never renamed or removed; a break goes to `/api/v2/` |
@@ -142,7 +143,7 @@ flowchart TB
 | `pages.yml` | hourly at :17, and on push to main touching the page, data or scorer | builds `site/` and deploys it |
 | `uptime.yml` | hourly at :47 | checkfleet on the page, data, API and TLS; fails when the data is over 150 minutes old |
 | `history.yml` | daily at 20:30 UTC | appends the day's verdicts to the `history` branch |
-| `crags-refresh.yml` | the 1st of the month, 05:23 UTC | rebuilds `data/crags.json`, `data/osm-climbing.json` and `docs/aspects-todo.md` from OSM; opens a PR when either data file changed |
+| `crags-refresh.yml` | the 1st of the month, 05:23 UTC | rebuilds `data/crags.json`, `data/osm-climbing.json` and `docs/aspects-todo.md` from OSM, and (CG-112) `data/ferrate.json` with `docs/ferrate-todo.md`; opens a PR when any data file changed |
 | `ci.yml` | every push to main and every PR | the jobs below |
 | `lighthouse.yml` | PRs touching the page, data or scorer | Lighthouse budgets on the built page with real data |
 | `image.yml` | push to main touching the backend, the page or the data they ship | the linux/arm64 images of the Spring service and (CG-110) the page with nginx, to GHCR |
@@ -170,4 +171,5 @@ its own workflow.
 - [`docs/adr/`](adr/README.md) — why each decision was taken.
 - [`BACKLOG.md`](../BACKLOG.md) — planned work by milestone (`CG-n`); [`ROADMAP.md`](../ROADMAP.md) is generated from it.
 - [`docs/aspects-todo.md`](aspects-todo.md) — the crags whose wall aspect is still to map on OSM.
+- [`docs/ferrate-todo.md`](ferrate-todo.md) — the via ferratas whose difficulty or name is still to map on OSM.
 - This file — how the parts fit; update it when a part, a contract or a workflow changes.

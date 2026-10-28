@@ -1,0 +1,961 @@
+{
+  "region": "Lombardia",
+  "source": "OpenStreetMap: highway=via_ferrata ways and route=via_ferrata relations (CG-112)",
+  "licence": "© OpenStreetMap contributors, ODbL 1.0 — https://www.openstreetmap.org/copyright",
+  "elevationSource": "Copernicus DEM GLO-90 (2021 release, 90 m), https://doi.org/10.5270/ESA-c5d3d65, through the Open-Meteo elevation API",
+  "ferrate": [
+    {
+      "id": "osm-way-112039865",
+      "name": "30° OSA - Ferrata del Corno Rat",
+      "sourceUrl": "https://www.openstreetmap.org/way/112039865",
+      "pieces": [
+        "https://www.openstreetmap.org/way/112039865"
+      ],
+      "start": {
+        "latitude": 45.853883,
+        "longitude": 9.340405,
+        "elevation": 765
+      },
+      "top": {
+        "latitude": 45.854263,
+        "longitude": 9.339109,
+        "elevation": 914
+      },
+      "lengthM": 176,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-782134897",
+      "name": "Antica via Campione Tignale",
+      "sourceUrl": "https://www.openstreetmap.org/way/782134897",
+      "pieces": [
+        "https://www.openstreetmap.org/way/782134897"
+      ],
+      "start": {
+        "latitude": 45.750727,
+        "longitude": 10.747749,
+        "elevation": 71
+      },
+      "top": {
+        "latitude": 45.752918,
+        "longitude": 10.746298,
+        "elevation": 295
+      },
+      "lengthM": 298,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-1484074420",
+      "name": "Ferrata \"Sottotenente Bellotti Agostino\"",
+      "sourceUrl": "https://www.openstreetmap.org/way/1484074420",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1484074420"
+      ],
+      "start": {
+        "latitude": 45.93317,
+        "longitude": 8.749332,
+        "elevation": 676
+      },
+      "top": {
+        "latitude": 45.93317,
+        "longitude": 8.749332,
+        "elevation": 676
+      },
+      "lengthM": 65,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-relation-19617343",
+      "name": "Ferrata Caspai - Variante difficile",
+      "sourceUrl": "https://www.openstreetmap.org/relation/19617343",
+      "pieces": [
+        "https://www.openstreetmap.org/way/548518918",
+        "https://www.openstreetmap.org/way/1460365725",
+        "https://www.openstreetmap.org/way/1460365726"
+      ],
+      "start": {
+        "latitude": 45.726772,
+        "longitude": 10.28214,
+        "elevation": 1215
+      },
+      "top": {
+        "latitude": 45.728611,
+        "longitude": 10.277539,
+        "elevation": 1340
+      },
+      "lengthM": 662,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-relation-19987751",
+      "name": "Ferrata Caspai - Variante facile",
+      "sourceUrl": "https://www.openstreetmap.org/relation/19987751",
+      "pieces": [
+        "https://www.openstreetmap.org/way/548518918",
+        "https://www.openstreetmap.org/way/1315660878",
+        "https://www.openstreetmap.org/way/1460365725"
+      ],
+      "start": {
+        "latitude": 45.726772,
+        "longitude": 10.28214,
+        "elevation": 1215
+      },
+      "top": {
+        "latitude": 45.728611,
+        "longitude": 10.277539,
+        "elevation": 1340
+      },
+      "lengthM": 882,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-1375357464",
+      "name": "Ferrata Corna delle Capre",
+      "sourceUrl": "https://www.openstreetmap.org/way/1375357464",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1375357464"
+      ],
+      "start": {
+        "latitude": 45.749519,
+        "longitude": 10.139387,
+        "elevation": 1060
+      },
+      "top": {
+        "latitude": 45.750252,
+        "longitude": 10.14154,
+        "elevation": 1196
+      },
+      "lengthM": 235,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-1095913702",
+      "name": "Ferrata Corno del Bene",
+      "sourceUrl": "https://www.openstreetmap.org/way/1095913702",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1095913702"
+      ],
+      "start": {
+        "latitude": 45.756399,
+        "longitude": 10.149627,
+        "elevation": 1517
+      },
+      "top": {
+        "latitude": 45.755445,
+        "longitude": 10.150537,
+        "elevation": 1591
+      },
+      "lengthM": 154,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "3+"
+      ]
+    },
+    {
+      "id": "osm-way-76605469",
+      "name": "Ferrata Cuore alla Croce",
+      "sourceUrl": "https://www.openstreetmap.org/way/76605469",
+      "pieces": [
+        "https://www.openstreetmap.org/way/76605469"
+      ],
+      "start": {
+        "latitude": 46.126209,
+        "longitude": 10.168942,
+        "elevation": 2215
+      },
+      "top": {
+        "latitude": 46.128114,
+        "longitude": 10.170258,
+        "elevation": 2314
+      },
+      "lengthM": 256,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-1300261877",
+      "name": "Ferrata degli Alpini",
+      "sourceUrl": "https://www.openstreetmap.org/way/1300261877",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1300261877"
+      ],
+      "start": {
+        "latitude": 46.306444,
+        "longitude": 10.575345,
+        "elevation": 2612
+      },
+      "top": {
+        "latitude": 46.300097,
+        "longitude": 10.578848,
+        "elevation": 2855
+      },
+      "lengthM": 2544,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-225592154",
+      "name": "Ferrata del centenario CAO al monte Grona",
+      "sourceUrl": "https://www.openstreetmap.org/way/225592154",
+      "pieces": [
+        "https://www.openstreetmap.org/way/225592154"
+      ],
+      "start": {
+        "latitude": 46.059106,
+        "longitude": 9.21351,
+        "elevation": 1409
+      },
+      "top": {
+        "latitude": 46.061903,
+        "longitude": 9.211246,
+        "elevation": 1693
+      },
+      "lengthM": 433,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-1548938454",
+      "name": "Ferrata del Cinzanino",
+      "sourceUrl": "https://www.openstreetmap.org/way/1548938454",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1548938454"
+      ],
+      "start": {
+        "latitude": 46.046623,
+        "longitude": 8.732745,
+        "elevation": 193
+      },
+      "top": {
+        "latitude": 46.046176,
+        "longitude": 8.733643,
+        "elevation": 243
+      },
+      "lengthM": 97,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "K2"
+      ]
+    },
+    {
+      "id": "osm-way-229179363",
+      "name": "Ferrata del Sasso dei Carbonari",
+      "sourceUrl": "https://www.openstreetmap.org/way/229179363",
+      "pieces": [
+        "https://www.openstreetmap.org/way/229179363",
+        "https://www.openstreetmap.org/way/1443046264",
+        "https://www.openstreetmap.org/way/1443046266",
+        "https://www.openstreetmap.org/way/1443046268"
+      ],
+      "start": {
+        "latitude": 45.948639,
+        "longitude": 9.375278,
+        "elevation": 1849
+      },
+      "top": {
+        "latitude": 45.948337,
+        "longitude": 9.3853,
+        "elevation": 2202
+      },
+      "lengthM": 624,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-368274115",
+      "name": "Ferrata Erminio Arosio",
+      "sourceUrl": "https://www.openstreetmap.org/way/368274115",
+      "pieces": [
+        "https://www.openstreetmap.org/way/368274115"
+      ],
+      "start": {
+        "latitude": 46.078838,
+        "longitude": 10.505709,
+        "elevation": 2338
+      },
+      "top": {
+        "latitude": 46.077962,
+        "longitude": 10.511762,
+        "elevation": 2739
+      },
+      "lengthM": 553,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-509637794",
+      "name": "Ferrata Fregio",
+      "sourceUrl": "https://www.openstreetmap.org/way/509637794",
+      "pieces": [
+        "https://www.openstreetmap.org/way/509637794"
+      ],
+      "start": {
+        "latitude": 45.776265,
+        "longitude": 10.525021,
+        "elevation": 456
+      },
+      "top": {
+        "latitude": 45.776011,
+        "longitude": 10.526568,
+        "elevation": 497
+      },
+      "lengthM": 177,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-952085458",
+      "name": "Ferrata Galleria di Morcate",
+      "sourceUrl": "https://www.openstreetmap.org/way/952085458",
+      "pieces": [
+        "https://www.openstreetmap.org/way/952085458"
+      ],
+      "start": {
+        "latitude": 46.026106,
+        "longitude": 9.28401,
+        "elevation": 197
+      },
+      "top": {
+        "latitude": 46.02533,
+        "longitude": 9.284296,
+        "elevation": 231
+      },
+      "lengthM": 231,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-509637795",
+      "name": "Ferrata Ginestre",
+      "sourceUrl": "https://www.openstreetmap.org/way/509637795",
+      "pieces": [
+        "https://www.openstreetmap.org/way/509637795"
+      ],
+      "start": {
+        "latitude": 45.776011,
+        "longitude": 10.526568,
+        "elevation": 497
+      },
+      "top": {
+        "latitude": 45.775569,
+        "longitude": 10.526815,
+        "elevation": 554
+      },
+      "lengthM": 77,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-321641702",
+      "name": "Ferrata Gruppo Alpini Lecco",
+      "sourceUrl": "https://www.openstreetmap.org/way/321641702",
+      "pieces": [
+        "https://www.openstreetmap.org/way/321641702"
+      ],
+      "start": {
+        "latitude": 45.874269,
+        "longitude": 9.394463,
+        "elevation": 720
+      },
+      "top": {
+        "latitude": 45.876042,
+        "longitude": 9.394354,
+        "elevation": 951
+      },
+      "lengthM": 295,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-relation-19340717",
+      "name": "Ferrata Minonzio",
+      "sourceUrl": "https://www.openstreetmap.org/relation/19340717",
+      "pieces": [
+        "https://www.openstreetmap.org/way/302588261"
+      ],
+      "start": {
+        "latitude": 45.954565,
+        "longitude": 9.516994,
+        "elevation": 2123
+      },
+      "top": {
+        "latitude": 45.956721,
+        "longitude": 9.517229,
+        "elevation": 2132
+      },
+      "lengthM": 320,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "2+"
+      ]
+    },
+    {
+      "id": "osm-way-697703186",
+      "name": "Ferrata Torrione Porro",
+      "sourceUrl": "https://www.openstreetmap.org/way/697703186",
+      "pieces": [
+        "https://www.openstreetmap.org/way/697703186"
+      ],
+      "start": {
+        "latitude": 46.298449,
+        "longitude": 9.782466,
+        "elevation": 2174
+      },
+      "top": {
+        "latitude": 46.299971,
+        "longitude": 9.784179,
+        "elevation": 2378
+      },
+      "lengthM": 266,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-1423075166",
+      "name": "Ferrata Vigneron",
+      "sourceUrl": "https://www.openstreetmap.org/way/1423075166",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1423075166"
+      ],
+      "start": {
+        "latitude": 46.258054,
+        "longitude": 9.85241,
+        "elevation": 978
+      },
+      "top": {
+        "latitude": 46.257915,
+        "longitude": 9.854385,
+        "elevation": 1176
+      },
+      "lengthM": 214,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-1548541963",
+      "name": "percorso alpinistico del Pointisel",
+      "sourceUrl": "https://www.openstreetmap.org/way/1548541963",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1548541963",
+        "https://www.openstreetmap.org/way/1548541964",
+        "https://www.openstreetmap.org/way/1548541965"
+      ],
+      "start": {
+        "latitude": 46.034119,
+        "longitude": 9.316146,
+        "elevation": 322
+      },
+      "top": {
+        "latitude": 46.032222,
+        "longitude": 9.31854,
+        "elevation": 353
+      },
+      "lengthM": 556,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-439071219",
+      "name": "Ponte tibetano",
+      "sourceUrl": "https://www.openstreetmap.org/way/439071219",
+      "pieces": [
+        "https://www.openstreetmap.org/way/439071219"
+      ],
+      "start": {
+        "latitude": 45.69068,
+        "longitude": 10.313038,
+        "elevation": 448
+      },
+      "top": {
+        "latitude": 45.690673,
+        "longitude": 10.31222,
+        "elevation": 471
+      },
+      "lengthM": 64,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-943577492",
+      "name": "sentiero attrezzato",
+      "sourceUrl": "https://www.openstreetmap.org/way/943577492",
+      "pieces": [
+        "https://www.openstreetmap.org/way/943577492"
+      ],
+      "start": {
+        "latitude": 46.011676,
+        "longitude": 9.34201,
+        "elevation": 1183
+      },
+      "top": {
+        "latitude": 46.010527,
+        "longitude": 9.339891,
+        "elevation": 1342
+      },
+      "lengthM": 285,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-625598344",
+      "name": "Sentiero Attrezzato Pianazzola-Dalò",
+      "sourceUrl": "https://www.openstreetmap.org/way/625598344",
+      "pieces": [
+        "https://www.openstreetmap.org/way/625598344",
+        "https://www.openstreetmap.org/way/625598349"
+      ],
+      "start": {
+        "latitude": 46.327643,
+        "longitude": 9.389905,
+        "elevation": 948
+      },
+      "top": {
+        "latitude": 46.328834,
+        "longitude": 9.388643,
+        "elevation": 1070
+      },
+      "lengthM": 325,
+      "scaleMin": 0,
+      "scaleMax": 0,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-854968489",
+      "name": "Sentiero discesa antimedale",
+      "sourceUrl": "https://www.openstreetmap.org/way/854968489",
+      "pieces": [
+        "https://www.openstreetmap.org/way/854968489"
+      ],
+      "start": {
+        "latitude": 45.87447,
+        "longitude": 9.390837,
+        "elevation": 825
+      },
+      "top": {
+        "latitude": 45.874454,
+        "longitude": 9.391967,
+        "elevation": 834
+      },
+      "lengthM": 126,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-708413990",
+      "name": "Spigolo della Bandiera",
+      "sourceUrl": "https://www.openstreetmap.org/way/708413990",
+      "pieces": [
+        "https://www.openstreetmap.org/way/708413990"
+      ],
+      "start": {
+        "latitude": 45.676094,
+        "longitude": 10.557822,
+        "elevation": 1093
+      },
+      "top": {
+        "latitude": 45.676755,
+        "longitude": 10.557035,
+        "elevation": 1141
+      },
+      "lengthM": 176,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "3+"
+      ]
+    },
+    {
+      "id": "osm-way-363505232",
+      "name": "Stretta di Luina",
+      "sourceUrl": "https://www.openstreetmap.org/way/363505232",
+      "pieces": [
+        "https://www.openstreetmap.org/way/363505232"
+      ],
+      "start": {
+        "latitude": 45.690762,
+        "longitude": 10.303695,
+        "elevation": 503
+      },
+      "top": {
+        "latitude": 45.692521,
+        "longitude": 10.305725,
+        "elevation": 545
+      },
+      "lengthM": 271,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-1068922454",
+      "name": "Via Ferrata \"Gianni Succetti“",
+      "sourceUrl": "https://www.openstreetmap.org/way/1068922454",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1068922454"
+      ],
+      "start": {
+        "latitude": 46.306848,
+        "longitude": 9.378228,
+        "elevation": 430
+      },
+      "top": {
+        "latitude": 46.307324,
+        "longitude": 9.376874,
+        "elevation": 469
+      },
+      "lengthM": 178,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-481349717",
+      "name": "Via Ferrata Angelino",
+      "sourceUrl": "https://www.openstreetmap.org/way/481349717",
+      "pieces": [
+        "https://www.openstreetmap.org/way/481349717"
+      ],
+      "start": {
+        "latitude": 45.934671,
+        "longitude": 9.021113,
+        "elevation": 1614
+      },
+      "top": {
+        "latitude": 45.933781,
+        "longitude": 9.020836,
+        "elevation": 1642
+      },
+      "lengthM": 122,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-178777126",
+      "name": "Via Ferrata Corna Trentapassi",
+      "sourceUrl": "https://www.openstreetmap.org/way/178777126",
+      "pieces": [
+        "https://www.openstreetmap.org/way/178777126"
+      ],
+      "start": {
+        "latitude": 45.776032,
+        "longitude": 10.082846,
+        "elevation": 833
+      },
+      "top": {
+        "latitude": 45.770761,
+        "longitude": 10.085626,
+        "elevation": 1215
+      },
+      "lengthM": 885,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-430049572",
+      "name": "Via Ferrata Crènch",
+      "sourceUrl": "https://www.openstreetmap.org/way/430049572",
+      "pieces": [
+        "https://www.openstreetmap.org/way/430049572"
+      ],
+      "start": {
+        "latitude": 45.747255,
+        "longitude": 10.487694,
+        "elevation": 489
+      },
+      "top": {
+        "latitude": 45.747854,
+        "longitude": 10.48919,
+        "elevation": 571
+      },
+      "lengthM": 173,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "2+"
+      ]
+    },
+    {
+      "id": "osm-way-322269334",
+      "name": "Via Ferrata De Franco Silvano",
+      "sourceUrl": "https://www.openstreetmap.org/way/322269334",
+      "pieces": [
+        "https://www.openstreetmap.org/way/322269334"
+      ],
+      "start": {
+        "latitude": 45.856473,
+        "longitude": 9.467272,
+        "elevation": 1692
+      },
+      "top": {
+        "latitude": 45.857766,
+        "longitude": 9.468356,
+        "elevation": 1832
+      },
+      "lengthM": 325,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-444479481",
+      "name": "Via Ferrata del Centenario",
+      "sourceUrl": "https://www.openstreetmap.org/way/444479481",
+      "pieces": [
+        "https://www.openstreetmap.org/way/444479481"
+      ],
+      "start": {
+        "latitude": 45.851509,
+        "longitude": 9.461439,
+        "elevation": 1300
+      },
+      "top": {
+        "latitude": 45.851635,
+        "longitude": 9.463068,
+        "elevation": 1426
+      },
+      "lengthM": 150,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "2+"
+      ]
+    },
+    {
+      "id": "osm-relation-17637064",
+      "name": "Via Ferrata Gamma 1 - Pizzo d`Erna",
+      "sourceUrl": "https://www.openstreetmap.org/relation/17637064",
+      "pieces": [
+        "https://www.openstreetmap.org/way/221599503",
+        "https://www.openstreetmap.org/way/1095915106"
+      ],
+      "start": {
+        "latitude": 45.860027,
+        "longitude": 9.439003,
+        "elevation": 774
+      },
+      "top": {
+        "latitude": 45.862028,
+        "longitude": 9.444735,
+        "elevation": 1237
+      },
+      "lengthM": 752,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-444479472",
+      "name": "Via Ferrata Gamma 2",
+      "sourceUrl": "https://www.openstreetmap.org/way/444479472",
+      "pieces": [
+        "https://www.openstreetmap.org/way/444479472"
+      ],
+      "start": {
+        "latitude": 45.858446,
+        "longitude": 9.460555,
+        "elevation": 1350
+      },
+      "top": {
+        "latitude": 45.861529,
+        "longitude": 9.464031,
+        "elevation": 1671
+      },
+      "lengthM": 798,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-835503961",
+      "name": "Via Ferrata Monte Ocone",
+      "sourceUrl": "https://www.openstreetmap.org/way/835503961",
+      "pieces": [
+        "https://www.openstreetmap.org/way/835503961",
+        "https://www.openstreetmap.org/way/840117933",
+        "https://www.openstreetmap.org/way/1052961608"
+      ],
+      "start": {
+        "latitude": 45.822411,
+        "longitude": 9.47978,
+        "elevation": 1004
+      },
+      "top": {
+        "latitude": 45.820602,
+        "longitude": 9.475101,
+        "elevation": 1327
+      },
+      "lengthM": 592,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-1019510643",
+      "name": "Via Ferrata Nido dei Santacroce",
+      "sourceUrl": "https://www.openstreetmap.org/way/1019510643",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1019510643",
+        "https://www.openstreetmap.org/way/1019510644",
+        "https://www.openstreetmap.org/way/1019510645"
+      ],
+      "start": {
+        "latitude": 45.835426,
+        "longitude": 9.693919,
+        "elevation": 890
+      },
+      "top": {
+        "latitude": 45.834078,
+        "longitude": 9.696258,
+        "elevation": 1021
+      },
+      "lengthM": 306,
+      "scaleMin": 0,
+      "scaleMax": 0,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-1434381760",
+      "name": "Via Ferrata Pedezzina",
+      "sourceUrl": "https://www.openstreetmap.org/way/1434381760",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1434381760"
+      ],
+      "start": {
+        "latitude": 45.835949,
+        "longitude": 9.692316,
+        "elevation": 846
+      },
+      "top": {
+        "latitude": 45.83567,
+        "longitude": 9.692227,
+        "elevation": 891
+      },
+      "lengthM": 100,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-125239627",
+      "name": "Via Ferrata Pesciola",
+      "sourceUrl": "https://www.openstreetmap.org/way/125239627",
+      "pieces": [
+        "https://www.openstreetmap.org/way/125239627"
+      ],
+      "start": {
+        "latitude": 45.951648,
+        "longitude": 9.510268,
+        "elevation": 1771
+      },
+      "top": {
+        "latitude": 45.953273,
+        "longitude": 9.512647,
+        "elevation": 1999
+      },
+      "lengthM": 266,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-625598339",
+      "name": "Via Ferrata Pietro Biasini al Sench di Dalò",
+      "sourceUrl": "https://www.openstreetmap.org/way/625598339",
+      "pieces": [
+        "https://www.openstreetmap.org/way/625598339"
+      ],
+      "start": {
+        "latitude": 46.326838,
+        "longitude": 9.388805,
+        "elevation": 811
+      },
+      "top": {
+        "latitude": 46.327766,
+        "longitude": 9.388846,
+        "elevation": 960
+      },
+      "lengthM": 186,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "3+"
+      ]
+    },
+    {
+      "id": "osm-way-959556557",
+      "name": "Via Ferrata Simone Contessi",
+      "sourceUrl": "https://www.openstreetmap.org/way/959556557",
+      "pieces": [
+        "https://www.openstreetmap.org/way/959556557"
+      ],
+      "start": {
+        "latitude": 45.880601,
+        "longitude": 9.441426,
+        "elevation": 962
+      },
+      "top": {
+        "latitude": 45.884223,
+        "longitude": 9.442811,
+        "elevation": 1281
+      },
+      "lengthM": 687,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": []
+    },
+    {
+      "id": "osm-way-299258912",
+      "name": "Via Ferrata Terzulli",
+      "sourceUrl": "https://www.openstreetmap.org/way/299258912",
+      "pieces": [
+        "https://www.openstreetmap.org/way/299258912"
+      ],
+      "start": {
+        "latitude": 46.147967,
+        "longitude": 10.488748,
+        "elevation": 2953
+      },
+      "top": {
+        "latitude": 46.147692,
+        "longitude": 10.491853,
+        "elevation": 3235
+      },
+      "lengthM": 343,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": []
+    }
+  ]
+}
