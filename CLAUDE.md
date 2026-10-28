@@ -202,6 +202,11 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   filter scopes the list and the summary like the province does.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
   never in the URL, never in a request, never in storage.
+- **The hourly forecasts are archived, never rewritten** (CG-106, ADR 0021): `ForecastArchive`
+  appends every crag-day of each successful refresh to `crag_forecast`, keyed by the refresh's
+  `fetched_at`, from the `ForecastsRefreshed` forecasts — never a second Open-Meteo request.
+  Insert only (`ON CONFLICT DO NOTHING`); a failure is logged and never thrown at the event, which
+  the page's data shares. A retention rule, when one comes, drops whole old days.
 - **History lives on the `history` branch, never on main** (CG-34). `history.yml` appends the
   day's rows each evening through a worktree; a rerun replaces the day's rows. Its CSV columns
   are a contract like the API: add columns at the end, never rename or drop one. The Spring

@@ -6,6 +6,10 @@ keeps 14 days ([ADR 0019](adr/0019-backup-on-a-usb-disk.md)). It writes only to 
 carries the file `.cragcast-backup-target`, so a disk that failed to mount never fills the SD
 card instead.
 
+Since CG-106 the dump is the only copy of `crag_forecast`, every hourly forecast the Pi has
+made ([ADR 0021](adr/0021-hourly-forecasts-archived.md)); the other tables can be rebuilt from
+the repository and the `history` branch.
+
 ## Set up the disk, once
 
 On the Pi, with the USB disk plugged in (a whole disk for the backups; formatting erases it).

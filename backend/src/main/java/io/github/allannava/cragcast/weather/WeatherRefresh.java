@@ -39,6 +39,8 @@ public class WeatherRefresh {
     private final ApplicationEventPublisher events;
     /** The forecasts of the last refresh, by crag slug, for {@link ForecastsRefreshed}. */
     private Map<String, HourlyForecast> last = Map.of();
+    /** When the last refresh ran: crag_weather's fetched_at, and the archive's (CG-106). */
+    private Instant lastAt;
 
     public WeatherRefresh(CragRepository crags, CragWeatherRepository weather, OpenMeteoClient openMeteo, Clock clock,
                           ApplicationEventPublisher events) {
@@ -70,7 +72,7 @@ public class WeatherRefresh {
         }
         try {
             // CG-110: outside the refresh's transaction; a failure there leaves the table as written.
-            events.publishEvent(new ForecastsRefreshed(last, clock.instant()));
+            events.publishEvent(new ForecastsRefreshed(last, lastAt));
         } catch (RuntimeException e) {
             log.warn("page data not rebuilt, keeping the previous one: {}", e.toString());
         }
@@ -108,6 +110,7 @@ public class WeatherRefresh {
             }
         }
         last = bySlug;
+        lastAt = now;
         return rows;
     }
 }
