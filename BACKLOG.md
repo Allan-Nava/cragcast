@@ -475,9 +475,12 @@ costs more. An ADR comes with CG-112.
   `FerrataClient` (the tops in one request, with their elevation); "no" for a storm hour, CAPE
   from 1000, rain over 1 mm, fresh snow, rain then frost, gusts over 60 km/h. Nothing calls it
   until CG-114/115. <!-- cg: prio=med size=M labels=backend ver=main -->
-- [ ] **CG-114 — On the page**: "Falesie / Ferrate" to switch, the type said in words and by its
+- [x] **CG-114 — On the page**: "Falesie / Ferrate" to switch, the type said in words and by its
   own mark — never by colour alone, and the S/F/N marks keep meaning the verdict (CG-21); the
-  difficulty shown as OSM gives it; a line saying conditions are checked on the spot. <!-- cg: prio=med size=M labels=frontend -->
+  difficulty shown as OSM gives it; a line saying conditions are checked on the spot. Done ([ADR 0025](docs/adr/0025-via-ferratas-on-the-page.md)):
+  `FerrateExport` scores them into `conditions.json`'s `ferrate`; a "Falesie / Vie ferrate" switch
+  (`?k=ferrate`), a peak beside the verdict's mark, the difficulty, length, start and top, and
+  the line on checking on the spot in the summary, panel and popup. <!-- cg: prio=med size=M labels=frontend ver=main -->
 - [ ] **CG-115 — In the API and on the Pi**: the via ferratas as additive fields or files in
   `/api/v1/` (CG-32), the README's API section with them; served by the Pi's backend from the
   forecasts it fetches (ADR 0018), and archived with the crags' once CG-106 is in. <!-- cg: prio=low size=S labels=backend -->

@@ -39,6 +39,23 @@ export const conditions = (crags = CRAGS, days = DAYS, generatedAt = new Date())
   cragData: "test", weatherData: "test", elevationData: "test", crags,
 });
 
+/** CG-114: two made-up via ferratas, one "no" tomorrow for a thunderstorm. */
+export const FERRATE = [
+  { id: "osm-way-901", name: "Ferrata Finta", start: { latitude: 45.9, longitude: 9.45, elevation: 900 },
+    top: { latitude: 45.91, longitude: 9.46, elevation: 1300 }, lengthM: 450, scaleMin: 2, scaleMax: 3, scaleDropped: [],
+    pieces: ["https://www.openstreetmap.org/way/901"], verdicts: ["GO", "GO", "MAYBE"] as V[] },
+  { id: "osm-relation-902", name: "Ferrata Inventata", start: { latitude: 46.05, longitude: 9.6, elevation: 1500 },
+    top: { latitude: 46.06, longitude: 9.61, elevation: 2100 }, lengthM: 800, scaleMin: null, scaleMax: null,
+    scaleDropped: ["2+"], pieces: [], verdicts: ["MAYBE", "NO_GO", "GO"] as V[] },
+].map(({ verdicts, ...f }) => {
+  const c = crag(f.id, f.name, f.start.latitude, f.start.longitude, ["", "", ""], verdicts);
+  for (const d of Object.values(c.days) as { verdict: V; reasons: string[] }[]) {
+    d.reasons = d.verdict === "NO_GO" ? ["thunderstorm forecast"] : d.verdict === "MAYBE" ? ["cold at the top"] : [];
+  }
+  return { ...f, latitude: f.start.latitude, longitude: f.start.longitude, sourceUrl: c.sourceUrl.replace("node", f.id.split("-")[1]),
+           days: c.days };
+});
+
 /** CG-63: fixed days for the visual snapshots, so the weekdays never move. */
 export const FIXED_DAYS = ["2026-10-16", "2026-10-17", "2026-10-18"];
 export const fixedCrags = () => build(FIXED_DAYS);

@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { AFTER, CRAGS, MANY, TOMORROW, conditions, expect, listNames, openFilters, test } from "./fixtures";
+import { AFTER, CRAGS, FERRATE, MANY, TOMORROW, conditions, expect, listNames, openFilters, test } from "./fixtures";
 
 test.describe("the page", () => {
   test("loads tomorrow's verdicts, ordered by verdict then name", async ({ page }) => {
@@ -159,4 +159,33 @@ test("CG-117: a crag's sectors and routes open in its panel, without overflowing
   expect(results.violations.filter(v => v.impact === "serious" || v.impact === "critical").map(v => v.id)).toEqual([]);
   // The table may scroll inside its box, never the page sideways.
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test("CG-114: the via ferratas behind their own switch, with their own mark, in both themes without axe findings", async ({ page }) => {
+  await page.route("**/data/conditions.json*", r => r.fulfill({ json: { ...conditions(), ferrate: FERRATE } }));
+  await page.goto("./");
+  await expect(page.locator("#count")).toHaveText("6 falesie");
+  await page.getByRole("button", { name: "Vie ferrate" }).click();
+  await expect(page).toHaveURL(/k=ferrate/);
+  await expect(page.locator("#count")).toHaveText("2 vie ferrate");
+  await expect.poll(() => listNames(page)).toEqual(["Ferrata Finta — Si va", "Ferrata Inventata — No"]);
+  await expect(page.locator("p.note")).toContainText("si verificano sempre sul posto");
+  await expect(page.locator("#list .peak")).toHaveCount(2);
+  for (const colorScheme of ["dark", "light"] as const) {
+    await page.emulateMedia({ colorScheme });
+    const results = await new AxeBuilder({ page }).exclude(".leaflet-control-attribution").analyze();
+    expect(results.violations.filter(v => v.impact === "serious" || v.impact === "critical").map(v => v.id)).toEqual([]);
+  }
+  await page.locator("#list li .more").last().click();
+  const panel = page.locator("dialog#detail");
+  await expect(panel).toBeVisible();
+  await expect(panel.locator("h2")).toContainText("Via ferrata Ferrata Inventata — No");
+  await expect(panel).toContainText("difficoltà non mappata su OpenStreetMap");
+  await expect(panel).toContainText("«2+»");
+  await expect(panel).toContainText("temporale previsto");
+  const results = await new AxeBuilder({ page }).include("dialog#detail").analyze();
+  expect(results.violations.filter(v => v.impact === "serious" || v.impact === "critical").map(v => v.id)).toEqual([]);
+  await panel.getByRole("button", { name: "Chiudi" }).click();
+  await page.getByRole("button", { name: "Falesie" }).click();
+  await expect(page.locator("#count")).toHaveText("6 falesie");
 });

@@ -47,14 +47,17 @@ export function CragList({ crags, day, days = [], onDay, distance, onOpen, onDet
               <h2>
                 {/* the verdict is in the text next to the mark */}
                 <span className={"mark small " + info.verdict.toLowerCase()} aria-hidden="true"><b>{LETTER[info.verdict]}</b></span>
+                {/* CG-114: a via ferrata's own mark beside the verdict's, and the word in the meta line */}
+                {crag.ferrata && <i className="peak" aria-hidden="true" />}
                 {`${crag.name} — ${LABEL[info.verdict]}`}
                 {distance && <span className="km">{`${Math.round(distance(crag))} km`}</span>}
               </h2>
               {onFavourite && <Star name={crag.name} on={!!favourites?.has(crag.id)} onToggle={() => onFavourite(crag.id)} />}
             </div>
             <p className="meta">
+              {crag.ferrata && <span className="tag kind-tag">via ferrata</span>}
               {[place(crag), aspectShort(crag)].filter(Boolean).join(" · ")}
-              {!crag.aspect && <>{place(crag) ? " · " : ""}<span className="tag" title="Esposizione non mappata su OpenStreetMap: valutata come parete in ombra">
+              {!crag.aspect && !crag.ferrata && <>{place(crag) ? " · " : ""}<span className="tag" title="Esposizione non mappata su OpenStreetMap: valutata come parete in ombra">
                 esposizione ?<span className="sr-only"> (non mappata: valutata come parete in ombra)</span></span></>}
               {info.reasons.length > 0 && ` · ${info.reasons.join(" · ")}`}
               {details.length > 0 && <> · <span className="details">{details.join(" · ")}</span></>}

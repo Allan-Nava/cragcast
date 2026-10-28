@@ -34,6 +34,7 @@ interface Props {
 export function Controls({ days, provinces, state, near, active = 0, onDay, onQuery, onToggle, onProvince, onNear,
                           favourites = 0, onlyFavourites = false, onOnlyFavourites,
                           onGrade, onOrder, byDistance = false }: Props) {
+  const ferrate = state.kind === "ferrate";
   // CG-53: on a phone the filters fold behind one button; from 600 px they stay in the row and
   // the button is hidden (style.css).
   const [open, setOpen] = useState(false);
@@ -49,8 +50,8 @@ export function Controls({ days, provinces, state, near, active = 0, onDay, onQu
       </nav>
       <div className="controls">
         <label className="search">
-          <span className="sr-only">Cerca una falesia</span>
-          <input id="q" type="search" placeholder="Cerca una falesia…" autoComplete="off" spellCheck={false}
+          <span className="sr-only">{ferrate ? "Cerca una via ferrata" : "Cerca una falesia"}</span>
+          <input id="q" type="search" placeholder={ferrate ? "Cerca una via ferrata…" : "Cerca una falesia…"} autoComplete="off" spellCheck={false}
                  value={state.q} onChange={e => onQuery(e.target.value)} />
         </label>
         <button type="button" className="filters-toggle" aria-expanded={open} aria-controls="filters"
@@ -65,6 +66,8 @@ export function Controls({ days, provinces, state, near, active = 0, onDay, onQu
             </button>
           ))}
         </div>
+        {/* CG-114: a via ferrata has no province or grades from OSM: those filters are for crags. */}
+        {!ferrate && <>
         <label className="area">
           <span className="sr-only">Provincia</span>
           <select id="province" value={state.province} onChange={e => onProvince(e.target.value)}>
@@ -81,6 +84,7 @@ export function Controls({ days, provinces, state, near, active = 0, onDay, onQu
             {GRADE_CHOICES.map(g => <option key={gradeParam(g)} value={gradeParam(g)}>{gradeLabel(g)}</option>)}
           </select>
         </label>
+        </>}
         <label className="area">
           <span className="sr-only">Ordine</span>
           <select id="order" value={byDistance ? "distance" : state.order}

@@ -87,6 +87,12 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   the avalanche problems, and a link to the official bulletin. Only the crags inside one of
   the bulletin's micro-regions get it — 119 of 220; the low crags lie outside them. The verdict
   does not change: it is about the rock, the bulletin about the approach and winter routes;
+- the **via ferratas** (CG-114): a "Falesie / Vie ferrate" switch shows them instead of the
+  crags, each with its own verdict read at the top — a thunderstorm is never "si va" — and a
+  peak beside its mark; the difficulty as OpenStreetMap gives it (`via_ferrata_scale` 0–6, or
+  "non mappata"), the length, the start and top elevations, the top's weather and hours; and,
+  everywhere, that conditions are checked on the spot
+  ([ADR 0025](docs/adr/0025-via-ferratas-on-the-page.md));
 - **installable** on a phone's home screen (a web app manifest and a service worker): it shows
   the last data offline and says how old it is when it is more than 3 hours old;
 - **live**: the footer says how long ago the data was made ("aggiornato 12 min fa") and keeps
@@ -168,7 +174,7 @@ How the parts fit, with diagrams: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 | `docs/pi-backup.md` | CG-109: the Pi's nightly `pg_dump` onto a USB disk, 14 days kept, never onto the SD card; how to set up the disk and how to restore, tried ([ADR 0019](docs/adr/0019-backup-on-a-usb-disk.md)) |
 | `web/Dockerfile`, `web/nginx.conf`, `backend/.../export/SiteData.java` | CG-110: the page on the Pi, next to GitHub Pages — the same build behind nginx, its data served live by the Spring service from the forecasts it already fetched, at Pages' paths ([ADR 0018](docs/adr/0018-the-pi-serves-the-page-from-its-backend.md)) |
 | `backend/.../history/` | CG-101: `HistorySync` copies the `history` branch's CSVs into `crag_history` — at startup and at 23:50 and 05:50, each day replaced whole |
-| `backend/.../export/ConditionsExport.java` | the serverless version: hourly scores to `site/data/conditions.json` and the static API in `site/api/v1/`, on GitHub Pages |
+| `backend/.../export/ConditionsExport.java` | the serverless version: hourly scores to `site/data/conditions.json` and the static API in `site/api/v1/`, on GitHub Pages; with `FerrateExport` (CG-114) the via ferratas of `data/ferrate.json`, scored at their tops, under `ferrate` |
 | `web/` | the page: React 19, TypeScript, Vite, Leaflet; `npm test` runs the Vitest unit and component tests; `npm run build` writes `site/` (generated, never committed) |
 | `backend/.../export/SharePages.java` | CG-45: one static page per crag in `site/c/`, rebuilt with the data, whose Open Graph tags carry the name, the next day's verdict and weather; it forwards a browser to `?crag=<id>`. The preview image is `assets/social-preview.png`, published as `og.png` |
 | `.github/workflows/ci.yml` | on every push and PR: actionlint on the workflows and shellcheck on the scripts, backend build and tests (Testcontainers on a real PostgreSQL), the page's types, tests and build, the page end to end in Chromium (Playwright, desktop and phone, axe), the tools' tests (every script, network paths against a fake local server) — each with its coverage in the run summary and a floor (backend 95%, page 99% of lines, tools 97%) that fails the job below it, Terraform fmt and validate, backlog check |

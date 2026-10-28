@@ -15,6 +15,8 @@ import { Summary } from "./components/Summary";
 import { BackToTop } from "./components/BackToTop";
 import { loadFavourites, loadOnly, saveFavourites, saveOnly } from "./lib/favourites";
 import { hasGrades, inGrade } from "./lib/grades";
+import { ON_THE_SPOT, asPlace } from "./lib/ferrate";
+import type { Kind } from "./lib/state";
 
 /** The crags matching search, province, area, (CG-46) favourites and (CG-61) grades — every
  * verdict (CG-39 counts them). */
@@ -23,9 +25,10 @@ export function matching(crags: Crag[], s: ViewState, favourites: Set<string> | 
   return crags
     .filter(c => !favourites || favourites.has(c.id))
     .filter(c => !q || fold(c.name).includes(q) || fold(place(c)).includes(q))
-    .filter(c => !s.province || c.provinceCode === s.province)
+    // CG-114: province and grades are the crags' filters; a via ferrata has neither from OSM.
+    .filter(c => !s.province || !!c.ferrata || c.provinceCode === s.province)
     .filter(c => !s.area || inArea(s.area, c.latitude, c.longitude))
-    .filter(c => !s.grade || inGrade(c.details, s.grade));
+    .filter(c => !s.grade || !!c.ferrata || inGrade(c.details, s.grade));
 }
 
 /** CG-61: how many crags the grade filter leaves out only because OSM has no grade for them. */
@@ -143,11 +146,16 @@ export function App() {
       .map(([code, name]) => ({ code, name, count: data.crags.filter(c => c.provinceCode === code).length }));
   }, [data]);
 
+  // CG-114: the via ferratas as places; the view shows them or the crags, never both.
+  const ferrate = useMemo(() => (data?.ferrate ?? []).map(asPlace), [data]);
+  const kind: Kind = view?.kind === "ferrate" && ferrate.length > 0 ? "ferrate" : "crags";
+  const places = useMemo(() => (kind === "ferrate" ? ferrate : data?.crags ?? []), [kind, ferrate, data]);
+
   const distance = useMemo(() => here ? (c: Crag) => km(here.lat, here.lon, c.latitude, c.longitude) : null, [here]);
   const sortDistance = byDistance ? distance : null;
-  const shown = useMemo(() => data && view ? visible(data.crags, view, sortDistance, scope) : [], [data, view, sortDistance, scope]);
+  const shown = useMemo(() => data && view ? visible(places, view, sortDistance, scope) : [], [data, view, places, sortDistance, scope]);
   // CG-44: the open panel lives in the URL, so a link opens on it and back closes it.
-  const detail = data && view?.crag ? data.crags.find(c => c.id === view.crag) ?? null : null;
+  const detail = data && view?.crag ? [...data.crags, ...ferrate].find(c => c.id === view.crag) ?? null : null;
   const viewRef = useRef(view);
   viewRef.current = view;
   const openDetail = useCallback((c: Crag) => {
@@ -203,10 +211,11 @@ export function App() {
     go({ ...view, verdicts }, true);
   };
 
-  const total = data?.crags.length ?? 0;
+  const total = places.length;
+  const noun = kind === "ferrate" ? "vie ferrate" : "falesie";
   const active = view ? [view.verdicts.size < 3, !!view.province, !!view.grade, !!view.area, !!here, onlyFavourites].filter(Boolean).length : 0;
-  const unknown = data && view ? ungraded(data.crags, view, scope) : 0;
-  const count = notice ?? (!data ? (error ? "" : "Carico le falesie…") : (shown.length === total ? `${shown.length} falesie` : `${shown.length} di ${total} falesie`)
+  const unknown = data && view ? ungraded(places, view, scope) : 0;
+  const count = notice ?? (!data ? (error ? "" : "Carico le falesie…") : (shown.length === total ? `${shown.length} ${noun}` : `${shown.length} di ${total} ${noun}`)
     + (unknown ? ` · ${unknown} senza gradi su OpenStreetMap, escluse` : ""));
 
   return (
@@ -218,8 +227,19 @@ export function App() {
           <p>Si arrampica domani? Le falesie della Lombardia, dal meteo e dall'esposizione della parete.</p>
         </div>
       </header>
-      <Controls days={data?.days ?? []} provinces={provinces}
-                state={view ?? { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null, show: "list", grade: null, order: "verdict" }}
+      {/* CG-114: crags or via ferratas, said in words; only when the data has via ferratas. */}
+      {view && ferrate.length > 0 && (
+        <div className="kind" role="group" aria-label="Cosa mostrare">
+          {(["crags", "ferrate"] as const).map(k => (
+            <button key={k} type="button" aria-pressed={kind === k}
+                    onClick={() => kind !== k && go({ ...view, kind: k, province: "", grade: null, crag: null }, true)}>
+              {k === "crags" ? "Falesie" : "Vie ferrate"}
+            </button>
+          ))}
+        </div>
+      )}
+      <Controls days={data?.days ?? []} provinces={kind === "ferrate" ? [] : provinces}
+                state={view ? { ...view, kind } : { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null, show: "list", grade: null, order: "verdict", kind: "crags" }}
                 byDistance={byDistance && !!here}
                 near={asking ? "asking" : here ? "on" : "off"} active={active}
                              onDay={day => view && go({ ...view, day }, true)}
@@ -236,8 +256,9 @@ export function App() {
                 favourites={favourites.size} onlyFavourites={onlyFavourites}
                 onOnlyFavourites={() => setOnlyFavourites(on => { saveOnly(!on); return !on; })} />
       {data && view
-        ? <Summary crags={matching(data.crags, view, scope)} day={view.day} index={data.days.indexOf(view.day)} count={count} />
+        ? <Summary crags={matching(places, view, scope)} day={view.day} index={data.days.indexOf(view.day)} count={count} />
         : <p className={error ? "summary" : "summary ghost"}><span id="count" aria-live="polite">{count}</span></p>}
+      {kind === "ferrate" && <p className="note">{ON_THE_SPOT}</p>}
       {/* CG-54: on a phone, the map or the list; hidden from 600 px, where both show. */}
       <div className="show" role="group" aria-label="Vista">
         {(["list", "map"] as const).map(s => (
@@ -254,7 +275,8 @@ export function App() {
           ? <CragList crags={shown} day={view.day} days={data.days} onDay={day => go({ ...view, day }, true)}
                       distance={distance} chosen={chosen} favourites={favourites} onFavourite={toggleFavourite}
                       empty={onlyFavourites && favourites.size === 0
-                        ? "Nessuna preferita: tocca la stella di una falesia per aggiungerla." : undefined}
+                        ? "Nessuna preferita: tocca la stella di una falesia per aggiungerla."
+                        : kind === "ferrate" ? "Nessuna via ferrata corrisponde alla ricerca." : undefined}
                       onOpen={c => {
                         setChosen(c.id);
                         // On a phone the list hides the map: show it, then fly (CG-54).
