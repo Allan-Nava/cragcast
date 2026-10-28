@@ -371,14 +371,14 @@ group("regions (CG-43)", () => {
     return { ...d, crags: [...d.crags, c] };
   };
 
-  it("the choice is there from the first paint, Lombardy alone until the data says more", async () => {
+  it("the same choice from the first paint as after the data, so the row keeps its width", async () => {
     serve(data());
     render(<App />);
-    expect([...(screen.getByLabelText("Regione") as HTMLSelectElement).options].map(o => o.text))
-      .toEqual(["Lombardia", "Tutte le regioni"]);
+    const options = () => [...(screen.getByLabelText("Regione") as HTMLSelectElement).options].map(o => o.text);
+    const before = options();
+    expect(before).toEqual(["Lombardia", "Piemonte", "Trentino-Alto Adige", "Tutte le regioni"]);
     await screen.findByText("Parete Alfa — Si va");
-    expect([...(screen.getByLabelText("Regione") as HTMLSelectElement).options].map(o => o.text))
-      .toEqual(["Lombardia (2)", "Tutte le regioni (2)"]);
+    expect(options()).toEqual(before);
   });
 
   it("Lombardy by default; another region in the URL with its own provinces; all of them on request", async () => {
@@ -387,7 +387,6 @@ group("regions (CG-43)", () => {
     await screen.findByText("Parete Alfa — Si va");
     expect(names()).toEqual(["Parete Alfa — Si va", "Parete Beta — No"]);
     const region = screen.getByLabelText("Regione") as HTMLSelectElement;
-    expect([...region.options].map(o => o.text)).toEqual(["Lombardia (2)", "Piemonte (1)", "Tutte le regioni (3)"]);
     await act(async () => { fireEvent.change(region, { target: { value: "Piemonte" } }); });
     expect(location.search).toBe(`?r=Piemonte&day=${DAY}`);
     expect(names()).toEqual(["Parete Gamma — Si va"]);
@@ -424,7 +423,6 @@ group("a region's own file (CG-43)", () => {
     await screen.findByText("Parete Alfa — Si va");
     expect(f.mock.calls.map(c => c[0])).toEqual(["data/conditions.json"]);
     const region = screen.getByLabelText("Regione") as HTMLSelectElement;
-    expect([...region.options].map(o => o.text)).toEqual(["Lombardia (2)", "Piemonte (1)", "Tutte le regioni (3)"]);
     await act(async () => { fireEvent.change(region, { target: { value: "Piemonte" } }); });
     await screen.findByText("Parete Gamma — Si va");
     expect(f.mock.calls.map(c => c[0])).toEqual(["data/conditions.json", "data/conditions-piemonte.json"]);

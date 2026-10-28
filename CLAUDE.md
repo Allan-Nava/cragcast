@@ -67,8 +67,9 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   query. The page shows one region at a time, Lombardy unless `?r=` says otherwise; a crag
   without a region is Lombardy's. `conditions.json` holds Lombardy (and the via ferratas) and
   lists the other regions' `conditions-<slug>.json` in `regions`; the page fetches one when its
-  region is chosen, `history_append.py` and the Pi read and serve them all. The region choice is
-  rendered from the first paint: a control that appears with the data shifts the page (CLS 0.71). Open-Meteo is asked 100 places a request; the elevation lookup pauses
+  region is chosen, `history_append.py` and the Pi read and serve them all. The region choice has
+  the same options from the first paint (`REGIONS`, no counts): a control that appears or widens
+  with the data wraps the filter row and shifts the page (Lighthouse CLS 0.8). Open-Meteo is asked 100 places a request; the elevation lookup pauses
   between requests and waits out a 429. The avalanche bulletins and via ferratas are still
   Lombardy's only.
 - **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:

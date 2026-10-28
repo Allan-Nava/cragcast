@@ -27,9 +27,10 @@ no Italian province, its own avalanche service.
   region's crags go to `conditions-<slug>.json` next to it, fetched by the page when that region
   (or all of them) is chosen, and read by `history_append.py` and served by the Pi the same way.
   The API v1 keeps every crag in its own files.
-- **The region choice is there from the first paint**, Lombardy alone until the data names the
-  others. Added only once the data had loaded, it pushed the page down: Lighthouse measured a
-  layout shift of 0.71 and a performance of 0.73 against the 0.88 floor (CG-36).
+- **The region choice is the same from the first paint**: the three names, no counts. Added
+  only once the data had loaded, or widening when its counts arrived (a select is as wide as its
+  longest option), it wrapped the filter row and pushed the page down: Lighthouse measured a
+  layout shift of 0.71–0.81 and a performance of 0.70–0.73 against the 0.88 floor (CG-36).
 - **`region` is added** to `conditions.json`, the API v1 crag and index entries (CG-32), and the
   Pi's crag table.
 - **Every 3 hours, not every hour.** Open-Meteo's free tier counts every place — 600 a minute,

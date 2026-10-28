@@ -29,6 +29,8 @@ export interface ViewState {
 /** CG-43: the region a fresh visit shows, and the value for all of them. */
 export const DEFAULT_REGION = "Lombardia";
 export const ALL_REGIONS = "all";
+/** CG-43: the regions cragcast covers, listed from the first paint so the choice keeps its width. */
+export const REGIONS = ["Lombardia", "Piemonte", "Trentino-Alto Adige"];
 
 /** A crag's region; data from before CG-43 had Lombardy only. */
 export const regionOf = (c: { region?: string | null }): string => c.region ?? DEFAULT_REGION;
