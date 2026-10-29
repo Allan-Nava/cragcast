@@ -128,3 +128,31 @@ group("a via ferrata on the map (CG-114)", () => {
     expect(popup?.textContent).toContain("Condizioni da verificare sempre sul posto.");
   });
 });
+
+group("the frame (CG-123)", () => {
+  const calm = () => vi.stubGlobal("matchMedia", (q: string) => ({ matches: q.includes("reduce"), media: q }) as MediaQueryList);
+  afterEach(() => vi.unstubAllGlobals());
+
+  it("fits another region's crags once they arrive, comes back home, and never offers the area search", async () => {
+    calm();
+    const api = createRef<MapApi | null>() as React.RefObject<MapApi | null>;
+    const turin = [crag({ id: "p1", latitude: 45.1, longitude: 7.4 }), crag({ id: "p2", latitude: 45.3, longitude: 7.6 })];
+    const view = (crags: ReturnType<typeof crag>[], frame: string | null) =>
+      <CragMap crags={crags} day={DAY} here={null} onDetail={() => {}} apiRef={api} frame={frame} />;
+    const { rerender } = render(view([crag()], null));
+    expect(api.current!.view()).toMatchObject({ lat: 45.95, lon: 9.7, zoom: 8 });
+
+    rerender(view([], "crags|Piemonte"));                   // chosen, its file not here yet: no move
+    expect(api.current!.view().lon).toBe(9.7);
+    await act(async () => { rerender(view(turin, "crags|Piemonte")); });
+    const there = api.current!.view();
+    expect(there.lon).toBeGreaterThan(7.3);
+    expect(there.lon).toBeLessThan(7.7);
+    expect(there.zoom).toBeGreaterThan(8);
+    expect(screen.queryByText("Cerca in quest'area")).toBeNull();     // a move by the page
+
+    await act(async () => { rerender(view([crag()], null)); });
+    expect(api.current!.view()).toMatchObject({ lat: 45.95, lon: 9.7, zoom: 8 });
+  });
+});
+

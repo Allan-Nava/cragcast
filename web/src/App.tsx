@@ -308,6 +308,7 @@ export function App() {
       </div>
       <main className={"show-" + (view?.show ?? "list") + (detail ? " panel-open" : "")}>
         <CragMap crags={shown} day={view?.day ?? ""} here={here} onDetail={openDetail} apiRef={mapApi}
+                 frame={kind === "crags" && region === DEFAULT_REGION ? null : `${kind}|${region}`}
                  hot={hot} area={view?.area ?? null} onArea={onArea} onChosen={onChosen} />
         {data && view
           ? <CragList crags={shown} day={view.day} days={data.days} onDay={day => go({ ...view, day }, true)}

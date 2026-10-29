@@ -515,11 +515,12 @@ Asked for on 2026-10-29: the UI and UX after CG-43 tripled the crags and CG-114 
 ferratas. The page was laid out for one region and one kind of place; what follows was seen on
 it, not imagined — the snapshots, the code, and Lighthouse's layout-shift trace.
 
-- [ ] **CG-123 — The map follows the region**: the map opens on Lombardy whatever the view
+- [x] **CG-123 — The map follows the region**: the map opens on Lombardy whatever the view
   (`setView([45.95, 9.7], 8)` in `CragMap`), so choosing Piemonte leaves its crags off-screen to
   the west. Frame the crags shown when the region or the kind changes, and on a link that opens on
   another region — a move by the page, through `programmatic` (CG-38), with
-  `prefers-reduced-motion` respected; an e2e test in `CragMap.test.tsx`. <!-- cg: prio=high size=S labels=frontend -->
+  `prefers-reduced-motion` respected; an e2e test in `CragMap.test.tsx`. Done: `frame` in `CragMap`,
+  `view()` on its API for the test. <!-- cg: prio=high size=S labels=frontend ver=main -->
 - [ ] **CG-124 — Search across the regions**: a search finds only the region shown, so someone in
   Lombardy looking for an Arco crag reads "Nessuna falesia corrisponde". When the region shown has
   no match, say how many the other regions have and offer them in one tap ("3 in Trentino-Alto
