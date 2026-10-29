@@ -90,7 +90,7 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Via Fontainemore | Biella | 2268 m | [view](https://www.openstreetmap.org/way/829683436) | [edit](https://www.openstreetmap.org/edit?way=829683436) |
 | Via Oropa | Biella | 2296 m | [view](https://www.openstreetmap.org/way/829683435) | [edit](https://www.openstreetmap.org/edit?way=829683435) |
 
-## Bolzano (52)
+## Bolzano (46)
 
 | Crag | Municipality | Elevation | OSM | |
 |---|---|---|---|---|
@@ -124,12 +124,6 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Langenstein | Stelvio | 2246 m | [view](https://www.openstreetmap.org/node/4282521088) | [edit](https://www.openstreetmap.org/edit?node=4282521088) |
 | Lena | Dobbiaco | 1501 m | [view](https://www.openstreetmap.org/way/1221353130) | [edit](https://www.openstreetmap.org/edit?way=1221353130) |
 | Molini-Trodena | Trodena nel Parco Naturale | 995 m | [view](https://www.openstreetmap.org/node/766029403) | [edit](https://www.openstreetmap.org/edit?node=766029403) |
-| Nesselwand | Lasa | 1679 m | [view](https://www.openstreetmap.org/node/4899733538) | [edit](https://www.openstreetmap.org/edit?node=4899733538) |
-| Nock | Villandro | 952 m | [view](https://www.openstreetmap.org/node/12980354351) | [edit](https://www.openstreetmap.org/edit?node=12980354351) |
-| Nêa | Marebbe | 1514 m | [view](https://www.openstreetmap.org/node/11923480131) | [edit](https://www.openstreetmap.org/edit?node=11923480131) |
-| Palestra di Roccia - Landro | Dobbiaco | 1486 m | [view](https://www.openstreetmap.org/node/13180102058) | [edit](https://www.openstreetmap.org/edit?node=13180102058) |
-| Palestra di roccia Tisner Auen Klettergarten | Lana | 290 m | [view](https://www.openstreetmap.org/node/7717744440) | [edit](https://www.openstreetmap.org/edit?node=7717744440) |
-| Panorama Klettergarten "Huafwond" | Parcines | 1466 m | [view](https://www.openstreetmap.org/node/14263432326) | [edit](https://www.openstreetmap.org/edit?node=14263432326) |
 | Picz Cucena V | Selva di Val Gardena | 2260 m | [view](https://www.openstreetmap.org/node/12983543648) | [edit](https://www.openstreetmap.org/edit?node=12983543648) |
 | Priel | Silandro | 852 m | [view](https://www.openstreetmap.org/node/4899740621) | [edit](https://www.openstreetmap.org/edit?node=4899740621) |
 | Sass Dlacia | Badia | 1857 m | [view](https://www.openstreetmap.org/way/1085344524) | [edit](https://www.openstreetmap.org/edit?way=1085344524) |
@@ -147,7 +141,7 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Vedla | Marebbe | 1531 m | [view](https://www.openstreetmap.org/node/11923480127) | [edit](https://www.openstreetmap.org/edit?node=11923480127) |
 | Wintertraum | Naturno | 860 m | [view](https://www.openstreetmap.org/node/4899803954) | [edit](https://www.openstreetmap.org/edit?node=4899803954) |
 
-## Brescia (48)
+## Brescia (45)
 
 | Crag | Municipality | Elevation | OSM | |
 |---|---|---|---|---|
@@ -190,9 +184,6 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | La Biblioteca | Botticino | 311 m | [view](https://www.openstreetmap.org/node/2372935820) | [edit](https://www.openstreetmap.org/edit?node=2372935820) |
 | La Cava | Rezzato | 200 m | [view](https://www.openstreetmap.org/way/365079021) | [edit](https://www.openstreetmap.org/edit?way=365079021) |
 | Muro dell'Ilex | Marone | 804 m | [view](https://www.openstreetmap.org/way/485227805) | [edit](https://www.openstreetmap.org/edit?way=485227805) |
-| Palestra di roccia Il Crènch | Idro | 494 m | [view](https://www.openstreetmap.org/node/9904213314) | [edit](https://www.openstreetmap.org/edit?node=9904213314) |
-| Palestra di roccia rifugio Sandro Occhi | Edolo | 2006 m | [view](https://www.openstreetmap.org/node/3658805427) | [edit](https://www.openstreetmap.org/edit?node=3658805427) |
-| Palestra di roccia Ugolino Ugolini | Rezzato | 276 m | [view](https://www.openstreetmap.org/way/166615030) | [edit](https://www.openstreetmap.org/edit?way=166615030) |
 | placca morose | Gargnano | 552 m | [view](https://www.openstreetmap.org/node/4918601924) | [edit](https://www.openstreetmap.org/edit?node=4918601924) |
 | Porto di Tremosine | Tremosine sul Garda | 345 m | [view](https://www.openstreetmap.org/node/12255821505) | [edit](https://www.openstreetmap.org/edit?node=12255821505) |
 | Predulì | Piancogno | 807 m | [view](https://www.openstreetmap.org/way/761344647) | [edit](https://www.openstreetmap.org/edit?way=761344647) |
@@ -220,7 +211,7 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Settore Destro | Canzo | 389 m | [view](https://www.openstreetmap.org/node/12304593894) | [edit](https://www.openstreetmap.org/edit?node=12304593894) |
 | Settore Destro | Asso | 429 m | [view](https://www.openstreetmap.org/node/12304593897) | [edit](https://www.openstreetmap.org/edit?node=12304593897) |
 
-## Cuneo (102)
+## Cuneo (99)
 
 | Crag | Municipality | Elevation | OSM | |
 |---|---|---|---|---|
@@ -298,9 +289,6 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Miroglio 2 - Falesia “Gianni Comino” | Frabosa Sottana | 1200 m | [view](https://www.openstreetmap.org/way/655452087) | [edit](https://www.openstreetmap.org/edit?way=655452087) |
 | Muri Rossi | Caprauna | 1442 m | [view](https://www.openstreetmap.org/node/6184719765) | [edit](https://www.openstreetmap.org/edit?node=6184719765) |
 | Muro delle Piagge | Robilante | 1124 m | [view](https://www.openstreetmap.org/way/1473653237) | [edit](https://www.openstreetmap.org/edit?way=1473653237) |
-| Notte di Stelle | Caprauna | 1501 m | [view](https://www.openstreetmap.org/node/3791101390) | [edit](https://www.openstreetmap.org/edit?node=3791101390) |
-| Palestra di Arrampicata della Diga della Piastra | Entracque | 909 m | [view](https://www.openstreetmap.org/way/1532392638) | [edit](https://www.openstreetmap.org/edit?way=1532392638) |
-| Parete del Grande Arco | Sanfront | 838 m | [view](https://www.openstreetmap.org/node/1116940499) | [edit](https://www.openstreetmap.org/edit?node=1116940499) |
 | Piccolo Cervino | Sanfront | 862 m | [view](https://www.openstreetmap.org/node/13769332288) | [edit](https://www.openstreetmap.org/edit?node=13769332288) |
 | Placca Dei Disperati | Sanfront | 925 m | [view](https://www.openstreetmap.org/way/1474083448) | [edit](https://www.openstreetmap.org/edit?way=1474083448) |
 | Placca dei Veschi | Valdieri | 1008 m | [view](https://www.openstreetmap.org/way/1558758075) | [edit](https://www.openstreetmap.org/edit?way=1558758075) |
@@ -327,7 +315,7 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Torrione Del Pissai | Sanfront | 925 m | [view](https://www.openstreetmap.org/way/1474083449) | [edit](https://www.openstreetmap.org/edit?way=1474083449) |
 | Via Ferrata Rocca dei Corvi | Viola | 925 m | [view](https://www.openstreetmap.org/way/543843034) | [edit](https://www.openstreetmap.org/edit?way=543843034) |
 
-## Lecco (47)
+## Lecco (46)
 
 | Crag | Municipality | Elevation | OSM | |
 |---|---|---|---|---|
@@ -361,7 +349,6 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Muro del Butch | Ballabio | 747 m | [view](https://www.openstreetmap.org/way/837046156) | [edit](https://www.openstreetmap.org/edit?way=837046156) |
 | Muro del Pianto | Introbio | 841 m | [view](https://www.openstreetmap.org/node/13196399312) | [edit](https://www.openstreetmap.org/edit?node=13196399312) |
 | Muro di Introbio | Introbio | 646 m | [view](https://www.openstreetmap.org/node/11859077873) | [edit](https://www.openstreetmap.org/edit?node=11859077873) |
-| Pala Condor | Introbio | 581 m | [view](https://www.openstreetmap.org/node/1741194869) | [edit](https://www.openstreetmap.org/edit?node=1741194869) |
 | Pilastrini | Introbio | 646 m | [view](https://www.openstreetmap.org/node/9176169531) | [edit](https://www.openstreetmap.org/edit?node=9176169531) |
 | Placca Condor | Introbio | 595 m | [view](https://www.openstreetmap.org/node/4641789089) | [edit](https://www.openstreetmap.org/edit?node=4641789089) |
 | Placca del Pistolino | Introbio | 841 m | [view](https://www.openstreetmap.org/node/7273907091) | [edit](https://www.openstreetmap.org/edit?node=7273907091) |
@@ -390,6 +377,45 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Crag | Municipality | Elevation | OSM | |
 |---|---|---|---|---|
 | Falesia di Ara | Grignasco | 615 m | [view](https://www.openstreetmap.org/way/1455002440) | [edit](https://www.openstreetmap.org/edit?way=1455002440) |
+
+## Provincia sconosciuta (34)
+
+| Crag | Municipality | Elevation | OSM | |
+|---|---|---|---|---|
+| Nago |  | 338 m | [view](https://www.openstreetmap.org/node/9952851159) | [edit](https://www.openstreetmap.org/edit?node=9952851159) |
+| Nesselwand |  | 1679 m | [view](https://www.openstreetmap.org/node/4899733538) | [edit](https://www.openstreetmap.org/edit?node=4899733538) |
+| Nibbiola |  | 311 m | [view](https://www.openstreetmap.org/node/13319438494) | [edit](https://www.openstreetmap.org/edit?node=13319438494) |
+| Nock |  | 952 m | [view](https://www.openstreetmap.org/node/12980354351) | [edit](https://www.openstreetmap.org/edit?node=12980354351) |
+| Notte di Stelle |  | 1501 m | [view](https://www.openstreetmap.org/node/3791101390) | [edit](https://www.openstreetmap.org/edit?node=3791101390) |
+| Nêa |  | 1514 m | [view](https://www.openstreetmap.org/node/11923480131) | [edit](https://www.openstreetmap.org/edit?node=11923480131) |
+| Osso |  | 1152 m | [view](https://www.openstreetmap.org/node/8013383351) | [edit](https://www.openstreetmap.org/edit?node=8013383351) |
+| Pala Condor |  | 581 m | [view](https://www.openstreetmap.org/node/1741194869) | [edit](https://www.openstreetmap.org/edit?node=1741194869) |
+| Pala delle Lastiele |  | 658 m | [view](https://www.openstreetmap.org/relation/15866268) | [edit](https://www.openstreetmap.org/edit?relation=15866268) |
+| Palestra di arrampicata del morissolo |  | 1255 m | [view](https://www.openstreetmap.org/node/8599382252) | [edit](https://www.openstreetmap.org/edit?node=8599382252) |
+| Palestra di Arrampicata della Diga della Piastra |  | 909 m | [view](https://www.openstreetmap.org/way/1532392638) | [edit](https://www.openstreetmap.org/edit?way=1532392638) |
+| Palestra di roccia |  | 572 m | [view](https://www.openstreetmap.org/node/2747184346) | [edit](https://www.openstreetmap.org/edit?node=2747184346) |
+| Palestra di Roccia |  | 866 m | [view](https://www.openstreetmap.org/node/3299243508) | [edit](https://www.openstreetmap.org/edit?node=3299243508) |
+| Palestra di roccia |  | 792 m | [view](https://www.openstreetmap.org/node/3369037366) | [edit](https://www.openstreetmap.org/edit?node=3369037366) |
+| Palestra di Roccia - Landro |  | 1486 m | [view](https://www.openstreetmap.org/node/13180102058) | [edit](https://www.openstreetmap.org/edit?node=13180102058) |
+| Palestra di roccia Bindesi |  | 565 m | [view](https://www.openstreetmap.org/node/2410390011) | [edit](https://www.openstreetmap.org/edit?node=2410390011) |
+| Palestra di roccia del gruppo speleologico prealpino |  | 369 m | [view](https://www.openstreetmap.org/relation/18915445) | [edit](https://www.openstreetmap.org/edit?relation=18915445) |
+| Palestra di roccia di Fiorano |  | 309 m | [view](https://www.openstreetmap.org/way/938443917) | [edit](https://www.openstreetmap.org/edit?way=938443917) |
+| Palestra di roccia Il Crènch |  | 494 m | [view](https://www.openstreetmap.org/node/9904213314) | [edit](https://www.openstreetmap.org/edit?node=9904213314) |
+| Palestra di roccia rifugio Sandro Occhi |  | 2006 m | [view](https://www.openstreetmap.org/node/3658805427) | [edit](https://www.openstreetmap.org/edit?node=3658805427) |
+| Palestra di roccia Rita e Giorgio Graffer |  | 1576 m | [view](https://www.openstreetmap.org/way/386318324) | [edit](https://www.openstreetmap.org/edit?way=386318324) |
+| Palestra di roccia Tisner Auen Klettergarten |  | 290 m | [view](https://www.openstreetmap.org/node/7717744440) | [edit](https://www.openstreetmap.org/edit?node=7717744440) |
+| Palestra di roccia Ugolino Ugolini |  | 276 m | [view](https://www.openstreetmap.org/way/166615030) | [edit](https://www.openstreetmap.org/edit?way=166615030) |
+| Palestra Franco Marta (Fiamme gialle) |  | 1998 m | [view](https://www.openstreetmap.org/way/963452734) | [edit](https://www.openstreetmap.org/edit?way=963452734) |
+| Palestra Regina del Lago |  | 422 m | [view](https://www.openstreetmap.org/node/9798707997) | [edit](https://www.openstreetmap.org/edit?node=9798707997) |
+| Palestra Ronchetti |  | 700 m | [view](https://www.openstreetmap.org/relation/18757044) | [edit](https://www.openstreetmap.org/edit?relation=18757044) |
+| Palestra Voltolini Giordano |  | 1418 m | [view](https://www.openstreetmap.org/way/1355945153) | [edit](https://www.openstreetmap.org/edit?way=1355945153) |
+| Panorama Klettergarten "Huafwond" |  | 1466 m | [view](https://www.openstreetmap.org/node/14263432326) | [edit](https://www.openstreetmap.org/edit?node=14263432326) |
+| Panoramica |  | 416 m | [view](https://www.openstreetmap.org/node/10845342781) | [edit](https://www.openstreetmap.org/edit?node=10845342781) |
+| Paramide Lakshmi |  | 424 m | [view](https://www.openstreetmap.org/node/14265216131) | [edit](https://www.openstreetmap.org/edit?node=14265216131) |
+| Parete dei fiori |  | 1969 m | [view](https://www.openstreetmap.org/way/807967178) | [edit](https://www.openstreetmap.org/edit?way=807967178) |
+| Parete del deltaplano |  | 1207 m | [view](https://www.openstreetmap.org/node/2086219218) | [edit](https://www.openstreetmap.org/edit?node=2086219218) |
+| Parete del Disertore |  | 1490 m | [view](https://www.openstreetmap.org/node/11239615178) | [edit](https://www.openstreetmap.org/edit?node=11239615178) |
+| Parete del Grande Arco |  | 838 m | [view](https://www.openstreetmap.org/node/1116940499) | [edit](https://www.openstreetmap.org/edit?node=1116940499) |
 
 ## Sondrio (29)
 
@@ -425,7 +451,7 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Zoia Alta | Lanzada | 2115 m | [view](https://www.openstreetmap.org/node/3097814772) | [edit](https://www.openstreetmap.org/edit?node=3097814772) |
 | Zoia Bassa | Lanzada | 2028 m | [view](https://www.openstreetmap.org/node/14064515297) | [edit](https://www.openstreetmap.org/edit?node=14064515297) |
 
-## Torino (137)
+## Torino (133)
 
 | Crag | Municipality | Elevation | OSM | |
 |---|---|---|---|---|
@@ -509,10 +535,6 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Masso della Riscoperta | Ceresole Reale | 1486 m | [view](https://www.openstreetmap.org/node/14129264856) | [edit](https://www.openstreetmap.org/edit?node=14129264856) |
 | Masso Grangetta_1 G.C.G. | Condove | 425 m | [view](https://www.openstreetmap.org/way/886801268) | [edit](https://www.openstreetmap.org/edit?way=886801268) |
 | Masso Molere G.C.G. | Condove | 408 m | [view](https://www.openstreetmap.org/way/1003264100) | [edit](https://www.openstreetmap.org/edit?way=1003264100) |
-| Palestra di roccia di Fiorano | Fiorano Canavese | 309 m | [view](https://www.openstreetmap.org/way/938443917) | [edit](https://www.openstreetmap.org/edit?way=938443917) |
-| Parete dei fiori | Quincinetto | 1969 m | [view](https://www.openstreetmap.org/way/807967178) | [edit](https://www.openstreetmap.org/edit?way=807967178) |
-| Parete del deltaplano | Roure | 1207 m | [view](https://www.openstreetmap.org/node/2086219218) | [edit](https://www.openstreetmap.org/edit?node=2086219218) |
-| Parete del Disertore | Ceresole Reale | 1490 m | [view](https://www.openstreetmap.org/node/11239615178) | [edit](https://www.openstreetmap.org/edit?node=11239615178) |
 | Parete dell'Elefante | Chialamberto | 1562 m | [view](https://www.openstreetmap.org/node/11960767092) | [edit](https://www.openstreetmap.org/edit?node=11960767092) |
 | Paretina Arrampicata | Lanzo Torinese | 499 m | [view](https://www.openstreetmap.org/way/676577668) | [edit](https://www.openstreetmap.org/edit?way=676577668) |
 | Paretina di Forno | Groscavallo | 1305 m | [view](https://www.openstreetmap.org/node/11649199291) | [edit](https://www.openstreetmap.org/edit?node=11649199291) |
@@ -567,7 +589,7 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Zahir | Chiomonte | 815 m | [view](https://www.openstreetmap.org/node/12465337987) | [edit](https://www.openstreetmap.org/edit?node=12465337987) |
 | Zucchero Forever;Zucchero Show | Frossasco | 1186 m | [view](https://www.openstreetmap.org/node/12862541339) | [edit](https://www.openstreetmap.org/edit?node=12862541339) |
 
-## Trento (171)
+## Trento (159)
 
 | Crag | Municipality | Elevation | OSM | |
 |---|---|---|---|---|
@@ -686,18 +708,6 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Muro Di Meridiani | Madruzzo | 478 m | [view](https://www.openstreetmap.org/node/14302304573) | [edit](https://www.openstreetmap.org/edit?node=14302304573) |
 | Muro di Valcava | Segonzano | 935 m | [view](https://www.openstreetmap.org/way/1424747929) | [edit](https://www.openstreetmap.org/edit?way=1424747929) |
 | Murro di Chitarra | Dro | 536 m | [view](https://www.openstreetmap.org/way/1174013433) | [edit](https://www.openstreetmap.org/edit?way=1174013433) |
-| Nago | Nago-Torbole | 338 m | [view](https://www.openstreetmap.org/node/9952851159) | [edit](https://www.openstreetmap.org/edit?node=9952851159) |
-| Pala delle Lastiele | Dro | 658 m | [view](https://www.openstreetmap.org/relation/15866268) | [edit](https://www.openstreetmap.org/edit?relation=15866268) |
-| Palestra di roccia | Vallelaghi | 572 m | [view](https://www.openstreetmap.org/node/2747184346) | [edit](https://www.openstreetmap.org/edit?node=2747184346) |
-| Palestra di Roccia | Mori | 866 m | [view](https://www.openstreetmap.org/node/3299243508) | [edit](https://www.openstreetmap.org/edit?node=3299243508) |
-| Palestra di roccia | Mori | 792 m | [view](https://www.openstreetmap.org/node/3369037366) | [edit](https://www.openstreetmap.org/edit?node=3369037366) |
-| Palestra di roccia Bindesi | Trento | 565 m | [view](https://www.openstreetmap.org/node/2410390011) | [edit](https://www.openstreetmap.org/edit?node=2410390011) |
-| Palestra di roccia Rita e Giorgio Graffer | Trento | 1576 m | [view](https://www.openstreetmap.org/way/386318324) | [edit](https://www.openstreetmap.org/edit?way=386318324) |
-| Palestra Franco Marta (Fiamme gialle) | Primiero San Martino di Castrozza | 1998 m | [view](https://www.openstreetmap.org/way/963452734) | [edit](https://www.openstreetmap.org/edit?way=963452734) |
-| Palestra Regina del Lago | Ledro | 422 m | [view](https://www.openstreetmap.org/node/9798707997) | [edit](https://www.openstreetmap.org/edit?node=9798707997) |
-| Palestra Voltolini Giordano | Ossana | 1418 m | [view](https://www.openstreetmap.org/way/1355945153) | [edit](https://www.openstreetmap.org/edit?way=1355945153) |
-| Panoramica | Madruzzo | 416 m | [view](https://www.openstreetmap.org/node/10845342781) | [edit](https://www.openstreetmap.org/edit?node=10845342781) |
-| Paramide Lakshmi | Dro | 424 m | [view](https://www.openstreetmap.org/node/14265216131) | [edit](https://www.openstreetmap.org/edit?node=14265216131) |
 | Parete del Limarò | Madruzzo | 410 m | [view](https://www.openstreetmap.org/way/242743640) | [edit](https://www.openstreetmap.org/edit?way=242743640) |
 | Parete dell'Ir Inferiore | Arco | 380 m | [view](https://www.openstreetmap.org/way/753933995) | [edit](https://www.openstreetmap.org/edit?way=753933995) |
 | Parete dell'Ir Superiore | Arco | 551 m | [view](https://www.openstreetmap.org/way/753933996) | [edit](https://www.openstreetmap.org/edit?way=753933996) |
@@ -743,7 +753,7 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Vecchia Falesia di Lert | Valdaone | 1095 m | [view](https://www.openstreetmap.org/way/427250445) | [edit](https://www.openstreetmap.org/edit?way=427250445) |
 | Zebrata | Dro | 621 m | [view](https://www.openstreetmap.org/relation/21446410) | [edit](https://www.openstreetmap.org/edit?relation=21446410) |
 
-## Varese (9)
+## Varese (7)
 
 | Crag | Municipality | Elevation | OSM | |
 |---|---|---|---|---|
@@ -752,12 +762,10 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Falesia Sasso Ballaro | Leggiuno | 255 m | [view](https://www.openstreetmap.org/node/8086095920) | [edit](https://www.openstreetmap.org/edit?node=8086095920) |
 | Falesia Sasso Ballaro -  Settore Saigon | Leggiuno | 261 m | [view](https://www.openstreetmap.org/node/13245785600) | [edit](https://www.openstreetmap.org/edit?node=13245785600) |
 | Grotta Rudera | Varese | 1033 m | [view](https://www.openstreetmap.org/node/14041775583) | [edit](https://www.openstreetmap.org/edit?node=14041775583) |
-| Palestra di roccia del gruppo speleologico prealpino | Arcisate | 369 m | [view](https://www.openstreetmap.org/relation/18915445) | [edit](https://www.openstreetmap.org/edit?relation=18915445) |
-| Palestra Ronchetti | Agra | 700 m | [view](https://www.openstreetmap.org/relation/18757044) | [edit](https://www.openstreetmap.org/edit?relation=18757044) |
 | Sasso Galletto | Castelveccana | 193 m | [view](https://www.openstreetmap.org/way/1183974242) | [edit](https://www.openstreetmap.org/edit?way=1183974242) |
 | Torrione Farfalla | Varese | 1036 m | [view](https://www.openstreetmap.org/node/14041775584) | [edit](https://www.openstreetmap.org/edit?node=14041775584) |
 
-## Verbano-Cusio-Ossola (40)
+## Verbano-Cusio-Ossola (37)
 
 | Crag | Municipality | Elevation | OSM | |
 |---|---|---|---|---|
@@ -784,9 +792,6 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 | Montorfano, Il Placcone | Mergozzo | 428 m | [view](https://www.openstreetmap.org/node/13084142703) | [edit](https://www.openstreetmap.org/edit?node=13084142703) |
 | Montorfano, Settore Bambine Carine | Mergozzo | 464 m | [view](https://www.openstreetmap.org/node/2385340755) | [edit](https://www.openstreetmap.org/edit?node=2385340755) |
 | Montorfano, Settore Strapiombi | Mergozzo | 428 m | [view](https://www.openstreetmap.org/node/13084142702) | [edit](https://www.openstreetmap.org/edit?node=13084142702) |
-| Nibbiola | Mergozzo | 311 m | [view](https://www.openstreetmap.org/node/13319438494) | [edit](https://www.openstreetmap.org/edit?node=13319438494) |
-| Osso | Baceno | 1152 m | [view](https://www.openstreetmap.org/node/8013383351) | [edit](https://www.openstreetmap.org/edit?node=8013383351) |
-| Palestra di arrampicata del morissolo | Cannero Riviera | 1255 m | [view](https://www.openstreetmap.org/node/8599382252) | [edit](https://www.openstreetmap.org/edit?node=8599382252) |
 | Pera Aquila | Omegna | 1280 m | [view](https://www.openstreetmap.org/way/818012360) | [edit](https://www.openstreetmap.org/edit?way=818012360) |
 | Primi Passi | Formazza | 2222 m | [view](https://www.openstreetmap.org/node/3097759817) | [edit](https://www.openstreetmap.org/edit?node=3097759817) |
 | Sass Fendù | Crodo | 1260 m | [view](https://www.openstreetmap.org/node/9916562260) | [edit](https://www.openstreetmap.org/edit?node=9916562260) |
@@ -859,12 +864,12 @@ is folded into the crag around it. Tagging the crag itself `climbing=crag` is th
 - Losa D'Alais (Usseglio): S
 - Mescalisio (Trento): S
 - Moon Wall (Roccaforte Mondovì): SE
-- Nuovo Cinema Maddalena (Botticino): S
-- Palestra di roccia "La Valletta" m.750 (Crevoladossola): S
-- Palestra di roccia di Traversella (Traversella): SW
-- Palestra di roccia di Traversella (Traversella): SW
-- Parete Artificiale Malga Bissina (Valdaone): S
-- Parete Corno di Bo (Nago-Torbole): W
+- Nuovo Cinema Maddalena (): S
+- Palestra di roccia "La Valletta" m.750 (): S
+- Palestra di roccia di Traversella (): SW
+- Palestra di roccia di Traversella (): SW
+- Parete Artificiale Malga Bissina (): S
+- Parete Corno di Bo (): W
 - Parete delle Mosche (Usseglio): S
 - Parete Piacenza (Biella): E
 - Paretina dei bambini (Usseglio): S

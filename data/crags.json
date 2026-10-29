@@ -9646,11 +9646,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/9952851159",
       "details": {},
-      "elevation": 338,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Nago-Torbole"
+      "elevation": 338
     },
     {
       "id": "osm-node-4899733538",
@@ -9665,11 +9661,7 @@
           "sport"
         ]
       },
-      "elevation": 1679,
-      "region": "Trentino-Alto Adige",
-      "province": "Bolzano",
-      "provinceCode": "BZ",
-      "municipality": "Lasa"
+      "elevation": 1679
     },
     {
       "id": "osm-node-13319438494",
@@ -9679,11 +9671,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/13319438494",
       "details": {},
-      "elevation": 311,
-      "region": "Piemonte",
-      "province": "Verbano-Cusio-Ossola",
-      "provinceCode": "VB",
-      "municipality": "Mergozzo"
+      "elevation": 311
     },
     {
       "id": "osm-node-12980354351",
@@ -9693,11 +9681,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/12980354351",
       "details": {},
-      "elevation": 952,
-      "region": "Trentino-Alto Adige",
-      "province": "Bolzano",
-      "provinceCode": "BZ",
-      "municipality": "Villandro"
+      "elevation": 952
     },
     {
       "id": "osm-node-3791101390",
@@ -9717,11 +9701,7 @@
       "alsoMapped": [
         "https://www.openstreetmap.org/way/660578706"
       ],
-      "elevation": 1501,
-      "province": "Cuneo",
-      "provinceCode": "CN",
-      "municipality": "Caprauna",
-      "region": "Piemonte"
+      "elevation": 1501
     },
     {
       "id": "osm-way-282816934",
@@ -9748,11 +9728,7 @@
         "osm-way-282816946",
         "osm-way-332467010"
       ],
-      "elevation": 858,
-      "region": "Lombardia",
-      "province": "Brescia",
-      "provinceCode": "BS",
-      "municipality": "Botticino"
+      "elevation": 858
     },
     {
       "id": "osm-node-11923480131",
@@ -9767,11 +9743,7 @@
         ],
         "website": "https://www.thecrag.com/climbing/italy/alto-adige/area/3242778318"
       },
-      "elevation": 1514,
-      "region": "Trentino-Alto Adige",
-      "province": "Bolzano",
-      "provinceCode": "BZ",
-      "municipality": "Marebbe"
+      "elevation": 1514
     },
     {
       "id": "osm-node-8013383351",
@@ -9781,11 +9753,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/8013383351",
       "details": {},
-      "elevation": 1152,
-      "region": "Piemonte",
-      "province": "Verbano-Cusio-Ossola",
-      "provinceCode": "VB",
-      "municipality": "Baceno"
+      "elevation": 1152
     },
     {
       "id": "osm-node-1741194869",
@@ -9795,11 +9763,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/1741194869",
       "details": {},
-      "elevation": 581,
-      "region": "Lombardia",
-      "province": "Lecco",
-      "provinceCode": "LC",
-      "municipality": "Introbio"
+      "elevation": 581
     },
     {
       "id": "osm-relation-15866268",
@@ -9809,11 +9773,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/relation/15866268",
       "details": {},
-      "elevation": 658,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Dro"
+      "elevation": 658
     },
     {
       "id": "osm-node-8599382252",
@@ -9828,11 +9788,7 @@
         ],
         "bolted": true
       },
-      "elevation": 1255,
-      "region": "Piemonte",
-      "province": "Verbano-Cusio-Ossola",
-      "provinceCode": "VB",
-      "municipality": "Cannero Riviera"
+      "elevation": 1255
     },
     {
       "id": "osm-way-1532392638",
@@ -9847,11 +9803,7 @@
           "multipitch"
         ]
       },
-      "elevation": 909,
-      "province": "Cuneo",
-      "provinceCode": "CN",
-      "municipality": "Entracque",
-      "region": "Piemonte"
+      "elevation": 909
     },
     {
       "id": "osm-node-2747184346",
@@ -9867,11 +9819,7 @@
       "sectors": [
         "osm-node-2748158445"
       ],
-      "elevation": 572,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Vallelaghi"
+      "elevation": 572
     },
     {
       "id": "osm-node-3299243508",
@@ -9881,11 +9829,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/3299243508",
       "details": {},
-      "elevation": 866,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Mori"
+      "elevation": 866
     },
     {
       "id": "osm-node-3369037366",
@@ -9895,11 +9839,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/3369037366",
       "details": {},
-      "elevation": 792,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Mori"
+      "elevation": 792
     },
     {
       "id": "osm-node-11139276349",
@@ -9915,11 +9855,7 @@
           "sport"
         ]
       },
-      "elevation": 775,
-      "region": "Piemonte",
-      "province": "Verbano-Cusio-Ossola",
-      "provinceCode": "VB",
-      "municipality": "Crevoladossola"
+      "elevation": 775
     },
     {
       "id": "osm-node-13180102058",
@@ -9935,11 +9871,7 @@
           "sport"
         ]
       },
-      "elevation": 1486,
-      "region": "Trentino-Alto Adige",
-      "province": "Bolzano",
-      "provinceCode": "BZ",
-      "municipality": "Dobbiaco"
+      "elevation": 1486
     },
     {
       "id": "osm-node-2410390011",
@@ -9957,11 +9889,7 @@
         "bolted": true,
         "website": "http://www.trekking-etc.it/etc/trekking/it/treks/europe/it/tn/trento/marzola/palestra-dei-bindesi/palestra-di-roccia/poi.html"
       },
-      "elevation": 565,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Trento"
+      "elevation": 565
     },
     {
       "id": "osm-relation-18915445",
@@ -9975,11 +9903,7 @@
           "sport"
         ]
       },
-      "elevation": 369,
-      "region": "Lombardia",
-      "province": "Varese",
-      "provinceCode": "VA",
-      "municipality": "Arcisate"
+      "elevation": 369
     },
     {
       "id": "osm-way-938443917",
@@ -10002,11 +9926,7 @@
       "sectors": [
         "osm-way-938443919"
       ],
-      "elevation": 309,
-      "region": "Piemonte",
-      "province": "Torino",
-      "provinceCode": "TO",
-      "municipality": "Fiorano Canavese"
+      "elevation": 309
     },
     {
       "id": "osm-node-8090536385",
@@ -10036,11 +9956,7 @@
         "osm-way-1117086657",
         "osm-way-1117086658"
       ],
-      "elevation": 1183,
-      "region": "Piemonte",
-      "province": "Torino",
-      "provinceCode": "TO",
-      "municipality": "Traversella"
+      "elevation": 1183
     },
     {
       "id": "osm-node-8090536386",
@@ -10060,11 +9976,7 @@
         ],
         "website": "https://www.itsportmontagna.org/ism/Tecnica/traversella/index.htm"
       },
-      "elevation": 1097,
-      "region": "Piemonte",
-      "province": "Torino",
-      "provinceCode": "TO",
-      "municipality": "Traversella"
+      "elevation": 1097
     },
     {
       "id": "osm-node-9904213314",
@@ -10074,11 +9986,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/9904213314",
       "details": {},
-      "elevation": 494,
-      "region": "Lombardia",
-      "province": "Brescia",
-      "provinceCode": "BS",
-      "municipality": "Idro"
+      "elevation": 494
     },
     {
       "id": "osm-node-3658805427",
@@ -10088,11 +9996,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/3658805427",
       "details": {},
-      "elevation": 2006,
-      "region": "Lombardia",
-      "province": "Brescia",
-      "provinceCode": "BS",
-      "municipality": "Edolo"
+      "elevation": 2006
     },
     {
       "id": "osm-way-386318324",
@@ -10106,11 +10010,7 @@
         "gradeMax": "7b",
         "bolted": true
       },
-      "elevation": 1576,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Trento"
+      "elevation": 1576
     },
     {
       "id": "osm-node-7717744440",
@@ -10120,11 +10020,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/7717744440",
       "details": {},
-      "elevation": 290,
-      "region": "Trentino-Alto Adige",
-      "province": "Bolzano",
-      "provinceCode": "BZ",
-      "municipality": "Lana"
+      "elevation": 290
     },
     {
       "id": "osm-way-166615030",
@@ -10134,11 +10030,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/166615030",
       "details": {},
-      "elevation": 276,
-      "region": "Lombardia",
-      "province": "Brescia",
-      "provinceCode": "BS",
-      "municipality": "Rezzato"
+      "elevation": 276
     },
     {
       "id": "osm-way-963452734",
@@ -10148,11 +10040,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/963452734",
       "details": {},
-      "elevation": 1998,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Primiero San Martino di Castrozza"
+      "elevation": 1998
     },
     {
       "id": "osm-node-9798707997",
@@ -10162,11 +10050,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/9798707997",
       "details": {},
-      "elevation": 422,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Ledro"
+      "elevation": 422
     },
     {
       "id": "osm-relation-18757044",
@@ -10180,11 +10064,7 @@
           "sport"
         ]
       },
-      "elevation": 700,
-      "region": "Lombardia",
-      "province": "Varese",
-      "provinceCode": "VA",
-      "municipality": "Agra"
+      "elevation": 700
     },
     {
       "id": "osm-way-1355945153",
@@ -10194,11 +10074,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/way/1355945153",
       "details": {},
-      "elevation": 1418,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Ossana"
+      "elevation": 1418
     },
     {
       "id": "osm-node-14263432326",
@@ -10211,11 +10087,7 @@
         "lengthMax": 30,
         "website": "https://www.merano-suedtirol.it/de/partschins/betrieb/panorama-klettergarten-huafwond-2630/"
       },
-      "elevation": 1466,
-      "region": "Trentino-Alto Adige",
-      "province": "Bolzano",
-      "provinceCode": "BZ",
-      "municipality": "Parcines"
+      "elevation": 1466
     },
     {
       "id": "osm-node-10845342781",
@@ -10229,11 +10101,7 @@
           "sport"
         ]
       },
-      "elevation": 416,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Madruzzo"
+      "elevation": 416
     },
     {
       "id": "osm-node-14265216131",
@@ -10247,11 +10115,7 @@
           "sport"
         ]
       },
-      "elevation": 424,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Dro"
+      "elevation": 424
     },
     {
       "id": "osm-node-961334519",
@@ -10265,11 +10129,7 @@
           "sport"
         ]
       },
-      "elevation": 1729,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Valdaone"
+      "elevation": 1729
     },
     {
       "id": "osm-way-301205738",
@@ -10285,11 +10145,7 @@
         ],
         "bolted": true
       },
-      "elevation": 85,
-      "province": "Trento",
-      "provinceCode": "TN",
-      "region": "Trentino-Alto Adige",
-      "municipality": "Nago-Torbole"
+      "elevation": 85
     },
     {
       "id": "osm-way-807967178",
@@ -10301,11 +10157,7 @@
       "details": {
         "website": "https://www.gulliver.it/itinerario/56267/"
       },
-      "elevation": 1969,
-      "region": "Piemonte",
-      "province": "Torino",
-      "provinceCode": "TO",
-      "municipality": "Quincinetto"
+      "elevation": 1969
     },
     {
       "id": "osm-node-2086219218",
@@ -10323,11 +10175,7 @@
         "osm-node-2086219220",
         "osm-node-2086219221"
       ],
-      "elevation": 1207,
-      "municipality": "Roure",
-      "region": "Piemonte",
-      "province": "Torino",
-      "provinceCode": "TO"
+      "elevation": 1207
     },
     {
       "id": "osm-node-11239615178",
@@ -10341,11 +10189,7 @@
           "multipitch"
         ]
       },
-      "elevation": 1490,
-      "region": "Piemonte",
-      "province": "Torino",
-      "provinceCode": "TO",
-      "municipality": "Ceresole Reale"
+      "elevation": 1490
     },
     {
       "id": "osm-node-1116940499",
@@ -10355,11 +10199,7 @@
       "aspect": null,
       "sourceUrl": "https://www.openstreetmap.org/node/1116940499",
       "details": {},
-      "elevation": 838,
-      "province": "Cuneo",
-      "provinceCode": "CN",
-      "municipality": "Sanfront",
-      "region": "Piemonte"
+      "elevation": 838
     },
     {
       "id": "osm-way-242743640",

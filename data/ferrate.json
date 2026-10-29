@@ -1,5 +1,5 @@
 {
-  "region": "Lombardia",
+  "region": "Lombardia, Piemonte, Trentino-Alto Adige",
   "source": "OpenStreetMap: highway=via_ferrata ways and route=via_ferrata relations (CG-112)",
   "licence": "© OpenStreetMap contributors, ODbL 1.0 — https://www.openstreetmap.org/copyright",
   "elevationSource": "Copernicus DEM GLO-90 (2021 release, 90 m), https://doi.org/10.5270/ESA-c5d3d65, through the Open-Meteo elevation API",
@@ -24,7 +24,11 @@
       "lengthM": 176,
       "scaleMin": 4,
       "scaleMax": 4,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Valmadrera",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-782134897",
@@ -46,7 +50,196 @@
       "lengthM": 298,
       "scaleMin": 2,
       "scaleMax": 2,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Tremosine sul Garda",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-1549321648",
+      "name": "Banch de Campagnacia",
+      "sourceUrl": "https://www.openstreetmap.org/way/1549321648",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1549321648"
+      ],
+      "start": {
+        "latitude": 46.401446,
+        "longitude": 11.776761,
+        "elevation": 2604
+      },
+      "top": {
+        "latitude": 46.402488,
+        "longitude": 11.776058,
+        "elevation": 2672
+      },
+      "lengthM": 153,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Moena",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-120588568",
+      "name": "Boèseekofel Klettersteig",
+      "sourceUrl": "https://www.openstreetmap.org/way/120588568",
+      "pieces": [
+        "https://www.openstreetmap.org/way/120588568"
+      ],
+      "start": {
+        "latitude": 46.524178,
+        "longitude": 11.845078,
+        "elevation": 2636
+      },
+      "top": {
+        "latitude": 46.5249,
+        "longitude": 11.844157,
+        "elevation": 2672
+      },
+      "lengthM": 199,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Corvara in Badia",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1204275731",
+      "name": "Canalino del Mulaz",
+      "sourceUrl": "https://www.openstreetmap.org/way/1204275731",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1204275731"
+      ],
+      "start": {
+        "latitude": 46.310715,
+        "longitude": 11.829793,
+        "elevation": 2383
+      },
+      "top": {
+        "latitude": 46.309637,
+        "longitude": 11.831266,
+        "elevation": 2506
+      },
+      "lengthM": 199,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Primiero San Martino di Castrozza",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1425845302",
+      "name": "Coulour del Porco",
+      "sourceUrl": "https://www.openstreetmap.org/way/1425845302",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1425845302"
+      ],
+      "start": {
+        "latitude": 44.697514,
+        "longitude": 7.073405,
+        "elevation": 2769
+      },
+      "top": {
+        "latitude": 44.696901,
+        "longitude": 7.071692,
+        "elevation": 2897
+      },
+      "lengthM": 182,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Crissolo",
+      "province": "Cuneo",
+      "provinceCode": "CN",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-relation-12145916",
+      "name": "Cunturines",
+      "sourceUrl": "https://www.openstreetmap.org/relation/12145916",
+      "pieces": [
+        "https://www.openstreetmap.org/way/232580912",
+        "https://www.openstreetmap.org/way/892997972"
+      ],
+      "start": {
+        "latitude": 46.576168,
+        "longitude": 11.977012,
+        "elevation": 2935
+      },
+      "top": {
+        "latitude": 46.575759,
+        "longitude": 11.977028,
+        "elevation": 2961
+      },
+      "lengthM": 63,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "1+"
+      ],
+      "municipality": "Marebbe",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1324145796",
+      "name": "Emergency exit for Ferrata",
+      "sourceUrl": "https://www.openstreetmap.org/way/1324145796",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1324145796"
+      ],
+      "start": {
+        "latitude": 45.970023,
+        "longitude": 10.935204,
+        "elevation": 220
+      },
+      "top": {
+        "latitude": 45.969916,
+        "longitude": 10.935199,
+        "elevation": 233
+      },
+      "lengthM": 12,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Drena",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-349604672",
+      "name": "Fennberg-Klettersteig - Ferrata di Favogna",
+      "sourceUrl": "https://www.openstreetmap.org/way/349604672",
+      "pieces": [
+        "https://www.openstreetmap.org/way/349604672"
+      ],
+      "start": {
+        "latitude": 46.257188,
+        "longitude": 11.203269,
+        "elevation": 380
+      },
+      "top": {
+        "latitude": 46.263213,
+        "longitude": 11.198653,
+        "elevation": 1087
+      },
+      "lengthM": 1631,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Magrè sulla Strada del Vino",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-1484074420",
@@ -68,7 +261,198 @@
       "lengthM": 65,
       "scaleMin": 4,
       "scaleMax": 4,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Cassano Valcuvia",
+      "province": "Varese",
+      "provinceCode": "VA",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-42037102",
+      "name": "Ferrata - Sentiero Alpinistico Angelo Pojesi",
+      "sourceUrl": "https://www.openstreetmap.org/way/42037102",
+      "pieces": [
+        "https://www.openstreetmap.org/way/42037102",
+        "https://www.openstreetmap.org/way/508797174"
+      ],
+      "start": {
+        "latitude": 45.70423,
+        "longitude": 11.115289,
+        "elevation": 1467
+      },
+      "top": {
+        "latitude": 45.71405,
+        "longitude": 11.121929,
+        "elevation": 2075
+      },
+      "lengthM": 2297,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "3+"
+      ],
+      "municipality": "Ala",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-717897661",
+      "name": "Ferrata al Pizzo Montevecchio",
+      "sourceUrl": "https://www.openstreetmap.org/way/717897661",
+      "pieces": [
+        "https://www.openstreetmap.org/way/717897661",
+        "https://www.openstreetmap.org/way/717897662",
+        "https://www.openstreetmap.org/way/717897663"
+      ],
+      "start": {
+        "latitude": 45.914094,
+        "longitude": 7.994585,
+        "elevation": 2590
+      },
+      "top": {
+        "latitude": 45.912879,
+        "longitude": 7.999447,
+        "elevation": 2734
+      },
+      "lengthM": 711,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Alto Sermenza",
+      "province": "Vercelli",
+      "provinceCode": "VC",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-389876267",
+      "name": "Ferrata Alfredo Benini",
+      "sourceUrl": "https://www.openstreetmap.org/way/389876267",
+      "pieces": [
+        "https://www.openstreetmap.org/way/389876267"
+      ],
+      "start": {
+        "latitude": 46.185559,
+        "longitude": 10.901008,
+        "elevation": 2643
+      },
+      "top": {
+        "latitude": 46.185981,
+        "longitude": 10.900829,
+        "elevation": 2718
+      },
+      "lengthM": 337,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Molveno",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1134791899",
+      "name": "ferrata Batteria Alta",
+      "sourceUrl": "https://www.openstreetmap.org/way/1134791899",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1134791899"
+      ],
+      "start": {
+        "latitude": 44.946436,
+        "longitude": 6.760692,
+        "elevation": 1959
+      },
+      "top": {
+        "latitude": 44.947601,
+        "longitude": 6.759434,
+        "elevation": 2101
+      },
+      "lengthM": 181,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Cesana Torinese",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-1134791900",
+      "name": "ferrata Batteria Bassa",
+      "sourceUrl": "https://www.openstreetmap.org/way/1134791900",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1134791900"
+      ],
+      "start": {
+        "latitude": 44.943102,
+        "longitude": 6.762554,
+        "elevation": 1642
+      },
+      "top": {
+        "latitude": 44.945908,
+        "longitude": 6.76176,
+        "elevation": 1904
+      },
+      "lengthM": 358,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Cesana Torinese",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-191712301",
+      "name": "Ferrata Bolver Lugli",
+      "sourceUrl": "https://www.openstreetmap.org/way/191712301",
+      "pieces": [
+        "https://www.openstreetmap.org/way/191712301"
+      ],
+      "start": {
+        "latitude": 46.278976,
+        "longitude": 11.824663,
+        "elevation": 2275
+      },
+      "top": {
+        "latitude": 46.282597,
+        "longitude": 11.827346,
+        "elevation": 2895
+      },
+      "lengthM": 671,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Primiero San Martino di Castrozza",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-219231582",
+      "name": "Ferrata Burrone Giovannelli",
+      "sourceUrl": "https://www.openstreetmap.org/way/219231582",
+      "pieces": [
+        "https://www.openstreetmap.org/way/219231582"
+      ],
+      "start": {
+        "latitude": 46.22885,
+        "longitude": 11.096649,
+        "elevation": 303
+      },
+      "top": {
+        "latitude": 46.233483,
+        "longitude": 11.1007,
+        "elevation": 742
+      },
+      "lengthM": 838,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Mezzocorona",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-relation-19617343",
@@ -92,7 +476,11 @@
       "lengthM": 662,
       "scaleMin": 4,
       "scaleMax": 4,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Lodrino",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
     },
     {
       "id": "osm-relation-19987751",
@@ -116,7 +504,37 @@
       "lengthM": 882,
       "scaleMin": 4,
       "scaleMax": 4,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Lodrino",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-1321646494",
+      "name": "Ferrata Ciao Miki",
+      "sourceUrl": "https://www.openstreetmap.org/way/1321646494",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1321646494"
+      ],
+      "start": {
+        "latitude": 45.636019,
+        "longitude": 7.928653,
+        "elevation": 2201
+      },
+      "top": {
+        "latitude": 45.635818,
+        "longitude": 7.927319,
+        "elevation": 2272
+      },
+      "lengthM": 109,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Pollone",
+      "province": "Biella",
+      "provinceCode": "BI",
+      "region": "Piemonte"
     },
     {
       "id": "osm-way-1375357464",
@@ -138,7 +556,11 @@
       "lengthM": 235,
       "scaleMin": null,
       "scaleMax": null,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Zone",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-1095913702",
@@ -162,7 +584,11 @@
       "scaleMax": null,
       "scaleDropped": [
         "3+"
-      ]
+      ],
+      "municipality": "Zone",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-76605469",
@@ -184,7 +610,11 @@
       "lengthM": 256,
       "scaleMin": 2,
       "scaleMax": 2,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Corteno Golgi",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-1300261877",
@@ -206,7 +636,89 @@
       "lengthM": 2544,
       "scaleMin": null,
       "scaleMax": null,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Peio",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1551361670",
+      "name": "Ferrata degli Alpini",
+      "sourceUrl": "https://www.openstreetmap.org/way/1551361670",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1551361670"
+      ],
+      "start": {
+        "latitude": 44.440245,
+        "longitude": 6.938975,
+        "elevation": 2914
+      },
+      "top": {
+        "latitude": 44.43948,
+        "longitude": 6.936671,
+        "elevation": 2927
+      },
+      "lengthM": 282,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Acceglio",
+      "province": "Cuneo",
+      "provinceCode": "CN",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-144824382",
+      "name": "Ferrata dei Funs \"Ico Quaranta\"",
+      "sourceUrl": "https://www.openstreetmap.org/way/144824382",
+      "pieces": [
+        "https://www.openstreetmap.org/way/144824382"
+      ],
+      "start": {
+        "latitude": 44.244111,
+        "longitude": 7.428026,
+        "elevation": 1191
+      },
+      "top": {
+        "latitude": 44.242294,
+        "longitude": 7.43226,
+        "elevation": 1548
+      },
+      "lengthM": 1037,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Entracque",
+      "province": "Cuneo",
+      "provinceCode": "CN",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-462409013",
+      "name": "Ferrata dei Picasass",
+      "sourceUrl": "https://www.openstreetmap.org/way/462409013",
+      "pieces": [
+        "https://www.openstreetmap.org/way/462409013"
+      ],
+      "start": {
+        "latitude": 45.912767,
+        "longitude": 8.478835,
+        "elevation": 595
+      },
+      "top": {
+        "latitude": 45.913533,
+        "longitude": 8.475477,
+        "elevation": 847
+      },
+      "lengthM": 478,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Baveno",
+      "province": "Verbano-Cusio-Ossola",
+      "provinceCode": "VB",
+      "region": "Piemonte"
     },
     {
       "id": "osm-way-225592154",
@@ -228,7 +740,11 @@
       "lengthM": 433,
       "scaleMin": 4,
       "scaleMax": 4,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Plesio",
+      "province": "Como",
+      "provinceCode": "CO",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-1548938454",
@@ -252,7 +768,37 @@
       "scaleMax": null,
       "scaleDropped": [
         "K2"
-      ]
+      ],
+      "municipality": "Maccagno con Pino e Veddasca",
+      "province": "Varese",
+      "provinceCode": "VA",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-866910362",
+      "name": "Ferrata del Limbo",
+      "sourceUrl": "https://www.openstreetmap.org/way/866910362",
+      "pieces": [
+        "https://www.openstreetmap.org/way/866910362"
+      ],
+      "start": {
+        "latitude": 45.62004,
+        "longitude": 7.949028,
+        "elevation": 2038
+      },
+      "top": {
+        "latitude": 45.619086,
+        "longitude": 7.948039,
+        "elevation": 2198
+      },
+      "lengthM": 184,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Biella",
+      "province": "Biella",
+      "provinceCode": "BI",
+      "region": "Piemonte"
     },
     {
       "id": "osm-way-229179363",
@@ -277,7 +823,169 @@
       "lengthM": 624,
       "scaleMin": 2,
       "scaleMax": 2,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Mandello del Lario",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-81112149",
+      "name": "Ferrata del Velo",
+      "sourceUrl": "https://www.openstreetmap.org/way/81112149",
+      "pieces": [
+        "https://www.openstreetmap.org/way/81112149"
+      ],
+      "start": {
+        "latitude": 46.233878,
+        "longitude": 11.843528,
+        "elevation": 2251
+      },
+      "top": {
+        "latitude": 46.234036,
+        "longitude": 11.845568,
+        "elevation": 2376
+      },
+      "lengthM": 236,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Primiero San Martino di Castrozza",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-relation-21422132",
+      "name": "Ferrata della Miniera dell'Erdemolo",
+      "sourceUrl": "https://www.openstreetmap.org/relation/21422132",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1560981649"
+      ],
+      "start": {
+        "latitude": 46.124783,
+        "longitude": 11.378869,
+        "elevation": 1745
+      },
+      "top": {
+        "latitude": 46.12292,
+        "longitude": 11.382847,
+        "elevation": 1962
+      },
+      "lengthM": 558,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Palù del Fersina",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-170768640",
+      "name": "Ferrata della Vecia",
+      "sourceUrl": "https://www.openstreetmap.org/way/170768640",
+      "pieces": [
+        "https://www.openstreetmap.org/way/170768640"
+      ],
+      "start": {
+        "latitude": 46.23624,
+        "longitude": 11.842717,
+        "elevation": 2064
+      },
+      "top": {
+        "latitude": 46.236322,
+        "longitude": 11.843412,
+        "elevation": 2156
+      },
+      "lengthM": 68,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Primiero San Martino di Castrozza",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1553223665",
+      "name": "Ferrata di Camoglieres",
+      "sourceUrl": "https://www.openstreetmap.org/way/1553223665",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1553223665"
+      ],
+      "start": {
+        "latitude": 44.505188,
+        "longitude": 7.197991,
+        "elevation": 1154
+      },
+      "top": {
+        "latitude": 44.506708,
+        "longitude": 7.19761,
+        "elevation": 1296
+      },
+      "lengthM": 410,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "D"
+      ],
+      "municipality": "Macra",
+      "province": "Cuneo",
+      "provinceCode": "CN",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-121950866",
+      "name": "Ferrata di Chiaronto",
+      "sourceUrl": "https://www.openstreetmap.org/way/121950866",
+      "pieces": [
+        "https://www.openstreetmap.org/way/121950866"
+      ],
+      "start": {
+        "latitude": 44.57749,
+        "longitude": 7.250426,
+        "elevation": 1048
+      },
+      "top": {
+        "latitude": 44.580043,
+        "longitude": 7.251811,
+        "elevation": 1199
+      },
+      "lengthM": 476,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Frassino",
+      "province": "Cuneo",
+      "provinceCode": "CN",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-216057454",
+      "name": "Ferrata di Preore \"Sentiero Artpinistico\"",
+      "sourceUrl": "https://www.openstreetmap.org/way/216057454",
+      "pieces": [
+        "https://www.openstreetmap.org/way/216057454"
+      ],
+      "start": {
+        "latitude": 46.045735,
+        "longitude": 10.748234,
+        "elevation": 688
+      },
+      "top": {
+        "latitude": 46.046799,
+        "longitude": 10.748689,
+        "elevation": 851
+      },
+      "lengthM": 696,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Tre Ville",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-368274115",
@@ -299,7 +1007,89 @@
       "lengthM": 553,
       "scaleMin": null,
       "scaleMax": null,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Saviore dell'Adamello",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-368606796",
+      "name": "Ferrata Eterna Brigata Cadore (C/D)",
+      "sourceUrl": "https://www.openstreetmap.org/way/368606796",
+      "pieces": [
+        "https://www.openstreetmap.org/way/368606796"
+      ],
+      "start": {
+        "latitude": 46.445019,
+        "longitude": 11.889729,
+        "elevation": 2419
+      },
+      "top": {
+        "latitude": 46.439852,
+        "longitude": 11.883451,
+        "elevation": 2887
+      },
+      "lengthM": 1151,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Canazei",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-600466122",
+      "name": "Ferrata Falcipieri",
+      "sourceUrl": "https://www.openstreetmap.org/way/600466122",
+      "pieces": [
+        "https://www.openstreetmap.org/way/600466122"
+      ],
+      "start": {
+        "latitude": 45.782447,
+        "longitude": 11.200026,
+        "elevation": 1878
+      },
+      "top": {
+        "latitude": 45.782441,
+        "longitude": 11.18848,
+        "elevation": 1975
+      },
+      "lengthM": 1336,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Trambileno",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1014465543",
+      "name": "Ferrata Falconera",
+      "sourceUrl": "https://www.openstreetmap.org/way/1014465543",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1014465543"
+      ],
+      "start": {
+        "latitude": 45.805551,
+        "longitude": 8.275512,
+        "elevation": 629
+      },
+      "top": {
+        "latitude": 45.806202,
+        "longitude": 8.27733,
+        "elevation": 744
+      },
+      "lengthM": 232,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Varallo",
+      "province": "Vercelli",
+      "provinceCode": "VC",
+      "region": "Piemonte"
     },
     {
       "id": "osm-way-509637794",
@@ -321,7 +1111,37 @@
       "lengthM": 177,
       "scaleMin": 4,
       "scaleMax": 4,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Idro",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-507624287",
+      "name": "Ferrata Gadotti",
+      "sourceUrl": "https://www.openstreetmap.org/way/507624287",
+      "pieces": [
+        "https://www.openstreetmap.org/way/507624287"
+      ],
+      "start": {
+        "latitude": 46.400098,
+        "longitude": 11.703676,
+        "elevation": 2399
+      },
+      "top": {
+        "latitude": 46.401877,
+        "longitude": 11.703979,
+        "elevation": 2505
+      },
+      "lengthM": 247,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Soraga di Fassa",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-952085458",
@@ -343,7 +1163,39 @@
       "lengthM": 231,
       "scaleMin": 2,
       "scaleMax": 2,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Perledo",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-176196031",
+      "name": "Ferrata Gerardo Sega",
+      "sourceUrl": "https://www.openstreetmap.org/way/176196031",
+      "pieces": [
+        "https://www.openstreetmap.org/way/176196031"
+      ],
+      "start": {
+        "latitude": 45.753221,
+        "longitude": 10.904292,
+        "elevation": 1028
+      },
+      "top": {
+        "latitude": 45.754702,
+        "longitude": 10.904434,
+        "elevation": 1177
+      },
+      "lengthM": 815,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "2+"
+      ],
+      "municipality": "Avio",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-509637795",
@@ -365,7 +1217,11 @@
       "lengthM": 77,
       "scaleMin": 4,
       "scaleMax": 4,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Idro",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-321641702",
@@ -387,7 +1243,63 @@
       "lengthM": 295,
       "scaleMin": 4,
       "scaleMax": 4,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Lecco",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-40444599",
+      "name": "Ferrata Innerkofler - De-Luca / Klettersteig Paternkofel",
+      "sourceUrl": "https://www.openstreetmap.org/way/40444599",
+      "pieces": [
+        "https://www.openstreetmap.org/way/40444599"
+      ],
+      "start": {
+        "latitude": 46.630411,
+        "longitude": 12.315178,
+        "elevation": 2539
+      },
+      "top": {
+        "latitude": 46.629735,
+        "longitude": 12.316194,
+        "elevation": 2592
+      },
+      "lengthM": 213,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Dobbiaco",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-816260243",
+      "name": "Ferrata La Miccia",
+      "sourceUrl": "https://www.openstreetmap.org/way/816260243",
+      "pieces": [
+        "https://www.openstreetmap.org/way/816260243"
+      ],
+      "start": {
+        "latitude": 45.913559,
+        "longitude": 8.478137,
+        "elevation": 684
+      },
+      "top": {
+        "latitude": 45.913226,
+        "longitude": 8.477298,
+        "elevation": 748
+      },
+      "lengthM": 137,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Baveno",
+      "province": "Verbano-Cusio-Ossola",
+      "provinceCode": "VB",
+      "region": "Piemonte"
     },
     {
       "id": "osm-relation-19340717",
@@ -411,7 +1323,212 @@
       "scaleMax": null,
       "scaleDropped": [
         "2+"
-      ]
+      ],
+      "municipality": "Barzio",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-27701977",
+      "name": "Ferrata Monte Roen",
+      "sourceUrl": "https://www.openstreetmap.org/way/27701977",
+      "pieces": [
+        "https://www.openstreetmap.org/way/27701977",
+        "https://www.openstreetmap.org/way/38427101",
+        "https://www.openstreetmap.org/way/1322297686",
+        "https://www.openstreetmap.org/way/1322297689"
+      ],
+      "start": {
+        "latitude": 46.364087,
+        "longitude": 11.196915,
+        "elevation": 1796
+      },
+      "top": {
+        "latitude": 46.364498,
+        "longitude": 11.194013,
+        "elevation": 2047
+      },
+      "lengthM": 2457,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Termeno sulla Strada del Vino",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1093566650",
+      "name": "Ferrata Montorfano",
+      "sourceUrl": "https://www.openstreetmap.org/way/1093566650",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1093566650",
+        "https://www.openstreetmap.org/way/1093566652",
+        "https://www.openstreetmap.org/way/1093566653",
+        "https://www.openstreetmap.org/way/1093566851",
+        "https://www.openstreetmap.org/way/1274341156",
+        "https://www.openstreetmap.org/way/1274341157",
+        "https://www.openstreetmap.org/way/1274341160"
+      ],
+      "start": {
+        "latitude": 45.940397,
+        "longitude": 8.445511,
+        "elevation": 484
+      },
+      "top": {
+        "latitude": 45.940795,
+        "longitude": 8.448366,
+        "elevation": 572
+      },
+      "lengthM": 194,
+      "scaleMin": 3,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Mergozzo",
+      "province": "Verbano-Cusio-Ossola",
+      "provinceCode": "VB",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-311471534",
+      "name": "Ferrata Nito Staich",
+      "sourceUrl": "https://www.openstreetmap.org/way/311471534",
+      "pieces": [
+        "https://www.openstreetmap.org/way/311471534",
+        "https://www.openstreetmap.org/way/311471535",
+        "https://www.openstreetmap.org/way/311471536",
+        "https://www.openstreetmap.org/way/311471537",
+        "https://www.openstreetmap.org/way/311471538"
+      ],
+      "start": {
+        "latitude": 45.631144,
+        "longitude": 7.962053,
+        "elevation": 1522
+      },
+      "top": {
+        "latitude": 45.632106,
+        "longitude": 7.961628,
+        "elevation": 1629
+      },
+      "lengthM": 260,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Biella",
+      "province": "Biella",
+      "provinceCode": "BI",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-1014465544",
+      "name": "Ferrata Partusac",
+      "sourceUrl": "https://www.openstreetmap.org/way/1014465544",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1014465544"
+      ],
+      "start": {
+        "latitude": 45.806578,
+        "longitude": 8.278144,
+        "elevation": 782
+      },
+      "top": {
+        "latitude": 45.806901,
+        "longitude": 8.278543,
+        "elevation": 838
+      },
+      "lengthM": 65,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Varallo",
+      "province": "Vercelli",
+      "provinceCode": "VC",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-211140212",
+      "name": "Ferrata Pitla Cir - Kleine Cirspitze - Cir V",
+      "sourceUrl": "https://www.openstreetmap.org/way/211140212",
+      "pieces": [
+        "https://www.openstreetmap.org/way/211140212"
+      ],
+      "start": {
+        "latitude": 46.555675,
+        "longitude": 11.800521,
+        "elevation": 2342
+      },
+      "top": {
+        "latitude": 46.55673,
+        "longitude": 11.799779,
+        "elevation": 2462
+      },
+      "lengthM": 179,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Selva di Val Gardena",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-527540198",
+      "name": "Ferrata Rocca Candelera",
+      "sourceUrl": "https://www.openstreetmap.org/way/527540198",
+      "pieces": [
+        "https://www.openstreetmap.org/way/527540198",
+        "https://www.openstreetmap.org/way/527540199",
+        "https://www.openstreetmap.org/way/527540200"
+      ],
+      "start": {
+        "latitude": 45.234992,
+        "longitude": 7.243523,
+        "elevation": 1512
+      },
+      "top": {
+        "latitude": 45.237513,
+        "longitude": 7.243772,
+        "elevation": 1683
+      },
+      "lengthM": 385,
+      "scaleMin": 4,
+      "scaleMax": 5,
+      "scaleDropped": [],
+      "municipality": "Usseglio",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-42229957",
+      "name": "Ferrata Setus",
+      "sourceUrl": "https://www.openstreetmap.org/way/42229957",
+      "pieces": [
+        "https://www.openstreetmap.org/way/42229957",
+        "https://www.openstreetmap.org/way/1415398059",
+        "https://www.openstreetmap.org/way/1415398060"
+      ],
+      "start": {
+        "latitude": 46.539219,
+        "longitude": 11.817534,
+        "elevation": 2484
+      },
+      "top": {
+        "latitude": 46.537524,
+        "longitude": 11.819005,
+        "elevation": 2575
+      },
+      "lengthM": 306,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [
+        "2+"
+      ],
+      "municipality": "Corvara in Badia",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-697703186",
@@ -433,7 +1550,37 @@
       "lengthM": 266,
       "scaleMin": 2,
       "scaleMax": 2,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Chiesa in Valmalenco",
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-985152042",
+      "name": "Ferrata Vallon",
+      "sourceUrl": "https://www.openstreetmap.org/way/985152042",
+      "pieces": [
+        "https://www.openstreetmap.org/way/985152042"
+      ],
+      "start": {
+        "latitude": 46.519277,
+        "longitude": 11.838841,
+        "elevation": 2738
+      },
+      "top": {
+        "latitude": 46.519469,
+        "longitude": 11.837745,
+        "elevation": 2764
+      },
+      "lengthM": 120,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Corvara in Badia",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-1423075166",
@@ -455,7 +1602,606 @@
       "lengthM": 214,
       "scaleMin": 3,
       "scaleMax": 3,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Caspoggio",
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-399860652",
+      "name": "Ferrata “La Rucèia”",
+      "sourceUrl": "https://www.openstreetmap.org/way/399860652",
+      "pieces": [
+        "https://www.openstreetmap.org/way/399860652"
+      ],
+      "start": {
+        "latitude": 45.118251,
+        "longitude": 7.29585,
+        "elevation": 419
+      },
+      "top": {
+        "latitude": 45.119648,
+        "longitude": 7.294474,
+        "elevation": 536
+      },
+      "lengthM": 221,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Condove",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-40525674",
+      "name": "Forcia-Rossa-Klettersteig",
+      "sourceUrl": "https://www.openstreetmap.org/way/40525674",
+      "pieces": [
+        "https://www.openstreetmap.org/way/40525674",
+        "https://www.openstreetmap.org/way/844793127",
+        "https://www.openstreetmap.org/way/844793129",
+        "https://www.openstreetmap.org/way/844793131"
+      ],
+      "start": {
+        "latitude": 46.58011,
+        "longitude": 12.038982,
+        "elevation": 2522
+      },
+      "top": {
+        "latitude": 46.578404,
+        "longitude": 12.035756,
+        "elevation": 2710
+      },
+      "lengthM": 351,
+      "scaleMin": 2,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Marebbe",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-relation-19526451",
+      "name": "Hans Kammerlander",
+      "sourceUrl": "https://www.openstreetmap.org/relation/19526451",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1424950477"
+      ],
+      "start": {
+        "latitude": 46.92252,
+        "longitude": 11.996952,
+        "elevation": 1347
+      },
+      "top": {
+        "latitude": 46.92232,
+        "longitude": 12.000084,
+        "elevation": 1495
+      },
+      "lengthM": 376,
+      "scaleMin": 5,
+      "scaleMax": 5,
+      "scaleDropped": [],
+      "municipality": "Campo Tures",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-39493060",
+      "name": "Hauptmann Bilgeri Klettersteig - Via ferrata Capitano Bilgeri",
+      "sourceUrl": "https://www.openstreetmap.org/way/39493060",
+      "pieces": [
+        "https://www.openstreetmap.org/way/39493060"
+      ],
+      "start": {
+        "latitude": 46.626292,
+        "longitude": 12.243535,
+        "elevation": 2164
+      },
+      "top": {
+        "latitude": 46.625705,
+        "longitude": 12.243925,
+        "elevation": 2247
+      },
+      "lengthM": 167,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "2+"
+      ],
+      "municipality": "Dobbiaco",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-171000850",
+      "name": "Heini Holzer Klettersteig",
+      "sourceUrl": "https://www.openstreetmap.org/way/171000850",
+      "pieces": [
+        "https://www.openstreetmap.org/way/171000850"
+      ],
+      "start": {
+        "latitude": 46.691953,
+        "longitude": 11.258381,
+        "elevation": 2498
+      },
+      "top": {
+        "latitude": 46.691977,
+        "longitude": 11.258302,
+        "elevation": 2514
+      },
+      "lengthM": 160,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Avelengo",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-527877883",
+      "name": "Heini Holzer Klettersteig - Ferrata Heini Holzer",
+      "sourceUrl": "https://www.openstreetmap.org/way/527877883",
+      "pieces": [
+        "https://www.openstreetmap.org/way/527877883"
+      ],
+      "start": {
+        "latitude": 46.686864,
+        "longitude": 11.255816,
+        "elevation": 1967
+      },
+      "top": {
+        "latitude": 46.690108,
+        "longitude": 11.258433,
+        "elevation": 2426
+      },
+      "lengthM": 661,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Scena",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-relation-19174582",
+      "name": "Ibex Klettersteig - Via ferrata Ibex",
+      "sourceUrl": "https://www.openstreetmap.org/relation/19174582",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1389643727",
+        "https://www.openstreetmap.org/way/1389643728",
+        "https://www.openstreetmap.org/way/1389643729",
+        "https://www.openstreetmap.org/way/1389643731"
+      ],
+      "start": {
+        "latitude": 46.868434,
+        "longitude": 11.274534,
+        "elevation": 1508
+      },
+      "top": {
+        "latitude": 46.869226,
+        "longitude": 11.273116,
+        "elevation": 1682
+      },
+      "lengthM": 535,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Racines",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1298069012",
+      "name": "Klettersteig Feldkurat-Hosp - Ferrata Cappellano Hosp",
+      "sourceUrl": "https://www.openstreetmap.org/way/1298069012",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1298069012"
+      ],
+      "start": {
+        "latitude": 46.641809,
+        "longitude": 12.308086,
+        "elevation": 2500
+      },
+      "top": {
+        "latitude": 46.642374,
+        "longitude": 12.308586,
+        "elevation": 2508
+      },
+      "lengthM": 110,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "San Candido",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1324394047",
+      "name": "Klettersteig Michel",
+      "sourceUrl": "https://www.openstreetmap.org/way/1324394047",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1324394047",
+        "https://www.openstreetmap.org/way/1324394048"
+      ],
+      "start": {
+        "latitude": 46.920544,
+        "longitude": 11.901905,
+        "elevation": 2094
+      },
+      "top": {
+        "latitude": 46.919056,
+        "longitude": 11.900174,
+        "elevation": 2253
+      },
+      "lengthM": 303,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [
+        "2+"
+      ],
+      "municipality": "Campo Tures",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1083867165",
+      "name": "Klettersteig Piz da Peres",
+      "sourceUrl": "https://www.openstreetmap.org/way/1083867165",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1083867165"
+      ],
+      "start": {
+        "latitude": 46.712081,
+        "longitude": 11.972942,
+        "elevation": 2241
+      },
+      "top": {
+        "latitude": 46.711466,
+        "longitude": 11.977238,
+        "elevation": 2419
+      },
+      "lengthM": 631,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Marebbe",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-40526818",
+      "name": "Klettersteig Pursteinwand",
+      "sourceUrl": "https://www.openstreetmap.org/way/40526818",
+      "pieces": [
+        "https://www.openstreetmap.org/way/40526818"
+      ],
+      "start": {
+        "latitude": 46.912831,
+        "longitude": 11.947205,
+        "elevation": 1075
+      },
+      "top": {
+        "latitude": 46.913484,
+        "longitude": 11.946421,
+        "elevation": 1151
+      },
+      "lengthM": 163,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Campo Tures",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-615587498",
+      "name": "Klettersteig Speikboden - Via ferrata Monte Spico",
+      "sourceUrl": "https://www.openstreetmap.org/way/615587498",
+      "pieces": [
+        "https://www.openstreetmap.org/way/615587498"
+      ],
+      "start": {
+        "latitude": 46.920079,
+        "longitude": 11.896922,
+        "elevation": 2177
+      },
+      "top": {
+        "latitude": 46.918191,
+        "longitude": 11.893583,
+        "elevation": 2467
+      },
+      "lengthM": 508,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Campo Tures",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-292313762",
+      "name": "Klettersteig Toblinger Knoten - Ferrata Torre di Toblin",
+      "sourceUrl": "https://www.openstreetmap.org/way/292313762",
+      "pieces": [
+        "https://www.openstreetmap.org/way/292313762"
+      ],
+      "start": {
+        "latitude": 46.642318,
+        "longitude": 12.306726,
+        "elevation": 2497
+      },
+      "top": {
+        "latitude": 46.641719,
+        "longitude": 12.308055,
+        "elevation": 2500
+      },
+      "lengthM": 165,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "San Candido",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-490854265",
+      "name": "Knott Klettersteig",
+      "sourceUrl": "https://www.openstreetmap.org/way/490854265",
+      "pieces": [
+        "https://www.openstreetmap.org/way/490854265",
+        "https://www.openstreetmap.org/way/490854268",
+        "https://www.openstreetmap.org/way/490854270",
+        "https://www.openstreetmap.org/way/1193499461",
+        "https://www.openstreetmap.org/way/1193499462",
+        "https://www.openstreetmap.org/way/1193499463"
+      ],
+      "start": {
+        "latitude": 46.65987,
+        "longitude": 10.984239,
+        "elevation": 1314
+      },
+      "top": {
+        "latitude": 46.660318,
+        "longitude": 10.98428,
+        "elevation": 1372
+      },
+      "lengthM": 251,
+      "scaleMin": 3,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Naturno",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1188157868",
+      "name": "Knott Klettersteig Variante",
+      "sourceUrl": "https://www.openstreetmap.org/way/1188157868",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1188157868"
+      ],
+      "start": {
+        "latitude": 46.660496,
+        "longitude": 10.984415,
+        "elevation": 1372
+      },
+      "top": {
+        "latitude": 46.660496,
+        "longitude": 10.984415,
+        "elevation": 1372
+      },
+      "lengthM": 21,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Naturno",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-638010696",
+      "name": "Lichtenfelser Steig",
+      "sourceUrl": "https://www.openstreetmap.org/way/638010696",
+      "pieces": [
+        "https://www.openstreetmap.org/way/638010696"
+      ],
+      "start": {
+        "latitude": 46.517855,
+        "longitude": 11.842893,
+        "elevation": 2699
+      },
+      "top": {
+        "latitude": 46.517961,
+        "longitude": 11.841865,
+        "elevation": 2725
+      },
+      "lengthM": 102,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Corvara in Badia",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-121844385",
+      "name": "Meisules - Pößnecker",
+      "sourceUrl": "https://www.openstreetmap.org/way/121844385",
+      "pieces": [
+        "https://www.openstreetmap.org/way/121844385"
+      ],
+      "start": {
+        "latitude": 46.515351,
+        "longitude": 11.77966,
+        "elevation": 2278
+      },
+      "top": {
+        "latitude": 46.513418,
+        "longitude": 11.781563,
+        "elevation": 2622
+      },
+      "lengthM": 401,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Selva di Val Gardena",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-680716110",
+      "name": "Meisules - Pößnecker",
+      "sourceUrl": "https://www.openstreetmap.org/way/680716110",
+      "pieces": [
+        "https://www.openstreetmap.org/way/680716110"
+      ],
+      "start": {
+        "latitude": 46.514664,
+        "longitude": 11.788404,
+        "elevation": 2770
+      },
+      "top": {
+        "latitude": 46.514938,
+        "longitude": 11.790907,
+        "elevation": 2910
+      },
+      "lengthM": 351,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Selva di Val Gardena",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-relation-15709805",
+      "name": "Ölberg Klettersteig",
+      "sourceUrl": "https://www.openstreetmap.org/relation/15709805",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1161461103",
+        "https://www.openstreetmap.org/way/1161461104",
+        "https://www.openstreetmap.org/way/1161461106"
+      ],
+      "start": {
+        "latitude": 46.910375,
+        "longitude": 11.502826,
+        "elevation": 1196
+      },
+      "top": {
+        "latitude": 46.910886,
+        "longitude": 11.50245,
+        "elevation": 1399
+      },
+      "lengthM": 260,
+      "scaleMin": 2,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Val di Vizze",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1205553209",
+      "name": "Passportensteig",
+      "sourceUrl": "https://www.openstreetmap.org/way/1205553209",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1205553209"
+      ],
+      "start": {
+        "latitude": 46.62399,
+        "longitude": 12.314773,
+        "elevation": 2470
+      },
+      "top": {
+        "latitude": 46.629305,
+        "longitude": 12.316716,
+        "elevation": 2609
+      },
+      "lengthM": 823,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Dobbiaco",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-40987512",
+      "name": "Patern Gallerie und Kriegssteige",
+      "sourceUrl": "https://www.openstreetmap.org/way/40987512",
+      "pieces": [
+        "https://www.openstreetmap.org/way/40987512",
+        "https://www.openstreetmap.org/way/40987513",
+        "https://www.openstreetmap.org/way/121070313",
+        "https://www.openstreetmap.org/way/121070315",
+        "https://www.openstreetmap.org/way/1311029384",
+        "https://www.openstreetmap.org/way/1311029385"
+      ],
+      "start": {
+        "latitude": 46.633417,
+        "longitude": 12.313484,
+        "elevation": 2400
+      },
+      "top": {
+        "latitude": 46.630116,
+        "longitude": 12.316439,
+        "elevation": 2576
+      },
+      "lengthM": 749,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Sesto",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-188672280",
+      "name": "Peitlerkofelsteig - Ferrata del Sass de Pütia",
+      "sourceUrl": "https://www.openstreetmap.org/way/188672280",
+      "pieces": [
+        "https://www.openstreetmap.org/way/188672280"
+      ],
+      "start": {
+        "latitude": 46.657478,
+        "longitude": 11.820261,
+        "elevation": 2741
+      },
+      "top": {
+        "latitude": 46.658365,
+        "longitude": 11.820284,
+        "elevation": 2809
+      },
+      "lengthM": 133,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "San Martino in Badia",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-1548541963",
@@ -479,7 +2225,67 @@
       "lengthM": 556,
       "scaleMin": null,
       "scaleMax": null,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Bellano",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-1324219080",
+      "name": "Piraten Kinder Klettersteig",
+      "sourceUrl": "https://www.openstreetmap.org/way/1324219080",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1324219080"
+      ],
+      "start": {
+        "latitude": 46.924722,
+        "longitude": 11.899963,
+        "elevation": 2066
+      },
+      "top": {
+        "latitude": 46.924722,
+        "longitude": 11.899963,
+        "elevation": 2066
+      },
+      "lengthM": 49,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "1+"
+      ],
+      "municipality": "Campo Tures",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-171421505",
+      "name": "Pisciadústeig - Via Ferrata Brigata Tridentina",
+      "sourceUrl": "https://www.openstreetmap.org/way/171421505",
+      "pieces": [
+        "https://www.openstreetmap.org/way/171421505",
+        "https://www.openstreetmap.org/way/827478744",
+        "https://www.openstreetmap.org/way/827485514"
+      ],
+      "start": {
+        "latitude": 46.539199,
+        "longitude": 11.826389,
+        "elevation": 2473
+      },
+      "top": {
+        "latitude": 46.539276,
+        "longitude": 11.825437,
+        "elevation": 2506
+      },
+      "lengthM": 118,
+      "scaleMin": 3,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Corvara in Badia",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-439071219",
@@ -501,7 +2307,255 @@
       "lengthM": 64,
       "scaleMin": null,
       "scaleMax": null,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Casto",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-77201729",
+      "name": "Reinstadlerweg",
+      "sourceUrl": "https://www.openstreetmap.org/way/77201729",
+      "pieces": [
+        "https://www.openstreetmap.org/way/77201729"
+      ],
+      "start": {
+        "latitude": 46.548132,
+        "longitude": 10.641274,
+        "elevation": 3064
+      },
+      "top": {
+        "latitude": 46.548132,
+        "longitude": 10.641274,
+        "elevation": 3064
+      },
+      "lengthM": 33,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Stelvio",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1383371931",
+      "name": "Rotwand-Klettersteig - Via Ferrata Roda di Vaèl",
+      "sourceUrl": "https://www.openstreetmap.org/way/1383371931",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1383371931"
+      ],
+      "start": {
+        "latitude": 46.423339,
+        "longitude": 11.621023,
+        "elevation": 2592
+      },
+      "top": {
+        "latitude": 46.422974,
+        "longitude": 11.622047,
+        "elevation": 2629
+      },
+      "lengthM": 100,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "3-"
+      ],
+      "municipality": "San Giovanni di Fassa",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-39406919",
+      "name": "Santner Klettersteig - Ferrata Passo Santner",
+      "sourceUrl": "https://www.openstreetmap.org/way/39406919",
+      "pieces": [
+        "https://www.openstreetmap.org/way/39406919"
+      ],
+      "start": {
+        "latitude": 46.442395,
+        "longitude": 11.613831,
+        "elevation": 2393
+      },
+      "top": {
+        "latitude": 46.45529,
+        "longitude": 11.619489,
+        "elevation": 2723
+      },
+      "lengthM": 1683,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "2+"
+      ],
+      "municipality": "Tires",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-40882989",
+      "name": "Sas Rigais Ostanstieg - Sas Rigais Est",
+      "sourceUrl": "https://www.openstreetmap.org/way/40882989",
+      "pieces": [
+        "https://www.openstreetmap.org/way/40882989",
+        "https://www.openstreetmap.org/way/515081554"
+      ],
+      "start": {
+        "latitude": 46.610292,
+        "longitude": 11.771294,
+        "elevation": 2727
+      },
+      "top": {
+        "latitude": 46.609288,
+        "longitude": 11.76682,
+        "elevation": 2931
+      },
+      "lengthM": 604,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Santa Cristina Valgardena",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-40882990",
+      "name": "Sas Rigais Südwestanstieg - Sas Rigais Sud-Ovest",
+      "sourceUrl": "https://www.openstreetmap.org/way/40882990",
+      "pieces": [
+        "https://www.openstreetmap.org/way/40882990",
+        "https://www.openstreetmap.org/way/515081552"
+      ],
+      "start": {
+        "latitude": 46.603904,
+        "longitude": 11.762141,
+        "elevation": 2508
+      },
+      "top": {
+        "latitude": 46.608981,
+        "longitude": 11.766986,
+        "elevation": 2939
+      },
+      "lengthM": 527,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Santa Cristina Valgardena",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-142352201",
+      "name": "Sas Rigais Villnößer Einsteig - Sas Rigais Ovest",
+      "sourceUrl": "https://www.openstreetmap.org/way/142352201",
+      "pieces": [
+        "https://www.openstreetmap.org/way/142352201"
+      ],
+      "start": {
+        "latitude": 46.604686,
+        "longitude": 11.760071,
+        "elevation": 2578
+      },
+      "top": {
+        "latitude": 46.607253,
+        "longitude": 11.763891,
+        "elevation": 2767
+      },
+      "lengthM": 609,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "2+"
+      ],
+      "municipality": "Santa Cristina Valgardena",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-131290793",
+      "name": "Selvaggio Verde",
+      "sourceUrl": "https://www.openstreetmap.org/way/131290793",
+      "pieces": [
+        "https://www.openstreetmap.org/way/131290793",
+        "https://www.openstreetmap.org/way/492211807",
+        "https://www.openstreetmap.org/way/1348955390"
+      ],
+      "start": {
+        "latitude": 46.013968,
+        "longitude": 8.441774,
+        "elevation": 616
+      },
+      "top": {
+        "latitude": 46.054749,
+        "longitude": 8.418706,
+        "elevation": 975
+      },
+      "lengthM": 7153,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "San Bernardino Verbano",
+      "province": "Verbano-Cusio-Ossola",
+      "provinceCode": "VB",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-135402704",
+      "name": "Selvaggio Verde",
+      "sourceUrl": "https://www.openstreetmap.org/way/135402704",
+      "pieces": [
+        "https://www.openstreetmap.org/way/135402704"
+      ],
+      "start": {
+        "latitude": 46.000826,
+        "longitude": 8.459181,
+        "elevation": 462
+      },
+      "top": {
+        "latitude": 46.009337,
+        "longitude": 8.442493,
+        "elevation": 608
+      },
+      "lengthM": 2094,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "San Bernardino Verbano",
+      "province": "Verbano-Cusio-Ossola",
+      "provinceCode": "VB",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-215267487",
+      "name": "Sentiero Alpinistico dei Contrabbandieri \"Massimiliano Torti\"",
+      "sourceUrl": "https://www.openstreetmap.org/way/215267487",
+      "pieces": [
+        "https://www.openstreetmap.org/way/215267487"
+      ],
+      "start": {
+        "latitude": 45.859378,
+        "longitude": 10.832337,
+        "elevation": 219
+      },
+      "top": {
+        "latitude": 45.855411,
+        "longitude": 10.832305,
+        "elevation": 352
+      },
+      "lengthM": 1857,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Riva del Garda",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-943577492",
@@ -523,7 +2577,89 @@
       "lengthM": 285,
       "scaleMin": null,
       "scaleMax": null,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Parlasco",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-77015497",
+      "name": "Sentiero attrezzato Attilio Sieff",
+      "sourceUrl": "https://www.openstreetmap.org/way/77015497",
+      "pieces": [
+        "https://www.openstreetmap.org/way/77015497"
+      ],
+      "start": {
+        "latitude": 46.292644,
+        "longitude": 11.559499,
+        "elevation": 1509
+      },
+      "top": {
+        "latitude": 46.292494,
+        "longitude": 11.558764,
+        "elevation": 1518
+      },
+      "lengthM": 78,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Ziano di Fiemme",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1508710483",
+      "name": "Sentiero attrezzato Celeste Donini",
+      "sourceUrl": "https://www.openstreetmap.org/way/1508710483",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1508710483"
+      ],
+      "start": {
+        "latitude": 46.161707,
+        "longitude": 10.930008,
+        "elevation": 1541
+      },
+      "top": {
+        "latitude": 46.160553,
+        "longitude": 10.931327,
+        "elevation": 1641
+      },
+      "lengthM": 168,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Molveno",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-601311704",
+      "name": "Sentiero Attrezzato del Gronton",
+      "sourceUrl": "https://www.openstreetmap.org/way/601311704",
+      "pieces": [
+        "https://www.openstreetmap.org/way/601311704"
+      ],
+      "start": {
+        "latitude": 46.347558,
+        "longitude": 11.733742,
+        "elevation": 2313
+      },
+      "top": {
+        "latitude": 46.353551,
+        "longitude": 11.743949,
+        "elevation": 2579
+      },
+      "lengthM": 1171,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Moena",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-625598344",
@@ -546,7 +2682,90 @@
       "lengthM": 325,
       "scaleMin": 0,
       "scaleMax": 0,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Chiavenna",
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-1146451918",
+      "name": "Sentiero del Cacciatore",
+      "sourceUrl": "https://www.openstreetmap.org/way/1146451918",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1146451918"
+      ],
+      "start": {
+        "latitude": 46.228548,
+        "longitude": 11.856319,
+        "elevation": 1693
+      },
+      "top": {
+        "latitude": 46.226571,
+        "longitude": 11.846691,
+        "elevation": 2402
+      },
+      "lengthM": 1800,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Primiero San Martino di Castrozza",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1567330012",
+      "name": "Sentiero delle Stel",
+      "sourceUrl": "https://www.openstreetmap.org/way/1567330012",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1567330012"
+      ],
+      "start": {
+        "latitude": 45.996933,
+        "longitude": 11.095363,
+        "elevation": 630
+      },
+      "top": {
+        "latitude": 45.99616,
+        "longitude": 11.094965,
+        "elevation": 741
+      },
+      "lengthM": 92,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Trento",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-73983952",
+      "name": "Sentiero Dino Buzzati",
+      "sourceUrl": "https://www.openstreetmap.org/way/73983952",
+      "pieces": [
+        "https://www.openstreetmap.org/way/73983952",
+        "https://www.openstreetmap.org/way/161976575"
+      ],
+      "start": {
+        "latitude": 46.218296,
+        "longitude": 11.854045,
+        "elevation": 1863
+      },
+      "top": {
+        "latitude": 46.227839,
+        "longitude": 11.846324,
+        "elevation": 2500
+      },
+      "lengthM": 2372,
+      "scaleMin": 1,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Primiero San Martino di Castrozza",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-854968489",
@@ -568,7 +2787,37 @@
       "lengthM": 126,
       "scaleMin": null,
       "scaleMax": null,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Lecco",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-971299765",
+      "name": "Sentiero Punta Besei cresta N",
+      "sourceUrl": "https://www.openstreetmap.org/way/971299765",
+      "pieces": [
+        "https://www.openstreetmap.org/way/971299765"
+      ],
+      "start": {
+        "latitude": 45.475499,
+        "longitude": 7.115009,
+        "elevation": 3283
+      },
+      "top": {
+        "latitude": 45.475499,
+        "longitude": 7.115009,
+        "elevation": 3283
+      },
+      "lengthM": 7,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Ceresole Reale",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
     },
     {
       "id": "osm-way-708413990",
@@ -592,7 +2841,11 @@
       "scaleMax": null,
       "scaleDropped": [
         "3+"
-      ]
+      ],
+      "municipality": "Toscolano Maderno",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-363505232",
@@ -614,7 +2867,142 @@
       "lengthM": 271,
       "scaleMin": 3,
       "scaleMax": 3,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Casto",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-289358709",
+      "name": "Tabaretta-Klettersteig - Via ferrata di Punta Tabaretta",
+      "sourceUrl": "https://www.openstreetmap.org/way/289358709",
+      "pieces": [
+        "https://www.openstreetmap.org/way/289358709"
+      ],
+      "start": {
+        "latitude": 46.525209,
+        "longitude": 10.545901,
+        "elevation": 2707
+      },
+      "top": {
+        "latitude": 46.525131,
+        "longitude": 10.542483,
+        "elevation": 3038
+      },
+      "lengthM": 349,
+      "scaleMin": 5,
+      "scaleMax": 5,
+      "scaleDropped": [],
+      "municipality": "Stelvio",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-722884196",
+      "name": "Tiroler Weg",
+      "sourceUrl": "https://www.openstreetmap.org/way/722884196",
+      "pieces": [
+        "https://www.openstreetmap.org/way/722884196",
+        "https://www.openstreetmap.org/way/828572593"
+      ],
+      "start": {
+        "latitude": 46.84261,
+        "longitude": 10.552417,
+        "elevation": 2608
+      },
+      "top": {
+        "latitude": 46.839956,
+        "longitude": 10.553378,
+        "elevation": 2933
+      },
+      "lengthM": 500,
+      "scaleMin": 1,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Curon Venosta",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-607789962",
+      "name": "Übungsklettersteig am Klettergarten Pragser Wildsee",
+      "sourceUrl": "https://www.openstreetmap.org/way/607789962",
+      "pieces": [
+        "https://www.openstreetmap.org/way/607789962"
+      ],
+      "start": {
+        "latitude": 46.692622,
+        "longitude": 12.088302,
+        "elevation": 1497
+      },
+      "top": {
+        "latitude": 46.692916,
+        "longitude": 12.088458,
+        "elevation": 1544
+      },
+      "lengthM": 36,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Braies",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-76779026",
+      "name": "Via attrezzata Giulio Segata",
+      "sourceUrl": "https://www.openstreetmap.org/way/76779026",
+      "pieces": [
+        "https://www.openstreetmap.org/way/76779026"
+      ],
+      "start": {
+        "latitude": 45.99017,
+        "longitude": 11.038836,
+        "elevation": 2077
+      },
+      "top": {
+        "latitude": 45.989982,
+        "longitude": 11.039098,
+        "elevation": 2102
+      },
+      "lengthM": 55,
+      "scaleMin": 6,
+      "scaleMax": 6,
+      "scaleDropped": [],
+      "municipality": "Trento",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-76618437",
+      "name": "Via ferrata \"Fausto Susatti\"",
+      "sourceUrl": "https://www.openstreetmap.org/way/76618437",
+      "pieces": [
+        "https://www.openstreetmap.org/way/76618437"
+      ],
+      "start": {
+        "latitude": 45.865427,
+        "longitude": 10.829897,
+        "elevation": 665
+      },
+      "top": {
+        "latitude": 45.867485,
+        "longitude": 10.829433,
+        "elevation": 730
+      },
+      "lengthM": 391,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Ledro",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-1068922454",
@@ -636,29 +3024,256 @@
       "lengthM": 178,
       "scaleMin": 2,
       "scaleMax": 2,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Mese",
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "region": "Lombardia"
     },
     {
-      "id": "osm-way-481349717",
-      "name": "Via Ferrata Angelino",
-      "sourceUrl": "https://www.openstreetmap.org/way/481349717",
+      "id": "osm-way-160503360",
+      "name": "Via ferrata \"Giordano Bertotti\"",
+      "sourceUrl": "https://www.openstreetmap.org/way/160503360",
       "pieces": [
-        "https://www.openstreetmap.org/way/481349717"
+        "https://www.openstreetmap.org/way/160503360"
       ],
       "start": {
-        "latitude": 45.934671,
-        "longitude": 9.021113,
-        "elevation": 1614
+        "latitude": 46.056438,
+        "longitude": 11.175497,
+        "elevation": 998
       },
       "top": {
-        "latitude": 45.933781,
-        "longitude": 9.020836,
-        "elevation": 1642
+        "latitude": 46.054508,
+        "longitude": 11.17738,
+        "elevation": 1173
       },
-      "lengthM": 122,
+      "lengthM": 476,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Trento",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-717070353",
+      "name": "Via Ferrata \"Signora delle Acque\"",
+      "sourceUrl": "https://www.openstreetmap.org/way/717070353",
+      "pieces": [
+        "https://www.openstreetmap.org/way/717070353",
+        "https://www.openstreetmap.org/way/1084387226"
+      ],
+      "start": {
+        "latitude": 45.96603,
+        "longitude": 10.802286,
+        "elevation": 1037
+      },
+      "top": {
+        "latitude": 45.966545,
+        "longitude": 10.801553,
+        "elevation": 1070
+      },
+      "lengthM": 145,
+      "scaleMin": 1,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Fiavé",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1527600954",
+      "name": "Via Ferrata Bec Valletta",
+      "sourceUrl": "https://www.openstreetmap.org/way/1527600954",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1527600954",
+        "https://www.openstreetmap.org/way/1527600956",
+        "https://www.openstreetmap.org/way/1527600958",
+        "https://www.openstreetmap.org/way/1527600959",
+        "https://www.openstreetmap.org/way/1527600960"
+      ],
+      "start": {
+        "latitude": 44.176988,
+        "longitude": 7.61058,
+        "elevation": 1541
+      },
+      "top": {
+        "latitude": 44.172437,
+        "longitude": 7.607212,
+        "elevation": 1880
+      },
+      "lengthM": 712,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Limone Piemonte",
+      "province": "Cuneo",
+      "provinceCode": "CN",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-171421509",
+      "name": "Via Ferrata Brigata Tridentina",
+      "sourceUrl": "https://www.openstreetmap.org/way/171421509",
+      "pieces": [
+        "https://www.openstreetmap.org/way/171421509"
+      ],
+      "start": {
+        "latitude": 46.540425,
+        "longitude": 11.827871,
+        "elevation": 2303
+      },
+      "top": {
+        "latitude": 46.539199,
+        "longitude": 11.826389,
+        "elevation": 2473
+      },
+      "lengthM": 265,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Corvara in Badia",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1194693332",
+      "name": "Via ferrata Bunker",
+      "sourceUrl": "https://www.openstreetmap.org/way/1194693332",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1194693332"
+      ],
+      "start": {
+        "latitude": 44.939808,
+        "longitude": 6.758424,
+        "elevation": 1730
+      },
+      "top": {
+        "latitude": 44.939869,
+        "longitude": 6.758322,
+        "elevation": 1747
+      },
+      "lengthM": 104,
       "scaleMin": null,
       "scaleMax": null,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Cesana Torinese",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-932877045",
+      "name": "Via Ferrata Carlo Campalani",
+      "sourceUrl": "https://www.openstreetmap.org/way/932877045",
+      "pieces": [
+        "https://www.openstreetmap.org/way/932877045"
+      ],
+      "start": {
+        "latitude": 45.720338,
+        "longitude": 11.133913,
+        "elevation": 2089
+      },
+      "top": {
+        "latitude": 45.721065,
+        "longitude": 11.13327,
+        "elevation": 2151
+      },
+      "lengthM": 169,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Ala",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-83688184",
+      "name": "Via Ferrata Carlo Giorda",
+      "sourceUrl": "https://www.openstreetmap.org/way/83688184",
+      "pieces": [
+        "https://www.openstreetmap.org/way/83688184",
+        "https://www.openstreetmap.org/way/682538471",
+        "https://www.openstreetmap.org/way/682538473"
+      ],
+      "start": {
+        "latitude": 45.104,
+        "longitude": 7.347035,
+        "elevation": 360
+      },
+      "top": {
+        "latitude": 45.098523,
+        "longitude": 7.342233,
+        "elevation": 864
+      },
+      "lengthM": 1354,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Sant'Ambrogio di Torino",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-1254722155",
+      "name": "via ferrata Ciardelli",
+      "sourceUrl": "https://www.openstreetmap.org/way/1254722155",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1254722155",
+        "https://www.openstreetmap.org/way/1254722156",
+        "https://www.openstreetmap.org/way/1254722157",
+        "https://www.openstreetmap.org/way/1254722158",
+        "https://www.openstreetmap.org/way/1254732334"
+      ],
+      "start": {
+        "latitude": 44.987724,
+        "longitude": 7.119836,
+        "elevation": 1198
+      },
+      "top": {
+        "latitude": 44.989747,
+        "longitude": 7.120878,
+        "elevation": 1278
+      },
+      "lengthM": 309,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Roure",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-41830806",
+      "name": "Via ferrata Colodri",
+      "sourceUrl": "https://www.openstreetmap.org/way/41830806",
+      "pieces": [
+        "https://www.openstreetmap.org/way/41830806"
+      ],
+      "start": {
+        "latitude": 45.926865,
+        "longitude": 10.887401,
+        "elevation": 305
+      },
+      "top": {
+        "latitude": 45.927582,
+        "longitude": 10.88836,
+        "elevation": 341
+      },
+      "lengthM": 271,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Arco",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-178777126",
@@ -680,7 +3295,11 @@
       "lengthM": 885,
       "scaleMin": 2,
       "scaleMax": 2,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Pisogne",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-430049572",
@@ -704,7 +3323,89 @@
       "scaleMax": null,
       "scaleDropped": [
         "2+"
-      ]
+      ],
+      "municipality": "Idro",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-1531214648",
+      "name": "Via Ferrata Crepa Neigra",
+      "sourceUrl": "https://www.openstreetmap.org/way/1531214648",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1531214648"
+      ],
+      "start": {
+        "latitude": 46.45626,
+        "longitude": 11.762207,
+        "elevation": 2408
+      },
+      "top": {
+        "latitude": 46.453372,
+        "longitude": 11.764519,
+        "elevation": 2477
+      },
+      "lengthM": 599,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Mazzin",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1531214650",
+      "name": "Via Ferrata Crepa Neigra - Variante prima cima",
+      "sourceUrl": "https://www.openstreetmap.org/way/1531214650",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1531214650"
+      ],
+      "start": {
+        "latitude": 46.453556,
+        "longitude": 11.76407,
+        "elevation": 2471
+      },
+      "top": {
+        "latitude": 46.453867,
+        "longitude": 11.764324,
+        "elevation": 2477
+      },
+      "lengthM": 46,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Mazzin",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1331563960",
+      "name": "Via Ferrata Croce di Fai",
+      "sourceUrl": "https://www.openstreetmap.org/way/1331563960",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1331563960"
+      ],
+      "start": {
+        "latitude": 46.187656,
+        "longitude": 11.069346,
+        "elevation": 1276
+      },
+      "top": {
+        "latitude": 46.189834,
+        "longitude": 11.068908,
+        "elevation": 1475
+      },
+      "lengthM": 315,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Fai della Paganella",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-322269334",
@@ -726,7 +3427,95 @@
       "lengthM": 325,
       "scaleMin": null,
       "scaleMax": null,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Lecco",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-relation-14348469",
+      "name": "Via Ferrata Degli Alpini",
+      "sourceUrl": "https://www.openstreetmap.org/relation/14348469",
+      "pieces": [
+        "https://www.openstreetmap.org/way/129211076",
+        "https://www.openstreetmap.org/way/1061095753"
+      ],
+      "start": {
+        "latitude": 45.025427,
+        "longitude": 6.705232,
+        "elevation": 2463
+      },
+      "top": {
+        "latitude": 45.022003,
+        "longitude": 6.71416,
+        "elevation": 2601
+      },
+      "lengthM": 883,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [
+        "1+"
+      ],
+      "municipality": "Oulx",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-131405751",
+      "name": "Via Ferrata dei Finanzieri",
+      "sourceUrl": "https://www.openstreetmap.org/way/131405751",
+      "pieces": [
+        "https://www.openstreetmap.org/way/131405751",
+        "https://www.openstreetmap.org/way/1315881109",
+        "https://www.openstreetmap.org/way/1534314296"
+      ],
+      "start": {
+        "latitude": 46.443818,
+        "longitude": 11.780794,
+        "elevation": 2218
+      },
+      "top": {
+        "latitude": 46.440475,
+        "longitude": 11.78175,
+        "elevation": 2649
+      },
+      "lengthM": 973,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Canazei",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-383799924",
+      "name": "Via ferrata dei Laghi",
+      "sourceUrl": "https://www.openstreetmap.org/way/383799924",
+      "pieces": [
+        "https://www.openstreetmap.org/way/383799924",
+        "https://www.openstreetmap.org/way/971057384"
+      ],
+      "start": {
+        "latitude": 46.22569,
+        "longitude": 11.510881,
+        "elevation": 2302
+      },
+      "top": {
+        "latitude": 46.222964,
+        "longitude": 11.506907,
+        "elevation": 2473
+      },
+      "lengthM": 769,
+      "scaleMin": 0,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Cavalese",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-444479481",
@@ -750,7 +3539,382 @@
       "scaleMax": null,
       "scaleDropped": [
         "2+"
-      ]
+      ],
+      "municipality": "Lecco",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-1309249641",
+      "name": "via ferrata del Colle della Losa",
+      "sourceUrl": "https://www.openstreetmap.org/way/1309249641",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1309249641"
+      ],
+      "start": {
+        "latitude": 45.456244,
+        "longitude": 7.100634,
+        "elevation": 2922
+      },
+      "top": {
+        "latitude": 45.456244,
+        "longitude": 7.100634,
+        "elevation": 2922
+      },
+      "lengthM": 22,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Ceresole Reale",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-245459598",
+      "name": "Via ferrata del Lago",
+      "sourceUrl": "https://www.openstreetmap.org/way/245459598",
+      "pieces": [
+        "https://www.openstreetmap.org/way/245459598"
+      ],
+      "start": {
+        "latitude": 46.081805,
+        "longitude": 8.032431,
+        "elevation": 2964
+      },
+      "top": {
+        "latitude": 46.081813,
+        "longitude": 8.029283,
+        "elevation": 3162
+      },
+      "lengthM": 337,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Antrona Schieranco",
+      "province": "Verbano-Cusio-Ossola",
+      "provinceCode": "VB",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-81112159",
+      "name": "Via ferrata del Portòn",
+      "sourceUrl": "https://www.openstreetmap.org/way/81112159",
+      "pieces": [
+        "https://www.openstreetmap.org/way/81112159"
+      ],
+      "start": {
+        "latitude": 46.24214,
+        "longitude": 11.849943,
+        "elevation": 2336
+      },
+      "top": {
+        "latitude": 46.24065,
+        "longitude": 11.84826,
+        "elevation": 2495
+      },
+      "lengthM": 307,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Primiero San Martino di Castrozza",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-relation-7069739",
+      "name": "Via ferrata del Rio Secco",
+      "sourceUrl": "https://www.openstreetmap.org/relation/7069739",
+      "pieces": [
+        "https://www.openstreetmap.org/way/41963930",
+        "https://www.openstreetmap.org/way/1411644984"
+      ],
+      "start": {
+        "latitude": 46.217306,
+        "longitude": 11.156477,
+        "elevation": 338
+      },
+      "top": {
+        "latitude": 46.216621,
+        "longitude": 11.158922,
+        "elevation": 582
+      },
+      "lengthM": 317,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "San Michele all'Adige",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-224887680",
+      "name": "Via ferrata dell'Infernone",
+      "sourceUrl": "https://www.openstreetmap.org/way/224887680",
+      "pieces": [
+        "https://www.openstreetmap.org/way/224887680",
+        "https://www.openstreetmap.org/way/224893378",
+        "https://www.openstreetmap.org/way/224893379",
+        "https://www.openstreetmap.org/way/224893380",
+        "https://www.openstreetmap.org/way/224893381",
+        "https://www.openstreetmap.org/way/224893382",
+        "https://www.openstreetmap.org/way/224893383"
+      ],
+      "start": {
+        "latitude": 45.57457,
+        "longitude": 7.965898,
+        "elevation": 611
+      },
+      "top": {
+        "latitude": 45.582061,
+        "longitude": 7.952702,
+        "elevation": 718
+      },
+      "lengthM": 2079,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Sordevolo",
+      "province": "Biella",
+      "provinceCode": "BI",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-39687332",
+      "name": "Via ferrata delle Bocchette Alte",
+      "sourceUrl": "https://www.openstreetmap.org/way/39687332",
+      "pieces": [
+        "https://www.openstreetmap.org/way/39687332",
+        "https://www.openstreetmap.org/way/175551150",
+        "https://www.openstreetmap.org/way/175551151",
+        "https://www.openstreetmap.org/way/389876268",
+        "https://www.openstreetmap.org/way/709858010",
+        "https://www.openstreetmap.org/way/846691425",
+        "https://www.openstreetmap.org/way/1421683952",
+        "https://www.openstreetmap.org/way/1433521009",
+        "https://www.openstreetmap.org/way/1545422285"
+      ],
+      "start": {
+        "latitude": 46.185559,
+        "longitude": 10.901008,
+        "elevation": 2643
+      },
+      "top": {
+        "latitude": 46.179201,
+        "longitude": 10.902054,
+        "elevation": 3018
+      },
+      "lengthM": 2628,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [
+        "3-"
+      ],
+      "municipality": "Molveno",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-43085263",
+      "name": "Via ferrata delle Bocchette Centrali",
+      "sourceUrl": "https://www.openstreetmap.org/way/43085263",
+      "pieces": [
+        "https://www.openstreetmap.org/way/43085263",
+        "https://www.openstreetmap.org/way/1316954993"
+      ],
+      "start": {
+        "latitude": 46.157696,
+        "longitude": 10.894585,
+        "elevation": 2491
+      },
+      "top": {
+        "latitude": 46.165157,
+        "longitude": 10.895962,
+        "elevation": 2807
+      },
+      "lengthM": 1823,
+      "scaleMin": 2,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Tre Ville",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-relation-17902110",
+      "name": "Via Ferrata delle Trincee",
+      "sourceUrl": "https://www.openstreetmap.org/relation/17902110",
+      "pieces": [
+        "https://www.openstreetmap.org/way/133412549",
+        "https://www.openstreetmap.org/way/240797377",
+        "https://www.openstreetmap.org/way/364799970",
+        "https://www.openstreetmap.org/way/843302299",
+        "https://www.openstreetmap.org/way/843302303",
+        "https://www.openstreetmap.org/way/843302305",
+        "https://www.openstreetmap.org/way/843302306",
+        "https://www.openstreetmap.org/way/843302307",
+        "https://www.openstreetmap.org/way/843302308",
+        "https://www.openstreetmap.org/way/988400790",
+        "https://www.openstreetmap.org/way/988400791"
+      ],
+      "start": {
+        "latitude": 46.464135,
+        "longitude": 11.886062,
+        "elevation": 2514
+      },
+      "top": {
+        "latitude": 46.471423,
+        "longitude": 11.876782,
+        "elevation": 2666
+      },
+      "lengthM": 2011,
+      "scaleMin": 2,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Canazei",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-relation-15726843",
+      "name": "Via Ferrata di Pont Canavese",
+      "sourceUrl": "https://www.openstreetmap.org/relation/15726843",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1162776884",
+        "https://www.openstreetmap.org/way/1162776886"
+      ],
+      "start": {
+        "latitude": 45.422627,
+        "longitude": 7.576777,
+        "elevation": 660
+      },
+      "top": {
+        "latitude": 45.424517,
+        "longitude": 7.574143,
+        "elevation": 944
+      },
+      "lengthM": 518,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Pont Canavese",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-1085673619",
+      "name": "Via Ferrata di Rocca Clarì",
+      "sourceUrl": "https://www.openstreetmap.org/way/1085673619",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1085673619"
+      ],
+      "start": {
+        "latitude": 44.94374,
+        "longitude": 6.763943,
+        "elevation": 1646
+      },
+      "top": {
+        "latitude": 44.941915,
+        "longitude": 6.768414,
+        "elevation": 1878
+      },
+      "lengthM": 555,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "4+"
+      ],
+      "municipality": "Cesana Torinese",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-1212802228",
+      "name": "Via Ferrata Forte Barba di Fior",
+      "sourceUrl": "https://www.openstreetmap.org/way/1212802228",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1212802228"
+      ],
+      "start": {
+        "latitude": 46.347619,
+        "longitude": 10.6436,
+        "elevation": 1547
+      },
+      "top": {
+        "latitude": 46.347452,
+        "longitude": 10.643015,
+        "elevation": 1595
+      },
+      "lengthM": 175,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Peio",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-173175955",
+      "name": "Via ferrata Franco Gadotti",
+      "sourceUrl": "https://www.openstreetmap.org/way/173175955",
+      "pieces": [
+        "https://www.openstreetmap.org/way/173175955"
+      ],
+      "start": {
+        "latitude": 46.404552,
+        "longitude": 11.708186,
+        "elevation": 2155
+      },
+      "top": {
+        "latitude": 46.405458,
+        "longitude": 11.704649,
+        "elevation": 2349
+      },
+      "lengthM": 584,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "San Giovanni di Fassa",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1185307752",
+      "name": "Via Ferrata Furcela de Saslonch",
+      "sourceUrl": "https://www.openstreetmap.org/way/1185307752",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1185307752"
+      ],
+      "start": {
+        "latitude": 46.513032,
+        "longitude": 11.740501,
+        "elevation": 2596
+      },
+      "top": {
+        "latitude": 46.514384,
+        "longitude": 11.739153,
+        "elevation": 2712
+      },
+      "lengthM": 257,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "C"
+      ],
+      "municipality": "Selva di Val Gardena",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-relation-17637064",
@@ -773,7 +3937,11 @@
       "lengthM": 752,
       "scaleMin": 3,
       "scaleMax": 3,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Lecco",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-444479472",
@@ -795,7 +3963,226 @@
       "lengthM": 798,
       "scaleMin": null,
       "scaleMax": null,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Lecco",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-119932132",
+      "name": "Via Ferrata Gorge della Dora Riparia",
+      "sourceUrl": "https://www.openstreetmap.org/way/119932132",
+      "pieces": [
+        "https://www.openstreetmap.org/way/119932132"
+      ],
+      "start": {
+        "latitude": 45.13303,
+        "longitude": 7.002578,
+        "elevation": 655
+      },
+      "top": {
+        "latitude": 45.130068,
+        "longitude": 6.995878,
+        "elevation": 702
+      },
+      "lengthM": 762,
+      "scaleMin": 1,
+      "scaleMax": 1,
+      "scaleDropped": [],
+      "municipality": "Giaglione",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-364799961",
+      "name": "Via Ferrata Hoachwool",
+      "sourceUrl": "https://www.openstreetmap.org/way/364799961",
+      "pieces": [
+        "https://www.openstreetmap.org/way/364799961",
+        "https://www.openstreetmap.org/way/364799963",
+        "https://www.openstreetmap.org/way/364799964"
+      ],
+      "start": {
+        "latitude": 46.650706,
+        "longitude": 10.976755,
+        "elevation": 615
+      },
+      "top": {
+        "latitude": 46.655348,
+        "longitude": 10.978376,
+        "elevation": 1146
+      },
+      "lengthM": 1221,
+      "scaleMin": 4,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Naturno",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1419242140",
+      "name": "Via Ferrata I Magnifici 4",
+      "sourceUrl": "https://www.openstreetmap.org/way/1419242140",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1419242140"
+      ],
+      "start": {
+        "latitude": 46.424316,
+        "longitude": 11.730553,
+        "elevation": 1933
+      },
+      "top": {
+        "latitude": 46.427507,
+        "longitude": 11.732491,
+        "elevation": 2163
+      },
+      "lengthM": 620,
+      "scaleMin": 5,
+      "scaleMax": 5,
+      "scaleDropped": [],
+      "municipality": "San Giovanni di Fassa",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-977565824",
+      "name": "Via Ferrata Les Cordes",
+      "sourceUrl": "https://www.openstreetmap.org/way/977565824",
+      "pieces": [
+        "https://www.openstreetmap.org/way/977565824"
+      ],
+      "start": {
+        "latitude": 46.584196,
+        "longitude": 11.884441,
+        "elevation": 1865
+      },
+      "top": {
+        "latitude": 46.583981,
+        "longitude": 11.881753,
+        "elevation": 2007
+      },
+      "lengthM": 260,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Badia",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-relation-13281842",
+      "name": "Via Ferrata Magico Alverman al Col Rodella",
+      "sourceUrl": "https://www.openstreetmap.org/relation/13281842",
+      "pieces": [
+        "https://www.openstreetmap.org/way/40883911",
+        "https://www.openstreetmap.org/way/1408128234"
+      ],
+      "start": {
+        "latitude": 46.494745,
+        "longitude": 11.74867,
+        "elevation": 2397
+      },
+      "top": {
+        "latitude": 46.495081,
+        "longitude": 11.749952,
+        "elevation": 2444
+      },
+      "lengthM": 258,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "3+"
+      ],
+      "municipality": "Campitello di Fassa",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-591558520",
+      "name": "Via ferrata Mario Foletti",
+      "sourceUrl": "https://www.openstreetmap.org/way/591558520",
+      "pieces": [
+        "https://www.openstreetmap.org/way/591558520",
+        "https://www.openstreetmap.org/way/1306485885"
+      ],
+      "start": {
+        "latitude": 45.871067,
+        "longitude": 10.823722,
+        "elevation": 882
+      },
+      "top": {
+        "latitude": 45.87122,
+        "longitude": 10.823242,
+        "elevation": 898
+      },
+      "lengthM": 129,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Ledro",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-42720165",
+      "name": "Via Ferrata Marmolada Cresta Ovest",
+      "sourceUrl": "https://www.openstreetmap.org/way/42720165",
+      "pieces": [
+        "https://www.openstreetmap.org/way/42720165",
+        "https://www.openstreetmap.org/way/297965224"
+      ],
+      "start": {
+        "latitude": 46.43963,
+        "longitude": 11.840245,
+        "elevation": 2835
+      },
+      "top": {
+        "latitude": 46.435835,
+        "longitude": 11.846631,
+        "elevation": 3132
+      },
+      "lengthM": 955,
+      "scaleMin": 2,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Canazei",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-39406914",
+      "name": "Via ferrata Masaré",
+      "sourceUrl": "https://www.openstreetmap.org/way/39406914",
+      "pieces": [
+        "https://www.openstreetmap.org/way/39406914"
+      ],
+      "start": {
+        "latitude": 46.417563,
+        "longitude": 11.62266,
+        "elevation": 2450
+      },
+      "top": {
+        "latitude": 46.420645,
+        "longitude": 11.622715,
+        "elevation": 2468
+      },
+      "lengthM": 463,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "San Giovanni di Fassa",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-835503961",
@@ -819,7 +4206,11 @@
       "lengthM": 592,
       "scaleMin": 4,
       "scaleMax": 4,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Sant'Omobono Terme",
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-1019510643",
@@ -843,7 +4234,182 @@
       "lengthM": 306,
       "scaleMin": 0,
       "scaleMax": 0,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "San Pellegrino Terme",
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-435318796",
+      "name": "Via ferrata O. Detassis",
+      "sourceUrl": "https://www.openstreetmap.org/way/435318796",
+      "pieces": [
+        "https://www.openstreetmap.org/way/435318796"
+      ],
+      "start": {
+        "latitude": 46.174706,
+        "longitude": 10.897442,
+        "elevation": 2684
+      },
+      "top": {
+        "latitude": 46.174414,
+        "longitude": 10.899309,
+        "elevation": 2796
+      },
+      "lengthM": 173,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "Tre Ville",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-995940183",
+      "name": "Via Ferrata Ombretta",
+      "sourceUrl": "https://www.openstreetmap.org/way/995940183",
+      "pieces": [
+        "https://www.openstreetmap.org/way/995940183"
+      ],
+      "start": {
+        "latitude": 46.41901,
+        "longitude": 11.832226,
+        "elevation": 2570
+      },
+      "top": {
+        "latitude": 46.418601,
+        "longitude": 11.832738,
+        "elevation": 2616
+      },
+      "lengthM": 64,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "San Giovanni di Fassa",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-711298616",
+      "name": "Via Ferrata Orrido di Chianocco",
+      "sourceUrl": "https://www.openstreetmap.org/way/711298616",
+      "pieces": [
+        "https://www.openstreetmap.org/way/711298616",
+        "https://www.openstreetmap.org/way/711298619",
+        "https://www.openstreetmap.org/way/711298622",
+        "https://www.openstreetmap.org/way/1545035090"
+      ],
+      "start": {
+        "latitude": 45.151391,
+        "longitude": 7.172416,
+        "elevation": 619
+      },
+      "top": {
+        "latitude": 45.150207,
+        "longitude": 7.171954,
+        "elevation": 626
+      },
+      "lengthM": 167,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "2+",
+        "4+"
+      ],
+      "municipality": "Chianocco",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-711293507",
+      "name": "Via Ferrata Orrido di Foresto",
+      "sourceUrl": "https://www.openstreetmap.org/way/711293507",
+      "pieces": [
+        "https://www.openstreetmap.org/way/711293507",
+        "https://www.openstreetmap.org/way/711293508",
+        "https://www.openstreetmap.org/way/711293509",
+        "https://www.openstreetmap.org/way/711293510",
+        "https://www.openstreetmap.org/way/711293511",
+        "https://www.openstreetmap.org/way/711293512",
+        "https://www.openstreetmap.org/way/711293514"
+      ],
+      "start": {
+        "latitude": 45.14436,
+        "longitude": 7.114549,
+        "elevation": 634
+      },
+      "top": {
+        "latitude": 45.14681,
+        "longitude": 7.113229,
+        "elevation": 696
+      },
+      "lengthM": 383,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "3+"
+      ],
+      "municipality": "Bussoleno",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-40523736",
+      "name": "Via ferrata Oscar Schuster",
+      "sourceUrl": "https://www.openstreetmap.org/way/40523736",
+      "pieces": [
+        "https://www.openstreetmap.org/way/40523736"
+      ],
+      "start": {
+        "latitude": 46.513029,
+        "longitude": 11.720996,
+        "elevation": 2564
+      },
+      "top": {
+        "latitude": 46.512908,
+        "longitude": 11.717282,
+        "elevation": 2920
+      },
+      "lengthM": 499,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Santa Cristina Valgardena",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-160574726",
+      "name": "Via ferrata Ottorino Marangoni",
+      "sourceUrl": "https://www.openstreetmap.org/way/160574726",
+      "pieces": [
+        "https://www.openstreetmap.org/way/160574726",
+        "https://www.openstreetmap.org/way/1324129427"
+      ],
+      "start": {
+        "latitude": 45.858118,
+        "longitude": 10.978501,
+        "elevation": 561
+      },
+      "top": {
+        "latitude": 45.858374,
+        "longitude": 10.980664,
+        "elevation": 600
+      },
+      "lengthM": 202,
+      "scaleMin": 2,
+      "scaleMax": 4,
+      "scaleDropped": [],
+      "municipality": "Mori",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-1434381760",
@@ -865,7 +4431,11 @@
       "lengthM": 100,
       "scaleMin": 2,
       "scaleMax": 2,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "San Pellegrino Terme",
+      "province": "Bergamo",
+      "provinceCode": "BG",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-125239627",
@@ -887,7 +4457,11 @@
       "lengthM": 266,
       "scaleMin": 4,
       "scaleMax": 4,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Barzio",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-625598339",
@@ -911,7 +4485,171 @@
       "scaleMax": null,
       "scaleDropped": [
         "3+"
-      ]
+      ],
+      "municipality": "Chiavenna",
+      "province": "Sondrio",
+      "provinceCode": "SO",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-way-224285680",
+      "name": "Via ferrata Poppele Knott",
+      "sourceUrl": "https://www.openstreetmap.org/way/224285680",
+      "pieces": [
+        "https://www.openstreetmap.org/way/224285680"
+      ],
+      "start": {
+        "latitude": 46.621993,
+        "longitude": 10.845648,
+        "elevation": 724
+      },
+      "top": {
+        "latitude": 46.622565,
+        "longitude": 10.845986,
+        "elevation": 784
+      },
+      "lengthM": 119,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Laces",
+      "province": "Bolzano",
+      "provinceCode": "BZ",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-173045188",
+      "name": "Via Ferrata Rino Pisetta",
+      "sourceUrl": "https://www.openstreetmap.org/way/173045188",
+      "pieces": [
+        "https://www.openstreetmap.org/way/173045188"
+      ],
+      "start": {
+        "latitude": 46.052795,
+        "longitude": 10.953448,
+        "elevation": 528
+      },
+      "top": {
+        "latitude": 46.052577,
+        "longitude": 10.948586,
+        "elevation": 923
+      },
+      "lengthM": 578,
+      "scaleMin": 5,
+      "scaleMax": 5,
+      "scaleDropped": [],
+      "municipality": "Madruzzo",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-707818413",
+      "name": "Via Ferrata Rocca dei Corvi",
+      "sourceUrl": "https://www.openstreetmap.org/way/707818413",
+      "pieces": [
+        "https://www.openstreetmap.org/way/707818413",
+        "https://www.openstreetmap.org/way/707818414",
+        "https://www.openstreetmap.org/way/707818415",
+        "https://www.openstreetmap.org/way/830509589"
+      ],
+      "start": {
+        "latitude": 44.266164,
+        "longitude": 7.972867,
+        "elevation": 912
+      },
+      "top": {
+        "latitude": 44.266107,
+        "longitude": 7.971793,
+        "elevation": 925
+      },
+      "lengthM": 142,
+      "scaleMin": 2,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Viola",
+      "province": "Cuneo",
+      "provinceCode": "CN",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-relation-4164273",
+      "name": "Via ferrata Roccabianca",
+      "sourceUrl": "https://www.openstreetmap.org/relation/4164273",
+      "pieces": [
+        "https://www.openstreetmap.org/way/311123536",
+        "https://www.openstreetmap.org/way/311123537"
+      ],
+      "start": {
+        "latitude": 45.122602,
+        "longitude": 7.338639,
+        "elevation": 456
+      },
+      "top": {
+        "latitude": 45.123621,
+        "longitude": 7.335075,
+        "elevation": 670
+      },
+      "lengthM": 330,
+      "scaleMin": 1,
+      "scaleMax": 2,
+      "scaleDropped": [],
+      "municipality": "Caprie",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-606782517",
+      "name": "Via Ferrata Rouas",
+      "sourceUrl": "https://www.openstreetmap.org/way/606782517",
+      "pieces": [
+        "https://www.openstreetmap.org/way/606782517"
+      ],
+      "start": {
+        "latitude": 45.052593,
+        "longitude": 6.676248,
+        "elevation": 1475
+      },
+      "top": {
+        "latitude": 45.053348,
+        "longitude": 6.674095,
+        "elevation": 1599
+      },
+      "lengthM": 458,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Bardonecchia",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-300974341",
+      "name": "Via ferrata sentiero Brentari",
+      "sourceUrl": "https://www.openstreetmap.org/way/300974341",
+      "pieces": [
+        "https://www.openstreetmap.org/way/300974341"
+      ],
+      "start": {
+        "latitude": 46.150308,
+        "longitude": 10.873127,
+        "elevation": 2746
+      },
+      "top": {
+        "latitude": 46.15101,
+        "longitude": 10.876673,
+        "elevation": 2867
+      },
+      "lengthM": 483,
+      "scaleMin": 3,
+      "scaleMax": 3,
+      "scaleDropped": [],
+      "municipality": "San Lorenzo Dorsino",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
     },
     {
       "id": "osm-way-959556557",
@@ -933,7 +4671,11 @@
       "lengthM": 687,
       "scaleMin": 4,
       "scaleMax": 4,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Lecco",
+      "province": "Lecco",
+      "provinceCode": "LC",
+      "region": "Lombardia"
     },
     {
       "id": "osm-way-299258912",
@@ -955,7 +4697,103 @@
       "lengthM": 343,
       "scaleMin": null,
       "scaleMax": null,
-      "scaleDropped": []
+      "scaleDropped": [],
+      "municipality": "Sonico",
+      "province": "Brescia",
+      "provinceCode": "BS",
+      "region": "Lombardia"
+    },
+    {
+      "id": "osm-relation-18293739",
+      "name": "Via Ferrata Val del Rì",
+      "sourceUrl": "https://www.openstreetmap.org/relation/18293739",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1312436818",
+        "https://www.openstreetmap.org/way/1334511530",
+        "https://www.openstreetmap.org/way/1334511531",
+        "https://www.openstreetmap.org/way/1334511532",
+        "https://www.openstreetmap.org/way/1334511533",
+        "https://www.openstreetmap.org/way/1334511534",
+        "https://www.openstreetmap.org/way/1334511535",
+        "https://www.openstreetmap.org/way/1334511536",
+        "https://www.openstreetmap.org/way/1334511537",
+        "https://www.openstreetmap.org/way/1334511538",
+        "https://www.openstreetmap.org/way/1334513957"
+      ],
+      "start": {
+        "latitude": 46.208239,
+        "longitude": 11.088426,
+        "elevation": 342
+      },
+      "top": {
+        "latitude": 46.204632,
+        "longitude": 11.085979,
+        "elevation": 578
+      },
+      "lengthM": 646,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "3+"
+      ],
+      "municipality": "Mezzolombardo",
+      "province": "Trento",
+      "provinceCode": "TN",
+      "region": "Trentino-Alto Adige"
+    },
+    {
+      "id": "osm-way-1386625513",
+      "name": "Via Ferrata ‘’Le Cascate di Novalesa’’",
+      "sourceUrl": "https://www.openstreetmap.org/way/1386625513",
+      "pieces": [
+        "https://www.openstreetmap.org/way/1386625513"
+      ],
+      "start": {
+        "latitude": 45.19136,
+        "longitude": 7.022817,
+        "elevation": 909
+      },
+      "top": {
+        "latitude": 45.192623,
+        "longitude": 7.02483,
+        "elevation": 1116
+      },
+      "lengthM": 550,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [],
+      "municipality": "Novalesa",
+      "province": "Torino",
+      "provinceCode": "TO",
+      "region": "Piemonte"
+    },
+    {
+      "id": "osm-way-949091849",
+      "name": "Walser Fall",
+      "sourceUrl": "https://www.openstreetmap.org/way/949091849",
+      "pieces": [
+        "https://www.openstreetmap.org/way/949091849"
+      ],
+      "start": {
+        "latitude": 46.281628,
+        "longitude": 8.294644,
+        "elevation": 872
+      },
+      "top": {
+        "latitude": 46.283143,
+        "longitude": 8.29744,
+        "elevation": 1184
+      },
+      "lengthM": 382,
+      "scaleMin": null,
+      "scaleMax": null,
+      "scaleDropped": [
+        "3+"
+      ],
+      "municipality": "Baceno",
+      "province": "Verbano-Cusio-Ossola",
+      "provinceCode": "VB",
+      "region": "Piemonte"
     }
   ]
 }
