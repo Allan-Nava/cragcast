@@ -536,3 +536,24 @@ group("near me finds the region (CG-128)", () => {
   });
 });
 
+group("the region remembered (CG-129)", () => {
+  it("a visit without ?r= opens on the region chosen last, and the URL says so", async () => {
+    localStorage.setItem("cragcast:region", "all");
+    serve(data());
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    expect(location.search).toBe(`?r=all&day=${DAY}`);
+    expect((screen.getByLabelText("Regione") as HTMLSelectElement).value).toBe("all");
+  });
+
+  it("a link's ?r= wins, and the choice is kept for the next visit", async () => {
+    localStorage.setItem("cragcast:region", "all");
+    history.replaceState(null, "", `/?r=Lombardia&day=${DAY}`);
+    serve(data());
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    expect((screen.getByLabelText("Regione") as HTMLSelectElement).value).toBe("Lombardia");
+    expect(localStorage.getItem("cragcast:region")).toBe("Lombardia");
+  });
+});
+

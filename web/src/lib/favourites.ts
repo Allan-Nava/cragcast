@@ -3,6 +3,8 @@
 // data): then favourites last for the visit and nothing breaks.
 const KEY = "cragcast:favourites";
 const ONLY = "cragcast:onlyFavourites";
+/** CG-129: the last region chosen, the same way — this browser only, never sent. */
+const REGION = "cragcast:region";
 
 export function loadFavourites(): Set<string> {
   try {
@@ -23,4 +25,18 @@ export function loadOnly(): boolean {
 
 export function saveOnly(on: boolean): void {
   try { localStorage.setItem(ONLY, on ? "1" : "0"); } catch { /* this visit only */ }
+}
+
+/** CG-129: the region chosen last in this browser, if it is one cragcast knows; else null. */
+export function loadRegion(known: string[]): string | null {
+  try {
+    const v = localStorage.getItem(REGION);
+    return v && known.includes(v) ? v : null;
+  } catch {
+    return null;
+  }
+}
+
+export function saveRegion(region: string): void {
+  try { localStorage.setItem(REGION, region); } catch { /* this visit only */ }
 }
