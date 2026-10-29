@@ -93,7 +93,8 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 - **three regions** (CG-43): Lombardy by default, Piedmont or Trentino-Alto Adige — or all of
   them — from a choice next to the province, kept in the URL (`?r=`); the provinces follow the
   region, the map frames its crags (CG-123), and another region's crags load only when it is
-  chosen, so a first visit stays light ([ADR 0026](docs/adr/0026-beyond-lombardy.md));
+  chosen, so a first visit stays light; a search with no match in the region shown looks in
+  the others and offers them ("1 falesia in Piemonte — mostra", CG-124) ([ADR 0026](docs/adr/0026-beyond-lombardy.md));
 - the **via ferratas** (CG-114): a "Falesie / Vie ferrate" switch shows them instead of the
   crags, each with its own verdict read at the top — a thunderstorm is never "si va" — and a
   peak beside its mark; the difficulty as OpenStreetMap gives it (`via_ferrata_scale` 0–6, or
