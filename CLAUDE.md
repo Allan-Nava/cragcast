@@ -245,7 +245,8 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   try/catch (`web/src/lib/favourites.ts`), never in the URL or a request. The favourites
   filter scopes the list and the summary like the province does.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
-  never in the URL, never in a request, never in storage.
+  never in the URL, never in a request, never in storage. CG-128 loads every region's crags to
+  find the nearest — the request carries no position, the choice is made in the page.
 - **The hourly forecasts are archived, never rewritten** (CG-106, ADR 0021): `ForecastArchive`
   appends every crag-day of each successful refresh to `crag_forecast`, keyed by the refresh's
   `fetched_at`, from the `ForecastsRefreshed` forecasts — never a second Open-Meteo request.

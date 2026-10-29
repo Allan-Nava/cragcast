@@ -55,7 +55,8 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   kept in this browser only — never in the URL, never sent — and the page works when the
   browser refuses to store them (they then last for the visit);
 - **near me**: the list sorted by distance from the reader, with the km, the map centred on
-  them — the position is used in the browser only, never sent and never put in the URL;
+  them, and (CG-128) the region of the nearest crag chosen when it is another — the position is
+  used in the browser only, never sent and never put in the URL;
 - **three days at a glance**: each crag in the list shows today, tomorrow and the day after
   side by side — verdict mark, max temperature, and a drop with the mm when it rains (the data
   has no cloud cover, so no sun is drawn) — and each switches the page to that day; above the

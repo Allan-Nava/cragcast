@@ -541,10 +541,11 @@ it, not imagined — the snapshots, the code, and Lighthouse's layout-shift trac
   add a `cumulative-layout-shift` assertion to `lighthouserc.json` so it cannot creep back (CG-43
   once reached 0.8). Done: measured in
   the browser, `<main>` no longer moves (desktop and phone); CLS ≤ 0.02 asserted. <!-- cg: prio=med size=S labels=frontend ver=main -->
-- [ ] **CG-128 — Near me finds the region**: "Vicino a me" orders only the region shown, so a
+- [x] **CG-128 — Near me finds the region**: "Vicino a me" orders only the region shown, so a
   reader in Piedmont is sorted among Lombardy's crags. When the nearest crags lie in another
   region, switch to it, or offer to — computed in the browser from the crags' positions; the
-  position still never leaves it (CG-22). <!-- cg: prio=med size=S labels=frontend -->
+  position still never leaves it (CG-22). Done: it switches, and
+  says so ("Falesie in Piemonte, la regione più vicina, per distanza."). <!-- cg: prio=med size=S labels=frontend ver=main -->
 - [ ] **CG-129 — The region remembered**: a reader in Turin chooses Piemonte at every visit. Keep
   the last region in `localStorage`, like the favourites (CG-46: every access in try/catch, never
   in a request); a link's `?r=` still wins. <!-- cg: prio=low size=S labels=frontend -->

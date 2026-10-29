@@ -148,7 +148,10 @@ export function App() {
   // CG-124: a search with no match in the region shown looks in the others too — their files
   // are fetched then, and only then.
   const [searchAll, setSearchAll] = useState(false);
-  const wanted = (data?.regions ?? []).filter(r => region === ALL_REGIONS || r.name === region || searchAll).map(r => r.file);
+  // CG-128: "Vicino a me" needs every region's crags to know which is nearest.
+  const [nearAll, setNearAll] = useState(false);
+  const wanted = (data?.regions ?? [])
+    .filter(r => region === ALL_REGIONS || r.name === region || searchAll || nearAll).map(r => r.file);
   const pending = wanted.filter(f => !(f in byFile));
   const failed = wanted.filter(f => byFile[f] === "failed");
   useEffect(() => {
@@ -240,6 +243,7 @@ export function App() {
       setNotice(null);
       setHere({ lat: pos.coords.latitude, lon: pos.coords.longitude });
       setByDistance(true);
+      setNearAll(true);
     }, err => {
       setAsking(false);
       setNotice(err.code === err.PERMISSION_DENIED
@@ -247,6 +251,20 @@ export function App() {
         : "Posizione non disponibile al momento.");
     }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 600000 });
   };
+
+  // CG-128: once every region is here, the nearest crag's region becomes the one shown — in the
+  // browser, from the crags' positions; the reader's position still goes nowhere (CG-22).
+  useEffect(() => {
+    if (!nearAll || !here || !view || !data || pending.length > 0) return;
+    setNearAll(false);
+    if (kind !== "crags" || region === ALL_REGIONS || allCrags.length === 0) return;
+    const nearest = allCrags.reduce((a, b) => km(here.lat, here.lon, a.latitude, a.longitude)
+      <= km(here.lat, here.lon, b.latitude, b.longitude) ? a : b);
+    const there = regionOf(nearest);
+    if (there === region) return;
+    go({ ...view, region: there, province: "", area: null }, true);
+    setNotice(`Falesie in ${there}, la regione più vicina, per distanza.`);
+  }, [nearAll, here, pending.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const toggle = (v: Verdict) => {
     if (!view) return;
