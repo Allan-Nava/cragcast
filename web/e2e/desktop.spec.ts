@@ -97,6 +97,8 @@ test("CG-55: the cluster marks' split is readable at 100% zoom", async ({ page }
 
 test("CG-58: in the desktop's narrow list column the days and 'Dettagli' share one row", async ({ page }) => {
   await page.goto("./");
+  // The data first: before it the list holds placeholders (li.ghost), which have no day strip.
+  await expect(page.locator("#list li h2").first()).toBeVisible();
   const rows = await page.locator("#list li").evaluateAll(lis => lis.map(li => {
     const a = li.querySelector(".strip")!.getBoundingClientRect(), b = li.querySelector(".more")!.getBoundingClientRect();
     return Math.abs(a.top - b.top) < 12;
