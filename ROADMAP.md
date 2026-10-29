@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**97 items · 81 shipped · 16 open · 17 milestones.**
+**97 items · 82 shipped · 15 open · 17 milestones.**
 
 ## At a glance
 
@@ -25,7 +25,7 @@
 | **v1.1.0 — On a Raspberry Pi** | now | `########..` 80% | 1 | 4 |
 | **v1.2.0 — Everything in PostgreSQL** | next | `#########.` 89% | 1 | 8 |
 | **v1.3.0 — Vie ferrate** | later | `##########` 100% | 0 | 6 |
-| **v1.4.0 — A page for three regions** | next | `###.......` 25% | 6 | 2 |
+| **v1.4.0 — A page for three regions** | next | `####......` 38% | 5 | 3 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
 ## v0.1.0 — A verdict for one crag
@@ -161,7 +161,7 @@
 ## v1.4.0 — A page for three regions
 
 - [x] **CG-123** — The map follows the region · high · S · frontend · `main`
-- [ ] **CG-124** — Search across the regions · high · M · frontend
+- [x] **CG-124** — Search across the regions · high · M · frontend · `main`
 - [x] **CG-125** — Counts in Italian · high · S · frontend · `main`
 - [ ] **CG-126** — One row of controls on a desktop · med · M · frontend
 - [ ] **CG-127** — No shift when the data arrives · med · S · frontend

@@ -19,7 +19,7 @@ interface Props {
   favourites?: Set<string>;
   onFavourite?(id: string): void;
   /** What to say when nothing is shown, instead of the search message. */
-  empty?: string;
+  empty?: React.ReactNode;
 }
 
 export function CragList({ crags, day, days = [], onDay, distance, onOpen, onDetail, onHot, chosen, favourites, onFavourite,

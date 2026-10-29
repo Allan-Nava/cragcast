@@ -3,7 +3,7 @@
 // and day live in the URL (?q=&v=&p=&g=&o=&day=), so a link opens the same view and back works.
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Conditions, Crag, Verdict } from "./types";
-import { ORDER, fold, place, shownOf } from "./lib/text";
+import { ORDER, fold, place, places as countOf, shownOf } from "./lib/text";
 import { km } from "./lib/geo";
 import { inArea, readState, stateQuery, type Area, type ViewState } from "./lib/state";
 import { Controls } from "./components/Controls";
@@ -145,7 +145,10 @@ export function App() {
   const [loaded, setLoaded] = useState<{ gen: string; byFile: Record<string, Crag[] | "failed"> }>({ gen: "", byFile: {} });
   const byFile = data && loaded.gen === data.generatedAt ? loaded.byFile : {};
   const region = view?.region ?? "";
-  const wanted = (data?.regions ?? []).filter(r => region === ALL_REGIONS || r.name === region).map(r => r.file);
+  // CG-124: a search with no match in the region shown looks in the others too — their files
+  // are fetched then, and only then.
+  const [searchAll, setSearchAll] = useState(false);
+  const wanted = (data?.regions ?? []).filter(r => region === ALL_REGIONS || r.name === region || searchAll).map(r => r.file);
   const pending = wanted.filter(f => !(f in byFile));
   const failed = wanted.filter(f => byFile[f] === "failed");
   useEffect(() => {
@@ -181,6 +184,16 @@ export function App() {
   const ferrate = useMemo(() => (data?.ferrate ?? []).map(asPlace), [data]);
   const kind: Kind = view?.kind === "ferrate" && ferrate.length > 0 ? "ferrate" : "crags";
   const places = useMemo(() => (kind === "ferrate" ? ferrate : allCrags), [kind, ferrate, allCrags]);
+
+  // CG-124: no match here for what the reader typed: how many in each other region.
+  const query = view?.q.trim() ?? "";
+  const missHere = !!view && kind === "crags" && region !== ALL_REGIONS && query !== ""
+    && matching(allCrags, view, scope).length === 0;
+  useEffect(() => { setSearchAll(missHere); }, [missHere]);
+  const elsewhere = useMemo(() => !view || !missHere ? [] : regions
+    .filter(r => r.name !== region)
+    .map(r => ({ name: r.name, count: matching(allCrags, { ...view, region: r.name, province: "", area: null }, scope).length }))
+    .filter(r => r.count > 0), [view, missHere, regions, region, allCrags, scope]);
 
   const distance = useMemo(() => here ? (c: Crag) => km(here.lat, here.lon, c.latitude, c.longitude) : null, [here]);
   const sortDistance = byDistance ? distance : null;
@@ -315,7 +328,20 @@ export function App() {
                       distance={distance} chosen={chosen} favourites={favourites} onFavourite={toggleFavourite}
                       empty={onlyFavourites && favourites.size === 0
                         ? "Nessuna preferita: tocca la stella di una falesia per aggiungerla."
-                        : kind === "ferrate" ? "Nessuna via ferrata corrisponde alla ricerca." : undefined}
+                        : kind === "ferrate" ? "Nessuna via ferrata corrisponde alla ricerca."
+                        : missHere ? (
+                          <>
+                            {`Nessuna falesia in ${region} corrisponde alla ricerca.`}
+                            {pending.length > 0 && " Cerco nelle altre regioni…"}
+                            {pending.length === 0 && elsewhere.length === 0 && " Nemmeno nelle altre regioni."}
+                            {elsewhere.map(r => (
+                              <button key={r.name} type="button" className="more elsewhere"
+                                      onClick={() => go({ ...view, region: r.name, province: "", area: null }, true)}>
+                                {`${countOf(r.count, "crags")} in ${r.name} — mostra`}
+                              </button>
+                            ))}
+                          </>
+                        ) : undefined}
                       onOpen={c => {
                         setChosen(c.id);
                         // On a phone the list hides the map: show it, then fly (CG-54).

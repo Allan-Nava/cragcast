@@ -521,10 +521,11 @@ it, not imagined — the snapshots, the code, and Lighthouse's layout-shift trac
   another region — a move by the page, through `programmatic` (CG-38), with
   `prefers-reduced-motion` respected; an e2e test in `CragMap.test.tsx`. Done: `frame` in `CragMap`,
   `view()` on its API for the test. <!-- cg: prio=high size=S labels=frontend ver=main -->
-- [ ] **CG-124 — Search across the regions**: a search finds only the region shown, so someone in
+- [x] **CG-124 — Search across the regions**: a search finds only the region shown, so someone in
   Lombardy looking for an Arco crag reads "Nessuna falesia corrisponde". When the region shown has
   no match, say how many the other regions have and offer them in one tap ("3 in Trentino-Alto
-  Adige — mostra"), loading their files only then (CG-43 keeps them on demand). <!-- cg: prio=high size=M labels=frontend -->
+  Adige — mostra"), loading their files only then (CG-43 keeps them on demand). Done: in `App`, the
+  other regions' files fetched only on a miss. <!-- cg: prio=high size=M labels=frontend ver=main -->
 - [x] **CG-125 — Counts in Italian**: "1 falesie", "1 vie ferrate", "di 1 falesie" — the count
   never takes the singular. One helper for the plural (falesia/falesie, via ferrata/vie ferrate),
   used by the count, the summary and the empty states, with a test for 0, 1 and many. Done: `places()` and

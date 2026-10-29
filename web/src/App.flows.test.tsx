@@ -440,3 +440,47 @@ group("a region's own file (CG-43)", () => {
     expect(await screen.findByText("Non riesco a caricare le falesie di questa regione: riprova più tardi.")).toBeTruthy();
   });
 });
+
+group("search across the regions (CG-124)", () => {
+  const split = () => {
+    const main: Conditions = { ...data(), regions: [{ name: "Piemonte", count: 1, file: "conditions-piemonte.json" }] };
+    const c = crag({ id: "p", name: "Parete Gamma", latitude: 45.5, longitude: 7.5, provinceCode: "TO", province: "Torino",
+                     municipality: "Torino", region: "Piemonte" });
+    c.days[NEXT] = { ...c.days[DAY] };
+    return { main, other: { ...data(), crags: [c] } as Conditions };
+  };
+  const byUrl = (answers: Record<string, unknown>) => {
+    const f = vi.fn((url: string) => Promise.resolve({ ok: true, json: () => Promise.resolve(answers[Object.keys(answers).find(k => url.startsWith(k))!]) }));
+    vi.stubGlobal("fetch", f);
+    return f;
+  };
+  const search = async (q: string) => {
+    await act(async () => { fireEvent.change(screen.getByPlaceholderText("Cerca una falesia…"), { target: { value: q } }); });
+  };
+
+  it("no match here: the other regions are searched, and one tap shows them", async () => {
+    const { main, other } = split();
+    const f = byUrl({ "data/conditions.json": main, "data/conditions-piemonte.json": other });
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    await search("alfa");
+    expect(f).toHaveBeenCalledTimes(1);                                   // a match here: nothing fetched
+    await search("gamma");
+    expect(screen.getByText(/Nessuna falesia in Lombardia corrisponde alla ricerca\./)).toBeTruthy();
+    const offer = await screen.findByRole("button", { name: "1 falesia in Piemonte — mostra" });
+    expect(f.mock.calls.map(c => c[0])).toContain("data/conditions-piemonte.json");
+    await act(async () => { fireEvent.click(offer); });
+    expect(location.search).toBe(`?q=gamma&r=Piemonte&day=${DAY}`);
+    expect(names()).toEqual(["Parete Gamma — Si va"]);
+  });
+
+  it("says so when no region has it", async () => {
+    const { main, other } = split();
+    byUrl({ "data/conditions.json": main, "data/conditions-piemonte.json": other });
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    await search("zeta");
+    expect(await screen.findByText(/Nemmeno nelle altre regioni\./)).toBeTruthy();
+  });
+});
+
