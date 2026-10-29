@@ -71,4 +71,26 @@ class FerrateExportTest {
                         Map.<LocalDate, Map<String, Avalanche>>of()));
         assertThat(json.writeValueAsString(one)).contains("\"ferrate\":[{\"id\":\"osm-way-1\"").contains("\"scaleMax\":null");
     }
+
+    @Test
+    void eachViaFerrataGoesWithItsRegionsCragsCg121() {
+        var lombard = FerrateExport.build(file(3), List.of(fine()), List.of(JUNE_2), AvalancheRegions.none(), Map.of()).getFirst();
+        var f = lombard;
+        var piedmont = new FerrateExport.FerrataOut("osm-way-2", "Ferrata Piemontese", f.latitude(), f.longitude(),
+                f.sourceUrl(), f.pieces(), f.start(), f.top(), f.lengthM(), f.scaleMin(), f.scaleMax(), f.scaleDropped(),
+                f.days(), "Balme", "Torino", "TO", "Piemonte");
+        var out = new ConditionsExport.Output("t", "Europe/Rome", List.of("2026-06-02"), "c", "w", "e", "a", List.of(),
+                List.of(lombard, piedmont));
+
+        var files = ConditionsExport.split(out);
+
+        assertThat(files).containsOnlyKeys("conditions.json", "conditions-piemonte.json");
+        assertThat(files.get("conditions.json").ferrate()).extracting(FerrateExport.FerrataOut::id).containsExactly("osm-way-1");
+        assertThat(files.get("conditions.json").regions()).extracting(ConditionsExport.RegionFile::count).containsExactly(0);
+        assertThat(files.get("conditions-piemonte.json").ferrate()).extracting(FerrateExport.FerrataOut::municipality)
+                .containsExactly("Balme");
+        var index = ConditionsExport.api(out);
+        assertThat(index).containsKey("ferrate/osm-way-2.json");
+    }
 }
+

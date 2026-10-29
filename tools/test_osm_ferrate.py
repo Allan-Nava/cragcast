@@ -152,8 +152,23 @@ class Todo(unittest.TestCase):
         self.assertNotIn("Con Scala", md)
 
 
+class Regions(unittest.TestCase):
+    def test_the_query_covers_the_three_regions_cg121(self):
+        self.assertIn('area["ISO3166-2"~"^(IT-25|IT-21|IT-32)$"]', f.QUERY)
+
+    def test_placed_from_the_boundaries_at_the_start(self):
+        ferrate, _ = f.build([way(1, "Ferrata Test")], elevations=rising)
+        asked = []
+        f.placed(ferrate, areas=lambda pts: asked.extend(pts) or {"osm-way-1": {"municipality": "Testville",
+                                                                                "region": "Trentino-Alto Adige"}})
+        self.assertEqual(asked, [{"id": "osm-way-1", "latitude": ferrate[0]["start"]["latitude"],
+                                  "longitude": ferrate[0]["start"]["longitude"]}])
+        self.assertEqual((ferrate[0]["municipality"], ferrate[0]["province"], ferrate[0]["region"]),
+                         ("Testville", None, "Trentino-Alto Adige"))
+
+
 class Main(unittest.TestCase):
-    def run_main(self, args, elements):
+    def run_main(self, args, elements, patch_areas=True):
         with tempfile.TemporaryDirectory() as tmp:
             out, todo = pathlib.Path(tmp) / "ferrate.json", pathlib.Path(tmp) / "todo.md"
             answer = pathlib.Path(tmp) / "answer.json"
@@ -163,6 +178,8 @@ class Main(unittest.TestCase):
                     mock.patch.object(f, "ROOT", pathlib.Path(tmp)), mock.patch.object(f.sys, "argv", argv), \
                     mock.patch.object(f.o, "elevations", rising), mock.patch.object(f.time, "sleep"), \
                     mock.patch.object(f.o, "overpass", return_value=elements) as overpass, \
+                    (mock.patch.object(f.o, "areas", lambda pts: {p["id"]: {"region": "Piemonte", "provinceCode": "TO"}
+                                                                  for p in pts}) if patch_areas else contextlib.nullcontext()), \
                     contextlib.redirect_stdout(io.StringIO()) as printed:
                 f.main()
                 return json.loads(out.read_text()), todo.read_text(), printed.getvalue(), overpass
@@ -175,11 +192,20 @@ class Main(unittest.TestCase):
         self.assertIn("Copernicus", data["elevationSource"])
         self.assertIn("**1 of 1 via ferratas**", todo)
         self.assertIn("1 via ferratas written", printed)
+        self.assertEqual((data["ferrate"][0]["region"], data["ferrate"][0]["provinceCode"]), ("Piemonte", "TO"))   # CG-121
+        self.assertIn("by region: Piemonte 1", printed)
 
     def test_from_overpass(self):
         data, _, _, overpass = self.run_main([], [way(1, "Ferrata Test")])
         self.assertEqual(overpass.call_args.args[0], f.QUERY)
         self.assertEqual(len(data["ferrate"]), 1)
+
+    def test_one_starting_across_the_border_is_left_out_cg121(self):
+        elements = [way(1, "Ferrata Dentro"), way(2, "Ferrata Fuori", north_m=9000)]
+        with mock.patch.object(f.o, "areas", lambda pts: {"osm-way-1": {"region": "Piemonte"}, "osm-way-2": {"region": "Veneto"}}):
+            data, _, printed, _ = self.run_main(["--from", "ANSWER"], elements, patch_areas=False)
+        self.assertEqual([x["name"] for x in data["ferrate"]], ["Ferrata Dentro"])
+        self.assertIn("1 via ferratas start outside the three regions, left out: Ferrata Fuori (Veneto)", printed)
 
     def test_an_answer_without_via_ferratas_writes_nothing(self):
         with self.assertRaises(SystemExit):

@@ -350,7 +350,11 @@ assume Lombardy.
   the bulletin, so CG-11's rule holds — facts only, each provider named on its link; 76
   micro-regions, 608 of 780 crags in a zone. <!-- cg: prio=med size=M labels=backend,data ver=main -->
 - [ ] **CG-121 — Via ferratas beyond Lombardy**: `tools/osm_ferrate.py` over the same three
-  regions, the page's region choice applying to them too; the todo list grows with them. <!-- cg: prio=low size=S labels=data -->
+  regions, the page's region choice applying to them too; the todo list grows with them. Code merged: the same
+  query as the crags; each via ferrata's place from OSM's boundaries at its start, those starting
+  across the border left out; in its region's data file. A run on 2026-10-29 found 177 in the three
+  regions (Lombardy 40, Piedmont 39, Trentino-Alto Adige 98); the data comes with the next
+  `crags-refresh.yml` PR (Overpass refused the rerun). <!-- cg: prio=low size=S labels=data -->
 - [ ] **CG-122 — The Ticino**: Swiss crags where Lombard climbers go — no Italian province (the
   canton instead), the SLF's avalanche bulletin, a border in the data. Its own ADR. <!-- cg: prio=low size=L labels=data,backend -->
 

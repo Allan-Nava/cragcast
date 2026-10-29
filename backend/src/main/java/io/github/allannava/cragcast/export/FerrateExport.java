@@ -31,9 +31,15 @@ public final class FerrateExport {
     record Point(double latitude, double longitude, Integer elevation) {
     }
 
-    /** One via ferrata as tools/osm_ferrate.py writes it. */
+    /** One via ferrata as tools/osm_ferrate.py writes it; where it is (CG-121) from OSM's boundaries. */
     record Ferrata(String id, String name, String sourceUrl, List<String> pieces, Point start, Point top,
-                   Integer lengthM, Integer scaleMin, Integer scaleMax, List<String> scaleDropped) {
+                   Integer lengthM, Integer scaleMin, Integer scaleMax, List<String> scaleDropped,
+                   String municipality, String province, String provinceCode, String region) {
+
+        Ferrata(String id, String name, String sourceUrl, List<String> pieces, Point start, Point top,
+                Integer lengthM, Integer scaleMin, Integer scaleMax, List<String> scaleDropped) {
+            this(id, name, sourceUrl, pieces, start, top, lengthM, scaleMin, scaleMax, scaleDropped, null, null, null, null);
+        }
     }
 
     /**
@@ -43,7 +49,16 @@ public final class FerrateExport {
      */
     record FerrataOut(String id, String name, double latitude, double longitude, String sourceUrl, List<String> pieces,
                       Point start, Point top, Integer lengthM, Integer scaleMin, Integer scaleMax,
-                      List<String> scaleDropped, Map<String, ConditionsExport.DayOut> days) {
+                      List<String> scaleDropped, Map<String, ConditionsExport.DayOut> days,
+                      String municipality, String province, String provinceCode, String region) {
+
+        /** CG-121: where it is, added at the end as the API v1 allows; null in older data. */
+        FerrataOut(String id, String name, double latitude, double longitude, String sourceUrl, List<String> pieces,
+                   Point start, Point top, Integer lengthM, Integer scaleMin, Integer scaleMax,
+                   List<String> scaleDropped, Map<String, ConditionsExport.DayOut> days) {
+            this(id, name, latitude, longitude, sourceUrl, pieces, start, top, lengthM, scaleMin, scaleMax, scaleDropped,
+                    days, null, null, null, null);
+        }
     }
 
     /** The tops, in the file's order, for one Open-Meteo request per {@code batch} of them. */
@@ -87,7 +102,8 @@ public final class FerrateExport {
             }
             out.add(new FerrataOut(f.id(), f.name(), f.start().latitude(), f.start().longitude(), f.sourceUrl(),
                     f.pieces() == null ? List.of() : f.pieces(), f.start(), f.top(), f.lengthM(), f.scaleMin(),
-                    f.scaleMax(), f.scaleDropped() == null ? List.of() : f.scaleDropped(), byDay));
+                    f.scaleMax(), f.scaleDropped() == null ? List.of() : f.scaleDropped(), byDay,
+                    f.municipality(), f.province(), f.provinceCode(), f.region()));
         }
         return out;
     }

@@ -25,8 +25,8 @@ export function matching(crags: Crag[], s: ViewState, favourites: Set<string> | 
   return crags
     .filter(c => !favourites || favourites.has(c.id))
     .filter(c => !q || fold(c.name).includes(q) || fold(place(c)).includes(q))
-    // CG-43: one region at a time, or all; the via ferratas are Lombardy's and never hidden by it.
-    .filter(c => s.region === ALL_REGIONS || !!c.ferrata || regionOf(c) === s.region)
+    // CG-43: one region at a time, or all.
+    .filter(c => s.region === ALL_REGIONS || regionOf(c) === s.region)       // CG-121: via ferratas too
     // CG-114: province and grades are the crags' filters; a via ferrata has neither from OSM.
     .filter(c => !s.province || !!c.ferrata || c.provinceCode === s.province)
     .filter(c => !s.area || inArea(s.area, c.latitude, c.longitude))
@@ -152,7 +152,8 @@ export function App() {
 
   // CG-43: the other regions' crags live in their own files (data.regions), fetched when the
   // view needs them and kept until new data arrives — then fetched again with it.
-  const [loaded, setLoaded] = useState<{ gen: string; byFile: Record<string, Crag[] | "failed"> }>({ gen: "", byFile: {} });
+  // CG-121: a region's file brings its via ferratas too.
+  const [loaded, setLoaded] = useState<{ gen: string; byFile: Record<string, Conditions | "failed"> }>({ gen: "", byFile: {} });
   const byFile = data && loaded.gen === data.generatedAt ? loaded.byFile : {};
   const region = view?.region ?? "";
   // CG-124: a search with no match in the region shown looks in the others too — their files
@@ -170,12 +171,12 @@ export function App() {
     for (const file of pending) {
       fetch("data/" + file, { cache: "no-cache" })
         .then(r => { if (!r.ok) throw new Error(String(r.status)); return r.json() as Promise<Conditions>; })
-        .then(d => d.crags as Crag[] | "failed", () => "failed" as const)
-        .then(crags => setLoaded(prev => ({ gen, byFile: { ...(prev.gen === gen ? prev.byFile : {}), [file]: crags } })));
+        .then(d => d as Conditions | "failed", () => "failed" as const)
+        .then(doc => setLoaded(prev => ({ gen, byFile: { ...(prev.gen === gen ? prev.byFile : {}), [file]: doc } })));
     }
   }, [data, pending.join(",")]); // eslint-disable-line react-hooks/exhaustive-deps
   const allCrags = useMemo(() => (data?.crags ?? []).concat(
-    ...Object.values(byFile).filter((v): v is Crag[] => v !== "failed")), [data, byFile]);
+    ...Object.values(byFile).filter((v): v is Conditions => v !== "failed").map(d => d.crags)), [data, byFile]);
 
   // CG-43: the regions with their crag counts — the main file's, and the other files' as listed.
   const regions = useMemo(() => {
@@ -194,7 +195,9 @@ export function App() {
   }, [data, allCrags, region]);
 
   // CG-114: the via ferratas as places; the view shows them or the crags, never both.
-  const ferrate = useMemo(() => (data?.ferrate ?? []).map(asPlace), [data]);
+  const ferrate = useMemo(() => (data?.ferrate ?? []).concat(
+    ...Object.values(byFile).filter((v): v is Conditions => v !== "failed").map(d => d.ferrate ?? [])).map(asPlace),
+  [data, byFile]);
   const kind: Kind = view?.kind === "ferrate" && ferrate.length > 0 ? "ferrate" : "crags";
   const places = useMemo(() => (kind === "ferrate" ? ferrate : allCrags), [kind, ferrate, allCrags]);
 
@@ -322,7 +325,7 @@ export function App() {
         ))}
       </div>
       <Controls days={data?.days ?? []} provinces={kind === "ferrate" ? [] : provinces}
-                regions={kind === "ferrate" ? [] : regions}
+                regions={regions}
                 onRegion={r => view && go({ ...view, region: r, province: "", area: null }, true)}
                 state={view ? { ...view, kind } : { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null, show: "list", grade: null, order: "verdict", kind: "crags", region: "Lombardia" }}
                 byDistance={byDistance && !!here}

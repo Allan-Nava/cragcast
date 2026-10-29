@@ -116,6 +116,11 @@ export interface FerrataFacts {
 
 /** CG-114: one via ferrata in data/conditions.json, placed at its start, scored at its top. */
 export interface Ferrata extends FerrataFacts {
+  /** CG-121: where it is, from OSM's boundaries; absent in older data (Lombardy then). */
+  municipality?: string | null;
+  province?: string | null;
+  provinceCode?: string | null;
+  region?: string | null;
   id: string;
   name: string;
   latitude: number;

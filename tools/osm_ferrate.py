@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""CG-112: fetch Lombardy's via ferratas from OpenStreetMap into data/ferrate.json, and the list
+"""CG-112: fetch the via ferratas of Lombardy and (CG-121) Piedmont and Trentino-Alto Adige from
+OpenStreetMap into data/ferrate.json, and the list
 of what is missing on OSM into docs/ferrate-todo.md.
 
 A via ferrata is never a crag: it has its own file, and data/crags.json's rule against single
@@ -30,8 +31,10 @@ import unicodedata
 
 import osm_crags as o
 
-QUERY = """[out:json][timeout:120];
-area["ISO3166-2"="IT-25"]->.region;
+# CG-121: the same regions as the crags (osm_crags.REGIONS); each via ferrata's region, province and
+# municipality come from OSM's boundaries at its start (osm_crags.areas), never from the query.
+QUERY = """[out:json][timeout:300];
+area["ISO3166-2"~"^(""" + "|".join(o.REGIONS) + """)$"]->.region;
 way["highway"="via_ferrata"](area.region);
 out tags geom;
 relation["route"="via_ferrata"](area.region);
@@ -233,6 +236,23 @@ def todo(ferrate, unnamed):
     return "\n".join(lines).rstrip() + "\n"
 
 
+# CG-121: a via ferrata found by the query but starting across the border (Veneto, Tyrol, the
+# Ticino) is left out: its region is not one cragcast covers.
+KEPT = ("Lombardia", "Piemonte", "Trentino-Alto Adige")
+
+
+def placed(ferrate, areas=None):
+    """CG-121: each via ferrata's municipality, province and region, from OSM's boundaries at its start."""
+    areas = areas or o.areas
+    where = areas([{"id": f["id"], "latitude": f["start"]["latitude"], "longitude": f["start"]["longitude"]}
+                   for f in ferrate])
+    for f in ferrate:
+        found = where.get(f["id"], {})
+        for key in ("municipality", "province", "provinceCode", "region"):
+            f[key] = found.get(key)
+    return ferrate
+
+
 def main():
     args = sys.argv[1:]
     if len(args) == 2 and args[0] == "--from":
@@ -242,8 +262,14 @@ def main():
     ferrate, unnamed = build(elements)
     if not ferrate:
         raise SystemExit("no via ferratas in the answer: data/ferrate.json left as it was")
+    placed(ferrate)
+    outside = [f for f in ferrate if f["region"] not in KEPT]
+    if outside:
+        print(f"{len(outside)} via ferratas start outside the three regions, left out: "
+              + ", ".join(f"{f['name']} ({f['region'] or '?'})" for f in outside))
+    ferrate = [f for f in ferrate if f["region"] in KEPT]
     OUT.write_text(json.dumps({
-        "region": "Lombardia",
+        "region": o.REGION_NAMES,
         "source": "OpenStreetMap: highway=via_ferrata ways and route=via_ferrata relations (CG-112)",
         "licence": "© OpenStreetMap contributors, ODbL 1.0 — https://www.openstreetmap.org/copyright",
         "elevationSource": o.ELEVATION_SOURCE,
@@ -253,6 +279,10 @@ def main():
     scaled = sum(1 for f in ferrate if f["scaleMin"] is not None)
     print(f"{len(ferrate)} via ferratas written to {OUT.relative_to(ROOT)}: {scaled} with a difficulty, "
           f"{len(unnamed)} unnamed left out")
+    by_region = {}
+    for f in ferrate:
+        by_region[f.get("region") or "?"] = by_region.get(f.get("region") or "?", 0) + 1
+    print("by region: " + ", ".join(f"{r} {n}" for r, n in sorted(by_region.items())))
 
 
 if __name__ == "__main__":
