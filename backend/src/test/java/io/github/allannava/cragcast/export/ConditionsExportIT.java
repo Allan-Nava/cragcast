@@ -84,7 +84,7 @@ class ConditionsExportIT {
             assertThat(code).isZero();
             assertThat(meteo.asked()).hasSize(1);                                  // three crags, one batch
             assertThat(FakeHttp.query(meteo.asked().getFirst())).containsEntry("past_days", "2").containsEntry("forecast_days", "3");
-            assertThat(avalanche.asked()).hasSize(3);                              // one bulletin per day
+            assertThat(avalanche.asked()).hasSize(12);                             // four providers a day (CG-120)
         }
 
         JsonNode data = JSON.readTree(Files.readString(dir.resolve("site/data/conditions.json")));

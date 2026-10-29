@@ -245,8 +245,9 @@ public final class ConditionsExport {
     record FerrataDocument(Meta meta, FerrateExport.FerrataOut ferrata) {
     }
 
-    static final String AVALANCHE_DATA = "Avalanche danger: bulletin of ARPA Lombardia (" + AvalancheBulletins.BULLETIN_PAGE
-            + "), through the EAWS (static.avalanche.report); micro-regions: EAWS (CC0)";
+    static final String AVALANCHE_DATA = "Avalanche danger: bulletins of ARPA Lombardia (" + AvalancheBulletins.BULLETIN_PAGE
+            + "), AINEVA Piemonte (https://bollettini.aineva.it) and the Euregio for Trentino and Alto Adige "
+            + "(https://avalanche.report), through the EAWS (static.avalanche.report); micro-regions: EAWS (CC0)";
 
     record Meta(int version, String generatedAt, String timezone, List<String> days, String cragData,
                 String weatherData, String elevationData, String docs, String avalancheData) {

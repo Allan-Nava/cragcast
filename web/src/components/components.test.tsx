@@ -120,6 +120,15 @@ group("avalanche in the panel", () => {
     const { container: none } = render(<DetailDialog crag={crag()} day={DAY} onClose={() => {}} />);
     expect(none.querySelector(".avalanche")).toBeNull();
   });
+
+  it("names the bulletin's own provider (CG-120)", () => {
+    const c = crag();
+    c.days[DAY].avalanche = { region: "IT-21-TO-01", name: "ALPI GRAIE", level: 3, bulletin: "https://example.org/p",
+      ratings: [{ level: 3, above: null, below: null, period: null }], problems: [], provider: "AINEVA Piemonte" };
+    const { container } = render(<DetailDialog crag={c} day={DAY} onClose={() => {}} />);
+    const link = container.querySelector(".avalanche a")!;
+    expect([link.textContent, link.getAttribute("href")]).toEqual(["Bollettino AINEVA Piemonte", "https://example.org/p"]);
+  });
 });
 
 group("list and map (CG-38)", () => {

@@ -49,9 +49,25 @@ class AvalancheTest {
         AvalancheRegions regions = AvalancheRegions.parse(
                 Files.readString(Path.of("../data/avalanche-regions.geojson")), JSON);
 
-        assertThat(regions.size()).isEqualTo(12);
+        assertThat(regions.size()).isEqualTo(76);                             // CG-120: four providers
         assertThat(regions.regionOf(46.47, 10.37)).contains("IT-25-SO-03");   // Bormio, upper Valtellina
         assertThat(regions.regionOf(45.4642, 9.19)).isEmpty();                // Milan: no bulletin
+        // CG-120: Piedmont, Trentino and Alto Adige have their own zones, and their providers.
+        assertThat(regions.regionOf(45.97, 7.97)).hasValueSatisfying(id -> assertThat(id).startsWith("IT-21-"));  // Macugnaga
+        assertThat(regions.regionOf(46.10, 11.00)).hasValueSatisfying(id -> assertThat(id).startsWith("IT-32-TN-")); // Paganella
+        assertThat(regions.regionOf(46.57, 11.67)).hasValueSatisfying(id -> assertThat(id).startsWith("IT-32-BZ-")); // Val Gardena
+    }
+
+    @Test
+    void eachZoneHasItsProviderAndItsOfficialBulletin() {
+        assertThat(AvalancheBulletins.providerOf("IT-25-SO-03").name()).isEqualTo("ARPA Lombardia");
+        assertThat(AvalancheBulletins.providerOf("IT-21-TO-01").name()).isEqualTo("AINEVA Piemonte");
+        assertThat(AvalancheBulletins.providerOf("IT-32-TN-09").name()).isEqualTo("Euregio — Trentino");
+        assertThat(AvalancheBulletins.providerOf("IT-32-BZ-01").page()).isEqualTo("https://avalanche.report/bulletin/latest");
+        assertThat(AvalancheBulletins.providerOf("XX-1").name()).isEqualTo("ARPA Lombardia");
+        assertThat(AvalancheBulletins.providerOf(null).name()).isEqualTo("ARPA Lombardia");
+        var a = new Avalanche("IT-21-TO-01", "Test", 2, java.util.List.of(), java.util.List.of(), "x");
+        assertThat(a.provider()).isEqualTo("AINEVA Piemonte");
     }
 
     @Test

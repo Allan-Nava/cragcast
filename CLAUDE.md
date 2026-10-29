@@ -210,7 +210,8 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   test in `web/src/**/*.test.ts(x)`.
 - **The avalanche bulletin informs, it never scores** (CG-11): the verdict is about the rock,
   so `ConditionsScorer` ignores the bulletin. Only its facts are shown (levels, bands, problem
-  types), never its text — ARPA Lombardia states no licence — always with the link to the
+  types), never its text — ARPA Lombardia, AINEVA Piemonte and the Euregio state no licence for
+  it (CG-120, ADR 0027) — always with its provider named and the link to the
   official bulletin. A bulletin that is missing (out of season, before the morning issue) or
   fails leaves the line out; it never fails the build. The Spring service keeps the same
   facts per day and micro-region in `avalanche_bulletin` (CG-107, ADR 0022, `AvalancheArchive`):

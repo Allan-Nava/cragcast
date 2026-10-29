@@ -93,9 +93,9 @@ class SiteDataTest {
 
             assertThat(site.latest().api()).containsKeys("crags.json", "crags/" + first + ".json");
             assertThat(site.latest().conditions()).doesNotContain("\"avalanche\"");
-            // The regions shipped in the jar: one bulletin asked for each of the three days.
-            assertThat(http.asked()).extracting(URI::getPath).hasSize(3)
-                    .allMatch(p -> p.endsWith("-IT-25.json"));
+            // The regions shipped in the jar: each provider's bulletin (CG-120) for each of the three days.
+            assertThat(http.asked()).extracting(URI::getPath).hasSize(12)
+                    .allMatch(p -> p.matches(".*-IT-(25|21|32-TN|32-BZ)\\.json"));
         }
     }
 

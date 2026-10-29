@@ -12,7 +12,7 @@ export function AvalancheLine({ a, full }: { a: Avalanche; full: boolean }) {
       {full && `: ${ratingParts(a).join("; ")}`}
       {full && a.problems.length > 0 && `. Problemi: ${problemParts(a).join(", ")}`}
       {". "}
-      <a href={a.bulletin} rel="noopener">Bollettino ARPA Lombardia</a>
+      <a href={a.bulletin} rel="noopener">{`Bollettino ${a.provider ?? "ARPA Lombardia"}`}</a>
     </p>
   );
 }

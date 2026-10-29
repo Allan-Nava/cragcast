@@ -69,7 +69,9 @@ class AvalancheArchiveTests {
         try (var http = new FakeHttp(uri -> Answer.ok(body))) {
             archive(http).atStartup();
 
-            assertThat(http.asked()).extracting(URI::getPath).containsExactly("/2026-03-01/2026-03-01-IT-25.json");
+            assertThat(http.asked()).extracting(URI::getPath).containsExactly("/2026-03-01/2026-03-01-IT-25.json",
+                    "/2026-03-01/2026-03-01-IT-21.json", "/2026-03-01/2026-03-01-IT-32-TN.json",
+                    "/2026-03-01/2026-03-01-IT-32-BZ.json");                // every provider (CG-120)
         }
         assertThat(rows()).isEqualTo(regions).isPositive();
         var any = jdbc.queryForMap("SELECT * FROM avalanche_bulletin ORDER BY region LIMIT 1");
