@@ -551,11 +551,12 @@ it, not imagined — the snapshots, the code, and Lighthouse's layout-shift trac
   the last region in `localStorage`, like the favourites (CG-46: every access in try/catch, never
   in a request); a link's `?r=` still wins. Done: `loadRegion()`,
   `saveRegion()` next to the favourites. <!-- cg: prio=low size=S labels=frontend ver=main -->
-- [ ] **CG-130 — How the verdict is made**: the page says "si va / forse / no" and the reasons,
+- [x] **CG-130 — How the verdict is made**: the page says "si va / forse / no" and the reasons,
   but not what they are measured against. A short "Come decidiamo" in the help: the rain before
   and during the day, the sunny and shaded walls, the wind and the cold, and for a via ferrata the
   storm and the top — in words, from the constants in `ConditionsScorer` and `FerrataScorer`, and
-  a test that fails when a constant changes and the text does not. <!-- cg: prio=low size=S labels=frontend,docs -->
+  a test that fails when a constant changes and the text does not. Done: `HowWeDecide` in
+  the help, its numbers in `web/src/lib/rules.ts`, kept equal to the scorers' by `HelpRulesTest`. <!-- cg: prio=low size=S labels=frontend,docs ver=main -->
 
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 
