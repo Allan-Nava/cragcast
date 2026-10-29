@@ -104,11 +104,25 @@ class Areas(Server):
         self.assertIn('area["ISO3166-2"~"^(IT-25|IT-21|IT-32)$"]', o.QUERY)
 
     def test_asks_again_when_the_answer_is_cut_short(self):
-        cut = {"elements": self.area("osm-node-1")}
-        whole = {"elements": self.area("osm-node-1") + self.area("osm-node-2")}
+        town = {"type": "area", "tags": {"admin_level": "8", "name": "Testvilla"}}
+        cut = {"elements": self.area("osm-node-1", town)}
+        whole = {"elements": self.area("osm-node-1", town) + self.area("osm-node-2")}
         Fake.script = [(200, cut), (200, whole)]
         self.assertEqual(set(self.quiet(o.areas, self.CRAGS)), {"osm-node-1", "osm-node-2"})
         Fake.script = [(200, cut)]
+        with self.assertRaises(SystemExit):
+            self.quiet(o.areas, self.CRAGS)
+
+    def test_asks_again_when_no_crag_of_the_batch_has_a_boundary(self):
+        # Every marker back, not one boundary: the server has no area index (2026-10-29).
+        bare = {"elements": self.area("osm-node-1") + self.area("osm-node-2")}
+        placed = {"elements": self.area("osm-node-1", {"type": "area", "tags": {"admin_level": "4", "name": "Piemonte"}})
+                              + self.area("osm-node-2")}
+        Fake.script = [(200, bare), (200, placed)]
+        found = self.quiet(o.areas, self.CRAGS)
+        self.assertEqual(found["osm-node-1"], {"region": "Piemonte"})
+        self.assertEqual(len(Fake.seen), 2)
+        Fake.script = [(200, bare)]
         with self.assertRaises(SystemExit):
             self.quiet(o.areas, self.CRAGS)
 

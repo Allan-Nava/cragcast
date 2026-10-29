@@ -183,13 +183,16 @@ def areas(crags, batch=40):
                   f'is_in({c["latitude"]},{c["longitude"]})->.a;\n'
                   'area.a["boundary"="administrative"]["admin_level"~"^(4|6|8)$"];out tags;\n')
         # A busy server can answer 200 with the answer cut short: every crag of the batch must
-        # come back with its marker, or the batch is asked again — never a silent gap.
+        # come back with its marker, or the batch is asked again — never a silent gap. Every
+        # crag lies inside one of the regions, so a batch with markers and no boundary at all is
+        # a server answering without its area index (40 crags lost their place on 2026-10-29).
         for attempt in range(3):
             answer = overpass(q)
             refs = {e["tags"]["ref"] for e in answer if e["type"] == "crag"}
-            if all(c["id"] in refs for c in part):
+            bounds = sum(1 for e in answer if e["type"] == "area")
+            if all(c["id"] in refs for c in part) and bounds:
                 break
-            print(f"  areas: {len(refs)} of {len(part)} crags in the answer; asking again")
+            print(f"  areas: {len(refs)} of {len(part)} crags and {bounds} boundaries in the answer; asking again")
             time.sleep(30 * (attempt + 1))
         else:
             raise SystemExit("areas: Overpass keeps cutting the answer short; data/crags.json left as it was")
