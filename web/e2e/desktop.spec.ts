@@ -66,7 +66,7 @@ test("CG-54: on a desktop the map and the list show together, without the switch
 
 test("CG-56: the panel takes the list's column, below the controls; the list comes back on close", async ({ page }) => {
   await page.goto("./");
-  const controls = (await page.locator(".controls").boundingBox())!;
+  const controls = (await page.locator(".bar").boundingBox())!;          // CG-126: the controls' box on a desktop
   const map = (await page.locator("#map").boundingBox())!;
   await page.locator("#crag-osm-node-2 .more").click();
   const panel = page.locator("dialog#detail");

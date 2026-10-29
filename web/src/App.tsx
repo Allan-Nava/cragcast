@@ -294,6 +294,8 @@ export function App() {
           <p>Si arrampica domani? Le falesie di Lombardia, Piemonte e Trentino-Alto Adige, dal meteo e dall'esposizione della parete.</p>
         </div>
       </header>
+      {/* CG-126: one bar for what and when, then the filters; laid out on a desktop by style.css. */}
+      <div className="bar">
       {/* CG-114: crags or via ferratas, said in words. CG-127: there from the first paint — a switch
           that appeared with the data pushed the page down — "Vie ferrate" waiting until the data
           has some. */}
@@ -325,6 +327,7 @@ export function App() {
                 onNear={near}
                 favourites={favourites.size} onlyFavourites={onlyFavourites}
                 onOnlyFavourites={() => setOnlyFavourites(on => { saveOnly(!on); return !on; })} />
+      </div>
       {data && view
         ? <Summary crags={matching(places, view, scope)} day={view.day} index={data.days.indexOf(view.day)} count={count} />
         : <p className={error ? "summary" : "summary ghost"}><span id="count" aria-live="polite">{count}</span></p>}
