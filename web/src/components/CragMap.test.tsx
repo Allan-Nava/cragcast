@@ -156,3 +156,40 @@ group("the frame (CG-123)", () => {
   });
 });
 
+group("the frame of a hidden map (CG-123, CG-54)", () => {
+  it("waits for the map to be shown, then fits", async () => {
+    const zero = { clientWidth: 0, clientHeight: 0 };
+    for (const [k, v] of Object.entries(zero)) Object.defineProperty(HTMLElement.prototype, k, { configurable: true, get: () => v });
+    const api = createRef<MapApi | null>() as React.RefObject<MapApi | null>;
+    const turin = [crag({ id: "p1", latitude: 45.1, longitude: 7.4 }), crag({ id: "p2", latitude: 45.3, longitude: 7.6 })];
+    const { rerender } = render(<CragMap crags={[crag()]} day={DAY} here={null} onDetail={() => {}} apiRef={api} />);
+    await act(async () => {
+      rerender(<CragMap crags={turin} day={DAY} here={null} onDetail={() => {}} apiRef={api} frame="crags|Piemonte" />);
+    });
+    expect(api.current!.view().lon).toBeCloseTo(9.7, 1);                 // hidden: no fit, nothing thrown
+    for (const [k, v] of Object.entries({ clientWidth: 800, clientHeight: 600 }))
+      Object.defineProperty(HTMLElement.prototype, k, { configurable: true, get: () => v });
+    act(() => api.current!.refresh());
+    expect(api.current!.view().lon).toBeGreaterThan(7.3);
+    expect(api.current!.view().lon).toBeLessThan(7.7);
+  });
+});
+
+group("a crag opened on a hidden map (CG-123)", () => {
+  it("does nothing, so the next view's move cannot trip over it", async () => {
+    for (const [k, v] of Object.entries({ clientWidth: 0, clientHeight: 0 }))
+      Object.defineProperty(HTMLElement.prototype, k, { configurable: true, get: () => v });
+    const api = createRef<MapApi | null>() as React.RefObject<MapApi | null>;
+    const { rerender } = render(<CragMap crags={[crag()]} day={DAY} here={null} onDetail={() => {}} apiRef={api} />);
+    act(() => api.current!.open("node/1"));
+    for (const [k, v] of Object.entries({ clientWidth: 800, clientHeight: 600 }))
+      Object.defineProperty(HTMLElement.prototype, k, { configurable: true, get: () => v });
+    const other = [crag({ id: "p1", latitude: 45.1, longitude: 7.4 })];
+    await act(async () => {
+      rerender(<CragMap crags={other} day={DAY} here={null} onDetail={() => {}} apiRef={api} frame="ferrate|Lombardia" />);
+    });
+    await act(async () => { rerender(<CragMap crags={[crag()]} day={DAY} here={null} onDetail={() => {}} apiRef={api} />); });
+    expect(api.current!.view()).toMatchObject({ lat: 45.95, lon: 9.7, zoom: 8 });
+  });
+});
+
