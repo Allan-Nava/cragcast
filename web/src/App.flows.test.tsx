@@ -498,3 +498,41 @@ group("before the data (CG-127)", () => {
   });
 });
 
+group("near me finds the region (CG-128)", () => {
+  const split = () => {
+    const main: Conditions = { ...data(), regions: [{ name: "Piemonte", count: 1, file: "conditions-piemonte.json" }] };
+    const c = crag({ id: "p", name: "Parete Gamma", latitude: 45.07, longitude: 7.68, provinceCode: "TO", province: "Torino",
+                     municipality: "Torino", region: "Piemonte" });
+    c.days[NEXT] = { ...c.days[DAY] };
+    return { main, other: { ...data(), crags: [c] } as Conditions };
+  };
+  const byUrl = (answers: Record<string, unknown>) => vi.stubGlobal("fetch", vi.fn((url: string) =>
+    Promise.resolve({ ok: true, json: () => Promise.resolve(answers[Object.keys(answers).find(k => url.startsWith(k))!]) })));
+  const at = (latitude: number, longitude: number) => vi.stubGlobal("navigator", { ...navigator, geolocation: {
+    getCurrentPosition: vi.fn((ok: PositionCallback) => ok({ coords: { latitude, longitude } } as GeolocationPosition)) } });
+
+  it("a reader in Turin is moved to Piedmont, and told so; the position stays out of the URL", async () => {
+    const { main, other } = split();
+    byUrl({ "data/conditions.json": main, "data/conditions-piemonte.json": other });
+    at(45.07, 7.69);
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    await act(async () => { fireEvent.click(screen.getByRole("button", { name: "Vicino a me" })); });
+    await screen.findByText("Falesie in Piemonte, la regione più vicina, per distanza.");
+    expect(location.search).toBe(`?r=Piemonte&day=${DAY}`);
+    expect(names()).toEqual(["Parete Gamma — Si va"]);
+    expect(document.querySelectorAll(".km")).toHaveLength(1);
+  });
+
+  it("a reader near Lombardy's crags stays where they are", async () => {
+    const { main, other } = split();
+    byUrl({ "data/conditions.json": main, "data/conditions-piemonte.json": other });
+    at(45.86, 9.40);
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    await act(async () => { fireEvent.click(screen.getByRole("button", { name: "Vicino a me" })); });
+    await waitFor(() => expect(document.querySelectorAll(".km")).toHaveLength(2));
+    expect(location.search).toBe(`?day=${DAY}`);
+  });
+});
+
