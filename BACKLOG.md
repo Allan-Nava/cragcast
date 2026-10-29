@@ -547,9 +547,10 @@ it, not imagined — the snapshots, the code, and Lighthouse's layout-shift trac
   region, switch to it, or offer to — computed in the browser from the crags' positions; the
   position still never leaves it (CG-22). Done: it switches, and
   says so ("Falesie in Piemonte, la regione più vicina, per distanza."). <!-- cg: prio=med size=S labels=frontend ver=main -->
-- [ ] **CG-129 — The region remembered**: a reader in Turin chooses Piemonte at every visit. Keep
+- [x] **CG-129 — The region remembered**: a reader in Turin chooses Piemonte at every visit. Keep
   the last region in `localStorage`, like the favourites (CG-46: every access in try/catch, never
-  in a request); a link's `?r=` still wins. <!-- cg: prio=low size=S labels=frontend -->
+  in a request); a link's `?r=` still wins. Done: `loadRegion()`,
+  `saveRegion()` next to the favourites. <!-- cg: prio=low size=S labels=frontend ver=main -->
 - [ ] **CG-130 — How the verdict is made**: the page says "si va / forse / no" and the reasons,
   but not what they are measured against. A short "Come decidiamo" in the help: the rain before
   and during the day, the sunny and shaded walls, the wind and the cold, and for a via ferrata the

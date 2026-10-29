@@ -246,7 +246,8 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   (CG-119): titled "Via ferrata …", read at the top, saying to check on the spot, and opening on
   `?k=ferrate&crag=<id>`; a crag keeps the path if an id ever met one.
 - **Favourites never leave the browser either** (CG-46): `localStorage` only, every access in
-  try/catch (`web/src/lib/favourites.ts`), never in the URL or a request. The favourites
+  try/catch (`web/src/lib/favourites.ts`), never in the URL or a request. The last region chosen
+  is kept the same way (CG-129); a link's `?r=` wins, and without one the URL shows the kept region. The favourites
   filter scopes the list and the summary like the province does.
 - **The reader's position never leaves the browser** (CG-22): computed on, kept in a variable,
   never in the URL, never in a request, never in storage. CG-128 loads every region's crags to

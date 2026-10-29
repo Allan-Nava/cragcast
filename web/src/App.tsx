@@ -13,10 +13,10 @@ import { Help } from "./components/Help";
 import { Footer } from "./components/Footer";
 import { Summary } from "./components/Summary";
 import { BackToTop } from "./components/BackToTop";
-import { loadFavourites, loadOnly, saveFavourites, saveOnly } from "./lib/favourites";
+import { loadFavourites, loadOnly, loadRegion, saveFavourites, saveOnly, saveRegion } from "./lib/favourites";
 import { hasGrades, inGrade } from "./lib/grades";
 import { ON_THE_SPOT, asPlace } from "./lib/ferrate";
-import { ALL_REGIONS, DEFAULT_REGION, regionOf, type Kind } from "./lib/state";
+import { ALL_REGIONS, DEFAULT_REGION, REGIONS, regionOf, type Kind } from "./lib/state";
 
 /** The crags matching search, province, area, (CG-46) favourites and (CG-61) grades — every
  * verdict (CG-39 counts them). */
@@ -95,7 +95,17 @@ export function App() {
   useEffect(() => {
     fetch("data/conditions.json", { cache: "no-cache" })
       .then(r => { if (!r.ok) throw new Error(String(r.status)); return r.json() as Promise<Conditions>; })
-      .then(d => { setData(d); setView(readState(location.search, d.days)); })
+      .then(d => {
+        setData(d);
+        const s = readState(location.search, d.days);
+        // CG-129: no region in the link: the one this reader chose last, and the URL says so.
+        const kept = new URLSearchParams(location.search).has("r") ? null : loadRegion([...REGIONS, ALL_REGIONS]);
+        if (kept && kept !== s.region) {
+          s.region = kept;
+          history.replaceState(null, "", location.pathname + stateQuery(s));
+        }
+        setView(s);
+      })
       .catch((e: Error) => setError(e.message));
   }, []);
 
@@ -265,6 +275,9 @@ export function App() {
     go({ ...view, region: there, province: "", area: null }, true);
     setNotice(`Falesie in ${there}, la regione più vicina, per distanza.`);
   }, [nearAll, here, pending.length]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // CG-129: the region shown is remembered for the next visit.
+  useEffect(() => { if (view?.region) saveRegion(view.region); }, [view?.region]);
 
   const toggle = (v: Verdict) => {
     if (!view) return;
