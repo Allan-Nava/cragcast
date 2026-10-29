@@ -426,7 +426,7 @@ group("a region's own file (CG-43)", () => {
     await act(async () => { fireEvent.change(region, { target: { value: "Piemonte" } }); });
     await screen.findByText("Parete Gamma — Si va");
     expect(f.mock.calls.map(c => c[0])).toEqual(["data/conditions.json", "data/conditions-piemonte.json"]);
-    expect(screen.getByText("1 falesie")).toBeTruthy();
+    expect(screen.getByText("1 falesia")).toBeTruthy();                 // CG-125: the singular
     await act(async () => { fireEvent.change(region, { target: { value: "all" } }); });
     expect(names()).toHaveLength(3);
     expect(f).toHaveBeenCalledTimes(2);                                   // kept, not fetched again

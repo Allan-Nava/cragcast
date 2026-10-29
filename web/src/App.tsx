@@ -3,7 +3,7 @@
 // and day live in the URL (?q=&v=&p=&g=&o=&day=), so a link opens the same view and back works.
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Conditions, Crag, Verdict } from "./types";
-import { ORDER, fold, place } from "./lib/text";
+import { ORDER, fold, place, shownOf } from "./lib/text";
 import { km } from "./lib/geo";
 import { inArea, readState, stateQuery, type Area, type ViewState } from "./lib/state";
 import { Controls } from "./components/Controls";
@@ -247,12 +247,11 @@ export function App() {
   const total = kind === "ferrate" ? places.length
     : region === ALL_REGIONS ? regions.reduce((n, r) => n + r.count, 0)
     : regions.find(r => r.name === region)?.count ?? places.length;
-  const noun = kind === "ferrate" ? "vie ferrate" : "falesie";
   const active = view ? [view.verdicts.size < 3, view.region !== DEFAULT_REGION, !!view.province, !!view.grade, !!view.area, !!here, onlyFavourites].filter(Boolean).length : 0;
   const unknown = data && view ? ungraded(places, view, scope) : 0;
   const count = notice ?? (!data ? (error ? "" : "Carico le falesie…")
     : kind === "crags" && failed.length ? "Non riesco a caricare le falesie di questa regione: riprova più tardi."
-    : kind === "crags" && pending.length ? "Carico le falesie…" : (shown.length === total ? `${shown.length} ${noun}` : `${shown.length} di ${total} ${noun}`)
+    : kind === "crags" && pending.length ? "Carico le falesie…" : shownOf(shown.length, total, kind)
     + (unknown ? ` · ${unknown} senza gradi su OpenStreetMap, escluse` : ""));
 
   return (

@@ -524,9 +524,10 @@ it, not imagined — the snapshots, the code, and Lighthouse's layout-shift trac
   Lombardy looking for an Arco crag reads "Nessuna falesia corrisponde". When the region shown has
   no match, say how many the other regions have and offer them in one tap ("3 in Trentino-Alto
   Adige — mostra"), loading their files only then (CG-43 keeps them on demand). <!-- cg: prio=high size=M labels=frontend -->
-- [ ] **CG-125 — Counts in Italian**: "1 falesie", "1 vie ferrate", "di 1 falesie" — the count
+- [x] **CG-125 — Counts in Italian**: "1 falesie", "1 vie ferrate", "di 1 falesie" — the count
   never takes the singular. One helper for the plural (falesia/falesie, via ferrata/vie ferrate),
-  used by the count, the summary and the empty states, with a test for 0, 1 and many. <!-- cg: prio=high size=S labels=frontend -->
+  used by the count, the summary and the empty states, with a test for 0, 1 and many. Done: `places()` and
+  `shownOf()` in `web/src/lib/text.ts`. <!-- cg: prio=high size=S labels=frontend ver=main -->
 - [ ] **CG-126 — One row of controls on a desktop**: since CG-43 the filters wrap to a second row
   (search, three verdict toggles, four selects, two buttons), pushing the map down. Region and
   kind ("Falesie / Vie ferrate") read as where and what, before the filters: one compact bar,
