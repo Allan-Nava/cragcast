@@ -530,11 +530,12 @@ it, not imagined — the snapshots, the code, and Lighthouse's layout-shift trac
   never takes the singular. One helper for the plural (falesia/falesie, via ferrata/vie ferrate),
   used by the count, the summary and the empty states, with a test for 0, 1 and many. Done: `places()` and
   `shownOf()` in `web/src/lib/text.ts`. <!-- cg: prio=high size=S labels=frontend ver=main -->
-- [ ] **CG-126 — One row of controls on a desktop**: since CG-43 the filters wrap to a second row
+- [x] **CG-126 — One row of controls on a desktop**: since CG-43 the filters wrap to a second row
   (search, three verdict toggles, four selects, two buttons), pushing the map down. Region and
   kind ("Falesie / Vie ferrate") read as where and what, before the filters: one compact bar,
   the rest of the filters in one row; the phone's "Filtri" sheet unchanged. Snapshots updated
-  from CI. <!-- cg: prio=med size=M labels=frontend -->
+  from CI. Done: two rows instead
+  of four, the map about 85 px higher; the phone unchanged. <!-- cg: prio=med size=M labels=frontend ver=main -->
 - [x] **CG-127 — No shift when the data arrives**: the day buttons appear with the data (0 → 37
   px) and the summary wraps to a second line (20 → 39 px), moving the page by about 56 px —
   Lighthouse's CLS 0.073, all of it from these two. Reserve their space from the first paint, and

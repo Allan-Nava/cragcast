@@ -225,6 +225,10 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   respect `prefers-reduced-motion`. Headless Chrome screenshots do not run Leaflet's
   animations (requestAnimationFrame stalls), so map interactions are tested in
   `CragMap.test.tsx` with the real Leaflet in jsdom, not by screenshot.
+- **Two rows of controls on a desktop** (CG-126): from 900 px the kind switch, the days and the
+  controls are one `.bar` (`.controls` is `display: contents` there): what and when — kind, days,
+  near me, favourites — then the filters. A new control gets its `order` in that bar; below 900 px
+  the phone's "Filtri" sheet is untouched.
 - **The panel is a dialog either way** (CG-40): non-modal `show()` from 900 px, inside `<main>`'s
   grid in the list's column (CG-56: `main.panel-open` hides the list), never fixed over the page
   (Esc handled by the component), modal `showModal()` as a bottom sheet below. Swipes never

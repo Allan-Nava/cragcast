@@ -163,7 +163,7 @@
 - [x] **CG-123** — The map follows the region · high · S · frontend · `main`
 - [x] **CG-124** — Search across the regions · high · M · frontend · `main`
 - [x] **CG-125** — Counts in Italian · high · S · frontend · `main`
-- [ ] **CG-126** — One row of controls on a desktop · med · M · frontend
+- [x] **CG-126** — One row of controls on a desktop · med · M · frontend · `main`
 - [x] **CG-127** — No shift when the data arrives · med · S · frontend · `main`
 - [x] **CG-128** — Near me finds the region · med · S · frontend · `main`
 - [ ] **CG-129** — The region remembered · low · S · frontend
