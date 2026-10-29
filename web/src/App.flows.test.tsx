@@ -311,11 +311,14 @@ group("via ferratas (CG-114)", () => {
   const withFerrate = (): Conditions => ({ ...data(), ferrate: [ferrata({ verdict: "NO_GO" }), ferrata({ id: "osm-way-20", name: "Ferrata Seconda" })] });
   for (const f of withFerrate().ferrate!) f.days[NEXT] = { ...f.days[DAY] };
 
-  it("no switch when the data has none", async () => {
+  it("the switch is there from the first paint; with no via ferratas in the data, theirs stays off (CG-127)", async () => {
     serve(data());
     render(<App />);
+    expect(screen.getByRole("group", { name: "Cosa mostrare" })).toBeTruthy();
     await screen.findByText("Parete Alfa — Si va");
-    expect(screen.queryByRole("group", { name: "Cosa mostrare" })).toBeNull();
+    const off = screen.getByRole("button", { name: "Vie ferrate" }) as HTMLButtonElement;
+    expect([off.disabled, off.title]).toEqual([true, "Nessuna via ferrata in questi dati"]);
+    expect((screen.getByRole("button", { name: "Falesie" }) as HTMLButtonElement).getAttribute("aria-pressed")).toBe("true");
   });
 
   it("the switch shows the via ferratas alone, says so, and keeps it in the URL", async () => {
@@ -481,6 +484,17 @@ group("search across the regions (CG-124)", () => {
     await screen.findByText("Parete Alfa — Si va");
     await search("zeta");
     expect(await screen.findByText(/Nemmeno nelle altre regioni\./)).toBeTruthy();
+  });
+});
+
+group("before the data (CG-127)", () => {
+  it("the day buttons and the summary's line are there already, so nothing moves when it arrives", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => new Promise(() => {})));          // the data never comes
+    render(<App />);
+    const days = screen.getAllByRole("button", { name: /^(Oggi|Domani|Dopodomani)$/ });
+    expect(days.map(b => [b.textContent, (b as HTMLButtonElement).disabled])).toEqual(
+      [["Oggi", true], ["Domani", true], ["Dopodomani", true]]);
+    expect(document.querySelector(".summary.ghost")?.textContent).toBe("Carico le falesie…");
   });
 });
 

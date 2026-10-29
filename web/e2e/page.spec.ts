@@ -108,7 +108,8 @@ test("CG-57: a long list keeps the summary in sight and offers 'Torna su'", asyn
   await expect(page.getByRole("button", { name: "Torna su" })).toBeVisible();
   const summary = (await page.locator(".summary").boundingBox())!;
   expect(summary.y).toBeGreaterThanOrEqual(-1);
-  expect(summary.y).toBeLessThan(isMobile ? 10 : 260);                     // stuck at the top while scrolling
+  // stuck at the top while scrolling; on a desktop below the header, the kind switch (CG-127) and the controls
+  expect(summary.y).toBeLessThan(isMobile ? 10 : 310);
   await page.getByRole("button", { name: "Torna su" }).click();
   if (isMobile) await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
   else await expect.poll(() => page.locator("#list").evaluate(l => l.scrollTop)).toBe(0);
