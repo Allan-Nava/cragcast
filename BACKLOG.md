@@ -509,6 +509,47 @@ costs more. An ADR comes with CG-112.
   a browser goes on to `?k=ferrate&crag=<id>`. The panel's "Condividi" comes back for them.
   Asked for on 2026-10-28, after CG-114 left them without one. <!-- cg: prio=low size=S labels=backend,frontend ver=main -->
 
+## v1.4.0 — A page for three regions <!-- ms: phase=next -->
+
+Asked for on 2026-10-29: the UI and UX after CG-43 tripled the crags and CG-114 added the via
+ferratas. The page was laid out for one region and one kind of place; what follows was seen on
+it, not imagined — the snapshots, the code, and Lighthouse's layout-shift trace.
+
+- [ ] **CG-123 — The map follows the region**: the map opens on Lombardy whatever the view
+  (`setView([45.95, 9.7], 8)` in `CragMap`), so choosing Piemonte leaves its crags off-screen to
+  the west. Frame the crags shown when the region or the kind changes, and on a link that opens on
+  another region — a move by the page, through `programmatic` (CG-38), with
+  `prefers-reduced-motion` respected; an e2e test in `CragMap.test.tsx`. <!-- cg: prio=high size=S labels=frontend -->
+- [ ] **CG-124 — Search across the regions**: a search finds only the region shown, so someone in
+  Lombardy looking for an Arco crag reads "Nessuna falesia corrisponde". When the region shown has
+  no match, say how many the other regions have and offer them in one tap ("3 in Trentino-Alto
+  Adige — mostra"), loading their files only then (CG-43 keeps them on demand). <!-- cg: prio=high size=M labels=frontend -->
+- [ ] **CG-125 — Counts in Italian**: "1 falesie", "1 vie ferrate", "di 1 falesie" — the count
+  never takes the singular. One helper for the plural (falesia/falesie, via ferrata/vie ferrate),
+  used by the count, the summary and the empty states, with a test for 0, 1 and many. <!-- cg: prio=high size=S labels=frontend -->
+- [ ] **CG-126 — One row of controls on a desktop**: since CG-43 the filters wrap to a second row
+  (search, three verdict toggles, four selects, two buttons), pushing the map down. Region and
+  kind ("Falesie / Vie ferrate") read as where and what, before the filters: one compact bar,
+  the rest of the filters in one row; the phone's "Filtri" sheet unchanged. Snapshots updated
+  from CI. <!-- cg: prio=med size=M labels=frontend -->
+- [ ] **CG-127 — No shift when the data arrives**: the day buttons appear with the data (0 → 37
+  px) and the summary wraps to a second line (20 → 39 px), moving the page by about 56 px —
+  Lighthouse's CLS 0.073, all of it from these two. Reserve their space from the first paint, and
+  add a `cumulative-layout-shift` assertion to `lighthouserc.json` so it cannot creep back (CG-43
+  once reached 0.8). <!-- cg: prio=med size=S labels=frontend -->
+- [ ] **CG-128 — Near me finds the region**: "Vicino a me" orders only the region shown, so a
+  reader in Piedmont is sorted among Lombardy's crags. When the nearest crags lie in another
+  region, switch to it, or offer to — computed in the browser from the crags' positions; the
+  position still never leaves it (CG-22). <!-- cg: prio=med size=S labels=frontend -->
+- [ ] **CG-129 — The region remembered**: a reader in Turin chooses Piemonte at every visit. Keep
+  the last region in `localStorage`, like the favourites (CG-46: every access in try/catch, never
+  in a request); a link's `?r=` still wins. <!-- cg: prio=low size=S labels=frontend -->
+- [ ] **CG-130 — How the verdict is made**: the page says "si va / forse / no" and the reasons,
+  but not what they are measured against. A short "Come decidiamo" in the help: the rain before
+  and during the day, the sunny and shaded walls, the wind and the cold, and for a via ferrata the
+  storm and the top — in words, from the constants in `ConditionsScorer` and `FerrataScorer`, and
+  a test that fails when a constant changes and the text does not. <!-- cg: prio=low size=S labels=frontend,docs -->
+
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 
 Parked on 2026-10-15: Oracle Cloud's Always Free A1 VM could not be created in Milan (39 tries

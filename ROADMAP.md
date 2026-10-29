@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**89 items · 79 shipped · 10 open · 16 milestones.**
+**97 items · 79 shipped · 18 open · 17 milestones.**
 
 ## At a glance
 
@@ -25,6 +25,7 @@
 | **v1.1.0 — On a Raspberry Pi** | now | `########..` 80% | 1 | 4 |
 | **v1.2.0 — Everything in PostgreSQL** | next | `#########.` 89% | 1 | 8 |
 | **v1.3.0 — Vie ferrate** | later | `##########` 100% | 0 | 6 |
+| **v1.4.0 — A page for three regions** | next | `..........` 0% | 8 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
 ## v0.1.0 — A verdict for one crag
@@ -156,6 +157,17 @@
 - [x] **CG-114** — On the page · med · M · frontend · `main`
 - [x] **CG-115** — In the API and on the Pi · low · S · backend · `main`
 - [x] **CG-119** — Share pages for via ferratas · low · S · backend, frontend · `main`
+
+## v1.4.0 — A page for three regions
+
+- [ ] **CG-123** — The map follows the region · high · S · frontend
+- [ ] **CG-124** — Search across the regions · high · M · frontend
+- [ ] **CG-125** — Counts in Italian · high · S · frontend
+- [ ] **CG-126** — One row of controls on a desktop · med · M · frontend
+- [ ] **CG-127** — No shift when the data arrives · med · S · frontend
+- [ ] **CG-128** — Near me finds the region · med · S · frontend
+- [ ] **CG-129** — The region remembered · low · S · frontend
+- [ ] **CG-130** — How the verdict is made · low · S · frontend, docs
 
 ## v1.0.0 — Self-hosted on a VM (parked)
 
