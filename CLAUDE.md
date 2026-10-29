@@ -133,7 +133,9 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   replaced whole; a read without the header, a bad row or a failed request keeps the table, and
   Spring tests set `cragcast.observations.enabled=false`.
 - **Thresholds live in `ConditionsScorer` as named constants**, each with a one-line reason. A
-  change to one is a reviewed change, with a test for the day it fixes.
+  change to one is a reviewed change, with a test for the day it fixes — and the same number in
+  `web/src/lib/rules.ts`, which the page's "Come decidiamo il verdetto" shows (CG-130):
+  `HelpRulesTest` fails when they differ, or when a scorer gains a constant the file lacks.
 - **Crag details are JSON text in the database** (`crag.details`, V3): written and read whole
   with Spring's `JsonMapper`, not mapped by Hibernate — Hibernate's JSON support and Jackson 3
   are not a pairing to rely on. Nothing may query inside it; a field worth filtering on gets

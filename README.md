@@ -104,6 +104,8 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   share link of its own (CG-119), whose preview says it is a via ferrata; and, everywhere, that
   conditions are checked on the spot
   ([ADR 0025](docs/adr/0025-via-ferratas-on-the-page.md));
+- **how the verdict is made** (CG-130): "Come decidiamo il verdetto" in the help says, with the
+  scorers' own numbers, what makes a crag or a via ferrata "si va", "forse" or "no";
 - **installable** on a phone's home screen (a web app manifest and a service worker): it shows
   the last data offline and says how old it is when it is more than 7 hours old (two missed runs);
 - **live**: the footer says how long ago the data was made ("aggiornato 12 min fa") and keeps

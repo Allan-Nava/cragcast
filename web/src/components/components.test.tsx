@@ -5,6 +5,7 @@ import { Controls } from "./Controls";
 import { DetailDialog } from "./DetailDialog";
 import { HourChart, hourReadout } from "./HourChart";
 import { Footer, ago, updatedText } from "./Footer";
+import { HowWeDecide } from "./Help";
 import { matching, visible } from "../App";
 import { Summary } from "./Summary";
 import { crag, hours } from "../test/fixtures";
@@ -291,3 +292,17 @@ group("the release in the footer", () => {
     expect(screen.queryByText(/versione/)).toBeNull();
   });
 });
+
+group("how the verdict is made (CG-130)", () => {
+  it("says the scorers' numbers, from lib/rules.ts", () => {
+    const { container } = render(<HowWeDecide />);
+    const text = container.textContent!.replace(/\u00a0/g, " ");
+    expect(text).toContain("guardiamo le ore tra le 8 e le 18");
+    expect(text).toContain("se in quelle ore piovono più di 2 mm o il vento supera i 50 km/h");
+    expect(text).toContain("la metà, 5 mm, su una parete in ombra");
+    expect(text).toContain("Mai «si va» con un temporale previsto anche in una sola ora");
+    expect(text).toMatch(/CAPE da 1\.?000 J\/kg/);              // "1.000" where the Italian locale data is
+    expect(text).toContain("meno di 10 ore di luce");
+  });
+});
+
