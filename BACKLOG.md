@@ -342,10 +342,13 @@ assume Lombardy.
   Piedmont 317, Trentino-Alto Adige 241); the page shows one region at a time, Lombardy first;
   `region` in `conditions.json` and the API v1. Open-Meteo's free tier counts every place, so
   Pages and the Pi refresh every 3 hours, paced. The rest is CG-120 to CG-122. <!-- cg: prio=low size=L labels=data,backend ver=main -->
-- [ ] **CG-120 — Avalanche bulletins beyond Lombardy**: Piedmont's (IT-21) and Trentino-Alto
+- [x] **CG-120 — Avalanche bulletins beyond Lombardy**: Piedmont's (IT-21) and Trentino-Alto
   Adige's (IT-32-TN, IT-32-BZ) bulletins and micro-regions next to Lombardy's, through
   `AvalancheBulletins` and `tools/avalanche_regions.py`; each credited to its own service, its
-  licence checked before any of it is shown. Informs, never scores (CG-11). <!-- cg: prio=med size=M labels=backend,data -->
+  licence checked before any of it is shown. Informs, never scores (CG-11). Done
+  ([ADR 0027](docs/adr/0027-avalanche-bulletins-of-three-providers.md)): none states a licence for
+  the bulletin, so CG-11's rule holds — facts only, each provider named on its link; 76
+  micro-regions, 608 of 780 crags in a zone. <!-- cg: prio=med size=M labels=backend,data ver=main -->
 - [ ] **CG-121 — Via ferratas beyond Lombardy**: `tools/osm_ferrate.py` over the same three
   regions, the page's region choice applying to them too; the todo list grows with them. <!-- cg: prio=low size=S labels=data -->
 - [ ] **CG-122 — The Ticino**: Swiss crags where Lombard climbers go — no Italian province (the

@@ -17,10 +17,13 @@ import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
- * CG-11: Lombardy's avalanche bulletin (ARPA Lombardia), as the EAWS publish it in CAAML v6
- * JSON on static.avalanche.report — one file per day, {@code <day>/<day>-IT-25.json}, issued
- * the morning of that day. Out of season, or before the morning issue, there is no file (404)
- * and no crag gets an avalanche line.
+ * CG-11: the avalanche bulletins, as the EAWS publish them in CAAML v6 JSON on
+ * static.avalanche.report — one file per day and provider, {@code <day>/<day>-<file>.json},
+ * issued the morning of that day: Lombardy's (ARPA Lombardia) and, since CG-120, Piedmont's
+ * (AINEVA Piemonte) and Trentino-Alto Adige's (the Euregio, one file per province). None states
+ * a licence: only the facts are kept and shown, never the text, each with its provider's link
+ * (ADR 0007, ADR 0027). Out of season, or before the morning issue, there is no file (404); a
+ * provider's missing file never holds back the others'.
  */
 public final class AvalancheBulletins {
 
@@ -29,6 +32,28 @@ public final class AvalancheBulletins {
     public static final String BULLETIN_PAGE =
             "https://www.arpalombardia.it/temi-ambientali/neve-e-ghiacciai/bollettino-neve-e-valanghe/";
     static final String REGION = "IT-25";
+
+    /** CG-120: one EAWS file of the day, who issues it, and where its official bulletin is read. */
+    public record Provider(String file, String name, String page) {
+    }
+
+    public static final List<Provider> PROVIDERS = List.of(
+            new Provider(REGION, "ARPA Lombardia", BULLETIN_PAGE),
+            new Provider("IT-21", "AINEVA Piemonte", "https://bollettini.aineva.it/bulletin/latest"),
+            new Provider("IT-32-TN", "Euregio — Trentino", "https://avalanche.report/bulletin/latest"),
+            new Provider("IT-32-BZ", "Euregio — Alto Adige", "https://avalanche.report/bulletin/latest"));
+
+    /** The provider of a micro-region, by the longest file prefix of its id; Lombardy's otherwise. */
+    public static Provider providerOf(String regionId) {
+        Provider best = null;
+        for (Provider p : PROVIDERS) {
+            if (regionId != null && regionId.startsWith(p.file() + "-")
+                    && (best == null || p.file().length() > best.file().length())) {
+                best = p;
+            }
+        }
+        return best == null ? PROVIDERS.getFirst() : best;
+    }
     private static final Map<String, Integer> LEVEL =
             Map.of("low", 1, "moderate", 2, "considerable", 3, "high", 4, "very_high", 5);
 
@@ -59,20 +84,29 @@ public final class AvalancheBulletins {
             }
             for (JsonNode region : b.path("regions")) {
                 String id = region.path("regionID").asString();
+                Provider provider = providerOf(id);
                 byRegion.put(id, new Avalanche(id, text(region.path("name")), max, List.copyOf(ratings),
-                        List.copyOf(problems), BULLETIN_PAGE));
+                        List.copyOf(problems), provider.page(), provider.name()));
             }
         }
         return byRegion;
     }
 
     /**
-     * The day's bulletin from {@code baseUrl}. A missing file is the normal case out of season;
-     * any other failure is reported on stderr and treated the same way, so the hourly page is
-     * never held back by the bulletin.
+     * The day's bulletins from {@code baseUrl}, every provider's file, by micro-region. A missing
+     * file is the normal case out of season; any other failure is reported on stderr and treated
+     * the same way, so the page is never held back by a bulletin.
      */
     public static Map<String, Avalanche> fetch(HttpClient http, String baseUrl, LocalDate day, JsonMapper json) {
-        URI uri = URI.create(baseUrl + "/" + day + "/" + day + "-" + REGION + ".json");
+        Map<String, Avalanche> all = new HashMap<>();
+        for (Provider p : PROVIDERS) {
+            all.putAll(fetch(http, baseUrl, day, p.file(), json));
+        }
+        return all;
+    }
+
+    private static Map<String, Avalanche> fetch(HttpClient http, String baseUrl, LocalDate day, String file, JsonMapper json) {
+        URI uri = URI.create(baseUrl + "/" + day + "/" + day + "-" + file + ".json");
         try {
             HttpResponse<String> res = http.send(HttpRequest.newBuilder(uri).timeout(Duration.ofSeconds(20)).GET().build(),
                     HttpResponse.BodyHandlers.ofString());

@@ -83,11 +83,12 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   and a downward swipe closes the sheet: the day's hours from 06:00 to 21:00 as two small charts —
   temperature and rain, never one chart with two axes — a readout that follows the pointer or
   the arrow keys, the same hours as a table, and directions (Google Maps, OSM);
-- in the avalanche season, the **avalanche bulletin** of ARPA Lombardia for the crag's zone,
+- in the avalanche season, the **avalanche bulletin** for the crag's zone — ARPA Lombardia's,
+  AINEVA Piemonte's or the Euregio's for Trentino and Alto Adige (CG-120), each named on its link —
   in the popup and the panel: the danger level (1–5) by elevation band and part of the day,
   the avalanche problems, and a link to the official bulletin. Only the crags inside one of
-  the bulletin's micro-regions get it — 119 of Lombardy's crags; the low crags lie outside them, and
-  Piedmont's and Trentino-Alto Adige's have no bulletin yet (CG-120). The verdict
+  the bulletins' micro-regions get it — 608 of 780: Lombardy 121, Piedmont 246, Trentino-Alto
+  Adige 241; the low crags lie outside them. The verdict
   does not change: it is about the rock, the bulletin about the approach and winter routes;
 - **three regions** (CG-43): Lombardy by default, Piedmont or Trentino-Alto Adige — or all of
   them — from a choice next to the province, kept in the URL (`?r=`); the provinces follow the
@@ -149,8 +150,8 @@ curl https://allan-nava.github.io/cragcast/api/v1/ferrate.json
   the `hours` from 06:00 to 21:00, and `avalanche` only when a bulletin covers the crag that
   day: `region` and `name` of the EAWS micro-region, `level` (the day's highest, 1–5),
   `ratings` (`level`, `above`, `below` — metres or `treeline` — and `period`, `earlier`,
-  `later` or null for all day), `problems` (CAAML v6 types such as `wind_slab`) and `bulletin`,
-  the official page. Since CG-117 also `sectors` — `id`, `name`, `aspect`, `gradeMin`,
+  `later` or null for all day), `problems` (CAAML v6 types such as `wind_slab`), `bulletin`,
+  the official page, and (CG-120) `provider`, who issues it. Since CG-117 also `sectors` — `id`, `name`, `aspect`, `gradeMin`,
   `gradeMax` of each sector folded into the crag (CG-104) — and `routes` — `id`, `name`,
   `grade`, `length`, `bolts`, `pitches` and `sector` (a sector's `id` or null) of each single
   route OSM links to it (CG-105), easiest first; both empty lists where OSM has none.
@@ -165,7 +166,7 @@ curl https://allan-nava.github.io/cragcast/api/v1/ferrate.json
   `days` as for a crag — the `weather` and `hours` being the top's, the window 07:00–19:00.
 
 Credit OpenStreetMap (ODbL), Open-Meteo (CC BY 4.0) and Copernicus when you show the data,
-and ARPA Lombardia for the avalanche levels.
+and ARPA Lombardia, AINEVA Piemonte or the Euregio for the avalanche levels.
 
 ## How it is built
 
@@ -183,7 +184,7 @@ How the parts fit, with diagrams: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 | `infra/oci/` | Terraform for that VM and its network, with `retry-apply.sh` for "Out of host capacity"; parked — nothing is applied (the VM never got capacity, the network was destroyed) |
 | `data/crags.json`, `tools/osm_crags.py` | the crags, from OpenStreetMap — `climbing=crag`, and named outdoor `sport=climbing` places (a cliff, a rock, a climbing site), never gyms, shops or single routes — with the sectors mapped separately folded into their crag and named by it (CG-42), and listed by OSM id in its `sectors` (CG-104); each with its OSM links, its aspect where mapped, its validated climbing details, its elevation (Copernicus DEM), its municipality and province (OSM administrative boundaries); a crag mapped twice under one name less than 50 m apart is folded into one, keeping both OSM links; ODbL. Rebuilt monthly by `crags-refresh.yml` through a reviewed PR, or by hand: `python3 tools/osm_crags.py`; the folding rules are tested in `tools/test_osm_crags.py` |
 | `data/osm-climbing.json`, `osm_object` | CG-103: every object of the same OSM query, not only the crags — crags, cliffs, loose points, single routes, gyms and shops — with its category, name, position, raw `climbing` tag, validated climbing tags and a route's own grade; written by `osm_crags.py` (`--objects-only` for this file alone), refreshed with `crags.json` by the monthly PR, and copied at startup into PostgreSQL's `osm_object` table (replaced whole; the file stays the source); ODbL. CG-104: the sectors each crag lists are copied with them into `sector`, linked to the crag, each with its own position, aspect and grades. CG-105: each single route (`climbing=route`, `route_bottom`, `route_top`) carries the `crag` and `sector` it belongs to and `linkedBy` — `relation` when an OSM relation that is the crag, a sector or a duplicate of it lists the route, `distance` for the nearest crag or sector within 400 m, null when none is near (mountain routes) — plus its bolts and pitches; copied into `route` with the grade as a rank, never into the crag list |
-| `backend/.../avalanche/`, `data/avalanche-regions.geojson`, `tools/avalanche_regions.py` | CG-11: Lombardy's avalanche bulletin (ARPA Lombardia, CAAML v6 JSON published by the EAWS on static.avalanche.report, issued each morning in season) and its micro-regions (EAWS, CC0), which place each crag in a zone; a missing or failed bulletin leaves the line out and never stops the hourly build; the Spring service keeps each day's levels, bands and problem types (never the text) in `avalanche_bulletin` (CG-107) |
+| `backend/.../avalanche/`, `data/avalanche-regions.geojson`, `tools/avalanche_regions.py` | CG-11: the avalanche bulletins — Lombardy's (ARPA Lombardia) and, since CG-120, Piedmont's (AINEVA Piemonte) and Trentino-Alto Adige's (the Euregio) — CAAML v6 JSON published by the EAWS on static.avalanche.report, issued each morning in season) and its micro-regions (EAWS, CC0), which place each crag in a zone; a missing or failed bulletin leaves the line out and never stops the hourly build; the Spring service keeps each day's levels, bands and problem types (never the text) in `avalanche_bulletin` (CG-107) |
 | `data/ferrate.json`, `docs/ferrate-todo.md`, `tools/osm_ferrate.py` | CG-112: Lombardy's via ferratas from OpenStreetMap — `highway=via_ferrata` ways grouped into routes (a relation, or the same name within 500 m), each with its OSM links, start and top with their elevation (Copernicus DEM), length and `via_ferrata_scale` 0–6 where mapped; never in `crags.json`; ODbL. The todo lists those without a difficulty or a name. Rebuilt by the monthly refresh, or `python3 tools/osm_ferrate.py`; rules tested in `tools/test_osm_ferrate.py` ([ADR 0023](docs/adr/0023-via-ferratas-from-openstreetmap.md)) |
 | `docs/aspects-todo.md`, `tools/aspects_todo.py` | CG-16: the crags whose wall aspect is not yet on OpenStreetMap, by province, each with its OSM edit link and how to add `climbing:orientation`; regenerated by the monthly refresh |
 | `backend/.../calibration/`, `data/observations.csv` | the replay of observed days against the verdict (CG-27); CG-108: `ObservationSync` copies the CSV from main into `observation`, replaced whole at startup and at 04:40 |
@@ -212,9 +213,12 @@ taken from. Elevation: Copernicus DEM GLO-90 (2021,
 [doi:10.5270/ESA-c5d3d65](https://doi.org/10.5270/ESA-c5d3d65)) through Open-Meteo's elevation API —
 the ground of the area at 90 m resolution, not of a given route. A crag without `climbing:orientation` on OSM is judged as a shaded wall, the
 cautious reading; adding the tag on OpenStreetMap sharpens its verdict at the next refresh.
-Avalanche danger: the bulletin of [ARPA Lombardia](https://www.arpalombardia.it/temi-ambientali/neve-e-ghiacciai/bollettino-neve-e-valanghe/),
-through the EAWS; it states no licence, so cragcast shows only its facts — levels, bands,
-problem types — never its text, and always links to it. Micro-regions:
+Avalanche danger: the bulletins of [ARPA Lombardia](https://www.arpalombardia.it/temi-ambientali/neve-e-ghiacciai/bollettino-neve-e-valanghe/),
+[AINEVA Piemonte](https://bollettini.aineva.it/bulletin/latest) and the
+[Euregio](https://avalanche.report/bulletin/latest) for Trentino and Alto Adige, through the
+EAWS; none states a licence for it, so cragcast shows only their facts — levels, bands, problem
+types — never their text, and always names and links the one it comes from
+([ADR 0027](docs/adr/0027-avalanche-bulletins-of-three-providers.md)). Micro-regions:
 [EAWS regions](https://gitlab.com/eaws/eaws-regions), CC0.
 
 ## Calibrating the verdict

@@ -12,9 +12,16 @@ import java.util.List;
  * @param level    the highest level of the day, 1 (low) to 5 (very high)
  * @param ratings  the levels by elevation band and part of the day, as published
  * @param problems the avalanche problem types (CAAML v6: new_snow, wind_slab, …), each once
+ * @param bulletin the official bulletin to read before going
+ * @param provider CG-120: who issues it — ARPA Lombardia, AINEVA Piemonte, the Euregio
  */
 public record Avalanche(String region, String name, int level, List<Rating> ratings, List<String> problems,
-                        String bulletin) {
+                        String bulletin, String provider) {
+
+    /** The provider from the region's id (AvalancheBulletins.providerOf). */
+    public Avalanche(String region, String name, int level, List<Rating> ratings, List<String> problems, String bulletin) {
+        this(region, name, level, ratings, problems, bulletin, AvalancheBulletins.providerOf(region).name());
+    }
 
     /**
      * @param above  lower bound of the band: metres ("2000") or "treeline"; null when unbounded

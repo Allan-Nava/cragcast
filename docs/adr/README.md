@@ -32,3 +32,4 @@ Why cragcast is built the way it is. One file per decision, numbered, in the for
 | [0024](0024-a-via-ferrata-verdict-of-its-own.md) | A via ferrata gets a verdict of its own, stricter than a crag's | accepted | 2026-10-28 |
 | [0025](0025-via-ferratas-on-the-page.md) | Via ferratas on the page: their own switch, their own mark | accepted | 2026-10-28 |
 | [0026](0026-beyond-lombardy.md) | Beyond Lombardy: Piedmont and Trentino-Alto Adige, Lombardy first | accepted | 2026-10-28 |
+| [0027](0027-avalanche-bulletins-of-three-providers.md) | Three avalanche services, the same rule: facts only, each credited | accepted | 2026-10-29 |

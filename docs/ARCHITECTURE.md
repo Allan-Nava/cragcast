@@ -55,7 +55,8 @@ flowchart LR
    08:00 to 18:00), and scores it (`ConditionsScorer`: weather × aspect → GO / MAYBE / NO_GO with
    reasons). An unmapped aspect is scored as a shaded wall
    ([ADR 0004](adr/0004-unmapped-aspect-is-shaded.md)).
-3. **Add the bulletin.** `AvalancheBulletins` fetches the day's file for Lombardy and
+3. **Add the bulletin.** `AvalancheBulletins` fetches the day's files — Lombardy's, Piedmont's,
+   Trentino's and Alto Adige's (CG-120, each with its provider) — and
    `AvalancheRegions` places each crag in a micro-region; a crag inside one gets the danger level,
    bands and problems. It never changes the verdict, and a missing bulletin never fails the run
    ([ADR 0007](adr/0007-avalanche-bulletin-informs.md)).

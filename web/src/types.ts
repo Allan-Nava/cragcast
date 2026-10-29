@@ -24,6 +24,8 @@ export interface Avalanche {
   ratings: { level: number; above: string | null; below: string | null; period: "earlier" | "later" | null }[];
   problems: string[];
   bulletin: string;
+  /** CG-120: who issues it; absent in data before it (ARPA Lombardia, the only one then). */
+  provider?: string;
 }
 
 export interface Day {

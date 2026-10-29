@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**89 items · 78 shipped · 11 open · 16 milestones.**
+**89 items · 79 shipped · 10 open · 16 milestones.**
 
 ## At a glance
 
@@ -21,7 +21,7 @@
 | **v0.8.0 — Tested end to end** | now | `##########` 100% | 0 | 6 |
 | **v0.9.0 — UI fixes** | next | `##########` 100% | 0 | 5 |
 | **v0.10.0 — A better frontend** | next | `##########` 100% | 0 | 9 |
-| **v0.7.0 — Beyond Lombardy** | later | `###.......` 25% | 3 | 1 |
+| **v0.7.0 — Beyond Lombardy** | later | `#####.....` 50% | 2 | 2 |
 | **v1.1.0 — On a Raspberry Pi** | now | `########..` 80% | 1 | 4 |
 | **v1.2.0 — Everything in PostgreSQL** | next | `#########.` 89% | 1 | 8 |
 | **v1.3.0 — Vie ferrate** | later | `##########` 100% | 0 | 6 |
@@ -124,7 +124,7 @@
 ## v0.7.0 — Beyond Lombardy
 
 - [x] **CG-43** — Neighbouring regions · low · L · data, backend · `main`
-- [ ] **CG-120** — Avalanche bulletins beyond Lombardy · med · M · backend, data
+- [x] **CG-120** — Avalanche bulletins beyond Lombardy · med · M · backend, data · `main`
 - [ ] **CG-121** — Via ferratas beyond Lombardy · low · S · data
 - [ ] **CG-122** — The Ticino · low · L · data, backend
 
