@@ -219,7 +219,9 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
   in `data/avalanche-regions.geojson` change only through `tools/avalanche_regions.py` and a PR.
 - **Map moves: the reader's or the page's** (CG-38). Only a drag or a zoom by the reader offers
   "Cerca in quest'area"; moves the page makes (flying to a crag, centring on the reader) go
-  through `programmatic` in `CragMap`, so a new programmatic move must too. Animations
+  through `programmatic` in `CragMap`, so a new programmatic move must too — CG-123's frame
+  included: another region or the via ferratas fit the map to the crags shown once they have
+  loaded, and Lombardy's crags bring back its own view. Animations
   respect `prefers-reduced-motion`. Headless Chrome screenshots do not run Leaflet's
   animations (requestAnimationFrame stalls), so map interactions are tested in
   `CragMap.test.tsx` with the real Leaflet in jsdom, not by screenshot.

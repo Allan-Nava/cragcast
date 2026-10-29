@@ -10,6 +10,8 @@ export interface MapApi {
   open(id: string): void;
   /** CG-54: the map was hidden and is shown again: measure it afresh. */
   refresh(): void;
+  /** CG-123: where the map looks, read only (tests, and the frame). */
+  view(): { lat: number; lon: number; zoom: number };
 }
 
 interface Props {
@@ -23,7 +25,17 @@ interface Props {
   area?: Area | null;
   onArea?(area: Area | null): void;
   onChosen?(id: string): void;
+  /**
+   * CG-123: what the map is framed on — null for the page's own view of Lombardy's crags; any
+   * other value (another region, the via ferratas) fits the map to the crags shown once they are
+   * there, a move by the page (CG-38).
+   */
+  frame?: string | null;
 }
+
+/** The map's own view: Lombardy, where most readers start (CG-123: and where it comes back). */
+const HOME: [number, number] = [45.95, 9.7];
+const HOME_ZOOM = 8;
 
 const reducedMotion = () => typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -82,7 +94,8 @@ function popupFor(crag: Crag, day: string, onDetail: (c: Crag) => void): HTMLEle
   return box;
 }
 
-export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area = null, onArea, onChosen }: Props) {
+export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area = null, onArea, onChosen,
+                          frame = null }: Props) {
   const div = useRef<HTMLDivElement>(null);
   const map = useRef<L.Map | null>(null);
   const layer = useRef<L.MarkerClusterGroup | null>(null);
@@ -97,7 +110,7 @@ export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area =
 
   useEffect(() => {                                   // the map, once
     if (!div.current || map.current) return;
-    const m = L.map(div.current, { scrollWheelZoom: false }).setView([45.95, 9.7], 8);
+    const m = L.map(div.current, { scrollWheelZoom: false }).setView(HOME, HOME_ZOOM);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 17,
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -135,12 +148,23 @@ export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area =
       move();
     };
     apiRef.current = {
-      refresh() { m.invalidateSize(); },
+      refresh() {
+        m.invalidateSize();
+        // CG-123: a fit asked for while the map was hidden, now that it has a size.
+        const fit = pendingFit.current;
+        pendingFit.current = null;
+        if (fit) programmatic.current(fit);
+      },
+      view() { const c = m.getCenter(); return { lat: c.lat, lon: c.lng, zoom: m.getZoom() }; },
       // CG-38: fly to the crag, out of its cluster (clusters break up from zoom 12), then open it.
       open(id) {
         const mk = markers.current.get(id);
         if (!mk) return;
         m.invalidateSize();                       // the map may have just been shown (CG-54)
+        // A hidden map (a phone showing the list) has nothing to show: flying there would leave
+        // markercluster waiting on moveend for a marker the next view may remove — and that
+        // waiting listener throws at the next move (CG-123 made one when the kind changes).
+        if (m.getSize().x === 0 || m.getSize().y === 0) return;
         const to = mk.getLatLng(), zoom = Math.max(m.getZoom(), 13);
         // After the flight the mark may still sit in a cluster being rebuilt: zoomToShowLayer
         // waits for it (or opens the cluster) before the popup.
@@ -150,6 +174,32 @@ export function CragMap({ crags, day, here, onDetail, apiRef, hot = null, area =
     };
     return () => { apiRef.current = null; m.remove(); map.current = null; };
   }, [apiRef]);
+
+  // CG-123: the frame follows the region and the kind. Another region's crags arrive a moment
+  // after it is chosen (CG-43 loads them then), so the map waits for them before fitting.
+  const framed = useRef<string | null>(null);
+  // A hidden map (a phone showing the list, CG-54) has no size to fit to: the fit waits for refresh().
+  const pendingFit = useRef<(() => void) | null>(null);
+  useEffect(() => {
+    const m = map.current;
+    if (!m || frame === framed.current) return;
+    if (frame === null) {
+      framed.current = null;
+      programmatic.current(() => m.setView(HOME, HOME_ZOOM));
+      return;
+    }
+    if (crags.length === 0) return;
+    framed.current = frame;
+    const bounds = L.latLngBounds(crags.map(c => [c.latitude, c.longitude] as [number, number]));
+    const fit = () => programmatic.current(() => {
+      if (reducedMotion()) m.fitBounds(bounds, { padding: [24, 24] });
+      else m.flyToBounds(bounds, { padding: [24, 24], duration: 0.8 });
+    });
+    m.invalidateSize();
+    pendingFit.current = null;
+    if (m.getSize().x === 0 || m.getSize().y === 0) pendingFit.current = () => m.fitBounds(bounds, { padding: [24, 24] });
+    else fit();
+  }, [frame, crags]);
 
   useEffect(() => {                                   // the markers, whenever the view changes
     const group = layer.current;
