@@ -484,3 +484,14 @@ group("search across the regions (CG-124)", () => {
   });
 });
 
+group("before the data (CG-127)", () => {
+  it("the day buttons and the summary's line are there already, so nothing moves when it arrives", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => new Promise(() => {})));          // the data never comes
+    render(<App />);
+    const days = screen.getAllByRole("button", { name: /^(Oggi|Domani|Dopodomani)$/ });
+    expect(days.map(b => [b.textContent, (b as HTMLButtonElement).disabled])).toEqual(
+      [["Oggi", true], ["Domani", true], ["Dopodomani", true]]);
+    expect(document.querySelector(".summary.ghost")?.textContent).toBe("Carico le falesie…");
+  });
+});
+

@@ -43,10 +43,13 @@ export function Controls({ days, provinces, state, near, active = 0, onDay, onQu
   const [open, setOpen] = useState(false);
   return (
     <>
+      {/* CG-127: the three days are there from the first paint, waiting for the data's dates, so
+          the row does not appear with the data and push the page down (CLS). */}
       <nav className="days" aria-label="Giorno">
-        {days.map((day, i) => (
-          <button key={day} type="button" aria-pressed={day === state.day} onClick={() => onDay(day)}
-                  title={new Date(day + "T12:00:00").toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" })}>
+        {(days.length ? days : ["", "", ""]).map((day, i) => (
+          <button key={day || i} type="button" aria-pressed={!!day && day === state.day} disabled={!day}
+                  onClick={() => onDay(day)}
+                  title={day ? new Date(day + "T12:00:00").toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" }) : undefined}>
             {dayLabel(i, day)}
           </button>
         ))}

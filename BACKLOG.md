@@ -535,11 +535,12 @@ it, not imagined — the snapshots, the code, and Lighthouse's layout-shift trac
   kind ("Falesie / Vie ferrate") read as where and what, before the filters: one compact bar,
   the rest of the filters in one row; the phone's "Filtri" sheet unchanged. Snapshots updated
   from CI. <!-- cg: prio=med size=M labels=frontend -->
-- [ ] **CG-127 — No shift when the data arrives**: the day buttons appear with the data (0 → 37
+- [x] **CG-127 — No shift when the data arrives**: the day buttons appear with the data (0 → 37
   px) and the summary wraps to a second line (20 → 39 px), moving the page by about 56 px —
   Lighthouse's CLS 0.073, all of it from these two. Reserve their space from the first paint, and
   add a `cumulative-layout-shift` assertion to `lighthouserc.json` so it cannot creep back (CG-43
-  once reached 0.8). <!-- cg: prio=med size=S labels=frontend -->
+  once reached 0.8). Done: measured in
+  the browser, `<main>` no longer moves (desktop and phone); CLS ≤ 0.02 asserted. <!-- cg: prio=med size=S labels=frontend ver=main -->
 - [ ] **CG-128 — Near me finds the region**: "Vicino a me" orders only the region shown, so a
   reader in Piedmont is sorted among Lombardy's crags. When the nearest crags lie in another
   region, switch to it, or offer to — computed in the browser from the crags' positions; the
