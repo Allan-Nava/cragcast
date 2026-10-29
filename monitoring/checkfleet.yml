@@ -21,6 +21,11 @@ checks:
         expect_status: 200
         max_latency_ms: 3000
         expect_body: "\"generatedAt\""
+      # CG-43: another region's crags, in their own file.
+      - url: https://allan-nava.github.io/cragcast/data/conditions-piemonte.json
+        expect_status: 200
+        max_latency_ms: 3000
+        expect_body: "\"generatedAt\""
       - url: https://allan-nava.github.io/cragcast/api/v1/crags.json
         expect_status: 200
         max_latency_ms: 3000

@@ -2,7 +2,8 @@
 
 # cragcast
 
-**Can I climb there tomorrow?** cragcast answers it for crags in Lombardy: for each crag,
+**Can I climb there tomorrow?** cragcast answers it for crags in Lombardy and, since CG-43, in
+Piedmont and Trentino-Alto Adige: for each crag,
 tomorrow's weather, the rain of the last two days and the aspect of the wall become a
 verdict — **go**, **maybe**, **no go** — with the reasons.
 
@@ -11,8 +12,8 @@ how much it rained and how much sun the wall gets. A south-facing slab after 8 m
 usually fine the next day; a north-facing one often is not. cragcast puts that judgement in
 code, with the thresholds in one place so they can be argued with.
 
-**Live:** [allan-nava.github.io/cragcast](https://allan-nava.github.io/cragcast/) — 220 crags,
-updated every hour by a GitHub Action, no server.
+**Live:** [allan-nava.github.io/cragcast](https://allan-nava.github.io/cragcast/) — 780 crags (Lombardy 222,
+Piedmont 317, Trentino-Alto Adige 241), updated every 3 hours by a GitHub Action, no server.
 
 **How it works, in Italian:** [cragcast: si arrampica domani?](https://allan-nava.github.io/blog/2026/10/15/allan-nava-cragcast.html)
 — the verdict's rules, the Oracle VM that never came, and the free stack it runs on instead.
@@ -68,7 +69,7 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 - **a link per crag**: `?crag=<id>` opens the page on that crag's panel with the map on it;
   opening a panel puts it in the URL and back closes it; "Condividi" in the panel uses the
   phone's share sheet, or copies the link where there is none; the link shared is the crag's
-  own page (`c/<id>.html`, rebuilt hourly), so WhatsApp or Telegram show its name and the
+  own page (`c/<id>.html`, rebuilt with the data), so WhatsApp or Telegram show its name and the
   verdict and weather for the next day, with the date ("Falesie di Galbiate — venerdì 16
   ottobre: si va"), and a browser goes straight on to the panel;
 - per crag, where OpenStreetMap has them: grades, route length, rock, style, website; the
@@ -85,8 +86,12 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
 - in the avalanche season, the **avalanche bulletin** of ARPA Lombardia for the crag's zone,
   in the popup and the panel: the danger level (1–5) by elevation band and part of the day,
   the avalanche problems, and a link to the official bulletin. Only the crags inside one of
-  the bulletin's micro-regions get it — 119 of 220; the low crags lie outside them. The verdict
+  the bulletin's micro-regions get it — 119 of Lombardy's crags; the low crags lie outside them, and
+  Piedmont's and Trentino-Alto Adige's have no bulletin yet (CG-120). The verdict
   does not change: it is about the rock, the bulletin about the approach and winter routes;
+- **three regions** (CG-43): Lombardy by default, Piedmont or Trentino-Alto Adige — or all of
+  them — from a choice next to the province, kept in the URL (`?r=`); the provinces follow the
+  region, and another region's crags load only when it is chosen, so a first visit stays light ([ADR 0026](docs/adr/0026-beyond-lombardy.md));
 - the **via ferratas** (CG-114): a "Falesie / Vie ferrate" switch shows them instead of the
   crags, each with its own verdict read at the top — a thunderstorm is never "si va" — and a
   peak beside its mark; the difficulty as OpenStreetMap gives it (`via_ferrata_scale` 0–6, or
@@ -95,12 +100,13 @@ created (no A1 capacity in Milan), so that path is parked. What comes next is in
   conditions are checked on the spot
   ([ADR 0025](docs/adr/0025-via-ferratas-on-the-page.md));
 - **installable** on a phone's home screen (a web app manifest and a service worker): it shows
-  the last data offline and says how old it is when it is more than 3 hours old;
+  the last data offline and says how old it is when it is more than 7 hours old (two missed runs);
 - **live**: the footer says how long ago the data was made ("aggiornato 12 min fa") and keeps
   it current; an open page fetches new data every 10 minutes and when the reader returns to
   it, without a reload — the view, the open panel and the position stay; a skeleton holds the
   list's place while the first data loads;
-- updated every hour by `.github/workflows/pages.yml`, at about :17;
+- updated every 3 hours by `.github/workflows/pages.yml`, at about :17 — Open-Meteo's free tier
+  counts every place, and about 820 places every hour would be twice its 10,000 a day (CG-43);
 - built with React, TypeScript and Vite from `web/`, Leaflet and its cluster plugin bundled
   from npm — no third-party script at runtime.
 
@@ -114,7 +120,7 @@ data the calibration (CG-27) needs next to the observations. The Spring service 
 PostgreSQL (`crag_history`, CG-101): every month at startup, the last two each night; the CSV
 stays the source ([ADR 0016](docs/adr/0016-history-copied-into-postgres.md)).
 
-The Spring service also keeps every hour's answer (CG-106): each refresh appends, per crag and
+The Spring service also keeps every refresh's answer (CG-106): each refresh appends, per crag and
 day, the verdict, the reasons, the four numbers and the day's hours to `crag_forecast`, keyed by
 the time it ran — so "what did cragcast say at 18:00 the day before" stays answerable. Those
 rows exist only on the Pi; the nightly backup is their copy
@@ -122,7 +128,7 @@ rows exist only on the Pi; the nightly backup is their copy
 
 ## API
 
-The same data as the page, as static JSON on GitHub Pages — rebuilt every hour, free to call,
+The same data as the page, as static JSON on GitHub Pages — rebuilt every 3 hours, free to call,
 no key, no server. Version 1: fields are only ever **added**; a field is never renamed or
 removed (a breaking change would go to `/api/v2/`).
 
@@ -138,7 +144,7 @@ curl https://allan-nava.github.io/cragcast/api/v1/ferrate.json
   `elevation`, `verdicts` by day (`GO`, `MAYBE`, `NO_GO`) and `url`, the path of its own file.
 - **`crags/<id>.json`** — `meta` and the whole `crag`: the fields above plus `sourceUrl`,
   `alsoMapped`, `details` (grades, route length, rock, style, website — where OSM has them),
-  `province` and `days`: per day the `verdict`, the `reasons`, the `weather` it was computed
+  `province`, `region` (CG-43: the crag's Italian region, also in `crags.json`'s entries) and `days`: per day the `verdict`, the `reasons`, the `weather` it was computed
   from (rain in the previous 48 h, rain, max temperature and max wind from 08:00 to 18:00) and
   the `hours` from 06:00 to 21:00, and `avalanche` only when a bulletin covers the crag that
   day: `region` and `name` of the EAWS micro-region, `level` (the day's highest, 1–5),
@@ -185,11 +191,11 @@ How the parts fit, with diagrams: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 | `docs/pi-backup.md` | CG-109: the Pi's nightly `pg_dump` onto a USB disk, 14 days kept, never onto the SD card; how to set up the disk and how to restore, tried ([ADR 0019](docs/adr/0019-backup-on-a-usb-disk.md)) |
 | `web/Dockerfile`, `web/nginx.conf`, `backend/.../export/SiteData.java` | CG-110: the page on the Pi, next to GitHub Pages — the same build behind nginx, its data served live by the Spring service from the forecasts it already fetched, at Pages' paths ([ADR 0018](docs/adr/0018-the-pi-serves-the-page-from-its-backend.md)) |
 | `backend/.../history/` | CG-101: `HistorySync` copies the `history` branch's CSVs into `crag_history` — at startup and at 23:50 and 05:50, each day replaced whole |
-| `backend/.../export/ConditionsExport.java` | the serverless version: hourly scores to `site/data/conditions.json` and the static API in `site/api/v1/`, on GitHub Pages; with `FerrateExport` (CG-114) the via ferratas of `data/ferrate.json`, scored at their tops, under `ferrate` |
+| `backend/.../export/ConditionsExport.java` | the serverless version: scores every 3 hours to `site/data/conditions.json` and the static API in `site/api/v1/`, on GitHub Pages; with `FerrateExport` (CG-114) the via ferratas of `data/ferrate.json`, scored at their tops, under `ferrate` |
 | `web/` | the page: React 19, TypeScript, Vite, Leaflet; `npm test` runs the Vitest unit and component tests; `npm run build` writes `site/` (generated, never committed) |
 | `backend/.../export/SharePages.java` | CG-45: one static page per crag in `site/c/`, rebuilt with the data, whose Open Graph tags carry the name, the next day's verdict and weather; it forwards a browser to `?crag=<id>`. The preview image is `assets/social-preview.png`, published as `og.png` |
 | `.github/workflows/ci.yml` | on every push and PR: actionlint on the workflows and shellcheck on the scripts, backend build and tests (Testcontainers on a real PostgreSQL), the page's types, tests and build, the page end to end in Chromium (Playwright, desktop and phone, axe), the tools' tests (every script, network paths against a fake local server) — each with its coverage in the run summary and a floor (backend 95%, page 99% of lines, tools 97%) that fails the job below it, Terraform fmt and validate, backlog check |
-| `.github/workflows/pages.yml` | hourly and on push: scores every crag and publishes `site/` on GitHub Pages |
+| `.github/workflows/pages.yml` | every 3 hours and on push: scores every crag and publishes `site/` on GitHub Pages |
 | `.github/workflows/image.yml` | on push to main: the linux/arm64 backend image to GHCR, on a native ARM runner |
 | `.github/workflows/lighthouse.yml`, `lighthouserc.json` | on PRs touching the page or the data (a bigger crag list weighs on it): builds it with real data and fails when Lighthouse (desktop, median of 3) drops below performance 0.88 or accessibility, best practices, SEO 0.95 — measured on 2026-10-15 at 0.95 / 1 / 1 / 1; CI's performance medians 0.92–0.96 since. The page's code, React and Leaflet come in separate chunks, and the crag's panel is fetched on demand (CG-64) |
 | `tools/build_site.sh` | builds `site/` as Pages serves it (the page from `web/`, then scores, data, API, logo); used by `pages.yml` and `lighthouse.yml` |
@@ -294,7 +300,7 @@ publishes the [GitHub Release](https://github.com/Allan-Nava/cragcast/releases) 
 the merged PRs. The Raspberry Pi runs the release its Portainer stack names in
 `CRAGCAST_VERSION`; set it and *Pull and redeploy* to move, set the previous one to go back.
 Unset, the Pi follows `:main`, rebuilt at every merge. GitHub Pages is not versioned: it follows
-main hourly.
+main, rebuilt every 3 hours.
 
 ## Licence
 

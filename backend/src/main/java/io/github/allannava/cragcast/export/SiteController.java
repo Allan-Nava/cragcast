@@ -31,6 +31,12 @@ class SiteController {
         return serve(SiteData.Snapshot::conditions, MediaType.APPLICATION_JSON);
     }
 
+    /** CG-43: another region's crags, as on GitHub Pages. */
+    @GetMapping("/data/{file:conditions-.+\\.json}")
+    ResponseEntity<String> region(@PathVariable String file) {
+        return serve(s -> s.regions().get(file), MediaType.APPLICATION_JSON);
+    }
+
     @GetMapping("/api/v1/crags.json")
     ResponseEntity<String> index() {
         return serve(s -> s.api().get("crags.json"), MediaType.APPLICATION_JSON);

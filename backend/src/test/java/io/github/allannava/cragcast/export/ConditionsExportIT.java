@@ -63,11 +63,11 @@ class ConditionsExportIT {
                 {"region":"Test","source":"test","licence":"test licence","elevationSource":"test dem","crags":[
                  {"id":"osm-node-1","name":"Dry Test Wall","latitude":46.47,"longitude":10.37,"aspect":"S",
                   "sourceUrl":"https://example.org/1","details":{"gradeMax":"7a"},"elevation":1400,
-                  "municipality":"Testville","province":"Testshire","provinceCode":"TT"},
+                  "municipality":"Testville","province":"Testshire","provinceCode":"TT","region":"Lombardia"},
                  {"id":"osm-way-2","name":"Wet Test Wall","latitude":45.5,"longitude":9.2,"aspect":null,
                   "sourceUrl":"https://example.org/2","details":{}},
                  {"id":"osm-node-3","name":"Third <Test> Wall","latitude":45.6,"longitude":9.3,"aspect":"N",
-                  "sourceUrl":"https://example.org/3","details":{}}]}""");
+                  "sourceUrl":"https://example.org/3","details":{},"region":"Piemonte"}]}""");
         // One avalanche micro-region, around the first crag only; its id is one the bulletin names.
         Files.writeString(dir.resolve("avalanche-regions.geojson"), """
                 {"features":[{"properties":{"id":"IT-25-SO-03"},"geometry":{"type":"MultiPolygon",
@@ -90,7 +90,13 @@ class ConditionsExportIT {
         JsonNode data = JSON.readTree(Files.readString(dir.resolve("site/data/conditions.json")));
         String tomorrow = today.plusDays(1).toString();
         assertThat(data.path("days").size()).isEqualTo(3);
-        assertThat(data.path("crags").size()).isEqualTo(3);
+        // CG-43: Lombardy's crags (and one without a region) here, Piedmont's in its own file.
+        assertThat(data.path("crags").size()).isEqualTo(2);
+        assertThat(data.path("regions").get(0).path("file").asString()).isEqualTo("conditions-piemonte.json");
+        assertThat(data.path("regions").get(0).path("count").asInt()).isEqualTo(1);
+        JsonNode piemonte = JSON.readTree(Files.readString(dir.resolve("site/data/conditions-piemonte.json")));
+        assertThat(piemonte.path("crags").get(0).path("id").asString()).isEqualTo("osm-node-3");
+        assertThat(piemonte.has("regions")).isFalse();
         JsonNode dry = data.path("crags").get(0), wet = data.path("crags").get(1);
         assertThat(dry.path("days").path(tomorrow).path("verdict").asString()).isEqualTo("GO");
         assertThat(wet.path("days").path(tomorrow).path("verdict").asString()).isEqualTo("NO_GO");
@@ -106,6 +112,10 @@ class ConditionsExportIT {
         assertThat(index.path("meta").path("version").asInt()).isEqualTo(1);
         assertThat(index.path("crags").get(1).path("verdicts").path(tomorrow).asString()).isEqualTo("NO_GO");
         assertThat(index.path("crags").get(0).path("url").asString()).isEqualTo("crags/osm-node-1.json");
+        // CG-43: the region, added at the end; null where the file has none. The API keeps every crag.
+        assertThat(index.path("crags").get(0).path("region").asString()).isEqualTo("Lombardia");
+        assertThat(index.path("crags").get(1).path("region").isNull()).isTrue();
+        assertThat(index.path("crags").get(2).path("region").asString()).isEqualTo("Piemonte");
         JsonNode one = JSON.readTree(Files.readString(dir.resolve("site/api/v1/crags/osm-node-1.json")));
         assertThat(one.path("crag").path("details").path("gradeMax").asString()).isEqualTo("7a");
 

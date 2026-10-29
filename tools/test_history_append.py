@@ -59,5 +59,15 @@ class Append(unittest.TestCase):
             self.append(conditions(["2026-10-31"]), "2026-12-25")
 
 
+    def test_the_other_regions_files_are_read_too_cg43(self):
+        main = conditions(["2026-10-15"])
+        other = conditions(["2026-10-15"])
+        other["crags"] = [dict(other["crags"][0], id="osm-node-9", name="Gamma Wall", provinceCode="TO")]
+        (self.dir / "conditions-piemonte.json").write_text(json.dumps(other))
+        main["regions"] = [{"name": "Piemonte", "count": 1, "file": "conditions-piemonte.json"}]
+        self.append(main)
+        self.assertEqual([r["crag_name"] for r in self.read("2026/10.csv")], ["Alpha Wall", "beta Wall", "Gamma Wall"])
+
+
 if __name__ == "__main__":
     unittest.main()

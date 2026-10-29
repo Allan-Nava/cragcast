@@ -16,7 +16,7 @@ import { BackToTop } from "./components/BackToTop";
 import { loadFavourites, loadOnly, saveFavourites, saveOnly } from "./lib/favourites";
 import { hasGrades, inGrade } from "./lib/grades";
 import { ON_THE_SPOT, asPlace } from "./lib/ferrate";
-import type { Kind } from "./lib/state";
+import { ALL_REGIONS, DEFAULT_REGION, regionOf, type Kind } from "./lib/state";
 
 /** The crags matching search, province, area, (CG-46) favourites and (CG-61) grades — every
  * verdict (CG-39 counts them). */
@@ -25,6 +25,8 @@ export function matching(crags: Crag[], s: ViewState, favourites: Set<string> | 
   return crags
     .filter(c => !favourites || favourites.has(c.id))
     .filter(c => !q || fold(c.name).includes(q) || fold(place(c)).includes(q))
+    // CG-43: one region at a time, or all; the via ferratas are Lombardy's and never hidden by it.
+    .filter(c => s.region === ALL_REGIONS || !!c.ferrata || regionOf(c) === s.region)
     // CG-114: province and grades are the crags' filters; a via ferrata has neither from OSM.
     .filter(c => !s.province || !!c.ferrata || c.provinceCode === s.province)
     .filter(c => !s.area || inArea(s.area, c.latitude, c.longitude))
@@ -138,24 +140,53 @@ export function App() {
     setView(next);
   };
 
+  // CG-43: the other regions' crags live in their own files (data.regions), fetched when the
+  // view needs them and kept until new data arrives — then fetched again with it.
+  const [loaded, setLoaded] = useState<{ gen: string; byFile: Record<string, Crag[] | "failed"> }>({ gen: "", byFile: {} });
+  const byFile = data && loaded.gen === data.generatedAt ? loaded.byFile : {};
+  const region = view?.region ?? "";
+  const wanted = (data?.regions ?? []).filter(r => region === ALL_REGIONS || r.name === region).map(r => r.file);
+  const pending = wanted.filter(f => !(f in byFile));
+  const failed = wanted.filter(f => byFile[f] === "failed");
+  useEffect(() => {
+    if (!data || pending.length === 0) return;
+    const gen = data.generatedAt;
+    for (const file of pending) {
+      fetch("data/" + file, { cache: "no-cache" })
+        .then(r => { if (!r.ok) throw new Error(String(r.status)); return r.json() as Promise<Conditions>; })
+        .then(d => d.crags as Crag[] | "failed", () => "failed" as const)
+        .then(crags => setLoaded(prev => ({ gen, byFile: { ...(prev.gen === gen ? prev.byFile : {}), [file]: crags } })));
+    }
+  }, [data, pending.join(",")]); // eslint-disable-line react-hooks/exhaustive-deps
+  const allCrags = useMemo(() => (data?.crags ?? []).concat(
+    ...Object.values(byFile).filter((v): v is Crag[] => v !== "failed")), [data, byFile]);
+
+  // CG-43: the regions with their crag counts — the main file's, and the other files' as listed.
+  const regions = useMemo(() => {
+    const n = new Map<string, number>();
+    (data?.crags ?? []).forEach(c => n.set(regionOf(c), (n.get(regionOf(c)) ?? 0) + 1));
+    (data?.regions ?? []).forEach(r => n.set(r.name, r.count));
+    return [...n].sort((a, b) => a[0].localeCompare(b[0], "it")).map(([name, count]) => ({ name, count }));
+  }, [data]);
   const provinces = useMemo(() => {
     if (!data) return [];
+    const inRegion = allCrags.filter(c => region === ALL_REGIONS || regionOf(c) === region);
     const names = new Map<string, string>();
-    data.crags.forEach(c => { if (c.provinceCode) names.set(c.provinceCode, c.province ?? c.provinceCode); });
+    inRegion.forEach(c => { if (c.provinceCode) names.set(c.provinceCode, c.province ?? c.provinceCode); });
     return [...names].sort((a, b) => a[1].localeCompare(b[1], "it"))
-      .map(([code, name]) => ({ code, name, count: data.crags.filter(c => c.provinceCode === code).length }));
-  }, [data]);
+      .map(([code, name]) => ({ code, name, count: inRegion.filter(c => c.provinceCode === code).length }));
+  }, [data, allCrags, region]);
 
   // CG-114: the via ferratas as places; the view shows them or the crags, never both.
   const ferrate = useMemo(() => (data?.ferrate ?? []).map(asPlace), [data]);
   const kind: Kind = view?.kind === "ferrate" && ferrate.length > 0 ? "ferrate" : "crags";
-  const places = useMemo(() => (kind === "ferrate" ? ferrate : data?.crags ?? []), [kind, ferrate, data]);
+  const places = useMemo(() => (kind === "ferrate" ? ferrate : allCrags), [kind, ferrate, allCrags]);
 
   const distance = useMemo(() => here ? (c: Crag) => km(here.lat, here.lon, c.latitude, c.longitude) : null, [here]);
   const sortDistance = byDistance ? distance : null;
   const shown = useMemo(() => data && view ? visible(places, view, sortDistance, scope) : [], [data, view, places, sortDistance, scope]);
   // CG-44: the open panel lives in the URL, so a link opens on it and back closes it.
-  const detail = data && view?.crag ? [...data.crags, ...ferrate].find(c => c.id === view.crag) ?? null : null;
+  const detail = data && view?.crag ? [...allCrags, ...ferrate].find(c => c.id === view.crag) ?? null : null;
   const viewRef = useRef(view);
   viewRef.current = view;
   const openDetail = useCallback((c: Crag) => {
@@ -211,11 +242,17 @@ export function App() {
     go({ ...view, verdicts }, true);
   };
 
-  const total = places.length;
+  // CG-43: "of how many" counts the region shown (or all of them), as listed — a region not yet
+  // loaded included; the via ferratas count themselves.
+  const total = kind === "ferrate" ? places.length
+    : region === ALL_REGIONS ? regions.reduce((n, r) => n + r.count, 0)
+    : regions.find(r => r.name === region)?.count ?? places.length;
   const noun = kind === "ferrate" ? "vie ferrate" : "falesie";
-  const active = view ? [view.verdicts.size < 3, !!view.province, !!view.grade, !!view.area, !!here, onlyFavourites].filter(Boolean).length : 0;
+  const active = view ? [view.verdicts.size < 3, view.region !== DEFAULT_REGION, !!view.province, !!view.grade, !!view.area, !!here, onlyFavourites].filter(Boolean).length : 0;
   const unknown = data && view ? ungraded(places, view, scope) : 0;
-  const count = notice ?? (!data ? (error ? "" : "Carico le falesie…") : (shown.length === total ? `${shown.length} ${noun}` : `${shown.length} di ${total} ${noun}`)
+  const count = notice ?? (!data ? (error ? "" : "Carico le falesie…")
+    : kind === "crags" && failed.length ? "Non riesco a caricare le falesie di questa regione: riprova più tardi."
+    : kind === "crags" && pending.length ? "Carico le falesie…" : (shown.length === total ? `${shown.length} ${noun}` : `${shown.length} di ${total} ${noun}`)
     + (unknown ? ` · ${unknown} senza gradi su OpenStreetMap, escluse` : ""));
 
   return (
@@ -224,7 +261,7 @@ export function App() {
         <img src="logo.svg" alt="" width={40} height={40} />
         <div>
           <h1>cragcast</h1>
-          <p>Si arrampica domani? Le falesie della Lombardia, dal meteo e dall'esposizione della parete.</p>
+          <p>Si arrampica domani? Le falesie di Lombardia, Piemonte e Trentino-Alto Adige, dal meteo e dall'esposizione della parete.</p>
         </div>
       </header>
       {/* CG-114: crags or via ferratas, said in words; only when the data has via ferratas. */}
@@ -239,7 +276,9 @@ export function App() {
         </div>
       )}
       <Controls days={data?.days ?? []} provinces={kind === "ferrate" ? [] : provinces}
-                state={view ? { ...view, kind } : { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null, show: "list", grade: null, order: "verdict", kind: "crags" }}
+                regions={kind === "ferrate" ? [] : regions}
+                onRegion={r => view && go({ ...view, region: r, province: "", area: null }, true)}
+                state={view ? { ...view, kind } : { day: "", q: "", verdicts: new Set(["GO", "MAYBE", "NO_GO"]), province: "", area: null, crag: null, show: "list", grade: null, order: "verdict", kind: "crags", region: "Lombardia" }}
                 byDistance={byDistance && !!here}
                 near={asking ? "asking" : here ? "on" : "off"} active={active}
                              onDay={day => view && go({ ...view, day }, true)}

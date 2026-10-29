@@ -7,7 +7,7 @@ Why cragcast is built the way it is. One file per decision, numbered, in the for
 | # | Decision | Status | Date |
 |---|---|---|---|
 | [0001](0001-record-decisions.md) | Record decisions as Architectural Decision Records | accepted | 2026-10-16 |
-| [0002](0002-serverless-on-github-pages.md) | Run on GitHub Pages, without a server | accepted | 2026-10-15 |
+| [0002](0002-serverless-on-github-pages.md) | Run on GitHub Pages, without a server | accepted; cadence amended by [0026](0026-beyond-lombardy.md) | 2026-10-15 |
 | [0003](0003-crags-from-openstreetmap.md) | Crags from OpenStreetMap, first-hand data only | accepted | 2026-10-15 |
 | [0004](0004-unmapped-aspect-is-shaded.md) | An unmapped wall is judged as shaded | accepted | 2026-10-13 |
 | [0005](0005-static-api-v1.md) | A static, versioned API | accepted | 2026-10-15 |
@@ -31,3 +31,4 @@ Why cragcast is built the way it is. One file per decision, numbered, in the for
 | [0023](0023-via-ferratas-from-openstreetmap.md) | Via ferratas from OpenStreetMap, in their own file | accepted | 2026-10-28 |
 | [0024](0024-a-via-ferrata-verdict-of-its-own.md) | A via ferrata gets a verdict of its own, stricter than a crag's | accepted | 2026-10-28 |
 | [0025](0025-via-ferratas-on-the-page.md) | Via ferratas on the page: their own switch, their own mark | accepted | 2026-10-28 |
+| [0026](0026-beyond-lombardy.md) | Beyond Lombardy: Piedmont and Trentino-Alto Adige, Lombardy first | accepted | 2026-10-28 |

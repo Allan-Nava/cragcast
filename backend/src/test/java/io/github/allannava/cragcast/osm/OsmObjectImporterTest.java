@@ -27,7 +27,7 @@ class OsmObjectImporterTest {
                 .containsOnly("crag", "cliff", "point", "route", "venue", "other").contains("crag", "route");
         assertThat(entries).allSatisfy(e -> {
             assertThat(e.id()).isEqualTo("osm-" + e.osmType() + "-" + e.osmId());
-            assertThat(e.latitude()).isBetween(44.5, 46.8);                     // Lombardy
+            assertThat(e.latitude()).isBetween(44.0, 47.1);      // Lombardy, Piedmont, Trentino-Alto Adige (CG-43)
         });
     }
 

@@ -2,7 +2,7 @@
 import { describe as group, expect, it } from "vitest";
 import { ON_THE_SPOT, asPlace, ferrataParts, scaleText } from "./ferrate";
 import { allDetails, aspectShort, describe } from "./text";
-import { readState, stateQuery } from "./state";
+import { readState, regionOf, stateQuery } from "./state";
 import { crag, ferrata } from "../test/fixtures";
 
 group("a via ferrata as a place", () => {
@@ -49,5 +49,15 @@ group("the kind in the URL", () => {
     expect(s.kind).toBe("ferrate");
     expect(stateQuery(s)).toBe("?k=ferrate&day=2026-10-16");
     expect(stateQuery({ ...s, kind: "crags" })).toBe("?day=2026-10-16");
+  });
+
+  it("CG-43: the region, Lombardy unless ?r= says otherwise; data without one is Lombardy", () => {
+    expect(readState("", DAYS).region).toBe("Lombardia");
+    const s = readState("?r=Piemonte", DAYS);
+    expect(s.region).toBe("Piemonte");
+    expect(stateQuery(s)).toBe("?r=Piemonte&day=2026-10-16");
+    expect(stateQuery({ ...s, region: "Lombardia" })).toBe("?day=2026-10-16");
+    expect(regionOf({})).toBe("Lombardia");
+    expect(regionOf({ region: "Piemonte" })).toBe("Piemonte");
   });
 });

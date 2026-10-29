@@ -90,6 +90,19 @@ class Areas(Server):
         self.assertEqual(found["osm-node-2"], {"province": "Other"})              # a malformed code is left out
         self.assertIn('make crag ref="osm-node-2"', Fake.seen[0])
 
+    def test_reads_the_region_cg43(self):
+        Fake.script = [(200, {"elements": self.area("osm-node-1",
+                                                    {"type": "area", "tags": {"admin_level": "4", "name": "Trentino-Alto Adige/Südtirol",
+                                                                              "name:it": "Trentino-Alto Adige"}})
+                                         + self.area("osm-node-2",
+                                                     {"type": "area", "tags": {"admin_level": "4", "name": "Piemonte"}})})]
+        found = self.quiet(o.areas, self.CRAGS)
+        self.assertEqual((found["osm-node-1"]["region"], found["osm-node-2"]["region"]), ("Trentino-Alto Adige", "Piemonte"))
+        self.assertIn('"admin_level"~"^(4|6|8)$"', Fake.seen[0])
+
+    def test_the_query_covers_lombardy_and_its_neighbours(self):
+        self.assertIn('area["ISO3166-2"~"^(IT-25|IT-21|IT-32)$"]', o.QUERY)
+
     def test_asks_again_when_the_answer_is_cut_short(self):
         cut = {"elements": self.area("osm-node-1")}
         whole = {"elements": self.area("osm-node-1") + self.area("osm-node-2")}
@@ -106,6 +119,25 @@ class Elevations(Server):
         Fake.script = [(200, {"elevation": [100.4] * 100}), (200, {"elevation": [200.6] * 50})]
         self.assertEqual(o.elevations(crags), [100] * 100 + [201] * 50)
         self.assertEqual(len(Fake.seen), 2)
+
+    def test_pauses_between_requests_and_asks_again_after_a_429(self):
+        crags = [{"latitude": 45 + i / 1000, "longitude": 9.0} for i in range(150)]
+        Fake.script = [(429, "slow down"), (200, {"elevation": [10.0] * 100}), (200, {"elevation": [20.0] * 50})]
+        with mock.patch.object(o.time, "sleep") as sleep:
+            self.assertEqual(self.quiet(o.elevations, crags), [10] * 100 + [20] * 50)
+        self.assertEqual(len(Fake.seen), 3)
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [30, o.ELEVATION_PAUSE_S])
+
+    def test_gives_up_after_four_429s_and_any_other_error_at_once(self):
+        Fake.script = [(429, "slow down")]
+        with mock.patch.object(o.time, "sleep"), self.assertRaises(o.urllib.error.HTTPError):
+            self.quiet(o.elevations, [{"latitude": 45, "longitude": 9}])
+        self.assertEqual(len(Fake.seen), 4)
+        Fake.seen.clear()
+        Fake.script = [(500, "boom")]
+        with self.assertRaises(o.urllib.error.HTTPError):
+            self.quiet(o.elevations, [{"latitude": 45, "longitude": 9}])
+        self.assertEqual(len(Fake.seen), 1)
 
     def test_refuses_a_short_answer(self):
         Fake.script = [(200, {"elevation": [1.0]})]
@@ -129,7 +161,8 @@ class WholeRun(Server):
             with mock.patch.object(o, "OUT", out), mock.patch.object(o, "OBJECTS", out.with_name("osm-climbing.json")), \
                     mock.patch.object(o.sys, "argv", ["osm_crags.py", "--from", str(saved)]), \
                     mock.patch.object(o, "elevations", lambda crags: [300] * len(crags)), \
-                    mock.patch.object(o, "areas", lambda crags: {c["id"]: {"municipality": "Testville"} for c in crags}):
+                    mock.patch.object(o, "areas", lambda crags: {c["id"]: {"municipality": "Testville", "region": "Piemonte"}
+                                                                for c in crags}):
                 self.quiet(o.main)
             data = json.loads(out.read_text())
             objects = json.loads(out.with_name("osm-climbing.json").read_text())["objects"]
@@ -139,6 +172,8 @@ class WholeRun(Server):
                          {"osm-node-1": "crag", "osm-way-2": "cliff", "osm-node-3": "venue"})
         crag = data["crags"][1]
         self.assertEqual((crag["aspect"], crag["elevation"], crag["municipality"]), ("SW", 300, "Testville"))
+        self.assertEqual(crag["region"], "Piemonte")                     # CG-43
+        self.assertEqual(data["region"], "Lombardia, Piemonte, Trentino-Alto Adige")
         self.assertNotIn("_kind", crag)
         self.assertIn("ODbL", data["licence"])
 

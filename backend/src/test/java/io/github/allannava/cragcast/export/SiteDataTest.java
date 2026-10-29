@@ -182,4 +182,24 @@ class SiteDataTest {
         assertThat(data.tops().values()).allMatch(t -> t.latitude() > 44 && t.latitude() < 47);
         assertThat(FerrateData.none().ferrate()).isEmpty();
     }
+
+    @Test
+    void anotherRegionsCragsInTheirOwnFileAsOnPages() throws Exception {
+        var t1 = threeCrags().crags().get(0);
+        var other = new ConditionsExport.Crag("t-9", "Test Wall Piemonte", 45.0, 7.5, null, "https://example.org/9",
+                null, null, null, null, null, "TO", null, "Trentino-Alto Adige");
+        SiteData site = new SiteData(new ConditionsExport.CragsFile("Test", "test", "l", "e", List.of(t1, other)),
+                AvalancheRegions.none(), "http://127.0.0.1:1", "https://x.test/cragcast", JUNE_2);
+        site.publish(Map.of("t-1", dry(), "t-9", dry()), Instant.EPOCH);
+
+        MockMvc mvc = MockMvcBuilders.standaloneSetup(new SiteController(site)).build();
+        mvc.perform(get("/data/conditions.json"))
+                .andExpect(jsonPath("$.crags.length()").value(1))
+                .andExpect(jsonPath("$.regions[0].file").value("conditions-trentino-alto-adige.json"));
+        mvc.perform(get("/data/conditions-trentino-alto-adige.json")).andExpect(status().isOk())
+                .andExpect(jsonPath("$.crags[0].id").value("t-9"));
+        mvc.perform(get("/data/conditions-nowhere.json")).andExpect(status().isNotFound());
+        mvc.perform(get("/api/v1/crags.json")).andExpect(jsonPath("$.crags.length()").value(2));
+        assertThat(ConditionsExport.slug("Valle d'Aosta / Vallée d'Aoste")).isEqualTo("valle-d-aosta-vallee-d-aoste");
+    }
 }

@@ -36,8 +36,16 @@ import tools.jackson.databind.json.JsonMapper;
 public final class ConditionsExport {
 
     static final ZoneId ZONE = ZoneId.of("Europe/Rome");
-    /** Places per Open-Meteo request, to keep the URL short. */
-    static final int BATCH = 50;
+    /**
+     * Places per Open-Meteo request: few requests an hour (CG-43 brought about a thousand crags),
+     * and a URL still well under the server's limit.
+     */
+    static final int BATCH = 100;
+    /**
+     * CG-43: Open-Meteo's free tier counts every place, 600 a minute: a pause between requests of
+     * {@link #BATCH} keeps a run near 400 a minute. OPEN_METEO_PAUSE_MS overrides it (tests: 0).
+     */
+    static final long PAUSE_MS = 15_000;
 
     private ConditionsExport() {
     }
@@ -63,8 +71,12 @@ public final class ConditionsExport {
 
         OpenMeteoClient weather = OpenMeteoClient.create(
                 env.getOrDefault("OPEN_METEO_URL", "https://api.open-meteo.com"));
+        long pause = Long.parseLong(env.getOrDefault("OPEN_METEO_PAUSE_MS", Long.toString(PAUSE_MS)));
         List<HourlyForecast> forecasts = new ArrayList<>();
         for (int i = 0; i < crags.crags().size(); i += BATCH) {
+            if (i > 0) {
+                Thread.sleep(pause);
+            }
             List<double[]> places = crags.crags().subList(i, Math.min(i + BATCH, crags.crags().size()))
                     .stream().map(c -> new double[] {c.latitude(), c.longitude()}).toList();
             forecasts.addAll(weather.hourly(places));
@@ -101,6 +113,7 @@ public final class ConditionsExport {
             try {
                 FerrateExport.FerrateFile file = json.readValue(Files.readString(ferrateFile), FerrateExport.FerrateFile.class);
                 FerrataClient client = FerrataClient.create(env.getOrDefault("OPEN_METEO_URL", "https://api.open-meteo.com"));
+                Thread.sleep(pause);                       // the tops count against the same minute
                 ferrate = FerrateExport.build(file, FerrateExport.fetch(client, file, BATCH), days, regions, bulletins);
             } catch (RuntimeException e) {
                 System.err.println("via ferratas skipped: " + e);
@@ -110,7 +123,11 @@ public final class ConditionsExport {
         Output out = build(crags, forecasts, days, Instant.now(), regions, bulletins, climbing, ferrate);
         Path target = Path.of(args[1]);
         Files.createDirectories(target.toAbsolutePath().getParent());
-        Files.writeString(target, json.writeValueAsString(out));
+        // CG-43: the page's data by region; the API and the share pages below take every crag.
+        for (Map.Entry<String, Output> f : split(out).entrySet()) {
+            Path file = f.getKey().equals("conditions.json") ? target : target.resolveSibling(f.getKey());
+            Files.writeString(file, json.writeValueAsString(f.getValue()));
+        }
         if (args.length >= 3) {
             // CG-32: the static API, one index and one file per crag, next to the page.
             Path api = Path.of(args[2]);
@@ -177,7 +194,7 @@ public final class ConditionsExport {
                     c.details() == null ? Map.of() : c.details(), c.elevation(),
                     c.alsoMapped() == null ? List.of() : c.alsoMapped(),
                     c.municipality(), c.province(), c.provinceCode(), byDay,
-                    climbing.sectors(c.sectors()), climbing.routes(c.id())));
+                    climbing.sectors(c.sectors()), climbing.routes(c.id()), c.region()));
         }
         return new Output(now.toString(), ZONE.getId(), days.stream().map(LocalDate::toString).toList(),
                 crags.licence(), "Weather: Open-Meteo.com (CC BY 4.0)", crags.elevationSource(), AVALANCHE_DATA, out, ferrate);
@@ -198,7 +215,7 @@ public final class ConditionsExport {
             Map<String, Verdict> verdicts = new LinkedHashMap<>();
             c.days().forEach((day, d) -> verdicts.put(day, d.verdict()));
             index.add(new IndexEntry(c.id(), c.name(), c.municipality(), c.provinceCode(), c.latitude(), c.longitude(),
-                    c.aspect(), c.elevation(), verdicts, "crags/" + c.id() + ".json"));
+                    c.aspect(), c.elevation(), verdicts, "crags/" + c.id() + ".json", c.region()));
             files.put("crags/" + c.id() + ".json", new CragDocument(meta, c));
         }
         files.put("crags.json", new Index(meta, index));
@@ -236,7 +253,8 @@ public final class ConditionsExport {
     }
 
     record IndexEntry(String id, String name, String municipality, String provinceCode, double latitude,
-                      double longitude, Aspect aspect, Integer elevation, Map<String, Verdict> verdicts, String url) {
+                      double longitude, Aspect aspect, Integer elevation, Map<String, Verdict> verdicts, String url,
+                      String region) {
     }
 
     record Index(Meta meta, List<IndexEntry> crags) {
@@ -269,9 +287,17 @@ public final class ConditionsExport {
     /** {@code details}: the climbing tags OSM has for the crag (grades, length, rock…), passed through. */
     /** {@code alsoMapped}: OSM links of duplicates folded into this crag by tools/osm_crags.py. */
     /** {@code sectors}: CG-104, the OSM ids of the sectors folded into this crag. */
+    /** {@code region}: CG-43, the crag's Italian region from OSM's boundaries; null in older files. */
     record Crag(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
                 Map<String, Object> details, Integer elevation, List<String> alsoMapped,
-                String municipality, String province, String provinceCode, List<String> sectors) {
+                String municipality, String province, String provinceCode, List<String> sectors, String region) {
+
+        Crag(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
+             Map<String, Object> details, Integer elevation, List<String> alsoMapped,
+             String municipality, String province, String provinceCode, List<String> sectors) {
+            this(id, name, latitude, longitude, aspect, sourceUrl, details, elevation, alsoMapped, municipality, province,
+                    provinceCode, sectors, null);
+        }
     }
 
     /** CG-117: one sector of the crag, with its own aspect and grades. */
@@ -288,21 +314,86 @@ public final class ConditionsExport {
                   @JsonInclude(JsonInclude.Include.NON_NULL) Avalanche avalanche) {
     }
 
+    /** {@code region}: CG-43, added at the end as the API v1 allows. */
     record CragOut(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
                    Map<String, Object> details, Integer elevation, List<String> alsoMapped,
                    String municipality, String province, String provinceCode, Map<String, DayOut> days,
-                   List<SectorOut> sectors, List<RouteOut> routes) {
+                   List<SectorOut> sectors, List<RouteOut> routes, String region) {
+
+        CragOut(String id, String name, double latitude, double longitude, Aspect aspect, String sourceUrl,
+                Map<String, Object> details, Integer elevation, List<String> alsoMapped,
+                String municipality, String province, String provinceCode, Map<String, DayOut> days,
+                List<SectorOut> sectors, List<RouteOut> routes) {
+            this(id, name, latitude, longitude, aspect, sourceUrl, details, elevation, alsoMapped, municipality, province,
+                    provinceCode, days, sectors, routes, null);
+        }
     }
 
-    /** {@code ferrate}: CG-114, left out when there are none, so data without via ferratas reads as before. */
+    /**
+     * {@code ferrate}: CG-114, left out when there are none, so data without via ferratas reads as before.
+     * {@code regions}: CG-43, the other regions' files next to this one, left out when there are none.
+     */
     record Output(String generatedAt, String timezone, List<String> days, String cragData, String weatherData,
                   String elevationData, String avalancheData, List<CragOut> crags,
-                  @JsonInclude(JsonInclude.Include.NON_EMPTY) List<FerrateExport.FerrataOut> ferrate) {
+                  @JsonInclude(JsonInclude.Include.NON_EMPTY) List<FerrateExport.FerrataOut> ferrate,
+                  @JsonInclude(JsonInclude.Include.NON_EMPTY) List<RegionFile> regions) {
 
         /** Data without via ferratas, as before CG-114. */
         Output(String generatedAt, String timezone, List<String> days, String cragData, String weatherData,
                String elevationData, String avalancheData, List<CragOut> crags) {
             this(generatedAt, timezone, days, cragData, weatherData, elevationData, avalancheData, crags, List.of());
         }
+
+        Output(String generatedAt, String timezone, List<String> days, String cragData, String weatherData,
+               String elevationData, String avalancheData, List<CragOut> crags, List<FerrateExport.FerrataOut> ferrate) {
+            this(generatedAt, timezone, days, cragData, weatherData, elevationData, avalancheData, crags, ferrate, List.of());
+        }
+
+        Output with(List<CragOut> crags, List<FerrateExport.FerrataOut> ferrate, List<RegionFile> regions) {
+            return new Output(generatedAt, timezone, days, cragData, weatherData, elevationData, avalancheData, crags,
+                    ferrate, regions);
+        }
+    }
+
+    /** CG-43: another region's crags, in {@code file} next to conditions.json. */
+    record RegionFile(String name, int count, String file) {
+    }
+
+    /** CG-43: the region the page shows first, whose crags (and the via ferratas) stay in conditions.json. */
+    static final String MAIN_REGION = "Lombardia";
+
+    /**
+     * CG-43: the page's data split by region, as file name → document. conditions.json keeps
+     * Lombardy's crags (and those without a region), the via ferratas and the list of the other
+     * files; each other region gets conditions-&lt;slug&gt;.json with its crags alone, fetched by the
+     * page when that region is chosen. One file for every crag was too heavy (Lighthouse 0.73).
+     */
+    static Map<String, Output> split(Output out) {
+        Map<String, List<CragOut>> byRegion = new LinkedHashMap<>();
+        List<CragOut> main = new ArrayList<>();
+        for (CragOut c : out.crags()) {
+            if (c.region() == null || c.region().equals(MAIN_REGION)) {
+                main.add(c);
+            } else {
+                byRegion.computeIfAbsent(c.region(), r -> new ArrayList<>()).add(c);
+            }
+        }
+        Map<String, Output> files = new LinkedHashMap<>();
+        List<RegionFile> regions = new ArrayList<>();
+        byRegion.forEach((region, crags) -> {
+            String file = "conditions-" + slug(region) + ".json";
+            regions.add(new RegionFile(region, crags.size(), file));
+            files.put(file, out.with(crags, List.of(), List.of()));
+        });
+        Map<String, Output> all = new LinkedHashMap<>();
+        all.put("conditions.json", out.with(main, out.ferrate(), regions));
+        all.putAll(files);
+        return all;
+    }
+
+    /** "Trentino-Alto Adige" → "trentino-alto-adige". */
+    static String slug(String region) {
+        String folded = java.text.Normalizer.normalize(region, java.text.Normalizer.Form.NFD).replaceAll("\\p{M}", "");
+        return folded.toLowerCase(java.util.Locale.ROOT).replaceAll("[^a-z0-9]+", "-").replaceAll("(^-|-$)", "");
     }
 }

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Fetch the climbing crags of Lombardy from OpenStreetMap into data/crags.json.
+"""Fetch the climbing crags of Lombardy and (CG-43) Piedmont and Trentino-Alto Adige from
+OpenStreetMap into data/crags.json.
 
 Two kinds of OSM object become crags: climbing=crag, and (CG-42) named outdoor places tagged
 only sport=climbing — a cliff, a rock, a climbing site. Gyms, shops, buildings and single routes
@@ -27,13 +28,17 @@ import urllib.request
 
 # Public Overpass servers are often busy (504): try each, a few times.
 OVERPASS = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"]
-QUERY = """[out:json][timeout:120];
-area["ISO3166-2"="IT-25"]->.region;
+# CG-43: Lombardy, and the neighbouring Italian regions Lombard climbers go to: Piedmont and
+# Trentino-Alto Adige. Each crag says which (areas(), admin_level 4), as it says its province.
+REGIONS = ("IT-25", "IT-21", "IT-32")
+QUERY = """[out:json][timeout:300];
+area["ISO3166-2"~"^(""" + "|".join(REGIONS) + """)$"]->.region;
 (nwr["climbing"="crag"](area.region);
  nwr["sport"="climbing"]["climbing"!="crag"](area.region);)->.found;
 .found out center tags;
 rel.found;
 out body;"""                     # CG-105: the relations again, with their members (see with_members())
+REGION_NAMES = "Lombardia, Piemonte, Trentino-Alto Adige"
 ASPECTS = {"N", "NE", "E", "SE", "S", "SW", "W", "NW"}
 OUT = pathlib.Path(__file__).resolve().parent.parent / "data" / "crags.json"
 # CG-103: every object of the same query, whole — crags, sectors, routes, gyms — for the database.
@@ -166,8 +171,8 @@ def merge_duplicates(crags):
 
 
 def areas(crags, batch=40):
-    """Municipality and province of every crag, from OSM's administrative boundaries (levels 8
-    and 6): one Overpass query per batch, each crag announced by a `make crag` marker so the
+    """Municipality, province and (CG-43) region of every crag, from OSM's administrative
+    boundaries (levels 8, 6 and 4): one Overpass query per batch, each crag announced by a `make crag` marker so the
     answer can be matched back even when a point falls outside every boundary."""
     found = {}
     for i in range(0, len(crags), batch):
@@ -176,7 +181,7 @@ def areas(crags, batch=40):
         for c in part:
             q += (f'make crag ref="{c["id"]}";out;\n'
                   f'is_in({c["latitude"]},{c["longitude"]})->.a;\n'
-                  'area.a["boundary"="administrative"]["admin_level"~"^(6|8)$"];out tags;\n')
+                  'area.a["boundary"="administrative"]["admin_level"~"^(4|6|8)$"];out tags;\n')
         # A busy server can answer 200 with the answer cut short: every crag of the batch must
         # come back with its marker, or the batch is asked again — never a silent gap.
         for attempt in range(3):
@@ -195,6 +200,8 @@ def areas(crags, batch=40):
                 current = found.setdefault(tags["ref"], {})
             elif current is not None and tags.get("admin_level") == "8":
                 current["municipality"] = tags.get("name:it") or tags.get("name")
+            elif current is not None and tags.get("admin_level") == "4":
+                current["region"] = tags.get("name:it") or tags.get("name")
             elif current is not None and tags.get("admin_level") == "6":
                 current["province"] = tags.get("name:it") or tags.get("name")
                 code = tags.get("ref") or tags.get("short_name")
@@ -203,11 +210,17 @@ def areas(crags, batch=40):
     return found
 
 
+ELEVATION_PAUSE_S = 3          # CG-43: ten requests in a row drew a 429 from Open-Meteo
+
+
 def elevations(crags):
-    """Ground elevation in metres for every crag, 100 coordinates per request (the API's limit).
+    """Ground elevation in metres for every crag, 100 coordinates per request (the API's limit),
+    with a pause between requests and a 429 asked again after a longer one.
     A 90 m model: the altitude of the area, not of a given route."""
     out = []
     for i in range(0, len(crags), 100):
+        if i:
+            time.sleep(ELEVATION_PAUSE_S)
         batch = crags[i:i + 100]
         query = urllib.parse.urlencode({
             "latitude": ",".join(str(c["latitude"]) for c in batch),
@@ -215,8 +228,17 @@ def elevations(crags):
         })
         req = urllib.request.Request(f"{ELEVATION}?{query}",
                                      headers={"User-Agent": "cragcast (github.com/Allan-Nava/cragcast)"})
-        with urllib.request.urlopen(req, timeout=60) as r:
-            values = json.load(r)["elevation"]
+        for attempt in range(4):
+            try:
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    values = json.load(r)["elevation"]
+                break
+            except urllib.error.HTTPError as e:
+                e.close()
+                if e.code != 429 or attempt == 3:
+                    raise
+                print(f"  elevation: 429, waiting {30 * (attempt + 1)} s")
+                time.sleep(30 * (attempt + 1))
         if len(values) != len(batch):
             raise SystemExit(f"elevation API returned {len(values)} values for {len(batch)} crags")
         out.extend(round(v) for v in values)
@@ -228,7 +250,8 @@ NATURAL = {"cliff", "bare_rock", "rock", "stone"}
 NOT_A_CRAG = ("leisure", "shop", "building", "amenity", "office", "club")
 ROUTE_PARTS = {"route", "route_bottom", "route_top", "anchor", "abseil_route", "summit_log"}
 # A loose point far from any crag counts only when its name says it is one.
-CRAG_WORD = re.compile(r"falesi|palestra di roccia|parete|placc|sasso|corna|torrion|muro|grotta|rocca",
+# CG-43: "Klettergarten", the German word for an outdoor crag in Alto Adige.
+CRAG_WORD = re.compile(r"falesi|palestra di roccia|parete|placc|sasso|corna|torrion|muro|grotta|rocca|klettergarten",
                        re.IGNORECASE)
 # A name that is only a sector's label says nothing on its own: "Settore Alto", "Secondo Settore".
 SECTOR_ONLY = re.compile(r"^((primo|secondo|terzo|quarto)\s+)?settore\b", re.IGNORECASE)
@@ -501,7 +524,7 @@ def write_objects(elements, crags=()):
     crags (CG-105); ODbL like crags.json."""
     objects = link_routes(elements, sorted(filter(None, map(osm_object, elements)), key=lambda o: o["id"]), crags)
     OBJECTS.write_text(json.dumps({
-        "region": "Lombardia",
+        "region": REGION_NAMES,
         "source": "OpenStreetMap: every climbing=crag and sport=climbing object of tools/osm_crags.py's query (CG-103), "
                   "single routes linked to their crag (CG-105)",
         "licence": "© OpenStreetMap contributors, ODbL 1.0 — https://www.openstreetmap.org/copyright",
@@ -568,7 +591,7 @@ def main():
         c.update(where.get(c["id"], {}))
     write_objects(elements, crags)
     OUT.write_text(json.dumps({
-        "region": "Lombardia",
+        "region": REGION_NAMES,
         "source": "OpenStreetMap: climbing=crag, and named outdoor sport=climbing places (CG-42)",
         "licence": "© OpenStreetMap contributors, ODbL 1.0 — https://www.openstreetmap.org/copyright",
         "elevationSource": ELEVATION_SOURCE,
@@ -579,6 +602,10 @@ def main():
     with_area = sum(1 for c in crags if c.get("municipality"))
     print(f"{len(crags)} crags written to {OUT.relative_to(OUT.parent.parent)}: "
           f"{with_aspect} with an aspect, {with_grades} with grades, {with_area} with a municipality")
+    by_region = {}
+    for c in crags:
+        by_region[c.get("region") or "?"] = by_region.get(c.get("region") or "?", 0) + 1
+    print("by region: " + ", ".join(f"{r} {n}" for r, n in sorted(by_region.items())))
 
 
 if __name__ == "__main__":

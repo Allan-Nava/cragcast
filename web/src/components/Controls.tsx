@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Verdict } from "../types";
 import { LABEL, LETTER, VERDICTS, dayLabel } from "../lib/text";
-import type { Order, ViewState } from "../lib/state";
+import { ALL_REGIONS, REGIONS, type Order, type ViewState } from "../lib/state";
 import { GRADE_CHOICES, gradeLabel, gradeParam, readGrade, type GradeFilter } from "../lib/grades";
 
 /** CG-61: the orders offered; "distance" only while the position is known. */
@@ -12,6 +12,9 @@ const ORDER_LABEL: Record<Order | "distance", string> = {
 interface Props {
   days: string[];
   provinces: { code: string; name: string; count: number }[];
+  /** CG-43: the regions in the data; any beyond REGIONS are added to the choice. */
+  regions?: { name: string; count: number }[];
+  onRegion?(region: string): void;
   state: ViewState;
   near: "off" | "asking" | "on";
   /** CG-53: how many filters are on, for the "Filtri" button that holds them on a phone. */
@@ -33,7 +36,7 @@ interface Props {
 
 export function Controls({ days, provinces, state, near, active = 0, onDay, onQuery, onToggle, onProvince, onNear,
                           favourites = 0, onlyFavourites = false, onOnlyFavourites,
-                          onGrade, onOrder, byDistance = false }: Props) {
+                          onGrade, onOrder, byDistance = false, regions = [], onRegion }: Props) {
   const ferrate = state.kind === "ferrate";
   // CG-53: on a phone the filters fold behind one button; from 600 px they stay in the row and
   // the button is hidden (style.css).
@@ -68,6 +71,17 @@ export function Controls({ days, provinces, state, near, active = 0, onDay, onQu
         </div>
         {/* CG-114: a via ferrata has no province or grades from OSM: those filters are for crags. */}
         {!ferrate && <>
+        {/* CG-43: the same options from the first paint, without counts: a select is as wide as its
+            longest option, and one that widened when the data arrived wrapped the row and pushed
+            the page down (Lighthouse CLS 0.8). The summary says how many. */}
+        <label className="area">
+          <span className="sr-only">Regione</span>
+          <select id="region" value={state.region} onChange={e => onRegion?.(e.target.value)}>
+            {[...new Set([...REGIONS, ...regions.map(r => r.name)])].map(name =>
+              <option key={name} value={name}>{name}</option>)}
+            <option value={ALL_REGIONS}>Tutte le regioni</option>
+          </select>
+        </label>
         <label className="area">
           <span className="sr-only">Provincia</span>
           <select id="province" value={state.province} onChange={e => onProvince(e.target.value)}>

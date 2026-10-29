@@ -55,7 +55,7 @@ class SectorImporterTest {
         assertThat(rows.getValue()).allSatisfy(s -> {
             assertThat(s.getCragId()).isEqualTo(42L);
             assertThat(s.getCategory()).isIn("crag", "cliff", "point");
-            assertThat(s.getLatitude()).isBetween(44.5, 46.8);
+            assertThat(s.getLatitude()).isBetween(44.0, 47.1);   // the three regions (CG-43)
             assertThat(s.getDetailsJson()).startsWith("{");
         });
         assertThat(rows.getValue()).extracting(Sector::getPosition).startsWith(0, 1);

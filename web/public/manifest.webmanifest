@@ -1,7 +1,7 @@
 {
   "name": "cragcast — si arrampica domani?",
   "short_name": "cragcast",
-  "description": "Condizioni delle falesie della Lombardia per oggi, domani e dopodomani.",
+  "description": "Condizioni delle falesie di Lombardia, Piemonte e Trentino-Alto Adige per oggi, domani e dopodomani.",
   "lang": "it",
   "start_url": "./",
   "scope": "./",

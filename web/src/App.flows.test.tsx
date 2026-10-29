@@ -361,3 +361,82 @@ group("via ferratas (CG-114)", () => {
     expect(names()).toHaveLength(2);
   });
 });
+
+group("regions (CG-43)", () => {
+  const withPiemonte = (): Conditions => {
+    const d = data();
+    const c = crag({ id: "p", name: "Parete Gamma", latitude: 45.5, longitude: 7.5, provinceCode: "TO", province: "Torino",
+                     municipality: "Torino", region: "Piemonte" });
+    c.days[NEXT] = { ...c.days[DAY] };
+    return { ...d, crags: [...d.crags, c] };
+  };
+
+  it("the same choice from the first paint as after the data, so the row keeps its width", async () => {
+    serve(data());
+    render(<App />);
+    const options = () => [...(screen.getByLabelText("Regione") as HTMLSelectElement).options].map(o => o.text);
+    const before = options();
+    expect(before).toEqual(["Lombardia", "Piemonte", "Trentino-Alto Adige", "Tutte le regioni"]);
+    await screen.findByText("Parete Alfa — Si va");
+    expect(options()).toEqual(before);
+  });
+
+  it("Lombardy by default; another region in the URL with its own provinces; all of them on request", async () => {
+    serve(withPiemonte());
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    expect(names()).toEqual(["Parete Alfa — Si va", "Parete Beta — No"]);
+    const region = screen.getByLabelText("Regione") as HTMLSelectElement;
+    await act(async () => { fireEvent.change(region, { target: { value: "Piemonte" } }); });
+    expect(location.search).toBe(`?r=Piemonte&day=${DAY}`);
+    expect(names()).toEqual(["Parete Gamma — Si va"]);
+    expect([...(screen.getByLabelText("Provincia") as HTMLSelectElement).options].map(o => o.text))
+      .toEqual(["Tutte le province", "Torino (1)"]);
+    expect(screen.getByRole("button", { name: /^Filtri/ }).textContent).toBe("Filtri (1)");
+    await act(async () => { fireEvent.change(region, { target: { value: "all" } }); });
+    expect(names()).toHaveLength(3);
+  });
+});
+
+group("a region's own file (CG-43)", () => {
+  const split = () => {
+    const main: Conditions = { ...data(), regions: [{ name: "Piemonte", count: 1, file: "conditions-piemonte.json" }] };
+    const c = crag({ id: "p", name: "Parete Gamma", latitude: 45.5, longitude: 7.5, provinceCode: "TO", province: "Torino",
+                     municipality: "Torino", region: "Piemonte" });
+    c.days[NEXT] = { ...c.days[DAY] };
+    return { main, other: { ...data(), crags: [c] } as Conditions };
+  };
+  const byUrl = (answers: Record<string, unknown | number>) => {
+    const f = vi.fn((url: string) => {
+      const key = Object.keys(answers).find(k => url.startsWith(k))!;
+      const b = answers[key];
+      return Promise.resolve(typeof b === "number" ? { ok: false, status: b } : { ok: true, json: () => Promise.resolve(b) });
+    });
+    vi.stubGlobal("fetch", f);
+    return f;
+  };
+
+  it("is fetched only when its region is chosen, and counted from the list before", async () => {
+    const { main, other } = split();
+    const f = byUrl({ "data/conditions.json": main, "data/conditions-piemonte.json": other });
+    render(<App />);
+    await screen.findByText("Parete Alfa — Si va");
+    expect(f.mock.calls.map(c => c[0])).toEqual(["data/conditions.json"]);
+    const region = screen.getByLabelText("Regione") as HTMLSelectElement;
+    await act(async () => { fireEvent.change(region, { target: { value: "Piemonte" } }); });
+    await screen.findByText("Parete Gamma — Si va");
+    expect(f.mock.calls.map(c => c[0])).toEqual(["data/conditions.json", "data/conditions-piemonte.json"]);
+    expect(screen.getByText("1 falesie")).toBeTruthy();
+    await act(async () => { fireEvent.change(region, { target: { value: "all" } }); });
+    expect(names()).toHaveLength(3);
+    expect(f).toHaveBeenCalledTimes(2);                                   // kept, not fetched again
+  });
+
+  it("says so when the region's file cannot be fetched", async () => {
+    const { main } = split();
+    byUrl({ "data/conditions.json": main, "data/conditions-piemonte.json": 503 });
+    history.replaceState(null, "", `/?r=Piemonte&day=${DAY}`);
+    render(<App />);
+    expect(await screen.findByText("Non riesco a caricare le falesie di questa regione: riprova più tardi.")).toBeTruthy();
+  });
+});

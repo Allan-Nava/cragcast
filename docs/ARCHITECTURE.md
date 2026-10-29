@@ -14,17 +14,17 @@ page built from `web/`. There is no server and no database in production
 ([ADR 0002](adr/0002-serverless-on-github-pages.md)); the crag list comes from OpenStreetMap
 through a reviewed monthly PR ([ADR 0003](adr/0003-crags-from-openstreetmap.md)).
 
-## The hourly run
+## The run every 3 hours
 
 ```mermaid
 flowchart LR
   subgraph repo["Repository (main)"]
-    crags["data/crags.json<br/>220 crags from OSM"]
+    crags["data/crags.json<br/>780 crags from OSM, 3 regions"]
     regions["data/avalanche-regions.geojson<br/>EAWS micro-regions"]
     ferrate["data/ferrate.json<br/>via ferratas from OSM"]
     web["web/<br/>React + Vite"]
   end
-  subgraph action["pages.yml — hourly at :17 (tools/build_site.sh)"]
+  subgraph action["pages.yml — every 3 h at :17 (tools/build_site.sh)"]
     vite["vite build<br/>page + logo.svg"]
     export["ConditionsExport (Java 21)"]
   end
@@ -40,7 +40,7 @@ flowchart LR
   crags --> export
   regions --> export
   ferrate --> export
-  meteo -- "hourly, 2 days back, 3 ahead;<br/>50 crags a request, then the via ferratas' tops" --> export
+  meteo -- "hourly values, 2 days back, 3 ahead;<br/>100 crags a request, 15 s apart, then the tops" --> export
   eaws -- "one bulletin a day,<br/>404 out of season" --> export
   export --> data & api & share
   page -- "fetch every 10 min" --> data
@@ -70,7 +70,7 @@ flowchart LR
 
 | Part | Where | What it does |
 |---|---|---|
-| Scorer and export | `backend/src/main/java/…/conditions`, `weather`, `export`, `avalanche` | the verdict, the weather reduction, the hourly export, the bulletin, the share pages; plain Java, no Spring needed at run time |
+| Scorer and export | `backend/src/main/java/…/conditions`, `weather`, `export`, `avalanche` | the verdict, the weather reduction, the export, the bulletin, the share pages; plain Java, no Spring needed at run time |
 | Spring service | `backend/…/crag`, `weather/WeatherRefresh`, `*Controller` | the same scorer behind a REST API with PostgreSQL (Flyway); image on GHCR (`image.yml`, linux/arm64), run on a Raspberry Pi's home network only ([ADR 0015](adr/0015-raspberry-pi-pulls-its-stack.md)) |
 | Via ferrata verdict | `ferrata/FerrataScorer`, `FerrataReducer`, `FerrataClient`, `export/FerrateExport`, `export/FerrateData` | the weather at a via ferrata's top (Open-Meteo with the DEM elevation; gusts, weather code, CAPE, snowfall, light) reduced to one day from 07:00 to 19:00 and scored stricter than a crag: a thunderstorm is never "si va" (CG-113, [ADR 0024](adr/0024-a-via-ferrata-verdict-of-its-own.md)); plain Java; the hourly export calls it for the page (CG-114); on the Pi (CG-115) `WeatherRefresh` asks for the tops after the crags and `SiteData` serves them; `ForecastArchive` keeps them in `ferrata_forecast` (Flyway V11); the API v1 lists them in `ferrate.json` and `ferrate/<id>.json` |
 | Forecast archive | `weather/ForecastArchive` | after each refresh, appends every crag-day it computed — verdict, reasons, the four numbers, the day's hours — to `crag_forecast` (Flyway V8), keyed by the refresh's time; scored from the `ForecastsRefreshed` forecasts, never rewritten, a failure loses that hour only (CG-106, [ADR 0021](adr/0021-hourly-forecasts-archived.md)) |
@@ -135,7 +135,7 @@ flowchart TB
 | `data/crags.json` | `tools/osm_crags.py`; read by `ConditionsExport.Crag`, `CragImporter` and `SectorImporter` | ids (`osm-<type>-<id>`) are stable; changed only by a reviewed PR; `sectors` lists the OSM ids folded in as sectors (CG-104), each one in `osm-climbing.json` |
 | `data/ferrate.json` | `tools/osm_ferrate.py`; nothing reads it yet (CG-113 to CG-115) | the via ferratas, never crags: ids (`osm-relation-<id>` or the lowest `osm-way-<id>`) stable; `pieces`, `start` and `top` (with DEM elevation), `lengthM`, `scaleMin`/`scaleMax` (0–6 or null), `scaleDropped`; changed only by a reviewed PR ([ADR 0023](adr/0023-via-ferratas-from-openstreetmap.md)) |
 | `data/osm-climbing.json` | `tools/osm_crags.py` (`osm_object()`); read by `OsmObjectImporter` into `osm_object` (Flyway V5) | every object of the OSM query with its category; the table is replaced whole at startup, the file is the source (CG-103); with `crags.json`'s `sectors`, also into `sector` (Flyway V6, CG-104); the single routes, linked to their crag and sector (`crag`, `sector`, `linkedBy`), into `route` (Flyway V7, CG-105) |
-| `data/conditions.json` | `ConditionsExport.Output`; typed in `web/src/types.ts` | the page's input; Java and TypeScript change together; since CG-117 each crag carries `sectors` and `routes`, from `data/osm-climbing.json` (`OsmClimbing`); since CG-114 `ferrate` (left out when empty) lists the via ferratas of `data/ferrate.json` from `FerrateExport`, each at its start with the days scored at its top |
+| `data/conditions.json` | `ConditionsExport.Output`; typed in `web/src/types.ts` | the page's input; Java and TypeScript change together; since CG-117 each crag carries `sectors` and `routes`, from `data/osm-climbing.json` (`OsmClimbing`); since CG-43 it holds Lombardy's crags and lists the other regions' `conditions-<slug>.json` (same shape, their crags only) in `regions`, fetched by the page on demand; since CG-114 `ferrate` (left out when empty) lists the via ferratas of `data/ferrate.json` from `FerrateExport`, each at its start with the days scored at its top |
 | `/api/v1/` | `ConditionsExport.api()` | fields only added, never renamed or removed; a break goes to `/api/v2/`; since CG-115 also `ferrate.json` and `ferrate/<id>.json`, files of their own |
 | History CSV | `tools/history_append.py` (`FIELDS`) | on the `history` branch, one file per month; columns only added at the end ([ADR 0006](adr/0006-history-on-its-own-branch.md)); read by name by `HistoryCsv` |
 | Share pages | `SharePages` | the day written as a date; reason words kept equal to `web/src/lib/text.ts` |
@@ -144,8 +144,8 @@ flowchart TB
 
 | Workflow | When | Does |
 |---|---|---|
-| `pages.yml` | hourly at :17, and on push to main touching the page, data or scorer | builds `site/` and deploys it |
-| `uptime.yml` | hourly at :47 | checkfleet on the page, data, API and TLS; fails when the data is over 150 minutes old |
+| `pages.yml` | every 3 hours at :17 (CG-43), and on push to main touching the page, data or scorer | builds `site/` and deploys it |
+| `uptime.yml` | hourly at :47 | checkfleet on the page, data, API and TLS; fails when the data is over 420 minutes old (one missed 3-hourly run) |
 | `history.yml` | daily at 20:30 UTC | appends the day's verdicts to the `history` branch |
 | `crags-refresh.yml` | the 1st of the month, 05:23 UTC | rebuilds `data/crags.json`, `data/osm-climbing.json` and `docs/aspects-todo.md` from OSM, and (CG-112) `data/ferrate.json` with `docs/ferrate-todo.md`; opens a PR when any data file changed |
 | `ci.yml` | every push to main and every PR | the jobs below |

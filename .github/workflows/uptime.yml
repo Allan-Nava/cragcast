@@ -13,7 +13,7 @@ permissions:
 
 env:
   CHECKFLEET_VERSION: "1.34.2"
-  MAX_AGE_MINUTES: "150"      # built hourly: two missed runs and a margin
+  MAX_AGE_MINUTES: "420"      # built every 3 h (CG-43): one missed run and a margin
 
 jobs:
   check:
