@@ -65,13 +65,14 @@ or to the dump keeps `docs/pi-backup.md`'s restore true.
 - **Three regions, Lombardy first** (CG-43, ADR 0026): `osm_crags.py` queries IT-25, IT-21 and
   IT-32 at once; each crag's `region` comes from OSM's boundaries (admin level 4), never from the
   query. The page shows one region at a time, Lombardy unless `?r=` says otherwise; a crag
-  without a region is Lombardy's. `conditions.json` holds Lombardy (and the via ferratas) and
+  without a region is Lombardy's. `conditions.json` holds Lombardy's crags and via ferratas and
   lists the other regions' `conditions-<slug>.json` in `regions`; the page fetches one when its
   region is chosen, `history_append.py` and the Pi read and serve them all. The region choice has
   the same options from the first paint (`REGIONS`, no counts): a control that appears or widens
   with the data wraps the filter row and shifts the page (Lighthouse CLS 0.8). Open-Meteo is asked 100 places a request; the elevation lookup pauses
-  between requests and waits out a 429. The avalanche bulletins and via ferratas are still
-  Lombardy's only.
+  between requests and waits out a 429. The avalanche bulletins cover the three regions since
+  CG-120, the via ferratas since CG-121 — each with its region, province and municipality from
+  OSM's boundaries at its start, and in its region's data file like the crags.
 - **Crags come from OpenStreetMap** via `tools/osm_crags.py` into `data/crags.json` (ODbL:
   credit OSM on every surface that shows them): `climbing=crag`, and since CG-42 named outdoor
   `sport=climbing` places (a cliff, a rock, a climbing site relation) — never gyms, shops,

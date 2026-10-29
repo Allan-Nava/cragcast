@@ -5,7 +5,8 @@ import type { Crag, Ferrata } from "../types";
 /** A via ferrata as a place: at its start, its elevation the top's; no aspect, no climbing details. */
 export const asPlace = (f: Ferrata): Crag => ({
   id: f.id, name: f.name, latitude: f.latitude, longitude: f.longitude, aspect: null, sourceUrl: f.sourceUrl,
-  details: {}, elevation: f.top.elevation, alsoMapped: [], municipality: null, province: null, provinceCode: null,
+  details: {}, elevation: f.top.elevation, alsoMapped: [], municipality: f.municipality ?? null,
+  province: f.province ?? null, provinceCode: f.provinceCode ?? null, region: f.region ?? null,
   days: f.days,
   ferrata: { start: f.start, top: f.top, lengthM: f.lengthM, scaleMin: f.scaleMin, scaleMax: f.scaleMax,
              scaleDropped: f.scaleDropped ?? [], pieces: f.pieces ?? [] },

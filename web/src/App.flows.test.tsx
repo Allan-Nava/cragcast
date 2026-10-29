@@ -557,3 +557,25 @@ group("the region remembered (CG-129)", () => {
   });
 });
 
+group("via ferratas beyond Lombardy (CG-121)", () => {
+  it("another region's via ferratas come with its file, and the region choice applies to them", async () => {
+    const lombard = ferrata({ id: "osm-way-10", name: "Ferrata Lombarda" });
+    const piedmont = ferrata({ id: "osm-way-20", name: "Ferrata Piemontese", region: "Piemonte", municipality: "Balme",
+                               provinceCode: "TO" });
+    for (const f of [lombard, piedmont]) f.days[NEXT] = { ...f.days[DAY] };
+    const main: Conditions = { ...data(), ferrate: [lombard],
+                               regions: [{ name: "Piemonte", count: 0, file: "conditions-piemonte.json" }] };
+    const other = { ...data(), crags: [], ferrate: [piedmont] } as Conditions;
+    vi.stubGlobal("fetch", vi.fn((url: string) => Promise.resolve({ ok: true,
+      json: () => Promise.resolve(url.startsWith("data/conditions-piemonte.json") ? other : main) })));
+    history.replaceState(null, "", `/?k=ferrate&day=${DAY}`);
+    render(<App />);
+    await screen.findByText("Ferrata Lombarda — Si va");
+    expect(names()).toEqual(["Ferrata Lombarda — Si va"]);
+    await act(async () => { fireEvent.change(screen.getByLabelText("Regione"), { target: { value: "Piemonte" } }); });
+    await screen.findByText("Ferrata Piemontese — Si va");
+    expect(names()).toEqual(["Ferrata Piemontese — Si va"]);
+    expect(document.querySelector("#list li .meta")!.textContent).toContain("Balme (TO)");
+  });
+});
+

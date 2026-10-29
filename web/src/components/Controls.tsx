@@ -73,8 +73,7 @@ export function Controls({ days, provinces, state, near, active = 0, onDay, onQu
           ))}
         </div>
         {/* CG-114: a via ferrata has no province or grades from OSM: those filters are for crags. */}
-        {!ferrate && <>
-        {/* CG-43: the same options from the first paint, without counts: a select is as wide as its
+        {/* CG-121: the via ferratas have regions too. CG-43: the same options from the first paint, without counts: a select is as wide as its
             longest option, and one that widened when the data arrived wrapped the row and pushed
             the page down (Lighthouse CLS 0.8). The summary says how many. */}
         <label className="area">
@@ -85,6 +84,7 @@ export function Controls({ days, provinces, state, near, active = 0, onDay, onQu
             <option value={ALL_REGIONS}>Tutte le regioni</option>
           </select>
         </label>
+        {!ferrate && <>
         <label className="area">
           <span className="sr-only">Provincia</span>
           <select id="province" value={state.province} onChange={e => onProvince(e.target.value)}>

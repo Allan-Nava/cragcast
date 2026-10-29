@@ -226,7 +226,8 @@ public final class ConditionsExport {
                 Map<String, Verdict> verdicts = new LinkedHashMap<>();
                 f.days().forEach((day, d) -> verdicts.put(day, d.verdict()));
                 ferrate.add(new FerrataIndexEntry(f.id(), f.name(), f.latitude(), f.longitude(), f.top().elevation(),
-                        f.scaleMin(), f.scaleMax(), verdicts, "ferrate/" + f.id() + ".json"));
+                        f.scaleMin(), f.scaleMax(), verdicts, "ferrate/" + f.id() + ".json",
+                        f.municipality(), f.provinceCode(), f.region()));
                 files.put("ferrate/" + f.id() + ".json", new FerrataDocument(meta, f));
             }
             files.put("ferrate.json", new FerrateIndex(meta, ferrate));
@@ -235,8 +236,10 @@ public final class ConditionsExport {
     }
 
     /** CG-115: one via ferrata in api/v1/ferrate.json — at its start; {@code topElevation} from the DEM. */
+    /** {@code municipality}, {@code provinceCode}, {@code region}: CG-121, added at the end. */
     record FerrataIndexEntry(String id, String name, double latitude, double longitude, Integer topElevation,
-                             Integer scaleMin, Integer scaleMax, Map<String, Verdict> verdicts, String url) {
+                             Integer scaleMin, Integer scaleMax, Map<String, Verdict> verdicts, String url,
+                             String municipality, String provinceCode, String region) {
     }
 
     record FerrateIndex(Meta meta, List<FerrataIndexEntry> ferrate) {
@@ -379,15 +382,26 @@ public final class ConditionsExport {
                 byRegion.computeIfAbsent(c.region(), r -> new ArrayList<>()).add(c);
             }
         }
+        // CG-121: the via ferratas go with their region's crags, the same way.
+        Map<String, List<FerrateExport.FerrataOut>> ferrateByRegion = new LinkedHashMap<>();
+        List<FerrateExport.FerrataOut> mainFerrate = new ArrayList<>();
+        for (FerrateExport.FerrataOut f : out.ferrate()) {
+            if (f.region() == null || f.region().equals(MAIN_REGION)) {
+                mainFerrate.add(f);
+            } else {
+                ferrateByRegion.computeIfAbsent(f.region(), r -> new ArrayList<>()).add(f);
+                byRegion.computeIfAbsent(f.region(), r -> new ArrayList<>());
+            }
+        }
         Map<String, Output> files = new LinkedHashMap<>();
         List<RegionFile> regions = new ArrayList<>();
         byRegion.forEach((region, crags) -> {
             String file = "conditions-" + slug(region) + ".json";
             regions.add(new RegionFile(region, crags.size(), file));
-            files.put(file, out.with(crags, List.of(), List.of()));
+            files.put(file, out.with(crags, ferrateByRegion.getOrDefault(region, List.of()), List.of()));
         });
         Map<String, Output> all = new LinkedHashMap<>();
-        all.put("conditions.json", out.with(main, out.ferrate(), regions));
+        all.put("conditions.json", out.with(main, mainFerrate, regions));
         all.putAll(files);
         return all;
     }
