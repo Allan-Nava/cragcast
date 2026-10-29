@@ -276,17 +276,18 @@ export function App() {
           <p>Si arrampica domani? Le falesie di Lombardia, Piemonte e Trentino-Alto Adige, dal meteo e dall'esposizione della parete.</p>
         </div>
       </header>
-      {/* CG-114: crags or via ferratas, said in words; only when the data has via ferratas. */}
-      {view && ferrate.length > 0 && (
-        <div className="kind" role="group" aria-label="Cosa mostrare">
-          {(["crags", "ferrate"] as const).map(k => (
-            <button key={k} type="button" aria-pressed={kind === k}
-                    onClick={() => kind !== k && go({ ...view, kind: k, province: "", grade: null, crag: null }, true)}>
-              {k === "crags" ? "Falesie" : "Vie ferrate"}
-            </button>
-          ))}
-        </div>
-      )}
+      {/* CG-114: crags or via ferratas, said in words. CG-127: there from the first paint — a switch
+          that appeared with the data pushed the page down — "Vie ferrate" waiting until the data
+          has some. */}
+      <div className="kind" role="group" aria-label="Cosa mostrare">
+        {(["crags", "ferrate"] as const).map(k => (
+          <button key={k} type="button" aria-pressed={kind === k} disabled={k === "ferrate" && ferrate.length === 0}
+                  title={k === "ferrate" && data && ferrate.length === 0 ? "Nessuna via ferrata in questi dati" : undefined}
+                  onClick={() => view && kind !== k && go({ ...view, kind: k, province: "", grade: null, crag: null }, true)}>
+            {k === "crags" ? "Falesie" : "Vie ferrate"}
+          </button>
+        ))}
+      </div>
       <Controls days={data?.days ?? []} provinces={kind === "ferrate" ? [] : provinces}
                 regions={kind === "ferrate" ? [] : regions}
                 onRegion={r => view && go({ ...view, region: r, province: "", area: null }, true)}

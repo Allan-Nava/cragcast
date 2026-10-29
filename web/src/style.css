@@ -263,6 +263,8 @@ dialog#detail h2 .star { margin-right: 0; }
         border-radius: var(--radius-pill); overflow: hidden; }
 .kind button { flex: 1; background: var(--panel); color: var(--muted); border: 0; padding: var(--space-4) 0; font: inherit; cursor: pointer; }
 .kind button[aria-pressed="true"] { background: var(--pressed); color: var(--go); font-weight: 600; }
+/* CG-127: what waits for the data (the days, the via ferratas) is there, quiet, until it can be used. */
+.kind button:disabled, .days button:disabled { color: var(--muted); cursor: default; }
 p.note { margin: 0 var(--space-8) var(--space-5); color: var(--muted); font-size: var(--text-sm); }
 #detail p.note { margin: var(--space-4) 0; }
 /* CG-114: a via ferrata's own mark, a peak beside the verdict's mark — never a colour, and the
