@@ -1,5 +1,5 @@
 import { describe as group, expect, it } from "vitest";
-import { allDetails, dangerLabel, describe, detailParts, fold, osmEditUrl, place, problemParts, ratingParts, weatherRows, zoneName } from "./text";
+import { allDetails, dangerLabel, places, shownOf, describe, detailParts, fold, osmEditUrl, place, problemParts, ratingParts, weatherRows, zoneName } from "./text";
 import type { Avalanche } from "../types";
 import { km } from "./geo";
 import { ticks } from "./ticks";
@@ -195,5 +195,18 @@ group("route levels (CG-118)", () => {
     expect(gradeSpan(["8a", "8b"])).toBe("dall'8a all'8b");
     expect(gradeSpan(["6a", "6a"])).toBe("solo 6a");
     expect(gradeSpan([null, "boh"])).toBeNull();
+  });
+});
+
+group("counts in Italian (CG-125)", () => {
+  it("takes the singular for one, the plural otherwise", () => {
+    expect([places(0, "crags"), places(1, "crags"), places(6, "crags")]).toEqual(["0 falesie", "1 falesia", "6 falesie"]);
+    expect([places(1, "ferrate"), places(42, "ferrate")]).toEqual(["1 via ferrata", "42 vie ferrate"]);
+  });
+  it("says how many of how many, the plural following the total", () => {
+    expect(shownOf(6, 6, "crags")).toBe("6 falesie");
+    expect(shownOf(1, 6, "crags")).toBe("1 di 6 falesie");
+    expect(shownOf(1, 1, "ferrate")).toBe("1 via ferrata");
+    expect(shownOf(0, 1, "crags")).toBe("0 di 1 falesia");
   });
 });

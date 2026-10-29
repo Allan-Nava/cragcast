@@ -93,6 +93,16 @@ export const osmUrl = (id: string): string => {
 
 export const dayLabel = (i: number, day: string): string => ["Oggi", "Domani", "Dopodomani"][i] ?? day;
 
+/** CG-125: "1 falesia", "6 falesie", "1 via ferrata", "0 vie ferrate". */
+export function places(n: number, kind: "crags" | "ferrate"): string {
+  const [one, many] = kind === "ferrate" ? ["via ferrata", "vie ferrate"] : ["falesia", "falesie"];
+  return `${n} ${n === 1 ? one : many}`;
+}
+
+/** CG-125: the list's count — "6 falesie", or "1 di 6 falesie" when filters leave some out. */
+export const shownOf = (shown: number, total: number, kind: "crags" | "ferrate"): string =>
+  shown === total ? places(total, kind) : `${shown} di ${places(total, kind)}`;
+
 // CG-11: the avalanche bulletin in words. The European scale's own Italian names.
 const DANGER_IT = ["", "debole", "moderato", "marcato", "forte", "molto forte"];
 const PROBLEM_IT: Record<string, string> = {
