@@ -128,6 +128,23 @@ class Elevations(Server):
         self.assertEqual(len(Fake.seen), 3)
         self.assertEqual([c.args[0] for c in sleep.call_args_list], [30, o.ELEVATION_PAUSE_S])
 
+    def test_a_connection_that_times_out_is_asked_again(self):
+        answers = [TimeoutError("handshake timed out"), o.urllib.error.URLError("refused")]
+        real = o.urllib.request.urlopen
+        def flaky(req, timeout):
+            if answers:
+                raise answers.pop(0)
+            return real(req, timeout=timeout)
+        Fake.script = [(200, {"elevation": [7.0]})]
+        with mock.patch.object(o.urllib.request, "urlopen", side_effect=flaky), mock.patch.object(o.time, "sleep") as sleep:
+            self.assertEqual(self.quiet(o.elevations, [{"latitude": 45, "longitude": 9}]), [7])
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [30, 60])
+
+    def test_a_connection_failing_four_times_gives_up(self):
+        with mock.patch.object(o.urllib.request, "urlopen", side_effect=TimeoutError("down")), \
+                mock.patch.object(o.time, "sleep"), self.assertRaises(TimeoutError):
+            self.quiet(o.elevations, [{"latitude": 45, "longitude": 9}])
+
     def test_gives_up_after_four_429s_and_any_other_error_at_once(self):
         Fake.script = [(429, "slow down")]
         with mock.patch.object(o.time, "sleep"), self.assertRaises(o.urllib.error.HTTPError):

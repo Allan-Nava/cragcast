@@ -215,7 +215,8 @@ ELEVATION_PAUSE_S = 3          # CG-43: ten requests in a row drew a 429 from Op
 
 def elevations(crags):
     """Ground elevation in metres for every crag, 100 coordinates per request (the API's limit),
-    with a pause between requests and a 429 asked again after a longer one.
+    with a pause between requests; a 429, or a connection that fails or times out, is asked again
+    after a longer one.
     A 90 m model: the altitude of the area, not of a given route."""
     out = []
     for i in range(0, len(crags), 100):
@@ -238,6 +239,13 @@ def elevations(crags):
                 if e.code != 429 or attempt == 3:
                     raise
                 print(f"  elevation: 429, waiting {30 * (attempt + 1)} s")
+                time.sleep(30 * (attempt + 1))
+            except (urllib.error.URLError, TimeoutError) as e:
+                # A TLS handshake that timed out ended the refresh of 2026-10-29: the network, not
+                # the answer — asked again like a 429.
+                if attempt == 3:
+                    raise
+                print(f"  elevation: {e}, waiting {30 * (attempt + 1)} s")
                 time.sleep(30 * (attempt + 1))
         if len(values) != len(batch):
             raise SystemExit(f"elevation API returned {len(values)} values for {len(batch)} crags")
