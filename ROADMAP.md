@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**97 items · 84 shipped · 13 open · 17 milestones.**
+**97 items · 85 shipped · 12 open · 17 milestones.**
 
 ## At a glance
 
@@ -25,7 +25,7 @@
 | **v1.1.0 — On a Raspberry Pi** | now | `########..` 80% | 1 | 4 |
 | **v1.2.0 — Everything in PostgreSQL** | next | `#########.` 89% | 1 | 8 |
 | **v1.3.0 — Vie ferrate** | later | `##########` 100% | 0 | 6 |
-| **v1.4.0 — A page for three regions** | next | `######....` 63% | 3 | 5 |
+| **v1.4.0 — A page for three regions** | next | `########..` 75% | 2 | 6 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
 ## v0.1.0 — A verdict for one crag
