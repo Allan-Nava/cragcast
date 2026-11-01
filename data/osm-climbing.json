@@ -15030,6 +15030,44 @@
    "linkedBy": "distance"
   },
   {
+   "id": "osm-node-14331907419",
+   "osmType": "node",
+   "osmId": 14331907419,
+   "category": "route",
+   "name": "Luna nascente",
+   "climbing": "route_bottom",
+   "latitude": 46.259769,
+   "longitude": 9.656831,
+   "aspect": null,
+   "details": {
+    "styles": [
+     "trad"
+    ]
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
+  },
+  {
+   "id": "osm-node-14331907421",
+   "osmType": "node",
+   "osmId": 14331907421,
+   "category": "route",
+   "name": "Luna nascente",
+   "climbing": "route_top",
+   "latitude": 46.260563,
+   "longitude": 9.655899,
+   "aspect": null,
+   "details": {
+    "styles": [
+     "trad"
+    ]
+   },
+   "crag": null,
+   "sector": null,
+   "linkedBy": null
+  },
+  {
    "id": "osm-node-1438773974",
    "osmType": "node",
    "osmId": 1438773974,
@@ -27815,6 +27853,26 @@
    }
   },
   {
+   "id": "osm-way-1225239398",
+   "osmType": "way",
+   "osmId": 1225239398,
+   "category": "route",
+   "name": "Via Solitudine",
+   "climbing": "route",
+   "latitude": 45.959463,
+   "longitude": 9.447453,
+   "aspect": null,
+   "details": {
+    "styles": [
+     "trad",
+     "multipitch"
+    ]
+   },
+   "crag": "osm-node-1741194868",
+   "sector": null,
+   "linkedBy": "distance"
+  },
+  {
    "id": "osm-way-1227554567",
    "osmType": "way",
    "osmId": 1227554567,
@@ -30315,6 +30373,21 @@
    "longitude": 9.393805,
    "aspect": null,
    "details": {}
+  },
+  {
+   "id": "osm-way-1573994784",
+   "osmType": "way",
+   "osmId": 1573994784,
+   "category": "route",
+   "name": null,
+   "climbing": "route",
+   "latitude": 45.959416,
+   "longitude": 9.447152,
+   "aspect": null,
+   "details": {},
+   "crag": "osm-node-1741194868",
+   "sector": null,
+   "linkedBy": "distance"
   },
   {
    "id": "osm-way-158753503",
