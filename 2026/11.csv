@@ -7019,3 +7019,783 @@ date,crag_id,crag_name,province,verdict,rain_last48h_mm,rain_day_mm,max_temp_c,m
 2026-11-10,osm-node-3097814772,Zoia Alta,SO,MAYBE,0.2,0.6,3.8,8.1,wall aspect not mapped: judged as a shaded wall; cold,2026-11-10T02:52:20.007399613Z
 2026-11-10,osm-node-14064515297,Zoia Bassa,SO,MAYBE,0.0,0.7,4.6,8.6,wall aspect not mapped: judged as a shaded wall; cold,2026-11-10T02:52:20.007399613Z
 2026-11-10,osm-node-12862541339,Zucchero Forever;Zucchero Show,TO,GO,1.3,0.0,7.2,3.9,wall aspect not mapped: judged as a shaded wall,2026-11-10T02:52:20.007399613Z
+2026-11-12,osm-node-14258459887,1/2 Cent,TN,NO_GO,0.1,7.9,11.4,3.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11307731634,A: Formica,TN,NO_GO,0.1,6.3,10.0,2.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14280793495,Agamostro,TO,NO_GO,0.9,12.7,6.0,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13184333726,Agrieru,TO,NO_GO,0.0,12.0,7.5,7.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14017083381,Al Bar,TN,NO_GO,0.2,11.9,8.6,4.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14197737559,Al Coel,TN,NO_GO,0.3,8.1,10.5,3.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-238134303,Anfiteatro naturale del Bogn,BG,NO_GO,1.7,10.9,13.7,3.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8013300356,Antenne,VB,NO_GO,5.1,4.5,8.1,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-244700427,Anticaprie,TO,NO_GO,0.0,12.9,9.8,5.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13184333728,Apocalipse Now,TO,NO_GO,0.0,11.7,9.9,5.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21318781,Arco,TN,NO_GO,0.3,6.5,14.8,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8013383355,Arco Romano,VB,NO_GO,5.2,6.5,7.0,1.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-374758444,Area 51,TN,NO_GO,0.8,5.8,12.3,5.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21718840,Area 51,TO,NO_GO,0.9,12.7,6.0,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-19137702,"Area boulder  ""La Maddalena""",TO,NO_GO,0.6,12.9,9.1,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12401060406,Arrampicata Roci Ruta,TO,NO_GO,0.2,13.1,4.9,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1534970106,Arrampoigranda Wall,CN,NO_GO,13.1,14.2,7.4,4.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6467555251,Aspettando Martino,TN,NO_GO,0.3,6.5,14.0,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21646967,Atlantide,TO,NO_GO,0.9,12.7,5.5,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13022946699,Atlantide,TO,NO_GO,0.9,12.7,5.5,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1020356952,Avanino,TO,NO_GO,0.0,14.5,9.6,10.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-944269702,B: Durro - Falesia Croz de la niere,TN,NO_GO,0.1,6.3,9.8,2.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6822611838,Bagni Vecchi Bassa,SO,NO_GO,3.1,3.8,7.0,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-818012359,Balena alta,VB,NO_GO,0.0,14.5,6.8,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-818012362,Balena bassa,VB,NO_GO,0.0,14.5,6.8,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13279271470,Balma,TO,NO_GO,0.0,14.3,8.6,6.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12992647218,Balmafredda,VB,NO_GO,5.1,4.5,8.1,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6326168559,Barmasse,TO,NO_GO,0.2,15.9,5.1,3.7,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14258457897,Bassifondi,TN,NO_GO,0.1,5.2,11.8,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1174013434,Baule,TN,NO_GO,0.1,8.6,11.8,8.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1387436899,Bec Moller prima balza,CN,NO_GO,16.3,14.3,8.8,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14321775764,Biomuro,LC,NO_GO,1.1,10.6,10.7,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-378901326,Blocco 6,TO,NO_GO,0.1,14.0,6.9,9.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-377855650,Blocco n.10,TO,NO_GO,0.1,13.6,7.0,10.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-377855649,Blocco n.11,TO,NO_GO,0.1,13.6,7.0,10.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-377852700,Blocco n.13,TO,NO_GO,0.1,14.0,6.5,9.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-418094566,Blocco n.29,TO,NO_GO,0.2,14.3,6.9,10.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-377855648,Blocco n.3,TO,NO_GO,0.1,13.6,7.1,10.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-377855652,Blocco n.47,TO,NO_GO,0.1,13.6,7.0,10.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4175487127,Block 1,TN,NO_GO,0.3,6.5,14.7,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4175487128,Block 11 - Passi falsi,TN,NO_GO,0.3,6.5,14.0,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4171994112,Block A,TN,NO_GO,0.3,6.5,14.6,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4171994113,Block D;Block 2,TN,NO_GO,0.3,6.5,14.6,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11316408104,Bocca di Valle,VB,NO_GO,0.0,7.4,11.0,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6735355902,Borgoratto,VB,NO_GO,0.0,7.4,10.4,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-287493868,Boulder del Vittino,BI,NO_GO,0.0,14.4,8.5,5.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-5742115,Boulders Usseglio,TO,NO_GO,0.1,13.6,7.4,10.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-948457898,Brutal Block,BG,NO_GO,3.1,11.6,11.2,3.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1428080037,Buco del piombo,CO,NO_GO,0.7,13.4,10.4,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14056444749,Bugs Bunny,TN,NO_GO,0.3,6.9,1.2,8.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1162410976,Bus de Vela,TN,NO_GO,0.1,8.1,11.0,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4899772754,Bärenfels,BZ,MAYBE,1.5,2.0,4.0,6.4,wall aspect not mapped: judged as a shaded wall; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14276953461,C:Cos Dei Croz,TN,NO_GO,0.1,6.3,9.7,2.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8013300360,Cadarese,VB,NO_GO,4.6,6.0,9.3,6.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11872141961,Calar,SO,NO_GO,3.2,3.2,2.4,7.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14303384646,Calchera,TN,NO_GO,0.5,5.9,10.4,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4498519643,Calisio storica,TN,NO_GO,0.1,7.6,9.4,4.4,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11476887997,Calliano - La mangianerchie,TN,NO_GO,0.0,8.2,13.2,9.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-495911204,Camerate,BS,NO_GO,2.6,11.9,13.5,5.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1174013432,Camerette,TN,NO_GO,0.0,5.8,11.7,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-244666242,Campambiardo,TO,NO_GO,0.0,13.6,9.1,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-20115544,Campanile Basso,TN,NO_GO,0.4,8.8,1.8,6.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14056828859,Campanile Basso,TN,NO_GO,0.6,7.7,0.4,8.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-10558995836,Campanile Teresa : La Gioventù dei Vecchi Eroici,TN,NO_GO,1.0,7.6,0.9,8.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1387869754,Campiano,LC,NO_GO,2.9,13.3,7.6,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-568674430,Canyon di Ormea,CN,NO_GO,16.1,12.9,11.9,15.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2709076678,Capo di Ponte,BS,NO_GO,1.3,5.8,12.5,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13046709901,Caporal,TO,NO_GO,0.2,12.7,4.6,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6055108997,Cartoon Network,TN,NO_GO,0.0,8.5,9.2,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-19957146,Casa Capietto,VC,NO_GO,0.1,10.8,7.1,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1540052292,Cascata,VB,NO_GO,4.9,5.6,7.0,2.8,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-818012358,Cascata,VB,NO_GO,0.0,14.5,6.8,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9253925708,Cascata di Mezzodì,TN,NO_GO,6.6,14.1,8.0,13.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13078750189,Cascata La Pissa,TO,NO_GO,0.0,12.6,8.8,6.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9253931227,Cascata Pilastro,TN,NO_GO,6.6,14.1,8.0,13.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5264270906,Castel Madruzzo,TN,NO_GO,0.1,6.0,10.8,10.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9048078111,Cavalieri perdenti,TO,NO_GO,0.1,14.8,6.1,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12887516064,Cavedine,TN,NO_GO,0.0,5.8,11.8,4.3,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14312704443,Cengia,TN,NO_GO,0.1,5.6,10.6,2.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2200290913,Central - San Siro,TN,NO_GO,0.0,5.8,11.8,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-20626739,Centro,TO,NO_GO,0.0,11.5,9.5,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13319438492,Cervinibbio,VB,NO_GO,0.0,7.4,10.6,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-688311228,Cevrè,TO,NO_GO,0.0,14.9,8.2,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1524577984,Ciano Pillar,CN,NO_GO,12.2,17.7,4.7,17.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21175724,Cima Tosa,TN,NO_GO,0.6,7.7,-2.8,8.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21184913,Cima XII Apostoli,TN,NO_GO,0.6,7.7,0.9,8.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14071403650,Cima XII Apostoli,TN,NO_GO,1.0,7.6,1.1,8.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196444259,Cimitero delle Felci - Roc Carà,TO,NO_GO,0.0,11.0,9.4,7.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-512295660,Climax,TN,NO_GO,0.1,6.5,11.7,13.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8836963503,Climbing Ronzo,TN,NO_GO,0.0,11.0,9.5,10.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14279306097,Colodri,TN,NO_GO,1.3,6.1,13.8,7.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5374871948,Coltura,TN,NO_GO,0.1,5.6,10.9,2.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-188805657,Corna Bianca,BG,NO_GO,2.8,9.9,9.0,4.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-226999713,Corna delle Capre,BS,NO_GO,3.5,12.2,9.7,5.5,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-949382719,Corna di Fenere,BS,NO_GO,2.9,11.1,12.5,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-857264782,Corna dòl Tàs,BG,NO_GO,1.0,13.7,7.5,5.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-163401086,Corna Rossa,BS,NO_GO,0.9,10.2,13.5,7.2,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2917721733,Corna Rossa di Lantana,BG,NO_GO,3.3,11.8,9.4,5.9,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-449601797,Corna Ventitre,BS,NO_GO,2.3,10.7,11.6,2.9,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12068677095,Crap de la Tureglia,SO,NO_GO,2.9,4.8,6.8,2.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13184333727,Cresta delle Torri,TO,NO_GO,0.0,12.0,7.0,7.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11252714518,Cubo,TO,NO_GO,0.1,14.8,6.3,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12967109192,Curnalet,CN,NO_GO,11.6,17.7,7.7,5.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14134806973,Dado,TO,NO_GO,0.2,12.7,5.1,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21452524,Delago Tower,BZ,NO_GO,0.9,8.0,1.0,10.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-7775951092,denti della vecchia,SO,NO_GO,3.5,12.5,3.9,13.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-20626504,Destra,TO,NO_GO,0.0,11.5,9.5,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14258615463,Destro,TN,NO_GO,0.1,7.9,10.8,3.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2888957867,Discoteca,LC,NO_GO,1.7,12.7,13.0,10.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4498519667,Drago Nascosto,TN,NO_GO,0.1,7.6,9.4,4.4,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9031884635,Droide,TO,NO_GO,0.2,12.7,5.1,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13374216198,Dürrensee,BZ,NO_GO,0.0,6.4,7.2,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14279275135,Eremo di San Paolo,TN,NO_GO,0.3,6.5,14.3,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1195338947,Esigo,VB,NO_GO,5.2,6.5,6.1,1.8,rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-948457903,Esotica,BG,NO_GO,3.1,11.6,10.7,3.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3810570576,ex centrale,TN,NO_GO,0.3,8.1,10.1,3.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-825755490,Excalibur,TN,NO_GO,0.4,7.5,11.7,7.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12036611131,Falesia,SO,NO_GO,3.4,4.4,5.8,5.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8796096115,Falesia,TN,NO_GO,0.2,8.2,10.5,3.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12863978398,Falesia,CN,NO_GO,6.0,18.1,7.7,6.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3757612224,"Falesia ""Omonimi""",BG,NO_GO,5.1,13.1,9.0,4.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3757609511,"Falesia ""Pagliaccetti""",BG,NO_GO,5.1,13.1,8.7,4.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4597900600,"Falesia ""Servis""",TN,NO_GO,0.1,7.9,9.6,17.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3757612208,"Falesia ""Totem""",BG,NO_GO,5.1,13.1,8.7,4.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2357942547,"Falesia - Klettergarten ""Regno dei Ragni",BZ,NO_GO,0.0,4.8,11.2,1.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-374841914,Falesia Adriana,TO,NO_GO,0.0,13.4,4.4,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-829683437,Falesia Ai-Lac dal Rus,BI,NO_GO,0.0,15.1,1.7,5.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-537995582,Falesia Alessandro Visentini,CO,NO_GO,1.7,12.0,9.1,9.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1041290683,Falesia Alta Tensione,TO,NO_GO,0.0,15.1,7.9,9.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-331595789,Falesia Aperitivo,BS,NO_GO,2.4,9.3,11.3,5.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1456514469,Falesia Arcadia,BS,NO_GO,1.2,8.5,10.7,6.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-374061203,Falesia Arcieuva,TO,NO_GO,0.1,13.6,6.7,10.1,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-670702555,Falesia Avancorpo,TO,NO_GO,0.0,15.6,6.9,5.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-962751159,falesia Avisio,TN,NO_GO,0.2,6.4,10.9,1.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1414662058,Falesia Bassi,CN,NO_GO,10.4,13.4,8.5,9.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-865160885,Falesia Belvedere Sector A,TN,NO_GO,0.3,8.6,14.0,5.8,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-865161982,Falesia Belvedere Sector B,TN,NO_GO,0.3,8.6,13.8,5.8,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5126773805,Falesia Bracca,BG,NO_GO,2.0,11.2,10.9,5.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1389326679,Falesia Bus del Tuel,BS,NO_GO,2.2,11.9,11.8,3.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-7167017913,Falesia C'era una volta,TN,NO_GO,0.0,8.5,9.3,4.0,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11147710677,Falesia Carbonera,BG,NO_GO,3.7,13.1,8.4,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196357817,Falesia Cascata,LC,NO_GO,1.7,12.7,13.0,10.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4460287991,Falesia Castel Pietra,TN,NO_GO,0.2,7.9,9.7,3.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-366017015,Falesia Castello di Gaino,BS,NO_GO,2.6,11.9,12.4,5.1,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13184333730,Falesia Chiampernotto,TO,NO_GO,0.0,11.0,9.1,7.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-235311109,Falesia Cividate 1,BS,NO_GO,1.0,7.3,13.1,3.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13009121754,Falesia Col Rodella,TN,NO_GO,4.0,5.9,1.8,11.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2433713312,Falesia Colere (Roby Piantoni),BG,NO_GO,4.7,12.3,8.6,7.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-562876756,Falesia Colle dei Morti,CN,NO_GO,18.6,24.4,4.5,15.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11500068407,Falesia Colloro,VB,NO_GO,0.0,5.7,9.0,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1056254032,Falesia Corna Coegia,BG,NO_GO,1.7,12.0,11.0,4.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-1796890725,Falesia Corna De Par,BG,NO_GO,2.8,8.7,11.9,5.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-758381785,Falesia Corna di Marte,BG,NO_GO,1.8,10.5,9.7,5.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-829103791,Falesia Corna Rossa di Valmadrera,LC,NO_GO,1.2,14.7,11.9,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12104258610,Falesia Cornagera - Chiappe della Carolina,BG,NO_GO,2.3,11.0,7.9,6.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-235314407,Falesia Corne Rosse,BS,NO_GO,2.5,8.8,13.2,3.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13184333761,Falesia Corno del Caprone,SO,NO_GO,3.7,5.5,5.9,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5840055901,Falesia Crozi di Sella,TN,NO_GO,0.3,5.7,9.5,4.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1531349091,Falesia degli Angeli settore Grand Falaise,CN,NO_GO,23.8,25.0,4.9,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1531348458,Falesia degli Angeli settore Specialist,CN,NO_GO,23.8,25.0,4.9,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1531349273,Falesia degli Angeli settore The Face,CN,NO_GO,23.8,25.0,4.8,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1531348457,Falesia degli Angeli settore Water Front,CN,NO_GO,27.5,24.1,4.6,8.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12631268408,Falesia Dei Barchi,CN,NO_GO,15.0,13.9,12.5,13.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-332572974,Falesia dei Laghetti,LC,NO_GO,1.1,12.8,11.3,10.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21297366,Falesia dei Lupi,TO,NO_GO,0.5,12.2,9.1,6.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1030779546,Falesia dei Tre Mon,CN,NO_GO,9.5,13.2,8.4,7.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8913985417,Falesia del Balabiott,LC,NO_GO,1.3,12.7,11.4,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14030990596,Falesia del brigante,LC,NO_GO,2.4,12.5,10.5,3.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-222743760,Falesia del Budellone,BS,NO_GO,0.9,10.2,13.1,7.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1558857039,Falesia del Buzzo,VC,NO_GO,0.1,10.8,8.3,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-340445470,Falesia del Calvario,TN,NO_GO,1.3,6.1,14.4,7.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-11523060,Falesia del Cannone,VB,NO_GO,0.0,7.4,10.8,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1473636977,Falesia del Cappellaio Matto,CN,NO_GO,3.3,19.4,6.6,7.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12347762594,Falesia del Cornaletto settore facile,CN,NO_GO,8.1,15.8,7.4,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1085403223,Falesia del Corniolo,BS,NO_GO,4.7,13.3,8.2,4.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12952215061,Falesia del falco,BI,NO_GO,0.0,13.5,11.2,6.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1307589396,Falesia del Ferro,SO,NO_GO,4.0,13.9,5.1,5.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1474083446,Falesia del Forestieri,CN,NO_GO,0.5,16.8,8.4,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-231704472,Falesia del Gaver,BS,NO_GO,4.4,10.0,7.8,7.1,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1558857038,Falesia del Ghoddu,VC,NO_GO,0.1,10.8,8.5,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-301328592,Falesia del Lago,CN,NO_GO,17.6,24.2,3.3,15.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-507488307,Falesia del Lago Moro,BS,NO_GO,2.5,8.8,12.0,3.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1293565162,Falesia del Leves,LC,NO_GO,1.8,11.2,9.3,9.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1387598843,Falesia del Monte San Primo,CO,NO_GO,1.7,12.0,9.0,9.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9777827971,Falesia del Mùrlansì,BG,NO_GO,1.6,9.4,11.4,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2895215952,Falesia del Nibbio,LC,NO_GO,2.9,13.3,8.0,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1107716788,Falesia del Passo della Presolana,BG,NO_GO,4.7,11.5,7.4,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6656895797,Falesia del Passo dello Spino,BS,NO_GO,2.0,16.9,8.6,6.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12952356200,Falesia del Piancone,BI,NO_GO,0.0,13.7,10.8,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-11740994,Falesia del Picuz,VA,NO_GO,0.0,14.0,10.4,6.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-14910904,Falesia del Piero,BG,NO_GO,4.5,10.8,7.1,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-670702308,Falesia del Primo Torrione,TO,NO_GO,0.0,15.4,6.5,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1023331384,Falesia del Renico,BS,NO_GO,1.4,13.0,9.5,5.5,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3680077710,Falesia del rifugio,CN,NO_GO,17.9,28.4,3.3,15.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1531333254,Falesia del Rifugio Malinvern settore Bocia,CN,NO_GO,25.7,21.5,5.0,9.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-238822046,Falesia del Rifugio Migliorero,CN,NO_GO,15.9,23.2,3.0,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1531333255,Falesia del Rifuio Malinvern settore dei Bevitori,CN,NO_GO,25.7,21.5,4.8,9.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1539474116,Falesia del Sagittario,CN,NO_GO,12.2,17.7,4.5,17.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5239327287,Falesia del Sasso Pelo,CO,NO_GO,1.8,11.7,9.7,2.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-201832117,Falesia del Tramonto,CO,NO_GO,0.7,13.4,10.2,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-676577916,Falesia del Tramonto,TO,NO_GO,0.0,12.2,10.8,2.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12063546686,Falesia Del Vallone,BG,NO_GO,3.8,11.9,10.3,4.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5087441239,Falesia dell'Era Glaciale,LC,NO_GO,3.8,12.5,5.1,5.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1473636976,Falesia della Ferrata,CN,NO_GO,3.2,20.7,6.9,8.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12120380136,Falesia della Ramat,TO,NO_GO,0.4,12.9,7.9,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1446896995,Falesia della Reina,CN,NO_GO,10.9,22.0,6.6,8.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1476546144,Falesia della Reina,CN,NO_GO,7.5,17.0,1.7,4.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-975403744,Falesia della Rocca di Manerba,BS,NO_GO,1.0,11.3,13.4,6.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1308976112,Falesia della Sorgente,BG,NO_GO,5.4,12.2,8.3,7.0,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14000129429,Falesia della Trappa - settore Maga Magó,CN,NO_GO,0.5,16.8,8.5,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11649196321,Falesia delle Gare,TO,NO_GO,0.4,13.7,6.4,5.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1474083447,Falesia Delle Ninfe,CN,NO_GO,0.5,16.8,8.4,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-19468980,Falesia delle Onde,CO,NO_GO,0.7,13.4,10.0,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1532392640,Falesia dello Zodiaco,CN,NO_GO,14.2,14.4,8.6,6.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11734615275,Falesia di Almenno,BG,NO_GO,0.8,12.4,12.1,6.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1262988766,Falesia di Almè,BG,NO_GO,0.8,12.4,12.3,6.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-709678181,Falesia di Andonno,CN,NO_GO,16.5,13.9,8.3,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1455002440,Falesia di Ara,NO,NO_GO,0.0,16.8,10.2,5.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-241959799,Falesia di Bagnasco,CN,NO_GO,13.8,12.8,10.1,10.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12954847935,Falesia di Baracco,CN,NO_GO,11.9,13.9,7.4,7.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-464613071,Falesia di Barghe Il Ronchino,BS,NO_GO,2.3,10.7,10.6,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-836392757,Falesia di Bione,BS,NO_GO,2.2,13.5,10.3,4.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-484414050,Falesia di Borgo San Dalmazzo,CN,NO_GO,17.1,13.0,10.0,4.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-7308646772,Falesia di Bosco,TO,NO_GO,0.0,13.8,10.8,6.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3311820205,Falesia di Brembilla,BG,NO_GO,1.5,11.9,9.3,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-975586846,Falesia di Brevine,TN,NO_GO,0.1,6.3,10.0,2.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-160423372,Falesia di Caionvico,BS,NO_GO,0.7,8.2,12.5,8.1,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-7599712466,Falesia di Calusco,BG,NO_GO,0.5,12.6,11.8,8.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-175334975,Falesia di Castro,BG,NO_GO,1.7,10.9,13.0,3.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-464281319,Falesia di Cavalese,TN,NO_GO,0.4,4.6,8.4,1.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4215597751,Falesia di Celva,TN,NO_GO,0.3,9.3,9.5,2.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-158753503,Falesia di Cerezzata,BS,NO_GO,1.0,9.1,13.1,3.7,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-797136964,Falesia di Cesnola,TO,NO_GO,0.0,10.4,10.7,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-421673913,Falesia di Cima Caldoline,BS,NO_GO,3.0,13.1,6.1,14.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-423004800,Falesia di Cimbergo,BS,NO_GO,1.7,8.4,10.8,7.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-637580468,Falesia Di Cisterna,TN,NO_GO,0.3,8.3,10.5,5.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14122790227,Falesia di Civate,LC,NO_GO,1.1,12.8,12.3,10.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-365050395,Falesia di Costorio,BS,NO_GO,1.1,8.5,13.0,4.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1196267722,Falesia di Croveo,VB,NO_GO,5.2,6.5,6.6,1.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-982400720,falesia di Esino - Petua,LC,NO_GO,1.6,12.6,7.3,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1561013854,Falesia di Fomarco,VB,NO_GO,0.0,4.6,9.4,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-729512879,Falesia di Gajum - Cliff Climbing Wall,CO,NO_GO,0.8,14.3,10.7,8.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13888746134,Falesia di Giambi Settore paretino,BG,NO_GO,3.7,10.0,9.8,3.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-14906312,Falesia di Grone (Casazza),BG,NO_GO,1.1,9.8,12.6,6.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13042895069,Falesia di Luca,TO,NO_GO,0.0,11.4,11.0,4.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1330428267,Falesia di Mazzano,BS,NO_GO,1.0,9.2,12.8,8.4,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12947335859,Falesia di Moiola settore Placca degli Scorpioni,CN,NO_GO,11.2,12.5,8.2,6.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-709669781,Falesia di Monte Moro,CN,NO_GO,13.8,16.1,3.5,14.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1023067086,Falesia di Nasolino,BG,NO_GO,4.2,11.7,8.5,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-178561713,Falesia di Nave,BS,NO_GO,0.7,8.0,13.2,7.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1508337812,Falesia di Nivorina,CN,NO_GO,18.3,20.4,7.8,14.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1508337813,Falesia di Nivorina Bassa,CN,NO_GO,18.3,20.4,8.2,14.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-945533774,Falesia di Oriomosso,BI,NO_GO,0.0,11.7,9.5,4.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-974794830,Falesia di Paline,BS,NO_GO,3.8,11.9,9.5,4.4,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-447856430,Falesia di Palù,TN,NO_GO,0.2,8.3,12.7,3.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-7223402331,Falesia di Pian Luis,CN,NO_GO,0.5,16.1,8.7,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1304488659,Falesia di Predarossa,SO,NO_GO,4.3,13.8,2.9,5.6,rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-15077421,Falesia di Predore,BG,NO_GO,1.4,9.0,12.9,9.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1472021795,Falesia di Roaschia settore centrale,CN,NO_GO,15.7,16.9,7.4,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1472021794,Falesia di Roaschia settore iniziale,CN,NO_GO,15.7,16.9,7.4,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1472021792,Falesia di Roaschia settore sinistro,CN,NO_GO,15.7,16.9,7.4,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1476546145,Falesia di Rocca Negra,CN,NO_GO,9.9,18.1,1.7,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1451954218,Falesia di Roccasparvera,CN,NO_GO,13.2,11.5,9.8,2.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1483455514,Falesia di Roccavione,CN,NO_GO,17.8,14.5,9.5,4.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-934309530,Falesia di Rorà,TO,NO_GO,0.2,15.6,9.1,9.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12999379822,Falesia di San Giacomo di Boves,CN,NO_GO,18.0,15.7,7.5,5.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3292246899,Falesia di San Pellegrino Terme,BG,NO_GO,2.7,10.1,12.7,5.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-649668391,Falesia di Sant'Anna di Vinadio,CN,NO_GO,17.6,24.2,3.4,15.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1473651417,Falesia di Santa Lucia,CN,NO_GO,12.2,16.5,6.8,6.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-1438773974,Falesia di Serrada,TN,NO_GO,0.4,7.7,9.1,7.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-941481222,Falesia di Sovere,BG,NO_GO,3.2,10.0,11.3,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-971413461,Falesia di Strozza,BG,NO_GO,1.2,11.4,12.0,6.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-825161035,Falesia di Tavagnasco,TO,NO_GO,0.0,10.4,10.3,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1308481759,Falesia di Tenno,TN,NO_GO,10.6,8.2,11.7,5.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-944296572,Falesia di Traole,TN,NO_GO,0.3,8.6,12.9,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-222704971,Falesia Di Villanuova Sul Clisi - Settore Alto,BS,NO_GO,0.8,12.1,12.9,6.2,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2433844045,Falesia Di Villanuova Sul Clisi - Settore Basso,BS,NO_GO,0.8,12.1,13.4,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4880622851,Falesia di Zambana,TN,NO_GO,0.0,6.6,12.6,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-704192508,Falesia Dimenticata,TN,NO_GO,0.1,5.8,11.6,2.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1530360662,Falesia Dos Capèl,TN,NO_GO,1.9,8.1,4.5,9.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6372974565,Falesia dry-tooling,TN,NO_GO,0.0,7.0,11.2,2.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196357821,Falesia Duracell,LC,NO_GO,1.7,12.6,12.9,14.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-10002052545,Falesia Falegnameria,TN,NO_GO,0.7,11.7,10.1,9.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-910991811,Falesia Falletti,TO,NO_GO,0.0,11.4,10.9,4.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-498085555,Falesia Family San Martino,TN,NO_GO,0.3,6.5,14.5,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1476546142,Falesia Fauniera,CN,NO_GO,9.8,17.4,2.3,6.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4880538082,Falesia Finestron,TN,NO_GO,0.4,5.7,11.2,3.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-10127566462,Falesia Foglia,VA,NO_GO,0.1,13.9,8.9,8.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-184641293,Falesia Fontanei,BG,NO_GO,2.1,9.8,10.0,3.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13033896908,Falesia Fontanella,TN,NO_GO,0.0,6.1,7.3,4.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12151154725,Falesia Forni,SO,NO_GO,5.6,3.7,3.4,7.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1497168006,Falesia Francesco Cancarini,BS,NO_GO,2.9,13.9,9.4,4.7,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-498495771,Falesia FuturAmpola,TN,NO_GO,1.0,9.9,10.6,11.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-438145101,Falesia Ginetto,BS,NO_GO,2.6,8.6,10.6,2.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-374841913,Falesia Ginevrè,TO,NO_GO,0.0,13.4,4.2,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196506608,Falesia Ginevrè,TO,NO_GO,0.0,13.4,4.5,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1389551991,Falesia Gran Rotsa - Settore degli Amici,TO,NO_GO,1.8,11.1,7.6,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1389551990,Falesia Gran Rotsa - Settore dei Calli,TO,NO_GO,1.8,11.1,7.6,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5714743734,Falesia Grotta Sardagna,TN,NO_GO,0.1,9.4,10.5,3.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-727393768,Falesia Guido Omodei,BS,NO_GO,2.0,9.8,10.4,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5844121629,Falesia Il rombo di Stroppia,CN,NO_GO,12.3,23.2,3.1,3.7,rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13184333763,Falesia Isolaccia - Jardin d'escalade,SO,NO_GO,2.4,3.8,6.5,2.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13184333762,Falesia Isolaccia - Tavolino,SO,NO_GO,2.4,3.8,6.9,2.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6392934367,Falesia La Baita,TO,NO_GO,0.1,12.8,6.5,6.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4449216209,Falesia La Curva,TN,NO_GO,0.2,8.3,12.6,3.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-460520578,Falesia La Fabrik,BZ,NO_GO,1.3,7.0,5.5,8.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3464870829,Falesia La Gola - Arcadioland,TN,NO_GO,0.1,6.6,12.3,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-293114876,Falesia La Gola - Pezzent Area,TN,NO_GO,0.1,6.6,12.3,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-19960842,Falesia La Panoramica,VB,NO_GO,0.0,7.1,10.4,11.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-7517775586,Falesia La Rocchetta,TN,NO_GO,0.0,7.6,11.1,5.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1105343575,Falesia La Scogliera,TN,NO_GO,2.5,9.0,7.3,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3622933477,Falesia Lago Nero,BG,NO_GO,4.6,13.3,3.8,7.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-496490065,Falesia Le Piazzole,TN,NO_GO,5.9,7.2,11.8,13.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196357819,Falesia Le Promesse nel Sole,LC,NO_GO,1.7,12.6,12.6,14.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-413118218,Falesia Le Scale,BS,NO_GO,2.1,13.4,9.3,9.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1049720124,Falesia Maddalena,BS,NO_GO,1.2,8.5,11.1,6.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-191006767,Falesia Madonna della Rota,BS,NO_GO,2.5,8.9,10.9,6.7,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4499029736,Falesia Makkiodromo,TN,NO_GO,0.0,8.5,8.5,4.0,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-191006769,Falesia Marone,BS,NO_GO,2.5,8.9,11.8,6.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-687492632,Falesia Marsaglia,TO,NO_GO,0.0,12.8,7.7,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-681375925,Falesia Martino Giovannini - Rizzolaga,TN,NO_GO,0.0,6.5,8.2,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-392154617,Falesia Massimo Prando,CN,NO_GO,2.1,21.5,3.8,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-727393767,Falesia Meta,BS,NO_GO,2.0,9.8,10.3,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1456514467,Falesia Meteore,BS,NO_GO,1.2,8.5,10.5,6.9,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13184333733,Falesia Migiondo,SO,NO_GO,2.9,5.0,8.7,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-957454448,Falesia Minions 1,BS,NO_GO,2.6,8.6,10.2,2.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-989387640,Falesia Minions 2,BS,NO_GO,2.6,8.6,10.4,2.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1169298260,Falesia Monte Terlago,TN,NO_GO,0.1,7.5,9.2,8.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-485227807,Falesia Opera,BS,NO_GO,2.0,9.8,10.7,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-957454446,Falesia Pacifico,BS,NO_GO,2.6,8.6,9.6,2.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-333283642,Falesia Parete bianca,VC,NO_GO,0.0,10.6,8.2,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196357820,Falesia Passi di Danza,LC,NO_GO,2.3,12.5,11.8,12.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12955795722,Falesia Pera Borgogna,CN,NO_GO,0.3,14.3,9.5,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12863165485,Falesia Pettirosso,BS,NO_GO,3.5,12.4,10.9,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-10002089523,Falesia Piam del Levro - Val del Orco,TN,NO_GO,0.4,9.9,10.6,2.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13009091145,Falesia Pian Schiavaneis,TN,NO_GO,1.3,7.0,5.3,8.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-945812457,Falesia Piazza-Maelì,BG,NO_GO,3.2,10.0,10.9,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-16068105,Falesia Placche di Albate,CO,NO_GO,0.3,15.3,10.8,4.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-216075910,Falesia Placche di Bette (Mese),SO,NO_GO,2.7,9.9,11.2,2.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1476546143,Falesia Pokemon,CN,NO_GO,9.8,17.4,2.6,6.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196506610,Falesia Ponte del Diavolo,TO,NO_GO,0.0,12.2,10.6,2.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1530355755,Falesia Poza Vecia,TN,NO_GO,0.0,5.9,4.9,6.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196357818,Falesia Pungitopo,LC,NO_GO,1.7,12.6,12.6,14.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-179011129,Falesia Rendena,BS,NO_GO,1.5,10.1,13.0,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196520914,Falesia Roc du Crot,TO,NO_GO,0.2,13.5,6.5,7.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-719253904,Falesia Rocca Davì,CN,NO_GO,12.8,11.5,9.0,4.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196506609,Falesia Rocca S.A.R.I.,TO,NO_GO,0.0,13.4,5.7,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-1116938392,Falesia Roccabruna,CN,NO_GO,0.5,16.8,8.1,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196338094,Falesia Rocce Basse,LC,NO_GO,2.6,12.3,9.9,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-719253900,Falesia Rocce di Costabella,CN,NO_GO,11.0,15.0,8.0,9.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1227554567,Falesia Ronco Fervento,VC,NO_GO,0.0,10.2,9.0,2.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-983536145,Falesia Roncola,BG,NO_GO,0.8,13.6,8.5,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4911193409,Falesia Salina,TN,NO_GO,0.1,9.0,9.4,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1020892684,Falesia Salmonella B,BS,NO_GO,2.0,9.8,10.3,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-365092288,Falesia San Gallo Nuova,BS,NO_GO,1.2,8.5,11.5,6.9,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2433779305,Falesia San Pellerino (La Torre),BG,NO_GO,2.7,10.1,12.0,5.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4460286024,Falesia San Silvestro,TN,NO_GO,0.6,8.4,10.0,2.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-935439944,Falesia San Tomas,LC,NO_GO,2.2,12.6,10.9,17.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196506606,Falesia Santa Cristina,TO,NO_GO,0.0,13.7,7.2,7.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8086095920,Falesia Sasso Ballaro,VA,NO_GO,0.0,13.2,12.1,10.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13245785600,Falesia Sasso Ballaro -  Settore Saigon,VA,NO_GO,0.0,13.2,12.1,10.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-982399708,falesia Sasso Carlano,LC,NO_GO,1.7,11.2,7.7,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6058200834,Falesia Schizzolandia,TN,NO_GO,0.0,7.5,12.1,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-985128253,Falesia Sebino,BS,NO_GO,2.0,9.8,11.0,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1473636975,Falesia storica di Camoglieres,CN,NO_GO,4.8,17.7,7.3,7.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-687496100,Falesia Toupè,TO,NO_GO,1.4,12.0,7.9,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-572688028,Falesia Tradpel,TN,NO_GO,0.1,6.0,10.0,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-388467649,Falesia Trichera,TO,NO_GO,0.1,14.1,9.5,9.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196399311,Falesia Trittico,LC,NO_GO,2.5,12.9,9.8,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-1760865591,Falesia Val Lomasone,TN,NO_GO,1.6,7.0,11.0,10.1,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-288953365,Falesia Valgua (Lentasia),BG,NO_GO,1.6,9.6,11.4,6.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2935803563,Falesia Valle Dei Mulini,BG,NO_GO,3.7,10.0,9.4,3.9,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2433793428,Falesia Valle dell' Oro,LC,NO_GO,0.8,13.9,12.9,3.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1350335984,Falesia Valsecca,BG,NO_GO,1.7,12.0,10.8,4.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13009110064,Falesia Vernel,TN,NO_GO,0.3,6.6,4.5,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13184333734,Falesia Vernuga,SO,NO_GO,3.0,3.9,9.6,1.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4992406813,Falesia Villa d' Almé (Traliccio),BG,NO_GO,0.6,10.9,13.0,6.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2433793424,Falesia Zogno,BG,NO_GO,1.5,11.7,11.8,5.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8072414120,Falesia Zornasco,VB,NO_GO,0.5,7.5,8.6,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3676699158,Falesia Zuppa,CN,NO_GO,17.9,28.4,4.2,15.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2620248440,Falesie dei Campelli,LC,NO_GO,1.8,12.8,10.0,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-1863381,Falesie di Galbiate,LC,NO_GO,1.1,12.8,12.1,10.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13009130956,Falesie di Sottosassa,TN,NO_GO,0.4,3.9,9.0,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1426365986,Fata del Lago,TN,NO_GO,0.9,7.3,4.0,9.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11080638510,Fessura del Tramonto,TO,NO_GO,0.1,14.8,7.2,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12405642116,Fighera,VB,NO_GO,0.0,7.4,10.9,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14038577201,Finale Ampola,TN,NO_GO,0.6,10.0,10.8,1.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-588106316,Frachiamo,TO,NO_GO,0.0,13.8,9.0,6.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6467549651,Gaia,TN,NO_GO,1.3,6.1,14.3,7.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1352894785,Gamsgarten,BZ,NO_GO,1.2,4.4,3.5,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9870630031,Gavion,TN,NO_GO,0.6,8.4,9.8,2.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14280863634,Giardiano,TN,NO_GO,0.1,6.6,12.5,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1221416519,Giardino delle Occasioni Perdute,TN,NO_GO,0.1,6.5,11.9,13.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1174013436,Giardino di Nato,TN,NO_GO,0.0,5.8,12.0,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-464552480,Giardino Segreto,BS,NO_GO,0.9,9.4,13.8,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-1741194816,Gran Placca,LC,NO_GO,2.4,13.8,10.3,3.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-688313025,Gran Rotsa,TO,NO_GO,1.8,11.1,7.5,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-688313051,Gran Rotsa,TO,NO_GO,0.4,12.9,7.3,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-8550552,Grande Placconata,TN,NO_GO,0.1,9.0,10.4,6.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5462504409,Grande Reset,CN,NO_GO,11.9,13.9,7.2,7.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14289792900,Greenspit,TO,NO_GO,0.1,12.9,10.1,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-761344649,Grotta del Mandulì,BS,NO_GO,3.4,8.9,9.8,3.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14041775583,Grotta Rudera,VA,NO_GO,0.0,14.8,7.6,7.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-19324830,Hauptwand,BZ,NO_GO,3.0,4.1,8.5,2.4,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-19307265,Hexentanz,BZ,NO_GO,0.0,6.4,6.8,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1299970245,Hop Farm,CN,NO_GO,12.7,15.0,12.7,23.1,rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13245292674,Hopfenwandl,BZ,NO_GO,1.1,5.3,6.3,3.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1458310996,Hägar,BZ,NO_GO,0.0,6.4,6.8,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-165967300,I Cavalieri,BS,NO_GO,0.7,8.2,12.3,8.1,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-567758419,I Quarzini,CN,NO_GO,10.7,17.0,7.9,10.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1474083451,Il caimano pietrificato,CN,NO_GO,0.5,16.8,8.0,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12806652876,Il Capitello,TN,NO_GO,6.8,10.5,10.7,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14280863633,Il Castello,TN,NO_GO,0.1,6.6,12.3,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1474083452,Il Castello,CN,NO_GO,0.5,16.8,8.1,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-687568965,Il Libro,TO,NO_GO,0.0,14.5,9.7,10.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-7657235082,Il Posto Delle Fragole,TN,NO_GO,0.0,5.8,11.7,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-687354395,Il Privè,TO,NO_GO,0.0,14.3,8.1,6.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1199525837,Il Resort dell'Aquila,BG,NO_GO,4.6,13.6,3.9,8.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13078477899,Innerfeld,BZ,NO_GO,0.1,4.6,5.5,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6687692953,Isola Felice,TO,NO_GO,0.0,12.7,9.6,5.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1309054961,"Klettergarten ""Rienztal"" - Palestra di roccia ""Valle della Rienza""",BZ,NO_GO,0.0,7.7,5.9,1.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4899780914,Klettergarten Allitz - Falesia di Arrampicata Alliz,BZ,GO,1.8,1.0,6.7,4.0,wall aspect not mapped: judged as a shaded wall,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6653573525,Klettergarten Altgais,BZ,NO_GO,4.0,4.7,8.0,2.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6676178416,Klettergarten Aufhofen,BZ,NO_GO,4.0,4.7,8.4,2.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6653089558,Klettergarten Gais Platten,BZ,NO_GO,4.0,4.7,8.5,2.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-7746616487,Klettergarten Haunold,BZ,NO_GO,0.1,4.9,5.5,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3079690680,Klettergarten Hintersegg - Falesia Hintersegg,BZ,NO_GO,1.0,5.9,9.2,5.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-710348835,Klettergarten Hohe Festung,BZ,NO_GO,2.4,4.1,9.0,1.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3581358193,Klettergarten Juval - Arrampicata Juval,BZ,NO_GO,0.6,2.9,8.3,2.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-710062458,Klettergarten Kofler zwischen den Wänden,BZ,NO_GO,1.3,5.4,5.5,6.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2384715617,Klettergarten Mahr - Arrampicata La Mara,BZ,NO_GO,0.9,3.6,10.0,2.8,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4899789527,Klettergarten Martell,BZ,GO,0.1,0.6,5.3,5.2,wall aspect not mapped: judged as a shaded wall,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5700326129,Klettergarten Pragser Wildsee,BZ,NO_GO,0.5,4.2,5.7,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-736940116,Klettergarten Reifenstein - Arrampicata Castel Tasso,BZ,NO_GO,0.5,3.1,8.2,2.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1107920660,Klettergarten Stuls,BZ,NO_GO,0.2,4.6,5.7,3.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13970713562,Klettergarten Säben - Palestra di roccia di Sabiona,BZ,NO_GO,2.2,5.6,10.1,3.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6670897795,Klettergarten Würzjoch Peitlerkofel,BZ,NO_GO,1.2,5.2,3.9,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21296339,Kosterlitz,TO,NO_GO,0.1,14.8,5.4,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1164512272,L'Abisso,TN,NO_GO,0.3,8.4,9.3,5.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12465350706,L'Orologio Di Stecca,TO,NO_GO,0.1,13.3,8.9,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-340445472,L'Orto,TN,NO_GO,1.3,6.1,13.4,7.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13084188604,La Balma,VB,NO_GO,0.0,9.4,10.6,2.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-845938172,La Balma,BI,NO_GO,0.0,13.6,9.5,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2372935820,La Biblioteca,BS,NO_GO,1.1,10.1,13.8,7.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-377889050,La Boule,TO,NO_GO,0.2,14.3,7.0,10.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-718831135,La Caduta dei Giganti,SO,NO_GO,3.5,12.4,7.9,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1534970104,La Casa,CN,NO_GO,13.1,14.2,7.8,4.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-365079021,La Cava,BS,NO_GO,0.9,9.8,12.7,8.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-687563946,La Cava,TO,NO_GO,0.0,14.0,9.5,6.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14298780866,La Cosina,TN,NO_GO,0.0,6.9,11.0,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-948457899,La Mia Regina,BG,NO_GO,3.1,11.6,11.5,3.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1552514084,La Piatta,CN,NO_GO,7.8,12.2,7.0,3.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-7167002886,La Placca che spacca,TN,NO_GO,0.4,5.7,10.5,3.0,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1529726002,La Placca del Sole,CN,NO_GO,4.0,20.5,6.7,5.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13380808015,La Torraccia,VB,NO_GO,0.0,10.5,11.0,6.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-689926403,La Torretta,TO,NO_GO,0.1,12.9,9.5,5.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13986154785,La Vela,CN,NO_GO,13.1,14.2,7.9,4.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6461457192,Labirinto Sotterraneo,TO,NO_GO,0.0,13.1,5.8,5.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11923485265,Laboratorio,BZ,NO_GO,1.0,4.6,5.9,2.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1385623007,Lagoland,LC,NO_GO,1.1,10.5,13.0,7.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14306598422,Lagolo: Left,TN,NO_GO,0.0,6.5,9.7,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14306559792,Lagolo: Right,TN,NO_GO,0.0,6.5,9.7,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4282521088,Langenstein,BZ,NO_GO,1.5,3.0,2.3,5.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3583918547,Lastoni di Dro,TN,NO_GO,1.1,6.8,13.5,6.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4899722259,Latsch Vegas,BZ,GO,1.1,1.5,7.7,2.9,,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-10015606290,Le Trincee,TN,NO_GO,1.4,10.2,12.0,10.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1221353130,Lena,BZ,NO_GO,0.0,6.4,6.9,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13175111911,Levanna Wall,TO,NO_GO,0.2,13.5,6.6,7.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-513842818,Lirone,SO,NO_GO,4.3,11.1,9.2,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11171764068,Liss dei Pesgunfi,SO,NO_GO,3.3,11.0,8.6,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1037904840,Lo Scoglio,VC,NO_GO,0.0,10.6,8.9,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4498520689,Lo scudo,TN,NO_GO,0.1,7.6,9.9,4.4,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6184719771,Lo Scudo,CN,NO_GO,14.0,15.2,7.7,19.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14287709509,"Lo Scudo, Cima Alla Coste",TN,NO_GO,0.4,7.5,11.7,7.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1502439088,Lo Sprofondo,CO,NO_GO,1.2,12.9,10.2,12.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14303235698,Lon: Sector A,TN,NO_GO,0.2,7.7,9.9,8.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-687576040,Los Area,TO,NO_GO,0.0,12.9,9.4,6.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6323207710,Losa D'Alais,TO,NO_GO,0.0,15.1,4.3,4.0,rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21297184,Lost Arrow,TO,NO_GO,0.2,12.7,4.4,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14299000044,Lower - San Siro,TN,NO_GO,0.0,5.8,12.3,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1382840191,Lundo - Settore destro,TN,NO_GO,0.1,8.7,9.3,2.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1382840193,Lundo - Settore sinistro,TN,NO_GO,0.1,8.7,9.5,2.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1508337814,Madonna della Neve,CN,NO_GO,18.3,20.4,8.3,14.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13045175653,Madonna della Neve settore Piazzale,CN,NO_GO,0.5,16.1,9.4,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14303641200,Margone,TN,NO_GO,0.5,5.9,10.3,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1457002177,Maso delle PIetre Grosse,VC,NO_GO,0.0,11.3,9.1,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14116010367,Massi del Fiume,TO,NO_GO,0.1,14.8,5.7,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8151386648,Massi delle Traole Settore H - Star Wars,TN,NO_GO,0.3,8.6,13.1,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13175095785,Massi di Balme - Cantoira,TO,NO_GO,0.0,11.7,10.5,5.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1184624492,Massi Di Cuzzago,VB,NO_GO,0.0,7.4,10.9,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13869843465,Massi di Gaggiolo,TN,NO_GO,1.1,6.8,12.9,6.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4171979697,Massi Di Prabi,TN,NO_GO,0.3,6.5,14.5,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14129264856,Masso della Riscoperta,TO,NO_GO,0.1,14.8,5.4,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-886801268,Masso Grangetta_1 G.C.G.,TO,NO_GO,0.0,14.3,10.5,6.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13769239869,Masso L'Uomo Ragno,CN,NO_GO,0.8,17.9,9.9,2.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1003264100,Masso Molere G.C.G.,TO,NO_GO,0.0,14.3,10.6,6.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13769222391,Masso Sim Sala Bim,CN,NO_GO,0.8,17.9,10.0,2.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13769245314,Masso Uomo in Mare,CN,NO_GO,0.8,17.9,9.3,2.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-607279003,Mattatoio,TN,NO_GO,0.5,6.1,11.1,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4795453547,Mescalisio,TN,NO_GO,0.0,8.5,8.8,4.0,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-948457901,Miralago,BG,NO_GO,3.1,11.6,11.0,3.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1019167198,Miroglio,CN,NO_GO,10.6,15.1,6.5,11.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-655452087,Miroglio 2 - Falesia “Gianni Comino”,CN,NO_GO,11.9,13.9,6.9,7.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-766029403,Molini-Trodena,BZ,NO_GO,0.4,6.4,8.3,2.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14221255302,Monte Bento,TN,NO_GO,1.6,7.0,11.0,10.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13084142703,"Montorfano, Il Placcone",VB,NO_GO,0.0,13.3,10.7,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2385340755,"Montorfano, Settore Bambine Carine",VB,NO_GO,0.0,13.3,10.5,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13084142702,"Montorfano, Settore Strapiombi",VB,NO_GO,0.0,13.3,10.7,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1558759814,Moon Wall,CN,NO_GO,19.6,21.9,5.9,11.2,rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1536755379,Muretto del Gio',LC,NO_GO,1.1,10.6,10.7,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6184719765,Muri Rossi,CN,NO_GO,14.0,15.2,8.1,19.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-991664946,Muro dei 70 scalini,TN,NO_GO,0.5,6.1,11.5,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-837046156,Muro del Butch,LC,NO_GO,1.3,12.7,11.3,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196399312,Muro del Pianto,LC,NO_GO,2.6,12.3,10.0,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-485227805,Muro dell'Ilex,BS,NO_GO,2.0,9.8,10.7,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1473653237,Muro delle Piagge,CN,NO_GO,14.6,14.6,7.3,5.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11859077873,Muro di Introbio,LC,NO_GO,2.7,11.6,10.9,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14302304573,Muro Di Meridiani,TN,NO_GO,0.0,5.8,11.7,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1424747929,Muro di Valcava,TN,NO_GO,0.3,6.7,9.4,2.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1174013433,Murro di Chitarra,TN,NO_GO,0.1,8.6,11.8,8.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9952851159,Nago,TN,NO_GO,0.3,8.6,13.3,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4899733538,Nesselwand,BZ,MAYBE,1.8,0.7,4.1,4.5,wall aspect not mapped: judged as a shaded wall; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13319438494,Nibbiola,VB,NO_GO,0.0,7.4,10.7,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12980354351,Nock,BZ,NO_GO,1.5,6.3,8.4,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3791101390,Notte di Stelle,CN,NO_GO,14.0,15.2,7.8,19.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-282816934,Nuovo Cinema Maddalena,BS,NO_GO,1.2,8.5,10.2,6.9,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11923480131,Nêa,BZ,NO_GO,0.5,5.1,7.1,7.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8013383351,Osso,VB,NO_GO,4.8,6.5,6.8,2.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-1741194869,Pala Condor,LC,NO_GO,2.4,13.8,10.4,3.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-15866268,Pala delle Lastiele,TN,NO_GO,0.1,8.6,11.0,8.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8599382252,Palestra di arrampicata del morissolo,VB,NO_GO,0.0,12.8,7.1,7.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1532392638,Palestra di Arrampicata della Diga della Piastra,CN,NO_GO,14.2,14.4,8.6,6.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2747184346,Palestra di roccia,TN,NO_GO,0.3,7.5,10.2,8.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3299243508,Palestra di Roccia,TN,NO_GO,0.3,10.8,9.9,12.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3369037366,Palestra di roccia,TN,NO_GO,0.0,8.5,10.1,8.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11139276349,"Palestra di roccia ""La Valletta"" m.750",VB,NO_GO,1.2,7.4,8.5,2.5,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13180102058,Palestra di Roccia - Landro,BZ,NO_GO,0.0,6.4,7.0,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2410390011,Palestra di roccia Bindesi,TN,NO_GO,0.3,7.4,9.9,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-18915445,Palestra di roccia del gruppo speleologico prealpino,VA,NO_GO,0.0,14.5,11.9,6.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-938443917,Palestra di roccia di Fiorano,TO,NO_GO,0.0,12.9,10.6,2.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8090536385,Palestra di roccia di Traversella,TO,NO_GO,0.0,10.6,8.4,6.4,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8090536386,Palestra di roccia di Traversella,TO,NO_GO,0.0,12.1,8.3,3.9,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9904213314,Palestra di roccia Il Crènch,BS,NO_GO,2.8,10.0,11.9,6.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3658805427,Palestra di roccia rifugio Sandro Occhi,BS,NO_GO,2.5,8.8,4.0,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-386318324,Palestra di roccia Rita e Giorgio Graffer,TN,NO_GO,0.5,12.9,6.3,6.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-7717744440,Palestra di roccia Tisner Auen Klettergarten,BZ,NO_GO,0.1,3.0,11.1,2.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-166615030,Palestra di roccia Ugolino Ugolini,BS,NO_GO,0.9,10.2,13.1,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-963452734,Palestra Franco Marta (Fiamme gialle),TN,NO_GO,0.4,10.0,4.8,14.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9798707997,Palestra Regina del Lago,TN,NO_GO,1.1,7.9,11.9,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-18757044,Palestra Ronchetti,VA,NO_GO,0.0,8.9,10.0,5.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1355945153,Palestra Voltolini Giordano,TN,NO_GO,0.0,3.5,6.0,3.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14263432326,"Panorama Klettergarten ""Huafwond""",BZ,NO_GO,0.8,4.5,6.5,2.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-10845342781,Panoramica,TN,NO_GO,0.1,6.6,12.1,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14265216131,Paramide Lakshmi,TN,NO_GO,0.8,5.8,12.3,5.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-961334519,Parete Artificiale Malga Bissina,TN,NO_GO,3.8,9.2,5.9,5.4,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-301205738,Parete Corno di Bo,TN,NO_GO,1.1,7.9,14.1,7.2,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-807967178,Parete dei fiori,TO,NO_GO,0.0,12.8,3.3,6.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2086219218,Parete del deltaplano,TO,NO_GO,0.0,14.8,6.9,7.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11239615178,Parete del Disertore,TO,NO_GO,0.1,14.8,5.4,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-1116940499,Parete del Grande Arco,CN,NO_GO,0.8,17.9,9.1,2.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-242743640,Parete del Limarò,TN,NO_GO,0.1,6.6,12.2,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11960767092,Parete dell'Elefante,TO,NO_GO,0.0,13.5,5.4,9.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-753933995,Parete dell'Ir Inferiore,TN,NO_GO,0.2,7.1,12.5,7.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-753933996,Parete dell'Ir Superiore,TN,NO_GO,0.1,8.2,11.7,1.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6326785236,Parete delle Mosche,TO,NO_GO,0.2,15.9,5.4,3.7,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21318780,Parete di San Paolo,TN,NO_GO,1.6,6.8,13.0,13.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4187041689,Parete di Sherwood,TN,NO_GO,1.1,6.8,12.1,6.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-15866269,Parete Est,TN,NO_GO,0.1,9.0,9.4,6.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-62733927,Parete Padaro,TN,NO_GO,5.9,7.2,10.8,13.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-775536984,Parete Piacenza,BI,NO_GO,0.0,17.0,2.6,5.0,rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-676577668,Paretina Arrampicata,TO,NO_GO,0.0,12.2,10.5,2.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6326785237,Paretina dei bambini,TO,NO_GO,0.2,15.9,5.5,3.7,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9429027374,Paretina dell'amico Fritz,SO,NO_GO,2.7,9.9,11.3,2.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11649199291,Paretina di Forno,TO,NO_GO,0.2,15.0,6.2,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14312704444,Patagonia,TN,NO_GO,0.1,5.6,10.7,2.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-818012360,Pera Aquila,VB,NO_GO,0.0,14.5,7.0,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-389398978,Pera Grosa,TO,NO_GO,0.1,13.6,7.1,10.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13342825201,Petit Verdon,TO,NO_GO,0.0,11.7,9.8,5.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14280793493,Pian della Balma,TO,NO_GO,0.9,12.7,5.5,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13769332288,Piccolo Cervino,CN,NO_GO,0.8,17.9,9.0,2.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12983543648,Picz Cucena V,BZ,NO_GO,0.2,5.0,2.5,6.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-670691556,Pietra Alta,TO,NO_GO,0.0,13.4,10.9,3.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11239621877,Pietra Filosofale,TO,NO_GO,0.2,12.7,5.9,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9176169531,Pilastrini,LC,NO_GO,2.7,11.6,10.9,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11252688503,Piramide,TO,NO_GO,0.1,14.8,6.5,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21446393,Piz Ciavazes,TN,NO_GO,4.0,5.9,1.4,11.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8897185202,Pizzocol,TN,NO_GO,0.3,8.1,10.2,3.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6326785238,Placca,TO,NO_GO,0.2,15.9,5.5,3.7,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1101409718,Placca Acido Formico,TO,NO_GO,0.0,13.6,10.1,7.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4641789089,Placca Condor,LC,NO_GO,2.4,13.8,10.3,3.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1474083448,Placca Dei Disperati,CN,NO_GO,0.5,16.8,8.4,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1558758075,Placca dei Veschi,CN,NO_GO,15.3,18.8,8.0,6.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3452238619,Placca del Bhikku,LC,NO_GO,2.5,12.9,9.5,3.3,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-588639857,Placca del Picchio,BI,NO_GO,0.0,14.5,9.2,6.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-7273907091,Placca del Pistolino,LC,NO_GO,2.6,12.3,10.0,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11662207868,Placca del Prato Grande,SO,NO_GO,2.7,9.9,11.0,2.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1474083453,Placca della Tranquiullità,CN,NO_GO,0.5,16.8,7.7,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3791101373,Placca di Guz,CN,NO_GO,14.0,15.2,7.7,19.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4918601924,placca morose,BS,NO_GO,4.3,13.1,12.3,7.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-365090771,Placca Poli,BS,NO_GO,1.2,8.5,11.9,6.9,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1474083445,Placca Rosa,CN,NO_GO,0.5,16.8,8.0,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1110970227,Placca Silvana,CN,NO_GO,14.0,15.2,7.3,19.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-671210250,Placche del Fontanino,TO,NO_GO,0.0,15.6,6.6,5.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-671210248,Placche del sole Nascente,TO,NO_GO,0.0,15.6,6.6,5.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-671210249,Placche della Comodità,TO,NO_GO,0.0,15.4,6.5,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-688596625,Placche di San Valeriano,TO,NO_GO,0.0,14.3,9.9,6.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1548591449,Placche di Serre,CN,NO_GO,9.3,22.9,5.3,6.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4409711985,Placche di Sherwood,LC,NO_GO,2.7,11.6,9.7,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-854718943,Placche Giacottino,CN,NO_GO,0.2,15.5,8.9,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-15866267,Placche Zebrate,TN,NO_GO,0.8,5.8,11.6,5.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-860340484,Placchette del San Martino,LC,NO_GO,1.1,10.6,11.1,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-962568635,Placchette di Upega,CN,NO_GO,17.6,20.1,8.4,19.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1474083450,Placconata Dei Serpenti,CN,NO_GO,0.5,16.8,8.1,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-948457900,Politeama,BG,NO_GO,3.1,11.6,11.5,3.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11649186026,Polvere di Stelle,TO,NO_GO,0.2,15.0,4.8,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1003256148,Polèer dól Gipi,LC,NO_GO,2.3,12.5,8.9,2.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-957213585,Ponte Romano - Agàro Fall,VB,NO_GO,4.9,5.6,6.9,2.8,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12255821505,Porto di Tremosine,BS,NO_GO,2.4,8.8,14.1,16.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1518687464,Prada,TN,NO_GO,0.1,7.5,8.2,8.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-1739484761,Pradello,LC,NO_GO,2.3,12.5,11.8,12.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-761344647,Predulì,BS,NO_GO,3.4,8.9,10.2,3.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4899740621,Priel,BZ,GO,0.7,1.1,7.8,3.5,wall aspect not mapped: judged as a shaded wall,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3097759817,Primi Passi,VB,NO_GO,7.9,6.4,1.3,5.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-593708640,Promeghin,TN,NO_GO,0.2,6.1,11.1,5.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12465337996,Pustola,TO,NO_GO,0.6,12.9,9.1,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1096917150,Quarzinisoft,CN,NO_GO,10.4,13.4,8.0,9.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-776091027,Rainbowall,TO,NO_GO,0.0,14.5,9.3,10.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-202336823,Red Point Wall,TN,NO_GO,1.3,6.1,14.2,7.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9798755347,Regina del Lago - settore C,TN,NO_GO,6.8,10.5,12.2,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9798755346,Regina del Lago- settore B,TN,NO_GO,6.8,10.5,12.2,5.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9798755348,Regina del Lago- settore D Piccolo Budda,TN,NO_GO,1.0,8.3,12.6,14.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-588639858,Rialmosso,BI,NO_GO,0.0,12.9,9.8,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21158016,Rif. Agostini,TN,NO_GO,1.0,7.6,1.5,8.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14312549819,Rio Bianco,TN,NO_GO,0.2,5.0,9.8,1.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5306579282,Roc Botal,TO,NO_GO,0.0,15.1,9.7,2.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-689917669,Roc d'le Gabasse,TO,NO_GO,0.1,12.9,9.7,5.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21500957,Rocca Barale,TO,NO_GO,0.0,17.4,8.5,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-973921194,Rocca dei Campanili,CN,NO_GO,16.3,19.5,4.0,16.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-680829760,Rocca della Madonnina,TO,NO_GO,0.2,14.3,8.9,10.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12883594001,Rocca delle Donzelle salto basso,CN,NO_GO,17.3,18.9,6.9,28.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-1741194868,Rocca di Baiedo,LC,NO_GO,2.7,11.6,10.6,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13184333725,Rocca di Lities parete sud-est,TO,NO_GO,0.0,11.5,7.9,8.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-946722220,Rocca Laubert o Falesia dell'Impero,TO,NO_GO,0.0,16.9,8.1,6.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12919946095,Rocca Parvo Boulder Area,CN,NO_GO,10.3,17.1,3.6,5.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-687568065,Rocca Penna,TO,NO_GO,0.0,14.5,9.2,10.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3784955651,Rocca Remolon,TO,NO_GO,0.3,21.2,1.6,6.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11461113386,Rocca Sbarua - Bianciotto,TO,NO_GO,0.0,15.3,7.1,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-946532761,Rocca Sbarua - Cinquetti,TO,NO_GO,0.0,15.3,7.7,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-946532760,Rocca Sbarua - Placche Gialle,TO,NO_GO,0.0,15.3,7.2,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-946532758,Rocca Sbarua - Rivero,TO,NO_GO,0.0,15.3,7.5,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2015434247,Rocca Sbarua - Torrione del bimbo,TO,NO_GO,0.0,15.3,7.4,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-905109155,Rocca Vulpatera,TO,NO_GO,0.2,14.7,9.6,2.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1553990046,Rocce Alte settore Il Pilastro,CN,NO_GO,2.9,15.5,1.1,6.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-854719353,Rocciare,CN,NO_GO,0.2,15.5,8.4,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13043441886,Roci Lungi,TO,NO_GO,0.0,11.7,9.8,5.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9536753691,Rock Stadium,SO,NO_GO,2.7,9.9,11.3,2.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12147415897,Roncet,TO,NO_GO,0.2,15.0,5.7,3.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-18047636,Ronda Nera,MI,NO_GO,0.5,10.9,12.2,10.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11872141963,Saletina,SO,NO_GO,5.6,3.7,3.6,7.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12151154724,Saletina Bassa,SO,NO_GO,5.2,4.0,4.4,7.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14271422582,San Meinerio,TO,NO_GO,0.2,12.7,4.2,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1213400747,San Vigilio,BG,NO_GO,3.5,12.7,9.8,6.3,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1160670900,Sant' Antonio,TN,NO_GO,0.1,5.6,8.7,9.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1448467815,Sarche,TN,NO_GO,0.1,5.2,12.0,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4018391160,Sas dei 4 pini,TN,NO_GO,0.0,8.5,11.6,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9038021541,Sass de la Vecia,TN,NO_GO,0.3,9.7,10.9,2.1,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1085344524,Sass Dlacia,BZ,NO_GO,0.0,4.7,5.2,4.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9916562260,Sass Fendù,VB,NO_GO,3.9,7.2,6.4,2.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-183348081,Sass Negher,LC,NO_GO,1.1,10.8,12.0,9.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4972695297,Sasso Annalisa,BZ,NO_GO,2.3,5.7,3.0,12.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-231956641,Sasso bianco,SO,NO_GO,2.6,9.6,10.8,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8126957089,Sasso Corbè Pilastro Centrale,VB,NO_GO,0.0,11.0,8.9,2.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12082555069,Sasso Cucchi,BZ,NO_GO,2.3,5.7,2.9,12.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-201200731,Sasso d'Erba,CO,NO_GO,0.7,13.4,10.5,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5214714011,Sasso dei Matti,TN,NO_GO,0.0,8.5,9.2,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-751262115,Sasso dell'Edera,CO,NO_GO,0.7,13.4,10.6,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-1803201264,Sasso dell'Elefante,BS,NO_GO,0.7,8.2,12.7,8.1,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4972695294,Sasso Della Palestra,BZ,NO_GO,2.3,5.7,3.3,12.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4641745891,Sasso di Introbio,LC,NO_GO,2.4,13.8,10.4,3.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4976059959,Sasso Gabriel,BZ,NO_GO,4.0,5.9,2.6,11.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1183974242,Sasso Galletto,VA,NO_GO,0.0,13.8,12.5,6.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9986935533,Sasso Garibaldi,SO,NO_GO,3.1,3.8,7.6,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-201200730,Sasso Giallo,CO,NO_GO,0.7,13.4,10.8,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12082555093,Sasso Murdok,BZ,NO_GO,2.3,5.7,2.8,12.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-297774960,Sasso Muschiato,CO,NO_GO,0.7,13.4,10.9,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4976059958,Sasso Piccolo Cervin,BZ,NO_GO,4.0,5.9,2.3,11.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-1886634638,Sasso Remenno,SO,NO_GO,3.3,11.0,10.0,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4976059960,Sasso Spaccato,BZ,NO_GO,4.0,5.9,2.6,11.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1572454697,Saš da Piàzz,LC,NO_GO,2.3,12.5,9.5,2.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-3133709,Scoglio di Boazzo,TN,NO_GO,2.8,8.7,7.6,6.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13034406912,Scoglio di Mroz,TO,NO_GO,0.0,13.5,4.4,4.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1551091956,Scudo di Laura,CN,NO_GO,19.5,23.4,3.8,7.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1474083443,Scudo Striato,CN,NO_GO,0.5,16.8,8.0,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-19317965,Sector links,BZ,NO_GO,0.0,6.4,7.2,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-19317977,Sector rechts,BZ,NO_GO,0.0,6.4,7.1,4.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-818012361,Sella,VB,NO_GO,0.0,14.5,7.0,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12465337994,Sepoltura,TO,NO_GO,0.1,13.3,9.0,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-196853543,Sergent,TO,NO_GO,0.2,12.7,4.4,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13376186366,Settore Alpinistico,VB,NO_GO,0.0,7.1,10.4,11.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196338093,Settore Anfiteatro,LC,NO_GO,2.5,12.9,9.3,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4175487129,Settore B,TN,NO_GO,1.3,6.1,14.4,7.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13376186359,Settore Baby,VB,NO_GO,0.0,7.1,10.4,11.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-1992721143,Settore Basso,TN,NO_GO,0.3,8.6,13.6,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4176959165,Settore Centrale,TN,NO_GO,0.3,8.6,13.3,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12304593894,Settore Destro,CO,NO_GO,1.0,12.7,12.1,6.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12304593897,Settore Destro,CO,NO_GO,1.0,12.7,11.8,6.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5240047639,Settore Esperti,VB,NO_GO,0.0,7.1,10.4,11.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11202410574,Settore i,TN,NO_GO,1.3,6.1,14.4,7.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11202410575,Settore M,TN,NO_GO,0.3,6.5,14.3,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11202410576,Settore N,TN,NO_GO,0.3,6.5,14.3,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13376186365,Settore Professional,VB,NO_GO,0.0,7.1,10.3,11.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1539474115,Settore Scheggia,CN,NO_GO,13.8,16.1,3.6,14.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1458344921,Sghiseria,VC,NO_GO,0.1,10.8,7.1,8.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3668446132,Simoncelli 7c,TN,NO_GO,2.5,9.0,9.5,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21151414,Sinistra,TO,NO_GO,0.0,11.5,9.5,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12465337986,Sista,TO,NO_GO,0.1,13.3,9.0,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4585775093,Sito scalata Dahü Caprie,TO,NO_GO,0.0,14.2,9.8,5.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4585792190,Sito scalata Estate Inferiore Caprie,TO,NO_GO,0.0,13.6,10.1,7.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14111260160,Sitting Bull,TO,NO_GO,0.2,12.7,4.9,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14275094059,Small Rainbow,TO,NO_GO,0.0,12.4,8.4,8.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1474083444,Sperone centrale,CN,NO_GO,0.5,16.8,7.9,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13196381745,Sperone dell'Astinenza,LC,NO_GO,2.5,12.9,9.3,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1474083454,Sperone della Maga Circe,CN,NO_GO,0.5,16.8,7.9,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-761344648,Spigolo,BS,NO_GO,3.4,8.9,10.3,3.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-888708254,Spina,TN,NO_GO,0.3,9.3,9.7,2.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-857786355,St. Hippolyt,BZ,NO_GO,0.2,4.5,9.6,2.1,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14312704438,Strada,TN,NO_GO,0.1,5.6,10.6,2.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9856352782,Strapiombi,VB,NO_GO,0.0,7.4,10.8,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-7035170140,Sunny Spot,TN,NO_GO,0.0,6.8,8.9,2.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13184333729,Tchaparat,TO,NO_GO,0.0,11.7,9.8,5.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-948338662,Teatro degli Orrori,BG,NO_GO,3.1,11.6,10.8,3.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1433611632,Teatro delle Marionette,TN,NO_GO,0.1,7.0,9.1,10.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8013300355,Tenebre,VB,NO_GO,4.0,5.7,8.3,1.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-331595790,Terra di Mezzo,BS,NO_GO,2.0,9.8,10.7,3.6,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12465337992,Terrura,TO,NO_GO,0.6,12.9,9.1,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4541277052,Terzo sperone,LC,NO_GO,2.5,12.9,9.7,3.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12741708176,Tetto della Pissa,BI,NO_GO,0.0,14.9,7.1,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1509413862,The House,CN,NO_GO,13.3,12.4,9.8,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1090727155,The Pai Bridge,SO,NO_GO,3.3,13.3,8.6,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1174013435,Torre di Pietramurata,TN,NO_GO,0.1,8.6,11.9,8.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-20626505,Torrione,TO,NO_GO,0.0,11.5,9.8,7.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14219981089,Torrione del Pertusio,LC,NO_GO,3.3,13.8,7.0,5.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1474083449,Torrione Del Pissai,CN,NO_GO,0.5,16.8,8.4,4.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14041775584,Torrione Farfalla,VA,NO_GO,0.0,14.8,7.5,7.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-2888957866,Torrione Realba,LC,NO_GO,2.3,12.5,12.2,12.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-6758871493,Torrioni Cornagera,BG,NO_GO,2.3,11.0,7.8,6.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-383465857,Tracciolino,TO,NO_GO,0.0,15.1,3.7,4.0,rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14308123576,Transatlantico,TN,NO_GO,0.0,5.8,11.4,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-5761846753,Traole - Settore A-G,TN,NO_GO,0.3,8.6,13.6,5.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12465337989,Traverso Evergreen,TO,NO_GO,0.6,12.9,9.2,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-367972302,Trepin Paradise,TN,NO_GO,1.2,4.5,1.8,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1087668014,Tru dla pesc,BZ,NO_GO,0.0,4.4,6.4,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-1299970246,U buteghin,CN,NO_GO,12.5,16.0,12.3,23.7,rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-9565853851,Unterinn,BZ,NO_GO,0.6,6.0,7.4,3.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-268795930,Upper - San Siro,TN,NO_GO,0.0,5.8,11.5,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8013300357,Uriezzo,VB,NO_GO,4.0,5.7,8.2,1.6,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8944618661,Val d Algone,TN,NO_GO,0.1,5.6,10.0,2.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21297209,Val d'Ossola,VB,NO_GO,5.6,6.7,3.4,4.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-463125573,Val Scodella,TN,NO_GO,0.0,9.3,11.7,4.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21261019,Valle dell'Orco,TO,NO_GO,0.1,12.9,9.3,7.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-427250445,Vecchia Falesia di Lert,TN,NO_GO,2.5,9.0,9.2,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-11923480127,Vedla,BZ,NO_GO,0.5,5.1,7.0,7.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-13184333732,Vermuga,SO,NO_GO,2.9,5.0,10.2,3.1,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-513713057,Vho,SO,NO_GO,4.3,11.1,8.8,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-543843034,Via Ferrata Rocca dei Corvi,CN,NO_GO,10.9,13.2,7.8,14.4,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-829683436,Via Fontainemore,BI,NO_GO,0.0,15.1,1.2,5.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-829683435,Via Oropa,BI,NO_GO,0.0,15.1,1.0,5.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4918589878,Vie di roccia del Forametto,BS,NO_GO,3.6,13.2,8.2,8.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4918589843,Vie di roccia delle placche delle Marmere,BS,NO_GO,3.6,13.2,7.8,8.0,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-365080249,Virle - settore est,BS,NO_GO,0.9,9.8,12.8,8.9,rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-691677356,Voglia di Luna,TO,NO_GO,0.2,13.1,5.2,9.5,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-4899803954,Wintertraum,BZ,NO_GO,1.8,3.6,8.2,2.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-way-196003266,X-Ice - La Falesia dei Mutanti,TO,NO_GO,0.1,14.8,5.6,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14134806972,X-Ice La Falesia dei Mutanti,TO,NO_GO,0.1,14.8,5.6,6.2,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-8013383356,Yosesigo,VB,NO_GO,5.7,6.1,5.1,4.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12465337987,Zahir,TO,NO_GO,0.1,13.3,8.8,4.3,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-relation-21446410,Zebrata,TN,NO_GO,0.1,8.6,11.3,8.9,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-3097814772,Zoia Alta,SO,NO_GO,4.9,8.6,2.6,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-14064515297,Zoia Bassa,SO,NO_GO,5.1,10.4,3.6,4.7,wall aspect not mapped: judged as a shaded wall; rain forecast during the day; rock may still be wet from recent rain; cold,2026-11-12T01:59:50.365569513Z
+2026-11-12,osm-node-12862541339,Zucchero Forever;Zucchero Show,TO,NO_GO,0.0,15.3,7.2,3.8,wall aspect not mapped: judged as a shaded wall; rain forecast during the day,2026-11-12T01:59:50.365569513Z
