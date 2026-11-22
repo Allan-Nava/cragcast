@@ -4,7 +4,7 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `npx backlogsync roadmap` after editing the backlog — CI fails when the two disagree.
 
-**97 items · 87 shipped · 10 open · 17 milestones.**
+**100 items · 87 shipped · 13 open · 18 milestones.**
 
 ## At a glance
 
@@ -26,6 +26,7 @@
 | **v1.2.0 — Everything in PostgreSQL** | next | `#########.` 89% | 1 | 8 |
 | **v1.3.0 — Vie ferrate** | later | `##########` 100% | 0 | 6 |
 | **v1.4.0 — A page for three regions** | next | `##########` 100% | 0 | 8 |
+| **v1.5.0 — On the nava-ui kit** | later | `..........` 0% | 3 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
 ## v0.1.0 — A verdict for one crag
@@ -168,6 +169,12 @@
 - [x] **CG-128** — Near me finds the region · med · S · frontend · `main`
 - [x] **CG-129** — The region remembered · low · S · frontend · `main`
 - [x] **CG-130** — How the verdict is made · low · S · frontend, docs · `main`
+
+## v1.5.0 — On the nava-ui kit
+
+- [ ] **CG-131** — Tokens from nava-ui · low · M · frontend
+- [ ] **CG-132** — Theme toggle and the kit's font · low · S · frontend
+- [ ] **CG-133** — The kit's components · low · L · frontend
 
 ## v1.0.0 — Self-hosted on a VM (parked)
 

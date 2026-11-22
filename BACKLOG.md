@@ -562,6 +562,32 @@ it, not imagined — the snapshots, the code, and Lighthouse's layout-shift trac
   a test that fails when a constant changes and the text does not. Done: `HowWeDecide` in
   the help, its numbers in `web/src/lib/rules.ts`, kept equal to the scorers' by `HelpRulesTest`. <!-- cg: prio=low size=S labels=frontend,docs ver=main -->
 
+## v1.5.0 — On the nava-ui kit <!-- ms: phase=later -->
+
+Asked for on 2026-11-22. cragcast copied the palette of allan-nava.github.io by hand (green
+#10cf53 on #050505, CG-14, CG-60) and wrote its own tokens (CG-62); the site and the kit it was
+extracted from, [nava-ui](https://github.com/Allan-Nava/nava-ui) (`@allan_nava/nava-ui` on npm,
+0.10.0), have moved on since. Taking the values from the kit keeps the three looking like one
+family and leaves the contrast checks to the kit. The verdict colours stay cragcast's own: the kit
+has no "si va / forse / no".
+
+- [ ] **CG-131 — Tokens from nava-ui**: add `@allan_nava/nava-ui` and point cragcast's names at the
+  kit's custom properties (`--panel: var(--nv-surface)`, `--text: var(--nv-fg)`, `--line:
+  var(--nv-border)`, the type and radius scales), instead of copying values; `--go`, `--maybe`,
+  `--no_go` and their `-fill` steps stay local, with their contrast notes. Only the tokens
+  (`css/tokens.css`), not the kit's element styles. The snapshots and the axe scan in both
+  themes say what moved; the spacing scale is in px here and in rem in the kit, so map it one step
+  at a time or keep it local. <!-- cg: prio=low size=M labels=frontend -->
+- [ ] **CG-132 — Theme toggle and the kit's font**: the page follows `prefers-color-scheme` only;
+  the kit and the site also take an explicit choice on `data-theme`, remembered in
+  `localStorage` and applied before first paint. Add the toggle, and decide on Inter Variable
+  (the kit's font, 48 KB) against `system-ui`, measured with Lighthouse: the page is a full-screen
+  map where every kilobyte shows. <!-- cg: prio=low size=S labels=frontend -->
+- [ ] **CG-133 — The kit's components**: buttons, chips, selects, alerts and the help dialog
+  through the kit's classes, or through `@allan_nava/nava-ui-react` (React 19, typed wrappers)
+  once that package is on npm — today only the CSS package is published. After CG-131; the map,
+  the clusters and the charts keep their own drawing. <!-- cg: prio=low size=L labels=frontend -->
+
 ## v1.0.0 — Self-hosted on a VM (parked) <!-- ms: phase=later -->
 
 Parked on 2026-10-15: Oracle Cloud's Always Free A1 VM could not be created in Milan (39 tries
