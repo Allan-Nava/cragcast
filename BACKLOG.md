@@ -57,7 +57,7 @@ main.
 - [x] **CG-9 — The arm64 image**: `image.yml` builds the backend for linux/arm64 on a native
   ARM runner and pushes it to GHCR on every push to main. <!-- cg: prio=med size=S labels=infra ver=main -->
 
-## v0.2.1 — UX and UI <!-- ms: phase=now -->
+## v0.2.1 — UX and UI <!-- ms: phase=shipped -->
 
 What the live page needs so a climber finds a crag and trusts the answer in seconds.
 
@@ -91,7 +91,7 @@ What the live page needs so a climber finds a crag and trusts the answer in seco
   (6 provinces), shown as "Canzo (CO)", searchable, and a province filter in the URL (`p=`).
   Valleys are not reliably mapped on OSM, so the area is administrative. <!-- cg: prio=low size=M labels=data,frontend ver=main -->
 
-## v0.2.2 — Crag details <!-- ms: phase=now -->
+## v0.2.2 — Crag details <!-- ms: phase=shipped -->
 
 What a climber reads before choosing a crag — grades, height, rock, style — from open data
 only, shown where it exists and marked "not mapped" where it does not. Nothing typed from
@@ -116,7 +116,7 @@ memory or copied from guidebook sites.
   route length on OSM, where cragcast picks them up. Done, and the guide says plainly: only
   first-hand knowledge, nothing copied from guidebooks. <!-- cg: prio=med size=S labels=docs,frontend ver=main -->
 
-## v0.3.0 — The page climbers use <!-- ms: phase=later -->
+## v0.3.0 — The page climbers use <!-- ms: phase=shipped -->
 
 - [x] **CG-10 — Web page in React**: rewrite the static page (CG-15) in React with a build
   step — filters by area and verdict, a page per crag. Done: React 19, TypeScript and Vite in
@@ -131,7 +131,7 @@ memory or copied from guidebook sites.
   Oracle VM that never got capacity, and how it runs hourly on GitHub Pages instead; the
   LinkedIn text lives in the cv repo (`linkedin/post-cragcast.txt`). <!-- cg: prio=low size=S labels=docs ver=main -->
 
-## v0.4.0 — Free stack <!-- ms: phase=next -->
+## v0.4.0 — Free stack <!-- ms: phase=shipped -->
 
 cragcast as a complete product on free services only: GitHub Pages for the page and a static
 API, GitHub Actions for everything that runs, git for history. No VM, no card.
@@ -159,7 +159,7 @@ API, GitHub Actions for everything that runs, git for history. No VM, no card.
   (http, certs) on the page, data, API and TLS, plus a freshness step on `generatedAt` (150
   min); checkfleet has no JSON-field age check, so the step lives in the workflow. <!-- cg: prio=low size=S labels=infra ver=main -->
 
-## v0.5.0 — A livelier page <!-- ms: phase=next -->
+## v0.5.0 — A livelier page <!-- ms: phase=shipped -->
 
 The page works but feels static: map and list live apart, comparing days takes clicks, the
 panel is a modal, and nothing moves on its own. Asked for on 2026-10-15.
@@ -185,7 +185,7 @@ panel is a modal, and nothing moves on its own. Asked for on 2026-10-15.
   looks for new data every 10 minutes and on return to the tab, swapping it only when
   `generatedAt` changed; crags entering the list rise in. <!-- cg: prio=med size=M labels=frontend ver=main -->
 
-## v0.6.0 — More crags, one link each <!-- ms: phase=next -->
+## v0.6.0 — More crags, one link each <!-- ms: phase=shipped -->
 
 Many Lombard crags are on OpenStreetMap without `climbing=crag` — Galbiate, Corna Rossa di
 Valmadrera, San Tomas — so cragcast never sees them; and a crag cannot be shared as a link.
@@ -211,7 +211,7 @@ Asked for on 2026-10-15.
   "Preferite" filter. Done: in the list and the panel; the filter is remembered too; storage
   failures leave favourites for the visit. <!-- cg: prio=med size=S labels=frontend ver=main -->
 
-## v0.8.0 — Tested end to end <!-- ms: phase=now -->
+## v0.8.0 — Tested end to end <!-- ms: phase=shipped -->
 
 Asked for on 2026-10-15: unit and integration tests for everything. Baseline that day: backend
 64% of lines without Docker (the Testcontainers tests run in CI only), page 88%, osm_crags.py
@@ -247,7 +247,7 @@ Asked for on 2026-10-15: unit and integration tests for everything. Baseline tha
   in retry-apply.sh that could fail silently, an unused variable in uptime.yml, and a
   JavaScript template in single quotes, silenced on its line. <!-- cg: prio=low size=S labels=infra ver=main -->
 
-## v0.9.0 — UI fixes <!-- ms: phase=next -->
+## v0.9.0 — UI fixes <!-- ms: phase=shipped -->
 
 From the screenshots of v0.5.0–v0.8.0, asked for on 2026-10-15: on a phone the controls take
 three rows and about 600 px come before the first crag; the map fills the screen and the list
@@ -276,7 +276,7 @@ the filters and the list. Each fix comes with an end-to-end test (CG-51) at the 
   600 px of the page or of the list's own column, smooth unless motion is reduced. It can sit
   over the last visible card's star for a moment. <!-- cg: prio=low size=S labels=frontend ver=main -->
 
-## v0.10.0 — A better frontend <!-- ms: phase=next -->
+## v0.10.0 — A better frontend <!-- ms: phase=shipped -->
 
 Asked for on 2026-10-16, after v0.9.0. From its screenshots: a crag's card is about 180 px
 tall on a phone, and 193 of 220 cards repeat the same unmapped-aspect sentence; a popup can
@@ -462,7 +462,7 @@ hourly archive below exists nowhere else, so from CG-108 on it needs a backup.
   by [ADR 0019](docs/adr/0019-backup-on-a-usb-disk.md). Done when the first dump is on the Pi's
   disk. <!-- cg: prio=high size=S labels=infra -->
 
-## v1.3.0 — Vie ferrate <!-- ms: phase=later -->
+## v1.3.0 — Vie ferrate <!-- ms: phase=shipped -->
 
 Proposed on 2026-10-16: "can I do that via ferrata tomorrow?" next to the crags — the same
 readers, the same question, a different answer. OpenStreetMap stays the only source of places
@@ -513,7 +513,7 @@ costs more. An ADR comes with CG-112.
   a browser goes on to `?k=ferrate&crag=<id>`. The panel's "Condividi" comes back for them.
   Asked for on 2026-10-28, after CG-114 left them without one. <!-- cg: prio=low size=S labels=backend,frontend ver=main -->
 
-## v1.4.0 — A page for three regions <!-- ms: phase=next -->
+## v1.4.0 — A page for three regions <!-- ms: phase=shipped -->
 
 Asked for on 2026-10-29: the UI and UX after CG-43 tripled the crags and CG-114 added the via
 ferratas. The page was laid out for one region and one kind of place; what follows was seen on
