@@ -149,6 +149,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: Allan-Nava/backlogsync@backlogsync--v0.1.1
+      - uses: Allan-Nava/backlogsync@backlogsync--v0.2.0
         with:
           command: check

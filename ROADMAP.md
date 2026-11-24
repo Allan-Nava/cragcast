@@ -12,20 +12,20 @@
 |---|---|---|---|---|
 | **v0.1.0 — A verdict for one crag** | now | `#########.` 86% | 1 | 6 |
 | **v0.2.0 — On the internet, for free** | next | `########..` 75% | 1 | 3 |
-| **v0.2.1 — UX and UI** | now | `##########` 100% | 0 | 9 |
-| **v0.2.2 — Crag details** | now | `##########` 100% | 0 | 4 |
-| **v0.3.0 — The page climbers use** | later | `##########` 100% | 0 | 3 |
-| **v0.4.0 — Free stack** | next | `##########` 100% | 0 | 6 |
-| **v0.5.0 — A livelier page** | next | `##########` 100% | 0 | 4 |
-| **v0.6.0 — More crags, one link each** | next | `##########` 100% | 0 | 4 |
-| **v0.8.0 — Tested end to end** | now | `##########` 100% | 0 | 6 |
-| **v0.9.0 — UI fixes** | next | `##########` 100% | 0 | 5 |
-| **v0.10.0 — A better frontend** | next | `##########` 100% | 0 | 9 |
+| **v0.2.1 — UX and UI** | shipped | `##########` 100% | 0 | 9 |
+| **v0.2.2 — Crag details** | shipped | `##########` 100% | 0 | 4 |
+| **v0.3.0 — The page climbers use** | shipped | `##########` 100% | 0 | 3 |
+| **v0.4.0 — Free stack** | shipped | `##########` 100% | 0 | 6 |
+| **v0.5.0 — A livelier page** | shipped | `##########` 100% | 0 | 4 |
+| **v0.6.0 — More crags, one link each** | shipped | `##########` 100% | 0 | 4 |
+| **v0.8.0 — Tested end to end** | shipped | `##########` 100% | 0 | 6 |
+| **v0.9.0 — UI fixes** | shipped | `##########` 100% | 0 | 5 |
+| **v0.10.0 — A better frontend** | shipped | `##########` 100% | 0 | 9 |
 | **v0.7.0 — Beyond Lombardy** | later | `#####.....` 50% | 2 | 2 |
 | **v1.1.0 — On a Raspberry Pi** | now | `########..` 80% | 1 | 4 |
 | **v1.2.0 — Everything in PostgreSQL** | next | `#########.` 89% | 1 | 8 |
-| **v1.3.0 — Vie ferrate** | later | `##########` 100% | 0 | 6 |
-| **v1.4.0 — A page for three regions** | next | `##########` 100% | 0 | 8 |
+| **v1.3.0 — Vie ferrate** | shipped | `##########` 100% | 0 | 6 |
+| **v1.4.0 — A page for three regions** | shipped | `##########` 100% | 0 | 8 |
 | **v1.5.0 — On the nava-ui kit** | later | `..........` 0% | 3 | 0 |
 | **v1.0.0 — Self-hosted on a VM (parked)** | later | `..........` 0% | 4 | 0 |
 
