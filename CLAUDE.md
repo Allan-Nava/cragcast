@@ -13,7 +13,9 @@ advertised, no exit node), PostgreSQL on the Pi's 127.0.0.1 only, the password i
 **Never a self-hosted runner**: the repository is public, and a fork's PR could run code on that
 network. The `backup` service dumps the database nightly onto a USB disk (CG-109, ADR 0019) and
 writes only where `.cragcast-backup-target` is — never onto the SD card; a change to the schema
-or to the dump keeps `docs/pi-backup.md`'s restore true.
+or to the dump keeps `docs/pi-backup.md`'s restore true. `docs/pi-setup.md` brings up a new Pi
+from a blank card to the running stack; a change to `deploy/pi/compose.yml` (a variable, a port,
+a service) keeps it true.
 
 ## Rules
 
